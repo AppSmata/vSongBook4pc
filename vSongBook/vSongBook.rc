@@ -1,0 +1,28 @@
+/////////////////////////////////////////////////////////////////////////////
+// Name:        vSongBook.rc
+// Purpose:     a standard MSW .rc file for the wxWidgets samples
+// Author:      Jacksiro
+// Modified by:
+// Created:     27/07/19
+// Copyright:   (c) 2003 Vadim Zeitlin <vadim@wxwidgets.org>
+// Licence:     wxWindows licence
+/////////////////////////////////////////////////////////////////////////////
+
+aaaaaaaa ICON "vSongBook.ico"
+
+vsbicon ICON "vSongBook.ico"
+
+project BITMAP "res/project.bmp"
+edit BITMAP "res/edit.bmp"
+last BITMAP "res/last.bmp"
+next BITMAP "res/next.bmp"
+bigger BITMAP "res/bigger.bmp"
+smaller BITMAP "res/smaller.bmp"
+font BITMAP "res/font.bmp"
+bold BITMAP "res/bold.bmp"
+books BITMAP "res/books.bmp"
+settings BITMAP "res/settings.bmp"
+
+#define wxUSE_NO_MANIFEST 0
+
+#include "wx/msw/wx.rc"
