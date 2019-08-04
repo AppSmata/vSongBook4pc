@@ -2,9 +2,8 @@
 // Name:        vSongBook.rc
 // Purpose:     a standard MSW .rc file for the wxWidgets samples
 // Author:      Jacksiro
-// Modified by:
 // Created:     27/07/19
-// Copyright:   (c) 2003 Vadim Zeitlin <vadim@wxwidgets.org>
+// Copyright:   (c) 2019
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
@@ -22,6 +21,8 @@ font BITMAP "res/font.bmp"
 bold BITMAP "res/bold.bmp"
 books BITMAP "res/books.bmp"
 settings BITMAP "res/settings.bmp"
+blackdown BITMAP "res/blackdown.bmp"
+blackup BITMAP "res/blackup.bmp"
 
 #define wxUSE_NO_MANIFEST 0
 
