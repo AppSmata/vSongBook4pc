@@ -44,10 +44,23 @@ public:
 
 	FrmProject(const wxString& title);
 
+	wxStaticText* lblCorner1;
+	wxStaticText* lblKey;
+	wxStaticText* lblTitle;
+	wxButton* btnClose;
+	wxStaticText* lblCorner2;
+	wxStaticText* lblSongText;
+	wxStaticText* lblCorner3;
+	wxStaticText* lblNumber;
+	wxStaticText* lblSongBook;
+	wxStaticText* lblTitle2;
+	wxBitmapButton* btnGoDown;
+	wxBitmapButton* btnGoUp;
+	wxStaticText* lblCorner4;
+	wxStatusBar* StatusBarP;
+
 	void btnClose_Click(wxCommandEvent& event);
 	void btnPrevious_Click(wxCommandEvent& event);
 	void btnNext_Click(wxCommandEvent& event);
-
-	~FrmProject();
 
 };

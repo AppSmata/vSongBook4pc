@@ -41,22 +41,64 @@ private:
 protected:
 
 	// Virtual event handlers, overide them in your derived class
-	virtual void BtnTablet_Click(wxCommandEvent& event) { event.Skip(); }
-	virtual void BtnSearch_Click(wxCommandEvent& event) { event.Skip(); }
-	virtual void cmbLanguage_Select(wxCommandEvent& event) { event.Skip(); }
-	virtual void TxtUsername_Changed(wxCommandEvent& event) { event.Skip(); }
-	virtual void BtnAppFontSmaller_Click(wxCommandEvent& event) { event.Skip(); }
-	virtual void SldAppFont_Scroll(wxScrollEvent& event) { event.Skip(); }
-	virtual void BtnAppFontBigger_Click(wxCommandEvent& event) { event.Skip(); }
-	virtual void CmbAppFont_Selected(wxCommandEvent& event) { event.Skip(); }
-	virtual void BtnAppFont_Click(wxCommandEvent& event) { event.Skip(); }
-	virtual void BtnThemOne_Click(wxCommandEvent& event) { event.Skip(); }
+	void BtnTablet_Click(wxCommandEvent& event) { event.Skip(); }
+	void BtnSearch_Click(wxCommandEvent& event) { event.Skip(); }
+	void cmbLanguage_Select(wxCommandEvent& event) { event.Skip(); }
+	void TxtUsername_Changed(wxCommandEvent& event) { event.Skip(); }
+	void BtnAppFontSmaller_Click(wxCommandEvent& event) { event.Skip(); }
+	void SldAppFont_Scroll(wxScrollEvent& event) { event.Skip(); }
+	void BtnAppFontBigger_Click(wxCommandEvent& event) { event.Skip(); }
+	void CmbAppFont_Selected(wxCommandEvent& event) { event.Skip(); }
+	void BtnAppFont_Click(wxCommandEvent& event) { event.Skip(); }
+	void BtnThemOne_Click(wxCommandEvent& event) { event.Skip(); }
 
 
 public:
+	wxStaticText* LblTitle;
+	wxNotebook* tabMain;
+	wxScrolledWindow* TabGeneral;
+	wxStaticText* LblTabletMode;
+	wxRadioButton* BtnTabletMode;
+	wxStaticText* LblTabletMode1;
+	wxRadioButton* BtnSearchCriteria;
+	wxStaticText* LbLanguage;
+	wxComboBox* cmbLanguage;
+	wxTextCtrl* TxtUserName;
+	wxStaticText* LblUserName;
+	wxScrolledWindow* TabFonts;
+	wxStaticText* LblSampleText;
+	wxStaticText* LblAppFont;
+	wxBitmapButton* BtnAppFontSmaller;
+	wxSlider* SldAppFont;
+	wxBitmapButton* BtnAppFontBigger;
+	wxComboBox* cmbAppFont;
+	wxRadioButton* BtnAppFont;
+	wxStaticText* LblPreview;
+	wxBitmapButton* BtnPreviewSmaller;
+	wxSlider* SldPreview;
+	wxBitmapButton* BtnPreviewBigger;
+	wxComboBox* cmbPreview;
+	wxRadioButton* BtnPreview;
+	wxStaticText* LblProjection;
+	wxBitmapButton* BtnProjectionSmaller;
+	wxSlider* SldProjection;
+	wxBitmapButton* BtnProjectionBigger;
+	wxComboBox* cmbProjection;
+	wxRadioButton* BtnProjection;
+	wxScrolledWindow* TabTheme;
+	wxButton* BtnTheme0;
+	wxButton* BtnTheme1;
+	wxButton* BtnTheme2;
+	wxButton* BtnTheme3;
+	wxButton* BtnTheme4;
+	wxButton* BtnTheme5;
+	wxButton* BtnTheme6;
+	wxButton* BtnTheme7;
+	wxButton* BtnTheme8;
+	wxButton* BtnTheme9;
+	wxScrolledWindow* TabReset;
+	wxStatusBar* StatusBar;
 
 	FrmSettings(const wxString& title);
-
-	~FrmSettings();
 
 };
