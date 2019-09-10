@@ -30,12 +30,6 @@
 #include <wx/splitter.h>
 #include <wx/frame.h>
 
-class vSongBook : public wxApp
-{
-	public:
-		virtual bool OnInit() wxOVERRIDE;
-};
-
 class FrmSongSearch : public wxFrame
 {
 private:
@@ -44,17 +38,8 @@ private:
 protected:
 	wxSplitterWindow* WndSplitter;
 
-	bool                m_smallToolbar,
-		m_horzText,
-		m_useCustomDisabled,
-		m_showTooltips;
-	size_t              m_rows;
-
-	// the number of print buttons we have (they're added/removed dynamically)
-	size_t              m_nPrint;
-
-	// store toolbar position for future use
-	//Positions           m_toolbarPosition;
+	bool m_smallToolbar, m_horzText, m_useCustomDisabled, m_showTooltips;
+	size_t m_rows, m_nPrint;
 
 public:
 	FrmSongSearch(const wxString& title);
@@ -81,8 +66,6 @@ public:
 	void btnBooks_Click(wxCommandEvent& event);
 	void btnSettings_Click(wxCommandEvent& event);
 	
-	~FrmSongSearch();
-
 	void WndSplitterOnIdle(wxIdleEvent&)
 	{
 		WndSplitter->SetSashPosition(350);
@@ -91,4 +74,17 @@ public:
 
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
+
+	FrmSongSearch *frmSongSearch;
+	wxPanel* PanelLeft, *PanelRight;
+	wxComboBox* cmbSongBooks;
+	wxCheckBox* chkSearchSongs;
+	wxStaticBoxSizer* ListWrapper;
+	wxStaticBox* GrpSonglist;
+	wxListBox* lstSongList;
+	wxSearchCtrl* txtSearch;
+	wxToolBar* toolBarSong;
+	wxToolBarToolBase* btnProject, *btnEdit, *btnLast, *btnNext, *btnBigger, *btnSmaller, *btnFontset, *btnBold, *btnBooks, *btnSettings;
+	wxTextCtrl* TxtSongTitle, *TxtPreview, *TxtExtras;
+
 };

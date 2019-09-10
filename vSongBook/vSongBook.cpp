@@ -16,9 +16,16 @@
 #include "wx/wx.h"
 #endif
 
+#include "wx/preferences.h"
+#include "wx/config.h"
+//#include "wx/scopedptr.h"
+//#include "wx/stattext.h"
+//#include "wx/artprov.h"
+
 #include "frmSongSearch.h"
 #include "frmProject.h"
 #include "frmSettings.h"
+#include "AppSettings.h"
 #include "sqlite/sqlite3pp.h"
 
 #ifndef wxHAS_IMAGES_IN_RESOURCES
@@ -29,10 +36,36 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
+FrmSongSearch *frmSongSearch;
+FrmProject *frmProject;
+FrmSettings *frmSettings;
+
+int selected_book, selected_song;
+wxString search_term;
+vector<int> bookids, songids;
+vector<wxString> booktitles, songtitles, songaliases, songcontents;
+
+wxScopedPtr<wxPreferencesEditor> _prefEditor;
+
 enum
 {
 	Minimal_Quit = wxID_EXIT,
 	Minimal_About = wxID_ABOUT
+};
+
+class vSongBook : public wxApp
+{
+public:
+	virtual bool OnInit() wxOVERRIDE;
+	const AppSettings::Preferences& GetSettings() const { return _pref; }
+	void UpdateSettings(const AppSettings::Preferences& settings);
+
+private:
+	wxScopedPtr<wxPreferencesEditor> _prefEditor;
+	AppSettings::Preferences _pref;
+
 };
 
 wxBEGIN_EVENT_TABLE(FrmSongSearch, wxFrame)
@@ -42,95 +75,13 @@ wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP(vSongBook);
 
-using namespace std;
-
-FrmProject *frmProject;
-wxStaticText* lblCorner1;
-wxStaticText* lblKey;
-wxStaticText* lblTitle;
-wxButton* btnClose;
-wxStaticText* lblCorner2;
-wxStaticText* lblSongText;
-wxStaticText* lblCorner3;
-wxStaticText* lblNumber;
-wxStaticText* lblSongBook;
-wxStaticText* lblTitle2;
-wxBitmapButton* btnGoDown;
-wxBitmapButton* btnGoUp;
-wxStaticText* lblCorner4;
-wxStatusBar* StatusBarP;
-
-FrmSongSearch *frmSongSearch;
-wxPanel* PanelLeft, *PanelRight;
-wxComboBox* cmbSongBooks;
-wxCheckBox* chkSearchSongs;
-wxStaticBoxSizer* ListWrapper;
-wxStaticBox* GrpSonglist;
-wxListBox* lstSongList;
-wxSearchCtrl* txtSearch;
-wxToolBar* toolBarSong;
-wxToolBarToolBase* btnProject, *btnEdit, *btnLast, *btnNext, *btnBigger, *btnSmaller, *btnFontset, *btnBold, *btnBooks, *btnSettings;
-wxTextCtrl* TxtSongTitle, *TxtPreview, *TxtExtras;
-
-FrmSettings *frmSettings;
-wxStaticText* LblTitle;
-wxNotebook* tabMain;
-wxScrolledWindow* TabGeneral;
-wxStaticText* LblTabletMode;
-wxRadioButton* BtnTabletMode;
-wxStaticText* LblTabletMode1;
-wxRadioButton* BtnSearchCriteria;
-wxStaticText* LbLanguage;
-wxComboBox* cmbLanguage;
-wxTextCtrl* TxtUserName;
-wxStaticText* LblUserName;
-wxScrolledWindow* TabFonts;
-wxStaticText* LblSampleText;
-wxStaticText* LblAppFont;
-wxBitmapButton* BtnAppFontSmaller;
-wxSlider* SldAppFont;
-wxBitmapButton* BtnAppFontBigger;
-wxComboBox* cmbAppFont;
-wxRadioButton* BtnAppFont;
-wxStaticText* LblPreview;
-wxBitmapButton* BtnPreviewSmaller;
-wxSlider* SldPreview;
-wxBitmapButton* BtnPreviewBigger;
-wxComboBox* cmbPreview;
-wxRadioButton* BtnPreview;
-wxStaticText* LblProjection;
-wxBitmapButton* BtnProjectionSmaller;
-wxSlider* SldProjection;
-wxBitmapButton* BtnProjectionBigger;
-wxComboBox* cmbProjection;
-wxRadioButton* BtnProjection;
-wxScrolledWindow* TabTheme;
-wxButton* BtnThemeOne;
-wxButton* BtnThemeTwo;
-wxButton* BtnThemeThree;
-wxButton* BtnThemeFour;
-wxButton* BtnThemeFive;
-wxButton* BtnThemeSix;
-wxButton* BtnThemeSeven;
-wxButton* BtnThemeEight;
-wxButton* BtnThemeNine;
-wxButton* BtnThemeTen;
-wxButton* BtnThemeEleven;
-wxButton* BtnThemeTwelve;
-wxScrolledWindow* TabReset;
-wxStatusBar* StatusBar;
-
-int selected_book, selected_song;
-wxString search_term;
-vector<int> bookids, songids;
-vector<wxString> booktitles, songtitles, songaliases, songcontents;
-
 bool vSongBook::OnInit()
 {
 	if (!wxApp::OnInit())
 		return false;
+	const AppSettings::Preferences& _pref = wxGetApp().GetSettings();
 
-	frmSongSearch = new FrmSongSearch("vSongBook App");
+	frmSongSearch = new FrmSongSearch("vSongBook v" + _pref.vsb_version + " | " + _pref.app_user);
 	
 	frmSongSearch->SetSize(1000, 700);
 	frmSongSearch->Show(true);
@@ -238,7 +189,8 @@ FrmSongSearch::FrmSongSearch(const wxString& title) : wxFrame(NULL, wxID_ANY, ti
 	wxBoxSizer* SizerRight;
 	SizerRight = new wxBoxSizer(wxVERTICAL);
 
-	txtSearch = new wxSearchCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), 0);
+	txtSearch = new wxSearchCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_PROCESS_ENTER);
+
 #ifndef __WXMAC__
 	txtSearch->ShowSearchButton(true);
 #endif
@@ -290,8 +242,9 @@ FrmSongSearch::FrmSongSearch(const wxString& title) : wxFrame(NULL, wxID_ANY, ti
 	cmbSongBooks->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSongSearch::GetSelectedBook), NULL, this);
 	lstSongList->Connect(wxEVT_COMMAND_LISTBOX_SELECTED, wxCommandEventHandler(FrmSongSearch::GetSelectedSong), NULL, this);
 	txtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN, wxCommandEventHandler(FrmSongSearch::Search_Clear), NULL, this);
-	txtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN, wxCommandEventHandler(FrmSongSearch::Search_Focus), NULL, this);
-	//txtSearch->Connect(wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler(FrmSongSearch::Search_Song), NULL, this);
+	txtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN, wxCommandEventHandler(FrmSongSearch::Search_Song), NULL, this);
+	txtSearch->Connect(wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler(FrmSongSearch::Search_Song), NULL, this);
+	//txtSearch->Bind(wxEVT_COMMAND_TEXT_ENTER, &FrmSongSearch::Search_Song, this);
 	this->Connect(btnProject->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnProject_Click));
 	this->Connect(btnEdit->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnEdit_Click));
 	this->Connect(btnLast->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnLast_Click));
@@ -460,11 +413,12 @@ void FrmSongSearch::PopulateSonglists(int setbook, wxString searchstr, bool sear
 			songcontents.clear();
 			lstSongList->Clear();
 		}
-		wxString sql_query = "SELECT * FROM songs WHERE ";
+		wxString sql_query = "SELECT * FROM songs WHERE";
 		wxString bookstr = std::to_string(setbook);
 		wxString searchtotals = " songs found in: " + booktitles[cmbSongBooks->GetSelection()];
 
-		if (searchstr.size() > 0) 
+		if (searchstr.empty()) sql_query = sql_query + " bookid=" + bookstr;
+		else
 		{
 			if (searchall)
 			{
@@ -475,9 +429,9 @@ void FrmSongSearch::PopulateSonglists(int setbook, wxString searchstr, bool sear
 				}
 				else
 				{
-					sql_query = sql_query + " title LIKE '%" + searchstr + "%' OR alias LIKE '%" + searchstr + 
-						" OR content LIKE '%" + searchstr + "%'";
-					searchtotals = " songs found with words: """ + searchstr + """";
+					sql_query = sql_query + " title LIKE '%" + searchstr + "%' OR alias LIKE '%" + searchstr +
+						"%' OR content LIKE '%" + searchstr + "%'";
+					searchtotals = " songs found with words: \"" + searchstr + "\"";
 				}
 			}
 			else
@@ -489,16 +443,11 @@ void FrmSongSearch::PopulateSonglists(int setbook, wxString searchstr, bool sear
 				}
 				else
 				{
-					sql_query = sql_query + " bookid=" + bookstr + " AND title LIKE '%" + searchstr +
-						"%' OR bookid=" + bookstr + " AND alias LIKE '%" + searchstr +
-						" OR bookid=" + bookstr + " AND content LIKE '%" + searchstr + "%'";
-					searchtotals = " songs found with words: """ + searchstr + """";
+					sql_query = sql_query + " bookid=" + bookstr + " AND title LIKE '%" + searchstr + "%' OR bookid=" + bookstr + 
+						" AND alias LIKE '%" + searchstr + "%' OR bookid=" + bookstr + " AND content LIKE '%" + searchstr + "%'";
+					searchtotals = " songs found with words: \"" + searchstr + "\"";
 				}
 			}
-		}
-		else
-		{
-			sql_query = sql_query + " bookid=" + bookstr;
 		}
 		sql_query = sql_query + " ORDER BY number ASC";
 
@@ -551,18 +500,12 @@ void FrmSongSearch::Search_Clear(wxCommandEvent&)
 	txtSearch->Clear();
 }
 
-void FrmSongSearch::Search_Focus(wxCommandEvent&)
-{
-	txtSearch->SetFocus();
-}
-
 void FrmSongSearch::Search_Song(wxCommandEvent&)
 {
-	//int selected = bookids[cmbSongBooks->GetSelection()];
-	//wxString searchthis = txtSearch->GetValue();
-	//bool searchall = chkSearchSongs->GetValue();
-	//PopulateSonglists(selected, searchthis, searchall);
-	SetStatusText("you searched for this");
+	int selected = bookids[cmbSongBooks->GetSelection()];
+	wxString searchthis = txtSearch->GetValue();
+	PopulateSonglists(selected, searchthis, chkSearchSongs->GetValue());
+	SetStatusText("You searched for: \"" + searchthis + "\"");
 }
 
 void FrmSongSearch::btnProject_Click(wxCommandEvent&)
@@ -619,30 +562,10 @@ void FrmSongSearch::btnBooks_Click(wxCommandEvent&)
 void FrmSongSearch::btnSettings_Click(wxCommandEvent&)
 {
 	frmSettings = new FrmSettings("vSongBook Preferences");
-	frmSettings->SetSize(820, 600);
+	frmSettings->SetSize(840, 600);
 	frmSettings->Show(true);
 	frmSettings->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
 	frmSettings->Center();
-}
-
-FrmSongSearch::~FrmSongSearch()
-{
-	// Disconnect Events
-	cmbSongBooks->Disconnect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSongSearch::GetSelectedBook), NULL, this);
-	lstSongList->Disconnect(wxEVT_COMMAND_LISTBOX_SELECTED, wxCommandEventHandler(FrmSongSearch::GetSelectedSong), NULL, this);
-	txtSearch->Disconnect(wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN, wxCommandEventHandler(FrmSongSearch::Search_Clear), NULL, this);
-	txtSearch->Disconnect(wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN, wxCommandEventHandler(FrmSongSearch::Search_Focus), NULL, this);
-	//txtSearch->Disconnect(wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler(FrmSongSearch::Search_Song), NULL, this);
-	this->Disconnect(btnProject->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnProject_Click));
-	this->Disconnect(btnEdit->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnEdit_Click));
-	this->Disconnect(btnLast->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnLast_Click));
-	this->Disconnect(btnNext->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnNext_Click));
-	this->Disconnect(btnBigger->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnBigger_Click));
-	this->Disconnect(btnSmaller->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnSmaller_Click));
-	this->Disconnect(btnFontset->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnFontset_Click));
-	this->Disconnect(btnBold->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnBold_Click));
-	this->Disconnect(btnBooks->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnBooks_Click));
-	this->Disconnect(btnSettings->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(FrmSongSearch::btnSettings_Click));
 }
 
 FrmProject::FrmProject(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
@@ -801,16 +724,6 @@ void FrmProject::btnNext_Click(wxCommandEvent&)
 
 }
 
-FrmProject::~FrmProject()
-{
-	// Disconnect Events
-	btnClose->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmProject::btnClose_Click), NULL, this);
-	btnGoDown->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmProject::btnNext_Click), NULL, this);
-	btnGoUp->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmProject::btnPrevious_Click), NULL, this);
-
-}
-
-
 FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	enum
@@ -844,11 +757,10 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	LblTitle = new wxStaticText(this, wxID_ANY, wxT("vSongBook Preferences"), wxDefaultPosition, wxSize(-1, 70), 0);
 	LblTitle->Wrap(-1);
-	LblTitle->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblTitle->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblTitle->SetBackgroundColour(wxColour(255, 255, 255));
 
 	PanelTop->Add(LblTitle, 1, wxALIGN_RIGHT | wxALL, 0);
-
 
 	MainWrapper->Add(PanelTop, 0, wxEXPAND, 5);
 
@@ -878,7 +790,6 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	GrpTabletMode->Add(BtnTabletMode, 0, wxALL, 5);
 
-
 	General_Wrapper->Add(GrpTabletMode, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GrpSearchCriteria;
@@ -896,7 +807,6 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	BtnSearchCriteria->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
 
 	GrpSearchCriteria->Add(BtnSearchCriteria, 0, wxALL, 5);
-
 
 	General_Wrapper->Add(GrpSearchCriteria, 0, wxALL | wxEXPAND, 5);
 
@@ -920,7 +830,6 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	cmbLanguage->SetSelection(5);
 	GrpLanguage->Add(cmbLanguage, 0, wxALL, 5);
 
-
 	General_Wrapper->Add(GrpLanguage, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GrpUserName;
@@ -936,9 +845,7 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	GrpUserName->Add(LblUserName, 0, wxALL, 5);
 
-
 	General_Wrapper->Add(GrpUserName, 0, wxALL | wxEXPAND, 5);
-
 
 	TabGeneral->SetSizer(General_Wrapper);
 	TabGeneral->Layout();
@@ -959,7 +866,6 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	LblSampleText->SetFont(wxFont(40, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	GrpSampleText->Add(LblSampleText, 1, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
 
 	FontWrapper->Add(GrpSampleText, 0, wxALIGN_CENTER | wxALIGN_CENTER_HORIZONTAL | wxALL | wxEXPAND, 5);
 
@@ -1007,7 +913,6 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	GrpAppFont->Add(BtnAppFont, 0, wxALIGN_CENTER | wxALL, 5);
 
-
 	FontWrapper->Add(GrpAppFont, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GrpPreview;
@@ -1053,7 +958,6 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	BtnPreview->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
 
 	GrpPreview->Add(BtnPreview, 0, wxALIGN_CENTER | wxALL, 5);
-
 
 	FontWrapper->Add(GrpPreview, 1, wxEXPAND, 5);
 
@@ -1101,9 +1005,7 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	GrpProjection->Add(BtnProjection, 0, wxALIGN_CENTER | wxALL, 5);
 
-
 	FontWrapper->Add(GrpProjection, 1, wxEXPAND, 5);
-
 
 	TabFonts->SetSizer(FontWrapper);
 	TabFonts->Layout();
@@ -1114,182 +1016,148 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	wxWrapSizer* ThemeWrapper;
 	ThemeWrapper = new wxWrapSizer(wxHORIZONTAL, wxWRAPSIZER_DEFAULT_FLAGS);
 
-	wxStaticBoxSizer* ThemeOne;
-	ThemeOne = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme One ")), wxVERTICAL);
+	wxStaticBoxSizer* Theme0;
+	Theme0 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme One ")), wxVERTICAL);
 
-	ThemeOne->SetMinSize(wxSize(150, 200));
-	BtnThemeOne = new wxButton(ThemeOne->GetStaticBox(), wxID_ANY, wxT("Black\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeOne->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeOne->SetForegroundColour(wxColour(255, 255, 255));
-	BtnThemeOne->SetBackgroundColour(wxColour(0, 0, 0));
-	BtnThemeOne->SetMinSize(wxSize(160, 180));
+	Theme0->SetMinSize(wxSize(120, 170));
+	BtnTheme0 = new wxButton(Theme0->GetStaticBox(), wxID_ANY, wxT("Black\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme0->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme0->SetForegroundColour(wxColour(255, 255, 255));
+	BtnTheme0->SetBackgroundColour(wxColour(0, 0, 0));
+	BtnTheme0->SetMinSize(wxSize(110, 150));
 
-	ThemeOne->Add(BtnThemeOne, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	Theme0->Add(BtnTheme0, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
+	ThemeWrapper->Add(Theme0, 1, wxALL | wxEXPAND, 5);
 
-	ThemeWrapper->Add(ThemeOne, 1, wxALL | wxEXPAND, 5);
+	wxStaticBoxSizer* Theme1;
+	Theme1 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Two")), wxVERTICAL);
 
-	wxStaticBoxSizer* ThemeTwo;
-	ThemeTwo = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Two")), wxVERTICAL);
+	Theme1->SetMinSize(wxSize(120, 170));
+	BtnTheme1 = new wxButton(Theme1->GetStaticBox(), wxID_ANY, wxT("White\n&&\nBlack"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme1->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme1->SetForegroundColour(wxColour(0, 0, 0));
+	BtnTheme1->SetBackgroundColour(wxColour(255, 255, 255));
+	BtnTheme1->SetMinSize(wxSize(110, 150));
 
-	ThemeTwo->SetMinSize(wxSize(150, 200));
-	BtnThemeTwo = new wxButton(ThemeTwo->GetStaticBox(), wxID_ANY, wxT("White\n&&\nBlack"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeTwo->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeTwo->SetForegroundColour(wxColour(0, 0, 0));
-	BtnThemeTwo->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnThemeTwo->SetMinSize(wxSize(160, 180));
+	Theme1->Add(BtnTheme1, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
-	ThemeTwo->Add(BtnThemeTwo, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	ThemeWrapper->Add(Theme1, 0, wxALL | wxEXPAND, 5);
 
+	wxStaticBoxSizer* Theme2;
+	Theme2 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Three")), wxVERTICAL);
 
-	ThemeWrapper->Add(ThemeTwo, 0, wxALL | wxEXPAND, 5);
+	Theme2->SetMinSize(wxSize(120, 170));
+	BtnTheme2 = new wxButton(Theme2->GetStaticBox(), wxID_ANY, wxT("Blue\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme2->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme2->SetForegroundColour(wxColour(255, 255, 255));
+	BtnTheme2->SetBackgroundColour(wxColour(0, 0, 255));
+	BtnTheme2->SetMinSize(wxSize(110, 150));
 
-	wxStaticBoxSizer* ThemeThree;
-	ThemeThree = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Three")), wxVERTICAL);
+	Theme2->Add(BtnTheme2, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
-	ThemeThree->SetMinSize(wxSize(150, 200));
-	BtnThemeThree = new wxButton(ThemeThree->GetStaticBox(), wxID_ANY, wxT("Blue\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeThree->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeThree->SetForegroundColour(wxColour(255, 255, 255));
-	BtnThemeThree->SetBackgroundColour(wxColour(0, 0, 255));
-	BtnThemeThree->SetMinSize(wxSize(160, 180));
+	ThemeWrapper->Add(Theme2, 1, wxALL | wxEXPAND, 5);
 
-	ThemeThree->Add(BtnThemeThree, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	wxStaticBoxSizer* Theme3;
+	Theme3 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Four")), wxVERTICAL);
 
+	Theme3->SetMinSize(wxSize(120, 170));
+	BtnTheme3 = new wxButton(Theme3->GetStaticBox(), wxID_ANY, wxT("White\n&&\nBLue"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme3->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme3->SetForegroundColour(wxColour(0, 0, 255));
+	BtnTheme3->SetBackgroundColour(wxColour(255, 255, 255));
+	BtnTheme3->SetMinSize(wxSize(110, 150));
 
-	ThemeWrapper->Add(ThemeThree, 1, wxALL | wxEXPAND, 5);
+	Theme3->Add(BtnTheme3, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
-	wxStaticBoxSizer* ThemeFour;
-	ThemeFour = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Four")), wxVERTICAL);
+	ThemeWrapper->Add(Theme3, 1, wxALL | wxEXPAND, 5);
 
-	ThemeFour->SetMinSize(wxSize(150, 200));
-	BtnThemeFour = new wxButton(ThemeFour->GetStaticBox(), wxID_ANY, wxT("White\n&&\nBLue"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeFour->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeFour->SetForegroundColour(wxColour(0, 0, 255));
-	BtnThemeFour->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnThemeFour->SetMinSize(wxSize(160, 180));
+	wxStaticBoxSizer* Theme4;
+	Theme4 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Five ")), wxVERTICAL);
 
-	ThemeFour->Add(BtnThemeFour, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	Theme4->SetMinSize(wxSize(120, 170));
+	BtnTheme4 = new wxButton(Theme4->GetStaticBox(), wxID_ANY, wxT("Green\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme4->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme4->SetForegroundColour(wxColour(255, 255, 255));
+	BtnTheme4->SetBackgroundColour(wxColour(0, 128, 0));
+	BtnTheme4->SetMinSize(wxSize(110, 150));
 
+	Theme4->Add(BtnTheme4, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
-	ThemeWrapper->Add(ThemeFour, 1, wxALL | wxEXPAND, 5);
+	ThemeWrapper->Add(Theme4, 1, wxALL | wxEXPAND, 5);
 
-	wxStaticBoxSizer* ThemeFive;
-	ThemeFive = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Five ")), wxVERTICAL);
+	wxStaticBoxSizer* Theme5;
+	Theme5 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Six")), wxVERTICAL);
 
-	ThemeFive->SetMinSize(wxSize(150, 200));
-	BtnThemeFive = new wxButton(ThemeFive->GetStaticBox(), wxID_ANY, wxT("Green\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeFive->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeFive->SetForegroundColour(wxColour(255, 255, 255));
-	BtnThemeFive->SetBackgroundColour(wxColour(0, 128, 0));
-	BtnThemeFive->SetMinSize(wxSize(160, 180));
+	Theme5->SetMinSize(wxSize(120, 170));
+	BtnTheme5 = new wxButton(Theme5->GetStaticBox(), wxID_ANY, wxT("White\n&&\nGreen"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme5->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme5->SetForegroundColour(wxColour(0, 128, 0));
+	BtnTheme5->SetBackgroundColour(wxColour(255, 255, 255));
+	BtnTheme5->SetMinSize(wxSize(110, 150));
 
-	ThemeFive->Add(BtnThemeFive, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	Theme5->Add(BtnTheme5, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
+	ThemeWrapper->Add(Theme5, 1, wxALL | wxEXPAND, 5);
 
-	ThemeWrapper->Add(ThemeFive, 1, wxALL | wxEXPAND, 5);
+	wxStaticBoxSizer* Theme6;
+	Theme6 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Seven")), wxVERTICAL);
 
-	wxStaticBoxSizer* ThemeSix;
-	ThemeSix = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Six")), wxVERTICAL);
+	Theme6->SetMinSize(wxSize(120, 170));
+	BtnTheme6 = new wxButton(Theme6->GetStaticBox(), wxID_ANY, wxT("Orange\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme6->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme6->SetForegroundColour(wxColour(255, 255, 255));
+	BtnTheme6->SetBackgroundColour(wxColour(255, 69, 0));
+	BtnTheme6->SetMinSize(wxSize(110, 150));
 
-	ThemeSix->SetMinSize(wxSize(150, 200));
-	BtnThemeSix = new wxButton(ThemeSix->GetStaticBox(), wxID_ANY, wxT("White\n&&\nGreen"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeSix->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeSix->SetForegroundColour(wxColour(0, 128, 0));
-	BtnThemeSix->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnThemeSix->SetMinSize(wxSize(160, 180));
+	Theme6->Add(BtnTheme6, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
-	ThemeSix->Add(BtnThemeSix, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	ThemeWrapper->Add(Theme6, 1, wxALL | wxEXPAND, 5);
 
+	wxStaticBoxSizer* Theme7;
+	Theme7 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Eight")), wxVERTICAL);
 
-	ThemeWrapper->Add(ThemeSix, 1, wxALL | wxEXPAND, 5);
+	Theme7->SetMinSize(wxSize(120, 170));
+	BtnTheme7 = new wxButton(Theme7->GetStaticBox(), wxID_ANY, wxT("White\n&&\nOrange"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme7->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme7->SetForegroundColour(wxColour(255, 69, 0));
+	BtnTheme7->SetBackgroundColour(wxColour(255, 255, 255));
+	BtnTheme7->SetMinSize(wxSize(110, 150));
 
-	wxStaticBoxSizer* ThemeSeven;
-	ThemeSeven = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Seven")), wxVERTICAL);
-
-	ThemeSeven->SetMinSize(wxSize(150, 200));
-	BtnThemeSeven = new wxButton(ThemeSeven->GetStaticBox(), wxID_ANY, wxT("Orange\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeSeven->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeSeven->SetForegroundColour(wxColour(255, 255, 255));
-	BtnThemeSeven->SetBackgroundColour(wxColour(255, 69, 0));
-	BtnThemeSeven->SetMinSize(wxSize(160, 180));
-
-	ThemeSeven->Add(BtnThemeSeven, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-
-	ThemeWrapper->Add(ThemeSeven, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* ThemeEight;
-	ThemeEight = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Eight")), wxVERTICAL);
-
-	ThemeEight->SetMinSize(wxSize(150, 200));
-	BtnThemeEight = new wxButton(ThemeEight->GetStaticBox(), wxID_ANY, wxT("White\n&&\nOrange"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeEight->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeEight->SetForegroundColour(wxColour(255, 69, 0));
-	BtnThemeEight->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnThemeEight->SetMinSize(wxSize(160, 180));
-
-	ThemeEight->Add(BtnThemeEight, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	Theme7->Add(BtnTheme7, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
 
-	ThemeWrapper->Add(ThemeEight, 1, wxALL | wxEXPAND, 5);
+	ThemeWrapper->Add(Theme7, 1, wxALL | wxEXPAND, 5);
 
-	wxStaticBoxSizer* ThemeNine;
-	ThemeNine = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Nine ")), wxVERTICAL);
+	wxStaticBoxSizer* Theme8;
+	Theme8 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Nine ")), wxVERTICAL);
 
-	ThemeNine->SetMinSize(wxSize(150, 200));
-	BtnThemeNine = new wxButton(ThemeNine->GetStaticBox(), wxID_ANY, wxT("Red\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeNine->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeNine->SetForegroundColour(wxColour(255, 255, 255));
-	BtnThemeNine->SetBackgroundColour(wxColour(255, 0, 0));
-	BtnThemeNine->SetMinSize(wxSize(160, 180));
+	Theme8->SetMinSize(wxSize(120, 170));
+	BtnTheme8 = new wxButton(Theme8->GetStaticBox(), wxID_ANY, wxT("Red\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme8->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme8->SetForegroundColour(wxColour(255, 255, 255));
+	BtnTheme8->SetBackgroundColour(wxColour(255, 0, 0));
+	BtnTheme8->SetMinSize(wxSize(110, 150));
 
-	ThemeNine->Add(BtnThemeNine, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-
-	ThemeWrapper->Add(ThemeNine, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* ThemeTen;
-	ThemeTen = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Ten ")), wxVERTICAL);
-
-	ThemeTen->SetMinSize(wxSize(150, 200));
-	BtnThemeTen = new wxButton(ThemeTen->GetStaticBox(), wxID_ANY, wxT("White\n&&\nRed"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeTen->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeTen->SetForegroundColour(wxColour(255, 0, 0));
-	BtnThemeTen->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnThemeTen->SetMinSize(wxSize(160, 180));
-
-	ThemeTen->Add(BtnThemeTen, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	Theme8->Add(BtnTheme8, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
 
-	ThemeWrapper->Add(ThemeTen, 1, wxALL | wxEXPAND, 5);
+	ThemeWrapper->Add(Theme8, 1, wxALL | wxEXPAND, 5);
 
-	wxStaticBoxSizer* ThemeEleven;
-	ThemeEleven = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Eleven")), wxVERTICAL);
+	wxStaticBoxSizer* Theme9;
+	Theme9 = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Ten ")), wxVERTICAL);
 
-	ThemeEleven->SetMinSize(wxSize(150, 200));
-	BtnThemeEleven = new wxButton(ThemeEleven->GetStaticBox(), wxID_ANY, wxT("Custom\nTheme 1"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeEleven->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeEleven->SetMinSize(wxSize(160, 180));
+	Theme9->SetMinSize(wxSize(120, 170));
+	BtnTheme9 = new wxButton(Theme9->GetStaticBox(), wxID_ANY, wxT("White\n&&\nRed"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnTheme9->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme9->SetForegroundColour(wxColour(255, 0, 0));
+	BtnTheme9->SetBackgroundColour(wxColour(255, 255, 255));
+	BtnTheme9->SetMinSize(wxSize(110, 150));
 
-	ThemeEleven->Add(BtnThemeEleven, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-
-	ThemeWrapper->Add(ThemeEleven, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* ThemeTwelve;
-	ThemeTwelve = new wxStaticBoxSizer(new wxStaticBox(TabTheme, wxID_ANY, wxT(" Theme Twelve")), wxVERTICAL);
-
-	ThemeTwelve->SetMinSize(wxSize(150, 200));
-	BtnThemeTwelve = new wxButton(ThemeTwelve->GetStaticBox(), wxID_ANY, wxT("Custom\nTheme 2"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnThemeTwelve->SetFont(wxFont(30, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnThemeTwelve->SetMinSize(wxSize(160, 180));
-
-	ThemeTwelve->Add(BtnThemeTwelve, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	Theme9->Add(BtnTheme9, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
 
 
-	ThemeWrapper->Add(ThemeTwelve, 1, wxALL | wxEXPAND, 5);
-
+	ThemeWrapper->Add(Theme9, 1, wxALL | wxEXPAND, 5);
 
 	TabTheme->SetSizer(ThemeWrapper);
 	TabTheme->Layout();
@@ -1352,77 +1220,14 @@ FrmSettings::FrmSettings(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	BtnProjectionBigger->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontBigger_Click), NULL, this);
 	cmbProjection->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSettings::CmbAppFont_Selected), NULL, this);
 	BtnProjection->Connect(wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler(FrmSettings::BtnAppFont_Click), NULL, this);
-	BtnThemeOne->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeTwo->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeThree->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeFour->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeFive->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeSix->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeSeven->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeEight->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeNine->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeTen->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeEleven->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeTwelve->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-}
-
-FrmSettings::~FrmSettings()
-{
-	// Disconnect Events
-	BtnTabletMode->Disconnect(wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler(FrmSettings::BtnTablet_Click), NULL, this);
-	BtnSearchCriteria->Disconnect(wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler(FrmSettings::BtnSearch_Click), NULL, this);
-	cmbLanguage->Disconnect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSettings::cmbLanguage_Select), NULL, this);
-	TxtUserName->Disconnect(wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler(FrmSettings::TxtUsername_Changed), NULL, this);
-	BtnAppFontSmaller->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontSmaller_Click), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_TOP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_BOTTOM, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_LINEUP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_PAGEUP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldAppFont->Disconnect(wxEVT_SCROLL_CHANGED, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	BtnAppFontBigger->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontBigger_Click), NULL, this);
-	cmbAppFont->Disconnect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSettings::CmbAppFont_Selected), NULL, this);
-	BtnAppFont->Disconnect(wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler(FrmSettings::BtnAppFont_Click), NULL, this);
-	BtnPreviewSmaller->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontSmaller_Click), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_TOP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_BOTTOM, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_LINEUP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_PAGEUP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldPreview->Disconnect(wxEVT_SCROLL_CHANGED, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	BtnPreviewBigger->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontBigger_Click), NULL, this);
-	cmbPreview->Disconnect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSettings::CmbAppFont_Selected), NULL, this);
-	BtnPreview->Disconnect(wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler(FrmSettings::BtnAppFont_Click), NULL, this);
-	BtnProjectionSmaller->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontSmaller_Click), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_TOP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_BOTTOM, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_LINEUP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_PAGEUP, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	SldProjection->Disconnect(wxEVT_SCROLL_CHANGED, wxScrollEventHandler(FrmSettings::SldAppFont_Scroll), NULL, this);
-	BtnProjectionBigger->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnAppFontBigger_Click), NULL, this);
-	cmbProjection->Disconnect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(FrmSettings::CmbAppFont_Selected), NULL, this);
-	BtnProjection->Disconnect(wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler(FrmSettings::BtnAppFont_Click), NULL, this);
-	BtnThemeOne->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeTwo->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeThree->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeFour->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeFive->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeSix->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeSeven->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeEight->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeNine->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeTen->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeEleven->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-	BtnThemeTwelve->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
-
+	BtnTheme0->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme1->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme2->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme3->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme4->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme5->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme6->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme7->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme8->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
+	BtnTheme9->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(FrmSettings::BtnThemOne_Click), NULL, this);
 }
