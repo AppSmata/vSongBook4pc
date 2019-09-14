@@ -9,58 +9,70 @@
 /////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#ifndef __FRMPROJECT_H__
+#define __FRMPROJECT_H__
+
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
-#include <wx/stattext.h>
+#include <wx/textctrl.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
+#include <wx/stattext.h>
+#include <wx/button.h>
 #include <wx/sizer.h>
+#include <wx/statline.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/button.h>
-#include <wx/statbox.h>
 #include <wx/bmpbuttn.h>
-#include <wx/statusbr.h>
+#include <wx/statbmp.h>
+#include <wx/statbox.h>
+#include <wx/panel.h>
 #include <wx/frame.h>
-
-///////////////////////////////////////////////////////////////////////////
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class frmProject
-///////////////////////////////////////////////////////////////////////////////
 
 class FrmProject : public wxFrame
 {
 private:
+	wxDECLARE_EVENT_TABLE();
 
 protected:
-	
-public:
+	int fcl1;
+	int fcl2;
+	int fcl3;
 
+	int bcl1;
+	int bcl2;
+	int bcl3;
+
+	wxBoxSizer* BoxMain;
+	wxStaticBoxSizer* BoxGroup;
+	wxPanel* PanelMain;
+	wxStaticBox* AppLabel;
+	wxBoxSizer* BoxWrapper;
+	wxBoxSizer* BoxTop;
+	wxTextCtrl* TxtCommand;
+	wxStaticText* LblKey;
+	wxStaticText* LblTitle;
+	wxButton* BtnClose;
+	wxStaticLine* LineUp;
+	wxBoxSizer* BoxMiddle;
+	wxStaticText* LblContent;
+	wxStaticLine* LineDown;
+	wxBoxSizer* BoxBottom;
+	wxStaticText* LblSongBook;
+	wxStaticText* LblAurthor;
+	wxStaticText* LblVerse;
+	wxBitmapButton* BtnLast;
+	wxBitmapButton* BtnNext;
+	wxStaticBitmap* PicLast;
+	wxStaticBitmap* PicNext;
+
+public:
 	FrmProject(const wxString& title);
 
-	wxStaticText* lblCorner1;
-	wxStaticText* lblKey;
-	wxStaticText* lblTitle;
-	wxButton* btnClose;
-	wxStaticText* lblCorner2;
-	wxStaticText* lblSongText;
-	wxStaticText* lblCorner3;
-	wxStaticText* lblNumber;
-	wxStaticText* lblSongBook;
-	wxStaticText* lblTitle2;
-	wxBitmapButton* btnGoDown;
-	wxBitmapButton* btnGoUp;
-	wxStaticText* lblCorner4;
-	wxStatusBar* StatusBarP;
-
-	void btnClose_Click(wxCommandEvent& event);
-	void btnPrevious_Click(wxCommandEvent& event);
-	void btnNext_Click(wxCommandEvent& event);
-
 };
+
+#endif //__FRMPROJECT_H__

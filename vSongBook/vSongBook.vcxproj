@@ -423,6 +423,8 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FrmProject.cpp" />
+    <ClCompile Include="FrmSongSearch.cpp" />
     <ClCompile Include="Splash.cpp" />
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
@@ -434,13 +436,13 @@
     <ResourceCompile Include="vSongBook.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmProject.h" />
-    <ClInclude Include="frmSettings.h" />
+    <ClInclude Include="AppSmata.h" />
+    <ClInclude Include="FrmProject.h" />
+    <ClInclude Include="FrmSongSearch.h" />
     <ClInclude Include="sqlite\sqlite3.h" />
     <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="sqlite\sqlite3pp.h" />
     <ClInclude Include="sqlite\sqlite3ppext.h" />
-    <ClInclude Include="frmSongSearch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

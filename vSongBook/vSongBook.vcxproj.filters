@@ -33,6 +33,12 @@
     <ClCompile Include="sqlite\sqlite3ppext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FrmProject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmSongSearch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc">
@@ -58,7 +64,7 @@
     <ClInclude Include="frmSongSearch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmSettings.h">
+    <ClInclude Include="AppSmata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

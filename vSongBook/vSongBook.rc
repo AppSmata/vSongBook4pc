@@ -7,8 +7,6 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
-aaaaaaaa ICON "vSongBook.ico"
-
 vsbicon ICON "vSongBook.ico"
 
 project BITMAP "res/project.bmp"
@@ -21,8 +19,8 @@ font BITMAP "res/font.bmp"
 bold BITMAP "res/bold.bmp"
 books BITMAP "res/books.bmp"
 settings BITMAP "res/settings.bmp"
-blackdown BITMAP "res/blackdown.bmp"
-blackup BITMAP "res/blackup.bmp"
+blackwhite_down BITMAP "res/blackwhite_down.bmp"
+blackwhite_up BITMAP "res/blackwhite_up.bmp"
 
 #define wxUSE_NO_MANIFEST 0
 

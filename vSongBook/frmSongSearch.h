@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        vSongBook.h
+// Name:        FrmSongSearch.h
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
@@ -8,6 +8,7 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
+#include "wx/wx.h"
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
@@ -30,10 +31,12 @@
 #include <wx/splitter.h>
 #include <wx/frame.h>
 
+#include "FrmProject.h"
+
 class FrmSongSearch : public wxFrame
 {
 private:
-	wxDECLARE_EVENT_TABLE();
+	//wxDECLARE_EVENT_TABLE();
 
 protected:
 	wxSplitterWindow* WndSplitter;
@@ -65,7 +68,7 @@ public:
 	void btnBold_Click(wxCommandEvent& event);
 	void btnBooks_Click(wxCommandEvent& event);
 	void btnSettings_Click(wxCommandEvent& event);
-	
+
 	void WndSplitterOnIdle(wxIdleEvent&)
 	{
 		WndSplitter->SetSashPosition(350);
