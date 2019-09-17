@@ -21,6 +21,12 @@
     <ClCompile Include="Splash.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="FrmProject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmSongSearch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="sqlite\shell.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,10 +39,13 @@
     <ClCompile Include="sqlite\sqlite3ppext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FrmProject.cpp">
+    <ClCompile Include="notebook\Notebook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FrmSongSearch.cpp">
+    <ClCompile Include="notebook\notebook_bitmaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="notebook\windowstack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,6 +55,15 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frmProject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmSongSearch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppSmata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="sqlite\sqlite3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,14 +76,37 @@
     <ClInclude Include="sqlite\sqlite3ppext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmProject.h">
+    <ClInclude Include="notebook\Notebook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmSongSearch.h">
+    <ClInclude Include="notebook\windowstack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AppSmata.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="notebook\bitmaps\chevron-down-black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\chevron-down-black%402x.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\chevron-down-grey.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\chevron-down-grey%402x.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\fileclose.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\fileclose%402x.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\fileclose-white.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="notebook\bitmaps\fileclose-white%402x.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ class AppSmata
 public:
 	static wxString ContentText(wxString songstr)
 	{
-		songstr = ReplaceAll(songstr, "\\n", "\r\n");
+		songstr = ReplaceAll(songstr, "\\n", " \r\n");
 		songstr = ReplaceAll(songstr, "ũ", "u");
 		songstr = ReplaceAll(songstr, "ĩ", "u");
 		songstr = ReplaceAll(songstr, "Ũ", "U");
@@ -39,6 +39,24 @@ public:
 			start_pos += to.length();
 		}
 		return str;
+	}
+
+	static wxString GetSongBook(int bookid)
+	{
+		try
+		{
+			wxString sql_query = "SELECT title FROM books WHERE bookid=" + std::to_string(bookid);
+			sqlite3pp::query qry(AppSmata::songDb(), sql_query);
+			wxString title; 
+			for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
+				std::tie(title) = (*i).get_columns<char const*>(0);
+			}
+			return title;
+		}
+		catch (exception& ex) {
+			return "";
+		}
+
 	}
 
 };

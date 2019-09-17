@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        frmProject.h
+// Name:        FrmProject.h
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
@@ -36,7 +36,7 @@
 class FrmProject : public wxFrame
 {
 private:
-	wxDECLARE_EVENT_TABLE();
+	//wxDECLARE_EVENT_TABLE();
 
 protected:
 	int fcl1;
@@ -62,6 +62,7 @@ protected:
 	wxStaticText* LblContent;
 	wxStaticLine* LineDown;
 	wxBoxSizer* BoxBottom;
+	wxStaticText* LblNumber;
 	wxStaticText* LblSongBook;
 	wxStaticText* LblAurthor;
 	wxStaticText* LblVerse;
@@ -71,8 +72,15 @@ protected:
 	wxStaticBitmap* PicNext;
 
 public:
-	FrmProject(const wxString& title);
+	FrmProject(const wxString& title, int setsong);
 
+	void ProjectSong(int setsong);
+	void SetProjection();
+
+	void TxtCommandLine_KeyDown(wxKeyEvent& event);
+	void TxtCommandLine_MouseWheel(wxMouseEvent& event);
+	void BtnClose_Click(wxCommandEvent& event);
+	void Anywhere_Click(wxCommandEvent& event);
 };
 
 #endif //__FRMPROJECT_H__

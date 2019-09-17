@@ -1,11 +1,16 @@
 #include "AppSmata.h"
 #include "FrmSongSearch.h"
 #include "FrmProject.h"
+#include <wx/aboutdlg.h>
+#include "Notebook/Notebook.h"
+#include <wx/msgdlg.h>
+#include <wx/stdpaths.h>
 
 int selected_book, selected_song;
 wxString search_term;
 vector<int> bookids, songids;
 vector<wxString> booktitles, songtitles, songaliases, songcontents;
+
 
 FrmSongSearch::FrmSongSearch(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
@@ -245,14 +250,12 @@ void FrmSongSearch::PopulateSongbooks()
 			cmbSongBooks->Clear();
 		}
 
-		sqlite3pp::query qry(AppSmata::songDb(), "SELECT * FROM books WHERE enabled=1 ORDER BY position");
+		sqlite3pp::query qry(AppSmata::songDb(), "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position");
 
 		for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
-			int bookid, songs, position;
-			char const* enabled, *title, *code, *content, *notes, *updated;
-			std::tie(bookid, enabled, title, code, content, songs, position, notes, updated) =
-				(*i).get_columns<int, char const*, char const*, char const*, char const*, int, int, char const*,
-				char const*>(0, 1, 2, 3, 4, 5, 6, 7, 8);
+			int bookid, songs;
+			char const* title;
+			std::tie(bookid, title, songs) = (*i).get_columns<int, char const*, int>(0, 1, 2);
 			wxString titles = std::string(title) + " (" + std::to_string(songs) + ")";
 			cmbSongBooks->Append(titles);
 			bookids.push_back(bookid);
@@ -278,7 +281,7 @@ void FrmSongSearch::PopulateSonglists(int setbook, wxString searchstr, bool sear
 			songcontents.clear();
 			lstSongList->Clear();
 		}
-		wxString sql_query = "SELECT * FROM songs WHERE";
+		wxString sql_query = "SELECT songid, number, title, alias, content, key, author FROM songs WHERE";
 		wxString bookstr = std::to_string(setbook);
 		wxString searchtotals = " songs found in: " + booktitles[cmbSongBooks->GetSelection()];
 
@@ -318,11 +321,10 @@ void FrmSongSearch::PopulateSonglists(int setbook, wxString searchstr, bool sear
 
 		sqlite3pp::query qry(AppSmata::songDb(), sql_query);
 		for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
-			int songid, bookid, number, views;
-			char const* title, *alias, *content, *key, *author, *notes, *created, *updated;
-			std::tie(songid, bookid, number, title, alias, content, views, key, author, notes, created, updated) =
-				(*i).get_columns<int, int, int, char const*, char const*, char const*, int, char const*, char const*,
-				char const*, char const*, char const*>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+			int songid, number;
+			char const* title, * alias, * content, * key, * author;
+			std::tie(songid, number, title, alias, content, key, author) =
+				(*i).get_columns<int, int, char const*, char const*, char const*, char const*, char const*>(0, 1, 2, 3, 4, 5, 6);
 			wxString titles = std::to_string(number) + "# " + title;
 			lstSongList->Append(titles);
 			songids.push_back(songid);
@@ -375,7 +377,7 @@ void FrmSongSearch::Search_Song(wxCommandEvent&)
 
 void FrmSongSearch::btnProject_Click(wxCommandEvent&)
 {
-	FrmProject *frmProject = new FrmProject("vSongBook Projection");
+	FrmProject *frmProject = new FrmProject("vSongBook Projection", selected_song);
 	frmProject->SetSize(1000, 700);
 	frmProject->SetWindowStyle(0 | wxTAB_TRAVERSAL);
 	frmProject->Show(true);

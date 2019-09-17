@@ -36,7 +36,7 @@
 class FrmSongSearch : public wxFrame
 {
 private:
-	//wxDECLARE_EVENT_TABLE();
+	wxDECLARE_EVENT_TABLE();
 
 protected:
 	wxSplitterWindow* WndSplitter;

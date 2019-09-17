@@ -19,7 +19,7 @@
 #include "wx/preferences.h"
 #include "wx/config.h"
 
-#include "FrmProject.h"
+#include "FrmSongSearch.h"
 
 enum
 {
@@ -38,7 +38,7 @@ private:
 	wxScopedPtr<wxPreferencesEditor> _prefEditor;	
 };
 
-wxBEGIN_EVENT_TABLE(FrmProject, wxFrame)
+wxBEGIN_EVENT_TABLE(FrmSongSearch, wxFrame)
 //EVT_MENU(Minimal_Quit, FrmSongSearch::OnQuit)
 //EVT_MENU(Minimal_About, FrmSongSearch::OnAbout)
 wxEND_EVENT_TABLE()
@@ -50,7 +50,7 @@ bool vSongBook::OnInit()
 	if (!wxApp::OnInit())
 		return false;
 
-	FrmProject *frmSongSearch = new FrmProject("vSongBook");
+	FrmSongSearch*frmSongSearch = new FrmSongSearch("vSongBook");
 
 	frmSongSearch->SetSize(1000, 700);
 	frmSongSearch->Show(true);
