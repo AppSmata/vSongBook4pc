@@ -12,13 +12,6 @@
 #pragma hdrstop
 #endif
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-#include "wx/preferences.h"
-#include "wx/config.h"
-
 #include "FrmSongSearch.h"
 
 enum
@@ -27,15 +20,12 @@ enum
 	Minimal_About = wxID_ABOUT
 };
 
-wxScopedPtr<wxPreferencesEditor> _prefEditor;
-
 class vSongBook : public wxApp
 {
 public:
 	virtual bool OnInit() wxOVERRIDE;
 
-private:
-	wxScopedPtr<wxPreferencesEditor> _prefEditor;	
+private:	
 };
 
 wxBEGIN_EVENT_TABLE(FrmSongSearch, wxFrame)

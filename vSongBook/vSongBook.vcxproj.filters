@@ -39,15 +39,6 @@
     <ClCompile Include="sqlite\sqlite3ppext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="notebook\Notebook.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="notebook\notebook_bitmaps.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="notebook\windowstack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc">
@@ -76,10 +67,13 @@
     <ClInclude Include="sqlite\sqlite3ppext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="notebook\Notebook.h">
+    <ClInclude Include="notebook\windowstack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="notebook\windowstack.h">
+    <ClInclude Include="notebook\wxcrafter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

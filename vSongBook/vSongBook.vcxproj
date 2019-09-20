@@ -137,11 +137,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -159,9 +159,9 @@
       <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -173,11 +173,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -190,12 +190,12 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -209,11 +209,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DLL Debug|Win32'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -228,12 +228,12 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -245,11 +245,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DLL Release|Win32'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -262,12 +262,12 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -281,11 +281,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -300,12 +300,12 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
@@ -317,11 +317,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -334,12 +334,12 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
@@ -353,11 +353,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DLL Debug|x64'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -372,10 +372,10 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)ud_core.lib;wxbase$(wxShortVersionString)ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -389,11 +389,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DLL Release|x64'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -406,12 +406,12 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;WXUSINGDLL;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
-      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;D:\cpp\wxsqlite3\include;D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName)\$(wxIncSubDir);D:\cpp\wxWidgets-3.1.2\include;.;D:\cpp\wxWidgets-3.1.2\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;wxsqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw$(wxShortVersionString)u_core.lib;wxbase$(wxShortVersionString)u.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;shlwapi.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;version.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);D:\cpp\wxsqlite3\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\cpp\wxWidgets-3.1.2\lib\$(wxOutDirName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
@@ -425,9 +425,6 @@
   <ItemGroup>
     <ClCompile Include="FrmProject.cpp" />
     <ClCompile Include="FrmSongSearch.cpp" />
-    <ClCompile Include="notebook\Notebook.cpp" />
-    <ClCompile Include="notebook\notebook_bitmaps.cpp" />
-    <ClCompile Include="notebook\windowstack.cpp" />
     <ClCompile Include="Splash.cpp" />
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
@@ -439,11 +436,12 @@
     <ResourceCompile Include="vSongBook.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppSettings.h" />
     <ClInclude Include="AppSmata.h" />
     <ClInclude Include="FrmProject.h" />
     <ClInclude Include="FrmSongSearch.h" />
-    <ClInclude Include="notebook\Notebook.h" />
     <ClInclude Include="notebook\windowstack.h" />
+    <ClInclude Include="notebook\wxcrafter.h" />
     <ClInclude Include="sqlite\sqlite3.h" />
     <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="sqlite\sqlite3pp.h" />

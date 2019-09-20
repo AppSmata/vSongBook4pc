@@ -46,7 +46,8 @@ protected:
 
 public:
 	FrmSongSearch(const wxString& title);
-
+	
+	void SongProject();
 	void PopulateToolbar();
 	void PopulateSongbooks();
 	void PopulateSonglists(int setbook, wxString searchstr, bool searchall);

@@ -72,9 +72,9 @@ protected:
 	wxStaticBitmap* PicNext;
 
 public:
-	FrmProject(const wxString& title, int setsong);
+	FrmProject(const wxString& title);
 
-	void ProjectSong(int setsong);
+	void ProjectSong(wxString setsong);
 	void SetProjection();
 
 	void TxtCommandLine_KeyDown(wxKeyEvent& event);

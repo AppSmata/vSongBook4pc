@@ -1,16 +1,11 @@
 #include "AppSmata.h"
 #include "FrmSongSearch.h"
 #include "FrmProject.h"
-#include <wx/aboutdlg.h>
-#include "Notebook/Notebook.h"
-#include <wx/msgdlg.h>
-#include <wx/stdpaths.h>
 
 int selected_book, selected_song;
 wxString search_term;
 vector<int> bookids, songids;
 vector<wxString> booktitles, songtitles, songaliases, songcontents;
-
 
 FrmSongSearch::FrmSongSearch(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
@@ -250,7 +245,7 @@ void FrmSongSearch::PopulateSongbooks()
 			cmbSongBooks->Clear();
 		}
 
-		sqlite3pp::query qry(AppSmata::songDb(), "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position");
+		sqlite3pp::query qry(AppSmata::SongsDB(), "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position");
 
 		for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
 			int bookid, songs;
@@ -319,7 +314,7 @@ void FrmSongSearch::PopulateSonglists(int setbook, wxString searchstr, bool sear
 		}
 		sql_query = sql_query + " ORDER BY number ASC";
 
-		sqlite3pp::query qry(AppSmata::songDb(), sql_query);
+		sqlite3pp::query qry(AppSmata::SongsDB(), sql_query);
 		for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
 			int songid, number;
 			char const* title, * alias, * content, * key, * author;
@@ -377,7 +372,14 @@ void FrmSongSearch::Search_Song(wxCommandEvent&)
 
 void FrmSongSearch::btnProject_Click(wxCommandEvent&)
 {
-	FrmProject *frmProject = new FrmProject("vSongBook Projection", selected_song);
+	SongProject();
+}
+
+void FrmSongSearch::SongProject()
+{
+	AppSmata::SetOpt("current_song", std::to_string(selected_song));
+
+	FrmProject *frmProject = new FrmProject("vSongBook Projection");
 	frmProject->SetSize(1000, 700);
 	frmProject->SetWindowStyle(0 | wxTAB_TRAVERSAL);
 	frmProject->Show(true);

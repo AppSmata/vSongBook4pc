@@ -7,7 +7,7 @@ wxString title, alias, content, key, author, chorus, slide;
 vector<wxString> songverses1, songverses2;
 bool haschorus;
 
-FrmProject::FrmProject(const wxString& title, int setsong) : wxFrame(NULL, wxID_ANY, title)
+FrmProject::FrmProject(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	enum
 	{
@@ -179,16 +179,18 @@ FrmProject::FrmProject(const wxString& title, int setsong) : wxFrame(NULL, wxID_
 	
 	BtnLast->Hide();
 	BtnNext->Hide();
-	ProjectSong(setsong);
+
+	//ProjectSong(AppSmata::GetOpt("current_song"));
+	ProjectSong("30");
 }
 
-void FrmProject::ProjectSong(int setsong)
+void FrmProject::ProjectSong(wxString setsong)
 {
 	slides = 0;
 	try 
 	{
-		wxString sql_query = "SELECT songid, bookid, number, title, alias, content, key, author FROM songs WHERE songid=" + std::to_string(setsong);
-		sqlite3pp::query qry(AppSmata::songDb(), sql_query);
+		wxString sql_query = "SELECT songid, bookid, number, title, alias, content, key, author FROM songs WHERE songid=" + setsong;
+		sqlite3pp::query qry(AppSmata::SongsDB(), sql_query);
 		for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
 			std::tie(songid, bookid, number, title, alias, content, key, author) =
 				(*i).get_columns<int, int, int, char const*, char const*, char const*, char const*, char const*>(0, 1, 2, 3, 4, 5, 6, 7);

@@ -23,5 +23,4 @@ blackwhite_down BITMAP "res/blackwhite_down.bmp"
 blackwhite_up BITMAP "res/blackwhite_up.bmp"
 
 #define wxUSE_NO_MANIFEST 0
-
 #include "wx/msw/wx.rc"
