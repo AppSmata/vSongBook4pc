@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        FrmProject.h
+// Name:        vSongView.h
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
@@ -33,10 +33,11 @@
 #include <wx/panel.h>
 #include <wx/frame.h>
 
-class FrmProject : public wxFrame
+class vSongView : public wxFrame
 {
-private:
-	//wxDECLARE_EVENT_TABLE();
+public:
+	vSongView(const wxString& title);
+	wxDECLARE_EVENT_TABLE();
 
 protected:
 	int fcl1;
@@ -62,7 +63,6 @@ protected:
 	wxStaticText* LblContent;
 	wxStaticLine* LineDown;
 	wxBoxSizer* BoxBottom;
-	wxStaticText* LblNumber;
 	wxStaticText* LblSongBook;
 	wxStaticText* LblAurthor;
 	wxStaticText* LblVerse;
@@ -71,16 +71,6 @@ protected:
 	wxStaticBitmap* PicLast;
 	wxStaticBitmap* PicNext;
 
-public:
-	FrmProject(const wxString& title);
-
-	void ProjectSong(wxString setsong);
-	void SetProjection();
-
-	void TxtCommandLine_KeyDown(wxKeyEvent& event);
-	void TxtCommandLine_MouseWheel(wxMouseEvent& event);
-	void BtnClose_Click(wxCommandEvent& event);
-	void Anywhere_Click(wxCommandEvent& event);
 };
 
 #endif //__FRMPROJECT_H__

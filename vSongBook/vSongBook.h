@@ -1,17 +1,19 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        FrmSongSearch.h
-// Purpose:     vSongBook for Desktop
+﻿/////////////////////////////////////////////////////////////////////////////
+// Name:        vsongbook.h
+// Purpose:     vSongBook header
 // Author:      Jacksiro
-// Modified by:
-// Created:     27/07/19
-// Copyright:   (c) AppSmata
+// Created:     25/09/19
+// Copyright:   (c) 2019 AppSmata
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wx.h"
-#include <wx/artprov.h>
-#include <wx/xrc/xmlres.h>
-#include <wx/string.h>
+#include "wx/choicebk.h"
+#include "wx/listbook.h"
+#include "wx/treebook.h"
+#include "wx/notebook.h"
+#include "wx/simplebook.h"
+#include "wx/toolbook.h"
+#include "wx/aui/auibook.h"
 #include <wx/combobox.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
@@ -31,26 +33,32 @@
 #include <wx/splitter.h>
 #include <wx/frame.h>
 
-#include "FrmProject.h"
+#if wxUSE_LOG
+#define USE_LOG 1
+#else
+#define USE_LOG 0
+#endif
 
-class FrmSongSearch : public wxFrame
+// Define a new application
+class vSongBook : public wxApp
 {
-private:
-	wxDECLARE_EVENT_TABLE();
-
-protected:
-	wxSplitterWindow* WndSplitter;
-
-	bool m_smallToolbar, m_horzText, m_useCustomDisabled, m_showTooltips;
-	size_t m_rows, m_nPrint;
-
 public:
-	FrmSongSearch(const wxString& title);
-	
+	bool OnInit() wxOVERRIDE;
+
+};
+
+wxDECLARE_APP(vSongBook);
+
+class vSongHome : public wxFrame
+{
+public:
+	vSongHome(const wxString& title);
+	virtual ~vSongHome();
+
 	void SongProject();
 	void PopulateToolbar();
 	void PopulateSongbooks();
-	void PopulateSonglists(int setbook, wxString searchstr, bool searchall);
+	void PopulateSonglists(wxString setbook, wxString searchstr, bool searchall);
 	void OpenSongPreview(int setsong);
 	void PopulateSongresults(wxString searchstr);
 
@@ -73,14 +81,14 @@ public:
 	void WndSplitterOnIdle(wxIdleEvent&)
 	{
 		WndSplitter->SetSashPosition(350);
-		WndSplitter->Disconnect(wxEVT_IDLE, wxIdleEventHandler(FrmSongSearch::WndSplitterOnIdle), NULL, this);
+		WndSplitter->Disconnect(wxEVT_IDLE, wxIdleEventHandler(vSongHome::WndSplitterOnIdle), NULL, this);
 	}
 
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
 
-	FrmSongSearch *frmSongSearch;
-	wxPanel* PanelLeft, *PanelRight;
+	vSongHome* home;
+	wxPanel* PanelLeft, * PanelRight;
 	wxComboBox* cmbSongBooks;
 	wxCheckBox* chkSearchSongs;
 	wxStaticBoxSizer* ListWrapper;
@@ -88,7 +96,20 @@ public:
 	wxListBox* lstSongList;
 	wxSearchCtrl* txtSearch;
 	wxToolBar* toolBarSong;
-	wxToolBarToolBase* btnProject, *btnEdit, *btnLast, *btnNext, *btnBigger, *btnSmaller, *btnFontset, *btnBold, *btnBooks, *btnSettings;
-	wxTextCtrl* TxtSongTitle, *TxtPreview, *TxtExtras;
+	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
+	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
+
+	wxDECLARE_EVENT_TABLE();
+
+protected:
+	wxSplitterWindow* WndSplitter;
+
+	bool m_smallToolbar, m_horzText, m_useCustomDisabled, m_showTooltips;
+	size_t m_rows, m_nPrint;
 
 };
+
+vSongHome::~vSongHome()
+{
+
+}

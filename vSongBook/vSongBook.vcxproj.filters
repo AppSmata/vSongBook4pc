@@ -18,25 +18,16 @@
     <ClCompile Include="vSongBook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Splash.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FrmProject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FrmSongSearch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sqlite\shell.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sqlite\sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sqlite\sqlite3pp.cpp">
+    <ClCompile Include="vSongPrefs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sqlite\sqlite3ppext.cpp">
+    <ClCompile Include="vSongView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,10 +37,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmProject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="frmSongSearch.h">
+    <ClInclude Include="vSongBook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AppSmata.h">
@@ -61,19 +49,10 @@
     <ClInclude Include="sqlite\sqlite3ext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sqlite\sqlite3pp.h">
+    <ClInclude Include="vSongPrefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sqlite\sqlite3ppext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="notebook\windowstack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="notebook\wxcrafter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AppSettings.h">
+    <ClInclude Include="vSongView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

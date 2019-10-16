@@ -1,28 +1,21 @@
-﻿#include "sqlite/sqlite3pp.h"
-
-#ifndef wxHAS_IMAGES_IN_RESOURCES
-#include "vSongBook.xpm"
-#include <wx/string.h>
+﻿#include <wx/string.h>
 #include <string>
 #include <iostream>
 #include <ctime>
 #include <vector>
 
 using namespace std;
-#include "AppSettings.h"
 
 class AppSmata
 {
 public:
-#endif
-
 
 	static wxString Today(wxString type)
 	{
 		//return DateTime.Today.Year + "-" + DateTime.Today.Month + "-" + DateTime.Today.Day;
-		time_t now = time(0);
-		tm* ltm = localtime(&now);
-		wxString TimeStr;
+		//time_t now = time(0);
+		//tm* ltm = localtime(&now);
+		//wxString TimeStr;
 		// print various components of tm structure.
 		/*if (type == "T") return "Year" << 1900 + ltm->tm_year << ;
 		cout << "Year" << 1900 + ltm->tm_year << endl;
@@ -37,24 +30,7 @@ public:
 	static wxString ContentText(wxString songstr)
 	{
 		songstr = ReplaceAll(songstr, "\\n", " \r\n");
-		songstr = ReplaceAll(songstr, "ũ", "u");
-		songstr = ReplaceAll(songstr, "ĩ", "u");
-		songstr = ReplaceAll(songstr, "Ũ", "U");
-		return songstr;
-	}
-
-	static sqlite3pp::database SongsDB()
-	{
-		sqlite3pp::database db("Data/Songs.db");
-		sqlite3pp::transaction xct(db, true);
-		return db;
-	}
-
-	static sqlite3pp::database SettingsDB()
-	{
-		sqlite3pp::database db("Data/Settings.db");
-		sqlite3pp::transaction xct(db, true);
-		return db;
+		return wxString::FromUTF8(songstr);
 	}
 
 	static wxString ReplaceAll(wxString str, const wxString from, const wxString to)
@@ -68,24 +44,7 @@ public:
 		return str;
 	}
 
-	static wxString GetSongBook(int bookid)
-	{
-		try
-		{
-			wxString sql_query = "SELECT title FROM books WHERE bookid=" + std::to_string(bookid);
-			sqlite3pp::query qry(AppSmata::SongsDB(), sql_query);
-			wxString title; 
-			for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
-				std::tie(title) = (*i).get_columns<char const*>(0);
-			}
-			return title;
-		}
-		catch (exception& ex) {
-			return "";
-		}
-
-	}
-
+	/*
 	static wxString GetOpt(wxString key)
 	{
 		wxString settvalue = "";
@@ -102,7 +61,7 @@ public:
 	{
 		wxString sql_query = "UPDATE settings SET content='" + Value + "', updated='00-00-0000' WHERE title='" + Key + "'";
 		sqlite3pp::query qry(SettingsDB(), sql_query);
-	}
-
+	}*/
+	
 };
 
