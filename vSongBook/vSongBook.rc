@@ -21,8 +21,8 @@ font BITMAP "res/font.bmp"
 bold BITMAP "res/bold.bmp"
 books BITMAP "res/books.bmp"
 settings BITMAP "res/settings.bmp"
-blackdown BITMAP "res/blackdown.bmp"
-blackup BITMAP "res/blackup.bmp"
+blackdown BITMAP "res/blackwhite_down.bmp"
+blackup BITMAP "res/blackwhite_up.bmp"
 
 #define wxUSE_NO_MANIFEST 0
 

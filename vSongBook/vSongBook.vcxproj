@@ -429,11 +429,13 @@
     <ClCompile Include="sqlite\sqlite3pp.cpp" />
     <ClCompile Include="sqlite\sqlite3ppext.cpp" />
     <ClCompile Include="vSongBook.cpp" />
+    <ClCompile Include="vSongHome.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppSmata.h" />
     <ClInclude Include="frmProject.h" />
     <ClInclude Include="frmSettings.h" />
     <ClInclude Include="sqlite\sqlite3.h" />
@@ -441,6 +443,8 @@
     <ClInclude Include="sqlite\sqlite3pp.h" />
     <ClInclude Include="sqlite\sqlite3ppext.h" />
     <ClInclude Include="frmSongSearch.h" />
+    <ClInclude Include="vSongBook.h" />
+    <ClInclude Include="vSongHome.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

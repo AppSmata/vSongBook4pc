@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        vSongBook.h
+// Name:        vSongHome.h
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
@@ -30,7 +30,7 @@
 #include <wx/splitter.h>
 #include <wx/frame.h>
 
-class FrmSongSearch : public wxFrame
+class vSongHome : public wxFrame
 {
 private:
 	wxDECLARE_EVENT_TABLE();
@@ -42,7 +42,7 @@ protected:
 	size_t m_rows, m_nPrint;
 
 public:
-	FrmSongSearch(const wxString& title);
+	vSongHome(const wxString& title);
 
 	void PopulateToolbar();
 	void PopulateSongbooks();
@@ -65,18 +65,18 @@ public:
 	void btnBold_Click(wxCommandEvent& event);
 	void btnBooks_Click(wxCommandEvent& event);
 	void btnSettings_Click(wxCommandEvent& event);
-	
+
 	void WndSplitterOnIdle(wxIdleEvent&)
 	{
 		WndSplitter->SetSashPosition(350);
-		WndSplitter->Disconnect(wxEVT_IDLE, wxIdleEventHandler(FrmSongSearch::WndSplitterOnIdle), NULL, this);
+		WndSplitter->Disconnect(wxEVT_IDLE, wxIdleEventHandler(vSongHome::WndSplitterOnIdle), NULL, this);
 	}
 
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
 
-	FrmSongSearch *frmSongSearch;
-	wxPanel* PanelLeft, *PanelRight;
+	vSongHome* home;
+	wxPanel* PanelLeft, * PanelRight;
 	wxComboBox* cmbSongBooks;
 	wxCheckBox* chkSearchSongs;
 	wxStaticBoxSizer* ListWrapper;
@@ -84,7 +84,7 @@ public:
 	wxListBox* lstSongList;
 	wxSearchCtrl* txtSearch;
 	wxToolBar* toolBarSong;
-	wxToolBarToolBase* btnProject, *btnEdit, *btnLast, *btnNext, *btnBigger, *btnSmaller, *btnFontset, *btnBold, *btnBooks, *btnSettings;
-	wxTextCtrl* TxtSongTitle, *TxtPreview, *TxtExtras;
+	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
+	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
 
 };
