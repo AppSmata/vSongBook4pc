@@ -36,6 +36,12 @@
     <ClCompile Include="vSongHome.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vSongView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vSongPrefs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc">
@@ -58,9 +64,6 @@
     <ClInclude Include="frmProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmSongSearch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="frmSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -71,6 +74,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AppSmata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vSongView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vSongPrefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

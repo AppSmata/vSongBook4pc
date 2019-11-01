@@ -141,7 +141,6 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	this->SetSizer(MainWrapper);
 	this->Layout();
-
 	this->Centre(wxBOTH);
 
 	// Connect Events
@@ -376,7 +375,7 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 		{
 			wxString titles = std::string(*(qryResult + i * col + 1)) + "# " + *(qryResult + i * col + 2);
 
-			if (searchstr.empty()) lstSongList->Append(titles);
+			if (searchstr.empty()) lstSongList->Append(wxString::FromUTF8(titles));
 			else lstSongList->Append(wxString::FromUTF8(titles + " (" + *(qryResult + i * col + 8) + ")"));
 
 			songids.push_back(*(qryResult + i * col + 0));
