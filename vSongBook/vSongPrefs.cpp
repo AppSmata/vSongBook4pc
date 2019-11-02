@@ -16,14 +16,14 @@ enum
 	Button_max
 };
 
-wxBitmap ButtonBitmaps[Button_max];
+wxBitmap PrefsButtonsBitmaps[Button_max];
 
 #if USE_XPM_BITMAPS
-#define INIT_BTN_BMP(bmp) \
-        ButtonBitmaps[Button_##bmp] = wxBitmap(bmp##_xpm)
+#define PREFS_BTN_BMP(bmp) \
+        PrefsButtonsBitmaps[Button_##bmp] = wxBitmap(bmp##_xpm)
 #else // !USE_XPM_BITMAPS
-#define INIT_BTN_BMP(bmp) \
-        ButtonBitmaps[Button_##bmp] = wxBITMAP(bmp)
+#define PREFS_BTN_BMP(bmp) \
+        PrefsButtonsBitmaps[Button_##bmp] = wxBITMAP(bmp)
 #endif // USE_XPM_BITMAPS/!USE_XPM_BITMAPS
 
 vSongPrefs::vSongPrefs(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
@@ -176,8 +176,8 @@ void vSongPrefs::PopulateTabTwo()
 
 void vSongPrefs::PopulateGrpTextPrefs(wxBoxSizer* WrapTwo, const wxString& GrpLabel)
 {
-	INIT_BTN_BMP(bigger);
-	INIT_BTN_BMP(smaller);
+	PREFS_BTN_BMP(bigger);
+	PREFS_BTN_BMP(smaller);
 
 	wxStaticBoxSizer* GrpAppText;
 	GrpAppText = new wxStaticBoxSizer(new wxStaticBox(TabTwo, wxID_ANY, GrpLabel), wxHORIZONTAL);
@@ -190,7 +190,7 @@ void vSongPrefs::PopulateGrpTextPrefs(wxBoxSizer* WrapTwo, const wxString& GrpLa
 
 	BtnAppFontSmaller = new wxBitmapButton(GrpAppText->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | 0);
 
-	BtnAppFontSmaller->SetBitmap(wxBitmap(ButtonBitmaps[Button_smaller]));
+	BtnAppFontSmaller->SetBitmap(wxBitmap(PrefsButtonsBitmaps[Button_smaller]));
 	GrpAppText->Add(BtnAppFontSmaller, 0, wxALL, 5);
 
 	SldAppFont = new wxSlider(GrpAppText->GetStaticBox(), wxID_ANY, 15, 12, 50, wxDefaultPosition, wxDefaultSize, wxSL_BOTH | wxSL_HORIZONTAL);
@@ -198,7 +198,7 @@ void vSongPrefs::PopulateGrpTextPrefs(wxBoxSizer* WrapTwo, const wxString& GrpLa
 
 	BtnAppFontBigger = new wxBitmapButton(GrpAppText->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | 0);
 
-	BtnAppFontBigger->SetBitmap(wxBitmap(ButtonBitmaps[Button_bigger]));
+	BtnAppFontBigger->SetBitmap(wxBitmap(PrefsButtonsBitmaps[Button_bigger]));
 	GrpAppText->Add(BtnAppFontBigger, 0, wxALL, 5);
 
 	cmbAppFont = new wxComboBox(GrpAppText->GetStaticBox(), wxID_ANY, wxT("Font Type"), wxDefaultPosition, wxDefaultSize, 0, NULL, 0);
