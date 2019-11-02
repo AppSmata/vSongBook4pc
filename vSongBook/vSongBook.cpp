@@ -37,13 +37,13 @@ bool vSongBook::OnInit()
 	home->Center();
 	home->Maximize(true);*/
 
-	vSongView* project = new vSongView("vSongBook Projection");
+	vSongView* present = new vSongView("vSongBook Presentation");
 
-	project->SetSize(1000, 700);
-	//project->SetWindowStyle(0 | wxTAB_TRAVERSAL);
-	project->Show(true);
-	project->Center();
-	project->Maximize(true);
+	present->SetSize(1000, 700);
+	present->SetWindowStyle(0 | wxTAB_TRAVERSAL);
+	present->Show(true);
+	present->Center();
+	present->Maximize(true);
 
 	return true;
 }
