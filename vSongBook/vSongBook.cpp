@@ -10,7 +10,7 @@
 #include "AppSmata.h"
 #include "AppSettings.h"
 #include "vSongHome.h"
-#include "vSongPrefs.h"
+#include "vSongView.h"
 #include "vSongBook.h"
 
 #ifndef wxHAS_IMAGES_IN_RESOURCES
@@ -35,20 +35,15 @@ bool vSongBook::OnInit()
 	home->SetSize(1000, 700);
 	home->Show(true);
 	home->Center();
-	home->Maximize(true);
+	home->Maximize(true);*/
 
 	vSongView* project = new vSongView("vSongBook Projection");
 
 	project->SetSize(1000, 700);
-	project->SetWindowStyle(0 | wxTAB_TRAVERSAL);
+	//project->SetWindowStyle(0 | wxTAB_TRAVERSAL);
 	project->Show(true);
 	project->Center();
-	project->Maximize(true);*/
+	project->Maximize(true);
 
-	vSongPrefs* settings = new vSongPrefs("vSongBook Preferences");
-	settings->SetSize(840, 600);
-	settings->Show(true);
-	settings->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
-	settings->Center();
 	return true;
 }

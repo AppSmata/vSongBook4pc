@@ -3,74 +3,64 @@
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
-// Created:     03/08/19
+// Created:     27/07/19
 // Copyright:   (c) AppSmata
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
-#pragma once
 
-#ifndef __FRMPROJECT_H__
-#define __FRMPROJECT_H__
+#pragma once
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
-#include <wx/textctrl.h>
+#include <wx/stattext.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/stattext.h>
-#include <wx/button.h>
-#include <wx/sizer.h>
-#include <wx/statline.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/bmpbuttn.h>
-#include <wx/statbmp.h>
+#include <wx/button.h>
+#include <wx/sizer.h>
+#include <wx/statline.h>
 #include <wx/statbox.h>
-#include <wx/panel.h>
+#include <wx/textctrl.h>
 #include <wx/frame.h>
 
+///////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class vSongView
+///////////////////////////////////////////////////////////////////////////////
 class vSongView : public wxFrame
 {
-public:
-	vSongView(const wxString& title);
-	wxDECLARE_EVENT_TABLE();
+private:
 
 protected:
-	int fcl1;
-	int fcl2;
-	int fcl3;
-
-	int bcl1;
-	int bcl2;
-	int bcl3;
-
-	wxBoxSizer* BoxMain;
-	wxStaticBoxSizer* BoxGroup;
-	wxPanel* PanelMain;
-	wxStaticBox* AppLabel;
-	wxBoxSizer* BoxWrapper;
-	wxBoxSizer* BoxTop;
-	wxTextCtrl* TxtCommand;
+protected:
 	wxStaticText* LblKey;
 	wxStaticText* LblTitle;
-	wxButton* BtnClose;
+	wxButton* CmdClose;
 	wxStaticLine* LineUp;
-	wxBoxSizer* BoxMiddle;
 	wxStaticText* LblContent;
 	wxStaticLine* LineDown;
-	wxBoxSizer* BoxBottom;
-	wxStaticText* LblSongBook;
-	wxStaticText* LblAurthor;
+	wxStaticText* LblNumber;
+	wxTextCtrl* TxtCommand;
 	wxStaticText* LblVerse;
-	wxBitmapButton* BtnLast;
-	wxBitmapButton* BtnNext;
-	wxStaticBitmap* PicLast;
-	wxStaticBitmap* PicNext;
+	wxButton* CmdUp;
+	wxButton* CmdDown;
+
+public:
+
+	vSongView(const wxString& title);
+
+	void SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel);
+	void SetMidPanel(wxStaticBoxSizer* MidPanel);
+	void SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel);
+
+	~vSongView();
 
 };
 
-#endif //__FRMPROJECT_H__
