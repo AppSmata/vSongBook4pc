@@ -9,6 +9,22 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "vSongPrefs.h"
+enum
+{
+	Button_bigger,
+	Button_smaller,
+	Button_max
+};
+
+wxBitmap ButtonBitmaps[Button_max];
+
+#if USE_XPM_BITMAPS
+#define INIT_BTN_BMP(bmp) \
+        ButtonBitmaps[Button_##bmp] = wxBitmap(bmp##_xpm)
+#else // !USE_XPM_BITMAPS
+#define INIT_BTN_BMP(bmp) \
+        ButtonBitmaps[Button_##bmp] = wxBITMAP(bmp)
+#endif // USE_XPM_BITMAPS/!USE_XPM_BITMAPS
 
 vSongPrefs::vSongPrefs(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
@@ -28,7 +44,7 @@ vSongPrefs::vSongPrefs(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	PopulateTabTwo();
 	PopulateTabThree();
 	PopulateTabFour();
-
+	//TabMain->SetSelection(0);
 	this->SetSizer(MainWrapper);
 	this->Layout();
 
@@ -97,7 +113,7 @@ void vSongPrefs::PopulateTabOne()
 	cmbLanguage->Append(wxT("Spanish"));
 	cmbLanguage->Append(wxT("Chichewa"));
 	cmbLanguage->Append(wxT("Portuguese"));
-	cmbLanguage->SetSelection(5);
+	cmbLanguage->SetSelection(0);
 	GrpLanguage->Add(cmbLanguage, 0, wxALL, 5);
 
 	WrapOne->Add(GrpLanguage, 0, wxALL | wxEXPAND, 5);
@@ -125,31 +141,88 @@ void vSongPrefs::PopulateTabOne()
 
 void vSongPrefs::PopulateTabTwo()
 {
-	enum
-	{
-		Button_bigger,
-		Button_smaller,
-		Button_max
-	};
-
-	wxBitmap ButtonBitmaps[Button_max];
-
-#if USE_XPM_BITMAPS
-#define INIT_BTN_BMP(bmp) \
-        ButtonBitmaps[Button_##bmp] = wxBitmap(bmp##_xpm)
-#else // !USE_XPM_BITMAPS
-#define INIT_BTN_BMP(bmp) \
-        ButtonBitmaps[Button_##bmp] = wxBITMAP(bmp)
-#endif // USE_XPM_BITMAPS/!USE_XPM_BITMAPS
-
-	INIT_BTN_BMP(bigger);
-	INIT_BTN_BMP(smaller);
+	
 
 	TabTwo = new wxScrolledWindow(TabMain, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
 	TabTwo->SetScrollRate(5, 5);
 	TabTwo->SetFont(wxFont(12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+
+	wxBoxSizer* WrapTwo;
+	WrapTwo = new wxBoxSizer(wxVERTICAL);
+
+	wxStaticBoxSizer* GrpSample;
+	GrpSample = new wxStaticBoxSizer(new wxStaticBox(TabTwo, wxID_ANY, wxT(" Sample Text: ")), wxVERTICAL);
+
+	wxBoxSizer* WrapSample;
+	WrapSample = new wxBoxSizer(wxHORIZONTAL);
+
+	GrpSample->Add(WrapSample, 1, wxEXPAND, 5);
+
+	TxtSample = new wxTextCtrl(GrpSample->GetStaticBox(), wxID_ANY, wxT("Only Believe"), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
+	TxtSample->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
+	GrpSample->Add(TxtSample, 1, wxEXPAND, 5);
 	
+	WrapTwo->Add(GrpSample, 1, wxEXPAND, 5);
+
+	PopulateGrpTextPrefs(WrapTwo, wxT(" General App Font: "));
+	PopulateGrpTextPrefs(WrapTwo, wxT(" Song Preview Font: "));
+	PopulateGrpTextPrefs(WrapTwo, wxT(" Song Projection Font: "));
+
+	TabTwo->SetSizer(WrapTwo);
+	TabTwo->Layout();
+	WrapTwo->Fit(TabTwo);
 	TabMain->AddPage(TabTwo, wxT("Font Management"), false);
+}
+
+void vSongPrefs::PopulateGrpTextPrefs(wxBoxSizer* WrapTwo, const wxString& GrpLabel)
+{
+	INIT_BTN_BMP(bigger);
+	INIT_BTN_BMP(smaller);
+
+	wxStaticBoxSizer* GrpAppText;
+	GrpAppText = new wxStaticBoxSizer(new wxStaticBox(TabTwo, wxID_ANY, GrpLabel), wxHORIZONTAL);
+
+	LblAppFont = new wxStaticText(GrpAppText->GetStaticBox(), wxID_ANY, wxT("15"), wxDefaultPosition, wxSize(25, -1), 0);
+	LblAppFont->Wrap(-1);
+	LblAppFont->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+
+	GrpAppText->Add(LblAppFont, 0, wxALIGN_CENTER | wxALL, 5);
+
+	BtnAppFontSmaller = new wxBitmapButton(GrpAppText->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | 0);
+
+	BtnAppFontSmaller->SetBitmap(wxBitmap(ButtonBitmaps[Button_smaller]));
+	GrpAppText->Add(BtnAppFontSmaller, 0, wxALL, 5);
+
+	SldAppFont = new wxSlider(GrpAppText->GetStaticBox(), wxID_ANY, 15, 12, 50, wxDefaultPosition, wxDefaultSize, wxSL_BOTH | wxSL_HORIZONTAL);
+	GrpAppText->Add(SldAppFont, 1, wxALIGN_CENTER | wxALL, 5);
+
+	BtnAppFontBigger = new wxBitmapButton(GrpAppText->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | 0);
+
+	BtnAppFontBigger->SetBitmap(wxBitmap(ButtonBitmaps[Button_bigger]));
+	GrpAppText->Add(BtnAppFontBigger, 0, wxALL, 5);
+
+	cmbAppFont = new wxComboBox(GrpAppText->GetStaticBox(), wxID_ANY, wxT("Font Type"), wxDefaultPosition, wxDefaultSize, 0, NULL, 0);
+	cmbAppFont->Append(wxT("Arial"));
+	cmbAppFont->Append(wxT("Calibri"));
+	cmbAppFont->Append(wxT("Century Gothic"));
+	cmbAppFont->Append(wxT("Comic Sans MS"));
+	cmbAppFont->Append(wxT("Corbel"));
+	cmbAppFont->Append(wxT("Courier New"));
+	cmbAppFont->Append(wxT("Palatino Linotype"));
+	cmbAppFont->Append(wxT("Tahoma"));
+	cmbAppFont->Append(wxT("Tempus Sans ITC"));
+	cmbAppFont->Append(wxT("Times New Roman"));
+	cmbAppFont->Append(wxT("Trebuchet MS"));
+	cmbAppFont->Append(wxT("Verdana"));
+	cmbAppFont->SetSelection(10);
+	GrpAppText->Add(cmbAppFont, 0, wxALIGN_CENTER | wxALL, 5);
+
+	BtnAppFont = new wxRadioButton(GrpAppText->GetStaticBox(), wxID_ANY, wxT("BOLD"), wxDefaultPosition, wxDefaultSize, 0);
+	BtnAppFont->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
+
+	GrpAppText->Add(BtnAppFont, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WrapTwo->Add(GrpAppText, 0, wxALL | wxEXPAND, 5);
 }
 
 void vSongPrefs::PopulateTabThree()
@@ -158,160 +231,66 @@ void vSongPrefs::PopulateTabThree()
 	TabThree->SetScrollRate(5, 5);
 	wxWrapSizer* WrapThree;
 	WrapThree = new wxWrapSizer(wxHORIZONTAL, wxWRAPSIZER_DEFAULT_FLAGS);
+	vector<int> whitecolor, blackcolor, bluecolor, greencolor, orangecolor, redcolor;
 
-	wxStaticBoxSizer* Theme0;
-	Theme0 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme One ")), wxVERTICAL);
+	whitecolor.push_back(255);
+	whitecolor.push_back(255);
+	whitecolor.push_back(255);
 
-	Theme0->SetMinSize(wxSize(120, 170));
-	BtnTheme0 = new wxButton(Theme0->GetStaticBox(), wxID_ANY, wxT("Black\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme0->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme0->SetForegroundColour(wxColour(255, 255, 255));
-	BtnTheme0->SetBackgroundColour(wxColour(0, 0, 0));
-	BtnTheme0->SetMinSize(wxSize(110, 150));
+	blackcolor.push_back(0);
+	blackcolor.push_back(0);
+	blackcolor.push_back(0);
 
-	Theme0->Add(BtnTheme0, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
+	bluecolor.push_back(0);
+	bluecolor.push_back(0);
+	bluecolor.push_back(255);
 
-	WrapThree->Add(Theme0, 1, wxALL | wxEXPAND, 5);
+	greencolor.push_back(0);
+	greencolor.push_back(128);
+	greencolor.push_back(0);
 
-	wxStaticBoxSizer* Theme1;
-	Theme1 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Two")), wxVERTICAL);
+	orangecolor.push_back(255);
+	orangecolor.push_back(69);
+	orangecolor.push_back(0);
 
-	Theme1->SetMinSize(wxSize(120, 170));
-	BtnTheme1 = new wxButton(Theme1->GetStaticBox(), wxID_ANY, wxT("White\n&&\nBlack"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme1->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme1->SetForegroundColour(wxColour(0, 0, 0));
-	BtnTheme1->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnTheme1->SetMinSize(wxSize(110, 150));
+	redcolor.push_back(255);
+	redcolor.push_back(0);
+	redcolor.push_back(0);
 
-	Theme1->Add(BtnTheme1, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-	WrapThree->Add(Theme1, 0, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme2;
-	Theme2 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Three")), wxVERTICAL);
-
-	Theme2->SetMinSize(wxSize(120, 170));
-	BtnTheme2 = new wxButton(Theme2->GetStaticBox(), wxID_ANY, wxT("Blue\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme2->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme2->SetForegroundColour(wxColour(255, 255, 255));
-	BtnTheme2->SetBackgroundColour(wxColour(0, 0, 255));
-	BtnTheme2->SetMinSize(wxSize(110, 150));
-
-	Theme2->Add(BtnTheme2, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-	WrapThree->Add(Theme2, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme3;
-	Theme3 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Four")), wxVERTICAL);
-
-	Theme3->SetMinSize(wxSize(120, 170));
-	BtnTheme3 = new wxButton(Theme3->GetStaticBox(), wxID_ANY, wxT("White\n&&\nBLue"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme3->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme3->SetForegroundColour(wxColour(0, 0, 255));
-	BtnTheme3->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnTheme3->SetMinSize(wxSize(110, 150));
-
-	Theme3->Add(BtnTheme3, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-	WrapThree->Add(Theme3, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme4;
-	Theme4 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Five ")), wxVERTICAL);
-
-	Theme4->SetMinSize(wxSize(120, 170));
-	BtnTheme4 = new wxButton(Theme4->GetStaticBox(), wxID_ANY, wxT("Green\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme4->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme4->SetForegroundColour(wxColour(255, 255, 255));
-	BtnTheme4->SetBackgroundColour(wxColour(0, 128, 0));
-	BtnTheme4->SetMinSize(wxSize(110, 150));
-
-	Theme4->Add(BtnTheme4, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-	WrapThree->Add(Theme4, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme5;
-	Theme5 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Six")), wxVERTICAL);
-
-	Theme5->SetMinSize(wxSize(120, 170));
-	BtnTheme5 = new wxButton(Theme5->GetStaticBox(), wxID_ANY, wxT("White\n&&\nGreen"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme5->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme5->SetForegroundColour(wxColour(0, 128, 0));
-	BtnTheme5->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnTheme5->SetMinSize(wxSize(110, 150));
-
-	Theme5->Add(BtnTheme5, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-	WrapThree->Add(Theme5, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme6;
-	Theme6 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Seven")), wxVERTICAL);
-
-	Theme6->SetMinSize(wxSize(120, 170));
-	BtnTheme6 = new wxButton(Theme6->GetStaticBox(), wxID_ANY, wxT("Orange\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme6->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme6->SetForegroundColour(wxColour(255, 255, 255));
-	BtnTheme6->SetBackgroundColour(wxColour(255, 69, 0));
-	BtnTheme6->SetMinSize(wxSize(110, 150));
-
-	Theme6->Add(BtnTheme6, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-	WrapThree->Add(Theme6, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme7;
-	Theme7 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Eight")), wxVERTICAL);
-
-	Theme7->SetMinSize(wxSize(120, 170));
-	BtnTheme7 = new wxButton(Theme7->GetStaticBox(), wxID_ANY, wxT("White\n&&\nOrange"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme7->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme7->SetForegroundColour(wxColour(255, 69, 0));
-	BtnTheme7->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnTheme7->SetMinSize(wxSize(110, 150));
-
-	Theme7->Add(BtnTheme7, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-
-	WrapThree->Add(Theme7, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme8;
-	Theme8 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Nine ")), wxVERTICAL);
-
-	Theme8->SetMinSize(wxSize(120, 170));
-	BtnTheme8 = new wxButton(Theme8->GetStaticBox(), wxID_ANY, wxT("Red\n&&\nWhite"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme8->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme8->SetForegroundColour(wxColour(255, 255, 255));
-	BtnTheme8->SetBackgroundColour(wxColour(255, 0, 0));
-	BtnTheme8->SetMinSize(wxSize(110, 150));
-
-	Theme8->Add(BtnTheme8, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-
-	WrapThree->Add(Theme8, 1, wxALL | wxEXPAND, 5);
-
-	wxStaticBoxSizer* Theme9;
-	Theme9 = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, wxT(" Theme Ten ")), wxVERTICAL);
-
-	Theme9->SetMinSize(wxSize(120, 170));
-	BtnTheme9 = new wxButton(Theme9->GetStaticBox(), wxID_ANY, wxT("White\n&&\nRed"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTheme9->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	BtnTheme9->SetForegroundColour(wxColour(255, 0, 0));
-	BtnTheme9->SetBackgroundColour(wxColour(255, 255, 255));
-	BtnTheme9->SetMinSize(wxSize(110, 150));
-
-	Theme9->Add(BtnTheme9, 0, wxALIGN_CENTER | wxALL | wxEXPAND, 5);
-
-
-	WrapThree->Add(Theme9, 1, wxALL | wxEXPAND, 5);
+	PopulateGrpThemePrefs(WrapThree, 1, wxT(" Theme 1 "), wxT("Black\n&&\nWhite"), blackcolor, whitecolor);
+	PopulateGrpThemePrefs(WrapThree, 2, wxT(" Theme 2 "), wxT("White\n&&\nBlack"), whitecolor, blackcolor);
+	PopulateGrpThemePrefs(WrapThree, 3, wxT(" Theme 3 "), wxT("Blue\n&&\nWhite"), bluecolor, whitecolor);
+	PopulateGrpThemePrefs(WrapThree, 4, wxT(" Theme 4 "), wxT("White\n&&\nBlue"), whitecolor, bluecolor);
+	PopulateGrpThemePrefs(WrapThree, 5, wxT(" Theme 5 "), wxT("Green\n&&\nWhite"), greencolor, whitecolor);
+	PopulateGrpThemePrefs(WrapThree, 6, wxT(" Theme 6 "), wxT("White\n&&\nGreen"), whitecolor, greencolor);
+	PopulateGrpThemePrefs(WrapThree, 7, wxT(" Theme 7 "), wxT("Orange\n&&\nWhite"), orangecolor, whitecolor);
+	PopulateGrpThemePrefs(WrapThree, 8, wxT(" Theme 8 "), wxT("White\n&&\nOrange"), whitecolor, orangecolor);
+	PopulateGrpThemePrefs(WrapThree, 9, wxT(" Theme 9 "), wxT("Red\n&&\nWhite"), redcolor, whitecolor);
+	PopulateGrpThemePrefs(WrapThree, 10, wxT(" Theme 10 "), wxT("White\n&&\nRed"), whitecolor, redcolor);
+	//PopulateGrpThemePrefs(WrapThree, 11, wxT(" Theme 11 "), wxT("Custom\n&&\nTheme 1"), whitecolor, blackcolor);
+	//PopulateGrpThemePrefs(WrapThree, 12, wxT(" Theme 12 "), wxT("Custom\n&&\nTheme 2"), whitecolor, blackcolor);
 
 	TabThree->SetSizer(WrapThree);
 	TabThree->Layout();
 	WrapThree->Fit(TabThree);
-	TabMain->AddPage(TabThree, wxT("Projection Theme"), false);
-	TabFour = new wxScrolledWindow(TabMain, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
-	TabFour->SetScrollRate(5, 5);
 
 	TabMain->AddPage(TabThree, wxT("Presentation Preferences"), false);
 }
 
+void vSongPrefs::PopulateGrpThemePrefs(wxWrapSizer* WrapThree, int ThemeID, const wxString& GrpLabel, const wxString& GrpColor, vector<int> forecolor, vector<int> backcolor)
+{
+	wxStaticBoxSizer* GrpTheme;
+	GrpTheme = new wxStaticBoxSizer(new wxStaticBox(TabThree, wxID_ANY, GrpLabel), wxVERTICAL);
+
+	GrpTheme->SetMinSize(wxSize(120, 170));
+	BtnTheme = new wxButton(GrpTheme->GetStaticBox(), wxID_ANY, GrpColor, wxDefaultPosition, wxSize(110, 150), 0);
+	BtnTheme->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	BtnTheme->SetForegroundColour(wxColour(forecolor[0], forecolor[1], forecolor[2]));
+	BtnTheme->SetBackgroundColour(wxColour(backcolor[0], backcolor[1], backcolor[2]));
+	GrpTheme->Add(BtnTheme, 0, wxALL, 5);
+
+	WrapThree->Add(GrpTheme, 1, wxALL | wxEXPAND, 5);
+}
 void vSongPrefs::PopulateTabFour()
 {
 	TabFour = new wxScrolledWindow(TabMain, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);

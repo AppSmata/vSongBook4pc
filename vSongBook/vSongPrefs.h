@@ -35,6 +35,10 @@
 #include <wx/statusbr.h>
 #include <wx/frame.h>
 
+#include <vector>
+
+using namespace std;
+
 class vSongPrefs : public wxFrame
 {
 private:
@@ -60,6 +64,7 @@ protected:
 	wxComboBox* cmbAppFont;
 	wxRadioButton* BtnAppFont;
 	wxStaticText* LblPreview;
+	wxTextCtrl* TxtSample;
 	wxBitmapButton* BtnPreviewSmaller;
 	wxSlider* SldPreview;
 	wxBitmapButton* BtnPreviewBigger;
@@ -72,16 +77,7 @@ protected:
 	wxComboBox* cmbProjection;
 	wxRadioButton* BtnProjection;
 	wxScrolledWindow* TabThree;
-	wxButton* BtnTheme0;
-	wxButton* BtnTheme1;
-	wxButton* BtnTheme2;
-	wxButton* BtnTheme3;
-	wxButton* BtnTheme4;
-	wxButton* BtnTheme5;
-	wxButton* BtnTheme6;
-	wxButton* BtnTheme7;
-	wxButton* BtnTheme8;
-	wxButton* BtnTheme9;
+	wxButton* BtnTheme;
 	wxScrolledWindow* TabFour;
 	wxStatusBar* StatusBar;
 
@@ -90,7 +86,9 @@ public:
 
 	void PopulateTabOne();
 	void PopulateTabTwo();
+	void PopulateGrpTextPrefs(wxBoxSizer* grpwrap, const wxString& grplabel);
 	void PopulateTabThree();
+	void PopulateGrpThemePrefs(wxWrapSizer* WrapThree, int ThemeID, const wxString& GrpLabel, const wxString& GrpColor, vector<int> forecolor, vector<int> backcolor);
 	void PopulateTabFour();
 
 	~vSongPrefs();
