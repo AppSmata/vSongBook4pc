@@ -57,7 +57,7 @@ public:
 	vSongView(const wxString& title);
 
 	void SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel);
-	void SetMidPanel(wxStaticBoxSizer* MidPanel);
+	void SetMidPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* MidPanel);
 	void SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel);
 
 	~vSongView();
