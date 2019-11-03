@@ -19,6 +19,9 @@
 
 class vSongBook : public wxApp
 {
+private:
+	wxDECLARE_EVENT_TABLE();
+
 public:
 	virtual bool OnInit() wxOVERRIDE;
 	const AppSettings::Preferences& GetSettings() const { return _pref; }

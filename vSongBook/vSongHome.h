@@ -32,9 +32,6 @@
 
 class vSongHome : public wxFrame
 {
-private:
-	wxDECLARE_EVENT_TABLE();
-
 protected:
 	wxSplitterWindow* WndSplitter;
 
@@ -86,5 +83,4 @@ public:
 	wxToolBar* toolBarSong;
 	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
 	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
-
 };

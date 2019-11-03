@@ -11,6 +11,8 @@
 #include "AppSmata.h"
 #include "AppSettings.h"
 #include "vSongHome.h"
+#include "vSongView.h"
+#include "vSongPrefs.h"
 
 wxString SongDatabase = "Data\\Songs.db", PrefsDatabase = "Data\\Settings.db", selected_book, selected_song, search_term;
 vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes;
@@ -428,13 +430,12 @@ void vSongHome::Search_Song(wxCommandEvent&)
 
 void vSongHome::btnProject_Click(wxCommandEvent&)
 {
-	/*frmProject = new FrmProject("vSongBook Projection");
-
-	frmProject->SetSize(1000, 700);
-	frmProject->SetWindowStyle(0 | wxTAB_TRAVERSAL);
-	frmProject->Show(true);
-	frmProject->Center();
-	frmProject->Maximize(true);*/
+	vSongView* present = new vSongView("vSongBook Presentation");
+	present->SetSize(1000, 700);
+	present->SetWindowStyle(0 | wxTAB_TRAVERSAL);
+	present->Show(true);
+	present->Center();
+	present->Maximize(true);
 }
 
 void vSongHome::btnEdit_Click(wxCommandEvent&)
@@ -479,9 +480,9 @@ void vSongHome::btnBooks_Click(wxCommandEvent&)
 
 void vSongHome::btnSettings_Click(wxCommandEvent&)
 {
-	/*frmSettings = new FrmSettings("vSongBook Preferences");
-	frmSettings->SetSize(840, 600);
-	frmSettings->Show(true);
-	frmSettings->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
-	frmSettings->Center();*/
+	vSongPrefs* settings = new vSongPrefs("vSongBook Preferences");
+	settings->SetSize(840, 600);
+	settings->Show(true);
+	settings->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
+	settings->Center();
 }

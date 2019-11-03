@@ -36,6 +36,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 class vSongView : public wxFrame
 {
+private:
+	//wxDECLARE_EVENT_TABLE();
+
 protected:
 	wxStaticBox* AppLabel;
 	wxStaticText* LblKey;
@@ -51,7 +54,9 @@ protected:
 	wxBitmapButton* BtnLast;
 	wxBitmapButton* BtnNext;
 	wxStaticBitmap* PicLast;
+	wxStaticBitmap* PicLastNull;
 	wxStaticBitmap* PicNext;
+	wxStaticBitmap* PicNextNull;
 
 	void BtnClose_Click(wxCommandEvent& event);
 	void TxtCommandLine_KeyDown(wxKeyEvent& event);

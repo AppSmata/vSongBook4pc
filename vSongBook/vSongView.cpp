@@ -19,8 +19,38 @@ bool haschorus;
 
 enum
 {
-	Button_blackdown,
-	Button_blackup,
+	Button_white,
+	Button_white_black_down,
+	Button_white_black_up,
+	Button_white_blue_down,
+	Button_white_blue_up,
+	Button_white_red_down,
+	Button_white_red_up,
+	Button_white_green_down,
+	Button_white_green_up,
+	Button_white_orange_down,
+	Button_white_orange_up,
+
+	Button_black,
+	Button_black_white_down,
+	Button_black_white_up,
+
+	Button_blue,
+	Button_blue_white_down,
+	Button_blue_white_up,
+
+	Button_red,
+	Button_red_white_down,
+	Button_red_white_up,
+
+	Button_green,
+	Button_green_white_down,
+	Button_green_white_up,
+
+	Button_orange,
+	Button_orange_white_down,
+	Button_orange_white_up,
+
 	Button_max
 };
 
@@ -91,18 +121,26 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	LineUp->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
 	LblContent->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
 	LineDown->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
-	//LblSongBook->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
-	//LblAurthor->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
-	//LblVerse->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+	LblSongInfo->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+	LblAuthor->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+	LblVerse->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+
+	//BtnLast->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+	//BtnNext->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+
 	//PicLast->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
+	//PicLastNull->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
 	//PicNext->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
-
-	TxtCommand->Connect(wxEVT_MOUSEWHEEL, wxMouseEventHandler(vSongView::TxtCommandLine_MouseWheel), NULL, this);
-
-	TxtCommand->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(vSongView::TxtCommandLine_KeyDown), NULL, this);
+	//PicNextNull->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
 	BtnClose->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::BtnClose_Click), NULL, this);
 
+	//TxtCommand->Connect(wxEVT_MOUSEWHEEL, wxMouseEventHandler(vSongView::TxtCommandLine_MouseWheel), NULL, this);
+
+	TxtCommand->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(vSongView::TxtCommandLine_KeyDown), NULL, this);
+
 	BtnClose->Hide();
+	PicLast->Hide();
+	PicNextNull->Hide();
 }
 
 void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
@@ -148,8 +186,37 @@ void vSongView::SetMidPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* MidPanel)
 
 void vSongView::SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel)
 {
-	VIEWS_BTN_BMP(blackdown);
-	VIEWS_BTN_BMP(blackup);
+	VIEWS_BTN_BMP(white);
+	VIEWS_BTN_BMP(white_black_down);
+	VIEWS_BTN_BMP(white_black_up);
+	VIEWS_BTN_BMP(white_blue_down);
+	VIEWS_BTN_BMP(white_blue_up);
+	VIEWS_BTN_BMP(white_red_down);
+	VIEWS_BTN_BMP(white_red_up);
+	VIEWS_BTN_BMP(white_green_down);
+	VIEWS_BTN_BMP(white_green_up);
+	VIEWS_BTN_BMP(white_orange_down);
+	VIEWS_BTN_BMP(white_orange_up);
+
+	VIEWS_BTN_BMP(black);
+	VIEWS_BTN_BMP(black_white_down);
+	VIEWS_BTN_BMP(black_white_up);
+
+	VIEWS_BTN_BMP(blue);
+	VIEWS_BTN_BMP(black_white_down);
+	VIEWS_BTN_BMP(black_white_up);
+
+	VIEWS_BTN_BMP(red);
+	VIEWS_BTN_BMP(red_white_down);
+	VIEWS_BTN_BMP(red_white_up);
+
+	VIEWS_BTN_BMP(green);
+	VIEWS_BTN_BMP(green_white_down);
+	VIEWS_BTN_BMP(green_white_up);
+
+	VIEWS_BTN_BMP(orange);
+	VIEWS_BTN_BMP(orange_white_down);
+	VIEWS_BTN_BMP(orange_white_up);
 
 	LblSongInfo = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxT("1# Songs of Worship"), wxDefaultPosition, wxDefaultSize, 0);
 	LblSongInfo->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
@@ -169,25 +236,29 @@ void vSongView::SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel)
 	wxBoxSizer* WrapArrows;
 	WrapArrows = new wxBoxSizer(wxHORIZONTAL);
 
-	BtnLast = new wxBitmapButton(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW);
-	BtnLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_blackup]));
-	//BtnLast->SetBackgroundColour(wxColour(bcl1, bcl2, bcl3));
+	/*BtnLast = new wxBitmapButton(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), wxBU_AUTODRAW);
+	BtnLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_up]));
 	WrapArrows->Add(BtnLast, 0, wxALL, 5);
 
-	BtnNext = new wxBitmapButton(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW);
-	BtnNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_blackdown]));
-	//BtnNext->SetBackgroundColour(wxColour(bcl1, bcl2, bcl3));
-	WrapArrows->Add(BtnNext, 0, wxALL, 5);
+	BtnNext = new wxBitmapButton(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), wxBU_AUTODRAW);
+	BtnNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_down]));
+	WrapArrows->Add(BtnNext, 0, wxALL, 5);*/
 
-	PicLast = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0);
-	PicLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_blackup]));
-	//PicLast->SetBackgroundColour(wxColour(bcl1, bcl2, bcl3));
-	WrapArrows->Add(PicLast, 0, wxALL, 0);
+	PicLast = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
+	PicLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_up]));
+	WrapArrows->Add(PicLast, 0, wxALL, 5);
 
-	PicNext = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0);
-	PicNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_blackdown]));
-	//PicNext->SetBackgroundColour(wxColour(bcl1, bcl2, bcl3));
+	PicNextNull = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
+	PicNextNull->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white]));
+	WrapArrows->Add(PicNextNull, 0, wxALL, 5);
+
+	PicNext = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
+	PicNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_down]));
 	WrapArrows->Add(PicNext, 0, wxALL, 5);
+
+	PicNextNull = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
+	PicNextNull->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white]));
+	WrapArrows->Add(PicNextNull, 0, wxALL, 5);
 
 	DownPanel->Add(WrapArrows, 0, wxALL, 5);
 }

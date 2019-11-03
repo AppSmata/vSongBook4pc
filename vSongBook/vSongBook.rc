@@ -21,8 +21,38 @@ font BITMAP "res/font.bmp"
 bold BITMAP "res/bold.bmp"
 books BITMAP "res/books.bmp"
 settings BITMAP "res/settings.bmp"
-blackdown BITMAP "res/blackwhite_down.bmp"
-blackup BITMAP "res/blackwhite_up.bmp"
+
+white BITMAP "res/arrows/white.bmp"
+white_black_down BITMAP "res/arrows/white_black_down.bmp"
+white_black_up BITMAP "res/arrows/white_black_up.bmp"
+white_blue_down BITMAP "res/arrows/white_blue_down.bmp"
+white_blue_up BITMAP "res/arrows/white_blue_up.bmp"
+white_red_down BITMAP "res/arrows/white_red_down.bmp"
+white_red_up BITMAP "res/arrows/white_red_up.bmp"
+white_green_down BITMAP "res/arrows/white_green_down.bmp"
+white_green_up BITMAP "res/arrows/white_green_up.bmp"
+white_orange_down BITMAP "res/arrows/white_black_down.bmp"
+white_orange_up BITMAP "res/arrows/white_orange_up.bmp"
+
+black BITMAP "res/arrows/black.bmp"
+black_white_down BITMAP "res/arrows/black_white_down.bmp"
+black_white_up BITMAP "res/arrows/black_white_up.bmp"
+
+blue BITMAP "res/arrows/blue.bmp"
+blue_white_down BITMAP "res/arrows/blue_white_down.bmp"
+blue_white_up BITMAP "res/arrows/blue_white_up.bmp"
+
+red BITMAP "res/arrows/red.bmp"
+red_white_down BITMAP "res/arrows/red_white_down.bmp"
+red_white_up BITMAP "res/arrows/red_white_up.bmp"
+
+green BITMAP "res/arrows/green.bmp"
+green_white_down BITMAP "res/arrows/green_white_down.bmp"
+green_white_up BITMAP "res/arrows/green_white_up.bmp"
+
+orange BITMAP "res/arrows/orange.bmp"
+orange_white_down BITMAP "res/arrows/orange_white_down.bmp"
+orange_white_up BITMAP "res/arrows/orange_white_up.bmp"
 
 #define wxUSE_NO_MANIFEST 0
 
