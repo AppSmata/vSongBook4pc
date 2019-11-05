@@ -41,6 +41,7 @@ using namespace std;
 
 class AppSmata
 {
+
 public:
 
 	static wxString Today(wxString type)
@@ -76,25 +77,6 @@ public:
 		}
 		return str;
 	}
-
-	/*
-	static wxString GetOpt(wxString key)
-	{
-		wxString settvalue = "";
-		wxString sql_query = "SELECT content FROM settings WHERE title='" + key + "' LIMIT 1";
-		sqlite3pp::query qry(SettingsDB(), sql_query);
-		for (sqlite3pp::query::iterator i = qry.begin(); i != qry.end(); ++i) {
-			std::tie(settvalue) = (*i).get_columns<wxString>(0);
-		}
-		qry.reset();
-		return settvalue;
-	}
-
-	static void SetOpt(wxString Key, wxString Value)
-	{
-		wxString sql_query = "UPDATE settings SET content='" + Value + "', updated='00-00-0000' WHERE title='" + Key + "'";
-		sqlite3pp::query qry(SettingsDB(), sql_query);
-	}*/
 
 };
 

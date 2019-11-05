@@ -17,6 +17,7 @@ enum
 };
 
 wxBitmap PrefsButtonsBitmaps[Button_max];
+vector<wxString> prefset;
 
 #if USE_XPM_BITMAPS
 #define PREFS_BTN_BMP(bmp) \
@@ -53,6 +54,8 @@ vSongPrefs::vSongPrefs(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 void vSongPrefs::PopulateTabOne()
 {
+	SetIcon(wxICON(preficon));
+
 	TabOne = new wxScrolledWindow(TabMain, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
 	TabOne->SetScrollRate(5, 5);
 	TabOne->SetMinSize(wxSize(-1, 75));

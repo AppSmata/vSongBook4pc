@@ -7,9 +7,9 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
-aaaaaaaa ICON "vSongBook.ico"
-
 vsbicon ICON "vSongBook.ico"
+
+preficon ICON "Settings.ico"
 
 project BITMAP "res/project.bmp"
 edit BITMAP "res/edit.bmp"

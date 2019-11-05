@@ -14,8 +14,8 @@
 #include "vSongView.h"
 #include "vSongPrefs.h"
 
-wxString SongDatabase = "Data\\Songs.db", PrefsDatabase = "Data\\Settings.db", selected_book, selected_song, search_term;
-vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes;
+wxString SongDatabase = "Data\\Songs.db", selected_book, selected_song, search_term;
+vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
 wxScopedPtr<wxPreferencesEditor> _prefEditor;
 
@@ -47,8 +47,12 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 #endif // wxUSE_MENUS/!wxUSE_MENUS
 
 #if wxUSE_STATUSBAR
+
+	GetSettings();
+
 	CreateStatusBar(2);
-	SetStatusText("Welcome to vSongBook for Desktop!");
+	SetStatusText("Welcome to vSongBook for Desktop! " + homesets[1]);
+
 #endif // wxUSE_STATUSBAR
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 	this->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNTEXT));
@@ -164,6 +168,28 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	this->Connect(btnSettings->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnSettings_Click));
 }
 
+void vSongHome::GetSettings()
+{
+	try {
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT content FROM settings ORDER BY settingid");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
+		{
+			homesets.push_back(*(qryResult + i * col + 0));
+		}
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+	}
+	catch (exception & ex) {}
+}
+
 void vSongHome::PopulateToolbar()
 {
 	// Set up toolbar
@@ -268,13 +294,6 @@ void vSongHome::OnAbout(wxCommandEvent& WXUNUSED(event))
 void vSongHome::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
 	Close(true);
-}
-
-sqlite3pp::database songDb()
-{
-	sqlite3pp::database db("Songs.db");
-	sqlite3pp::transaction xct(db, true);
-	return db;
 }
 
 void vSongHome::PopulateSongbooks()

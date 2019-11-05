@@ -26,6 +26,7 @@ public:
 	virtual bool OnInit() wxOVERRIDE;
 	const AppSettings::Preferences& GetSettings() const { return _pref; }
 	void UpdateSettings(const AppSettings::Preferences& settings);
+	void GetSettings();
 
 private:
 	wxScopedPtr<wxPreferencesEditor> _prefEditor;

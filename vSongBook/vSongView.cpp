@@ -14,7 +14,7 @@
 
 int this_book, this_song, slides, slideno, slideindex;
 wxString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide;
-vector<wxString> songverses1, songverses2;
+vector<wxString> songverses1, songverses2, viewset;
 bool haschorus;
 
 enum
