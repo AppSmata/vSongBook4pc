@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="vSongBook.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Splash.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
@@ -31,6 +28,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sqlite\sqlite3ppext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vSongBook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vSongHome.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vSongView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vSongPrefs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vSongCheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite\SQLite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,13 +67,25 @@
     <ClInclude Include="sqlite\sqlite3ppext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmProject.h">
+    <ClInclude Include="vSongBook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmSongSearch.h">
+    <ClInclude Include="vSongHome.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="frmSettings.h">
+    <ClInclude Include="AppSmata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vSongView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vSongPrefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vSongCheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite\SQLite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

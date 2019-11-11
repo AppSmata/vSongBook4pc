@@ -425,22 +425,31 @@
   <ItemGroup>
     <ClCompile Include="Splash.cpp" />
     <ClCompile Include="sqlite\shell.c" />
+    <ClCompile Include="sqlite\SQLite.cpp" />
     <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="sqlite\sqlite3pp.cpp" />
     <ClCompile Include="sqlite\sqlite3ppext.cpp" />
     <ClCompile Include="vSongBook.cpp" />
+    <ClCompile Include="vSongCheck.cpp" />
+    <ClCompile Include="vSongHome.cpp" />
+    <ClCompile Include="vSongPrefs.cpp" />
+    <ClCompile Include="vSongView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmProject.h" />
-    <ClInclude Include="frmSettings.h" />
+    <ClInclude Include="AppSmata.h" />
+    <ClInclude Include="sqlite\SQLite.h" />
     <ClInclude Include="sqlite\sqlite3.h" />
     <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="sqlite\sqlite3pp.h" />
     <ClInclude Include="sqlite\sqlite3ppext.h" />
-    <ClInclude Include="frmSongSearch.h" />
+    <ClInclude Include="vSongBook.h" />
+    <ClInclude Include="vSongCheck.h" />
+    <ClInclude Include="vSongHome.h" />
+    <ClInclude Include="vSongPrefs.h" />
+    <ClInclude Include="vSongView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
