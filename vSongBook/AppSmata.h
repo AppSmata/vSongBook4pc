@@ -30,19 +30,33 @@
 #include "wx/cshelp.h"
 #include "wx/utils.h"
 
-#include "sqlite/sqlite3pp.h"
 
 #include <string>
 #include <iostream>
 #include <ctime>
 #include <vector>
 
+#include "sqlite/sqlite3pp.h"
+#include "sqlite/SQLite.h"
+
 using namespace std;
+
+//std::string DBDir = "Data\\";
+//std::string SongsDB = "Songs.db";
+//std::string LanguageDB = "Language.db";
+//std::string SettingsDB = "Settings.db";
 
 class AppSmata
 {
-
 public:
+	static void SetOption(wxString title, wxString content)
+	{
+		SQLiteDB* pSQLite;
+		pSQLite = new SQLiteDB();
+		pSQLite->OpenConnection("Settings.db", "Data\\");
+		pSQLite->Excute("UPDATE settings SET content='" + content + "' WHERE title='" + title + "';");
+		pSQLite->CloseConnection();
+	}
 
 	static wxString Today(wxString type)
 	{

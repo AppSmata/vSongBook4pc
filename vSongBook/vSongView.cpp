@@ -64,8 +64,28 @@ wxBitmap ViewsButtonsBitmaps[Button_max];
         ViewsButtonsBitmaps[Button_##bmp] = wxBITMAP(bmp)
 #endif // USE_XPM_BITMAPS/!USE_XPM_BITMAPS
 
+void vSongView::GetSettings()
+{
+	try {
+		SQLiteDB* pSQLite = new SQLiteDB();
+		if (pSQLite->OpenConnection("Settings.db", "Data\\"))
+		{
+			IResult* res = pSQLite->ExcuteSelect("SELECT content FROM settings ORDER BY settingid;");
+			if (res)
+			{
+				while (res->Next()) viewset.push_back(res->ColomnData(0));
+				res->Release();
+			}
+		}
+		pSQLite->CloseConnection();
+	}
+	catch (exception & ex) {}
+}
+
 vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
+	GetSettings();
+
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 	this->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNHIGHLIGHT));
 
@@ -141,6 +161,7 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	BtnClose->Hide();
 	PicLast->Hide();
 	PicNextNull->Hide();
+	PresentSong(viewset[23]);
 }
 
 void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
@@ -261,6 +282,127 @@ void vSongView::SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel)
 	WrapArrows->Add(PicNextNull, 0, wxALL, 5);
 
 	DownPanel->Add(WrapArrows, 0, wxALL, 5);
+}
+
+void vSongView::PresentSong(wxString setsongid)
+{
+	slides = 0;
+	if (songverses1.size() > 0) songverses1.clear();
+	if (songverses2.size() > 0) songverses2.clear();
+
+	try
+	{
+		SQLiteDB* pSQLite = new SQLiteDB();
+		if (pSQLite->OpenConnection("Songs.db", "Data\\"))
+		{
+
+			wxString sql_query = "SELECT songid, songs.bookid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
+
+			IResult* res = pSQLite->ExcuteSelect(sql_query + " INNER JOIN books ON books.bookid = songs.bookid WHERE songid=" + setsongid + " LIMIT 1;");
+			if (res)
+			{
+				while (res->Next())
+				{
+					songid = res->ColomnData(0);
+					bookid = res->ColomnData(1);
+					number = res->ColomnData(2);
+					title = res->ColomnData(3);
+					alias = res->ColomnData(4);
+					content = res->ColomnData(5);
+					key = res->ColomnData(6);
+					author = res->ColomnData(7);
+					book = res->ColomnData(8);
+				}
+
+				if (content.Contains("CHORUS")) haschorus = true;
+				else haschorus = false;
+
+				content = AppSmata::ReplaceAll(content, "\\n\\n", "xxx");
+
+				wxStringTokenizer tokenizer(content, "xxx");
+				while (tokenizer.HasMoreTokens())
+				{
+					wxString token = tokenizer.GetNextToken();
+					if (token.Length() > 0)
+					{
+						if (haschorus)
+						{
+							if (token.Contains("CHORUS")) {
+								token.Replace("CHORUS\\n", "", true);
+								chorus = token;
+							}
+							else songverses1.push_back(token);
+						}
+						else songverses2.push_back(token);
+					}
+				}
+
+				if (haschorus)
+				{
+					for (vector<wxString>::iterator i = songverses1.begin(); i != songverses1.end(); ++i) {
+						songverses2.push_back(*i);
+						songverses2.push_back(chorus);
+						slides = slides + 2;
+					}
+				}
+				else slides = songverses2.size();
+				slideindex = 0;
+				SetPresentation();
+
+				res->Release();
+			}
+		}
+		pSQLite->CloseConnection();
+	}
+	catch (exception & ex) {
+		LblContent->SetLabel(ex.what());
+	}
+
+}
+
+void vSongView::SetPresentation()
+{
+	try
+	{
+		slideno = slideindex + 1;
+		slide = AppSmata::ContentText(songverses2[slideindex]);
+		LblTitle->SetLabel(number + "# " + title);
+		LblKey->SetLabel(key);
+		LblAuthor->SetLabel("Public Domain");
+		//LblSongBook->SetLabel(AppSmata::GetSongBook(bookid));
+		LblContent->SetLabel(slide);
+
+		if (haschorus)
+		{
+			if (slide == chorus) LblVerse->SetLabel(" chorus ");
+			else LblVerse->SetLabel(" verse " + std::to_string(slideno) + "/" + std::to_string(slides));
+		}
+		else
+		{
+			LblVerse->SetLabel(" verse " + std::to_string(slideno) + "/" + std::to_string(slides));
+		}
+
+		/*if (slideindex == 0)
+		{
+			PicLast->Hide();
+			PicNext->Show();
+		}
+
+		else if (slideindex == (slides - 1))
+		{
+			PicLast->Show();
+			PicNext->Hide();
+		}
+
+		else
+		{
+			PicLast->Show();
+			PicNext->Show();
+		}*/
+	}
+	catch (exception & ex) {
+		LblContent->SetLabel(ex.what());
+	}
 }
 
 void vSongView::Anywhere_Click(wxCommandEvent&)

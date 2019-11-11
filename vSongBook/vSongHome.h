@@ -33,6 +33,20 @@
 class vSongHome : public wxFrame
 {
 protected:
+	SQLiteDB* pSQLite;
+
+	vSongHome* home;
+	wxPanel* PanelLeft, * PanelRight;
+	wxComboBox* cmbSongBooks;
+	wxCheckBox* chkSearchSongs;
+	wxStaticBoxSizer* ListWrapper;
+	wxStaticBox* GrpSonglist;
+	wxListBox* lstSongList;
+	wxSearchCtrl* txtSearch;
+	wxToolBar* toolBarSong;
+	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
+	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
+
 	wxSplitterWindow* WndSplitter;
 
 	bool m_smallToolbar, m_horzText, m_useCustomDisabled, m_showTooltips;
@@ -73,15 +87,4 @@ public:
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
 
-	vSongHome* home;
-	wxPanel* PanelLeft, * PanelRight;
-	wxComboBox* cmbSongBooks;
-	wxCheckBox* chkSearchSongs;
-	wxStaticBoxSizer* ListWrapper;
-	wxStaticBox* GrpSonglist;
-	wxListBox* lstSongList;
-	wxSearchCtrl* txtSearch;
-	wxToolBar* toolBarSong;
-	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
-	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
 };

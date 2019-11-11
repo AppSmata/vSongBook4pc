@@ -57,14 +57,12 @@ protected:
 	wxStaticBitmap* PicLastNull;
 	wxStaticBitmap* PicNext;
 	wxStaticBitmap* PicNextNull;
-
 	void BtnClose_Click(wxCommandEvent& event);
 	void TxtCommandLine_KeyDown(wxKeyEvent& event);
 	void TxtCommandLine_MouseWheel(wxMouseEvent& event);
 	void Anywhere_Click(wxCommandEvent& event);
 
 public:
-
 	vSongView(const wxString& title);
 
 
@@ -73,6 +71,7 @@ public:
 	void SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel);
 
 	void PresentSong(wxString setsong);
+	void GetSettings();
 	void SetPresentation();
 
 	~vSongView();

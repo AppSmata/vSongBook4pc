@@ -10,6 +10,7 @@
 #include "AppSmata.h"
 #include "AppSettings.h"
 #include "vSongHome.h"
+#include "vSongView.h"
 #include "vSongCheck.h"
 #include "vSongBook.h"
 
@@ -27,7 +28,7 @@ bool vSongBook::OnInit()
 	if (!wxApp::OnInit()) return false;
 	GetSettings();
 
-	if (appsets[1] == "null") 
+	/*if (appsets[1] == "null") 
 	{
 		vSongCheck* check = new vSongCheck("Set Up your vSongBook to start!");
 		check->SetSize(500, 500);
@@ -35,13 +36,19 @@ bool vSongBook::OnInit()
 		check->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
 		check->Center();
 	}
-	else {
-		vSongHome* home = new vSongHome("vSongBook for Desktop v1.1.4 | " + appsets[1]);
+	else {*/
+		/*vSongHome* home = new vSongHome("vSongBook for Desktop v1.1.4 | " + appsets[1]);
 		home->SetSize(1000, 800);
 		home->Show(true);
 		home->Center();
-		home->Maximize(true);
-	}
+		home->Maximize(true);*/
+		vSongView* present = new vSongView("vSongBook Presentation");
+		present->SetSize(1000, 700);
+		present->SetWindowStyle(0 | wxTAB_TRAVERSAL);
+		present->Show(true);
+		present->Center();
+		present->Maximize(true);
+	//}
 	
 	return true;
 }
@@ -49,21 +56,17 @@ bool vSongBook::OnInit()
 void vSongBook::GetSettings()
 {
 	try {
-		sqlite3* db;
-		char* err_msg = NULL, ** qryResult = NULL;
-		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
-
-		wxString sqlQuery = _T("SELECT content FROM settings ORDER BY settingid");
-
-		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
-
-		for (int i = 1; i < row + 1; i++)
+		SQLiteDB* pSQLite = new SQLiteDB();
+		if (pSQLite->OpenConnection("Settings.db", "Data\\"))
 		{
-			appsets.push_back(*(qryResult + i * col + 0));
+			IResult* res = pSQLite->ExcuteSelect("SELECT content FROM settings ORDER BY settingid;");
+			if (res)
+			{
+				while (res->Next()) appsets.push_back(res->ColomnData(0));
+				res->Release();
+			}
 		}
-
-		sqlite3_free_table(qryResult);
-		sqlite3_close(db);
+		pSQLite->CloseConnection();
 	}
 	catch (exception & ex) {}
 }

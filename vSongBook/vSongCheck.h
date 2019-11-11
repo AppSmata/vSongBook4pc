@@ -41,8 +41,6 @@ using namespace std;
 
 class vSongCheck : public wxFrame
 {
-private:
-
 protected:
 	wxStaticText* LblTitle;
 	wxNotebook* TabMain;
