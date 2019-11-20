@@ -14,7 +14,7 @@
 #include "vSongView.h"
 #include "vSongPrefs.h"
 
-wxString SongDatabase = "Data\\Songs.db", selected_book, selected_song, search_term;
+wxString selected_book, selected_song, search_term;
 vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
 wxScopedPtr<wxPreferencesEditor> _prefEditor;
@@ -171,17 +171,21 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 void vSongHome::GetSettings()
 {
 	try {
-		pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Settings.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT content FROM settings ORDER BY settingid");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect("SELECT content FROM settings ORDER BY settingid;");
-			if (res)
-			{
-				while (res->Next()) homesets.push_back(res->ColomnData(0));
-				res->Release();
-			}
+			homesets.push_back(*(qryResult + i * col + 0));
 		}
-		pSQLite->CloseConnection();
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
 	}
 	catch (exception & ex) {}
 }
@@ -302,24 +306,28 @@ void vSongHome::PopulateSongbooks()
 			cmbSongBooks->Clear();
 		}
 
-		pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Songs.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect("SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;");
-			if (res)
-			{
-				while (res->Next())
-				{
-					cmbSongBooks->Append(std::string(res->ColomnData(1)) + " (" + res->ColomnData(2) + ")");
-					bookids.push_back(res->ColomnData(0));
-					booktitles.push_back(res->ColomnData(2));
-				}
-				res->Release();
-				cmbSongBooks->SetSelection(0);
-				PopulateSonglists(bookids[0], "", false);
-			}
-		}		
-		pSQLite->CloseConnection();
+			wxString title = *(qryResult + i * col + 1);
+			wxString songs = *(qryResult + i * col + 2);
+
+			cmbSongBooks->Append(wxString::FromUTF8(std::string(title) + " (" + songs + ")"));
+			bookids.push_back(*(qryResult + i * col + 0));
+			booktitles.push_back(title);
+		}
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+		cmbSongBooks->SetSelection(0);
+		PopulateSonglists(bookids[0], "", false);
 	}
 	catch (exception & ex) {
 		SetStatusText(ex.what());
@@ -341,8 +349,7 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 
 		wxString SqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
 		SqlQuery = SqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE";
-
-
+		
 		if (searchstr.empty()) SqlQuery = SqlQuery + " songs.bookid=" + setbook;
 		else
 		{
@@ -376,38 +383,33 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 			}
 		}
 
-		pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Songs.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = SqlQuery + " ORDER BY number ASC";
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect(SqlQuery + " ORDER BY number ASC;");
-			if (res)
-			{
-				while (res->Next())
-				{
-					wxString titles = std::string(res->ColomnData(1)) + "# " + res->ColomnData(2);
+			wxString titles = std::string(*(qryResult + i * col + 1)) + "# " + *(qryResult + i * col + 2);
 
-					if (searchstr.empty()) lstSongList->Append(titles);
-					else lstSongList->Append(titles + " (" + res->ColomnData(8) + ")");
+			if (searchstr.empty()) lstSongList->Append(wxString::FromUTF8(titles));
+			else lstSongList->Append(wxString::FromUTF8(titles + " (" + *(qryResult + i * col + 8) + ")"));
 
-					songids.push_back(res->ColomnData(0));
-					songtitles.push_back(titles);
-					songaliases.push_back(res->ColomnData(3));
-					songcontents.push_back(res->ColomnData(4));
-					songbooks.push_back(std::string(res->ColomnData(7)) + " (" + res->ColomnData(8) + ")");
-				}
-				res->Release();
-
-				selected_song = songids[0];
-
-				//pSQLite = new SQLiteDB();
-				//pSQLite->OpenConnection("Settings.db", "Data\\");
-				//pSQLite->Excute("UPDATE settings SET content='" + selected_song + "' WHERE title='current_song';");
-
-				cmbSongBooks->SetSelection(0);
-				OpenSongPreview(0);
-			}
+			songids.push_back(*(qryResult + i * col + 0));
+			songtitles.push_back(titles);
+			songaliases.push_back(*(qryResult + i * col + 3));
+			songcontents.push_back(*(qryResult + i * col + 4));
+			songbooks.push_back(std::string(*(qryResult + i * col + 7)) + " (" + *(qryResult + i * col + 8) + ")");
 		}
-		pSQLite->CloseConnection();
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+
+		lstSongList->SetSelection(0);
+		OpenSongPreview(0);
 	}
 	catch (exception & ex) {
 		SetStatusText(ex.what());

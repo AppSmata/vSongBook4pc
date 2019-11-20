@@ -67,17 +67,21 @@ wxBitmap ViewsButtonsBitmaps[Button_max];
 void vSongView::GetSettings()
 {
 	try {
-		SQLiteDB* pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Settings.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT content FROM settings ORDER BY settingid");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect("SELECT content FROM settings ORDER BY settingid;");
-			if (res)
-			{
-				while (res->Next()) viewset.push_back(res->ColomnData(0));
-				res->Release();
-			}
+			viewset.push_back(*(qryResult + i * col + 0));
 		}
-		pSQLite->CloseConnection();
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
 	}
 	catch (exception & ex) {}
 }
@@ -161,7 +165,7 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	BtnClose->Hide();
 	PicLast->Hide();
 	PicNextNull->Hide();
-	PresentSong(viewset[23]);
+	PresentSong(viewset[24]);
 }
 
 void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
@@ -292,67 +296,66 @@ void vSongView::PresentSong(wxString setsongid)
 
 	try
 	{
-		SQLiteDB* pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Songs.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, code FROM songs";
+		sqlQuery = sqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + setsongid;
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
+			songid = *(qryResult + i * col + 0);
+			bookid = *(qryResult + i * col + 1);
+			number = *(qryResult + i * col + 2);
+			title = *(qryResult + i * col + 3);
+			alias = *(qryResult + i * col + 4);
+			content = *(qryResult + i * col + 5);
+			key = *(qryResult + i * col + 6);
+			author = *(qryResult + i * col + 7);
+			book = *(qryResult + i * col + 8);
 
-			wxString sql_query = "SELECT songid, songs.bookid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
+			if (content.Contains("CHORUS")) haschorus = true;
+			else haschorus = false;
 
-			IResult* res = pSQLite->ExcuteSelect(sql_query + " INNER JOIN books ON books.bookid = songs.bookid WHERE songid=" + setsongid + " LIMIT 1;");
-			if (res)
+			content = AppSmata::ReplaceAll(content, "\\n\\n", "xxx");
+
+			wxStringTokenizer tokenizer(content, "xxx");
+			while (tokenizer.HasMoreTokens())
 			{
-				while (res->Next())
+				wxString token = tokenizer.GetNextToken();
+				if (token.Length() > 0)
 				{
-					songid = res->ColomnData(0);
-					bookid = res->ColomnData(1);
-					number = res->ColomnData(2);
-					title = res->ColomnData(3);
-					alias = res->ColomnData(4);
-					content = res->ColomnData(5);
-					key = res->ColomnData(6);
-					author = res->ColomnData(7);
-					book = res->ColomnData(8);
-				}
-
-				if (content.Contains("CHORUS")) haschorus = true;
-				else haschorus = false;
-
-				content = AppSmata::ReplaceAll(content, "\\n\\n", "xxx");
-
-				wxStringTokenizer tokenizer(content, "xxx");
-				while (tokenizer.HasMoreTokens())
-				{
-					wxString token = tokenizer.GetNextToken();
-					if (token.Length() > 0)
+					if (haschorus)
 					{
-						if (haschorus)
-						{
-							if (token.Contains("CHORUS")) {
-								token.Replace("CHORUS\\n", "", true);
-								chorus = token;
-							}
-							else songverses1.push_back(token);
+						if (token.Contains("CHORUS")) {
+							token.Replace("CHORUS\\n", "", true);
+							chorus = token;
 						}
-						else songverses2.push_back(token);
+						else songverses1.push_back(token);
 					}
+					else songverses2.push_back(token);
 				}
-
-				if (haschorus)
-				{
-					for (vector<wxString>::iterator i = songverses1.begin(); i != songverses1.end(); ++i) {
-						songverses2.push_back(*i);
-						songverses2.push_back(chorus);
-						slides = slides + 2;
-					}
-				}
-				else slides = songverses2.size();
-				slideindex = 0;
-				SetPresentation();
-
-				res->Release();
 			}
+
+			if (haschorus)
+			{
+				for (vector<wxString>::iterator i = songverses1.begin(); i != songverses1.end(); ++i) {
+					songverses2.push_back(*i);
+					songverses2.push_back(chorus);
+					slides = slides + 2;
+				}
+			}
+			else slides = songverses2.size();
+			slideindex = 0;
+			SetPresentation();
 		}
-		pSQLite->CloseConnection();
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+		
 	}
 	catch (exception & ex) {
 		LblContent->SetLabel(ex.what());

@@ -9,8 +9,6 @@
 
 vsbicon ICON "vSongBook.ico"
 
-preficon ICON "Settings.ico"
-
 project BITMAP "res/project.bmp"
 edit BITMAP "res/edit.bmp"
 last BITMAP "res/last.bmp"

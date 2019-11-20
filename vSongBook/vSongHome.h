@@ -33,8 +33,6 @@
 class vSongHome : public wxFrame
 {
 protected:
-	SQLiteDB* pSQLite;
-
 	vSongHome* home;
 	wxPanel* PanelLeft, * PanelRight;
 	wxComboBox* cmbSongBooks;
