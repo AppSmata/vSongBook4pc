@@ -12,9 +12,9 @@
 #include "vSongView.h"
 #include <wx\tokenzr.h>
 
-int this_book, this_song, slides, slideno, slideindex;
+int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont;
 wxString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide;
-vector<wxString> songverses1, songverses2, viewset;
+vector<wxString> songverses1, songverses2, viewset, labels;
 bool haschorus;
 
 enum
@@ -86,9 +86,16 @@ void vSongView::GetSettings()
 	catch (exception & ex) {}
 }
 
+void vSongView::InitializeSettings()
+{
+	mainfont = wxAtoi(viewset[14]);
+	smallfont = AppSmata::PresenterFont(mainfont);
+}
+
 vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	GetSettings();
+	InitializeSettings();
 
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 	this->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNHIGHLIGHT));
@@ -96,7 +103,7 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	wxBoxSizer* MainWrapper;
 	MainWrapper = new wxBoxSizer(wxVERTICAL);
 	
-	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongView for Desktop v2.4.1 "));
+	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v2.4.1 "));
 	//AppLabel->SetForegroundColour(wxColour(fcl1, fcl2, fcl3));
 	wxStaticBoxSizer* GrpMain;
 	GrpMain = new wxStaticBoxSizer(AppLabel, wxVERTICAL);
@@ -163,23 +170,21 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	TxtCommand->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(vSongView::TxtCommandLine_KeyDown), NULL, this);
 
 	BtnClose->Hide();
-	PicLast->Hide();
-	PicNextNull->Hide();
-	PresentSong(viewset[24]);
+	PresentSong(viewset[23]);
 }
 
 void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
 {
 	LblKey = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblKey->SetFont(wxFont(25, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblKey->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblKey->Wrap(-1);
 	TopPanel->Add(LblKey, 0, wxALL, 5);
 
 	wxBoxSizer* WrapTitle;
 	WrapTitle = new wxBoxSizer(wxVERTICAL);
 
-	LblTitle = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxT("Only Believe"), wxDefaultPosition, wxDefaultSize, 0);
-	LblTitle->SetFont(wxFont(25, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblTitle = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	LblTitle->SetFont(wxFont(mainfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblTitle->Wrap(-1); 
 
 	WrapTitle->Add(LblTitle, 0, wxALIGN_CENTER | wxALL, 0);
@@ -201,8 +206,8 @@ void vSongView::SetMidPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* MidPanel)
 	wxBoxSizer* WrapContent;
 	WrapContent = new wxBoxSizer(wxVERTICAL);
 
-	LblContent = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxT("CHORUS\nOnly Believe,\nAll things are possible"), wxDefaultPosition, wxDefaultSize, 0);
-	LblContent->SetFont(wxFont(25, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblContent = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	LblContent->SetFont(wxFont(mainfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblContent->Wrap(-1);
 	WrapContent->Add(LblContent, 0, wxALIGN_CENTER | wxALL, 0);
 
@@ -243,18 +248,18 @@ void vSongView::SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel)
 	VIEWS_BTN_BMP(orange_white_down);
 	VIEWS_BTN_BMP(orange_white_up);
 
-	LblSongInfo = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxT("1# Songs of Worship"), wxDefaultPosition, wxDefaultSize, 0);
-	LblSongInfo->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblSongInfo = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	LblSongInfo->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblSongInfo->Wrap(-1);
 	DownPanel->Add(LblSongInfo, 1, wxALL, 5);
 
-	LblAuthor = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxT("Public Domain"), wxDefaultPosition, wxDefaultSize, 0);
-	LblAuthor->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblAuthor = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	LblAuthor->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblAuthor->Wrap(-1);
 	DownPanel->Add(LblAuthor, 1, wxALL, 5);
 
-	LblVerse = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxT("Verse 1/3"), wxDefaultPosition, wxDefaultSize, 0);
-	LblVerse->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblVerse = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	LblVerse->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblVerse->Wrap(-1);
 	DownPanel->Add(LblVerse, 0, wxALL, 5);
 
@@ -273,17 +278,9 @@ void vSongView::SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel)
 	PicLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_up]));
 	WrapArrows->Add(PicLast, 0, wxALL, 5);
 
-	PicNextNull = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
-	PicNextNull->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white]));
-	WrapArrows->Add(PicNextNull, 0, wxALL, 5);
-
 	PicNext = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
 	PicNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_down]));
 	WrapArrows->Add(PicNext, 0, wxALL, 5);
-
-	PicNextNull = new wxStaticBitmap(GrpMain->GetStaticBox(), wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(50, 50), 0);
-	PicNextNull->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white]));
-	WrapArrows->Add(PicNextNull, 0, wxALL, 5);
 
 	DownPanel->Add(WrapArrows, 0, wxALL, 5);
 }
@@ -300,67 +297,66 @@ void vSongView::PresentSong(wxString setsongid)
 		char* err_msg = NULL, ** qryResult = NULL;
 		int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-		wxString sqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, code FROM songs";
-		sqlQuery = sqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + setsongid;
+		wxString sqlQuery = "SELECT number, songs.title, alias, songs.content, key, author, books.title FROM songs";
+			sqlQuery = sqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + setsongid;
 
 		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-		for (int i = 1; i < row + 1; i++)
-		{
-			songid = *(qryResult + i * col + 0);
-			bookid = *(qryResult + i * col + 1);
-			number = *(qryResult + i * col + 2);
-			title = *(qryResult + i * col + 3);
-			alias = *(qryResult + i * col + 4);
-			content = *(qryResult + i * col + 5);
-			key = *(qryResult + i * col + 6);
-			author = *(qryResult + i * col + 7);
-			book = *(qryResult + i * col + 8);
-
-			if (content.Contains("CHORUS")) haschorus = true;
-			else haschorus = false;
-
-			content = AppSmata::ReplaceAll(content, "\\n\\n", "xxx");
-
-			wxStringTokenizer tokenizer(content, "xxx");
-			while (tokenizer.HasMoreTokens())
-			{
-				wxString token = tokenizer.GetNextToken();
-				if (token.Length() > 0)
-				{
-					if (haschorus)
-					{
-						if (token.Contains("CHORUS")) {
-							token.Replace("CHORUS\\n", "", true);
-							chorus = token;
-						}
-						else songverses1.push_back(token);
-					}
-					else songverses2.push_back(token);
-				}
-			}
-
-			if (haschorus)
-			{
-				for (vector<wxString>::iterator i = songverses1.begin(); i != songverses1.end(); ++i) {
-					songverses2.push_back(*i);
-					songverses2.push_back(chorus);
-					slides = slides + 2;
-				}
-			}
-			else slides = songverses2.size();
-			slideindex = 0;
-			SetPresentation();
-		}
+		number = *(qryResult + 1 * col + 0);
+		title = std::string(number + ". " + *(qryResult + 1 * col + 1));
+		alias = *(qryResult + 1 * col + 2);
+		content = *(qryResult + 1 * col + 3);
+		key = *(qryResult + 1 * col + 4);
+		author = *(qryResult + 1 * col + 5);
+		book = std::string(number + "# " + *(qryResult + 1 * col + 6));
 
 		sqlite3_free_table(qryResult);
 		sqlite3_close(db);
-		
+
+		if (content.Contains("CHORUS")) haschorus = true;
+		else haschorus = false;
+
+		content = AppSmata::ReplaceAll(content, "\\n\\n", "xxx");
+
+		wxStringTokenizer tokenizer(content, "xxx");
+		while (tokenizer.HasMoreTokens())
+		{
+			wxString token = tokenizer.GetNextToken();
+			if (token.Length() > 0)
+			{
+				if (haschorus)
+				{
+					if (token.Contains("CHORUS")) {
+						token.Replace("CHORUS\\n", "", true);
+						chorus = token;
+					}
+					else songverses1.push_back(token);
+				}
+				else songverses2.push_back(token);
+			}
+		}
+
+		if (haschorus)
+		{
+			int k = 1;
+			for (vector<wxString>::iterator i = songverses1.begin(); i != songverses1.end(); ++i) {
+				songverses2.push_back(*i);
+				songverses2.push_back(chorus);
+				slides = slides + 2;
+
+				wxString label = " VERSE " + std::to_string(k) + " / " + std::to_string(songverses1.size());
+				labels.push_back(label);
+				labels.push_back(" CHORUS ");
+				k++;
+			}
+		}
+		else slides = songverses2.size();
+		slideindex = 0;
+		SetPresentation();		
 	}
 	catch (exception & ex) {
 		LblContent->SetLabel(ex.what());
 	}
-
 }
 
 void vSongView::SetPresentation()
@@ -369,39 +365,30 @@ void vSongView::SetPresentation()
 	{
 		slideno = slideindex + 1;
 		slide = AppSmata::ContentText(songverses2[slideindex]);
-		LblTitle->SetLabel(number + "# " + title);
+		LblTitle->SetLabel(title);
 		LblKey->SetLabel(key);
-		LblAuthor->SetLabel("Public Domain");
-		//LblSongBook->SetLabel(AppSmata::GetSongBook(bookid));
+		LblAuthor->SetLabel(author);
+		LblSongInfo->SetLabel(book);
 		LblContent->SetLabel(slide);
+		LblVerse->SetLabel(labels[slideindex]);
 
-		if (haschorus)
+		if (slideindex == 0)
 		{
-			if (slide == chorus) LblVerse->SetLabel(" chorus ");
-			else LblVerse->SetLabel(" verse " + std::to_string(slideno) + "/" + std::to_string(slides));
-		}
-		else
-		{
-			LblVerse->SetLabel(" verse " + std::to_string(slideno) + "/" + std::to_string(slides));
-		}
-
-		/*if (slideindex == 0)
-		{
-			PicLast->Hide();
-			PicNext->Show();
+			PicLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white]));
+			PicNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_down]));
 		}
 
 		else if (slideindex == (slides - 1))
 		{
-			PicLast->Show();
-			PicNext->Hide();
+			PicLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_up]));
+			PicNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white]));
 		}
 
 		else
 		{
-			PicLast->Show();
-			PicNext->Show();
-		}*/
+			PicLast->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_up]));
+			PicNext->SetBitmap(wxBitmap(ViewsButtonsBitmaps[Button_white_black_down]));
+		}
 	}
 	catch (exception & ex) {
 		LblContent->SetLabel(ex.what());
@@ -434,7 +421,7 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 				if (slideindex != 0)
 				{
 					slideindex = slideindex - 1;
-					//SetPresentation();
+					SetPresentation();
 				}
 			}
 			catch (exception & ex) {}
@@ -447,7 +434,7 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 				if (slideindex != (slides - 1))
 				{
 					slideindex = slideindex + 1;
-					//SetPresentation();
+					SetPresentation();
 				}
 			}
 			catch (exception & ex) {}

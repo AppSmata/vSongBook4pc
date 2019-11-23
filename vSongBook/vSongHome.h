@@ -53,7 +53,6 @@ protected:
 public:
 	vSongHome(const wxString& title);
 
-	void GetSettings();
 	void PopulateToolbar();
 	void PopulateSongbooks();
 	void PopulateSonglists(wxString setbook, wxString searchstr, bool searchall);
@@ -84,5 +83,7 @@ public:
 
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
+	void GetSettings();
+	void InitializeSettings();
 
 };

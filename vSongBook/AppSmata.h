@@ -52,21 +52,16 @@ public:
 	{
 		sqlite3* db;
 		sqlite3_stmt* sqlqueryStmt;
-		char* err_msg = NULL;
-		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+		char* zErrMsg = NULL;
+		int row, col, rc = sqlite3_open("Data\\Settings.db", &db);
 
 		wxString sqlQuery = _T("UPDATE settings SET content = '" + content + "' WHERE title = '" + title + "'");
 
-		rc = sqlite3_prepare(db, sqlQuery, -1, &sqlqueryStmt, 0);
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
-		if (rc != SQLITE_DONE) {
-			//fprintf(stderr, "SQL error: %s\n", zErrMsg);
-			sqlite3_free(err_msg);
+		if (rc != SQLITE_OK) {
+			sqlite3_free(zErrMsg);
 		}
-		else {
-			//fprintf(stdout, "Operation done successfully\n");
-		}
-
 		sqlite3_close(db);
 	}
 
@@ -102,6 +97,12 @@ public:
 			start_pos += to.length();
 		}
 		return str;
+	}
+
+	static int PresenterFont(int fontint)
+	{
+		int fontsize = 0.75 * fontint;
+		return fontsize;
 	}
 
 };

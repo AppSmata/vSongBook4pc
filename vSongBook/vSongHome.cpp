@@ -14,6 +14,7 @@
 #include "vSongView.h"
 #include "vSongPrefs.h"
 
+int homefont, songfont;
 wxString selected_book, selected_song, search_term;
 vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
@@ -49,6 +50,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 #if wxUSE_STATUSBAR
 
 	GetSettings();
+	InitializeSettings();
 
 	CreateStatusBar(2);
 	SetStatusText("Welcome to vSongBook for Desktop! " + homesets[1]);
@@ -72,13 +74,13 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	SizerLeft = new wxBoxSizer(wxVERTICAL);
 
 	cmbSongBooks = new wxComboBox(PanelLeft, wxID_ANY, wxT("Songbooks"), wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxCB_READONLY);
-	cmbSongBooks->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	cmbSongBooks->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	SizerLeft->Add(cmbSongBooks, 0, wxALL | wxEXPAND, 5);
 
 	chkSearchSongs = new wxCheckBox(PanelLeft, wxID_ANY, wxT("Search All SongBooks"), wxDefaultPosition, wxSize(-1, -1), 0);
 	chkSearchSongs->SetValue(true);
-	chkSearchSongs->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	chkSearchSongs->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	SizerLeft->Add(chkSearchSongs, 0, wxALL | wxEXPAND, 5);
 
@@ -86,7 +88,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	ListWrapper = new wxStaticBoxSizer(GrpSonglist, wxVERTICAL);
 
 	lstSongList = new wxListBox(PanelLeft, wxID_ANY, wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxLB_HSCROLL);
-	lstSongList->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	lstSongList->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	ListWrapper->Add(lstSongList, 1, wxALL | wxEXPAND, 1);
 
@@ -117,22 +119,21 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	SizerRight->Add(toolBarSong, 0, wxEXPAND, 5);
 
 	TxtSongTitle = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_READONLY | wxTE_RICH);
-	TxtSongTitle->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	TxtSongTitle->SetFont(wxFont(songfont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	SizerRight->Add(TxtSongTitle, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GroupPreview;
 	GroupPreview = new wxStaticBoxSizer(new wxStaticBox(PanelRight, wxID_ANY, wxEmptyString), wxVERTICAL);
 
 	TxtPreview = new wxTextCtrl(GroupPreview->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH);
-	TxtPreview->SetFont(wxFont(15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	TxtPreview->SetFont(wxFont(songfont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	GroupPreview->Add(TxtPreview, 1, wxALL | wxEXPAND, 0);
 
 
 	SizerRight->Add(GroupPreview, 1, wxEXPAND, 0);
 
 	TxtExtras = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_MULTILINE | wxTE_READONLY);
-	TxtExtras->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	TxtExtras->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	TxtExtras->SetFont(wxFont(homefont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	SizerRight->Add(TxtExtras, 0, wxALL | wxEXPAND, 5);
 
@@ -188,6 +189,12 @@ void vSongHome::GetSettings()
 		sqlite3_close(db);
 	}
 	catch (exception & ex) {}
+}
+
+void vSongHome::InitializeSettings()
+{
+	homefont = wxAtoi(homesets[5]);
+	songfont = wxAtoi(homesets[11]);
 }
 
 void vSongHome::PopulateToolbar()

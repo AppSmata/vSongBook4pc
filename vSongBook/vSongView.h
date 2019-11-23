@@ -72,6 +72,7 @@ public:
 
 	void PresentSong(wxString setsong);
 	void GetSettings();
+	void InitializeSettings();
 	void SetPresentation();
 
 	~vSongView();

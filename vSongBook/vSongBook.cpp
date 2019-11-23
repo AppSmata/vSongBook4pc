@@ -37,11 +37,17 @@ bool vSongBook::OnInit()
 		check->Center();
 	}
 	else {*/
-		vSongHome* home = new vSongHome("vSongBook for Desktop v1.1.4 | " + appsets[1]);
+		vSongHome* home = new vSongHome("vSongBook for Desktop v2.4.1 | " + appsets[1]);
 		home->SetSize(1000, 800);
 		home->Show(true);
 		home->Center();
 		home->Maximize(true);
+		/*vSongView* present = new vSongView("vSongBook Presentation");
+		present->SetSize(1000, 700);
+		present->SetWindowStyle(0 | wxTAB_TRAVERSAL);
+		present->Show(true);
+		present->Center();
+		present->Maximize(true);*/
 	//}
 	
 	return true;
