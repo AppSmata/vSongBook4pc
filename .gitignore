@@ -46,6 +46,8 @@ dlldata.c
 project.lock.json
 project.fragment.lock.json
 artifacts/
+Data/
+vc_mswu/
 vc_mswud/
 
 *_i.c
@@ -65,7 +67,9 @@ vc_mswud/
 *.tlh
 *.tmp
 *.tmp_proj
+*.db
 *.log
+*.tlog
 *.vspscc
 *.vssscc
 .builds

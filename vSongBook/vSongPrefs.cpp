@@ -54,7 +54,7 @@ vSongPrefs::vSongPrefs(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 void vSongPrefs::PopulateTabOne()
 {
-	SetIcon(wxICON(preficon));
+	SetIcon(wxICON(vsbicon));
 
 	TabOne = new wxScrolledWindow(TabMain, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
 	TabOne->SetScrollRate(5, 5);

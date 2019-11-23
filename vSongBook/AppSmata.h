@@ -37,7 +37,6 @@
 #include <vector>
 
 #include "sqlite/sqlite3pp.h"
-#include "sqlite/SQLite.h"
 
 using namespace std;
 
@@ -51,11 +50,19 @@ class AppSmata
 public:
 	static void SetOption(wxString title, wxString content)
 	{
-		SQLiteDB* pSQLite;
-		pSQLite = new SQLiteDB();
-		pSQLite->OpenConnection("Settings.db", "Data\\");
-		pSQLite->Excute("UPDATE settings SET content='" + content + "' WHERE title='" + title + "';");
-		pSQLite->CloseConnection();
+		sqlite3* db;
+		sqlite3_stmt* sqlqueryStmt;
+		char* zErrMsg = NULL;
+		int row, col, rc = sqlite3_open("Data\\Settings.db", &db);
+
+		wxString sqlQuery = _T("UPDATE settings SET content = '" + content + "' WHERE title = '" + title + "'");
+
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+		if (rc != SQLITE_OK) {
+			sqlite3_free(zErrMsg);
+		}
+		sqlite3_close(db);
 	}
 
 	static wxString Today(wxString type)
@@ -90,6 +97,12 @@ public:
 			start_pos += to.length();
 		}
 		return str;
+	}
+
+	static int PresenterFont(int fontint)
+	{
+		int fontsize = 0.75 * fontint;
+		return fontsize;
 	}
 
 };

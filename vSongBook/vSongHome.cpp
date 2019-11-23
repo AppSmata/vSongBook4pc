@@ -14,7 +14,8 @@
 #include "vSongView.h"
 #include "vSongPrefs.h"
 
-wxString SongDatabase = "Data\\Songs.db", selected_book, selected_song, search_term;
+int homefont, songfont;
+wxString selected_book, selected_song, search_term;
 vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
 wxScopedPtr<wxPreferencesEditor> _prefEditor;
@@ -49,6 +50,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 #if wxUSE_STATUSBAR
 
 	GetSettings();
+	InitializeSettings();
 
 	CreateStatusBar(2);
 	SetStatusText("Welcome to vSongBook for Desktop! " + homesets[1]);
@@ -72,13 +74,13 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	SizerLeft = new wxBoxSizer(wxVERTICAL);
 
 	cmbSongBooks = new wxComboBox(PanelLeft, wxID_ANY, wxT("Songbooks"), wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxCB_READONLY);
-	cmbSongBooks->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	cmbSongBooks->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	SizerLeft->Add(cmbSongBooks, 0, wxALL | wxEXPAND, 5);
 
 	chkSearchSongs = new wxCheckBox(PanelLeft, wxID_ANY, wxT("Search All SongBooks"), wxDefaultPosition, wxSize(-1, -1), 0);
 	chkSearchSongs->SetValue(true);
-	chkSearchSongs->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	chkSearchSongs->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	SizerLeft->Add(chkSearchSongs, 0, wxALL | wxEXPAND, 5);
 
@@ -86,7 +88,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	ListWrapper = new wxStaticBoxSizer(GrpSonglist, wxVERTICAL);
 
 	lstSongList = new wxListBox(PanelLeft, wxID_ANY, wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxLB_HSCROLL);
-	lstSongList->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	lstSongList->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	ListWrapper->Add(lstSongList, 1, wxALL | wxEXPAND, 1);
 
@@ -117,22 +119,21 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	SizerRight->Add(toolBarSong, 0, wxEXPAND, 5);
 
 	TxtSongTitle = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_READONLY | wxTE_RICH);
-	TxtSongTitle->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	TxtSongTitle->SetFont(wxFont(songfont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	SizerRight->Add(TxtSongTitle, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GroupPreview;
 	GroupPreview = new wxStaticBoxSizer(new wxStaticBox(PanelRight, wxID_ANY, wxEmptyString), wxVERTICAL);
 
 	TxtPreview = new wxTextCtrl(GroupPreview->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH);
-	TxtPreview->SetFont(wxFont(15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	TxtPreview->SetFont(wxFont(songfont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	GroupPreview->Add(TxtPreview, 1, wxALL | wxEXPAND, 0);
 
 
 	SizerRight->Add(GroupPreview, 1, wxEXPAND, 0);
 
 	TxtExtras = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_MULTILINE | wxTE_READONLY);
-	TxtExtras->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	TxtExtras->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	TxtExtras->SetFont(wxFont(homefont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	SizerRight->Add(TxtExtras, 0, wxALL | wxEXPAND, 5);
 
@@ -171,19 +172,29 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 void vSongHome::GetSettings()
 {
 	try {
-		pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Settings.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT content FROM settings ORDER BY settingid");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect("SELECT content FROM settings ORDER BY settingid;");
-			if (res)
-			{
-				while (res->Next()) homesets.push_back(res->ColomnData(0));
-				res->Release();
-			}
+			homesets.push_back(*(qryResult + i * col + 0));
 		}
-		pSQLite->CloseConnection();
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
 	}
 	catch (exception & ex) {}
+}
+
+void vSongHome::InitializeSettings()
+{
+	homefont = wxAtoi(homesets[5]);
+	songfont = wxAtoi(homesets[11]);
 }
 
 void vSongHome::PopulateToolbar()
@@ -302,24 +313,28 @@ void vSongHome::PopulateSongbooks()
 			cmbSongBooks->Clear();
 		}
 
-		pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Songs.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect("SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;");
-			if (res)
-			{
-				while (res->Next())
-				{
-					cmbSongBooks->Append(std::string(res->ColomnData(1)) + " (" + res->ColomnData(2) + ")");
-					bookids.push_back(res->ColomnData(0));
-					booktitles.push_back(res->ColomnData(2));
-				}
-				res->Release();
-				cmbSongBooks->SetSelection(0);
-				PopulateSonglists(bookids[0], "", false);
-			}
-		}		
-		pSQLite->CloseConnection();
+			wxString title = *(qryResult + i * col + 1);
+			wxString songs = *(qryResult + i * col + 2);
+
+			cmbSongBooks->Append(wxString::FromUTF8(std::string(title) + " (" + songs + ")"));
+			bookids.push_back(*(qryResult + i * col + 0));
+			booktitles.push_back(title);
+		}
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+		cmbSongBooks->SetSelection(0);
+		PopulateSonglists(bookids[0], "", false);
 	}
 	catch (exception & ex) {
 		SetStatusText(ex.what());
@@ -341,8 +356,7 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 
 		wxString SqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
 		SqlQuery = SqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE";
-
-
+		
 		if (searchstr.empty()) SqlQuery = SqlQuery + " songs.bookid=" + setbook;
 		else
 		{
@@ -376,38 +390,33 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 			}
 		}
 
-		pSQLite = new SQLiteDB();
-		if (pSQLite->OpenConnection("Songs.db", "Data\\"))
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = SqlQuery + " ORDER BY number ASC";
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
 		{
-			IResult* res = pSQLite->ExcuteSelect(SqlQuery + " ORDER BY number ASC;");
-			if (res)
-			{
-				while (res->Next())
-				{
-					wxString titles = std::string(res->ColomnData(1)) + "# " + res->ColomnData(2);
+			wxString titles = std::string(*(qryResult + i * col + 1)) + "# " + *(qryResult + i * col + 2);
 
-					if (searchstr.empty()) lstSongList->Append(titles);
-					else lstSongList->Append(titles + " (" + res->ColomnData(8) + ")");
+			if (searchstr.empty()) lstSongList->Append(wxString::FromUTF8(titles));
+			else lstSongList->Append(wxString::FromUTF8(titles + " (" + *(qryResult + i * col + 8) + ")"));
 
-					songids.push_back(res->ColomnData(0));
-					songtitles.push_back(titles);
-					songaliases.push_back(res->ColomnData(3));
-					songcontents.push_back(res->ColomnData(4));
-					songbooks.push_back(std::string(res->ColomnData(7)) + " (" + res->ColomnData(8) + ")");
-				}
-				res->Release();
-
-				selected_song = songids[0];
-
-				//pSQLite = new SQLiteDB();
-				//pSQLite->OpenConnection("Settings.db", "Data\\");
-				//pSQLite->Excute("UPDATE settings SET content='" + selected_song + "' WHERE title='current_song';");
-
-				cmbSongBooks->SetSelection(0);
-				OpenSongPreview(0);
-			}
+			songids.push_back(*(qryResult + i * col + 0));
+			songtitles.push_back(titles);
+			songaliases.push_back(*(qryResult + i * col + 3));
+			songcontents.push_back(*(qryResult + i * col + 4));
+			songbooks.push_back(std::string(*(qryResult + i * col + 7)) + " (" + *(qryResult + i * col + 8) + ")");
 		}
-		pSQLite->CloseConnection();
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+
+		lstSongList->SetSelection(0);
+		OpenSongPreview(0);
 	}
 	catch (exception & ex) {
 		SetStatusText(ex.what());

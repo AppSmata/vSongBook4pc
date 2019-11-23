@@ -33,8 +33,6 @@
 class vSongHome : public wxFrame
 {
 protected:
-	SQLiteDB* pSQLite;
-
 	vSongHome* home;
 	wxPanel* PanelLeft, * PanelRight;
 	wxComboBox* cmbSongBooks;
@@ -55,7 +53,6 @@ protected:
 public:
 	vSongHome(const wxString& title);
 
-	void GetSettings();
 	void PopulateToolbar();
 	void PopulateSongbooks();
 	void PopulateSonglists(wxString setbook, wxString searchstr, bool searchall);
@@ -86,5 +83,7 @@ public:
 
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
+	void GetSettings();
+	void InitializeSettings();
 
 };
