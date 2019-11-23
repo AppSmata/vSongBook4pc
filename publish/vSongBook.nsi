@@ -83,6 +83,7 @@ ${INSTALL_TYPE}
 SetOverwrite ifnewer
 SetOutPath "$INSTDIR"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\vSongBook.exe"
+SetOutPath "$INSTDIR\Data"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Language.db"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Settings.db"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Songs.db"
@@ -137,9 +138,9 @@ SectionEnd
 Section Uninstall
 ${INSTALL_TYPE}
 Delete "$INSTDIR\${MAIN_APP_EXE}"
-Delete "$INSTDIR\Language.db"
-Delete "$INSTDIR\Settings.db"
-Delete "$INSTDIR\Songs.db"
+Delete "$INSTDIR\Data\Language.db"
+Delete "$INSTDIR\Data\Settings.db"
+Delete "$INSTDIR\Data\Songs.db"
  
  
 Delete "$INSTDIR\uninstall.exe"
@@ -147,6 +148,7 @@ Delete "$INSTDIR\uninstall.exe"
 Delete "$INSTDIR\${APP_NAME} website.url"
 !endif
 
+RmDir "$INSTDIR\Data"
 RmDir "$INSTDIR"
 
 !ifdef REG_START_MENU
