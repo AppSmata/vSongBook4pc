@@ -28,27 +28,21 @@ bool vSongBook::OnInit()
 	if (!wxApp::OnInit()) return false;
 	GetSettings();
 
-	/*if (appsets[1] == "null") 
+	if (appsets[1] == "null") 
 	{
 		vSongCheck* check = new vSongCheck("Set Up your vSongBook to start!");
-		check->SetSize(500, 500);
+		check->SetSize(700, 500);
 		check->Show(true);
 		check->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
 		check->Center();
 	}
-	else {*/
+	else {
 		vSongHome* home = new vSongHome("vSongBook for Desktop v2.4.1 | " + appsets[1]);
 		home->SetSize(1000, 800);
 		home->Show(true);
 		home->Center();
 		home->Maximize(true);
-		/*vSongView* present = new vSongView("vSongBook Presentation");
-		present->SetSize(1000, 700);
-		present->SetWindowStyle(0 | wxTAB_TRAVERSAL);
-		present->Show(true);
-		present->Center();
-		present->Maximize(true);*/
-	//}
+	}
 	
 	return true;
 }

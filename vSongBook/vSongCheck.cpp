@@ -8,6 +8,7 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
+#include "AppSmata.h"
 #include "vSongCheck.h"
 enum
 {
@@ -17,7 +18,8 @@ enum
 };
 
 wxBitmap CheckButtonsBitmaps[Button_max];
-vector<wxString> checkset;
+vector<wxString> checkset, checklang;
+int checkfontmain, checkfontapp;
 
 #if USE_XPM_BITMAPS
 #define PREFS_BTN_BMP(bmp) \
@@ -29,6 +31,9 @@ vector<wxString> checkset;
 
 vSongCheck::vSongCheck(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
+	GetSettings();
+	GetLanguages(checkset[3]);
+
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 	this->SetFont(wxFont(12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	this->SetBackgroundColour(wxColour(255, 255, 255));
@@ -42,6 +47,62 @@ vSongCheck::vSongCheck(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	this->Layout();
 
 	this->Centre(wxBOTH);
+
+	// Connect Events
+	BtnSearchCriteria->Connect(wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongCheck::BtnSearchCriteria_Click), NULL, this);
+	BtnTabletMode->Connect(wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongCheck::BtnTabletMode_Click), NULL, this);
+	CmbLanguage->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(vSongCheck::CmbLanguage_SelectionChange), NULL, this);
+	TxtUserName->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(vSongCheck::TxtUserName_TextChange), NULL, this);
+}
+
+void vSongCheck::GetSettings()
+{
+	try {
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT content FROM settings ORDER BY settingid");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
+		{
+			checkset.push_back(*(qryResult + i * col + 0));
+		}
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+	}
+	catch (exception & ex) {}
+}
+
+void vSongCheck::InitializeSettings()
+{
+	checkfontmain = wxAtoi(checkset[5]);
+	checkfontapp = AppSmata::PresenterFont(checkfontmain);
+}
+
+void vSongCheck::GetLanguages(wxString Language)
+{
+	try {
+		sqlite3* db;
+		char* err_msg = NULL, ** qryResult = NULL;
+		int row, col, rc = sqlite3_open_v2("Data\\Language.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+		wxString sqlQuery = _T("SELECT content FROM " + Language + " ORDER BY stringid");
+
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
+		{
+			checklang.push_back(*(qryResult + i * col + 0));
+		}
+
+		sqlite3_free_table(qryResult);
+		sqlite3_close(db);
+	}
+	catch (exception & ex) {}
 }
 
 void vSongCheck::QuickSettings(wxBoxSizer* MainWrapper)
@@ -52,70 +113,70 @@ void vSongCheck::QuickSettings(wxBoxSizer* MainWrapper)
 	InnerWrapper = new wxBoxSizer(wxVERTICAL);
 
 	wxStaticBoxSizer* GrpTabletMode;
-	GrpTabletMode = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxT(" Tablet Mode: ")), wxHORIZONTAL);
+	GrpTabletMode = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, checklang[72]), wxHORIZONTAL);
 
 	GrpTabletMode->SetMinSize(wxSize(-1, 75));
-	LblTabletMode = new wxStaticText(GrpTabletMode->GetStaticBox(), wxID_ANY, wxT("Tablet Mode is when you are using a touch screen input"), wxDefaultPosition, wxDefaultSize, 0);
+	LblTabletMode = new wxStaticText(GrpTabletMode->GetStaticBox(), wxID_ANY, checklang[73], wxDefaultPosition, wxDefaultSize, 0);
 	LblTabletMode->Wrap(-1);
-	LblTabletMode->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblTabletMode->SetFont(wxFont(checkfontapp, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	GrpTabletMode->Add(LblTabletMode, 1, wxALL, 5);
 
 	BtnTabletMode = new wxRadioButton(GrpTabletMode->GetStaticBox(), wxID_ANY, wxT("ON"), wxDefaultPosition, wxDefaultSize, 0);
-	BtnTabletMode->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
+	BtnTabletMode->SetFont(wxFont(checkfontmain, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
 
 	GrpTabletMode->Add(BtnTabletMode, 0, wxALL, 5);
 
 	InnerWrapper->Add(GrpTabletMode, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GrpSearchCriteria;
-	GrpSearchCriteria = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxT(" Search Criteria: ")), wxHORIZONTAL);
+	GrpSearchCriteria = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, checklang[61]), wxHORIZONTAL);
 
 	GrpSearchCriteria->SetMinSize(wxSize(-1, 75));
-	LblTabletMode1 = new wxStaticText(GrpSearchCriteria->GetStaticBox(), wxID_ANY, wxT("Search in All Songbooks"), wxDefaultPosition, wxDefaultSize, 0);
+	LblTabletMode1 = new wxStaticText(GrpSearchCriteria->GetStaticBox(), wxID_ANY, checklang[60], wxDefaultPosition, wxDefaultSize, 0);
 	LblTabletMode1->Wrap(-1);
-	LblTabletMode1->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LblTabletMode1->SetFont(wxFont(checkfontmain, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	GrpSearchCriteria->Add(LblTabletMode1, 1, wxALL, 5);
 
 	BtnSearchCriteria = new wxRadioButton(GrpSearchCriteria->GetStaticBox(), wxID_ANY, wxT("ON"), wxDefaultPosition, wxDefaultSize, 0);
 	BtnSearchCriteria->SetValue(true);
-	BtnSearchCriteria->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
+	BtnSearchCriteria->SetFont(wxFont(checkfontmain, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Trebuchet MS")));
 
 	GrpSearchCriteria->Add(BtnSearchCriteria, 0, wxALL, 5);
 
 	InnerWrapper->Add(GrpSearchCriteria, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GrpLanguage;
-	GrpLanguage = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxT(" Preferred Language: ")), wxHORIZONTAL);
+	GrpLanguage = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, checklang[51]), wxHORIZONTAL);
 
 	GrpLanguage->SetMinSize(wxSize(-1, 90));
-	LbLanguage = new wxStaticText(GrpLanguage->GetStaticBox(), wxID_ANY, wxT("Use vSongBook in"), wxDefaultPosition, wxDefaultSize, 0);
+	LbLanguage = new wxStaticText(GrpLanguage->GetStaticBox(), wxID_ANY, checklang[52], wxDefaultPosition, wxDefaultSize, 0);
 	LbLanguage->Wrap(-1);
-	LbLanguage->SetFont(wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	LbLanguage->SetFont(wxFont(checkfontmain, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	GrpLanguage->Add(LbLanguage, 1, wxALL, 5);
 
-	cmbLanguage = new wxComboBox(GrpLanguage->GetStaticBox(), wxID_ANY, wxT("Portuguese"), wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY);
-	cmbLanguage->Append(wxT("English"));
-	cmbLanguage->Append(wxT("Swahili"));
-	cmbLanguage->Append(wxT("French"));
-	cmbLanguage->Append(wxT("Spanish"));
-	cmbLanguage->Append(wxT("Chichewa"));
-	cmbLanguage->Append(wxT("Portuguese"));
-	cmbLanguage->SetSelection(0);
-	GrpLanguage->Add(cmbLanguage, 0, wxALL, 5);
+	CmbLanguage = new wxComboBox(GrpLanguage->GetStaticBox(), wxID_ANY, wxT("English"), wxDefaultPosition, wxDefaultSize, 0, NULL, wxCB_READONLY);
+	CmbLanguage->Append(wxT("English"));
+	CmbLanguage->Append(wxT("Swahili"));
+	CmbLanguage->Append(wxT("French"));
+	CmbLanguage->Append(wxT("Spanish"));
+	CmbLanguage->Append(wxT("Chichewa"));
+	CmbLanguage->Append(wxT("Portuguese"));
+	CmbLanguage->SetSelection(0);
+	GrpLanguage->Add(CmbLanguage, 0, wxALL, 5);
 
 	InnerWrapper->Add(GrpLanguage, 0, wxALL | wxEXPAND, 5);
 
 	wxStaticBoxSizer* GrpUserName;
-	GrpUserName = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxT("  Your Name / Name of your Church: ")), wxVERTICAL);
+	GrpUserName = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, checklang[106]), wxVERTICAL);
 
 	GrpUserName->SetMinSize(wxSize(-1, 100));
 	TxtUserName = new wxTextCtrl(GrpUserName->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, 50), 0);
 	GrpUserName->Add(TxtUserName, 1, wxALL | wxEXPAND, 5);
 
-	LblUserName = new wxStaticText(GrpUserName->GetStaticBox(), wxID_ANY, wxT("100 characters remaining ..."), wxDefaultPosition, wxDefaultSize, 0);
+	LblUserName = new wxStaticText(GrpUserName->GetStaticBox(), wxID_ANY, "100 " + checklang[7], wxDefaultPosition, wxDefaultSize, 0);
 	LblUserName->Wrap(-1);
 	LblUserName->SetFont(wxFont(8, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
@@ -123,16 +184,27 @@ void vSongCheck::QuickSettings(wxBoxSizer* MainWrapper)
 
 	InnerWrapper->Add(GrpUserName, 0, wxALL | wxEXPAND, 5);
 
-	okCancel = new wxStdDialogButtonSizer();
-	okCancelSave = new wxButton(this, wxID_SAVE);
-	okCancel->AddButton(okCancelSave);
-	okCancelCancel = new wxButton(this, wxID_CANCEL);
-	okCancel->AddButton(okCancelCancel);
-	okCancel->Realize();
-
-	InnerWrapper->Add(okCancel, 1, wxALL | wxEXPAND, 5);
-
 	MainWrapper->Add(InnerWrapper, 1, wxALL | wxEXPAND, 5);
+}
+
+void vSongCheck::BtnSearchCriteria_Click(wxCommandEvent&)
+{
+
+}
+
+void vSongCheck::BtnTabletMode_Click(wxCommandEvent&)
+{
+
+}
+
+void vSongCheck::CmbLanguage_SelectionChange(wxCommandEvent&)
+{
+
+}
+
+void vSongCheck::TxtUserName_TextChange(wxKeyEvent&)
+{
+
 }
 
 vSongCheck::~vSongCheck()

@@ -35,7 +35,7 @@ class vSongHome : public wxFrame
 protected:
 	vSongHome* home;
 	wxPanel* PanelLeft, * PanelRight;
-	wxComboBox* cmbSongBooks;
+	wxComboBox* CmbSongsBooks;
 	wxCheckBox* chkSearchSongs;
 	wxStaticBoxSizer* ListWrapper;
 	wxStaticBox* GrpSonglist;

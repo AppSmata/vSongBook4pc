@@ -49,7 +49,7 @@ protected:
 	wxStaticText* LblTabletMode1;
 	wxRadioButton* BtnSearchCriteria;
 	wxStaticText* LbLanguage;
-	wxComboBox* cmbLanguage;
+	wxComboBox* CmbLanguage;
 	wxTextCtrl* TxtUserName;
 	wxStaticText* LblUserName;
 	wxStatusBar* StatusBar;
@@ -60,9 +60,17 @@ protected:
 public:
 	vSongCheck(const wxString& title);
 
+	void BtnTabletMode_Click(wxCommandEvent& event);
+	void BtnSearchCriteria_Click(wxCommandEvent& event);
+	void CmbLanguage_SelectionChange(wxCommandEvent& event);
+	void TxtUserName_TextChange(wxKeyEvent& event);
+
 	void QuickSettings(wxBoxSizer* MainWrapper);
 	void BtnCancel_Click(wxCommandEvent& event);
 	void BtnSave_Click(wxCommandEvent& event);
+	void GetSettings();
+	void InitializeSettings();
+	void GetLanguages(wxString Language);
 
 	~vSongCheck();
 

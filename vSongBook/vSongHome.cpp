@@ -71,10 +71,10 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	wxBoxSizer* SizerLeft;
 	SizerLeft = new wxBoxSizer(wxVERTICAL);
 
-	cmbSongBooks = new wxComboBox(PanelLeft, wxID_ANY, wxT("Songbooks"), wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxCB_READONLY);
-	cmbSongBooks->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	CmbSongsBooks = new wxComboBox(PanelLeft, wxID_ANY, wxT("Songbooks"), wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxCB_READONLY);
+	CmbSongsBooks->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
-	SizerLeft->Add(cmbSongBooks, 0, wxALL | wxEXPAND, 5);
+	SizerLeft->Add(CmbSongsBooks, 0, wxALL | wxEXPAND, 5);
 
 	chkSearchSongs = new wxCheckBox(PanelLeft, wxID_ANY, wxT("Search All SongBooks"), wxDefaultPosition, wxSize(-1, -1), 0);
 	chkSearchSongs->SetValue(true);
@@ -149,7 +149,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	this->Centre(wxBOTH);
 
 	// Connect Events
-	cmbSongBooks->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(vSongHome::GetSelectedBook), NULL, this);
+	CmbSongsBooks->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(vSongHome::GetSelectedBook), NULL, this);
 	lstSongList->Connect(wxEVT_COMMAND_LISTBOX_SELECTED, wxCommandEventHandler(vSongHome::GetSelectedSong), NULL, this);
 	txtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN, wxCommandEventHandler(vSongHome::Search_Clear), NULL, this);
 	txtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN, wxCommandEventHandler(vSongHome::Search_Song), NULL, this);
@@ -304,11 +304,11 @@ void vSongHome::OnQuit(wxCommandEvent& WXUNUSED(event))
 void vSongHome::PopulateSongbooks()
 {
 	try {
-		int bookscount = cmbSongBooks->GetCount();
+		int bookscount = CmbSongsBooks->GetCount();
 		if (bookscount > 0) {
 			//bookids->Clear();
 			//booktitles->Clear();
-			cmbSongBooks->Clear();
+			CmbSongsBooks->Clear();
 		}
 
 		sqlite3* db;
@@ -324,14 +324,14 @@ void vSongHome::PopulateSongbooks()
 			wxString title = *(qryResult + i * col + 1);
 			wxString songs = *(qryResult + i * col + 2);
 
-			cmbSongBooks->Append(wxString::FromUTF8(std::string(title) + " (" + songs + ")"));
+			CmbSongsBooks->Append(wxString::FromUTF8(std::string(title) + " (" + songs + ")"));
 			bookids.push_back(*(qryResult + i * col + 0));
 			booktitles.push_back(title);
 		}
 
 		sqlite3_free_table(qryResult);
 		sqlite3_close(db);
-		cmbSongBooks->SetSelection(0);
+		CmbSongsBooks->SetSelection(0);
 		PopulateSonglists(bookids[0], "", false);
 	}
 	catch (exception & ex) {
@@ -350,7 +350,7 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 			songbooks.clear();
 			lstSongList->Clear();
 		}
-		wxString searchtotals = " songs found in: " + booktitles[cmbSongBooks->GetSelection()];
+		wxString searchtotals = " songs found in: " + booktitles[CmbSongsBooks->GetSelection()];
 
 		wxString SqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
 		SqlQuery = SqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE";
@@ -423,7 +423,7 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 
 void vSongHome::GetSelectedBook(wxCommandEvent&)
 {
-	PopulateSonglists(bookids[cmbSongBooks->GetSelection()], "", false);
+	PopulateSonglists(bookids[CmbSongsBooks->GetSelection()], "", false);
 }
 
 void vSongHome::GetSelectedSong(wxCommandEvent&)
@@ -448,7 +448,7 @@ void vSongHome::Search_Clear(wxCommandEvent&)
 void vSongHome::Search_Song(wxCommandEvent&)
 {
 	wxString searchthis = txtSearch->GetValue();
-	PopulateSonglists(bookids[cmbSongBooks->GetSelection()], searchthis, chkSearchSongs->GetValue());
+	PopulateSonglists(bookids[CmbSongsBooks->GetSelection()], searchthis, chkSearchSongs->GetValue());
 	SetStatusText("You searched for: \"" + searchthis + "\"");
 }
 
