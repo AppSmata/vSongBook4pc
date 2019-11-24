@@ -7,7 +7,7 @@
 !define APP_NAME "vSongBook"
 !define COMP_NAME "AppSmata Solutions"
 !define WEB_SITE "http://www.appsmata.com"
-!define VERSION "0.2.4.1"
+!define VERSION "0.2.5.0"
 !define COPYRIGHT "© AppSmata Solutions 2019"
 !define DESCRIPTION "vSongBook"
 !define INSTALLER_NAME "D:\cpp\vSongBook4PC\publish\Output\vSongBook${VERSION}.exe"

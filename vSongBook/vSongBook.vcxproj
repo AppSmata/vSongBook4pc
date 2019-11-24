@@ -223,7 +223,6 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Splash.cpp" />
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="sqlite\sqlite3pp.cpp" />

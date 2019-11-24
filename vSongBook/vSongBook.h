@@ -8,6 +8,9 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "wx/frame.h"
+#include "wx/image.h"
+#include "wx/splash.h"
+
 
 #if wxUSE_LOG
 #define USE_LOG 1
@@ -21,15 +24,10 @@ class vSongBook : public wxApp
 {
 public:
 	virtual bool OnInit() wxOVERRIDE;
-	const AppSettings::Preferences& GetSettings() const { return _pref; }
-	void UpdateSettings(const AppSettings::Preferences& settings);
 	void GetSettings();
 
 private:
 	wxDECLARE_EVENT_TABLE();
-	wxScopedPtr<wxPreferencesEditor> _prefEditor;
-	AppSettings::Preferences _pref;
-
 };
 
 wxDECLARE_APP(vSongBook);

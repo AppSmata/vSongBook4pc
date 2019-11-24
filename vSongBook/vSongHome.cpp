@@ -18,8 +18,6 @@ int homefont, songfont;
 wxString selected_book, selected_song, search_term;
 vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
-wxScopedPtr<wxPreferencesEditor> _prefEditor;
-
 vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	SetIcon(wxICON(vsbicon));

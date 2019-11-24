@@ -19,7 +19,6 @@
 #include "wx/wx.h"
 #endif
 
-#include "wx\preferences.h"
 #include "wx/imaglist.h"
 #include "wx/artprov.h"
 #include "wx/cshelp.h"

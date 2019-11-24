@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Splash.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="sqlite\shell.c">
       <Filter>Source Files</Filter>
     </ClCompile>
