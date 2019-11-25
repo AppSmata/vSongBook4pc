@@ -13,7 +13,7 @@
 #include <wx\tokenzr.h>
 
 int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont;
-wxString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide;
+wxString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide, view_fonty;
 vector<wxString> songverses1, songverses2, viewset, labels;
 bool haschorus;
 
@@ -67,6 +67,7 @@ wxBitmap ViewsButtonsBitmaps[Button_max];
 void vSongView::GetSettings()
 {
 	try {
+		if (viewset.size() > 0) viewset.clear();
 		sqlite3* db;
 		char* err_msg = NULL, ** qryResult = NULL;
 		int row, col, rc = sqlite3_open_v2("Data\\Settings.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
@@ -88,14 +89,24 @@ void vSongView::GetSettings()
 
 void vSongView::InitializeSettings()
 {
+	view_fonty = viewset[15];
 	mainfont = wxAtoi(viewset[14]);
-	smallfont = AppSmata::PresenterFont(mainfont);
+	//smallfont = AppSmata::PresenterFont(mainfont);
+
+	smallfont = 35;
+
+	LblKey->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
+	LblTitle->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
+	BtnClose->SetFont(wxFont(12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
+	LblContent->SetFont(wxFont(mainfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
+	LblSongInfo->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
+	LblAuthor->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
+	LblVerse->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, view_fonty));
 }
 
 vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	GetSettings();
-	InitializeSettings();
 
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 	this->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNHIGHLIGHT));
@@ -103,7 +114,7 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	wxBoxSizer* MainWrapper;
 	MainWrapper = new wxBoxSizer(wxVERTICAL);
 	
-	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v2.4.1 "));
+	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v0.2.5.2 | " + viewset[1]));
 	//AppLabel->SetForegroundColour(wxColour(fcl1, fcl2, fcl3));
 	wxStaticBoxSizer* GrpMain;
 	GrpMain = new wxStaticBoxSizer(AppLabel, wxVERTICAL);
@@ -144,6 +155,7 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	this->Centre(wxBOTH);
 
+	InitializeSettings();
 	TxtCommand->SetFocus();
 
 	AppLabel->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(vSongView::Anywhere_Click), NULL, this);
@@ -176,7 +188,6 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
 {
 	LblKey = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblKey->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblKey->Wrap(-1);
 	TopPanel->Add(LblKey, 0, wxALL, 5);
 
@@ -184,7 +195,6 @@ void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
 	WrapTitle = new wxBoxSizer(wxVERTICAL);
 
 	LblTitle = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblTitle->SetFont(wxFont(mainfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblTitle->Wrap(-1); 
 
 	WrapTitle->Add(LblTitle, 0, wxALIGN_CENTER | wxALL, 0);
@@ -192,7 +202,6 @@ void vSongView::SetTopPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* TopPanel)
 	TopPanel->Add(WrapTitle, 1, wxALIGN_CENTER | wxALL, 5);
 
 	BtnClose = new wxButton(GrpMain->GetStaticBox(), wxID_ANY, wxT("X"), wxDefaultPosition, wxSize(40, 20), 0);
-	BtnClose->SetFont(wxFont(12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 
 	TopPanel->Add(BtnClose, 0, wxALL | wxEXPAND, 5);
 
@@ -207,7 +216,6 @@ void vSongView::SetMidPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* MidPanel)
 	WrapContent = new wxBoxSizer(wxVERTICAL);
 
 	LblContent = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblContent->SetFont(wxFont(mainfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblContent->Wrap(-1);
 	WrapContent->Add(LblContent, 0, wxALIGN_CENTER | wxALL, 0);
 
@@ -249,17 +257,14 @@ void vSongView::SetDownPanel(wxStaticBoxSizer* GrpMain, wxBoxSizer* DownPanel)
 	VIEWS_BTN_BMP(orange_white_up);
 
 	LblSongInfo = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblSongInfo->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblSongInfo->Wrap(-1);
 	DownPanel->Add(LblSongInfo, 1, wxALL, 5);
 
 	LblAuthor = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblAuthor->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblAuthor->Wrap(-1);
 	DownPanel->Add(LblAuthor, 1, wxALL, 5);
 
 	LblVerse = new wxStaticText(GrpMain->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-	LblVerse->SetFont(wxFont(smallfont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	LblVerse->Wrap(-1);
 	DownPanel->Add(LblVerse, 0, wxALL, 5);
 
@@ -416,6 +421,7 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 		
 		//When Up Arrow Key is Pressed
 		case WXK_UP:
+		case WXK_NUMPAD_UP:
 			try
 			{
 				if (slideindex != 0)
@@ -429,6 +435,7 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 
 		//When Down Arrow Key is Pressed
 		case WXK_DOWN:
+		case WXK_NUMPAD_DOWN:
 			try
 			{
 				if (slideindex != (slides - 1))
@@ -440,42 +447,34 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 			catch (exception & ex) {}
 			break;
 
-		//When Minus Key is Pressed
-		case WXK_SUBTRACT:
-			/*if (fontsize >= 10)
-			{
-				try
-				{
-					fontsize = fontsize - 3;
-					settings.FontSizeProject = fontsize;
-					lblSongText.Font = new Font(settings.FontTypeProject, settings.FontSizeProject, settings.FontBoldProject ? FontStyle.Bold : FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-				}
-				catch (Exception) {}
-			}*/
-			break;
-
-		//When Plus Key is Pressed
-		case WXK_ADD:
-			/*if (fontsize >= 50)
-			{
-				try
-				{
-					fontsize = fontsize + 3;
-					settings.FontSizeProject = fontsize;
-					lblSongText.Font = new Font(settings.FontTypeProject, settings.FontSizeProject, settings.FontBoldProject ? FontStyle.Bold : FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-				}
-				catch (Exception) {}
-			}*/
-			break;
-
 		//When Left Arrow Key is Pressed
 		case WXK_LEFT:
-			
+			if (mainfont >= 10)
+			{
+				try
+				{
+					mainfont = mainfont - 2;
+					AppSmata::SetOption("projector_font_size", wxString::Format(wxT("%i"), mainfont));
+					GetSettings();
+					InitializeSettings();
+				}
+				catch (exception ex) {}
+			}
 			break;
 
 		//When Right Arrow Key is Pressed
 		case WXK_RIGHT:
-			this->Close();
+			if (mainfont <= 100)
+			{
+				try
+				{
+					mainfont = mainfont + 2;
+					AppSmata::SetOption("projector_font_size", wxString::Format(wxT("%i"), mainfont));
+					GetSettings();
+					InitializeSettings();
+				}
+				catch (exception ex) {}
+			}
 			break;
 
 		//When Letter M Key is Pressed
@@ -535,15 +534,19 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 			break;
 
 		//When Number 0/HOme Key is Pressed
-		case WXK_NUMPAD0:
-		case WXK_HOME:
-			//LoadStanza(0);
-			break;
-
-		//When Number 1 Key is Pressed
 		case WXK_NUMPAD1:
 		case WXK_SPECIAL1:
-			//LoadStanza(0);
+		case WXK_HOME:
+		case WXK_PAGEUP:
+			try
+			{
+				if (slideindex != 0)
+				{
+					slideindex = 0;
+					SetPresentation();
+				}
+			}
+			catch (exception & ex) {}
 			break;
 
 		//When Number 2 Key is Pressed
@@ -632,8 +635,16 @@ void vSongView::TxtCommandLine_KeyDown(wxKeyEvent& event)
 
 		//When End Key is Pressed
 		case WXK_END:
-			/*if (hasChorus) LoadStanza(stanzas - 2);
-			else LoadStanza(stanzas - 1);*/
+		case WXK_PAGEDOWN:
+			try
+			{
+				if (slideindex != (slides - 1))
+				{
+					slideindex = slides - 1;
+					SetPresentation();
+				}
+			}
+			catch (exception & ex) {}
 			break;
 
 		//When Letter V Key is Pressed

@@ -104,5 +104,15 @@ public:
 		return fontsize;
 	}
 
+	static int SelectedValue(wxString value, vector<wxString> values)
+	{
+		int setvalue = 0;
+		for (int i = 1; i < values.size(); i++)
+		{
+			if (values[i] == value) setvalue = i;
+		}
+		return setvalue;
+	}
+
 };
 

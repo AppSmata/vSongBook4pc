@@ -13,6 +13,7 @@
 #include "vSongView.h"
 #include "vSongCheck.h"
 #include "vSongBook.h"
+#include "vSongView.h"
 
 wxIMPLEMENT_APP(vSongBook);
 
@@ -28,16 +29,24 @@ bool vSongBook::OnInit()
 	if (!wxApp::OnInit()) return false;
 	GetSettings();
 
+	/*vSongView* present = new vSongView("vSongBook Presentation");
+	present->SetSize(1000, 700);
+	present->SetWindowStyle(0 | wxTAB_TRAVERSAL);
+	present->Show(true);
+	present->Center();
+	present->Maximize(true);*/
+
 	if (appsets[1] == "null") 
 	{
 		vSongCheck* check = new vSongCheck("Set Up your vSongBook to start!");
-		check->SetSize(700, 500);
+		check->SetSize(700, 550);
 		check->Show(true);
 		check->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
 		check->Center();
 	}
-	else {
-		vSongHome* home = new vSongHome("vSongBook for Desktop v2.4.1 | " + appsets[1]);
+	else 
+	{
+		vSongHome* home = new vSongHome("vSongBook for Desktop v0.2.5.2 | " + appsets[1]);
 		home->SetSize(1000, 800);
 		home->Show(true);
 		home->Center();

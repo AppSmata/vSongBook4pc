@@ -44,38 +44,59 @@ class vSongPrefs : public wxFrame
 protected:
 	wxStaticText* LblTitle;
 	wxNotebook* TabMain;
+
 	wxScrolledWindow* TabOne;
+
+	wxStaticBox* LblTabletGrp;
 	wxStaticText* LblTabletMode;
 	wxRadioButton* BtnTabletMode;
-	wxStaticText* LblTabletMode1;
+	wxStaticBox* LblSearchGrp;
+
+	wxStaticText* LblSearchCriteria;
 	wxRadioButton* BtnSearchCriteria;
+	wxStaticBox* LbLanguageGrp;
+
 	wxStaticText* LbLanguage;
-	wxComboBox* cmbLanguage;
+	wxComboBox* CmbLanguage;
+
 	wxTextCtrl* TxtUserName;
+	wxStaticBox* LblUserNameGrp;
 	wxStaticText* LblUserName;
+
+
 	wxScrolledWindow* TabTwo;
+
+	wxStaticBox* LblSampleGrp;
 	wxStaticText* LblSampleText;
-	wxStaticText* LblAppFont;
-	wxBitmapButton* BtnAppFontSmaller;
-	wxSlider* SldAppFont;
-	wxBitmapButton* BtnAppFontBigger;
-	wxComboBox* cmbAppFont;
-	wxRadioButton* BtnAppFont;
-	wxStaticText* LblPreview;
 	wxTextCtrl* TxtSample;
+
+	wxStaticBox* LblGeneralGrp;
+	wxStaticText* LblGeneral;
+	wxBitmapButton* BtnGeneralSmaller;
+	wxSlider* SldGeneral;
+	wxBitmapButton* BtnGeneralBigger;
+	wxComboBox* CmbGeneral;
+	wxRadioButton* BtnGeneral;
+
+	wxStaticBox* LblPreviewGrp;
+	wxStaticText* LblPreview;	
 	wxBitmapButton* BtnPreviewSmaller;
 	wxSlider* SldPreview;
 	wxBitmapButton* BtnPreviewBigger;
-	wxComboBox* cmbPreview;
+	wxComboBox* CmbPreview;
 	wxRadioButton* BtnPreview;
+
+	wxStaticBox* LblProjectionGrp;
 	wxStaticText* LblProjection;
 	wxBitmapButton* BtnProjectionSmaller;
 	wxSlider* SldProjection;
 	wxBitmapButton* BtnProjectionBigger;
-	wxComboBox* cmbProjection;
+	wxComboBox* CmbProjection;
 	wxRadioButton* BtnProjection;
+
 	wxScrolledWindow* TabThree;
 	wxButton* BtnTheme;
+
 	wxScrolledWindow* TabFour;
 	wxStatusBar* StatusBar;
 
@@ -84,10 +105,33 @@ public:
 
 	void PopulateTabOne();
 	void PopulateTabTwo();
+
+	void PopulateGrpGeneral(wxBoxSizer* grpwrap);
+	void PopulateGrpPreview(wxBoxSizer* grpwrap);
+	void PopulateGrpProjection(wxBoxSizer* grpwrap);
+
 	void PopulateGrpTextPrefs(wxBoxSizer* grpwrap, const wxString& grplabel);
 	void PopulateTabThree();
 	void PopulateGrpThemePrefs(wxWrapSizer* WrapThree, int ThemeID, const wxString& GrpLabel, const wxString& GrpColor, vector<int> forecolor, vector<int> backcolor);
 	void PopulateTabFour();
+
+	void BtnTabletMode_Click(wxCommandEvent& event);
+	void BtnSearchCriteria_Click(wxCommandEvent& event);
+	void CmbLanguage_SelectionChange(wxCommandEvent& event);
+	void TxtUserName_TextChange(wxCommandEvent& event);
+
+	void CmbGeneral_SelectionChange(wxCommandEvent& event);
+	void CmbProjection_SelectionChange(wxCommandEvent& event);
+	void CmbPreview_SelectionChange(wxCommandEvent& event);
+
+	void SldGeneral_OnScroll(wxScrollEvent& event);
+	void SldProjection_OnScroll(wxScrollEvent& event);
+	void SldPreview_OnScroll(wxScrollEvent& event);
+
+	void GetSettings();
+	void InitializeSettings();
+	void GetLanguages(wxString Language);
+	void InitializeLanguage();
 
 	~vSongPrefs();
 

@@ -43,19 +43,21 @@ class vSongCheck : public wxFrame
 {
 protected:
 	wxStaticText* LblTitle;
-	wxNotebook* TabMain;
+	wxStaticBox* LblTabletGrp;
 	wxStaticText* LblTabletMode;
 	wxRadioButton* BtnTabletMode;
-	wxStaticText* LblTabletMode1;
+	wxStaticBox* LblSearchGrp;
+	wxStaticText* LblSearchCriteria;
 	wxRadioButton* BtnSearchCriteria;
+	wxStaticBox* LbLanguageGrp;
 	wxStaticText* LbLanguage;
 	wxComboBox* CmbLanguage;
 	wxTextCtrl* TxtUserName;
+	wxStaticBox* LblUserNameGrp;
 	wxStaticText* LblUserName;
 	wxStatusBar* StatusBar;
-	wxStdDialogButtonSizer* okCancel;
-	wxButton* okCancelSave;
-	wxButton* okCancelCancel;
+	wxButton* BtnSave;
+	wxButton* BtnCancel;
 
 public:
 	vSongCheck(const wxString& title);
@@ -63,14 +65,16 @@ public:
 	void BtnTabletMode_Click(wxCommandEvent& event);
 	void BtnSearchCriteria_Click(wxCommandEvent& event);
 	void CmbLanguage_SelectionChange(wxCommandEvent& event);
-	void TxtUserName_TextChange(wxKeyEvent& event);
+	void TxtUserName_TextChange(wxCommandEvent& event);
+	void BtnSave_Click(wxCommandEvent& event);
+	void BtnCancel_Click(wxCommandEvent& event);
 
 	void QuickSettings(wxBoxSizer* MainWrapper);
-	void BtnCancel_Click(wxCommandEvent& event);
-	void BtnSave_Click(wxCommandEvent& event);
+
 	void GetSettings();
 	void InitializeSettings();
 	void GetLanguages(wxString Language);
+	void InitializeLanguage();
 
 	~vSongCheck();
 
