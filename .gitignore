@@ -64,6 +64,7 @@ artifacts/
 *.tli
 *.tlh
 *.tmp
+*.res
 *.tmp_proj
 *.db
 *.db-journal
