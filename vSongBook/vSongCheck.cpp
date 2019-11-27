@@ -134,7 +134,7 @@ void vSongCheck::InitializeLanguage()
 
 void vSongCheck::InitializeSettings()
 {
-	check_fonty = checkset[5];
+	check_fonty = checkset[6];
 	checkfontmain = wxAtoi(checkset[5]);
 	checkfontapp = AppSmata::PresenterFont(checkfontmain);
 

@@ -6,10 +6,10 @@
 
 !define APP_NAME "vSongBook"
 !define COMP_NAME "AppSmata Solutions"
-!define WEB_SITE "http://www.appsmata.com"
+!define WEB_SITE "http://www.appsmata.com/vsongbook"
 !define VERSION "0.2.5.2"
 !define COPYRIGHT "© AppSmata Solutions 2019"
-!define DESCRIPTION "vSongBook"
+!define DESCRIPTION "Application"
 !define INSTALLER_NAME "D:\cpp\vSongBook4PC\publish\Output\vSongBook${VERSION}.exe"
 !define MAIN_APP_EXE "vSongBook.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
@@ -63,6 +63,7 @@ InstallDir "$LOCALAPPDATA\AppSmata\vSongBook"
 
 !insertmacro MUI_PAGE_INSTFILES
 
+!define MUI_FINISHPAGE_RUN "$INSTDIR\${MAIN_APP_EXE}"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -72,9 +73,6 @@ InstallDir "$LOCALAPPDATA\AppSmata\vSongBook"
 !insertmacro MUI_UNPAGE_FINISH
 
 !insertmacro MUI_LANGUAGE "English"
-
-ShowInstDetails nevershow
-ShowUninstDetails nevershow
 
 ######################################################################
 
@@ -137,18 +135,18 @@ SectionEnd
 
 Section Uninstall
 ${INSTALL_TYPE}
-Delete "$INSTDIR\${MAIN_APP_EXE}"
+Delete "$INSTDIR\vSongBook.exe"
 Delete "$INSTDIR\Data\Language.db"
 Delete "$INSTDIR\Data\Settings.db"
 Delete "$INSTDIR\Data\Songs.db"
  
+RmDir "$INSTDIR\Data"
  
 Delete "$INSTDIR\uninstall.exe"
 !ifdef WEB_SITE
 Delete "$INSTDIR\${APP_NAME} website.url"
 !endif
 
-RmDir "$INSTDIR\Data"
 RmDir "$INSTDIR"
 
 !ifdef REG_START_MENU
