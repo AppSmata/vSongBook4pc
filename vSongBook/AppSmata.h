@@ -29,7 +29,6 @@
 #include "wx/cshelp.h"
 #include "wx/utils.h"
 
-
 #include <string>
 #include <iostream>
 #include <ctime>

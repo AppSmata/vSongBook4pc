@@ -114,7 +114,7 @@ vSongView::vSongView(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	wxBoxSizer* MainWrapper;
 	MainWrapper = new wxBoxSizer(wxVERTICAL);
 	
-	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v0.2.5.2 | " + viewset[1]));
+	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v2.5.2 | " + viewset[1]));
 	//AppLabel->SetForegroundColour(wxColour(fcl1, fcl2, fcl3));
 	wxStaticBoxSizer* GrpMain;
 	GrpMain = new wxStaticBoxSizer(AppLabel, wxVERTICAL);

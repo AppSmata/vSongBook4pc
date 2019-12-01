@@ -223,6 +223,10 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AppSplash.cpp" />
+    <ClCompile Include="lib_json\json_reader.cpp" />
+    <ClCompile Include="lib_json\json_value.cpp" />
+    <ClCompile Include="lib_json\json_writer.cpp" />
     <ClCompile Include="sqlite\shell.c" />
     <ClCompile Include="sqlite\sqlite3.c" />
     <ClCompile Include="sqlite\sqlite3pp.cpp" />
@@ -238,6 +242,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppSmata.h" />
+    <ClInclude Include="AppSplash.h" />
+    <ClInclude Include="lib_json\json_tool.h" />
     <ClInclude Include="sqlite\sqlite3.h" />
     <ClInclude Include="sqlite\sqlite3ext.h" />
     <ClInclude Include="sqlite\sqlite3pp.h" />
