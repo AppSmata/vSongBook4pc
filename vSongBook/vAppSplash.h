@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        AppSplash.h
+// Name:        vAppSplash.h
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
@@ -28,9 +28,9 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class AppSplash
+/// Class vAppSplash
 ///////////////////////////////////////////////////////////////////////////////
-class AppSplash : public wxFrame
+class vAppSplash : public wxFrame
 {
 private:
 
@@ -39,9 +39,9 @@ protected:
 
 public:
 
-	AppSplash(const wxString& title);
+	vAppSplash(const wxString& title);
 	
-	~AppSplash();
+	~vAppSplash();
 
 };
 

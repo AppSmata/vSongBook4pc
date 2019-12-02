@@ -42,16 +42,10 @@
     <ClCompile Include="vSongCheck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AppSplash.cpp">
+    <ClCompile Include="vBooksLoad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lib_json\json_reader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib_json\json_value.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib_json\json_writer.cpp">
+    <ClCompile Include="vAppSplash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -91,10 +85,10 @@
     <ClInclude Include="vSongCheck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AppSplash.h">
+    <ClInclude Include="vBooksLoad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lib_json\json_tool.h">
+    <ClInclude Include="vAppSplash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

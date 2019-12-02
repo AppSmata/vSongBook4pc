@@ -7,7 +7,7 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
-vsbicon ICON "vSongBook.ico"
+appicon ICON "appicon.ico"
 
 project BITMAP "res/project.bmp"
 edit BITMAP "res/edit.bmp"

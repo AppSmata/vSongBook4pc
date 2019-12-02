@@ -50,7 +50,7 @@ bool vSongBook::OnInit()
 	TmrSplash = new wxTimer(this, GaugePage_Timer);
 	TmrSplash->Start(5000);
 
-	splash = new AppSplash("vSongBook");
+	splash = new vAppSplash("vSongBook");
 	splash->SetSize(800, 500);
 	splash->SetWindowStyle(0 | wxTAB_TRAVERSAL);
 	splash->Show(true);
@@ -74,7 +74,7 @@ void vSongBook::OnProgressTimer(wxTimerEvent& WXUNUSED(event))
 	}
 	else
 	{
-		vSongHome* home = new vSongHome("vSongBook for Desktop v0.2.5.2 | " + appsets[1]);
+		vSongHome* home = new vSongHome("vSongBook for Desktop v2.5.2 | " + appsets[1]);
 		home->SetSize(1000, 800);
 		home->Show(true);
 		home->Center();

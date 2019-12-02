@@ -213,7 +213,7 @@ void vSongPrefs::InitializeSettings()
 
 void vSongPrefs::PopulateTabOne()
 {
-	SetIcon(wxICON(vsbicon));
+	SetIcon(wxICON(appicon));
 
 	TabOne = new wxScrolledWindow(TabMain, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
 	TabOne->SetScrollRate(5, 5);

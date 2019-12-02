@@ -111,7 +111,7 @@ wxString ContentText(wxString songstr)
 
 FrmSongSearch::FrmSongSearch(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
-	SetIcon(wxICON(vsbicon));
+	SetIcon(wxICON(appicon));
 
 #if wxUSE_MENUS
 	wxMenu *fileMenu = new wxMenu;

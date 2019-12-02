@@ -151,7 +151,7 @@ void vSongCheck::InitializeSettings()
 
 void vSongCheck::QuickSettings(wxBoxSizer* MainWrapper)
 {
-	SetIcon(wxICON(vsbicon));
+	SetIcon(wxICON(appicon));
 
 	wxBoxSizer* InnerWrapper;
 	InnerWrapper = new wxBoxSizer(wxVERTICAL);

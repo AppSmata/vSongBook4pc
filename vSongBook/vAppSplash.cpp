@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        AppSplash.cpp
+// Name:        vAppSplash.cpp
 // Purpose:     vSongBook for Desktop
 // Author:      Jacksiro
 // Modified by:
@@ -8,7 +8,7 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "AppSplash.h"
+#include "vAppSplash.h"
 enum
 {
 	Button_bigger,
@@ -16,7 +16,7 @@ enum
 	Button_max
 };
 
-AppSplash::AppSplash(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
+vAppSplash::vAppSplash(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
@@ -34,6 +34,6 @@ AppSplash::AppSplash(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 }
 
 
-AppSplash::~AppSplash()
+vAppSplash::~vAppSplash()
 {
 }

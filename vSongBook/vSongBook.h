@@ -11,7 +11,7 @@
 #include "wx/image.h"
 #include "wx/splash.h"
 #include "wx/timer.h"
-#include "AppSplash.h"
+#include "vAppSplash.h"
 
 
 #if wxUSE_LOG
@@ -27,7 +27,7 @@ class vSongBook : public wxApp
 protected:
 	wxTimer* TmrSplash;
 	wxGauge* AppGauge;
-	AppSplash* splash;
+	vAppSplash* splash;
 
 public:
 	virtual bool OnInit() wxOVERRIDE;
