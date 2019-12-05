@@ -36,12 +36,12 @@ protected:
 	vSongHome* home;
 	wxPanel* PanelLeft, * PanelRight;
 	wxComboBox* CmbSongsBooks;
-	wxCheckBox* chkSearchSongs;
+	wxCheckBox* ChkSearchSongs;
 	wxStaticBoxSizer* ListWrapper;
 	wxStaticBox* GrpSonglist;
-	wxListBox* lstSongList;
-	wxSearchCtrl* txtSearch;
-	wxToolBar* toolBarSong;
+	wxListBox* LstSongList;
+	wxSearchCtrl* TxtSearch;
+	wxToolBar* ToolBarSong;
 	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
 	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
 

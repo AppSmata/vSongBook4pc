@@ -8,7 +8,6 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "AppSmata.h"
-#include "AppSettings.h"
 #include "vSongHome.h"
 #include "vSongView.h"
 #include "vSongCheck.h"
@@ -48,7 +47,7 @@ bool vSongBook::OnInit()
 	GetSettings();
 
 	TmrSplash = new wxTimer(this, GaugePage_Timer);
-	TmrSplash->Start(5000);
+	TmrSplash->Start(500);
 
 	splash = new vAppSplash("vSongBook");
 	splash->SetSize(800, 500);
