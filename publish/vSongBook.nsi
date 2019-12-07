@@ -7,7 +7,7 @@
 !define APP_NAME "vSongBook"
 !define COMP_NAME "AppSmata Solutions"
 !define WEB_SITE "http://www.appsmata.com/vsongbook"
-!define VERSION "0.2.5.22"
+!define VERSION "0.2.5.23"
 !define COPYRIGHT "© AppSmata Solutions 2019"
 !define DESCRIPTION "Application"
 !define INSTALLER_NAME "D:\cpp\vSongBook4PC\publish\Output\vSongBook${VERSION}.exe"
@@ -85,6 +85,8 @@ SetOutPath "$INSTDIR\Data"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Language.db"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Settings.db"
 File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Songs.db"
+SetOutPath "$INSTDIR\res"
+File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\res\splash.bmp"
 SectionEnd
 
 ######################################################################
@@ -139,8 +141,10 @@ Delete "$INSTDIR\vSongBook.exe"
 Delete "$INSTDIR\Data\Language.db"
 Delete "$INSTDIR\Data\Settings.db"
 Delete "$INSTDIR\Data\Songs.db"
+Delete "$INSTDIR\res\splash.bmp"
  
 RmDir "$INSTDIR\Data"
+RmDir "$INSTDIR\res"
  
 Delete "$INSTDIR\uninstall.exe"
 !ifdef WEB_SITE
