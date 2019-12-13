@@ -10,51 +10,71 @@
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/string.h>
-#include <wx/combobox.h>
+#include <wx/statusbr.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/checkbox.h>
+#include <wx/string.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/menu.h>
+#include <wx/srchctrl.h>
+#include <wx/choice.h>
+#include <wx/radiobut.h>
 #include <wx/listbox.h>
 #include <wx/sizer.h>
 #include <wx/statbox.h>
 #include <wx/panel.h>
-#include <wx/srchctrl.h>
-#include <wx/bitmap.h>
-#include <wx/image.h>
-#include <wx/icon.h>
 #include <wx/toolbar.h>
 #include <wx/textctrl.h>
 #include <wx/splitter.h>
 #include <wx/frame.h>
 
+///////////////////////////////////////////////////////////////////////////////
+/// Class vSongHome
+///////////////////////////////////////////////////////////////////////////////
+
 class vSongHome : public wxFrame
 {
+private:
+
 protected:
 	vSongHome* home;
+	wxBoxSizer* MainWrapper;
+
+	wxStatusBar* AppStatusbar;
+	wxSplitterWindow* AppSplitter;
+	wxComboBox* CmbSongBooks;
+	wxMenuBar* Mnu_Menu;
+	wxMenu* Mnu_File, * Mnu_Songs, * Mnu_Books, * Mnu_Search, * Mnu_Settings, * Mnu_Help, * Mnu_Support;
+
+	wxMenuItem* Mnu_Restart, * Mnu_Exit, * Mnu_SongNew, * Mnu_SongEdit, * Mnu_SongFav, * Mnu_SongDelete, * Mnu_BookEdit;
+	wxMenuItem* Mnu_BookFav, * Mnu_BooksManage, * Mnu_SearchToday, * Mnu_SearchYesterday, * Mnu_SearchOlder;
+	wxMenuItem* Mnu_SettingsAll, * Mnu_SettingsReset, * Mnu_About, * Mnu_Contacts, * Mnu_Donate;
+
 	wxPanel* PanelLeft, * PanelRight;
-	wxComboBox* CmbSongsBooks;
-	wxCheckBox* ChkSearchSongs;
+	wxCheckBox* ChkSearchSongs, * ChkNightMode;
 	wxStaticBoxSizer* ListWrapper;
 	wxStaticBox* GrpSonglist;
 	wxListBox* LstSongList;
 	wxSearchCtrl* TxtSearch;
-	wxToolBar* ToolBarSong;
-	wxToolBarToolBase* btnProject, * btnEdit, * btnLast, * btnNext, * btnBigger, * btnSmaller, * btnFontset, * btnBold, * btnBooks, * btnSettings;
+	wxToolBar* AppToolBar;
+	wxToolBarToolBase* BtnProject, * BtnEdit, * BtnLast, * BtnNext, * BtnBigger, * BtnSmaller, * BtnFontset, * BtnBold, * BtnBooks, * BtnSettings;
 	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
-
-	wxSplitterWindow* WndSplitter;
 
 	bool m_smallToolbar, m_horzText, m_useCustomDisabled, m_showTooltips;
 	size_t m_rows, m_nPrint;
 
 public:
+
 	vSongHome(const wxString& title);
+	void SetupMenu();
 
 	void PopulateToolbar();
 	void PopulateSongbooks();
+	void SetAppTheme(int apptheme);
 	void PopulateSonglists(wxString setbook, wxString searchstr, bool searchall);
 	void OpenSongPreview(int setsong);
 	void PopulateSongresults(wxString searchstr);
@@ -64,26 +84,30 @@ public:
 	void Search_Clear(wxCommandEvent& event);
 	void Search_Focus(wxCommandEvent& event);
 	void Search_Song(wxCommandEvent& event);
-	void btnProject_Click(wxCommandEvent& event);
-	void btnEdit_Click(wxCommandEvent& event);
-	void btnLast_Click(wxCommandEvent& event);
-	void btnNext_Click(wxCommandEvent& event);
-	void btnBigger_Click(wxCommandEvent& event);
-	void btnSmaller_Click(wxCommandEvent& event);
-	void btnFontset_Click(wxCommandEvent& event);
-	void btnBold_Click(wxCommandEvent& event);
-	void btnBooks_Click(wxCommandEvent& event);
-	void btnSettings_Click(wxCommandEvent& event);
+	void BtnProject_Click(wxCommandEvent& event);
+	void BtnEdit_Click(wxCommandEvent& event);
+	void BtnLast_Click(wxCommandEvent& event);
+	void BtnNext_Click(wxCommandEvent& event);
+	void BtnBigger_Click(wxCommandEvent& event);
+	void BtnSmaller_Click(wxCommandEvent& event);
+	void BtnFontset_Click(wxCommandEvent& event);
+	void BtnBold_Click(wxCommandEvent& event);
+	void BtnBooks_Click(wxCommandEvent& event);
+	void BtnSettings_Click(wxCommandEvent& event);
 
-	void WndSplitterOnIdle(wxIdleEvent&)
+	void ChkNightMode_Click(wxCommandEvent& event);
+
+	void AppSplitterOnIdle(wxIdleEvent&)
 	{
-		WndSplitter->SetSashPosition(350);
-		WndSplitter->Disconnect(wxEVT_IDLE, wxIdleEventHandler(vSongHome::WndSplitterOnIdle), NULL, this);
+		AppSplitter->SetSashPosition(400);
+		AppSplitter->Disconnect(wxEVT_IDLE, wxIdleEventHandler(vSongHome::AppSplitterOnIdle), NULL, this);
 	}
 
 	void OnQuit(wxCommandEvent& event);
 	void OnAbout(wxCommandEvent& event);
 	void GetSettings();
 	void InitializeSettings();
+
+	~vSongHome();
 
 };

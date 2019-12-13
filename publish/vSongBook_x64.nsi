@@ -10,7 +10,7 @@
 !define VERSION "0.2.5.23"
 !define COPYRIGHT "© AppSmata Solutions 2019"
 !define DESCRIPTION "Application"
-!define INSTALLER_NAME "D:\cpp\vSongBook4PC\publish\Output\vSongBook${VERSION}.exe"
+!define INSTALLER_NAME "D:\cpp\vSongBook4PC\publish\Output\vSongBook${VERSION}_x64.exe"
 !define MAIN_APP_EXE "vSongBook.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
 !define REG_ROOT "HKCU"
@@ -80,13 +80,13 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite ifnewer
 SetOutPath "$INSTDIR"
-File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\vSongBook.exe"
+File "D:\cpp\vSongBook4PC\bin\Release_x64\vSongBook.exe"
 SetOutPath "$INSTDIR\Data"
-File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Language.db"
-File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Settings.db"
-File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\Data\Songs.db"
+File "D:\cpp\vSongBook4PC\bin\Release_x64\Data\Language.db"
+File "D:\cpp\vSongBook4PC\bin\Release_x64\Data\Settings.db"
+File "D:\cpp\vSongBook4PC\bin\Release_x64\Data\Songs.db"
 SetOutPath "$INSTDIR\res"
-File "D:\cpp\vSongBook4PC\vSongBook\vc_mswu\res\splash.bmp"
+File "D:\cpp\vSongBook4PC\bin\Release_x64\res\splash.bmp"
 SectionEnd
 
 ######################################################################

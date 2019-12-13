@@ -33,8 +33,8 @@ enum
 };
 
 wxBEGIN_EVENT_TABLE(vSongBook, wxApp)
-	EVT_MENU(wxID_EXIT, vSongHome::OnQuit)
-	EVT_MENU(wxID_ABOUT, vSongHome::OnAbout)
+	//EVT_MENU(wxID_EXIT, vSongHome::OnQuit)
+	//EVT_MENU(wxID_ABOUT, vSongHome::OnAbout)
 	EVT_TIMER(GaugePage_Timer, vSongBook::OnProgressTimer)
 wxEND_EVENT_TABLE()
 

@@ -20,151 +20,196 @@ vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcont
 vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
 	SetIcon(wxICON(appicon));
-
-#if wxUSE_MENUS
-	wxMenu* fileMenu = new wxMenu;
-
-	// the "About" item should be in the help menu
-	wxMenu* helpMenu = new wxMenu;
-	//helpMenu->Append(Minimal_About, "&About\tF1", "Show about dialog");
-
-	//fileMenu->Append(Minimal_Quit, "E&xit\tAlt-X", "Quit vSongBook");
-
-	wxMenuBar* menuBar = new wxMenuBar();
-	menuBar->Append(fileMenu, "&File");
-	menuBar->Append(helpMenu, "&Help");
-
-	// ... and attach this menu bar to the vSongHome
-	//SetMenuBar(menuBar);
-#else // !wxUSE_MENUS
-	// If menus are not available add a button to access the about box
-	wxSizer* sizer = new wxBoxSizer(wxHORIZONTAL);
-	wxButton* aboutBtn = new wxButton(this, wxID_ANY, "About...");
-	aboutBtn->Bind(wxEVT_BUTTON, &vSongHome::OnAbout, this);
-	sizer->Add(aboutBtn, wxSizerFlags().Center());
-#endif // wxUSE_MENUS/!wxUSE_MENUS
-
-#if wxUSE_STATUSBAR
+	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
 	GetSettings();
 	InitializeSettings();
 
-	CreateStatusBar(2);
-	SetStatusText("Welcome to vSongBook for Desktop! " + homesets[1]);
+	//CreateStatusBar(2);
+	//SetStatusText("Welcome to vSongBook for Desktop! " + homesets[1]);
 
-#endif // wxUSE_STATUSBAR
-	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
-	this->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNTEXT));
+	AppStatusbar = this->CreateStatusBar(1, wxST_SIZEGRIP, wxID_ANY);
+	
+	SetupMenu();
 
 	wxBoxSizer* MainWrapper;
 	MainWrapper = new wxBoxSizer(wxVERTICAL);
 
-	WndSplitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_3D);
-	WndSplitter->SetSashGravity(0);
-	WndSplitter->Connect(wxEVT_IDLE, wxIdleEventHandler(vSongHome::WndSplitterOnIdle), NULL, this);
+	AppSplitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_3D | wxSP_BORDER);
+	AppSplitter->Connect(wxEVT_IDLE, wxIdleEventHandler(vSongHome::AppSplitterOnIdle), NULL, this);
+	AppSplitter->SetMinimumPaneSize(350);
 
-	WndSplitter->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNTEXT));
+	PanelLeft = new wxPanel(AppSplitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+	wxBoxSizer* WrapLeft;
+	WrapLeft = new wxBoxSizer(wxVERTICAL);
 
-	PanelLeft = new wxPanel(WndSplitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-	PanelLeft->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
-
-	wxBoxSizer* SizerLeft;
-	SizerLeft = new wxBoxSizer(wxVERTICAL);
-
-	TxtSearch = new wxSearchCtrl(PanelLeft, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
-	TxtSearch->SetFont(wxFont(20, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-
+	TxtSearch = new wxSearchCtrl(PanelLeft, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
 #ifndef __WXMAC__
 	TxtSearch->ShowSearchButton(true);
 #endif
 	TxtSearch->ShowCancelButton(true);
+	TxtSearch->SetFont(wxFont(18, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	WrapLeft->Add(TxtSearch, 0, wxALL | wxEXPAND, 5);
 
-	SizerLeft->Add(TxtSearch, 0, wxALL | wxEXPAND, 5);
-
-	CmbSongsBooks = new wxComboBox(PanelLeft, wxID_ANY, wxT("Songbooks"), wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxCB_READONLY);
-	CmbSongsBooks->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-
-	SizerLeft->Add(CmbSongsBooks, 0, wxALL | wxEXPAND, 5);
+	CmbSongBooks = new wxComboBox(PanelLeft, wxID_ANY, wxT("Songbooks"), wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxCB_READONLY);
+	CmbSongBooks->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	WrapLeft->Add(CmbSongBooks, 0, wxALL | wxEXPAND, 5);
 
 	ChkSearchSongs = new wxCheckBox(PanelLeft, wxID_ANY, wxT("Search All SongBooks"), wxDefaultPosition, wxSize(-1, -1), 0);
 	ChkSearchSongs->SetValue(true);
 	ChkSearchSongs->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	WrapLeft->Add(ChkSearchSongs, 0, wxALL | wxEXPAND, 5);
 
-	SizerLeft->Add(ChkSearchSongs, 0, wxALL | wxEXPAND, 5);
+	wxStaticBoxSizer* GrpSearch;
+	GrpSearch = new wxStaticBoxSizer(new wxStaticBox(PanelLeft, wxID_ANY, wxT("0 Songs found")), wxVERTICAL);
 
-	GrpSonglist = new wxStaticBox(PanelLeft, wxID_ANY, wxT(""));
-	ListWrapper = new wxStaticBoxSizer(GrpSonglist, wxVERTICAL);
-
-	LstSongList = new wxListBox(PanelLeft, wxID_ANY, wxDefaultPosition, wxSize(-1, -1), 0, NULL, wxLB_HSCROLL);
+	LstSongList = new wxListBox(GrpSearch->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, NULL, 0);
 	LstSongList->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-
-	ListWrapper->Add(LstSongList, 1, wxALL | wxEXPAND, 1);
-
-	SizerLeft->Add(ListWrapper, 1, wxEXPAND, 5);
-
-	PanelLeft->SetSizer(SizerLeft);
-	PanelLeft->Layout();
-	SizerLeft->Fit(PanelLeft);
-	PanelRight = new wxPanel(WndSplitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-	PanelRight->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_HIGHLIGHTTEXT));
-
-	wxBoxSizer* SizerRight;
-	SizerRight = new wxBoxSizer(wxVERTICAL);
+	GrpSearch->Add(LstSongList, 1, wxALL | wxEXPAND, 5);
 	
-	ToolBarSong = new wxToolBar(PanelRight, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
-	ToolBarSong->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
+	WrapLeft->Add(GrpSearch, 1, wxALL | wxEXPAND, 5);
 
-	SizerRight->Add(ToolBarSong, 0, wxEXPAND, 5);
+	PanelLeft->SetSizer(WrapLeft);
+	PanelLeft->Layout();
+	WrapLeft->Fit(PanelLeft);
+	PanelRight = new wxPanel(AppSplitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+	wxBoxSizer* WrapRight;
+	WrapRight = new wxBoxSizer(wxVERTICAL);
 
-	TxtSongTitle = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_READONLY | wxTE_RICH);
-	TxtSongTitle->SetFont(wxFont(songfont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	SizerRight->Add(TxtSongTitle, 0, wxALL | wxEXPAND, 5);
+	AppToolBar = new wxToolBar(PanelRight, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
+	AppToolBar->Realize();
 
-	wxStaticBoxSizer* GroupPreview;
-	GroupPreview = new wxStaticBoxSizer(new wxStaticBox(PanelRight, wxID_ANY, wxEmptyString), wxVERTICAL);
+	WrapRight->Add(AppToolBar, 0, wxEXPAND, 5);
 
-	TxtPreview = new wxTextCtrl(GroupPreview->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH);
-	TxtPreview->SetFont(wxFont(songfont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
-	GroupPreview->Add(TxtPreview, 1, wxALL | wxEXPAND, 0);
+	TxtSongTitle = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY);
+	TxtSongTitle->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	WrapRight->Add(TxtSongTitle, 0, wxALL | wxEXPAND, 5);
 
+	wxStaticBoxSizer* GrpContent;
+	GrpContent = new wxStaticBoxSizer(new wxStaticBox(PanelRight, wxID_ANY, wxEmptyString), wxVERTICAL);
 
-	SizerRight->Add(GroupPreview, 1, wxEXPAND, 0);
+	TxtPreview = new wxTextCtrl(GrpContent->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
+	TxtPreview->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	GrpContent->Add(TxtPreview, 1, wxALL | wxEXPAND, 5);
 
-	TxtExtras = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, -1), wxTE_MULTILINE | wxTE_READONLY);
-	TxtExtras->SetFont(wxFont(homefont, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	WrapRight->Add(GrpContent, 1, wxALL | wxEXPAND, 5);
 
-	SizerRight->Add(TxtExtras, 0, wxALL | wxEXPAND, 5);
+	TxtExtras = new wxTextCtrl(PanelRight, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
+	TxtExtras->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	WrapRight->Add(TxtExtras, 0, wxALL | wxEXPAND, 5);
 
-	PanelRight->SetSizer(SizerRight);
+	PanelRight->SetSizer(WrapRight);
 	PanelRight->Layout();
-	SizerRight->Fit(PanelRight);
-	WndSplitter->SplitVertically(PanelLeft, PanelRight, 350);
-	MainWrapper->Add(WndSplitter, 1, wxEXPAND, 0);
+	WrapRight->Fit(PanelRight);
+	AppSplitter->SplitVertically(PanelLeft, PanelRight, 450);
+	MainWrapper->Add(AppSplitter, 1, wxEXPAND, 5);
 
 	PopulateToolbar();
 	PopulateSongbooks();
+	SetAppTheme(wxAtoi(homesets[25]));
 
 	this->SetSizer(MainWrapper);
 	this->Layout();
+
 	this->Centre(wxBOTH);
 
 	// Connect Events
-	CmbSongsBooks->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(vSongHome::GetSelectedBook), NULL, this);
+	CmbSongBooks->Connect(wxEVT_COMMAND_COMBOBOX_SELECTED, wxCommandEventHandler(vSongHome::GetSelectedBook), NULL, this);
 	LstSongList->Connect(wxEVT_COMMAND_LISTBOX_SELECTED, wxCommandEventHandler(vSongHome::GetSelectedSong), NULL, this);
 	TxtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN, wxCommandEventHandler(vSongHome::Search_Clear), NULL, this);
 	TxtSearch->Connect(wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN, wxCommandEventHandler(vSongHome::Search_Song), NULL, this);
 	TxtSearch->Connect(wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler(vSongHome::Search_Song), NULL, this);
 	//TxtSearch->Bind(wxEVT_COMMAND_TEXT_ENTER, &vSongHome::Search_Song, this);
-	this->Connect(btnProject->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnProject_Click));
-	this->Connect(btnEdit->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnEdit_Click));
-	this->Connect(btnLast->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnLast_Click));
-	this->Connect(btnNext->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnNext_Click));
-	this->Connect(btnBigger->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnBigger_Click));
-	this->Connect(btnSmaller->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnSmaller_Click));
-	this->Connect(btnFontset->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnFontset_Click));
-	this->Connect(btnBold->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnBold_Click));
-	this->Connect(btnBooks->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnBooks_Click));
-	this->Connect(btnSettings->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::btnSettings_Click));
+	this->Connect(BtnProject->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnProject_Click));
+	this->Connect(BtnEdit->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnEdit_Click));
+	this->Connect(BtnLast->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnLast_Click));
+	this->Connect(BtnNext->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnNext_Click));
+	this->Connect(BtnBigger->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnBigger_Click));
+	this->Connect(BtnSmaller->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnSmaller_Click));
+	this->Connect(BtnFontset->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnFontset_Click));
+	this->Connect(BtnBold->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnBold_Click));
+	this->Connect(BtnBooks->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnBooks_Click));
+	this->Connect(BtnSettings->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnSettings_Click));
+	
+	ChkNightMode->Connect(wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler(vSongHome::ChkNightMode_Click), NULL, this);
+}
+
+void vSongHome::SetupMenu()
+{
+	Mnu_Menu = new wxMenuBar(0);
+	Mnu_File = new wxMenu();
+	Mnu_Restart = new wxMenuItem(Mnu_File, wxID_ANY, wxString(wxT("Restart App")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_File->Append(Mnu_Restart);
+
+	Mnu_Exit = new wxMenuItem(Mnu_File, wxID_ANY, wxString(wxT("Exit")) + wxT('\t') + wxT("Alt + F4"), wxEmptyString, wxITEM_NORMAL);
+	Mnu_File->Append(Mnu_Exit);
+
+	Mnu_Menu->Append(Mnu_File, wxT("File"));
+
+	Mnu_Songs = new wxMenu();
+	Mnu_SongNew = new wxMenuItem(Mnu_Songs, wxID_ANY, wxString(wxT("New Song")) + wxT('\t') + wxT("Ctrl + N"), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Songs->Append(Mnu_SongNew);
+
+	Mnu_SongEdit = new wxMenuItem(Mnu_Songs, wxID_ANY, wxString(wxT("Edit Song")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Songs->Append(Mnu_SongEdit);
+
+	Mnu_SongFav = new wxMenuItem(Mnu_Songs, wxID_ANY, wxString(wxT("Favorite Song")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Songs->Append(Mnu_SongFav);
+
+	Mnu_SongDelete = new wxMenuItem(Mnu_Songs, wxID_ANY, wxString(wxT("Delete Song")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Songs->Append(Mnu_SongDelete);
+
+	Mnu_Menu->Append(Mnu_Songs, wxT("Songs"));
+
+	Mnu_Books = new wxMenu();
+	Mnu_BookEdit = new wxMenuItem(Mnu_Books, wxID_ANY, wxString(wxT("Edit Songbook")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Books->Append(Mnu_BookEdit);
+
+	Mnu_BookFav = new wxMenuItem(Mnu_Books, wxID_ANY, wxString(wxT("Favourite Songbook")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Books->Append(Mnu_BookFav);
+
+	Mnu_BooksManage = new wxMenuItem(Mnu_Books, wxID_ANY, wxString(wxT("Manage Songbooks")) + wxT('\t') + wxT("Ctrl + B"), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Books->Append(Mnu_BooksManage);
+
+	Mnu_Menu->Append(Mnu_Books, wxT("Songbooks"));
+
+	Mnu_Search = new wxMenu();
+	Mnu_SearchToday = new wxMenuItem(Mnu_Search, wxID_ANY, wxString(wxT("Today")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Search->Append(Mnu_SearchToday);
+
+	Mnu_SearchYesterday = new wxMenuItem(Mnu_Search, wxID_ANY, wxString(wxT("Yesterday")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Search->Append(Mnu_SearchYesterday);
+
+	Mnu_SearchOlder = new wxMenuItem(Mnu_Search, wxID_ANY, wxString(wxT("Older")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Search->Append(Mnu_SearchOlder);
+
+	Mnu_Menu->Append(Mnu_Search, wxT("Search"));
+
+	Mnu_Settings = new wxMenu();
+	Mnu_SettingsAll = new wxMenuItem(Mnu_Settings, wxID_ANY, wxString(wxT("Manage Settings")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Settings->Append(Mnu_SettingsAll);
+
+	Mnu_SettingsReset = new wxMenuItem(Mnu_Settings, wxID_ANY, wxString(wxT("Reset Settings")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Settings->Append(Mnu_SettingsReset);
+
+	Mnu_Menu->Append(Mnu_Settings, wxT("Settings"));
+
+	Mnu_Help = new wxMenu();
+	Mnu_About = new wxMenuItem(Mnu_Help, wxID_ANY, wxString(wxT("About vSongBook")) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Help->Append(Mnu_About);
+
+	Mnu_Contacts = new wxMenuItem(Mnu_Help, wxID_ANY, wxString(wxT("Contact Us")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Help->Append(Mnu_Contacts);
+
+	Mnu_Menu->Append(Mnu_Help, wxT("Help"));
+
+	Mnu_Support = new wxMenu();
+	Mnu_Donate = new wxMenuItem(Mnu_Support, wxID_ANY, wxString(wxT("How to Donate")), wxEmptyString, wxITEM_NORMAL);
+	Mnu_Support->Append(Mnu_Donate);
+
+	Mnu_Menu->Append(Mnu_Support, wxT("Support Us"));
+
+	this->SetMenuBar(Mnu_Menu);
 }
 
 void vSongHome::GetSettings()
@@ -237,45 +282,50 @@ void vSongHome::PopulateToolbar()
 	int w = toolBarBitmaps[Tool_project].GetWidth(),
 		h = toolBarBitmaps[Tool_project].GetHeight();
 
-	ToolBarSong->SetToolBitmapSize(wxSize(w, h));
+	AppToolBar->SetToolBitmapSize(wxSize(w, h));
 
-	btnProject = ToolBarSong->AddTool(wxID_ANY, wxT("Project"), toolBarBitmaps[Tool_project], wxNullBitmap, wxITEM_NORMAL,
+	BtnProject = AppToolBar->AddTool(wxID_ANY, wxT("Project"), toolBarBitmaps[Tool_project], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Project this Song"), wxT("Project this Song"), NULL);
 
-	btnEdit = ToolBarSong->AddTool(wxID_ANY, wxT("Edit"), toolBarBitmaps[Tool_edit], wxNullBitmap, wxITEM_NORMAL,
+	BtnEdit = AppToolBar->AddTool(wxID_ANY, wxT("Edit"), toolBarBitmaps[Tool_edit], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Edit this Song"), wxT("Edit this Song"), NULL);
 
-	ToolBarSong->AddSeparator();
+	AppToolBar->AddSeparator();
 
-	btnLast = ToolBarSong->AddTool(wxID_ANY, wxT("Previous"), toolBarBitmaps[Tool_last], wxNullBitmap, wxITEM_NORMAL,
+	BtnLast = AppToolBar->AddTool(wxID_ANY, wxT("Previous"), toolBarBitmaps[Tool_last], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Go to the Previous Song"), wxT("Go to the Previous Song"), NULL);
 
-	btnNext = ToolBarSong->AddTool(wxID_ANY, wxT("Next"), toolBarBitmaps[Tool_next], wxNullBitmap, wxITEM_NORMAL,
+	BtnNext = AppToolBar->AddTool(wxID_ANY, wxT("Next"), toolBarBitmaps[Tool_next], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Go to the Next Song"), wxT("Go to the Next Song"), NULL);
 
-	ToolBarSong->AddSeparator();
+	AppToolBar->AddSeparator();
 
-	btnBigger = ToolBarSong->AddTool(wxID_ANY, wxT("Bigger"), toolBarBitmaps[Tool_bigger], wxNullBitmap,
+	BtnBigger = AppToolBar->AddTool(wxID_ANY, wxT("Bigger"), toolBarBitmaps[Tool_bigger], wxNullBitmap,
 		wxITEM_NORMAL, wxT("Bigger Font Size"), wxT("Bigger Font Size"), NULL);
 
-	btnSmaller = ToolBarSong->AddTool(wxID_ANY, wxT("Smaller"), toolBarBitmaps[Tool_smaller], wxNullBitmap, wxITEM_NORMAL,
+	BtnSmaller = AppToolBar->AddTool(wxID_ANY, wxT("Smaller"), toolBarBitmaps[Tool_smaller], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Smaller Font Size"), wxT("Smaller Font Size"), NULL);
 
-	btnFontset = ToolBarSong->AddTool(wxID_ANY, wxT("Font"), toolBarBitmaps[Tool_font], wxNullBitmap, wxITEM_NORMAL,
+	BtnFontset = AppToolBar->AddTool(wxID_ANY, wxT("Font"), toolBarBitmaps[Tool_font], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Change Font Type"), wxT("Change Font Type"), NULL);
 
-	btnBold = ToolBarSong->AddTool(wxID_ANY, wxT("Bold"), toolBarBitmaps[Tool_bold], wxNullBitmap, wxITEM_NORMAL,
+	BtnBold = AppToolBar->AddTool(wxID_ANY, wxT("Bold"), toolBarBitmaps[Tool_bold], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Make Bold"), wxT("Make Bold"), NULL);
 
-	ToolBarSong->AddSeparator();
+	AppToolBar->AddSeparator();
 
-	btnBooks = ToolBarSong->AddTool(wxID_ANY, wxT("SongBooks"), toolBarBitmaps[Tool_books], wxNullBitmap, wxITEM_NORMAL,
+	BtnBooks = AppToolBar->AddTool(wxID_ANY, wxT("SongBooks"), toolBarBitmaps[Tool_books], wxNullBitmap, wxITEM_NORMAL,
 		wxT("View SongBooks"), wxT("View SongBooks"), NULL);
 
-	btnSettings = ToolBarSong->AddTool(wxID_ANY, wxT("Settings"), toolBarBitmaps[Tool_settings], wxNullBitmap, wxITEM_NORMAL,
+	BtnSettings = AppToolBar->AddTool(wxID_ANY, wxT("Settings"), toolBarBitmaps[Tool_settings], wxNullBitmap, wxITEM_NORMAL,
 		wxT("Manage App Preferences"), wxT("Manage App Preferences"), NULL);
-
-	ToolBarSong->Realize();
+	
+	ChkNightMode = new wxCheckBox(AppToolBar, wxID_ANY, wxT("Night Mode"), wxDefaultPosition, wxSize(250, 40), 0);
+	ChkNightMode->SetValue(false);
+	ChkNightMode->SetFont(wxFont(25, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
+	AppToolBar->AddControl(ChkNightMode);
+	
+	AppToolBar->Realize();
 
 	//ToolBarSong->SetRows(ToolBarSong->IsVertical() ? ToolBarSong->GetToolsCount() / m_rows : m_rows);
 }
@@ -304,12 +354,8 @@ void vSongHome::OnQuit(wxCommandEvent& WXUNUSED(event))
 void vSongHome::PopulateSongbooks()
 {
 	try {
-		int bookscount = CmbSongsBooks->GetCount();
-		if (bookscount > 0) {
-			//bookids->Clear();
-			//booktitles->Clear();
-			CmbSongsBooks->Clear();
-		}
+		int bookscount = CmbSongBooks->GetCount();
+		if (bookscount > 0) CmbSongBooks->Clear();
 
 		sqlite3* db;
 		char* err_msg = NULL, ** qryResult = NULL;
@@ -324,14 +370,14 @@ void vSongHome::PopulateSongbooks()
 			wxString title = *(qryResult + i * col + 1);
 			wxString songs = *(qryResult + i * col + 2);
 
-			CmbSongsBooks->Append(wxString::FromUTF8(std::string(title) + " (" + songs + ")"));
+			CmbSongBooks->Append(wxString::FromUTF8(std::string(title) + " (" + songs + ")"));
 			bookids.push_back(*(qryResult + i * col + 0));
 			booktitles.push_back(title);
 		}
 
 		sqlite3_free_table(qryResult);
 		sqlite3_close(db);
-		CmbSongsBooks->SetSelection(0);
+		CmbSongBooks->SetSelection(0);
 		PopulateSonglists(bookids[0], "", false);
 	}
 	catch (exception & ex) {
@@ -350,11 +396,11 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 			songbooks.clear();
 			LstSongList->Clear();
 		}
-		wxString searchtotals = " songs found in: " + booktitles[CmbSongsBooks->GetSelection()];
+		wxString searchtotals = " songs found in: " + booktitles[CmbSongBooks->GetSelection()];
 
 		wxString SqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
 		SqlQuery = SqlQuery + " INNER JOIN books ON books.bookid = songs.bookid WHERE";
-		
+
 		if (searchstr.empty()) SqlQuery = SqlQuery + " songs.bookid=" + setbook;
 		else
 		{
@@ -423,7 +469,7 @@ void vSongHome::PopulateSonglists(wxString setbook, wxString searchstr, bool sea
 
 void vSongHome::GetSelectedBook(wxCommandEvent&)
 {
-	PopulateSonglists(bookids[CmbSongsBooks->GetSelection()], "", false);
+	PopulateSonglists(bookids[CmbSongBooks->GetSelection()], "", false);
 }
 
 void vSongHome::GetSelectedSong(wxCommandEvent&)
@@ -448,11 +494,11 @@ void vSongHome::Search_Clear(wxCommandEvent&)
 void vSongHome::Search_Song(wxCommandEvent&)
 {
 	wxString searchthis = TxtSearch->GetValue();
-	PopulateSonglists(bookids[CmbSongsBooks->GetSelection()], searchthis, ChkSearchSongs->GetValue());
+	PopulateSonglists(bookids[CmbSongBooks->GetSelection()], searchthis, ChkSearchSongs->GetValue());
 	SetStatusText("You searched for: \"" + searchthis + "\"");
 }
 
-void vSongHome::btnProject_Click(wxCommandEvent&)
+void vSongHome::BtnProject_Click(wxCommandEvent&)
 {
 	vSongView* present = new vSongView("vSongBook Presentation");
 	present->SetSize(1000, 700);
@@ -462,51 +508,119 @@ void vSongHome::btnProject_Click(wxCommandEvent&)
 	present->Maximize(true);
 }
 
-void vSongHome::btnEdit_Click(wxCommandEvent&)
+void vSongHome::BtnEdit_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnLast_Click(wxCommandEvent&)
+void vSongHome::BtnLast_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnNext_Click(wxCommandEvent&)
+void vSongHome::BtnNext_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnBigger_Click(wxCommandEvent&)
+void vSongHome::BtnBigger_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnSmaller_Click(wxCommandEvent&)
+void vSongHome::BtnSmaller_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnFontset_Click(wxCommandEvent&)
+void vSongHome::BtnFontset_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnBold_Click(wxCommandEvent&)
+void vSongHome::BtnBold_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnBooks_Click(wxCommandEvent&)
+void vSongHome::BtnBooks_Click(wxCommandEvent&)
 {
 
 }
 
-void vSongHome::btnSettings_Click(wxCommandEvent&)
+void vSongHome::BtnSettings_Click(wxCommandEvent&)
 {
 	vSongPrefs* settings = new vSongPrefs("vSongBook Preferences");
 	settings->SetSize(840, 600);
 	settings->Show(true);
 	settings->SetWindowStyle(wxCAPTION | wxCLOSE_BOX);
 	settings->Center();
+}
+
+void vSongHome::ChkNightMode_Click(wxCommandEvent&)
+{
+	if (ChkNightMode->GetValue() == true)
+	{
+		AppSmata::SetOption("app_theme", "2");
+		SetAppTheme(2);
+	}
+	else
+	{
+		AppSmata::SetOption("app_theme", "1");
+		SetAppTheme(1);
+	}
+}
+
+void vSongHome::SetAppTheme(int theme)
+{
+	switch (theme)
+	{
+		case 2:
+			this->SetBackgroundColour(wxColour(0, 0, 0));
+			PanelLeft->SetBackgroundColour(wxColour(0, 0, 0));
+			PanelRight->SetBackgroundColour(wxColour(0, 0, 0));
+			AppToolBar->SetBackgroundColour(wxColour(0, 0, 0));
+			CmbSongBooks->SetBackgroundColour(wxColour(0, 0, 0));
+			LstSongList->SetBackgroundColour(wxColour(0, 0, 0));
+			TxtSongTitle->SetBackgroundColour(wxColour(0, 0, 0));
+			TxtPreview->SetBackgroundColour(wxColour(0, 0, 0));
+			TxtExtras->SetBackgroundColour(wxColour(0, 0, 0));
+
+			TxtSearch->SetForegroundColour(wxColour(255, 255, 255));
+			CmbSongBooks->SetForegroundColour(wxColour(255, 255, 255));
+			ChkSearchSongs->SetForegroundColour(wxColour(255, 255, 255));
+			LstSongList->SetForegroundColour(wxColour(255, 255, 255));
+			ChkNightMode->SetForegroundColour(wxColour(255, 255, 255));
+			TxtSongTitle->SetForegroundColour(wxColour(255, 255, 255));
+			TxtPreview->SetForegroundColour(wxColour(255, 255, 255));
+			TxtExtras->SetForegroundColour(wxColour(255, 255, 255));
+			AppStatusbar->SetForegroundColour(wxColour(255, 255, 255));
+			break;
+
+		default:
+			this->SetBackgroundColour(wxColour(255, 255, 255));
+			PanelLeft->SetBackgroundColour(wxColour(255, 255, 255));
+			PanelRight->SetBackgroundColour(wxColour(255, 255, 255));
+			AppToolBar->SetBackgroundColour(wxColour(255, 255, 255));
+			CmbSongBooks->SetBackgroundColour(wxColour(255, 255, 255));
+			LstSongList->SetBackgroundColour(wxColour(255, 255, 255));
+			TxtSongTitle->SetBackgroundColour(wxColour(255, 255, 255));
+			TxtPreview->SetBackgroundColour(wxColour(255, 255, 255));
+			TxtExtras->SetBackgroundColour(wxColour(255, 255, 255));
+
+			TxtSearch->SetForegroundColour(wxColour(0, 0, 0));
+			CmbSongBooks->SetForegroundColour(wxColour(0, 0, 0));
+			ChkSearchSongs->SetForegroundColour(wxColour(0, 0, 0));
+			LstSongList->SetForegroundColour(wxColour(0, 0, 0));
+			ChkNightMode->SetForegroundColour(wxColour(0, 0, 0));
+			TxtSongTitle->SetForegroundColour(wxColour(0, 0, 0));
+			TxtPreview->SetForegroundColour(wxColour(0, 0, 0));
+			TxtExtras->SetForegroundColour(wxColour(0, 0, 0));
+			AppStatusbar->SetForegroundColour(wxColour(0, 0, 0));
+			break;
+	}
+}
+
+vSongHome::~vSongHome()
+{
 }
