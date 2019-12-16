@@ -60,6 +60,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	ChkSearchSongs->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	WrapLeft->Add(ChkSearchSongs, 0, wxALL | wxEXPAND, 5);
 
+	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v2.5.2 | " + viewset[1]));
 	wxStaticBoxSizer* GrpSearch;
 	GrpSearch = new wxStaticBoxSizer(new wxStaticBox(PanelLeft, wxID_ANY, wxT("0 Songs found")), wxVERTICAL);
 
@@ -589,6 +590,7 @@ void vSongHome::SetAppTheme(int theme)
 			TxtSearch->SetForegroundColour(wxColour(255, 255, 255));
 			CmbSongBooks->SetForegroundColour(wxColour(255, 255, 255));
 			ChkSearchSongs->SetForegroundColour(wxColour(255, 255, 255));
+			ChkNightMode->SetForegroundColour(wxColour(255, 255, 255));
 			LstSongList->SetForegroundColour(wxColour(255, 255, 255));
 			ChkNightMode->SetForegroundColour(wxColour(255, 255, 255));
 			TxtSongTitle->SetForegroundColour(wxColour(255, 255, 255));
@@ -611,8 +613,8 @@ void vSongHome::SetAppTheme(int theme)
 			TxtSearch->SetForegroundColour(wxColour(0, 0, 0));
 			CmbSongBooks->SetForegroundColour(wxColour(0, 0, 0));
 			ChkSearchSongs->SetForegroundColour(wxColour(0, 0, 0));
-			LstSongList->SetForegroundColour(wxColour(0, 0, 0));
 			ChkNightMode->SetForegroundColour(wxColour(0, 0, 0));
+			LstSongList->SetForegroundColour(wxColour(0, 0, 0));
 			TxtSongTitle->SetForegroundColour(wxColour(0, 0, 0));
 			TxtPreview->SetForegroundColour(wxColour(0, 0, 0));
 			TxtExtras->SetForegroundColour(wxColour(0, 0, 0));
