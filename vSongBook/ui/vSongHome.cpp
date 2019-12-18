@@ -14,8 +14,25 @@
 #include "vSongPrefs.h"
 
 int homefont, songfont;
+bool searchall, nightmode;
 wxString selected_book, selected_song, search_term;
 vector<wxString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
+
+enum
+{
+	GaugePage_Reset = wxID_HIGHEST,
+	GaugePage_Progress,
+	GaugePage_IndeterminateProgress,
+	GaugePage_Clear,
+	GaugePage_SetValue,
+	GaugePage_SetRange,
+	GaugePage_CurValueText,
+	GaugePage_ValueText,
+	GaugePage_RangeText,
+	GaugePage_Timer,
+	GaugePage_IndeterminateTimer,
+	GaugePage_Gauge
+};
 
 vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
@@ -24,6 +41,8 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	GetSettings();
 	InitializeSettings();
+
+	TmrTheme = new wxTimer(this, GaugePage_Timer);
 
 	//CreateStatusBar(2);
 	//SetStatusText("Welcome to vSongBook for Desktop! " + homesets[1]);
@@ -56,13 +75,13 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	WrapLeft->Add(CmbSongBooks, 0, wxALL | wxEXPAND, 5);
 
 	ChkSearchSongs = new wxCheckBox(PanelLeft, wxID_ANY, wxT("Search All SongBooks"), wxDefaultPosition, wxSize(-1, -1), 0);
-	ChkSearchSongs->SetValue(true);
+	ChkSearchSongs->SetValue(searchall);
 	ChkSearchSongs->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	WrapLeft->Add(ChkSearchSongs, 0, wxALL | wxEXPAND, 5);
 
-	AppLabel = new wxStaticBox(this, wxID_ANY, wxT(" vSongBook for Desktop v2.5.2 | " + viewset[1]));
+	GrpSearchLabel = new wxStaticBox(PanelLeft, wxID_ANY, wxT("0 Songs found"));
 	wxStaticBoxSizer* GrpSearch;
-	GrpSearch = new wxStaticBoxSizer(new wxStaticBox(PanelLeft, wxID_ANY, wxT("0 Songs found")), wxVERTICAL);
+	GrpSearch = new wxStaticBoxSizer(GrpSearchLabel, wxVERTICAL);
 
 	LstSongList = new wxListBox(GrpSearch->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, NULL, 0);
 	LstSongList->SetFont(wxFont(homefont, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
@@ -107,6 +126,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	PopulateToolbar();
 	PopulateSongbooks();
+
 	SetAppTheme(wxAtoi(homesets[25]));
 
 	this->SetSizer(MainWrapper);
@@ -133,6 +153,7 @@ vSongHome::vSongHome(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 	this->Connect(BtnSettings->GetId(), wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler(vSongHome::BtnSettings_Click));
 	
 	ChkNightMode->Connect(wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler(vSongHome::ChkNightMode_Click), NULL, this);
+	this->Connect(wxID_ANY, wxEVT_TIMER, wxTimerEventHandler(vSongHome::OnProgressTimer));
 }
 
 void vSongHome::SetupMenu()
@@ -239,6 +260,12 @@ void vSongHome::InitializeSettings()
 {
 	homefont = wxAtoi(homesets[5]);
 	songfont = wxAtoi(homesets[11]);
+	
+	if (wxAtoi(homesets[25]) == 2) nightmode = true;
+	else if (wxAtoi(homesets[25]) == 1) nightmode = false;
+
+	if (wxAtoi(homesets[24]) == 1) searchall = true;
+	else if (wxAtoi(homesets[24]) == 0) searchall = false;
 }
 
 void vSongHome::PopulateToolbar()
@@ -322,7 +349,8 @@ void vSongHome::PopulateToolbar()
 		wxT("Manage App Preferences"), wxT("Manage App Preferences"), NULL);
 	
 	ChkNightMode = new wxCheckBox(AppToolBar, wxID_ANY, wxT("Night Mode"), wxDefaultPosition, wxSize(250, 40), 0);
-	ChkNightMode->SetValue(false);
+	ChkNightMode->SetValue(nightmode);
+
 	ChkNightMode->SetFont(wxFont(25, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Trebuchet MS")));
 	AppToolBar->AddControl(ChkNightMode);
 	
@@ -560,16 +588,22 @@ void vSongHome::BtnSettings_Click(wxCommandEvent&)
 
 void vSongHome::ChkNightMode_Click(wxCommandEvent&)
 {
-	if (ChkNightMode->GetValue() == true)
-	{
-		AppSmata::SetOption("app_theme", "2");
-		SetAppTheme(2);
-	}
-	else
-	{
-		AppSmata::SetOption("app_theme", "1");
-		SetAppTheme(1);
-	}
+	if (ChkNightMode->GetValue() == true) AppSmata::SetOption("app_theme", "2");
+	else AppSmata::SetOption("app_theme", "1");
+
+	TmrTheme->Start(3000);
+}
+
+void vSongHome::OnProgressTimer(wxTimerEvent& WXUNUSED(event))
+{
+	TmrTheme->Stop();
+
+	vSongHome* home = new vSongHome("vSongBook for Desktop v2.5.2 | " + homesets[1]);
+	home->SetSize(1000, 800);
+	home->Show(true);
+	home->Center();
+	home->Maximize(true);
+	this->Close();
 }
 
 void vSongHome::SetAppTheme(int theme)

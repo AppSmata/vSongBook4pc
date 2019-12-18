@@ -237,11 +237,11 @@
     <ClCompile Include="sqlite\sqlite3ppext.cpp" />
     <ClCompile Include="ui\vAppSplash.cpp" />
     <ClCompile Include="ui\vBooksLoad.cpp" />
-    <ClCompile Include="ui\vSongBook.cpp" />
     <ClCompile Include="ui\vSongCheck.cpp" />
     <ClCompile Include="ui\vSongHome.cpp" />
     <ClCompile Include="ui\vSongPrefs.cpp" />
     <ClCompile Include="ui\vSongView.cpp" />
+    <ClCompile Include="vSongBook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc" />
@@ -254,11 +254,11 @@
     <ClInclude Include="sqlite\sqlite3ppext.h" />
     <ClInclude Include="ui\vAppSplash.h" />
     <ClInclude Include="ui\vBooksLoad.h" />
-    <ClInclude Include="ui\vSongBook.h" />
     <ClInclude Include="ui\vSongCheck.h" />
     <ClInclude Include="ui\vSongHome.h" />
     <ClInclude Include="ui\vSongPrefs.h" />
     <ClInclude Include="ui\vSongView.h" />
+    <ClInclude Include="vSongBook.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

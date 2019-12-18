@@ -18,9 +18,6 @@
     <ClCompile Include="ui\vBooksLoad.cpp">
       <Filter>ui</Filter>
     </ClCompile>
-    <ClCompile Include="ui\vSongBook.cpp">
-      <Filter>ui</Filter>
-    </ClCompile>
     <ClCompile Include="ui\vSongCheck.cpp">
       <Filter>ui</Filter>
     </ClCompile>
@@ -45,15 +42,13 @@
     <ClCompile Include="sqlite\sqlite3ppext.cpp">
       <Filter>sqlite</Filter>
     </ClCompile>
+    <ClCompile Include="vSongBook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ui\vAppSplash.h">
       <Filter>ui</Filter>
     </ClInclude>
     <ClInclude Include="ui\vBooksLoad.h">
-      <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\vSongBook.h">
       <Filter>ui</Filter>
     </ClInclude>
     <ClInclude Include="ui\vSongCheck.h">
@@ -81,6 +76,7 @@
       <Filter>sqlite</Filter>
     </ClInclude>
     <ClInclude Include="AppSmata.h" />
+    <ClInclude Include="vSongBook.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="vSongBook.rc">

@@ -8,11 +8,11 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "AppSmata.h"
-#include "vSongHome.h"
-#include "vSongView.h"
-#include "vSongCheck.h"
 #include "vSongBook.h"
-#include "vSongView.h"
+#include "ui/vSongHome.h"
+#include "ui/vSongView.h"
+#include "ui/vSongCheck.h"
+#include "ui/vSongView.h"
 
 wxIMPLEMENT_APP(vSongBook);
 
@@ -36,6 +36,7 @@ wxBEGIN_EVENT_TABLE(vSongBook, wxApp)
 	//EVT_MENU(wxID_EXIT, vSongHome::OnQuit)
 	//EVT_MENU(wxID_ABOUT, vSongHome::OnAbout)
 	EVT_TIMER(GaugePage_Timer, vSongBook::OnProgressTimer)
+	EVT_TIMER(GaugePage_Timer, vSongHome::OnProgressTimer)
 wxEND_EVENT_TABLE()
 
 vector<wxString> appsets;
@@ -47,7 +48,7 @@ bool vSongBook::OnInit()
 	GetSettings();
 
 	TmrSplash = new wxTimer(this, GaugePage_Timer);
-	TmrSplash->Start(500);
+	TmrSplash->Start(5000);
 
 	splash = new vAppSplash("vSongBook");
 	splash->SetSize(800, 500);

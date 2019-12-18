@@ -41,8 +41,9 @@ class vSongHome : public wxFrame
 private:
 
 protected:
-	vSongHome* home;
 	wxBoxSizer* MainWrapper;
+
+	wxStaticBox* GrpSearchLabel;
 
 	wxStatusBar* AppStatusbar;
 	wxSplitterWindow* AppSplitter;
@@ -64,6 +65,9 @@ protected:
 	wxToolBarToolBase* BtnProject, * BtnEdit, * BtnLast, * BtnNext, * BtnBigger, * BtnSmaller, * BtnFontset, * BtnBold, * BtnBooks, * BtnSettings;
 	wxTextCtrl* TxtSongTitle, * TxtPreview, * TxtExtras;
 
+	wxTimer* TmrTheme;
+	wxGauge* HomeGauge;
+
 	bool m_smallToolbar, m_horzText, m_useCustomDisabled, m_showTooltips;
 	size_t m_rows, m_nPrint;
 
@@ -71,6 +75,7 @@ public:
 
 	vSongHome(const wxString& title);
 	void SetupMenu();
+	void OnProgressTimer(wxTimerEvent& event);
 
 	void PopulateToolbar();
 	void PopulateSongbooks();
