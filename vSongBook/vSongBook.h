@@ -9,10 +9,8 @@
 
 #include "wx/frame.h"
 #include "wx/image.h"
-#include "wx/splash.h"
-#include "wx/timer.h"
-#include "vAppSplash.h"
 
+#include "ui/vAppSplash.h"
 
 #if wxUSE_LOG
 #define USE_LOG 1

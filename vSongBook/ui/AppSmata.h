@@ -28,7 +28,6 @@
 #include "wx/artprov.h"
 #include "wx/cshelp.h"
 #include "wx/utils.h"
-#include "wx/timer.h"
 
 #include <string>
 #include <iostream>

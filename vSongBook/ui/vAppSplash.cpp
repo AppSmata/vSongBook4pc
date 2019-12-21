@@ -9,6 +9,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "vAppSplash.h"
+
 enum
 {
 	Button_bigger,
@@ -18,6 +19,7 @@ enum
 
 vAppSplash::vAppSplash(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
+	SetIcon(wxICON(appicon));
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
 	wxBoxSizer* MainWrapper;
@@ -25,7 +27,6 @@ vAppSplash::vAppSplash(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 
 	ImgSplash = new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxT("res/splash.bmp"), wxBITMAP_TYPE_ANY), wxDefaultPosition, wxSize(-1, -1), 0);
 	MainWrapper->Add(ImgSplash, 1, wxALIGN_CENTER | wxALL, 0);
-
 
 	this->SetSizer(MainWrapper);
 	this->Layout();

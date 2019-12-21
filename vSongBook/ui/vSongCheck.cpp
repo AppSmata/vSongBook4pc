@@ -11,6 +11,7 @@
 #include "AppSmata.h"
 #include "vSongCheck.h"
 #include "vSongHome.h"
+
 enum
 {
 	Button_bigger,
@@ -33,6 +34,7 @@ wxString check_fonty;
 
 vSongCheck::vSongCheck(const wxString& title) : wxFrame(NULL, wxID_ANY, title)
 {
+	SetIcon(wxICON(appicon));
 	GetSettings();
 	GetLanguages(checkset[3]);
 
