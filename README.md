@@ -1,9 +1,7 @@
-# vSongBook
+# vSongBook on Your PC!!!
 
 [![Wiki][wiki-img]][wiki]
 [![Build Status][travis-img]][travis]
-[![Join the chat at https://gitter.im/vSongBook/vSongBook][gitter-img]][gitter]
-[![Join the chat at https://join.slack.com/t/db4s/shared_invite/enQtMzc3MzY5OTU4NDgzLWRlYjk0ZmE5ZDEzYWVmNDQxYTYxNmJjNWVkMjI3ZmVjZTY2NDBjODY3YzNhNTNmZDVlNWI2ZGFjNTk5MjJkYmU][slack-img]][slack]
 [![Download][download-img]][download]
 [![Qt][qt-img]][qt]
 [![Coverity][coverity-img]][coverity]
@@ -53,131 +51,6 @@ Download Windows releases here:
 (e.g. gives an error), try a nightly build.  Nightly builds often fix bugs
 reported after the last release. :D
 
-## MacOS X / macOS
-
-vSongBook works well on MacOS X / macOS.
-
-* OSX 10.8 (Mountain Lion) - 10.13 (High Sierra) are tested and known to work
-
-Download OSX releases here:
-
-* https://appsmata.com/vsongbook/#macos
-
-The latest OSX binary can be installed via [Homebrew Cask](https://caskroom.github.io/ "Homebrew Cask"):
-
-```
-brew cask install db-browser-for-sqlite
-```
-
-## Linux
-
-vSongBook works well on Linux.
-
-### Arch Linux
-
-Arch Linux provides a package through pacman.
-
-### Fedora
-
-Install for Fedora (i386 and x86_64) by issuing the following command:
-
-    $ sudo dnf install vSongBook
-    
-### openSUSE
-
-    $ sudo zypper install vSongBook
-
-### Debian
-
-Note that Debian focuses more on stability rather than newest features. Therefore packages will typically contain some older (but well tested) version, compared to the latest release.
-
-Update the cache using:
-
-    sudo apt-get update
-
-Install the package using:
-
-    sudo apt-get install vSongBook
-
-
-### Ubuntu and Derivatives
-
-#### Stable release
-
-For Ubuntu and derivaties, [@deepsidhu1313](https://github.com/deepsidhu1313)
-provides a PPA with the latest release here:
-
-* https://launchpad.net/~linuxgndu/+archive/ubuntu/vSongBook
-
-To add this ppa just type in these commands in terminal:
-
-    sudo add-apt-repository -y ppa:linuxgndu/vSongBook
-
-Then update the cache using:
-
-    sudo apt-get update
-
-Install the package using:
-
-    sudo apt-get install vSongBook
-
-Ubuntu 14.04.X, 15.04.X, 15.10.X and 16.04.X are supported for now (until
-Launchpad decides to discontinue building for any series).
-
-Ubuntu Precise (12.04) and Utopic (14.10) are not supported:
-* Precise does not have a new enough Qt package in its repository by default,
-  which is a dependency
-* Launchpad does not support Utopic any more, which has reached its End of
-  Life
-
-#### Nightly builds
-
-Nightly builds are available here:
-
-* https://launchpad.net/~linuxgndu/+archive/ubuntu/vSongBook-testing
-
-To add this ppa, type these commands into the terminal:
-
-    sudo add-apt-repository -y ppa:linuxgndu/vSongBook-testing
-
-Then update the cache using:
-
-    sudo apt-get update
-
-Install the package using:
-
-    sudo apt-get install vSongBook
-
-### Other Linux
-
-On others, compile DB4S using the instructions
-in [BUILDING.md](BUILDING.md).
-
-## FreeBSD
-
-vSongBook works well on FreeBSD, and there is a port for it (thanks
-to [lbartoletti](https://github.com/lbartoletti) :smile:).  DB4S can be installed
-using either this command:
-
-    # make -C /usr/ports/databases/vSongBook install
-
-or this command:
-
-    # pkg install vSongBook
-
-## Snap packages
-
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/vSongBook)
-
-#### Snap Nightlies
-
-     snap install vSongBook --devmode
-
-#### Snap Stable
-
-     snap install vSongBook
-
-
 ## Compiling
 
 Instructions for compiling on Windows, OSX, Linux, and FreeBSD are
@@ -199,10 +72,6 @@ Follow us on Instagram: https://twitter.com/AppSmata
 
 * https://appsmata.com/vsongbook
 
-## Old project page
-
-* https://sourceforge.net/projects/vSongBook
-
 ## Releases
 
 * [Version 2.5.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.0) - 2019-11-29
@@ -210,10 +79,10 @@ Follow us on Instagram: https://twitter.com/AppSmata
 
 ## History
 
-This program was originally developed for Android devices [as an app]
-(https://github.com/vSongBook/vSongAndy). It was first conceived and
- developed in September 2014 by Jackson Siro([@Jacksiroke]
-(https://github.com/Jacksiroke)) to solve his own problem of having to 
+This program was originally developed for Android devices 
+[as an app](https://github.com/vSongBook/vSongAndy). It was first 
+conceived and developed in September 2014 by Jackson Siro
+([@Jacksiroke](https://github.com/Jacksiroke)) to solve his own problem of having to 
 carry around songbooks to church and wherever he went and needed to sing a 
 song since he already had the bible app on his smartphone. By then he was a 
 student at KTTC undertaking a diploma course in ICT. While at home
@@ -231,11 +100,12 @@ was need to have it for desktop computers.
 
 The first attempt to do a desktop for vSongBook was in late 2015 
 using Visual Basic 6.0 and Microsoft Access Database 2010 which is 
-[available on github also] (https://github.com/vSongBook/vSongVB).
+[available on github also](https://github.com/vSongBook/vSongVB).
 Later on as Jacksiro kept on improving his programming skills he ported
-the app to Vb.net (c#) and that too is [available on github] 
-(https://github.com/vSongBook/vSongWin). A Windows Phone version is
-[available on github] (https://github.com/vSongBook/vSongWinfon).
+the app to Vb.net (c#) and that too is 
+[available on github](https://github.com/vSongBook/vSongWin). 
+A Windows Phone version is
+[available on github](https://github.com/vSongBook/vSongWinfon).
 
 It is in mid 2018 that Jacksiro began to port the desktop app to c++.
 It was not easy for him because it until May 2019 that he was able to come
