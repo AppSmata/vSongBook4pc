@@ -132,7 +132,7 @@ void MainWindow::init()
     connect(m_remoteDb, &RemoteDatabase::networkReady, [this]() {
         // Check for a new version if automatic update check aren't disabled in the settings dialog
         if(Settings::getValue("checkversion", "enabled").toBool())
-            m_remoteDb->fetch("https://download.vSongBook.org/currentrelease", RemoteDatabase::RequestTypeNewVersionCheck);
+            m_remoteDb->fetch("https://github.com/vSongBook/vSongBook4PC/blob/master/currentrelease", RemoteDatabase::RequestTypeNewVersionCheck);
     });
 #endif
 
@@ -2232,7 +2232,7 @@ void MainWindow::on_actionSqlCipherFaq_triggered() const
 
 void MainWindow::on_actionWebsite_triggered() const
 {
-    QDesktopServices::openUrl(QUrl("https://vSongBook.org"));
+    QDesktopServices::openUrl(QUrl("https://appsmata.com/vSongBook"));
 }
 
 void MainWindow::on_actionDonatePatreon_triggered() const

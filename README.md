@@ -13,32 +13,24 @@
 
 ## What it is
 
-_vSongBook_ (DB4S) is a high quality, visual, open source tool to
-create, design, and edit database files compatible with SQLite.
-
-DB4S is for users and developers who want to create, search, and edit
-databases.  DB4S uses a familiar spreadsheet-like interface, and complicated SQL commands do not have to be learned.
+_vSongBook_ (Virtual Songbook) is a high quality, visual, open source
+tool to give users access to song lyrics of major worship and praise 
+songbooks used in christian gatherings be it in church, weddings, 
+funerals or anywhere where one feels like singing.
 
 Controls and wizards are available for users to:
 
-* Create and compact database files
-* Create, define, modify and delete tables
-* Create, define, and delete indexes
-* Browse, edit, add, and delete records
-* Search records
-* Import and export records as text
-* Import and export tables from/to CSV files
-* Import and export databases from/to SQL dump files
-* Issue SQL queries and inspect the results
-* Examine a log of all SQL commands issued by the application
-* Plot simple graphs based on table or query data
+* Browse, edit, add, and delete songs
+* Search songs realtime
+* Adjust font types and sizes among other display preferences
+* View songs in presentation mode for use over projector.
 
 ## What it is not
 
-This program is not a visual shell for the sqlite command line tool, and does
-not require familiarity with SQL commands. It is a tool to be used by both
-developers and end users, and must remain as simple to use as possible
-in order to achieve these goals.
+This program is not a media player tool, and does teach you how to 
+sing some of the songs it comes with. It is a tool to be used by 
+anyone who knows the songs contained in it and must remain as simple
+to use as possible in order to achieve these goals.
 
 ## Wiki
 
@@ -49,13 +41,13 @@ https://github.com/vSongBook/vSongBook4PC/wiki.
 
 Download nightly builds for Windows and OSX here:
 
-* https://nightlies.vSongBook.org/latest
+* https://nightlies.appsmata.com/latest
 
 ## Windows
 
 Download Windows releases here:
 
-* https://vSongBook.org/dl/#windows
+* https://appsmata.com/vsongbook/#windows
 
 **Note** - If for some reason the standard Windows release does not work
 (e.g. gives an error), try a nightly build.  Nightly builds often fix bugs
@@ -69,7 +61,7 @@ vSongBook works well on MacOS X / macOS.
 
 Download OSX releases here:
 
-* https://vSongBook.org/dl/#macos
+* https://appsmata.com/vsongbook/#macos
 
 The latest OSX binary can be installed via [Homebrew Cask](https://caskroom.github.io/ "Homebrew Cask"):
 
@@ -191,13 +183,21 @@ or this command:
 Instructions for compiling on Windows, OSX, Linux, and FreeBSD are
 in [BUILDING](BUILDING.md).
 
+## Facebook
+
+Follow us on Facebook: https://twitter.com/AppSmata
+
 ## Twitter
 
-Follow us on Twitter: https://twitter.com/vSongBook
+Follow us on Twitter: https://twitter.com/AppSmata
+
+## Instagram
+
+Follow us on Instagram: https://twitter.com/AppSmata
 
 ## Website
 
-* https://vSongBook.org
+* https://appsmata.com/vsongbook
 
 ## Old project page
 
@@ -205,68 +205,43 @@ Follow us on Twitter: https://twitter.com/vSongBook
 
 ## Releases
 
-* [Version 3.11.2 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.11.2) - 2019-04-03
-* [Version 3.11.1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.11.1) - 2019-02-18
-* [Version 3.11.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.11.0) - 2019-02-07
-* [Version 3.10.1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.10.1) - 2017-09-20
-* [Version 3.10.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.10.0) - 2017-08-20
-* [Version 3.9.1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.9.1) - 2016-10-03
-* [Version 3.9.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.9.0) - 2016-08-24
-* [Version 3.8.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.8.0) - 2015-12-25
-* [Version 3.7.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.7.0) - 2015-06-14
-* [Version 3.6.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.6.0) - 2015-04-27
-* [Version 3.5.1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.5.1) - 2015-02-08
-* [Version 3.5.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.5.0) - 2015-01-31
-* [Version 3.4.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.4.0) - 2014-10-29
-* [Version 3.3.1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.3.1) - 2014-08-31 - Project renamed from "SQLite Database Browser"
-* [Version 3.3.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v3.3.0) - 2014-08-24
-* [Version 3.2.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/sqlb-3.2.0) - 2014-07-06
-* [Version 3.1.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/sqlb-3.1.0) - 2014-05-17
-* [Version 3.0.3 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/sqlb-3.0.3) - 2014-04-28
-* [Version 3.0.2 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/sqlb-3.0.2) - 2014-02-12
-* [Version 3.0.1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/sqlb-3.0.1) - 2013-12-02
-* [Version 3.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/sqlb-3.0) - 2013-09-15
-* [Version 3.0rc1 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/rc1) - 2013-09-09 - Project now on GitHub
-* Version 2.0b1 released - 2009-12-10 - Based on Qt4.6
-* Version 1.2 released - 2005-04-05
-* Version 1.1 released - 2004-07-20
-* Version 1.01 released - 2003-10-02
-* Version 1.0 released to public domain - 2003-08-19
+* [Version 2.5.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.0) - 2019-11-29
+* [Version 2.4.5 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v2.4.5) - 2019-09-10
 
 ## History
 
-This program was developed originally by Mauricio Piacentini
-([@piacentini](https://github.com/piacentini)) from Tabuleiro Producoes, as
-the Arca Database Browser. The original version was used as a free companion
-tool to the Arca Database Xtra, a commercial product that embeds SQLite
-databases with some additional extensions to handle compressed and binary data.
+This program was originally developed for Android devices [as an app]
+(https://github.com/vSongBook/vSongAndy). It was first conceived and
+ developed in September 2014 by Jackson Siro([@Jacksiroke]
+(https://github.com/Jacksiroke)) to solve his own problem of having to 
+carry around songbooks to church and wherever he went and needed to sing a 
+song since he already had the bible app on his smartphone. By then he was a 
+student at KTTC undertaking a diploma course in ICT. While at home
+during December the same year his father who came to his room to ask a 
+computer questions noticed the app on Jack's phone and he asked that he 
+be sent too the app to his phone. The happy father went to share the app
+Jack's elder brother and while at the End of Year Meetings at Mbale, 
+Kenya he endosed it there during one of his sermons. 
 
-The original code was trimmed and adjusted to be compatible with standard
-SQLite 2.x databases. The resulting program was renamed SQLite Database
-Browser, and released into the Public Domain by Mauricio. Icons were
-contributed by [Raquel Ravanini](http://www.raquelravanini.com), also from
-Tabuleiro. Jens Miltner ([@jmiltner](https://github.com/jmiltner)) contributed
-the code to support SQLite 3.x databases for the 1.2 release.
+Later on in mid 2015 Kevin Ngalonde, an Android Developer from Zimbabwe,
+agreed to host the app on his playstore account. Mid 2016 was when 
+Jack was able to host the app in his own PlayStore Account. The app 
+has been increasing getting updates and reviews over time and there 
+was need to have it for desktop computers.
 
-Pete Morgan ([@daffodil](https://github.com/daffodil)) created an initial
-project on GitHub with the code in 2012, where several contributors fixed and
-improved pieces over the years. René Peinthor ([@rp-](https://github.com/rp-))
-and Martin Kleusberg ([@MKleusberg](https://github.com/MKleusberg)) then
-became involved, and have been the main driving force from that point.  Justin
-Clift ([@justinclift](https://github.com/justinclift)) helps out with testing
-on OSX, and started the new github.com/vSongBook organisation on GitHub.
+The first attempt to do a desktop for vSongBook was in late 2015 
+using Visual Basic 6.0 and Microsoft Access Database 2010 which is 
+[available on github also] (https://github.com/vSongBook/vSongVB).
+Later on as Jacksiro kept on improving his programming skills he ported
+the app to Vb.net (c#) and that too is [available on github] 
+(https://github.com/vSongBook/vSongWin). A Windows Phone version is
+[available on github] (https://github.com/vSongBook/vSongWinfon).
 
-[John T. Haller](http://johnhaller.com), of
-[PortableApps.com](http://portableapps.com) fame, created the new logo.  He
-based it on the Tango icon set (public domain).
-
-In August 2014, the project was renamed to "Database Browser for SQLite" at
-the request of [Richard Hipp](http://www.hwaci.com/drh) (creator of
-[SQLite](http://sqlite.org)), as the previous name was creating unintended
-support issues.
-
-In September 2014, the project was renamed to "vSongBook", to
-avoid confusion with an existing application called "Database Browser".
+It is in mid 2018 that Jacksiro began to port the desktop app to c++.
+It was not easy for him because it until May 2019 that he was able to come
+up with something that he could show to the public. He has been able 
+so far to release the app in Sep 2019 using wxWidgets which he is now 
+abandonding under the branch wxbuilds to use Qt Api.
 
 ## Contributors
 

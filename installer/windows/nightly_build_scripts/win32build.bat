@@ -51,7 +51,7 @@ git clean -dffx
 FOR /F %%A IN ('git rev-parse --verify HEAD') DO SET CURRENT_COMMIT=%%A
 
 :: Get the last build commit hash from the server
-curl -f -L -o commit.txt "https://nightlies.vSongBook.org/win32/commit.txt"
+curl -f -L -o commit.txt "https://nightlies.appsmata.com/vSongBook/win32/commit.txt"
 
 :: Save the hash to a variable for comparison
 IF EXIST "commit.txt" SET /P LAST_COMMIT=<commit.txt
@@ -128,12 +128,12 @@ RMDIR /S /Q %CD%\zip
 :: Save the last commit hash to 'commit.txt' and upload it to the nightlies server
 CD C:\\git_repos\\vSongBook
 git rev-parse --verify HEAD 1>C:\\builds\\commit.txt
-pscp -q -p -i C:\dev\puttygen_private.ppk "%DEST_PATH%\commit.txt" nightlies@nightlies.vSongBook.org:/nightlies/win32
+pscp -q -p -i C:\dev\puttygen_private.ppk "%DEST_PATH%\commit.txt" nightlies@nightlies.appsmata.com:/nightlies/win32
 
 :: Upload the packages to the nightlies server
-pscp -q -p -i C:\dev\puttygen_private.ppk "%DEST_PATH%\DB*%RUN_DATE%*win32.*" nightlies@nightlies.vSongBook.org:/nightlies/win32
+pscp -q -p -i C:\dev\puttygen_private.ppk "%DEST_PATH%\DB*%RUN_DATE%*win32.*" nightlies@nightlies.appsmata.com:/nightlies/win32
 
 :: Copy the new binaries to /latest directory on the nightlies server
-plink -i C:\dev\puttygen_private.ppk nightlies@nightlies.vSongBook.org "cd /nightlies/latest; rm -f *-win32.*"
-plink -i C:\dev\puttygen_private.ppk nightlies@nightlies.vSongBook.org "cp /nightlies/win32/DB*SQLite-%RUN_DATE%-win32.msi /nightlies/latest/DB.Browser.for.SQLite-win32.msi"
-plink -i C:\dev\puttygen_private.ppk nightlies@nightlies.vSongBook.org "cp /nightlies/win32/DB*SQLite-%RUN_DATE%-win32.zip /nightlies/latest/DB.Browser.for.SQLite-win32.zip"
+plink -i C:\dev\puttygen_private.ppk nightlies@nightlies.appsmata.com "cd /nightlies/latest; rm -f *-win32.*"
+plink -i C:\dev\puttygen_private.ppk nightlies@nightlies.appsmata.com "cp /nightlies/win32/DB*SQLite-%RUN_DATE%-win32.msi /nightlies/latest/DB.Browser.for.SQLite-win32.msi"
+plink -i C:\dev\puttygen_private.ppk nightlies@nightlies.appsmata.com "cp /nightlies/win32/DB*SQLite-%RUN_DATE%-win32.zip /nightlies/latest/DB.Browser.for.SQLite-win32.zip"
