@@ -5,6 +5,15 @@ CMakeLists.txt.user
 CMakeFiles
 *.cmake
 *.cxx_parameters
+cmake*.cmake
+CMAKE*.txt
+install_*.txt
+qrc_*.cpp
+ui_*.cpp
+ui_*.h
+*.vcxproj
+*.filters
+*.sln
 
 # ignore any build folders
 build*/
