@@ -1,0 +1,10 @@
+-ID:/QtP/vSongBook4pc/libs/qscintilla/Qt4Qt5
+-ID:/QtP/vSongBook4pc/libs/qscintilla/Qt4Qt5
+-DBUILD_VERSION=20191221
+-DSCINTILLA_QT
+-DSCI_LEXER
+-DWIN32
+--compiler-flavor=msvc
+-o
+D:/QtP/vSongBook4pc/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp
+D:/QtP/vSongBook4pc/libs/qscintilla/Qt4Qt5/Qsci/qscilexerjson.h
