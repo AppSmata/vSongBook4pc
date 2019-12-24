@@ -7,14 +7,14 @@
 #include "Settings.h"
 #include "RemoteDatabase.h"
 #include "RemoteModel.h"
-#include "MainWindow.h"
+#include "vSongHome.h"
 #include "RemotePushDialog.h"
 #include "PreferencesDialog.h"
 
-RemoteDock::RemoteDock(MainWindow* parent)
+RemoteDock::RemoteDock(vSongHome* parent)
     : QDialog(parent),
       ui(new Ui::RemoteDock),
-      mainWindow(parent),
+      homeWindow(parent),
       remoteDatabase(parent->getRemote()),
       remoteModel(new RemoteModel(this, parent->getRemote()))
 {
@@ -34,9 +34,9 @@ RemoteDock::RemoteDock(MainWindow* parent)
     connect(ui->labelNoCert, &QLabel::linkActivated, [this](const QString& link) {
         if(link == "#preferences")
         {
-            PreferencesDialog dialog(mainWindow, PreferencesDialog::TabRemote);
+            PreferencesDialog dialog(homeWindow, PreferencesDialog::TabRemote);
             if(dialog.exec())
-                mainWindow->reloadSettings();
+                homeWindow->reloadSettings();
         } else {
             QDesktopServices::openUrl(QUrl(link));
         }
@@ -102,7 +102,7 @@ void RemoteDock::fetchDatabase(const QModelIndex& idx)
 
 void RemoteDock::enableButtons()
 {
-    bool db_opened = mainWindow->getDb().isOpen();
+    bool db_opened = homeWindow->getDb().isOpen();
     bool logged_in = !remoteModel->currentClientCertificate().isEmpty();
 
     ui->buttonPushDatabase->setEnabled(db_opened && logged_in);
@@ -120,7 +120,7 @@ void RemoteDock::pushDatabase()
 
     // The default suggestion for a database name is the local file name. If it is a remote file (like when it initially was fetched using DB4S),
     // the extra bit of information at the end of the name gets removed first.
-    QString name = QFileInfo(mainWindow->getDb().currentFile()).fileName();
+    QString name = QFileInfo(homeWindow->getDb().currentFile()).fileName();
     name = name.remove(QRegExp("_[0-9]+.remotedb$"));
 
     // Show the user a dialog for setting all the commit details
@@ -136,7 +136,7 @@ void RemoteDock::pushDatabase()
     url.append(pushDialog.name());
 
     // Push database
-    remoteDatabase.push(mainWindow->getDb().currentFile(), url, remoteModel->currentClientCertificate(), pushDialog.name(),
+    remoteDatabase.push(homeWindow->getDb().currentFile(), url, remoteModel->currentClientCertificate(), pushDialog.name(),
                         pushDialog.commitMessage(), pushDialog.licence(), pushDialog.isPublic(), pushDialog.branch(), pushDialog.forcePush());
 }
 

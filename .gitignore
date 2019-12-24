@@ -13,6 +13,7 @@ ui_*.cpp
 ui_*.h
 *.vcxproj
 *.filters
+*.ipch
 *.sln
 *.suo
 *.db

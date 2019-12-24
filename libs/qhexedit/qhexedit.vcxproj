@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E4906025-82C2-3AD9-9021-EB5236FD3CDB}</ProjectGuid>
+    <ProjectGuid>{19A3415C-0A6E-3C4D-BFBB-367B7291B3A0}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -59,26 +59,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">qhexedit.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">qhexedit</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qhexedit.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qhexedit</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">qhexedit.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">qhexedit</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">qhexedit.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">qhexedit</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_Debug;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_Debug;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -92,15 +92,15 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_Debug;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_Debug;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_Debug;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_Debug;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -110,11 +110,11 @@
     <PreBuildEvent>
       <Message>Automatic MOC for target qhexedit</Message>
       <Command>setlocal
-cd D:\QtP\vSongBook4pc\libs\qhexedit
+cd D:\QtP\vSongBook4PC\libs\qhexedit
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json Debug
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -129,7 +129,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_Release;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_Release;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -141,17 +141,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_Release;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_Release;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_Release;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_Release;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -161,11 +161,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PreBuildEvent>
       <Message>Automatic MOC for target qhexedit</Message>
       <Command>setlocal
-cd D:\QtP\vSongBook4pc\libs\qhexedit
+cd D:\QtP\vSongBook4PC\libs\qhexedit
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json Release
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json Release
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -180,7 +180,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_MinSizeRel;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_MinSizeRel;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -192,17 +192,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_MinSizeRel;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_MinSizeRel;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_MinSizeRel;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_MinSizeRel;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -212,11 +212,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PreBuildEvent>
       <Message>Automatic MOC for target qhexedit</Message>
       <Command>setlocal
-cd D:\QtP\vSongBook4pc\libs\qhexedit
+cd D:\QtP\vSongBook4PC\libs\qhexedit
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json MinSizeRel
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json MinSizeRel
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -231,7 +231,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_RelWithDebInfo;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_RelWithDebInfo;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++11</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -244,15 +244,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191221;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_RelWithDebInfo;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20191222;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_RelWithDebInfo;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\QtP\vSongBook4pc\libs\qhexedit;D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\include_RelWithDebInfo;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\QtP\vSongBook4PC\libs\qhexedit;D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\include_RelWithDebInfo;D:\Qt\5.12.5\msvc2017_64\include;D:\Qt\5.12.5\msvc2017_64\include\QtWidgets;D:\Qt\5.12.5\msvc2017_64\include\QtGui;D:\Qt\5.12.5\msvc2017_64\include\QtANGLE;D:\Qt\5.12.5\msvc2017_64\include\QtCore;D:\Qt\5.12.5\msvc2017_64\.\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -262,11 +262,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PreBuildEvent>
       <Message>Automatic MOC for target qhexedit</Message>
       <Command>setlocal
-cd D:\QtP\vSongBook4pc\libs\qhexedit
+cd D:\QtP\vSongBook4PC\libs\qhexedit
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json RelWithDebInfo
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/qhexedit_autogen.dir/AutogenInfo.json RelWithDebInfo
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -280,10 +280,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\QtP\vSongBook4pc\libs\qhexedit\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/QtP/vSongBook4pc/libs/qhexedit/CMakeLists.txt</Message>
+    <CustomBuild Include="D:\QtP\vSongBook4PC\libs\qhexedit\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/QtP/vSongBook4PC/libs/qhexedit/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4pc -BD:/QtP/vSongBook4pc --check-stamp-file D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4PC -BD:/QtP/vSongBook4PC --check-stamp-file D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -292,11 +292,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/QtP/vSongBook4pc/libs/qhexedit/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/QtP/vSongBook4PC/libs/qhexedit/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4pc -BD:/QtP/vSongBook4pc --check-stamp-file D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4PC -BD:/QtP/vSongBook4PC --check-stamp-file D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -305,11 +305,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/QtP/vSongBook4pc/libs/qhexedit/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/QtP/vSongBook4PC/libs/qhexedit/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4pc -BD:/QtP/vSongBook4pc --check-stamp-file D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4PC -BD:/QtP/vSongBook4PC --check-stamp-file D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -318,11 +318,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/QtP/vSongBook4pc/libs/qhexedit/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/QtP/vSongBook4PC/libs/qhexedit/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4pc -BD:/QtP/vSongBook4pc --check-stamp-file D:/QtP/vSongBook4pc/libs/qhexedit/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/QtP/vSongBook4PC -BD:/QtP/vSongBook4PC --check-stamp-file D:/QtP/vSongBook4PC/libs/qhexedit/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -331,21 +331,21 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.12.5\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\QtP\vSongBook4pc\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\QtP\vSongBook4PC\libs\qhexedit\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\QtP\vSongBook4pc\libs\qhexedit\qhexedit_autogen\mocs_compilation.cpp" />
-    <ClCompile Include="D:\QtP\vSongBook4pc\libs\qhexedit\src\qhexedit.cpp" />
-    <ClCompile Include="D:\QtP\vSongBook4pc\libs\qhexedit\src\chunks.cpp" />
-    <ClCompile Include="D:\QtP\vSongBook4pc\libs\qhexedit\src\commands.cpp" />
-    <ClInclude Include="D:\QtP\vSongBook4pc\libs\qhexedit\src\chunks.h" />
-    <ClInclude Include="D:\QtP\vSongBook4pc\libs\qhexedit\src\commands.h" />
+    <ClCompile Include="D:\QtP\vSongBook4PC\libs\qhexedit\qhexedit_autogen\mocs_compilation.cpp" />
+    <ClCompile Include="D:\QtP\vSongBook4PC\libs\qhexedit\src\qhexedit.cpp" />
+    <ClCompile Include="D:\QtP\vSongBook4PC\libs\qhexedit\src\chunks.cpp" />
+    <ClCompile Include="D:\QtP\vSongBook4PC\libs\qhexedit\src\commands.cpp" />
+    <ClInclude Include="D:\QtP\vSongBook4PC\libs\qhexedit\src\chunks.h" />
+    <ClInclude Include="D:\QtP\vSongBook4PC\libs\qhexedit\src\commands.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\QtP\vSongBook4pc\ZERO_CHECK.vcxproj">
-      <Project>{71088BAE-7E3B-3D86-AB82-A350E50C33B8}</Project>
+    <ProjectReference Include="D:\QtP\vSongBook4PC\ZERO_CHECK.vcxproj">
+      <Project>{745C586B-F39F-3727-BEA2-B83DFFAE7C54}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

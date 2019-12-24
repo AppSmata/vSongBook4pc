@@ -169,8 +169,8 @@ void RemoteDatabase::gotReply(QNetworkReply* reply)
     // Check if request was successful
     if(reply->error() != QNetworkReply::NoError)
     {
-        QMessageBox::warning(nullptr, qApp->applicationName(),
-                             tr("Error when connecting to %1.\n%2").arg(reply->url().toString(), reply->errorString()));
+        /*QMessageBox::warning(nullptr, qApp->applicationName(),
+                             tr("Error when connecting to %1.\n%2").arg(reply->url().toString(), reply->errorString()));*/
         reply->deleteLater();
         return;
     }

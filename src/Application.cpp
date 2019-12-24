@@ -8,7 +8,7 @@
 #include <QAction>
 
 #include "Application.h"
-#include "MainWindow.h"
+#include "vSongHome.h"
 #include "Settings.h"
 #include "version.h"
 
@@ -16,7 +16,7 @@ Application::Application(int& argc, char** argv) :
     QApplication(argc, argv)
 {
     // Set organisation and application names
-    setOrganizationName("vSongBook");
+    setOrganizationName("AppSmata Solutions");
     setApplicationName("vSongBook");
 
     // Set character encoding to UTF8
@@ -77,7 +77,7 @@ Application::Application(int& argc, char** argv) :
     QString tableToBrowse;
     QStringList sqlToExecute;
     bool readOnly = false;
-    m_dontShowMainWindow = false;
+    m_dontShowHome = false;
     for(int i=1;i<arguments().size();i++)
     {
         // Check next command line argument
@@ -95,10 +95,10 @@ Application::Application(int& argc, char** argv) :
             qWarning() << qPrintable(tr("  -O, --save-option [group/setting=value]\tRun application saving this value for this setting"));
             qWarning() << qPrintable(tr("  -v, --version\t\tDisplay the current version"));
             qWarning() << qPrintable(tr("  [file]\t\tOpen this SQLite database"));
-            m_dontShowMainWindow = true;
+            m_dontShowHome = true;
         } else if(arguments().at(i) == "-v" || arguments().at(i) == "--version") {
             qWarning() << qPrintable(tr("This is vSongBook version %1.").arg(versionString()));
-            m_dontShowMainWindow = true;
+            m_dontShowHome = true;
         } else if(arguments().at(i) == "-s" || arguments().at(i) == "--sql") {
             // Run SQL file: If file exists add it to list of scripts to execute
             if(++i >= arguments().size())
@@ -113,7 +113,7 @@ Application::Application(int& argc, char** argv) :
             else
                 tableToBrowse = arguments().at(i);
         } else if(arguments().at(i) == "-q" || arguments().at(i) == "--quit") {
-            m_dontShowMainWindow = true;
+            m_dontShowHome = true;
         } else if(arguments().at(i) == "-R" || arguments().at(i) == "--read-only") {
             readOnly = true;
         } else if(arguments().at(i) == "-o" || arguments().at(i) == "--option" ||
@@ -151,14 +151,14 @@ Application::Application(int& argc, char** argv) :
     }
 
     // Show main window
-    m_mainWindow = new MainWindow();
-    m_mainWindow->show();
+    m_HomeWindow = new vSongHome();
+    m_HomeWindow->show();
     connect(this, &Application::lastWindowClosed, this, &Application::quit);
 
     // Open database if one was specified
     if(fileToOpen.size())
     {
-        if(m_mainWindow->fileOpen(fileToOpen, false, readOnly))
+        if(m_HomeWindow->fileOpen(fileToOpen, false, readOnly))
         {
             // If database could be opened run the SQL scripts
             for(const QString& f : sqlToExecute)
@@ -166,23 +166,23 @@ Application::Application(int& argc, char** argv) :
                 QFile file(f);
                 if(file.open(QIODevice::ReadOnly))
                 {
-                    m_mainWindow->getDb().executeMultiSQL(file.readAll(), false, true);
+                    m_HomeWindow->getDb().executeMultiSQL(file.readAll(), false, true);
                     file.close();
                 }
             }
             if(!sqlToExecute.isEmpty())
-                m_mainWindow->refresh();
+                m_HomeWindow->refresh();
 
             // Jump to table if the -t/--table parameter was set
             if(!tableToBrowse.isEmpty())
-                m_mainWindow->switchToBrowseDataTab(sqlb::ObjectIdentifier("main", tableToBrowse.toStdString()));
+                m_HomeWindow->switchToBrowseDataTab(sqlb::ObjectIdentifier("main", tableToBrowse.toStdString()));
         }
     }
 }
 
 Application::~Application()
 {
-    delete m_mainWindow;
+    delete m_HomeWindow;
 }
 
 bool Application::event(QEvent* event)
@@ -190,7 +190,7 @@ bool Application::event(QEvent* event)
     switch(event->type())
     {
     case QEvent::FileOpen:
-        m_mainWindow->fileOpen(static_cast<QFileOpenEvent*>(event)->file());
+        m_HomeWindow->fileOpen(static_cast<QFileOpenEvent*>(event)->file());
         return true;
     default:
         return QApplication::event(event);

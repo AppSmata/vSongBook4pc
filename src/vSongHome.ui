@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>vSongHome</class>
+ <widget class="QMainWindow" name="vSongHome">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +9,18 @@
     <width>1037</width>
     <height>630</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>vSongBook</string>
@@ -18,6 +30,18 @@
     <normaloff>:/icons/appicon</normaloff>:/icons/appicon</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>400</width>
+     <height>0</height>
+    </size>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_7">
     <property name="spacing">
      <number>3</number>
@@ -36,6 +60,27 @@
     </property>
     <item>
      <widget class="QTabWidget" name="mainTab">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>496</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Triangular</enum>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -45,12 +90,44 @@
       <property name="tabBarAutoHide">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="structure">
+      <widget class="QWidget" name="browser">
        <property name="accessibleName">
-        <string extracomment="This has to be equal to the tab title in all the main tabs">Database Structure</string>
+        <string extracomment="This has to be equal to the tab title in all the main tabs">Search</string>
        </property>
        <attribute name="title">
-        <string>Database Structure</string>
+        <string>Search</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <property name="leftMargin">
+         <number>3</number>
+        </property>
+        <property name="topMargin">
+         <number>3</number>
+        </property>
+        <property name="rightMargin">
+         <number>3</number>
+        </property>
+        <property name="bottomMargin">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="TableBrowser" name="tableBrowser" native="true">
+          <property name="accessibleName">
+           <string>Search</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="structure">
+       <property name="accessibleName">
+        <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
+       </property>
+       <attribute name="title">
+        <string>History</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
@@ -113,40 +190,12 @@ You can drag SQL statements from an object row and drop them into other applicat
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="browser">
-       <property name="accessibleName">
-        <string extracomment="This has to be equal to the tab title in all the main tabs">Browse Data</string>
-       </property>
-       <attribute name="title">
-        <string>Browse Data</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>3</number>
-        </property>
-        <property name="leftMargin">
-         <number>3</number>
-        </property>
-        <property name="topMargin">
-         <number>3</number>
-        </property>
-        <property name="rightMargin">
-         <number>3</number>
-        </property>
-        <property name="bottomMargin">
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="TableBrowser" name="tableBrowser" native="true"/>
-        </item>
-       </layout>
-      </widget>
       <widget class="QWidget" name="pragmas">
        <property name="accessibleName">
-        <string extracomment="This has to be equal to the tab title in all the main tabs">Edit Pragmas</string>
+        <string extracomment="This has to be equal to the tab title in all the main tabs">Songbooks</string>
        </property>
        <attribute name="title">
-        <string>Edit Pragmas</string>
+        <string>Songbooks</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <property name="spacing">
@@ -174,8 +223,8 @@ You can drag SQL statements from an object row and drop them into other applicat
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>596</width>
-             <height>526</height>
+             <width>482</width>
+             <height>493</height>
             </rect>
            </property>
            <layout class="QFormLayout" name="formLayout">
@@ -674,66 +723,6 @@ You can drag SQL statements from an object row and drop them into other applicat
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="query">
-       <property name="accessibleName">
-        <string extracomment="This has to be equal to the tab title in all the main tabs">Execute SQL</string>
-       </property>
-       <attribute name="title">
-        <string>Execute SQL</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <property name="spacing">
-         <number>3</number>
-        </property>
-        <property name="leftMargin">
-         <number>3</number>
-        </property>
-        <property name="topMargin">
-         <number>3</number>
-        </property>
-        <property name="rightMargin">
-         <number>3</number>
-        </property>
-        <property name="bottomMargin">
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QToolBar" name="toolbarSql">
-          <property name="windowTitle">
-           <string>toolBar1</string>
-          </property>
-          <addaction name="actionSqlOpenTab"/>
-          <addaction name="actionSqlOpenFile"/>
-          <addaction name="actionSqlSaveFilePopup"/>
-          <addaction name="actionSqlPrint"/>
-          <addaction name="separator"/>
-          <addaction name="actionExecuteSql"/>
-          <addaction name="actionSqlExecuteLine"/>
-          <addaction name="actionSqlStop"/>
-          <addaction name="separator"/>
-          <addaction name="actionSqlResultsSave"/>
-          <addaction name="separator"/>
-          <addaction name="actionSqlFind"/>
-          <addaction name="actionSqlFindReplace"/>
-          <addaction name="separator"/>
-          <addaction name="actionSqlToggleComment"/>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTabWidget" name="tabSqlAreas">
-          <property name="currentIndex">
-           <number>-1</number>
-          </property>
-          <property name="movable">
-           <bool>true</bool>
-          </property>
-          <property name="contextMenuPolicy">
-           <enum>Qt::CustomContextMenu</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -864,16 +853,13 @@ You can drag SQL statements from an object row and drop them into other applicat
    <addaction name="fileSaveAction"/>
    <addaction name="fileRevertAction"/>
   </widget>
-  <widget class="QDockWidget" name="dockEdit">
-   <property name="windowTitle">
-    <string>Edit Database &amp;Cell</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_4"/>
-  </widget>
   <widget class="QDockWidget" name="dockLog">
+   <property name="minimumSize">
+    <size>
+     <width>400</width>
+     <height>149</height>
+    </size>
+   </property>
    <property name="features">
     <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
@@ -1004,75 +990,6 @@ You can drag SQL statements from an object row and drop them into other applicat
      </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="QDockWidget" name="dockPlot">
-   <property name="features">
-    <set>QDockWidget::AllDockWidgetFeatures</set>
-   </property>
-   <property name="windowTitle">
-    <string>&amp;Plot</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_2">
-    <layout class="QVBoxLayout" name="verticalLayout_6"/>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dockSchema">
-   <property name="windowTitle">
-    <string>DB Sche&amp;ma</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_3">
-    <layout class="QVBoxLayout" name="verticalLayout_9">
-     <item>
-      <widget class="QTreeView" name="treeSchemaDock">
-       <property name="contextMenuPolicy">
-        <enum>Qt::CustomContextMenu</enum>
-       </property>
-       <property name="whatsThis">
-        <string>This is the structure of the opened database.
-You can drag multiple object names from the Name column and drop them into the SQL editor and you can adjust the properties of the dropped names using the context menu. This would help you in composing SQL statements.
-You can drag SQL statements from the Schema column and drop them into the SQL editor or into other applications.
-</string>
-       </property>
-       <property name="dragEnabled">
-        <bool>true</bool>
-       </property>
-       <property name="dragDropMode">
-        <enum>QAbstractItemView::DragDrop</enum>
-       </property>
-       <property name="alternatingRowColors">
-        <bool>true</bool>
-       </property>
-       <property name="selectionMode">
-        <enum>QAbstractItemView::ExtendedSelection</enum>
-       </property>
-       <property name="selectionBehavior">
-        <enum>QAbstractItemView::SelectItems</enum>
-       </property>
-       <property name="verticalScrollMode">
-        <enum>QAbstractItemView::ScrollPerPixel</enum>
-       </property>
-       <property name="animated">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dockRemote">
-   <property name="windowTitle">
-    <string>&amp;Remote</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_5"/>
   </widget>
   <widget class="QToolBar" name="toolbarProject">
    <property name="windowTitle">
@@ -2172,7 +2089,6 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <tabstop>dbTreeWidget</tabstop>
   <tabstop>comboLogSubmittedBy</tabstop>
   <tabstop>buttonLogClear</tabstop>
-  <tabstop>treeSchemaDock</tabstop>
   <tabstop>scrollareaPragmas</tabstop>
   <tabstop>comboboxPragmaAutoVacuum</tabstop>
   <tabstop>checkboxPragmaAutomaticIndex</tabstop>
@@ -2192,7 +2108,6 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <tabstop>comboboxPragmaTempStore</tabstop>
   <tabstop>spinPragmaUserVersion</tabstop>
   <tabstop>spinPragmaWalAutoCheckpoint</tabstop>
-  <tabstop>tabSqlAreas</tabstop>
  </tabstops>
  <resources>
   <include location="icons/icons.qrc"/>
@@ -2201,7 +2116,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileExitAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2217,7 +2132,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileOpenAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileOpen()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2233,7 +2148,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileNewAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileNew()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2249,7 +2164,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileCloseAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileClose()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2265,7 +2180,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileCompactAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>compact()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2281,7 +2196,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>helpWhatsThisAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>helpWhatsThis()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2297,7 +2212,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>helpAboutAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>helpAbout()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2313,7 +2228,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>mainTab</sender>
    <signal>currentChanged(int)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>mainTabSelected(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2329,7 +2244,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileImportCSVAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>importTableFromCSV()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2345,7 +2260,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileExportCSVAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>exportTableToCSV()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2361,7 +2276,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileRevertAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileRevert()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2377,7 +2292,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileSaveAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileSave()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2393,7 +2308,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>editCreateIndexAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>createIndex()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2409,7 +2324,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>editDeleteObjectAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>deleteObject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2425,7 +2340,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>editModifyObjectAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>editObject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2441,7 +2356,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileExportSQLAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>exportDatabaseToSQL()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2457,7 +2372,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileImportSQLAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>importDatabaseFromSQL()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2473,7 +2388,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>viewPreferencesAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>openPreferences()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2489,24 +2404,8 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>dbTreeWidget</sender>
    <signal>customContextMenuRequested(QPoint)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>createTreeContextMenu(QPoint)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>111</x>
-     <y>261</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>treeSchemaDock</sender>
-   <signal>customContextMenuRequested(QPoint)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>createSchemaDockContextMenu(QPoint)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>111</x>
@@ -2537,7 +2436,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlFind</sender>
    <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>setFindFrameVisibility(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2553,7 +2452,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlFindReplace</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>openFindReplaceDialog()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2569,7 +2468,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>editCreateTableAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>createTable()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2585,7 +2484,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>buttonBoxPragmas</sender>
    <signal>rejected()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>loadPragmas()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2601,7 +2500,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>buttonBoxPragmas</sender>
    <signal>accepted()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>savePragmas()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2679,41 +2578,9 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
    </hints>
   </connection>
   <connection>
-   <sender>tabSqlAreas</sender>
-   <signal>tabCloseRequested(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>closeSqlTab(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>259</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>51</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tabSqlAreas</sender>
-   <signal>currentChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>changeSqlTab(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>259</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>51</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>actionExecuteSql</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>executeQuery()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2729,7 +2596,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlOpenTab</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>openSqlTab()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2745,7 +2612,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlOpenFile</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>openSqlFile()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2761,7 +2628,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlSaveFile</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveSqlFile()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2777,7 +2644,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionLoadExtension</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>loadExtension()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2793,7 +2660,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlExecuteLine</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>executeQuery()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2809,7 +2676,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionExportCsvPopup</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>exportTableToCSV()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2825,7 +2692,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionOpenProject</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>loadProject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2841,7 +2708,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSaveProject</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveProject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2857,7 +2724,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileAttachAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileAttach()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2873,7 +2740,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionEncryption</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>editEncryption()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2889,7 +2756,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlSaveFilePopup</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveSqlFile()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2905,7 +2772,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlSaveFileAs</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveSqlFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2921,7 +2788,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionEditBrowseTable</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>switchToBrowseDataTab()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2937,7 +2804,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionEditCopyCreateStatement</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>copyCurrentCreateStatement()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2953,7 +2820,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileExportJsonAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>exportTableToJson()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2969,7 +2836,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileOpenReadOnlyAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileOpenReadOnly()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -2985,7 +2852,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlResultsExportCsv</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveSqlResultsAsCsv()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3001,28 +2868,12 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlResultsSaveAsView</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveSqlResultsAsView()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
      <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tabSqlAreas</sender>
-   <signal>tabBarDoubleClicked(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>renameSqlTab(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>330</x>
-     <y>372</y>
     </hint>
     <hint type="destinationlabel">
      <x>518</x>
@@ -3063,7 +2914,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
    </hints>
   </connection>
   <connection>
-   <sender>MainWindow</sender>
+   <sender>vSongHome</sender>
    <signal>toolButtonStyleChanged(Qt::ToolButtonStyle)</signal>
    <receiver>toolbarDB</receiver>
    <slot>setToolButtonStyle(Qt::ToolButtonStyle)</slot>
@@ -3079,7 +2930,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
    </hints>
   </connection>
   <connection>
-   <sender>MainWindow</sender>
+   <sender>vSongHome</sender>
    <signal>toolButtonStyleChanged(Qt::ToolButtonStyle)</signal>
    <receiver>toolbarExtraDB</receiver>
    <slot>setToolButtonStyle(Qt::ToolButtonStyle)</slot>
@@ -3095,7 +2946,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
    </hints>
   </connection>
   <connection>
-   <sender>MainWindow</sender>
+   <sender>vSongHome</sender>
    <signal>toolButtonStyleChanged(Qt::ToolButtonStyle)</signal>
    <receiver>toolbarProject</receiver>
    <slot>setToolButtonStyle(Qt::ToolButtonStyle)</slot>
@@ -3113,7 +2964,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileOpenActionPopup</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileOpen()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3129,7 +2980,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>fileNewInMemoryDatabaseAction</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>fileNewInMemoryDatabase()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3145,7 +2996,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlPrint</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>openSqlPrintDialog()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3161,7 +3012,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionDbPrint</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>printDbStructure()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3177,7 +3028,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSqlToggleComment</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>toggleSqlBlockComment()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3193,7 +3044,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaAutomaticIndex</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3209,7 +3060,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaCaseSensitiveLike</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3225,7 +3076,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaCheckpointFullFsync</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3241,7 +3092,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaForeignKeys</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3257,7 +3108,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaFullFsync</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3273,7 +3124,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaIgnoreCheckConstraints</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3289,7 +3140,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaJournalMode</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3305,7 +3156,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaLockingMode</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3321,7 +3172,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaMaxPageCount</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3337,7 +3188,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaPageSize</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3353,7 +3204,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaRecursiveTriggers</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3369,7 +3220,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaSecureDelete</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3385,7 +3236,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaSynchronous</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3401,7 +3252,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaTempStore</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3417,7 +3268,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaUserVersion</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3433,7 +3284,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaWalAutoCheckpoint</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3449,7 +3300,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaAutoVacuum</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3465,7 +3316,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelPragmaAutoVacuum</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3481,7 +3332,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>labelJournalSizeLimit</sender>
    <signal>linkHovered(QString)</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>showStatusMessage5s(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3497,7 +3348,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSaveProjectAs</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveProjectAs()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3513,7 +3364,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
   <connection>
    <sender>actionSaveAll</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>vSongHome</receiver>
    <slot>saveAll()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3523,22 +3374,6 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
     <hint type="destinationlabel">
      <x>518</x>
      <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tabSqlAreas</sender>
-   <signal>customContextMenuRequested(QPoint)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>showContextMenuSqlTabBar(QPoint)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
     </hint>
    </hints>
   </connection>

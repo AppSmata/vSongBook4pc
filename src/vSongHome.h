@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef VSONGHOME_H
+#define VSONGHOME_H
 
 #include "sqlitedb.h"
 
@@ -24,19 +24,20 @@ class QPersistentModelIndex;
 class QToolButton;
 
 namespace Ui {
-class MainWindow;
+class vSongHome;
 }
 
-class MainWindow : public QMainWindow
+class vSongHome : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget* parent = nullptr);
-    ~MainWindow() override;
+    explicit vSongHome(QWidget *parent = nullptr);
+    ~vSongHome() override;
 
     DBBrowserDB& getDb() { return db; }
     RemoteDatabase& getRemote() { return *m_remoteDb; }
+
 
 private:
     struct PragmaValues
@@ -61,7 +62,7 @@ private:
         int case_sensitive_like;
     } pragmaValues;
 
-    Ui::MainWindow* ui;
+    Ui::vSongHome* ui;
 
     DBBrowserDB db;
 
@@ -206,4 +207,4 @@ private slots:
     void showContextMenuSqlTabBar(const QPoint& pos);
 };
 
-#endif
+#endif // VSONGHOME_H

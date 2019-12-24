@@ -2510,14 +2510,14 @@ x~y	Range: values between x and y
     </message>
 </context>
 <context>
-    <name>MainWindow</name>
+    <name>vSongHome</name>
     <message>
-        <location filename="../MainWindow.ui" line="14"/>
+        <location filename="../vSongHome.ui" line="14"/>
         <source>vSongBook</source>
         <translation>Обозреватель для SQLite</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="918"/>
+        <location filename="../vSongHome.ui" line="918"/>
         <source>toolBar1</source>
         <translation>панельИнструментов1</translation>
     </message>
@@ -2526,12 +2526,12 @@ x~y	Range: values between x and y
         <translation type="vanished">Таблица:</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="154"/>
+        <location filename="../vSongHome.ui" line="154"/>
         <source>Select a table to browse data</source>
         <translation>Выберите таблицу для просмотра данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="157"/>
+        <location filename="../vSongHome.ui" line="157"/>
         <source>Use this list to select a table to be displayed in the database view</source>
         <translation>Используйте этот список, чтобы выбрать таблицу, которая должна быть отображена в представлении базы данных</translation>
     </message>
@@ -2540,24 +2540,24 @@ x~y	Range: values between x and y
         <translation type="vanished">Обновить данные в выбранной таблице.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2039"/>
+        <location filename="../vSongHome.ui" line="2039"/>
         <source>This button refreshes the data in the currently selected table.</source>
         <translation>Эта кнопка обновляет данные выбранной в данный момент таблицы.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2480"/>
-        <location filename="../MainWindow.ui" line="2483"/>
+        <location filename="../vSongHome.ui" line="2480"/>
+        <location filename="../vSongHome.ui" line="2483"/>
         <source>This button clears all the filters set in the header input fields for the currently browsed table.</source>
         <translation>Эта кнопка очищает все фильтры, установленные в полях ввода заголовка для текущей просматриваемой таблицы.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2495"/>
-        <location filename="../MainWindow.ui" line="2498"/>
+        <location filename="../vSongHome.ui" line="2495"/>
+        <location filename="../vSongHome.ui" line="2498"/>
         <source>Save the table as currently displayed</source>
         <translation>Сохранить таблицу так как сейчас отображается</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2501"/>
+        <location filename="../vSongHome.ui" line="2501"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This popup menu provides the following options applying to the currently browsed and filtered table:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Export to CSV: this option exports the data of the browsed table as currently displayed (after filters, display formats and order column) to a CSV file.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Save as view: this option saves the current setting of the browsed table (filters, display formats and order column) as an SQL view that you can later browse or use in SQL statements.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Это всплывающее меню предоставляет следующие параметры, применяемые к текущей просматриваемой и отфильтрованной таблице:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Экспортировать ввиде CSV: данные просматриваемой таблицы сохраняется так как отображается (после применения фильтров, форматов отображения и порядка колонок) в CSV файл.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Сохранить как вид: эта опция сохраняет настройки текущей отображаемой таблицы (фильтры, форматы отображения и порядок колонок) как SQL вид, который вы позже можете просматривать или использовать в SQL выражениях.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2566,28 +2566,28 @@ x~y	Range: values between x and y
         <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2453"/>
+        <location filename="../vSongHome.ui" line="2453"/>
         <source>Print currently browsed table data</source>
         <translation>Печатать отображаемую таблицу</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2459"/>
+        <location filename="../vSongHome.ui" line="2459"/>
         <source>Print currently browsed table data. Print selection if more than one cell is selected.</source>
         <translation>Распечатывайте текущие данные таблицы. Выбор печати, если выбрано несколько ячеек.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2519"/>
+        <location filename="../vSongHome.ui" line="2519"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This button creates a new record in the database. Hold the mouse button to open a pop-up menu of different options:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;New Record&lt;/span&gt;: insert a new record with default values in the database.&lt;/li&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Insert Values...&lt;/span&gt;: open a dialog for entering values before they are inserted in the database. This allows to enter values acomplishing the different constraints. This dialog is also open if the &lt;span style=&quot; font-weight:600;&quot;&gt;New Record&lt;/span&gt; option fails due to these constraints.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Эта кнопка создает новую запись в базе данных. Удерживайте кнопку мыши, чтобы открыть всплывающее меню различных параметров:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Новая Запись&lt;/span&gt;: вставляет новую запись со значениями по умолчанию.&lt;/li&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Вставить Значения...&lt;/span&gt;: открывает диалог для ввода значений перед тем, как они будут вставленны в БД. Это позволяет вводить значения, назначая различные ограничения. Этот диалог также открывается, если &lt;span style=&quot; font-weight:600;&quot;&gt;Новая Запись&lt;/span&gt; опция не срабатывает из-за этих ограничений.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2534"/>
-        <location filename="../MainWindow.ui" line="2537"/>
+        <location filename="../vSongHome.ui" line="2534"/>
+        <location filename="../vSongHome.ui" line="2537"/>
         <source>This button deletes the record or records currently selected in the table</source>
         <translation>Эта кнопка удаляет запись или записи, выбранные в настоящее время в таблице</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="205"/>
+        <location filename="../vSongHome.ui" line="205"/>
         <source>This is the database table view. You can do the following actions:
  - Start writing for editing inline the value.
  - Double-click any record to edit its contents in the cell editor window.
@@ -2604,52 +2604,52 @@ x~y	Range: values between x and y
   - Стандартные операции выбора и копирования/вставки.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="255"/>
+        <location filename="../vSongHome.ui" line="255"/>
         <source>Scroll one page upwards</source>
         <translation>Страница вверх</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="258"/>
+        <location filename="../vSongHome.ui" line="258"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates one page of records upwards in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нажатие этой кнопки перемещает одну страницу записей вверх в виде таблицы выше.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="282"/>
+        <location filename="../vSongHome.ui" line="282"/>
         <source>Scroll one page downwards</source>
         <translation>Страница вниз</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="285"/>
+        <location filename="../vSongHome.ui" line="285"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates one page of records downwards in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нажатие этой кнопки перемещает одну страницу записей вниз в виде таблицы выше.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="471"/>
+        <location filename="../vSongHome.ui" line="471"/>
         <source>Warning: this pragma is not readable and this value has been inferred. Writing the pragma might overwrite a redefined LIKE provided by an SQLite extension.</source>
         <translation>Предупреждение: эта прагма не читается, и это значение было выведено. Применение прагмы может перезаписать переопределенный LIKE, предоставляемый расширением SQLite.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1044"/>
+        <location filename="../vSongHome.ui" line="1044"/>
         <source>&amp;Tools</source>
         <translation>&amp;Инструменты</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1141"/>
+        <location filename="../vSongHome.ui" line="1141"/>
         <source>Error Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1168"/>
+        <location filename="../vSongHome.ui" line="1168"/>
         <source>This button clears the contents of the SQL logs</source>
         <translation>Эта кнопка очищает содержимое журналов SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1180"/>
+        <location filename="../vSongHome.ui" line="1180"/>
         <source>This panel lets you examine a log of all SQL commands issued by the application or by yourself</source>
         <translation>Эта панель позволяет вам просматривать журнал всех SQL-команд, выданных приложением или вами</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1252"/>
+        <location filename="../vSongHome.ui" line="1252"/>
         <source>This is the structure of the opened database.
 You can drag multiple object names from the Name column and drop them into the SQL editor and you can adjust the properties of the dropped names using the context menu. This would help you in composing SQL statements.
 You can drag SQL statements from the Schema column and drop them into the SQL editor or into other applications.
@@ -2660,85 +2660,85 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
 </translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1294"/>
-        <location filename="../MainWindow.ui" line="2187"/>
+        <location filename="../vSongHome.ui" line="1294"/>
+        <location filename="../vSongHome.ui" line="2187"/>
         <source>Project Toolbar</source>
         <translation>Панель Инструментов Проекта</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1313"/>
+        <location filename="../vSongHome.ui" line="1313"/>
         <source>Extra DB toolbar</source>
         <translation>Дополнительная Панель Инструментов БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1316"/>
-        <location filename="../MainWindow.ui" line="1390"/>
-        <location filename="../MainWindow.ui" line="1393"/>
+        <location filename="../vSongHome.ui" line="1316"/>
+        <location filename="../vSongHome.ui" line="1390"/>
+        <location filename="../vSongHome.ui" line="1393"/>
         <source>Close the current database file</source>
         <translation>Закрыть файл текущей БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1671"/>
+        <location filename="../vSongHome.ui" line="1671"/>
         <source>&amp;About</source>
         <translation>О &amp;программе</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1691"/>
+        <location filename="../vSongHome.ui" line="1691"/>
         <source>This button opens a new tab for the SQL editor</source>
         <translation>Эта кнопка открывает новую вкладку для редактора SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1706"/>
+        <location filename="../vSongHome.ui" line="1706"/>
         <source>Execute all/selected SQL</source>
         <translation>Выполнить все/выбранный SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1709"/>
+        <location filename="../vSongHome.ui" line="1709"/>
         <source>This button executes the currently selected SQL statements. If no text is selected, all SQL statements are executed.</source>
         <translation>Эта кнопка выполняет текущие выбранные операторы SQL. Если в текстовом редакторе ничего не выбрано , все инструкции SQL выполняются.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1724"/>
+        <location filename="../vSongHome.ui" line="1724"/>
         <source>This button opens a file containing SQL statements and loads it in a new editor tab</source>
         <translation>Эта кнопка открывает файл, содержащий инструкции SQL, и загружает его в новой вкладке редактора</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1745"/>
+        <location filename="../vSongHome.ui" line="1745"/>
         <source>&amp;Load Extension...</source>
         <translation>&amp;Загрузить расширение...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1760"/>
+        <location filename="../vSongHome.ui" line="1760"/>
         <source>Execute line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1766"/>
+        <location filename="../vSongHome.ui" line="1766"/>
         <source>This button executes the SQL statement present in the current editor line</source>
         <translation>Эта кнопка выполняет оператор SQL, присутствующий в текущей строке редактора</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1789"/>
+        <location filename="../vSongHome.ui" line="1789"/>
         <source>&amp;Wiki</source>
         <translation>&amp;Вики</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1801"/>
+        <location filename="../vSongHome.ui" line="1801"/>
         <source>Bug &amp;Report...</source>
         <translation>Баг &amp;репорт...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1813"/>
+        <location filename="../vSongHome.ui" line="1813"/>
         <source>Feature Re&amp;quest...</source>
         <translation>Запросить &amp;функцию...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1825"/>
+        <location filename="../vSongHome.ui" line="1825"/>
         <source>Web&amp;site</source>
         <translation>&amp;Веб-сайт</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1837"/>
+        <location filename="../vSongHome.ui" line="1837"/>
         <source>&amp;Donate on Patreon...</source>
         <translation>Сделать &amp;пожертвование в Patreon...</translation>
     </message>
@@ -2747,405 +2747,405 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&amp;Сохранить проект...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1858"/>
+        <location filename="../vSongHome.ui" line="1858"/>
         <source>This button lets you save all the settings associated to the open DB to a DB4S project file</source>
         <translation>Эта кнопка позволяет сохранить все настройки, связанные с открытой БД, в файл проекта DB4S</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1870"/>
+        <location filename="../vSongHome.ui" line="1870"/>
         <source>Open &amp;Project...</source>
         <translation>Открыть &amp;проект...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1879"/>
+        <location filename="../vSongHome.ui" line="1879"/>
         <source>This button lets you open a DB4S project file</source>
         <translation>Эта кнопка позволяет открыть файл проекта DB4S</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1894"/>
+        <location filename="../vSongHome.ui" line="1894"/>
         <source>&amp;Attach Database...</source>
         <translation>&amp;Прикрепить БД...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1897"/>
-        <location filename="../MainWindow.ui" line="1900"/>
+        <location filename="../vSongHome.ui" line="1897"/>
+        <location filename="../vSongHome.ui" line="1900"/>
         <source>Add another database file to the current database connection</source>
         <translation>Добавить другой файл БД в текущее соединение</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1903"/>
+        <location filename="../vSongHome.ui" line="1903"/>
         <source>This button lets you add another database file to the current database connection</source>
         <translation>Эта кнопка позволяет добавить другой файл БД в текущее соединение с БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1915"/>
+        <location filename="../vSongHome.ui" line="1915"/>
         <source>&amp;Set Encryption...</source>
         <translation>Назначитть &amp;шифрование...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1945"/>
+        <location filename="../vSongHome.ui" line="1945"/>
         <source>This button saves the content of the current SQL editor tab to a file</source>
         <translation>Эта кнопка сохраняет содержимое текущей вкладки редактора SQL в файл</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2010"/>
+        <location filename="../vSongHome.ui" line="2010"/>
         <source>SQLCipher &amp;FAQ</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2018"/>
+        <location filename="../vSongHome.ui" line="2018"/>
         <source>Table(&amp;s) to JSON...</source>
         <translation>Таблицы в файл &amp;JSON...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2033"/>
+        <location filename="../vSongHome.ui" line="2033"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2042"/>
+        <location filename="../vSongHome.ui" line="2042"/>
         <source>F5</source>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2054"/>
+        <location filename="../vSongHome.ui" line="2054"/>
         <source>Open Data&amp;base Read Only...</source>
         <translation>Открыть БД &amp;только для чтения...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2086"/>
+        <location filename="../vSongHome.ui" line="2086"/>
         <source>Save results</source>
         <translation>Сохранить результаты</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2089"/>
+        <location filename="../vSongHome.ui" line="2089"/>
         <source>Save the results view</source>
         <translation>Сохранить результаты</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2092"/>
+        <location filename="../vSongHome.ui" line="2092"/>
         <source>This button lets you save the results of the last executed query</source>
         <translation>Эта кнопка позволяет сохранить результаты последнего выполненного запроса</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2104"/>
-        <location filename="../MainWindow.ui" line="2110"/>
+        <location filename="../vSongHome.ui" line="2104"/>
+        <location filename="../vSongHome.ui" line="2110"/>
         <source>Find text in SQL editor</source>
         <translation>Найти текст в редакторе SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2107"/>
+        <location filename="../vSongHome.ui" line="2107"/>
         <source>Find</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2113"/>
+        <location filename="../vSongHome.ui" line="2113"/>
         <source>This button opens the search bar of the editor</source>
         <translation>Эта кнопка открывает панель поиска редактора</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2116"/>
+        <location filename="../vSongHome.ui" line="2116"/>
         <source>Ctrl+F</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2128"/>
-        <location filename="../MainWindow.ui" line="2134"/>
+        <location filename="../vSongHome.ui" line="2128"/>
+        <location filename="../vSongHome.ui" line="2134"/>
         <source>Find or replace text in SQL editor</source>
         <translation>Найти или заменить текст в редакторе SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2131"/>
+        <location filename="../vSongHome.ui" line="2131"/>
         <source>Find or replace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2137"/>
+        <location filename="../vSongHome.ui" line="2137"/>
         <source>This button opens the find/replace dialog for the current editor tab</source>
         <translation>Эта кнопка открывает диалог поиска/замены для текущей вкладки редактора</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2140"/>
+        <location filename="../vSongHome.ui" line="2140"/>
         <source>Ctrl+H</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2148"/>
-        <location filename="../MainWindow.ui" line="2210"/>
+        <location filename="../vSongHome.ui" line="2148"/>
+        <location filename="../vSongHome.ui" line="2210"/>
         <source>Export to &amp;CSV</source>
         <translation>Экспортировать в &amp;CSV</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2153"/>
-        <location filename="../MainWindow.ui" line="2224"/>
+        <location filename="../vSongHome.ui" line="2153"/>
+        <location filename="../vSongHome.ui" line="2224"/>
         <source>Save as &amp;view</source>
         <translation>Сохранить как &amp;представление</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2156"/>
+        <location filename="../vSongHome.ui" line="2156"/>
         <source>Save as view</source>
         <translation>Сохранить как представление</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2161"/>
+        <location filename="../vSongHome.ui" line="2161"/>
         <source>Hide column(s)</source>
         <translation>Скрыть колонки</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2164"/>
+        <location filename="../vSongHome.ui" line="2164"/>
         <source>Hide selected column(s)</source>
         <translation>Скрыть выбранные колонки</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2169"/>
+        <location filename="../vSongHome.ui" line="2169"/>
         <source>Show all columns</source>
         <translation>Показать все колонки</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2172"/>
+        <location filename="../vSongHome.ui" line="2172"/>
         <source>Show all columns that were hidden</source>
         <translation>Показать все колонки, которые были скрыты</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2190"/>
+        <location filename="../vSongHome.ui" line="2190"/>
         <source>Shows or hides the Project toolbar.</source>
         <translation>Показывает или скрывает панель инструментов Проекта.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2205"/>
+        <location filename="../vSongHome.ui" line="2205"/>
         <source>Extra DB Toolbar</source>
         <translation>Дополнительная Панель Инструментов БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2213"/>
-        <location filename="../MainWindow.ui" line="2216"/>
+        <location filename="../vSongHome.ui" line="2213"/>
+        <location filename="../vSongHome.ui" line="2216"/>
         <source>Export the filtered data to CSV</source>
         <translation>Экспортировать отфильтрованные данные в CSV</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2219"/>
+        <location filename="../vSongHome.ui" line="2219"/>
         <source>This button exports the data of the browsed table as currently displayed (after filters, display formats and order column) as a CSV file.</source>
         <translation>Эта кнопка экспортирует данные просматриваемой таблицы так как отображается (после обработки фильтрами, форматами отображения и т.д.) в виде файла CSV.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2227"/>
-        <location filename="../MainWindow.ui" line="2230"/>
+        <location filename="../vSongHome.ui" line="2227"/>
+        <location filename="../vSongHome.ui" line="2230"/>
         <source>Save the current filter, sort column and display formats as a view</source>
         <translation>Сохранить текущие фильтры, столбецы сортировки и форматы отображания в виде представления</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2233"/>
+        <location filename="../vSongHome.ui" line="2233"/>
         <source>This button saves the current setting of the browsed table (filters, display formats and order column) as an SQL view that you can later browse or use in SQL statements.</source>
         <translation>Эта кнопка сохраняет текущие настройки просматриваемой таблицы (фильтры, форматы отображения и столбец сортировки) в виде представления SQL, которое вы можете впоследствии просмотреть или использовать в операторах SQL.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2259"/>
+        <location filename="../vSongHome.ui" line="2259"/>
         <source>Insert Values...</source>
         <translation>Вставить Значения...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2262"/>
-        <location filename="../MainWindow.ui" line="2265"/>
+        <location filename="../vSongHome.ui" line="2262"/>
+        <location filename="../vSongHome.ui" line="2265"/>
         <source>Open a dialog for inserting values in a new record</source>
         <translation>Открывает диалоговое окно для вставки значений в новую запись</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2277"/>
-        <location filename="../MainWindow.ui" line="2280"/>
+        <location filename="../vSongHome.ui" line="2277"/>
+        <location filename="../vSongHome.ui" line="2280"/>
         <source>Insert new record using default values in browsed table</source>
         <translation>Вставляет новую запись, используя значения по умолчанию в просматриваемой таблице</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2285"/>
+        <location filename="../vSongHome.ui" line="2285"/>
         <source>New In-&amp;Memory Database</source>
         <translation>Новая БД в &amp;Памяти</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2293"/>
+        <location filename="../vSongHome.ui" line="2293"/>
         <source>Drag &amp;&amp; Drop Qualified Names</source>
         <translation>Квалифицированные имена при перетакскивании</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2296"/>
-        <location filename="../MainWindow.ui" line="2299"/>
+        <location filename="../vSongHome.ui" line="2296"/>
+        <location filename="../vSongHome.ui" line="2299"/>
         <source>Use qualified names (e.g. &quot;Table&quot;.&quot;Field&quot;) when dragging the objects and dropping them into the editor </source>
         <translation>Квалифицированные имена (например, &quot;Table&quot;.&quot;Field&quot;) при перетаскивании объектов в редактор </translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2307"/>
+        <location filename="../vSongHome.ui" line="2307"/>
         <source>Drag &amp;&amp; Drop Enquoted Names</source>
         <translation>Экранированные имена при перетаскивании</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2310"/>
-        <location filename="../MainWindow.ui" line="2313"/>
+        <location filename="../vSongHome.ui" line="2310"/>
+        <location filename="../vSongHome.ui" line="2313"/>
         <source>Use escaped identifiers (e.g. &quot;Table1&quot;) when dragging the objects and dropping them into the editor </source>
         <translation>Экранировать имена идентификаторов (например, &quot;Table1&quot;), когда перетаскиваются объекты в редактор </translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2318"/>
+        <location filename="../vSongHome.ui" line="2318"/>
         <source>&amp;Integrity Check</source>
         <translation>Проверка &amp;Целостности</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2321"/>
+        <location filename="../vSongHome.ui" line="2321"/>
         <source>Runs the integrity_check pragma over the opened database and returns the results in the Execute SQL tab. This pragma does an integrity check of the entire database.</source>
         <translation>Выполняет прагму integrity_check для открытой БД и возвращает результаты во вкладке &quot;SQL&quot;. Эта прагма выполняет проверку целостности всей базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2326"/>
+        <location filename="../vSongHome.ui" line="2326"/>
         <source>&amp;Foreign-Key Check</source>
         <translation>Проверка &amp;Внешних ключей</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2329"/>
+        <location filename="../vSongHome.ui" line="2329"/>
         <source>Runs the foreign_key_check pragma over the opened database and returns the results in the Execute SQL tab</source>
         <translation>Запускает прагму foreign_key_check для открытой БД и возвращает результаты во вкладке &quot;SQL&quot;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2334"/>
+        <location filename="../vSongHome.ui" line="2334"/>
         <source>&amp;Quick Integrity Check</source>
         <translation>&amp;Быстрая Проверка Целостности</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2337"/>
+        <location filename="../vSongHome.ui" line="2337"/>
         <source>Run a quick integrity check over the open DB</source>
         <translation>Запуск быстрой проверки целостности для открытый БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2340"/>
+        <location filename="../vSongHome.ui" line="2340"/>
         <source>Runs the quick_check pragma over the opened database and returns the results in the Execute SQL tab. This command does most of the checking of PRAGMA integrity_check but runs much faster.</source>
         <translation>Запускает прагму quick_check для открытой БД и возвращает результаты во вкладке &quot;SQL&quot;. Эта команда выполняет большую часть проверки PRAGMA integrity_check, но работает намного быстрее.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2345"/>
+        <location filename="../vSongHome.ui" line="2345"/>
         <source>&amp;Optimize</source>
         <translation>&amp;Оптимизация</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2348"/>
+        <location filename="../vSongHome.ui" line="2348"/>
         <source>Attempt to optimize the database</source>
         <translation>Попытка оптимизации БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2351"/>
+        <location filename="../vSongHome.ui" line="2351"/>
         <source>Runs the optimize pragma over the opened database. This pragma might perform optimizations that will improve the performance of future queries.</source>
         <translation>Выполняет прагму optimize для открытой БД. Эта прагма может выполнять оптимизацию, которая улучшит производительность будущих запросов.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2360"/>
-        <location filename="../MainWindow.ui" line="2387"/>
-        <location filename="../MainWindow.ui" line="2450"/>
+        <location filename="../vSongHome.ui" line="2360"/>
+        <location filename="../vSongHome.ui" line="2387"/>
+        <location filename="../vSongHome.ui" line="2450"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2363"/>
+        <location filename="../vSongHome.ui" line="2363"/>
         <source>Print text from current SQL editor tab</source>
         <translation>Печать текста изтекущей вкладки редактора SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2369"/>
+        <location filename="../vSongHome.ui" line="2369"/>
         <source>Open a dialog for printing the text in the current SQL editor tab</source>
         <translation>Открывает диалоговое окно для печати текста из текущей вкладки редактора SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2390"/>
+        <location filename="../vSongHome.ui" line="2390"/>
         <source>Print the structure of the opened database</source>
         <translation>Печать структуры открытой БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2396"/>
+        <location filename="../vSongHome.ui" line="2396"/>
         <source>Open a dialog for printing the structure of the opened database</source>
         <translation>Открывает диалоговое окно для печати структуры текущей БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2411"/>
+        <location filename="../vSongHome.ui" line="2411"/>
         <source>Un/comment block of SQL code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2414"/>
+        <location filename="../vSongHome.ui" line="2414"/>
         <source>Un/comment block</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2417"/>
+        <location filename="../vSongHome.ui" line="2417"/>
         <source>Comment or uncomment current line or selected block of code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2420"/>
+        <location filename="../vSongHome.ui" line="2420"/>
         <source>Comment or uncomment the selected lines or the current line, when there is no selection. All the block is toggled according to the first line.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2423"/>
+        <location filename="../vSongHome.ui" line="2423"/>
         <source>Ctrl+/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2435"/>
+        <location filename="../vSongHome.ui" line="2435"/>
         <source>Stop SQL execution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2438"/>
+        <location filename="../vSongHome.ui" line="2438"/>
         <source>Stop execution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2441"/>
+        <location filename="../vSongHome.ui" line="2441"/>
         <source>Stop the currently running SQL script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2474"/>
+        <location filename="../vSongHome.ui" line="2474"/>
         <source>Clear Filters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2492"/>
+        <location filename="../vSongHome.ui" line="2492"/>
         <source>Save Table As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2513"/>
-        <location filename="../MainWindow.ui" line="2516"/>
+        <location filename="../vSongHome.ui" line="2513"/>
+        <location filename="../vSongHome.ui" line="2516"/>
         <source>Insert a new record in the current table</source>
         <translation>Добавить новую запись в текущую таблицу</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2546"/>
+        <location filename="../vSongHome.ui" line="2546"/>
         <source>&amp;Save Project As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2549"/>
-        <location filename="../MainWindow.ui" line="2552"/>
-        <location filename="../MainWindow.ui" line="2555"/>
+        <location filename="../vSongHome.ui" line="2549"/>
+        <location filename="../vSongHome.ui" line="2552"/>
+        <location filename="../vSongHome.ui" line="2555"/>
         <source>Save the project in a file selected in a dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2564"/>
+        <location filename="../vSongHome.ui" line="2564"/>
         <source>Save A&amp;ll</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2567"/>
-        <location filename="../MainWindow.ui" line="2570"/>
-        <location filename="../MainWindow.ui" line="2573"/>
+        <location filename="../vSongHome.ui" line="2567"/>
+        <location filename="../vSongHome.ui" line="2570"/>
+        <location filename="../vSongHome.ui" line="2573"/>
         <source>Save DB file, project file and opened SQL files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2576"/>
+        <location filename="../vSongHome.ui" line="2576"/>
         <source>Ctrl+Shift+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="144"/>
+        <location filename="../vSongHome.ui" line="144"/>
         <source>&amp;Table:</source>
         <translation>&amp;Таблица:</translation>
     </message>
@@ -3154,13 +3154,13 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Эта кнопка создаёт новую, пустую запись в таблице</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2274"/>
-        <location filename="../MainWindow.ui" line="2510"/>
+        <location filename="../vSongHome.ui" line="2274"/>
+        <location filename="../vSongHome.ui" line="2510"/>
         <source>New Record</source>
         <translation>Добавить запись</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2531"/>
+        <location filename="../vSongHome.ui" line="2531"/>
         <source>Delete the current record</source>
         <translation>Удалить текущую запись</translation>
     </message>
@@ -3169,8 +3169,8 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Эта кнопка удаляет выбранную запись</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2528"/>
-        <location filename="../MainWindow.cpp" line="3783"/>
+        <location filename="../vSongHome.ui" line="2528"/>
+        <location filename="../vSongHome.cpp" line="3783"/>
         <source>Delete Record</source>
         <translation>Удалить запись</translation>
     </message>
@@ -3179,17 +3179,17 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Это представление базы данных. Сделайте двойной щелчок по любой записи, чтобы отредактировать её содержимое.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="235"/>
+        <location filename="../vSongHome.ui" line="235"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scroll to the beginning&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Прокрутить к началу&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="238"/>
+        <location filename="../vSongHome.ui" line="238"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates to the beginning in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нажатие этой кнопки переводит к началу в таблице выше.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="241"/>
+        <location filename="../vSongHome.ui" line="241"/>
         <source>|&lt;</source>
         <translation></translation>
     </message>
@@ -3202,12 +3202,12 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нажатие этой кнопки к перемещению на 100 записей вверх в табличном представлении выше&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="261"/>
+        <location filename="../vSongHome.ui" line="261"/>
         <source>&lt;</source>
         <translation>&lt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="272"/>
+        <location filename="../vSongHome.ui" line="272"/>
         <source>0 - 0 of 0</source>
         <translation>0 - 0 из 0</translation>
     </message>
@@ -3220,52 +3220,52 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нажатие этой кнопки к перемещению на 100 записей вниз в табличном представлении выше&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="288"/>
+        <location filename="../vSongHome.ui" line="288"/>
         <source>&gt;</source>
         <translation>&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="302"/>
+        <location filename="../vSongHome.ui" line="302"/>
         <source>Scroll to the end</source>
         <translation>Прокрутить к концу</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="305"/>
+        <location filename="../vSongHome.ui" line="305"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Clicking this button navigates up to the end in the table view above.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Нажатие этой кнопки перемещает в конец таблицы выше.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="308"/>
+        <location filename="../vSongHome.ui" line="308"/>
         <source>&gt;|</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="332"/>
+        <location filename="../vSongHome.ui" line="332"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to jump to the specified record&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нажмите здесь, чтобы перейти к указанной записи&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="335"/>
+        <location filename="../vSongHome.ui" line="335"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This button is used to navigate to the record number specified in the Go to area.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Эта кнопка используется, чтобы переместиться к записи, номер которой указан в области Перейти к&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="338"/>
+        <location filename="../vSongHome.ui" line="338"/>
         <source>Go to:</source>
         <translation>Перейти к:</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="345"/>
+        <location filename="../vSongHome.ui" line="345"/>
         <source>Enter record number to browse</source>
         <translation>Введите номер записи для просмотра</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="348"/>
+        <location filename="../vSongHome.ui" line="348"/>
         <source>Type a record number in this area and click the Go to: button to display the record in the database view</source>
         <translation>Напечатайте номер записи в этой области и нажмите кнопку Перейти к:, чтобы отобразить запись в представлении базы данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="351"/>
+        <location filename="../vSongHome.ui" line="351"/>
         <source>1</source>
         <translation>1</translation>
     </message>
@@ -3391,17 +3391,17 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.sqlite.org/pragma.html#pragma_wal_autocheckpoint&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;WAL Auto Checkpoint&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="967"/>
+        <location filename="../vSongHome.ui" line="967"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="971"/>
+        <location filename="../vSongHome.ui" line="971"/>
         <source>&amp;Import</source>
         <translation>&amp;Импорт</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="978"/>
+        <location filename="../vSongHome.ui" line="978"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспорт</translation>
     </message>
@@ -3410,37 +3410,37 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Удаленный сервер</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1007"/>
+        <location filename="../vSongHome.ui" line="1007"/>
         <source>&amp;Edit</source>
         <translation>&amp;Редактирование</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1019"/>
+        <location filename="../vSongHome.ui" line="1019"/>
         <source>&amp;View</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1028"/>
+        <location filename="../vSongHome.ui" line="1028"/>
         <source>&amp;Help</source>
         <translation>&amp;Справка</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1065"/>
+        <location filename="../vSongHome.ui" line="1065"/>
         <source>DB Toolbar</source>
         <translation>Панель инструментов БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1084"/>
+        <location filename="../vSongHome.ui" line="1084"/>
         <source>Edit Database &amp;Cell</source>
         <translation>Редактирование &amp;ячейки БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1239"/>
+        <location filename="../vSongHome.ui" line="1239"/>
         <source>DB Sche&amp;ma</source>
         <translation>Схе&amp;ма БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1285"/>
+        <location filename="../vSongHome.ui" line="1285"/>
         <source>&amp;Remote</source>
         <translation>&amp;Удаленный сервер</translation>
     </message>
@@ -3449,18 +3449,18 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Загрузить &amp;расширение</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1757"/>
-        <location filename="../MainWindow.ui" line="1763"/>
+        <location filename="../vSongHome.ui" line="1757"/>
+        <location filename="../vSongHome.ui" line="1763"/>
         <source>Execute current line</source>
         <translation>Выполнить текущую строку</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1769"/>
+        <location filename="../vSongHome.ui" line="1769"/>
         <source>Shift+F5</source>
         <translation>Shift+F5</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1849"/>
+        <location filename="../vSongHome.ui" line="1849"/>
         <source>Sa&amp;ve Project</source>
         <translation>&amp;Сохранить проект</translation>
     </message>
@@ -3469,68 +3469,68 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Открыть &amp;проект</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1971"/>
+        <location filename="../vSongHome.ui" line="1971"/>
         <source>Edit display format</source>
         <translation>Формат отображения</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1974"/>
+        <location filename="../vSongHome.ui" line="1974"/>
         <source>Edit the display format of the data in this column</source>
         <translation>Редактирование формата отображения для данных из этой колонки</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1982"/>
+        <location filename="../vSongHome.ui" line="1982"/>
         <source>Show rowid column</source>
         <translation>Отображать колонку rowid</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1985"/>
+        <location filename="../vSongHome.ui" line="1985"/>
         <source>Toggle the visibility of the rowid column</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1990"/>
-        <location filename="../MainWindow.cpp" line="3474"/>
+        <location filename="../vSongHome.ui" line="1990"/>
+        <location filename="../vSongHome.cpp" line="3474"/>
         <source>Set encoding</source>
         <translation>Кодировка</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1993"/>
+        <location filename="../vSongHome.ui" line="1993"/>
         <source>Change the encoding of the text in the table cells</source>
         <translation>Изменение кодировки текста в данной таблице</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1998"/>
+        <location filename="../vSongHome.ui" line="1998"/>
         <source>Set encoding for all tables</source>
         <translation>Установить кодировку для всех таблиц</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2001"/>
+        <location filename="../vSongHome.ui" line="2001"/>
         <source>Change the default encoding assumed for all tables in the database</source>
         <translation>Изменить кодировку по умолчанию для всех таблиц в базе данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2057"/>
+        <location filename="../vSongHome.ui" line="2057"/>
         <source>Open an existing database file in read only mode</source>
         <translation>Открыть существующий файл базы данных в режиме только для чтения</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2074"/>
+        <location filename="../vSongHome.ui" line="2074"/>
         <source>Unlock view editing</source>
         <translation>Разблокировать возможность редактирования</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2077"/>
+        <location filename="../vSongHome.ui" line="2077"/>
         <source>This unlocks the current view for editing. However, you will need appropriate triggers for editing.</source>
         <translation>Разблокировать текущий вид для редактирования. Однако для редактирования вам понадобятся соответствующие триггеры.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3368"/>
+        <location filename="../vSongHome.cpp" line="3368"/>
         <source>Duplicate record</source>
         <translation>Дубликат записи</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2013"/>
+        <location filename="../vSongHome.ui" line="2013"/>
         <source>Opens the SQLCipher FAQ in a browser window</source>
         <translation>Открыть SQLCiphier FAQ в браузере</translation>
     </message>
@@ -3539,7 +3539,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">Таблицы в файл JSON...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2021"/>
+        <location filename="../vSongHome.ui" line="2021"/>
         <source>Export one or more table(s) to a JSON file</source>
         <translation>Экспортировать таблицы в JSON файл</translation>
     </message>
@@ -3556,33 +3556,33 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&amp;Прикрепить базу данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1927"/>
-        <location filename="../MainWindow.ui" line="1930"/>
+        <location filename="../vSongHome.ui" line="1927"/>
+        <location filename="../vSongHome.ui" line="1930"/>
         <source>Save SQL file as</source>
         <translation>Сохранить файл SQL как</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1954"/>
+        <location filename="../vSongHome.ui" line="1954"/>
         <source>&amp;Browse Table</source>
         <translation>Пр&amp;осмотр данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2477"/>
+        <location filename="../vSongHome.ui" line="2477"/>
         <source>Clear all filters</source>
         <translation>Очистить все фильтры</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1131"/>
+        <location filename="../vSongHome.ui" line="1131"/>
         <source>User</source>
         <translation>Пользователем</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1136"/>
+        <location filename="../vSongHome.ui" line="1136"/>
         <source>Application</source>
         <translation>Приложением</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1171"/>
+        <location filename="../vSongHome.ui" line="1171"/>
         <source>&amp;Clear</source>
         <translation>О&amp;чистить</translation>
     </message>
@@ -3703,204 +3703,204 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="obsolete">Схема БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1336"/>
+        <location filename="../vSongHome.ui" line="1336"/>
         <source>&amp;New Database...</source>
         <translation>&amp;Новая база данных...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1339"/>
-        <location filename="../MainWindow.ui" line="1342"/>
+        <location filename="../vSongHome.ui" line="1339"/>
+        <location filename="../vSongHome.ui" line="1342"/>
         <source>Create a new database file</source>
         <translation>Создать новый файл базы данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1345"/>
+        <location filename="../vSongHome.ui" line="1345"/>
         <source>This option is used to create a new database file.</source>
         <translation>Эта опция используется, чтобы создать новый файл базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1348"/>
+        <location filename="../vSongHome.ui" line="1348"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1360"/>
-        <location filename="../MainWindow.ui" line="2242"/>
+        <location filename="../vSongHome.ui" line="1360"/>
+        <location filename="../vSongHome.ui" line="2242"/>
         <source>&amp;Open Database...</source>
         <translation>&amp;Открыть базу данных...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1363"/>
-        <location filename="../MainWindow.ui" line="1366"/>
-        <location filename="../MainWindow.ui" line="2060"/>
-        <location filename="../MainWindow.ui" line="2245"/>
-        <location filename="../MainWindow.ui" line="2248"/>
+        <location filename="../vSongHome.ui" line="1363"/>
+        <location filename="../vSongHome.ui" line="1366"/>
+        <location filename="../vSongHome.ui" line="2060"/>
+        <location filename="../vSongHome.ui" line="2245"/>
+        <location filename="../vSongHome.ui" line="2248"/>
         <source>Open an existing database file</source>
         <translation>Открыть существующий файл базы данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1369"/>
-        <location filename="../MainWindow.ui" line="2063"/>
-        <location filename="../MainWindow.ui" line="2251"/>
+        <location filename="../vSongHome.ui" line="1369"/>
+        <location filename="../vSongHome.ui" line="2063"/>
+        <location filename="../vSongHome.ui" line="2251"/>
         <source>This option is used to open an existing database file.</source>
         <translation>Эта опция используется, чтобы открыть существующий файл базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1372"/>
+        <location filename="../vSongHome.ui" line="1372"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1387"/>
+        <location filename="../vSongHome.ui" line="1387"/>
         <source>&amp;Close Database</source>
         <translation>&amp;Закрыть базу данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1396"/>
+        <location filename="../vSongHome.ui" line="1396"/>
         <source>This button closes the connection to the currently open database file</source>
         <translation>Эта кнопка закрывает соединение с текущим файлом БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1399"/>
+        <location filename="../vSongHome.ui" line="1399"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1417"/>
-        <location filename="../MainWindow.ui" line="1420"/>
+        <location filename="../vSongHome.ui" line="1417"/>
+        <location filename="../vSongHome.ui" line="1420"/>
         <source>Revert database to last saved state</source>
         <translation>Вернуть базу данных в последнее сохранённое состояние</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1423"/>
+        <location filename="../vSongHome.ui" line="1423"/>
         <source>This option is used to revert the current database file to its last saved state. All changes made since the last save operation are lost.</source>
         <translation>Эта опция используется, чтобы вернуть текущий файл базы данных в его последнее сохранённое состояние. Все изменения, сделаные с последней операции сохранения теряются.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1441"/>
-        <location filename="../MainWindow.ui" line="1444"/>
+        <location filename="../vSongHome.ui" line="1441"/>
+        <location filename="../vSongHome.ui" line="1444"/>
         <source>Write changes to the database file</source>
         <translation>Записать изменения в файл базы данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1447"/>
+        <location filename="../vSongHome.ui" line="1447"/>
         <source>This option is used to save changes to the database file.</source>
         <translation>Эта опция используется, чтобы сохранить изменения в файле базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1450"/>
+        <location filename="../vSongHome.ui" line="1450"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1461"/>
+        <location filename="../vSongHome.ui" line="1461"/>
         <source>Compact &amp;Database...</source>
         <translation>&amp;Уплотнить базу данных...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1464"/>
+        <location filename="../vSongHome.ui" line="1464"/>
         <source>Compact the database file, removing space wasted by deleted records</source>
         <translation>Уплотнить базу данных, удаляя пространство, занимаемое удалёнными записями</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1467"/>
-        <location filename="../MainWindow.ui" line="1470"/>
+        <location filename="../vSongHome.ui" line="1467"/>
+        <location filename="../vSongHome.ui" line="1470"/>
         <source>Compact the database file, removing space wasted by deleted records.</source>
         <translation>Уплотнить базу данных, удаляя пространство, занимаемое удалёнными записями.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1478"/>
+        <location filename="../vSongHome.ui" line="1478"/>
         <source>E&amp;xit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1481"/>
+        <location filename="../vSongHome.ui" line="1481"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1492"/>
+        <location filename="../vSongHome.ui" line="1492"/>
         <source>Import data from an .sql dump text file into a new or existing database.</source>
         <translation>Импортировать данные из текстового файла sql в новую или существующую базу данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1495"/>
+        <location filename="../vSongHome.ui" line="1495"/>
         <source>This option lets you import data from an .sql dump text file into a new or existing database. SQL dump files can be created on most database engines, including MySQL and PostgreSQL.</source>
         <translation>Эта опция позволяет импортировать данные из текстового файла sql в новую или существующую базу данных. Файл SQL может быть создан на большинстве движков баз данных, включая MySQL и PostgreSQL.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1506"/>
+        <location filename="../vSongHome.ui" line="1506"/>
         <source>Open a wizard that lets you import data from a comma separated text file into a database table.</source>
         <translation>Открыть мастер, который позволяет импортировать данные из файла CSV в таблицу базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1509"/>
+        <location filename="../vSongHome.ui" line="1509"/>
         <source>Open a wizard that lets you import data from a comma separated text file into a database table. CSV files can be created on most database and spreadsheet applications.</source>
         <translation>Открыть мастер, который позволяет импортировать данные из файла CSV в таблицу базы данных. Файлы CSV могут быть созданы в большинстве приложений баз данных и  электронных таблиц.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1520"/>
+        <location filename="../vSongHome.ui" line="1520"/>
         <source>Export a database to a .sql dump text file.</source>
         <translation>Экспортировать базу данных в текстовый файл .sql.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1523"/>
+        <location filename="../vSongHome.ui" line="1523"/>
         <source>This option lets you export a database to a .sql dump text file. SQL dump files contain all data necessary to recreate the database on most database engines, including MySQL and PostgreSQL.</source>
         <translation>Эта опция позволяет экспортировать базу данных в текстовый файл .sql. Файлы SQL содержат все данные, необходимые для создания базы данных в большистве движков баз данных, включая MySQL и PostgreSQL.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1534"/>
+        <location filename="../vSongHome.ui" line="1534"/>
         <source>Export a database table as a comma separated text file.</source>
         <translation>Экспортировать таблицу базы данных как CSV текстовый файл.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1537"/>
+        <location filename="../vSongHome.ui" line="1537"/>
         <source>Export a database table as a comma separated text file, ready to be imported into other database or spreadsheet applications.</source>
         <translation>Экспортировать таблицу базы данных как CSV текстовый файл, готовый для импортирования в другие базы данных или приложения электронных таблиц.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1555"/>
+        <location filename="../vSongHome.ui" line="1555"/>
         <source>Open the Create Table wizard, where it is possible to define the name and fields for a new table in the database</source>
         <translation>Открыть мастер создания таблиц, где возможно определить имя и поля для новой таблиы в базе данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1576"/>
+        <location filename="../vSongHome.ui" line="1576"/>
         <source>Open the Delete Table wizard, where you can select a database table to be dropped.</source>
         <translation>Открыть мастер удаления таблицы, где можно выбрать таблицу базы данных для удаления.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1594"/>
+        <location filename="../vSongHome.ui" line="1594"/>
         <source>Open the Modify Table wizard, where it is possible to rename an existing table. It is also possible to add or delete fields form a table, as well as modify field names and types.</source>
         <translation>Открыть мастер изменения таблицы, где возможно переименовать существующую таблиц. Можно добавить или удалить поля таблицы, так же изменять имена полей и типы.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1612"/>
+        <location filename="../vSongHome.ui" line="1612"/>
         <source>Open the Create Index wizard, where it is possible to define a new index on an existing database table.</source>
         <translation>Открыть мастер создания интекса, в котором можно определить новый индекс для существующей таблиц базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1624"/>
+        <location filename="../vSongHome.ui" line="1624"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Настройки...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1627"/>
-        <location filename="../MainWindow.ui" line="1630"/>
+        <location filename="../vSongHome.ui" line="1627"/>
+        <location filename="../vSongHome.ui" line="1630"/>
         <source>Open the preferences window.</source>
         <translation>Открыть окно настроек.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1645"/>
+        <location filename="../vSongHome.ui" line="1645"/>
         <source>&amp;DB Toolbar</source>
         <translation>&amp;Панель инструментов БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1648"/>
+        <location filename="../vSongHome.ui" line="1648"/>
         <source>Shows or hides the Database toolbar.</source>
         <translation>Показать или скрыть панель инструментов База данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1663"/>
+        <location filename="../vSongHome.ui" line="1663"/>
         <source>Shift+F1</source>
         <translation>Shift+F1</translation>
     </message>
@@ -3909,29 +3909,29 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">О &amp;программе...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1679"/>
+        <location filename="../vSongHome.ui" line="1679"/>
         <source>&amp;Recently opened</source>
         <translation>&amp;Недавно открываемые</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1688"/>
+        <location filename="../vSongHome.ui" line="1688"/>
         <source>Open &amp;tab</source>
         <translation>Открыть &amp;вкладку</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1694"/>
+        <location filename="../vSongHome.ui" line="1694"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="53"/>
-        <location filename="../MainWindow.ui" line="56"/>
+        <location filename="../vSongHome.ui" line="53"/>
+        <location filename="../vSongHome.ui" line="56"/>
         <source>Database Structure</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Структура БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="96"/>
+        <location filename="../vSongHome.ui" line="96"/>
         <source>This is the structure of the opened database.
 You can drag SQL statements from an object row and drop them into other applications or into another instance of &apos;vSongBook&apos;.
 </source>
@@ -3940,27 +3940,27 @@ You can drag SQL statements from an object row and drop them into other applicat
 </translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="121"/>
-        <location filename="../MainWindow.ui" line="124"/>
+        <location filename="../vSongHome.ui" line="121"/>
+        <location filename="../vSongHome.ui" line="124"/>
         <source>Browse Data</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Данные</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2036"/>
+        <location filename="../vSongHome.ui" line="2036"/>
         <source>Refresh the data in the selected table</source>
         <translation>Обновить данные в выбранной таблице</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="361"/>
-        <location filename="../MainWindow.ui" line="364"/>
+        <location filename="../vSongHome.ui" line="361"/>
+        <location filename="../vSongHome.ui" line="364"/>
         <source>Edit Pragmas</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Прагмы</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="894"/>
-        <location filename="../MainWindow.ui" line="897"/>
+        <location filename="../vSongHome.ui" line="894"/>
+        <location filename="../vSongHome.ui" line="897"/>
         <source>Execute SQL</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>SQL</translation>
@@ -3970,27 +3970,27 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="obsolete">Редактирование ячейки БД</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1096"/>
+        <location filename="../vSongHome.ui" line="1096"/>
         <source>SQL &amp;Log</source>
         <translation>&amp;Журнал SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1114"/>
+        <location filename="../vSongHome.ui" line="1114"/>
         <source>Show S&amp;QL submitted by</source>
         <translation>По&amp;казывать SQL, выполненный</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1228"/>
+        <location filename="../vSongHome.ui" line="1228"/>
         <source>&amp;Plot</source>
         <translation>&amp;График</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1414"/>
+        <location filename="../vSongHome.ui" line="1414"/>
         <source>&amp;Revert Changes</source>
         <translation>&amp;Отменить изменения</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1438"/>
+        <location filename="../vSongHome.ui" line="1438"/>
         <source>&amp;Write Changes</source>
         <translation>&amp;Записать изменения</translation>
     </message>
@@ -3999,79 +3999,79 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">&amp;Уплотнить базу данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1489"/>
+        <location filename="../vSongHome.ui" line="1489"/>
         <source>&amp;Database from SQL file...</source>
         <translation>&amp;База данных из файла SQL...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1503"/>
+        <location filename="../vSongHome.ui" line="1503"/>
         <source>&amp;Table from CSV file...</source>
         <translation>&amp;Таблицы из файла CSV...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1517"/>
+        <location filename="../vSongHome.ui" line="1517"/>
         <source>&amp;Database to SQL file...</source>
         <translation>Базу &amp;данных в файл SQL...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1531"/>
+        <location filename="../vSongHome.ui" line="1531"/>
         <source>&amp;Table(s) as CSV file...</source>
         <translation>&amp;Таблицы в файл CSV...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1552"/>
+        <location filename="../vSongHome.ui" line="1552"/>
         <source>&amp;Create Table...</source>
         <translation>&amp;Создать таблицу...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1570"/>
+        <location filename="../vSongHome.ui" line="1570"/>
         <source>&amp;Delete Table...</source>
         <translation>&amp;Удалить таблицу...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1591"/>
+        <location filename="../vSongHome.ui" line="1591"/>
         <source>&amp;Modify Table...</source>
         <translation>&amp;Изменить таблицу...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1609"/>
+        <location filename="../vSongHome.ui" line="1609"/>
         <source>Create &amp;Index...</source>
         <translation>Создать и&amp;ндекс...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1660"/>
+        <location filename="../vSongHome.ui" line="1660"/>
         <source>W&amp;hat&apos;s This?</source>
         <translation>Что &amp;это такое?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1703"/>
+        <location filename="../vSongHome.ui" line="1703"/>
         <source>&amp;Execute SQL</source>
         <translation>В&amp;ыполнить код SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1721"/>
+        <location filename="../vSongHome.ui" line="1721"/>
         <source>Open SQL file</source>
         <translation>Открыть файл SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1733"/>
-        <location filename="../MainWindow.ui" line="1939"/>
-        <location filename="../MainWindow.ui" line="1942"/>
+        <location filename="../vSongHome.ui" line="1733"/>
+        <location filename="../vSongHome.ui" line="1939"/>
+        <location filename="../vSongHome.ui" line="1942"/>
         <source>Save SQL file</source>
         <translation>Сохранить файл SQL</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="327"/>
+        <location filename="../vSongHome.cpp" line="327"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1777"/>
+        <location filename="../vSongHome.ui" line="1777"/>
         <source>Export as CSV file</source>
         <translation>Экспортировать в файл CSV</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1780"/>
+        <location filename="../vSongHome.ui" line="1780"/>
         <source>Export table as comma separated values file</source>
         <translation>Экспортировать таблицу как CSV файл</translation>
     </message>
@@ -4088,14 +4088,14 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">&amp;Веб-сайт...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1852"/>
-        <location filename="../MainWindow.ui" line="1855"/>
+        <location filename="../vSongHome.ui" line="1852"/>
+        <location filename="../vSongHome.ui" line="1855"/>
         <source>Save the current session to a file</source>
         <translation>Сохранить текущее состояние в файл </translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1873"/>
-        <location filename="../MainWindow.ui" line="1876"/>
+        <location filename="../vSongHome.ui" line="1873"/>
+        <location filename="../vSongHome.ui" line="1876"/>
         <source>Load a working session from a file</source>
         <translation>Загрузить рабочее состояние из файла</translation>
     </message>
@@ -4104,104 +4104,104 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">Ши&amp;фрование</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1963"/>
+        <location filename="../vSongHome.ui" line="1963"/>
         <source>Copy Create statement</source>
         <translation>Копировать CREATE выражение</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1966"/>
+        <location filename="../vSongHome.ui" line="1966"/>
         <source>Copy the CREATE statement of the item to the clipboard</source>
         <translation>Копировать CREATE выражение элемента в буффер обмена</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1712"/>
+        <location filename="../vSongHome.ui" line="1712"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="312"/>
+        <location filename="../vSongHome.cpp" line="312"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="2372"/>
-        <location filename="../MainWindow.ui" line="2399"/>
-        <location filename="../MainWindow.ui" line="2462"/>
+        <location filename="../vSongHome.ui" line="2372"/>
+        <location filename="../vSongHome.ui" line="2399"/>
+        <location filename="../vSongHome.ui" line="2462"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="317"/>
+        <location filename="../vSongHome.cpp" line="317"/>
         <source>Ctrl+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="322"/>
+        <location filename="../vSongHome.cpp" line="322"/>
         <source>Ctrl+I</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="362"/>
+        <location filename="../vSongHome.cpp" line="362"/>
         <source>Reset Window Layout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="363"/>
+        <location filename="../vSongHome.cpp" line="363"/>
         <source>Alt+0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="390"/>
+        <location filename="../vSongHome.cpp" line="390"/>
         <source>The database is currenctly busy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="396"/>
+        <location filename="../vSongHome.cpp" line="396"/>
         <source>Click here to interrupt the currently running query.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="404"/>
+        <location filename="../vSongHome.cpp" line="404"/>
         <source>Encrypted</source>
         <translation>Зашифровано</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="411"/>
+        <location filename="../vSongHome.cpp" line="411"/>
         <source>Read only</source>
         <translation>Только для чтения</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="412"/>
+        <location filename="../vSongHome.cpp" line="412"/>
         <source>Database file is read only. Editing the database is disabled.</source>
         <translation>База данных только для чтения. Редактирование запрещено.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="418"/>
+        <location filename="../vSongHome.cpp" line="418"/>
         <source>Database encoding</source>
         <translation>Кодировка базы данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="405"/>
+        <location filename="../vSongHome.cpp" line="405"/>
         <source>Database is encrypted using SQLCipher</source>
         <translation>База данных зашифрована с использованием SQLCipher</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="546"/>
-        <location filename="../MainWindow.cpp" line="3142"/>
+        <location filename="../vSongHome.cpp" line="546"/>
+        <location filename="../vSongHome.cpp" line="3142"/>
         <source>Choose a database file</source>
         <translation>Выбрать файл базы данных</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="588"/>
+        <location filename="../vSongHome.cpp" line="588"/>
         <source>Could not open database file.
 Reason: %1</source>
         <translation>Не удалось открыть файл базы данных.
 Причина:%1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="602"/>
-        <location filename="../MainWindow.cpp" line="1714"/>
-        <location filename="../MainWindow.cpp" line="2998"/>
+        <location filename="../vSongHome.cpp" line="602"/>
+        <location filename="../vSongHome.cpp" line="1714"/>
+        <location filename="../vSongHome.cpp" line="2998"/>
         <source>Choose a filename to save under</source>
         <translation>Выбрать имя, под которым сохранить данные</translation>
     </message>
@@ -4211,24 +4211,24 @@ Reason: %1</source>
         <translation type="vanished">Ошибка добавления записи:</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="992"/>
+        <location filename="../vSongHome.cpp" line="992"/>
         <source>Error deleting record:
 %1</source>
         <translation>Ошибка удаления записи: %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1001"/>
+        <location filename="../vSongHome.cpp" line="1001"/>
         <source>Please select a record first</source>
         <translation>Сначала выберите запись</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1096"/>
+        <location filename="../vSongHome.cpp" line="1096"/>
         <source>%1 - %2 of %3</source>
         <translation>%1 - %2 из %3</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1128"/>
-        <location filename="../MainWindow.cpp" line="1142"/>
+        <location filename="../vSongHome.cpp" line="1128"/>
+        <location filename="../vSongHome.cpp" line="1142"/>
         <source>There is no database opened. Please open or create a new database file.</source>
         <translation>Нет открытой базы данных. Откройте или создайте файл новой базы данных.</translation>
     </message>
@@ -4248,13 +4248,13 @@ All data associated with the %1 will be lost.</source>
         <translation type="vanished">Нет открытой базы данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2485"/>
+        <location filename="../vSongHome.cpp" line="2485"/>
         <source>A new vSongBook version is available (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Please download at &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</source>
         <translation>Вышла новая версия Обозревателя для SQLite (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Она доступна для скачивания по адресу &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2698"/>
-        <location filename="../MainWindow.cpp" line="2999"/>
+        <location filename="../vSongHome.cpp" line="2698"/>
+        <location filename="../vSongHome.cpp" line="2999"/>
         <source>vSongBook project file (*.sqbpro)</source>
         <translation>Файл проекта Обозревателя для SQLite (*.sqbpro)</translation>
     </message>
@@ -4279,7 +4279,7 @@ All data associated with the %1 will be lost.</source>
         <translation type="vanished">Выбрать текстовый файл</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1588"/>
+        <location filename="../vSongHome.cpp" line="1588"/>
         <source>Text files(*.csv *.txt);;All files(*)</source>
         <translation>Текстовые файлы(*.csv *.txt);;Все файлы(*)</translation>
     </message>
@@ -4288,7 +4288,7 @@ All data associated with the %1 will be lost.</source>
         <translation type="vanished">Импорт завершён</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1662"/>
+        <location filename="../vSongHome.cpp" line="1662"/>
         <source>Error while saving the database file. This means that not all changes to the database were saved. You need to resolve the following error first.
 
 %1</source>
@@ -4297,174 +4297,174 @@ All data associated with the %1 will be lost.</source>
 %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1671"/>
+        <location filename="../vSongHome.cpp" line="1671"/>
         <source>Are you sure you want to undo all changes made to the database file &apos;%1&apos; since the last save?</source>
         <translation>Отменить все изменения, сделанные в файле базы данных &apos;%1&apos; после последнего сохранения?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1696"/>
+        <location filename="../vSongHome.cpp" line="1696"/>
         <source>Choose a file to import</source>
         <translation>Выберать файл для импорта</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1697"/>
-        <location filename="../MainWindow.cpp" line="2270"/>
-        <location filename="../MainWindow.cpp" line="2339"/>
+        <location filename="../vSongHome.cpp" line="1697"/>
+        <location filename="../vSongHome.cpp" line="2270"/>
+        <location filename="../vSongHome.cpp" line="2339"/>
         <source>Text files(*.sql *.txt);;All files(*)</source>
         <translation>Текстовые файлы(*.sql *.txt);;Все файлы(*)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1707"/>
+        <location filename="../vSongHome.cpp" line="1707"/>
         <source>Do you want to create a new database file to hold the imported data?
 If you answer no we will attempt to import the data in the SQL file to the current database.</source>
         <translation>Создать новый файл базы данных, чтобы сохранить импортированные данные?
 Если ответить Нет, будет выполнена попытка импортировать данные файла SQL в текущую базу данных.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1718"/>
+        <location filename="../vSongHome.cpp" line="1718"/>
         <source>File %1 already exists. Please choose a different name.</source>
         <translation>Файл %1 уже существует. Выберите другое имя.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1743"/>
+        <location filename="../vSongHome.cpp" line="1743"/>
         <source>Error importing data: %1</source>
         <translation>Ошибка импортирования данных: %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1747"/>
+        <location filename="../vSongHome.cpp" line="1747"/>
         <source>Import completed.</source>
         <translation>Импорт завершён.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1806"/>
+        <location filename="../vSongHome.cpp" line="1806"/>
         <source>Delete View</source>
         <translation>Удалить представление</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1807"/>
+        <location filename="../vSongHome.cpp" line="1807"/>
         <source>Modify View</source>
         <translation>Модифицировать представление</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1809"/>
+        <location filename="../vSongHome.cpp" line="1809"/>
         <source>Delete Trigger</source>
         <translation>Удалить триггер</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1810"/>
+        <location filename="../vSongHome.cpp" line="1810"/>
         <source>Modify Trigger</source>
         <translation>Модифицировать триггер</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1812"/>
+        <location filename="../vSongHome.cpp" line="1812"/>
         <source>Delete Index</source>
         <translation>Удалить индекс</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2156"/>
+        <location filename="../vSongHome.cpp" line="2156"/>
         <source>Do you want to save the changes made to SQL tabs in a new project file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2157"/>
+        <location filename="../vSongHome.cpp" line="2157"/>
         <source>Do you want to save the changes made to SQL tabs in the project file %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2177"/>
+        <location filename="../vSongHome.cpp" line="2177"/>
         <source>Do you want to save the changes made to the SQL file %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2203"/>
+        <location filename="../vSongHome.cpp" line="2203"/>
         <source>The statements in this tab are still executing. Closing the tab will stop the execution. This might leave the database in an inconsistent state. Are you sure you want to close the tab?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2365"/>
+        <location filename="../vSongHome.cpp" line="2365"/>
         <source>Extensions(*.so *.dylib *.dll);;All files(*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2390"/>
+        <location filename="../vSongHome.cpp" line="2390"/>
         <source>Could not open find resource file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2697"/>
+        <location filename="../vSongHome.cpp" line="2697"/>
         <source>Choose a project file to open</source>
         <translation>Выберите файл проекта для открытия</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2819"/>
+        <location filename="../vSongHome.cpp" line="2819"/>
         <source>This project file is using an old file format because it was created using vSongBook version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert all your project files to the new file format because support for older formats might be dropped at some point in the future. You can convert your files by simply opening and re-saving them.</source>
         <translation>Этот файл проекта использует старый формат файла, потому что он был создан с использованием DB Browser для SQLite версии 3.10 или ниже. Загрузка этого формата по-прежнему полностью поддерживается, но мы советуем вам преобразовать все ваши файлы проекта в новый формат файла, поскольку поддержка более старых форматов может быть удалена в какой-то момент в будущем. Вы можете конвертировать ваши файлы, просто открывая и повторно сохраняя их.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3014"/>
+        <location filename="../vSongHome.cpp" line="3014"/>
         <source>Could not open project file for writing.
 Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3368"/>
+        <location filename="../vSongHome.cpp" line="3368"/>
         <source>Duplicate records</source>
         <translation>Дублированные записи</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3373"/>
+        <location filename="../vSongHome.cpp" line="3373"/>
         <source>Ctrl+&quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3543"/>
+        <location filename="../vSongHome.cpp" line="3543"/>
         <source>Please enter a pseudo-primary key in order to enable editing on this view. This should be the name of a unique column in the view.</source>
         <translation>Пожалуйста, введите псевдо-первичный ключ, чтобы разрешить редактирование в этом представлении. Это должно быть имя уникального столбца в представлении.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3904"/>
+        <location filename="../vSongHome.cpp" line="3904"/>
         <source>Busy (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3472"/>
+        <location filename="../vSongHome.cpp" line="3472"/>
         <source>Please choose a new encoding for this table.</source>
         <translation>Пожалуйста выбирите новую кодировку для данной таблицы.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1240"/>
+        <location filename="../vSongHome.cpp" line="1240"/>
         <source>Error checking foreign keys after table modification. The changes will be reverted.</source>
         <translation>Ошибка проверки внешних ключей после изменения таблицы. Изменения будут отменены.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1243"/>
+        <location filename="../vSongHome.cpp" line="1243"/>
         <source>This table did not pass a foreign-key check.&lt;br/&gt;You should run &apos;Tools | Foreign-Key Check&apos; and fix the reported issues.</source>
         <translation>Эта таблица не прошла проверку внешнего ключа. &lt;br/&gt; Вы должны запустить &quot;Инструменты | Проверка внешнего ключа&quot;и исправить сообщенные проблемы.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1539"/>
+        <location filename="../vSongHome.cpp" line="1539"/>
         <source>Execution finished with errors.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1541"/>
+        <location filename="../vSongHome.cpp" line="1541"/>
         <source>Execution finished without errors.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3470"/>
+        <location filename="../vSongHome.cpp" line="3470"/>
         <source>Please choose a new encoding for all tables.</source>
         <translation>Пожалуйста выбирите новую кодировку для всех таблиц.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3475"/>
+        <location filename="../vSongHome.cpp" line="3475"/>
         <source>%1
 Leave the field empty for using the database encoding.</source>
         <translation>%1
 Оставьте это поле пустым если хотите чтобы использовалась кодировка по умолчанию.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3487"/>
+        <location filename="../vSongHome.cpp" line="3487"/>
         <source>This encoding is either not valid or not supported.</source>
         <translation>Неверная кодировка либо она не поддерживается.</translation>
     </message>
@@ -4473,18 +4473,18 @@ Leave the field empty for using the database encoding.</source>
         <translation type="obsolete">Отменить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="1573"/>
-        <location filename="../MainWindow.cpp" line="1815"/>
+        <location filename="../vSongHome.ui" line="1573"/>
+        <location filename="../vSongHome.cpp" line="1815"/>
         <source>Delete Table</source>
         <translation>Удалить таблицу</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1871"/>
+        <location filename="../vSongHome.cpp" line="1871"/>
         <source>&amp;%1 %2</source>
         <translation>&amp;%1 %2</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2102"/>
+        <location filename="../vSongHome.cpp" line="2102"/>
         <source>Setting PRAGMA values will commit your current transaction.
 Are you sure?</source>
         <translation>Установка значений PRAGMA завершит текущую транзакцию. Установить значения?</translation>
@@ -4494,128 +4494,128 @@ Are you sure?</source>
         <translation type="vanished">Выполнение прервано пользователем</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="623"/>
+        <location filename="../vSongHome.cpp" line="623"/>
         <source>In-Memory database</source>
         <translation>БД в памяти</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="875"/>
+        <location filename="../vSongHome.cpp" line="875"/>
         <source>You are still executing SQL statements. When closing the database now the execution will be stopped. maybe leaving the database in an incosistent state. Are you sure you want to close the database?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1089"/>
+        <location filename="../vSongHome.cpp" line="1089"/>
         <source>determining row count...</source>
         <translation>определяем количество строк...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1092"/>
+        <location filename="../vSongHome.cpp" line="1092"/>
         <source>%1 - %2 of &gt;= %3</source>
         <translation>%1 - %2 из &gt;= %3</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1167"/>
+        <location filename="../vSongHome.cpp" line="1167"/>
         <source>Are you sure you want to delete the table &apos;%1&apos;?
 All data associated with the table will be lost.</source>
         <translation>Вы действительно хотите удалить таблицу &apos;%1&apos;?
 Все данные, связанные с таблицей, будут потеряны.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1169"/>
+        <location filename="../vSongHome.cpp" line="1169"/>
         <source>Are you sure you want to delete the view &apos;%1&apos;?</source>
         <translation>Вы действительно хотите удалить представление &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1171"/>
+        <location filename="../vSongHome.cpp" line="1171"/>
         <source>Are you sure you want to delete the trigger &apos;%1&apos;?</source>
         <translation>Вы действительно хотите удалить триггер &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1173"/>
+        <location filename="../vSongHome.cpp" line="1173"/>
         <source>Are you sure you want to delete the index &apos;%1&apos;?</source>
         <translation>Вы действительно хотите удалить индекс &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1184"/>
+        <location filename="../vSongHome.cpp" line="1184"/>
         <source>Error: could not delete the table.</source>
         <translation>Ошибка: не удалось удалить таблицу.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1186"/>
+        <location filename="../vSongHome.cpp" line="1186"/>
         <source>Error: could not delete the view.</source>
         <translation>Ошибка: не удалось удалить представление.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1188"/>
+        <location filename="../vSongHome.cpp" line="1188"/>
         <source>Error: could not delete the trigger.</source>
         <translation>Ошибка: не удалось удалить триггер.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1190"/>
+        <location filename="../vSongHome.cpp" line="1190"/>
         <source>Error: could not delete the index.</source>
         <translation>Ошибка: не удалось удалить индекс.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1192"/>
+        <location filename="../vSongHome.cpp" line="1192"/>
         <source>Message from database engine:
 %1</source>
         <translation>Сообщение от СУБД:
 %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1221"/>
+        <location filename="../vSongHome.cpp" line="1221"/>
         <source>Editing the table requires to save all pending changes now.
 Are you sure you want to save the database?</source>
         <translation>Для редактирования таблицы необходимо сохранить все ожидающие изменения сейчас.
 Вы действительно хотите сохранить БД?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1352"/>
+        <location filename="../vSongHome.cpp" line="1352"/>
         <source>You are already executing SQL statements. Do you want to stop them in order to execute the current statements instead? Note that this might leave the database in an inconsistent state.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1399"/>
+        <location filename="../vSongHome.cpp" line="1399"/>
         <source>-- EXECUTING SELECTION IN &apos;%1&apos;
 --</source>
         <translation>-- ВЫПОЛНЕНИЕ ВЫБОРКИ В &apos;%1&apos;
 --</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1420"/>
+        <location filename="../vSongHome.cpp" line="1420"/>
         <source>-- EXECUTING LINE IN &apos;%1&apos;
 --</source>
         <translation>-- ВЫПОЛНЕНИЕ СТРОКИ В &apos;%1&apos;
 --</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1428"/>
+        <location filename="../vSongHome.cpp" line="1428"/>
         <source>-- EXECUTING ALL IN &apos;%1&apos;
 --</source>
         <translation>-- ВЫПОЛНЕНИЕ ВСЕ В &apos;%1&apos;
 --</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1458"/>
-        <location filename="../MainWindow.cpp" line="1461"/>
+        <location filename="../vSongHome.cpp" line="1458"/>
+        <location filename="../vSongHome.cpp" line="1461"/>
         <source>At line %1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1458"/>
-        <location filename="../MainWindow.cpp" line="1461"/>
+        <location filename="../vSongHome.cpp" line="1458"/>
+        <location filename="../vSongHome.cpp" line="1461"/>
         <source>Result: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1521"/>
+        <location filename="../vSongHome.cpp" line="1521"/>
         <source>Setting PRAGMA values or vacuuming will commit your current transaction.
 Are you sure?</source>
         <translation>Установка значений PRAGMA или вакуумирования приведет к фиксации текущей транзакции.
 Уверены ли вы?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1515"/>
+        <location filename="../vSongHome.cpp" line="1515"/>
         <source>%1 rows returned in %2ms</source>
         <translation>%1 строк возвращено за %2мс</translation>
     </message>
@@ -4632,47 +4632,47 @@ Are you sure?</source>
 -- Результат: %3</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1587"/>
+        <location filename="../vSongHome.cpp" line="1587"/>
         <source>Choose text files</source>
         <translation>Выберите текстовые файлы</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1745"/>
+        <location filename="../vSongHome.cpp" line="1745"/>
         <source>Import completed. Some foreign key constraints are violated. Please fix them before saving.</source>
         <translation>Импорт завершен. Нарушены некоторые ограничения внешних ключей. Пожалуйста, исправьте их перед сохранением.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1813"/>
+        <location filename="../vSongHome.cpp" line="1813"/>
         <source>Modify Index</source>
         <translation>Модифицировать Индекс</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="1816"/>
+        <location filename="../vSongHome.cpp" line="1816"/>
         <source>Modify Table</source>
         <translation>Модифицировать Таблицу</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2269"/>
+        <location filename="../vSongHome.cpp" line="2269"/>
         <source>Select SQL file to open</source>
         <translation>Выбрать файл SQL для октрытия</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2278"/>
+        <location filename="../vSongHome.cpp" line="2278"/>
         <source>Couldn&apos;t read file: %1.</source>
         <translation>Не удалось прочитать файл:%1.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2319"/>
+        <location filename="../vSongHome.cpp" line="2319"/>
         <source>Couldn&apos;t save file: %1.</source>
         <translation>Не удалось сохранить файл:%1.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2338"/>
+        <location filename="../vSongHome.cpp" line="2338"/>
         <source>Select file name</source>
         <translation>Выбрать имя файла</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2364"/>
+        <location filename="../vSongHome.cpp" line="2364"/>
         <source>Select extension file</source>
         <translation>Выбрать расширение файла</translation>
     </message>
@@ -4681,33 +4681,33 @@ Are you sure?</source>
         <translation type="vanished">Расширения(*.so *.dll);;Все файлы(*)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2371"/>
+        <location filename="../vSongHome.cpp" line="2371"/>
         <source>Extension successfully loaded.</source>
         <translation>Расширение успешно загружено.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2373"/>
+        <location filename="../vSongHome.cpp" line="2373"/>
         <source>Error loading extension: %1</source>
         <translation>Ошибка загрузки расширения: %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2481"/>
-        <location filename="../MainWindow.cpp" line="2815"/>
+        <location filename="../vSongHome.cpp" line="2481"/>
+        <location filename="../vSongHome.cpp" line="2815"/>
         <source>Don&apos;t show again</source>
         <translation>Не показывать снова</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="2484"/>
+        <location filename="../vSongHome.cpp" line="2484"/>
         <source>New version available.</source>
         <translation>Доступна новая версия.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3648"/>
+        <location filename="../vSongHome.cpp" line="3648"/>
         <source>Collation needed! Proceed?</source>
         <translation>Нужно выполнить сопоставление! Продолжить?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3649"/>
+        <location filename="../vSongHome.cpp" line="3649"/>
         <source>A table in this database requires a special collation function &apos;%1&apos; that this application can&apos;t provide without further knowledge.
 If you choose to proceed, be aware bad things can happen to your database.
 Create a backup!</source>
@@ -4716,52 +4716,52 @@ Create a backup!</source>
 Создайте резервную копию!</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3654"/>
+        <location filename="../vSongHome.cpp" line="3654"/>
         <source>creating collation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3663"/>
+        <location filename="../vSongHome.cpp" line="3663"/>
         <source>Set a new name for the SQL tab. Use the &apos;&amp;&amp;&apos; character to allow using the following character as a keyboard shortcut.</source>
         <translation>Задайте новое имя для вкладки SQL. Используйте символ &apos;&amp;&amp;&apos;, чтобы разрешить использование следующего символа в качестве сочетания клавиш.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3715"/>
+        <location filename="../vSongHome.cpp" line="3715"/>
         <source>Please specify the view name</source>
         <translation>Укажите имя представления</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3719"/>
+        <location filename="../vSongHome.cpp" line="3719"/>
         <source>There is already an object with that name. Please choose a different name.</source>
         <translation>Объект с указанным именем уже существует. Выберите другое имя.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3726"/>
+        <location filename="../vSongHome.cpp" line="3726"/>
         <source>View successfully created.</source>
         <translation>Представление успешно создано.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3728"/>
+        <location filename="../vSongHome.cpp" line="3728"/>
         <source>Error creating view: %1</source>
         <translation>Ошибка создания представления: %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3743"/>
+        <location filename="../vSongHome.cpp" line="3743"/>
         <source>There is no filter set for this table. View will not be created.</source>
         <translation>Для этой таблицы не установлен фильтр. Представление не будет создано.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3781"/>
+        <location filename="../vSongHome.cpp" line="3781"/>
         <source>Delete Records</source>
         <translation>Удалить Записи</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3788"/>
+        <location filename="../vSongHome.cpp" line="3788"/>
         <source>This action will open a new SQL tab for running:</source>
         <translation>Это действие откроет новую вкладку SQL для запуска:</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="3790"/>
+        <location filename="../vSongHome.cpp" line="3790"/>
         <source>Press Help for opening the corresponding SQLite reference page.</source>
         <translation>Нажмите &quot;Справка&quot; для открытия соответствующей справочной страницы SQLite.</translation>
     </message>

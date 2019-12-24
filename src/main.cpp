@@ -6,7 +6,7 @@ int main( int argc, char ** argv )
     Application a(argc, argv);
 
     // Quit application now if user doesn't want to see the UI
-    if(a.dontShowMainWindow())
+    if(a.dontShowHome())
         return 0;
 
     // Run application

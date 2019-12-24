@@ -7,7 +7,7 @@
 class QAction;
 class QTranslator;
 
-class MainWindow;
+class vSongHome;
 
 class Application : public QApplication
 {
@@ -17,9 +17,9 @@ public:
     explicit Application(int& argc, char** argv);
     ~Application() override;
 
-    bool dontShowMainWindow() const { return m_dontShowMainWindow; }
+    bool dontShowHome() const { return m_dontShowHome; }
 
-    MainWindow* mainWindow() { return m_mainWindow; }
+    vSongHome* homeWindow() { return m_HomeWindow; }
 
     static QString versionString();
 
@@ -27,8 +27,8 @@ protected:
     bool event(QEvent* event) override;
 
 private:
-    bool m_dontShowMainWindow;
-    MainWindow* m_mainWindow;
+    bool m_dontShowHome;
+    vSongHome* m_HomeWindow;
     QTranslator* m_translatorQt;
     QTranslator* m_translatorApp;
 };

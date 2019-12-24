@@ -135,16 +135,16 @@ QVariant Settings::getDefaultValue(const std::string& group, const std::string& 
     if(group == "exportjson" && name == "prettyprint")
         return true;
 
-    // MainWindow/geometry?
-    if(group == "MainWindow" && name == "geometry")
+    // vSongHome/geometry?
+    if(group == "vSongHome" && name == "geometry")
         return QString();
 
-    // MainWindow/windowState?
-    if(group == "MainWindow" && name == "windowState")
+    // vSongHome/windowState?
+    if(group == "vSongHome" && name == "windowState")
         return QString();
 
-    // MainWindow/openTabs?
-    if(group == "MainWindow" && name == "openTabs")
+    // vSongHome/openTabs?
+    if(group == "vSongHome" && name == "openTabs")
         return QString();
 
     // SQLLogDock/Log?

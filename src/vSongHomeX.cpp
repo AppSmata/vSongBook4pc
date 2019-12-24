@@ -1,5 +1,5 @@
-#include "MainWindow.h"
-#include "ui_MainWindow.h"
+#include "vSongHome.h"
+#include "ui_vSongHome.h"
 
 #include "Application.h"
 #include "EditIndexDialog.h"
@@ -56,7 +56,7 @@
 
 #include <limits>
 
-const int MainWindow::MaxRecentFiles;
+const int vSongHome::MaxRecentFiles;
 
 // These are needed for reading and writing object files
 QDataStream& operator>>(QDataStream& ds, sqlb::ObjectIdentifier& objid)
@@ -88,9 +88,9 @@ static std::vector<sqlb::SortedColumn> toSortOrderVector(int index, Qt::SortOrde
     return vector;
 }
 
-MainWindow::MainWindow(QWidget* parent)
+vSongHome::vSongHome(QWidget* parent)
     : QMainWindow(parent),
-      ui(new Ui::MainWindow),
+      ui(new Ui::vSongHome),
       db(),
       m_remoteDb(new RemoteDatabase),
       editDock(new EditDialog(this)),
@@ -107,13 +107,13 @@ MainWindow::MainWindow(QWidget* parent)
     updateRecentFileActions();
 }
 
-MainWindow::~MainWindow()
+vSongHome::~vSongHome()
 {
     delete m_remoteDb;
     delete ui;
 }
 
-void MainWindow::init()
+void vSongHome::init()
 {
     // Load window settings
     tabifyDockWidget(ui->dockLog, ui->dockPlot);
@@ -137,9 +137,9 @@ void MainWindow::init()
 #endif
 
     // Connect SQL logging and database state setting to main window
-    connect(&db, &DBBrowserDB::dbChanged, this, &MainWindow::dbState, Qt::QueuedConnection);
-    connect(&db, &DBBrowserDB::sqlExecuted, this, &MainWindow::logSql, Qt::QueuedConnection);
-    connect(&db, &DBBrowserDB::requestCollation, this, &MainWindow::requestCollation);
+    connect(&db, &DBBrowserDB::dbChanged, this, &vSongHome::dbState, Qt::QueuedConnection);
+    connect(&db, &DBBrowserDB::sqlExecuted, this, &vSongHome::logSql, Qt::QueuedConnection);
+    connect(&db, &DBBrowserDB::requestCollation, this, &vSongHome::requestCollation);
 
     // Initialise table browser first
     ui->tableBrowser->init(&db);
@@ -149,11 +149,11 @@ void MainWindow::init()
        isProjectModified = true;
     });
 
-    connect(ui->tableBrowser->model(), &SqliteTableModel::dataChanged, this, &MainWindow::dataTableSelectionChanged);
-    connect(ui->tableBrowser, &TableBrowser::selectionChanged, this, &MainWindow::dataTableSelectionChanged);
-    connect(ui->tableBrowser, &TableBrowser::selectionChangedByDoubleClick, this, &MainWindow::doubleClickTable);
-    connect(ui->tableBrowser, &TableBrowser::updatePlot, this, &MainWindow::attachPlot);
-    connect(ui->tableBrowser, &TableBrowser::createView, this, &MainWindow::saveAsView);
+    connect(ui->tableBrowser->model(), &SqliteTableModel::dataChanged, this, &vSongHome::dataTableSelectionChanged);
+    connect(ui->tableBrowser, &TableBrowser::selectionChanged, this, &vSongHome::dataTableSelectionChanged);
+    connect(ui->tableBrowser, &TableBrowser::selectionChangedByDoubleClick, this, &vSongHome::doubleClickTable);
+    connect(ui->tableBrowser, &TableBrowser::updatePlot, this, &vSongHome::attachPlot);
+    connect(ui->tableBrowser, &TableBrowser::createView, this, &vSongHome::saveAsView);
     connect(ui->tableBrowser, &TableBrowser::requestFileOpen, this, [this](const QString& file) {
         fileOpen(file);
     });
@@ -192,28 +192,28 @@ void MainWindow::init()
     editDock->setReadOnly(true);
 
     // Restore window geometry
-    restoreGeometry(Settings::getValue("MainWindow", "geometry").toByteArray());
+    restoreGeometry(Settings::getValue("vSongHome", "geometry").toByteArray());
 
     // Save default and restore window state
     defaultWindowState = saveState();
-    restoreState(Settings::getValue("MainWindow", "windowState").toByteArray());
+    restoreState(Settings::getValue("vSongHome", "windowState").toByteArray());
 
     // Save default and restore open tab order if the openTabs setting is saved.
     defaultOpenTabs = saveOpenTabs();
-    restoreOpenTabs(Settings::getValue("MainWindow", "openTabs").toString());
+    restoreOpenTabs(Settings::getValue("vSongHome", "openTabs").toString());
 
     // Restore dock state settings
     ui->comboLogSubmittedBy->setCurrentIndex(ui->comboLogSubmittedBy->findText(Settings::getValue("SQLLogDock", "Log").toString()));
 
     // Add keyboard shortcuts
     QShortcut* shortcutBrowseRefreshF5 = new QShortcut(QKeySequence("F5"), this);
-    connect(shortcutBrowseRefreshF5, &QShortcut::activated, this, &MainWindow::refresh);
+    connect(shortcutBrowseRefreshF5, &QShortcut::activated, this, &vSongHome::refresh);
     QShortcut* shortcutBrowseRefreshCtrlR = new QShortcut(QKeySequence("Ctrl+R"), this);
-    connect(shortcutBrowseRefreshCtrlR, &QShortcut::activated, this, &MainWindow::refresh);
+    connect(shortcutBrowseRefreshCtrlR, &QShortcut::activated, this, &vSongHome::refresh);
 
     // Add print shortcut for the DB Structure tab (dbTreeWidget) with context to the widget, so other print shortcuts aren't eclipsed.
     QShortcut* shortcutPrint = new QShortcut(QKeySequence(QKeySequence::Print), ui->dbTreeWidget, nullptr, nullptr, Qt::WidgetShortcut);
-    connect(shortcutPrint, &QShortcut::activated, this, &MainWindow::printDbStructure);
+    connect(shortcutPrint, &QShortcut::activated, this, &vSongHome::printDbStructure);
 
     QShortcut* closeTabShortcut = new QShortcut(tr("Ctrl+W"), ui->tabSqlAreas, nullptr, nullptr, Qt::WidgetWithChildrenShortcut);
     connect(closeTabShortcut, &QShortcut::activated, this, [this]() {
@@ -225,7 +225,7 @@ void MainWindow::init()
     for(int i = 0; i < MaxRecentFiles; ++i) {
         recentFileActs[i] = new QAction(this);
         recentFileActs[i]->setVisible(false);
-        connect(recentFileActs[i], &QAction::triggered, this, &MainWindow::openRecentFile);
+        connect(recentFileActs[i], &QAction::triggered, this, &vSongHome::openRecentFile);
     }
     for(int i = 0; i < MaxRecentFiles; ++i)
         ui->fileMenu->insertAction(ui->fileExitAction, recentFileActs[i]);
@@ -297,7 +297,7 @@ void MainWindow::init()
     // Connect the tabCloseRequested to the actual closeTab function.
     // This must be done before the connections for checking the actions in the View menu so
     // they are updated accordingly.
-    connect(ui->mainTab, &QTabWidget::tabCloseRequested, this, &MainWindow::closeTab);
+    connect(ui->mainTab, &QTabWidget::tabCloseRequested, this, &vSongHome::closeTab);
 
     // Add entries for toggling the visibility of main tabs
     for (QWidget* widget : {ui->structure, ui->browser, ui->pragmas, ui->query}) {
@@ -342,11 +342,6 @@ void MainWindow::init()
         closeSqlTab(ui->tabSqlAreas->currentIndex());
     });
     ui->tabSqlAreas->setCornerWidget(buttonCloseSqlTab);
-
-    // If we're not compiling in SQLCipher, hide its FAQ link in the help menu
-#ifndef ENABLE_SQLCIPHER
-    ui->actionSqlCipherFaq->setVisible(false);
-#endif
 
     // Set statusbar fields
     statusBusyLabel = new QLabel(ui->statusbar);
@@ -399,14 +394,14 @@ void MainWindow::init()
     });
 
     // Connect some more signals and slots
-    connect(editDock, &EditDialog::recordTextUpdated, this, &MainWindow::updateRecordText);
-    connect(ui->dbTreeWidget->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::changeTreeSelection);
-    connect(ui->dockEdit, &QDockWidget::visibilityChanged, this, &MainWindow::toggleEditDock);
+    connect(editDock, &EditDialog::recordTextUpdated, this, &vSongHome::updateRecordText);
+    connect(ui->dbTreeWidget->selectionModel(), &QItemSelectionModel::currentChanged, this, &vSongHome::changeTreeSelection);
+    connect(ui->dockEdit, &QDockWidget::visibilityChanged, this, &vSongHome::toggleEditDock);
     connect(m_remoteDb, SIGNAL(openFile(QString)), this, SLOT(fileOpen(QString)));
-    connect(m_remoteDb, &RemoteDatabase::gotCurrentVersion, this, &MainWindow::checkNewVersion);
+    connect(m_remoteDb, &RemoteDatabase::gotCurrentVersion, this, &vSongHome::checkNewVersion);
     connect(ui->actionDropQualifiedCheck, &QAction::toggled, dbStructureModel, &DbStructureModel::setDropQualifiedNames);
     connect(ui->actionEnquoteNamesCheck, &QAction::toggled, dbStructureModel, &DbStructureModel::setDropEnquotedNames);
-    connect(&db, &DBBrowserDB::databaseInUseChanged, this, &MainWindow::updateDatabaseBusyStatus);
+    connect(&db, &DBBrowserDB::databaseInUseChanged, this, &vSongHome::updateDatabaseBusyStatus);
 
     ui->actionDropQualifiedCheck->setChecked(Settings::getValue("SchemaDock", "dropQualifiedNames").toBool());
     ui->actionEnquoteNamesCheck->setChecked(Settings::getValue("SchemaDock", "dropEnquotedNames").toBool());
@@ -476,7 +471,7 @@ void MainWindow::init()
     ui->dockRemote->setWindowTitle(ui->dockRemote->windowTitle().remove('&'));
 }
 
-bool MainWindow::fileOpen(const QString& fileName, bool openFromProject, bool readOnly)
+bool vSongHome::fileOpen(const QString& fileName, bool openFromProject, bool readOnly)
 {
     bool retval = false;
 
@@ -544,7 +539,7 @@ bool MainWindow::fileOpen(const QString& fileName, bool openFromProject, bool re
     return retval;
 }
 
-void MainWindow::fileNew()
+void vSongHome::fileNew()
 {
     QString fileName = FileDialog::getSaveFileName(
                            CreateDatabaseFile,
@@ -568,7 +563,7 @@ void MainWindow::fileNew()
     }
 }
 
-void MainWindow::fileNewInMemoryDatabase()
+void vSongHome::fileNewInMemoryDatabase()
 {
     db.create(":memory:");
     setCurrentFile(tr("In-Memory database"));
@@ -581,7 +576,7 @@ void MainWindow::fileNewInMemoryDatabase()
     createTable();
 }
 
-void MainWindow::populateStructure(const QString& old_table)
+void vSongHome::populateStructure(const QString& old_table)
 {
     // Refresh the structure tab
     ui->dbTreeWidget->setRootIndex(dbStructureModel->index(1, 0));      // Show the 'All' part of the db structure
@@ -632,7 +627,7 @@ void MainWindow::populateStructure(const QString& old_table)
 
 }
 
-void MainWindow::populateTable()
+void vSongHome::populateTable()
 {
     // Early exit if the Browse Data tab isn't visible as there is no need to update it in this case
     if(ui->mainTab->currentWidget() != ui->browser)
@@ -643,7 +638,7 @@ void MainWindow::populateTable()
     QApplication::restoreOverrideCursor();
 }
 
-bool MainWindow::fileClose()
+bool vSongHome::fileClose()
 {
     // Stop any running SQL statements before closing the database
     if(execute_sql_worker && execute_sql_worker->isRunning())
@@ -686,13 +681,13 @@ bool MainWindow::fileClose()
     return true;
 }
 
-void MainWindow::closeEvent( QCloseEvent* event )
+void vSongHome::closeEvent( QCloseEvent* event )
 {
     if(closeFiles())
     {
-        Settings::setValue("MainWindow", "geometry", saveGeometry());
-        Settings::setValue("MainWindow", "windowState", saveState());
-        Settings::setValue("MainWindow", "openTabs", saveOpenTabs());
+        Settings::setValue("vSongHome", "geometry", saveGeometry());
+        Settings::setValue("vSongHome", "windowState", saveState());
+        Settings::setValue("vSongHome", "openTabs", saveOpenTabs());
 
         Settings::setValue("SQLLogDock", "Log", ui->comboLogSubmittedBy->currentText());
         Settings::setValue("SchemaDock", "dropQualifiedNames", ui->actionDropQualifiedCheck->isChecked());
@@ -706,7 +701,7 @@ void MainWindow::closeEvent( QCloseEvent* event )
     }
 }
 
-bool MainWindow::closeFiles()
+bool vSongHome::closeFiles()
 {
     bool ignoreUnattachedBuffers = false;
     // Ask for saving all modified open SQL files in their files and all the unattached tabs in a project file.
@@ -717,7 +712,7 @@ bool MainWindow::closeFiles()
     return closeProject();
 }
 
-bool MainWindow::closeProject()
+bool vSongHome::closeProject()
 {
     if(!currentProjectFilename.isEmpty() && isProjectModified) {
         QMessageBox::StandardButton reply = QMessageBox::question
@@ -740,7 +735,7 @@ bool MainWindow::closeProject()
     return db.close();
 }
 
-void MainWindow::attachPlot(ExtendedTableWidget* tableWidget, SqliteTableModel* model, BrowseDataTableSettings* settings, bool keepOrResetSelection)
+void vSongHome::attachPlot(ExtendedTableWidget* tableWidget, SqliteTableModel* model, BrowseDataTableSettings* settings, bool keepOrResetSelection)
 {
     plotDock->updatePlot(model, settings, true, keepOrResetSelection);
     // Disconnect previous connection
@@ -752,7 +747,7 @@ void MainWindow::attachPlot(ExtendedTableWidget* tableWidget, SqliteTableModel* 
     }
 }
 
-void MainWindow::refresh()
+void vSongHome::refresh()
 {
     // What the Refresh function does depends on the currently active tab. This way the keyboard shortcuts (F5 and Ctrl+R)
     // always perform some meaningful task; they just happen to be context dependent in the function they trigger.
@@ -773,7 +768,7 @@ void MainWindow::refresh()
     }
 }
 
-void MainWindow::createTable()
+void vSongHome::createTable()
 {
     EditTableDialog dialog(db, sqlb::ObjectIdentifier(), true, this);
     if(dialog.exec())
@@ -782,20 +777,20 @@ void MainWindow::createTable()
     }
 }
 
-void MainWindow::createIndex()
+void vSongHome::createIndex()
 {
     EditIndexDialog dialog(db, sqlb::ObjectIdentifier(), true, this);
     if(dialog.exec())
         populateTable();
 }
 
-void MainWindow::compact()
+void vSongHome::compact()
 {
     VacuumDialog dialog(&db, this);
     dialog.exec();
 }
 
-void MainWindow::deleteObject()
+void vSongHome::deleteObject()
 {
     // Get name and type of object to delete
     sqlb::ObjectIdentifier name(ui->dbTreeWidget->model()->data(ui->dbTreeWidget->currentIndex().sibling(ui->dbTreeWidget->currentIndex().row(), DbStructureModel::ColumnSchema), Qt::EditRole).toString().toStdString(),
@@ -839,7 +834,7 @@ void MainWindow::deleteObject()
     }
 }
 
-void MainWindow::editObject()
+void vSongHome::editObject()
 {
     if(!ui->dbTreeWidget->selectionModel()->hasSelection())
         return;
@@ -901,23 +896,23 @@ void MainWindow::editObject()
     }
 }
 
-void MainWindow::helpWhatsThis()
+void vSongHome::helpWhatsThis()
 {
     QWhatsThis::enterWhatsThisMode ();
 }
 
-void MainWindow::helpAbout()
+void vSongHome::helpAbout()
 {
     AboutDialog dialog(this);
     dialog.exec();
 }
 
-void MainWindow::updateRecordText(const QPersistentModelIndex& idx, const QByteArray& text, bool isBlob)
+void vSongHome::updateRecordText(const QPersistentModelIndex& idx, const QByteArray& text, bool isBlob)
 {
     m_currentTabTableModel->setTypedData(idx, isBlob, text);
 }
 
-void MainWindow::toggleEditDock(bool visible)
+void vSongHome::toggleEditDock(bool visible)
 {
     if (!visible) {
         // Update main window
@@ -931,7 +926,7 @@ void MainWindow::toggleEditDock(bool visible)
     }
 }
 
-void MainWindow::doubleClickTable(const QModelIndex& index)
+void vSongHome::doubleClickTable(const QModelIndex& index)
 {
     // Cancel on invalid index
     if (!index.isValid()) {
@@ -955,7 +950,7 @@ void MainWindow::doubleClickTable(const QModelIndex& index)
     editDock->setFocus();
 }
 
-void MainWindow::dataTableSelectionChanged(const QModelIndex& index)
+void vSongHome::dataTableSelectionChanged(const QModelIndex& index)
 {
     // Cancel on invalid index
     if(!index.isValid()) {
@@ -981,7 +976,7 @@ void MainWindow::dataTableSelectionChanged(const QModelIndex& index)
  * A better experience would be tabs on the bottom with query results
  * for all the executed statements.
  */
-void MainWindow::executeQuery()
+void vSongHome::executeQuery()
 {
     // Make sure a database is opened. This is necessary because we allow opened SQL editor tabs even if no database is loaded. Hitting F5 or similar
     // then might call this function.
@@ -1154,8 +1149,8 @@ void MainWindow::executeQuery()
             disconnect(*conn);
 
             attachPlot(sqlWidget->getTableResult(), sqlWidget->getModel());
-            connect(sqlWidget->getTableResult()->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::dataTableSelectionChanged);
-            connect(sqlWidget->getTableResult(), &QTableView::doubleClicked, this, &MainWindow::doubleClickTable);
+            connect(sqlWidget->getTableResult()->selectionModel(), &QItemSelectionModel::currentChanged, this, &vSongHome::dataTableSelectionChanged);
+            connect(sqlWidget->getTableResult(), &QTableView::doubleClicked, this, &vSongHome::doubleClickTable);
 
             auto time_end = std::chrono::high_resolution_clock::now();
             auto time_in_ms = std::chrono::duration_cast<std::chrono::milliseconds>(time_end-time_start);
@@ -1205,7 +1200,7 @@ void MainWindow::executeQuery()
     execute_sql_worker->start();
 }
 
-void MainWindow::mainTabSelected(int /*tabindex*/)
+void vSongHome::mainTabSelected(int /*tabindex*/)
 {
     editDock->setReadOnly(true);
 
@@ -1226,7 +1221,7 @@ void MainWindow::mainTabSelected(int /*tabindex*/)
     }
 }
 
-void MainWindow::importTableFromCSV()
+void vSongHome::importTableFromCSV()
 {
     QStringList file_filter;
     file_filter << FILE_FILTER_CSV
@@ -1255,7 +1250,7 @@ void MainWindow::importTableFromCSV()
     }
 }
 
-void MainWindow::exportTableToCSV()
+void vSongHome::exportTableToCSV()
 {
     // Get the current table name if we are in the Browse Data tab
     sqlb::ObjectIdentifier current_table;
@@ -1277,7 +1272,7 @@ void MainWindow::exportTableToCSV()
     dialog.exec();
 }
 
-void MainWindow::exportTableToJson()
+void vSongHome::exportTableToJson()
 {
     // Get the current table name if we are in the Browse Data tab
     sqlb::ObjectIdentifier current_table;
@@ -1299,14 +1294,14 @@ void MainWindow::exportTableToJson()
     dialog.exec();
 }
 
-void MainWindow::dbState(bool dirty)
+void vSongHome::dbState(bool dirty)
 {
     ui->fileSaveAction->setEnabled(dirty);
     ui->fileRevertAction->setEnabled(dirty);
     ui->fileAttachAction->setEnabled(db.isOpen() && !dirty);
 }
 
-void MainWindow::fileSave()
+void vSongHome::fileSave()
 {
     if(db.isOpen())
     {
@@ -1318,7 +1313,7 @@ void MainWindow::fileSave()
     }
 }
 
-void MainWindow::fileRevert()
+void vSongHome::fileRevert()
 {
     if (db.isOpen()){
         QString msg = tr("Are you sure you want to undo all changes made to the database file '%1' since the last save?").arg(db.currentFile());
@@ -1330,7 +1325,7 @@ void MainWindow::fileRevert()
     }
 }
 
-void MainWindow::exportDatabaseToSQL()
+void vSongHome::exportDatabaseToSQL()
 {
     QString current_table;
     if(ui->mainTab->currentWidget() == ui->browser)
@@ -1340,7 +1335,7 @@ void MainWindow::exportDatabaseToSQL()
     dialog.exec();
 }
 
-void MainWindow::importDatabaseFromSQL()
+void vSongHome::importDatabaseFromSQL()
 {
     QStringList file_filter;
     file_filter << FILE_FILTER_SQL
@@ -1414,7 +1409,7 @@ void MainWindow::importDatabaseFromSQL()
     populateTable();
 }
 
-void MainWindow::openPreferences()
+void vSongHome::openPreferences()
 {
     PreferencesDialog dialog(this);
     if(dialog.exec())
@@ -1422,7 +1417,7 @@ void MainWindow::openPreferences()
 }
 
 //** Db Tree Context Menu
-void MainWindow::createTreeContextMenu(const QPoint &qPoint)
+void vSongHome::createTreeContextMenu(const QPoint &qPoint)
 {
     if(!ui->dbTreeWidget->selectionModel()->hasSelection())
         return;
@@ -1434,7 +1429,7 @@ void MainWindow::createTreeContextMenu(const QPoint &qPoint)
 }
 
 //** DB Schema Dock Context Menu
-void MainWindow::createSchemaDockContextMenu(const QPoint &qPoint)
+void vSongHome::createSchemaDockContextMenu(const QPoint &qPoint)
 {
     bool enable_browse_table = false;
     if(ui->treeSchemaDock->selectionModel()->hasSelection())
@@ -1448,7 +1443,7 @@ void MainWindow::createSchemaDockContextMenu(const QPoint &qPoint)
     popupSchemaDockMenu->exec(ui->treeSchemaDock->mapToGlobal(qPoint));
 }
 
-void MainWindow::changeTreeSelection()
+void vSongHome::changeTreeSelection()
 {
     // Just assume first that something's selected that can not be edited at all
     ui->editDeleteObjectAction->setEnabled(false);
@@ -1507,7 +1502,7 @@ void MainWindow::changeTreeSelection()
     }
 }
 
-void MainWindow::openRecentFile()
+void vSongHome::openRecentFile()
 {
     QAction *action = qobject_cast<QAction *>(sender());
     if (action)
@@ -1524,7 +1519,7 @@ void MainWindow::openRecentFile()
     }
 }
 
-void MainWindow::updateRecentFileActions()
+void vSongHome::updateRecentFileActions()
 {
     // Get recent files list from settings
     QStringList files = Settings::getValue("General", "recentFileList").toStringList();
@@ -1574,7 +1569,7 @@ void MainWindow::updateRecentFileActions()
     recentSeparatorAct->setVisible(numRecentFiles > 0);
 }
 
-void MainWindow::setCurrentFile(const QString &fileName)
+void vSongHome::setCurrentFile(const QString &fileName)
 {
     setWindowFilePath(fileName);
     if(currentProjectFilename.isEmpty() && fileName.isEmpty())
@@ -1596,7 +1591,7 @@ void MainWindow::setCurrentFile(const QString &fileName)
         dbState(db.getDirty());
 }
 
-void MainWindow::addToRecentFilesMenu(const QString& filename, bool read_only)
+void vSongHome::addToRecentFilesMenu(const QString& filename, bool read_only)
 {
     QFileInfo info(filename);
     QString path = info.absoluteFilePath();
@@ -1613,19 +1608,19 @@ void MainWindow::addToRecentFilesMenu(const QString& filename, bool read_only)
     Settings::setValue("General", "recentFileList", files);
 
     for(QWidget* widget : QApplication::topLevelWidgets()) {
-        MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
+        vSongHome *mainWin = qobject_cast<vSongHome *>(widget);
         if (mainWin)
             mainWin->updateRecentFileActions();
     }
 }
 
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+void vSongHome::dragEnterEvent(QDragEnterEvent *event)
 {
     if( event->mimeData()->hasFormat("text/uri-list") )
         event->acceptProposedAction();
 }
 
-void MainWindow::dropEvent(QDropEvent *event)
+void vSongHome::dropEvent(QDropEvent *event)
 {
     QList<QUrl> urls = event->mimeData()->urls();
 
@@ -1673,7 +1668,7 @@ void MainWindow::dropEvent(QDropEvent *event)
     }
 }
 
-void MainWindow::activateFields(bool enable)
+void vSongHome::activateFields(bool enable)
 {
     bool write = !db.readOnly();
     bool tempDb = db.currentFile() == ":memory:";
@@ -1711,12 +1706,12 @@ void MainWindow::activateFields(bool enable)
     remoteDock->enableButtons();
 }
 
-void MainWindow::resizeEvent(QResizeEvent*)
+void vSongHome::resizeEvent(QResizeEvent*)
 {
     ui->tableBrowser->updateRecordsetLabel();
 }
 
-void MainWindow::loadPragmas()
+void vSongHome::loadPragmas()
 {
     pragmaValues.autovacuum = db.getPragma("auto_vacuum").toInt();
     pragmaValues.automatic_index = db.getPragma("automatic_index").toInt();
@@ -1740,7 +1735,7 @@ void MainWindow::loadPragmas()
     updatePragmaUi();
 }
 
-void MainWindow::updatePragmaUi()
+void vSongHome::updatePragmaUi()
 {
     ui->comboboxPragmaAutoVacuum->setCurrentIndex(pragmaValues.autovacuum);
     ui->checkboxPragmaAutomaticIndex->setChecked(pragmaValues.automatic_index);
@@ -1762,7 +1757,7 @@ void MainWindow::updatePragmaUi()
     ui->checkboxPragmaCaseSensitiveLike->setChecked(pragmaValues.case_sensitive_like);
 }
 
-void MainWindow::savePragmas()
+void vSongHome::savePragmas()
 {
     if( db.getDirty() )
     {
@@ -1795,7 +1790,7 @@ void MainWindow::savePragmas()
     updatePragmaUi();
 }
 
-void MainWindow::logSql(const QString& sql, int msgtype)
+void vSongHome::logSql(const QString& sql, int msgtype)
 {
     if(msgtype == kLogMsg_User)
     {
@@ -1813,7 +1808,7 @@ void MainWindow::logSql(const QString& sql, int msgtype)
 // Ask user to save the buffer in the specified tab index.
 // ignoreUnattachedBuffers is used to store answer about buffers not linked to files, so user is only asked once about them.
 // Return true unless user wants to cancel the invoking action.
-bool MainWindow::askSaveSqlTab(int index, bool& ignoreUnattachedBuffers)
+bool vSongHome::askSaveSqlTab(int index, bool& ignoreUnattachedBuffers)
 {
     SqlExecutionArea* sqlExecArea = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->widget(index));
 
@@ -1859,7 +1854,7 @@ bool MainWindow::askSaveSqlTab(int index, bool& ignoreUnattachedBuffers)
     return true;
 }
 
-void MainWindow::closeSqlTab(int index, bool force)
+void vSongHome::closeSqlTab(int index, bool force)
 {
     // Check if we're still executing statements from this tab and stop them before proceeding
     if(!ui->tabSqlAreas->tabIcon(index).isNull())
@@ -1893,7 +1888,7 @@ void MainWindow::closeSqlTab(int index, bool force)
         sqlarea->getEditor()->setFocus();
 }
 
-int MainWindow::openSqlTab(bool resetCounter)
+int vSongHome::openSqlTab(bool resetCounter)
 {
     static int tabNumber = 0;
 
@@ -1918,7 +1913,7 @@ int MainWindow::openSqlTab(bool resetCounter)
     return index;
 }
 
-void MainWindow::changeSqlTab(int index)
+void vSongHome::changeSqlTab(int index)
 {
     // Instead of figuring out if there are some execution results in the new tab and which statement was used to generate them,
     // we just disable the export buttons in the toolbar.
@@ -1941,7 +1936,7 @@ void MainWindow::changeSqlTab(int index)
     }
 }
 
-void MainWindow::openSqlFile()
+void vSongHome::openSqlFile()
 {
     QString file = FileDialog::getOpenFileName(
                 OpenSQLFile,
@@ -1967,7 +1962,7 @@ void MainWindow::openSqlFile()
     }
 }
 
-void MainWindow::saveSqlFile(int tabIndex)
+void vSongHome::saveSqlFile(int tabIndex)
 {
     SqlExecutionArea* sqlarea = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->widget(tabIndex));
     if(!sqlarea)
@@ -1982,12 +1977,12 @@ void MainWindow::saveSqlFile(int tabIndex)
     }
 }
 
-void MainWindow::saveSqlFile()
+void vSongHome::saveSqlFile()
 {
     saveSqlFile(ui->tabSqlAreas->currentIndex());
 }
 
-void MainWindow::saveSqlFileAs()
+void vSongHome::saveSqlFileAs()
 {
     SqlExecutionArea* sqlarea = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget());
     if(!sqlarea)
@@ -2012,17 +2007,17 @@ void MainWindow::saveSqlFileAs()
     }
 }
 
-void MainWindow::saveSqlResultsAsCsv()
+void vSongHome::saveSqlResultsAsCsv()
 {
     qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget())->saveAsCsv();
 }
 
-void MainWindow::saveSqlResultsAsView()
+void vSongHome::saveSqlResultsAsView()
 {
     saveAsView(qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget())->getModel()->query());
 }
 
-void MainWindow::loadExtension()
+void vSongHome::loadExtension()
 {
     QStringList file_filter;
     file_filter << FILE_FILTER_DYN
@@ -2043,7 +2038,7 @@ void MainWindow::loadExtension()
         QMessageBox::warning(this, QApplication::applicationName(), tr("Error loading extension: %1").arg(db.lastError()));
 }
 
-void MainWindow::reloadSettings()
+void vSongHome::reloadSettings()
 {
     // Set data browser font
     ui->tableBrowser->reloadSettings();
@@ -2111,7 +2106,7 @@ void MainWindow::reloadSettings()
     sqlb::setIdentifierQuoting(static_cast<sqlb::escapeQuoting>(Settings::getValue("editor", "identifier_quotes").toInt()));
 }
 
-void MainWindow::checkNewVersion(const QString& versionstring, const QString& url)
+void vSongHome::checkNewVersion(const QString& versionstring, const QString& url)
 {
     // versionstring contains a major.minor.patch version string
     QStringList versiontokens = versionstring.split(".");
@@ -2166,13 +2161,13 @@ void MainWindow::checkNewVersion(const QString& versionstring, const QString& ur
     }
 }
 
-void MainWindow::on_actionWiki_triggered() const
+void vSongHome::on_actionWiki_triggered() const
 {
     QDesktopServices::openUrl(QUrl("https://github.com/vSongBook/vSongBook4PC/wiki"));
 }
 
 // 'Help | Bug Report...' link will set an appropiate body, add the system information and set the label 'bug' automatically to the issue
-void MainWindow::on_actionBug_report_triggered() const
+void vSongHome::on_actionBug_report_triggered() const
 {
     const QString version = Application::versionString();
     const QString os = QSysInfo::prettyProductName();
@@ -2211,7 +2206,7 @@ void MainWindow::on_actionBug_report_triggered() const
 }
 
 // 'Help | Feature Request...' link will set an appropiate body and add the label 'enhancement' automatically to the issue
-void MainWindow::on_actionFeature_Request_triggered() const
+void vSongHome::on_actionFeature_Request_triggered() const
 {
     QUrlQuery query;
 
@@ -2225,17 +2220,17 @@ void MainWindow::on_actionFeature_Request_triggered() const
     QDesktopServices::openUrl(url);
 }
 
-void MainWindow::on_actionSqlCipherFaq_triggered() const
+void vSongHome::on_actionSqlCipherFaq_triggered() const
 {
     QDesktopServices::openUrl(QUrl("https://discuss.zetetic.net/c/sqlcipher/sqlcipher-faq"));
 }
 
-void MainWindow::on_actionWebsite_triggered() const
+void vSongHome::on_actionWebsite_triggered() const
 {
     QDesktopServices::openUrl(QUrl("https://appsmata.com/vSongBook"));
 }
 
-void MainWindow::on_actionDonatePatreon_triggered() const
+void vSongHome::on_actionDonatePatreon_triggered() const
 {
     QDesktopServices::openUrl(QUrl("https://www.patreon.com/bePatron?u=11578749"));
 }
@@ -2363,7 +2358,7 @@ static void loadBrowseDataTableSettings(BrowseDataTableSettings& settings, QXmlS
         }
     }
 }
-bool MainWindow::loadProject(QString filename, bool readOnly)
+bool vSongHome::loadProject(QString filename, bool readOnly)
 {
     // Show the open file dialog when no filename was passed as parameter
     if(filename.isEmpty())
@@ -2709,7 +2704,7 @@ static void saveBrowseDataTableSettings(const BrowseDataTableSettings& object, Q
     xml.writeEndElement();
 }
 
-void MainWindow::saveProject(const QString& currentFilename)
+void vSongHome::saveProject(const QString& currentFilename)
 {
     QString filename;
     if(currentFilename.isEmpty()) {
@@ -2845,17 +2840,17 @@ void MainWindow::saveProject(const QString& currentFilename)
     }
 }
 
-void MainWindow::saveProject()
+void vSongHome::saveProject()
 {
     saveProject(currentProjectFilename);
 }
 
-void MainWindow::saveProjectAs()
+void vSongHome::saveProjectAs()
 {
     saveProject(QString());
 }
 
-void MainWindow::fileAttach(const QString& fileName)
+void vSongHome::fileAttach(const QString& fileName)
 {
     QString file;
     if (fileName.isEmpty()) {
@@ -2877,7 +2872,7 @@ void MainWindow::fileAttach(const QString& fileName)
     isProjectModified = true;
 }
 
-void MainWindow::editEncryption()
+void vSongHome::editEncryption()
 {
 #ifdef ENABLE_SQLCIPHER
     CipherDialog cipherDialog(this, true);
@@ -2955,7 +2950,7 @@ void MainWindow::editEncryption()
 #endif
 }
 
-void MainWindow::switchToBrowseDataTab(sqlb::ObjectIdentifier tableToBrowse)
+void vSongHome::switchToBrowseDataTab(sqlb::ObjectIdentifier tableToBrowse)
 {
     // If no table name was provided get the currently selected table fromt he structure tab
     if(tableToBrowse.isEmpty())
@@ -2974,7 +2969,7 @@ void MainWindow::switchToBrowseDataTab(sqlb::ObjectIdentifier tableToBrowse)
     ui->mainTab->setCurrentWidget(ui->browser);
 }
 
-void MainWindow::copyCurrentCreateStatement()
+void vSongHome::copyCurrentCreateStatement()
 {
     // Cancel if no field is currently selected
     if(!ui->dbTreeWidget->selectionModel()->hasSelection())
@@ -2987,13 +2982,13 @@ void MainWindow::copyCurrentCreateStatement()
     QApplication::clipboard()->setText(stmt);
 }
 
-void MainWindow::fileOpenReadOnly()
+void vSongHome::fileOpenReadOnly()
 {
     // Redirect to 'standard' fileOpen(), with the read only flag set
     fileOpen(QString(), false, true);
 }
 
-void MainWindow::requestCollation(const QString& name, int eTextRep)
+void vSongHome::requestCollation(const QString& name, int eTextRep)
 {
     QMessageBox::StandardButton reply = QMessageBox::question(
                 this,
@@ -3008,7 +3003,7 @@ void MainWindow::requestCollation(const QString& name, int eTextRep)
     }
 }
 
-void MainWindow::renameSqlTab(int index)
+void vSongHome::renameSqlTab(int index)
 {
     QString new_name = QInputDialog::getText(this,
                                              qApp->applicationName(),
@@ -3020,7 +3015,7 @@ void MainWindow::renameSqlTab(int index)
         ui->tabSqlAreas->setTabText(index, new_name);
 }
 
-void MainWindow::setFindFrameVisibility(bool show)
+void vSongHome::setFindFrameVisibility(bool show)
 {
     // Set the find frame visibility for all tabs, but leave the
     // current as the last, to retain there the focus.
@@ -3031,7 +3026,7 @@ void MainWindow::setFindFrameVisibility(bool show)
         qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget())->setFindFrameVisibility(show);
 }
 
-void MainWindow::openFindReplaceDialog()
+void vSongHome::openFindReplaceDialog()
 {
     // The slot for the shortcut must discover which sqltexedit widget has the focus and then open its dialog.
     SqlExecutionArea* sqlWidget = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget());
@@ -3040,7 +3035,7 @@ void MainWindow::openFindReplaceDialog()
         sqlWidget->getEditor()->openFindReplaceDialog();
 }
 
-void MainWindow::toggleSqlBlockComment()
+void vSongHome::toggleSqlBlockComment()
 {
     // The slot for the shortcut must discover which sqltexedit widget has the focus
     SqlExecutionArea* sqlWidget = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget());
@@ -3049,7 +3044,7 @@ void MainWindow::toggleSqlBlockComment()
         sqlWidget->getEditor()->toggleBlockComment();
 }
 
-void MainWindow::openSqlPrintDialog()
+void vSongHome::openSqlPrintDialog()
 {
     // The slot for the shortcut must discover which sqltexedit widget has the focus and then open its dialog.
     SqlExecutionArea* sqlWidget = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->currentWidget());
@@ -3058,7 +3053,7 @@ void MainWindow::openSqlPrintDialog()
         sqlWidget->getEditor()->openPrintDialog();
 }
 
-void MainWindow::saveAsView(const std::string& query)
+void vSongHome::saveAsView(const std::string& query)
 {
     // Let the user select a name for the new view and make sure it doesn't already exist
     QString name;
@@ -3080,7 +3075,7 @@ void MainWindow::saveAsView(const std::string& query)
         QMessageBox::warning(this, qApp->applicationName(), tr("Error creating view: %1").arg(db.lastError()));
 }
 
-void MainWindow::runSqlNewTab(const QString& query, const QString& title)
+void vSongHome::runSqlNewTab(const QString& query, const QString& title)
 {
     QString message = tr("This action will open a new SQL tab for running:") +
                          QString("<br/><tt>%1</tt><p/>").arg(query) +
@@ -3111,7 +3106,7 @@ void MainWindow::runSqlNewTab(const QString& query, const QString& title)
     }
 }
 
-void MainWindow::printDbStructure ()
+void vSongHome::printDbStructure ()
 {
     const QTreeView* treeView = ui->dbTreeWidget;
     const QAbstractItemModel* model = treeView->model();
@@ -3194,7 +3189,7 @@ void MainWindow::printDbStructure ()
 
 }
 
-void MainWindow::updateDatabaseBusyStatus(bool busy, const QString& user)
+void vSongHome::updateDatabaseBusyStatus(bool busy, const QString& user)
 {
     statusBusyLabel->setText(tr("Busy (%1)").arg(user));
     statusBusyLabel->setVisible(busy);
@@ -3202,12 +3197,12 @@ void MainWindow::updateDatabaseBusyStatus(bool busy, const QString& user)
 }
 
 
-void MainWindow::closeTab(int index)
+void vSongHome::closeTab(int index)
 {
     ui->mainTab->removeTab(index);
 }
 
-void MainWindow::toggleTabVisible(QWidget* tabWidget, bool show)
+void vSongHome::toggleTabVisible(QWidget* tabWidget, bool show)
 {
     if (show)
         ui->mainTab->addTab(tabWidget, tabWidget->accessibleName());
@@ -3215,7 +3210,7 @@ void MainWindow::toggleTabVisible(QWidget* tabWidget, bool show)
         ui->mainTab->removeTab(ui->mainTab->indexOf(tabWidget));
 }
 
-void MainWindow::restoreOpenTabs(QString tabs)
+void vSongHome::restoreOpenTabs(QString tabs)
 {
     // Split the tab list, skiping the empty parts so the empty string turns to an empty list
     // and not a list of one empty string.
@@ -3241,7 +3236,7 @@ void MainWindow::restoreOpenTabs(QString tabs)
     }
 }
 
-QString MainWindow::saveOpenTabs()
+QString vSongHome::saveOpenTabs()
 {
     QString openTabs;
     for (int i=0; i < ui->mainTab->count(); i++)
@@ -3250,12 +3245,12 @@ QString MainWindow::saveOpenTabs()
     return openTabs;
 }
 
-void MainWindow::showStatusMessage5s(QString message)
+void vSongHome::showStatusMessage5s(QString message)
 {
     ui->statusbar->showMessage(message, 5000);
 }
 
-void MainWindow::saveAll()
+void vSongHome::saveAll()
 {
     for(int i=0; i<ui->tabSqlAreas->count(); i++) {
         SqlExecutionArea* sqlExecArea = qobject_cast<SqlExecutionArea*>(ui->tabSqlAreas->widget(i));
@@ -3268,7 +3263,7 @@ void MainWindow::saveAll()
 
 }
 
-void MainWindow::showContextMenuSqlTabBar(const QPoint& pos)
+void vSongHome::showContextMenuSqlTabBar(const QPoint& pos)
 {
     // Don't show context menu if the mouse click was outside of all the tabs
     int tab = ui->tabSqlAreas->tabBar()->tabAt(pos);

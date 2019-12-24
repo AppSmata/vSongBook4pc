@@ -21,8 +21,8 @@ CONFIG(unittest) {
 }
 
 HEADERS += \
+    AppSplash.h \
     sqlitedb.h \
-    MainWindow.h \
     EditIndexDialog.h \
     AboutDialog.h \
     EditTableDialog.h \
@@ -40,6 +40,10 @@ HEADERS += \
     RowCache.h \
     RowLoader.h \
     FilterTableHeader.h \
+    vSongBooks.h \
+    vSongEditor.h \
+    vSongHome.h \
+    vSongView.h \
     version.h \
     SqlExecutionArea.h \
     VacuumDialog.h \
@@ -81,8 +85,8 @@ HEADERS += \
     sql/parser/sqlite3_parser.hpp
 
 SOURCES += \
+    AppSplash.cpp \
     sqlitedb.cpp \
-    MainWindow.cpp \
     EditIndexDialog.cpp \
     EditTableDialog.cpp \
     AddRecordDialog.cpp \
@@ -134,7 +138,12 @@ SOURCES += \
     TableBrowser.cpp \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
-    sql/parser/sqlite3_parser.cpp
+    sql/parser/sqlite3_parser.cpp \
+    vSongBooks.cpp \
+    vSongEditor.cpp \
+    vSongHome.cpp \
+    vSongHomeX.cpp \
+    vSongView.cpp
 
 RESOURCES += icons/icons.qrc \
              translations/flags/flags.qrc \
@@ -143,7 +152,7 @@ RESOURCES += icons/icons.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
-    MainWindow.ui \
+    AppSplash.ui \
     EditIndexDialog.ui \
     AboutDialog.ui \
     EditTableDialog.ui \
@@ -165,7 +174,11 @@ FORMS += \
     CondFormatManager.ui \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
-    TableBrowser.ui
+    TableBrowser.ui \
+    vSongBooks.ui \
+    vSongEditor.ui \
+    vSongHome.ui \
+    vSongView.ui
 
 TRANSLATIONS += \
     translations/sqlb_ar_SA.ts \

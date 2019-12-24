@@ -5,7 +5,7 @@
 
 class RemoteDatabase;
 class RemoteModel;
-class MainWindow;
+class vSongHome;
 
 namespace Ui {
 class RemoteDock;
@@ -16,7 +16,7 @@ class RemoteDock : public QDialog
     Q_OBJECT
 
 public:
-    explicit RemoteDock(MainWindow* parent);
+    explicit RemoteDock(vSongHome* parent);
     ~RemoteDock() override;
 
     void reloadSettings();
@@ -35,7 +35,7 @@ private slots:
 private:
     Ui::RemoteDock* ui;
 
-    MainWindow* mainWindow;
+    vSongHome* homeWindow;
 
     RemoteDatabase& remoteDatabase;
     RemoteModel* remoteModel;
