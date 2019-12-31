@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>HotDog.jpg</file>
+        <file>li.jpg</file>
+        <file>logo.jpg</file>
+        <file>PACT.jpg</file>
+        <file>yang.jpg</file>
+        <file>zhang.jpg</file>
+    </qresource>
+</RCC>

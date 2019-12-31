@@ -757,24 +757,24 @@ Aborting execution%3.</source>
     </message>
 </context>
 <context>
-    <name>DbStructureModel</name>
+    <name>SongModel</name>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Name</source>
         <translation>이름</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Object</source>
         <translation>객체</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Type</source>
         <translation>타입</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Schema</source>
         <translation>스키마</translation>
     </message>
@@ -783,42 +783,42 @@ Aborting execution%3.</source>
         <translation type="vanished">찾아보기 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Database</source>
         <translation>데이터베이스</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="162"/>
+        <location filename="../SongModel.cpp" line="162"/>
         <source>Browsables</source>
         <translation>열기</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="167"/>
+        <location filename="../SongModel.cpp" line="167"/>
         <source>All</source>
         <translation>모두선택</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="176"/>
+        <location filename="../SongModel.cpp" line="176"/>
         <source>Temporary</source>
         <translation>임시</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="314"/>
+        <location filename="../SongModel.cpp" line="314"/>
         <source>Tables (%1)</source>
         <translation>테이블 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="319"/>
+        <location filename="../SongModel.cpp" line="319"/>
         <source>Indices (%1)</source>
         <translation>인덱스 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="324"/>
+        <location filename="../SongModel.cpp" line="324"/>
         <source>Views (%1)</source>
         <translation>뷰 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="329"/>
+        <location filename="../SongModel.cpp" line="329"/>
         <source>Triggers (%1)</source>
         <translation>트리거 (%1)</translation>
     </message>

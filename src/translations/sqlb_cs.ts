@@ -733,24 +733,24 @@ Aborting execution%3.</source>
     </message>
 </context>
 <context>
-    <name>DbStructureModel</name>
+    <name>SongModel</name>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Name</source>
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Object</source>
         <translation>Objekt</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Schema</source>
         <translation>Schéma</translation>
     </message>
@@ -759,42 +759,42 @@ Aborting execution%3.</source>
         <translation type="obsolete">Možné prohlížet (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Database</source>
         <translation type="unfinished">Databáze</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="162"/>
+        <location filename="../SongModel.cpp" line="162"/>
         <source>Browsables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="167"/>
+        <location filename="../SongModel.cpp" line="167"/>
         <source>All</source>
         <translation type="unfinished">Všechny</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="176"/>
+        <location filename="../SongModel.cpp" line="176"/>
         <source>Temporary</source>
         <translation type="unfinished">Dočasný</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="314"/>
+        <location filename="../SongModel.cpp" line="314"/>
         <source>Tables (%1)</source>
         <translation>Tabulky (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="319"/>
+        <location filename="../SongModel.cpp" line="319"/>
         <source>Indices (%1)</source>
         <translation>Indexy (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="324"/>
+        <location filename="../SongModel.cpp" line="324"/>
         <source>Views (%1)</source>
         <translation>Pohledy (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="329"/>
+        <location filename="../SongModel.cpp" line="329"/>
         <source>Triggers (%1)</source>
         <translation>Triggery (%1)</translation>
     </message>

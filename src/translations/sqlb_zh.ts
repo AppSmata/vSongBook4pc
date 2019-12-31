@@ -755,24 +755,24 @@ Aborting execution%3.</source>
     </message>
 </context>
 <context>
-    <name>DbStructureModel</name>
+    <name>SongModel</name>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Object</source>
         <translation>对象</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Schema</source>
         <translation>架构</translation>
     </message>
@@ -781,42 +781,42 @@ Aborting execution%3.</source>
         <translation type="vanished">可浏览的 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Database</source>
         <translation>数据库</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="162"/>
+        <location filename="../SongModel.cpp" line="162"/>
         <source>Browsables</source>
         <translation>可浏览的</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="167"/>
+        <location filename="../SongModel.cpp" line="167"/>
         <source>All</source>
         <translation>所有</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="176"/>
+        <location filename="../SongModel.cpp" line="176"/>
         <source>Temporary</source>
         <translation>临时的</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="314"/>
+        <location filename="../SongModel.cpp" line="314"/>
         <source>Tables (%1)</source>
         <translation>表 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="319"/>
+        <location filename="../SongModel.cpp" line="319"/>
         <source>Indices (%1)</source>
         <translation>索引 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="324"/>
+        <location filename="../SongModel.cpp" line="324"/>
         <source>Views (%1)</source>
         <translation>视图 (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="329"/>
+        <location filename="../SongModel.cpp" line="329"/>
         <source>Triggers (%1)</source>
         <translation>触发器 (%1)</translation>
     </message>

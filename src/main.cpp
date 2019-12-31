@@ -1,13 +1,20 @@
-#include "Application.h"
+#include "vSongBook.h"
+#include <QFile>
+
+void setStyle(const QString& qssFile)
+{
+    QFile qss(qssFile);
+    qss.open(QFile::ReadOnly);
+    qApp->setStyleSheet(qss.readAll());
+    qss.close();
+}
 
 int main( int argc, char ** argv )
 {
     // Create application object. All the initialisation stuff happens in there
-    Application a(argc, argv);
+    vSongBook a(argc, argv);
 
-    // Quit application now if user doesn't want to see the UI
-    if(a.dontShowHome())
-        return 0;
+    setStyle("res/style.qss");
 
     // Run application
     return a.exec();

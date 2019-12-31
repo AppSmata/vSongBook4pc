@@ -1,7 +1,8 @@
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#ifndef VSONGBOOK_H
+#define VSONGBOOK_H
 
 #include <QApplication>
+#include <QFile>
 #include <QKeySequence>
 
 class QAction;
@@ -9,13 +10,13 @@ class QTranslator;
 
 class vSongHome;
 
-class Application : public QApplication
+class vSongBook : public QApplication
 {
     Q_OBJECT
 
 public:
-    explicit Application(int& argc, char** argv);
-    ~Application() override;
+    explicit vSongBook(int& argc, char** argv);
+    ~vSongBook() override;
 
     bool dontShowHome() const { return m_dontShowHome; }
 

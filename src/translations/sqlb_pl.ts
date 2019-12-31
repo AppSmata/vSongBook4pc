@@ -724,64 +724,64 @@ Przerywam wykonywanie%3.</translation>
     </message>
 </context>
 <context>
-    <name>DbStructureModel</name>
+    <name>SongModel</name>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Name</source>
         <translation>Nazwa</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Object</source>
         <translation>Obiekt</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Schema</source>
         <translation>Schemat</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="19"/>
+        <location filename="../SongModel.cpp" line="19"/>
         <source>Database</source>
         <translation>Baza danych</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="162"/>
+        <location filename="../SongModel.cpp" line="162"/>
         <source>Browsables</source>
         <translation>Obiekty do przeglądania</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="167"/>
+        <location filename="../SongModel.cpp" line="167"/>
         <source>All</source>
         <translation>Wszystkie</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="176"/>
+        <location filename="../SongModel.cpp" line="176"/>
         <source>Temporary</source>
         <translation>Tymczasowa</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="314"/>
+        <location filename="../SongModel.cpp" line="314"/>
         <source>Tables (%1)</source>
         <translation>Tabele (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="319"/>
+        <location filename="../SongModel.cpp" line="319"/>
         <source>Indices (%1)</source>
         <translation>Indeksy (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="324"/>
+        <location filename="../SongModel.cpp" line="324"/>
         <source>Views (%1)</source>
         <translation>Wyświetlenia (%1)</translation>
     </message>
     <message>
-        <location filename="../DbStructureModel.cpp" line="329"/>
+        <location filename="../SongModel.cpp" line="329"/>
         <source>Triggers (%1)</source>
         <translation>Uruchomienia (%1)</translation>
     </message>

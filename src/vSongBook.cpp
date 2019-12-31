@@ -7,12 +7,12 @@
 #include <QDebug>
 #include <QAction>
 
-#include "Application.h"
+#include "vSongBook.h"
 #include "vSongHome.h"
 #include "Settings.h"
 #include "version.h"
 
-Application::Application(int& argc, char** argv) :
+vSongBook::vSongBook(int& argc, char** argv) :
     QApplication(argc, argv)
 {
     // Set organisation and application names
@@ -153,12 +153,12 @@ Application::Application(int& argc, char** argv) :
     // Show main window
     m_HomeWindow = new vSongHome();
     m_HomeWindow->show();
-    connect(this, &Application::lastWindowClosed, this, &Application::quit);
+    connect(this, &vSongBook::lastWindowClosed, this, &vSongBook::quit);
 
     // Open database if one was specified
     if(fileToOpen.size())
     {
-        if(m_HomeWindow->fileOpen(fileToOpen, false, readOnly))
+        /*if(m_HomeWindow->fileOpen(fileToOpen, false, readOnly))
         {
             // If database could be opened run the SQL scripts
             for(const QString& f : sqlToExecute)
@@ -176,28 +176,28 @@ Application::Application(int& argc, char** argv) :
             // Jump to table if the -t/--table parameter was set
             if(!tableToBrowse.isEmpty())
                 m_HomeWindow->switchToBrowseDataTab(sqlb::ObjectIdentifier("main", tableToBrowse.toStdString()));
-        }
+        }*/
     }
 }
 
-Application::~Application()
+vSongBook::~vSongBook()
 {
     delete m_HomeWindow;
 }
 
-bool Application::event(QEvent* event)
+bool vSongBook::event(QEvent* event)
 {
     switch(event->type())
     {
     case QEvent::FileOpen:
-        m_HomeWindow->fileOpen(static_cast<QFileOpenEvent*>(event)->file());
+        //m_HomeWindow->fileOpen(static_cast<QFileOpenEvent*>(event)->file());
         return true;
     default:
         return QApplication::event(event);
     }
 }
 
-QString Application::versionString()
+QString vSongBook::versionString()
 {
     // Distinguish between high and low patch version numbers. High numbers as in x.y.99 indicate nightly builds or
     // beta releases. For these we want to include the build date. For the release versions we don't add the release

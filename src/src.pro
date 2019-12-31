@@ -22,6 +22,9 @@ CONFIG(unittest) {
 
 HEADERS += \
     AppSplash.h \
+    DbStructureModel.h \
+    SongModel.h \
+    SongItem.h \
     sqlitedb.h \
     EditIndexDialog.h \
     AboutDialog.h \
@@ -40,15 +43,15 @@ HEADERS += \
     RowCache.h \
     RowLoader.h \
     FilterTableHeader.h \
-    vSongBooks.h \
     vSongEditor.h \
     vSongHome.h \
+    vSongItemData.h \
+    vSongItemDelegate.h \
     vSongView.h \
     version.h \
     SqlExecutionArea.h \
     VacuumDialog.h \
-    DbStructureModel.h \
-    Application.h \
+    vSongBook.h \
     sqlite.h \
     CipherDialog.h \
     ExportSqlDialog.h \
@@ -59,7 +62,6 @@ HEADERS += \
     RemoteDatabase.h \
     ForeignKeyEditorDelegate.h \
     PlotDock.h \
-    RemoteDock.h \
     RemoteModel.h \
     RemotePushDialog.h \
     docktextedit.h \
@@ -86,6 +88,9 @@ HEADERS += \
 
 SOURCES += \
     AppSplash.cpp \
+    DbStructureModel.cpp \
+    SongModel.cpp \
+    SongItem.cpp \
     sqlitedb.cpp \
     EditIndexDialog.cpp \
     EditTableDialog.cpp \
@@ -105,8 +110,7 @@ SOURCES += \
     FilterTableHeader.cpp \
     SqlExecutionArea.cpp \
     VacuumDialog.cpp \
-    DbStructureModel.cpp \
-    Application.cpp \
+    vSongBook.cpp \
     CipherDialog.cpp \
     ExportSqlDialog.cpp \
     SqlUiLexer.cpp \
@@ -116,7 +120,6 @@ SOURCES += \
     RemoteDatabase.cpp \
     ForeignKeyEditorDelegate.cpp \
     PlotDock.cpp \
-    RemoteDock.cpp \
     RemoteModel.cpp \
     RemotePushDialog.cpp \
     docktextedit.cpp \
@@ -139,16 +142,17 @@ SOURCES += \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
     sql/parser/sqlite3_parser.cpp \
-    vSongBooks.cpp \
     vSongEditor.cpp \
     vSongHome.cpp \
-    vSongHomeX.cpp \
+    vSongItemDelegate.cpp \
     vSongView.cpp
 
 RESOURCES += icons/icons.qrc \
+             images/images.qrc \
              translations/flags/flags.qrc \
              translations/translations.qrc \
              certs/CaCerts.qrc \
+             qstyle/style.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
@@ -167,7 +171,6 @@ FORMS += \
     ExportSqlDialog.ui \
     ColumnDisplayFormatDialog.ui \
     PlotDock.ui \
-    RemoteDock.ui \
     RemotePushDialog.ui \
     FindReplaceDialog.ui \
     FileExtensionManager.ui \
@@ -175,7 +178,6 @@ FORMS += \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
     TableBrowser.ui \
-    vSongBooks.ui \
     vSongEditor.ui \
     vSongHome.ui \
     vSongView.ui

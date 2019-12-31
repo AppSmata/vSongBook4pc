@@ -1,5 +1,5 @@
 #include "AddRecordDialog.h"
-#include "Application.h"
+#include "vSongBook.h"
 #include "ColumnDisplayFormatDialog.h"
 #include "CondFormatManager.h"
 #include "Data.h"
@@ -343,7 +343,7 @@ void TableBrowser::reset()
 sqlb::ObjectIdentifier TableBrowser::currentlyBrowsedTableName() const
 {
     return sqlb::ObjectIdentifier(ui->comboBrowseTable->model()->data(dbStructureModel->index(ui->comboBrowseTable->currentIndex(),
-                                                                                              DbStructureModel::ColumnSchema,
+        DbStructureModel::ColumnSchema,
                                                                                               ui->comboBrowseTable->rootModelIndex())).toString().toStdString(),
                                   ui->comboBrowseTable->currentData(Qt::EditRole).toString().toStdString());  // Use the edit role here to make sure we actually get the
                                                                                                               // table name without the schema bit in front of it.
