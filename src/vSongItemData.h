@@ -3,11 +3,7 @@
 
 #include <QMetaType>
 
-typedef struct {
-    QString title;
-    QString detail;
-    QString content;
-} vSongItemData;
+typedef struct { QString title; QString content; QString detail; } vSongItemData;
 
 Q_DECLARE_METATYPE(vSongItemData)
 

@@ -76,13 +76,13 @@ bool vSongHome::PopulateSongbooks()
 
 void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searchall)
 {
-	/*if (ui->LstResults->count() > 0) {
+	/*if (songModel->item-> > 0) {
 		songids.clear();
 		songtitles.clear();
 		songaliases.clear();
 		songcontents.clear();
 		songbooks.clear();
-		ui->LstResults->clear();
+		//ui->LstResults->clear();
 	}*/
 
 	QString searchtotals = " songs found in: " + booktitles[ui->CmbSongbooks->currentIndex()];
@@ -152,15 +152,14 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 		songids.push_back(*(qryResult + i * col + 0));
 		songtitles.push_back(titles);
 		songaliases.push_back(*(qryResult + i * col + 3));
-		songcontents.push_back(contents.replace("\n", " "));
+		songcontents.push_back(contents);
 		//songbooks.push_back(*(qryResult + i * col + 7) + " (" + *(qryResult + i * col + 8) + ")");
 
 		QStandardItem* songItem = new QStandardItem;
 		vSongItemData song;
 		song.title = titles;
-		song.content = contents;
+		song.content = contents.replace("\\n", " ");
 		song.detail = "Songs of Worship; Has Chorus; 3 Verses; Key -;";
-		//song.icon = "res/vSongBook.png";
 		songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
 		songModel->appendRow(songItem);
 	}
@@ -172,7 +171,7 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 	sqlite3_free_table(qryResult);
 	sqlite3_close(db);
 	
-	//ui->LstResults->setCurrentIndex(0);
+	ui->LstResults->setCurrentIndex(songModel->item);
 	//OpenSongPreview(0);
 }
 
@@ -184,5 +183,10 @@ vSongHome::~vSongHome()
 void vSongHome::reloadSettings()
 {
 	//songModel->reloadData();
+
+}
+
+void vSongHome::on_TxtSearch_textChanged(const QString &arg1)
+{
 
 }

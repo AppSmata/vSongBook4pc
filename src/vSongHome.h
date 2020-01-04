@@ -53,6 +53,7 @@ private slots:
     bool PopulateSongbooks();
     void PopulateSonglists(QString setbook, QString searchstr, bool searchall);
 
+    void on_TxtSearch_textChanged(const QString &arg1);
 };
 
 #endif // VSONGHOME_H
