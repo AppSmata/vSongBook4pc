@@ -232,6 +232,9 @@
             <property name="bottomMargin">
              <number>3</number>
             </property>
+            <item>
+             <widget class="QTreeView" name="HisTree"/>
+            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="WdgBooks">
@@ -265,6 +268,9 @@
             <property name="bottomMargin">
              <number>3</number>
             </property>
+            <item>
+             <widget class="QListView" name="listView"/>
+            </item>
            </layout>
           </widget>
          </widget>
