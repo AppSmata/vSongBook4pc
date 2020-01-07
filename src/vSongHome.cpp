@@ -76,14 +76,18 @@ bool vSongHome::PopulateSongbooks()
 
 void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searchall)
 {
-	/*if (songModel->item-> > 0) {
+	QStringList strList;
+
+	QStandardItemModel* songModel = new QStandardItemModel();
+	
+	if (songModel->rowCount() > 0) {
 		songids.clear();
 		songtitles.clear();
 		songaliases.clear();
 		songcontents.clear();
 		songbooks.clear();
-		//ui->LstResults->clear();
-	}*/
+		songModel->clear();
+	}
 
 	QString searchtotals = " songs found in: " + booktitles[ui->CmbSongbooks->currentIndex()];
 
@@ -134,10 +138,6 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 
 	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-	QStringList strList;
-
-	QStandardItemModel* songModel = new QStandardItemModel();
-
 	for (int i = 1; i < row + 1; i++)
 	{
 		
@@ -170,9 +170,16 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 
 	sqlite3_free_table(qryResult);
 	sqlite3_close(db);
-	
-	ui->LstResults->setCurrentIndex(songModel->item);
-	//OpenSongPreview(0);
+
+	ui->LstResults->setCurrentIndex(songModel->index(0, 0));
+	OpenSongPreview(ui->LstResults->currentIndex());
+}
+
+void vSongHome::OpenSongPreview(QModelIndex selectedIndex)
+{
+	QStandardItemModel* selected = new QStandardItemModel();
+	selected->index(selectedIndex.row(), selectedIndex.column());
+	//ui->TxtPreviewTitle->set
 }
 
 vSongHome::~vSongHome()

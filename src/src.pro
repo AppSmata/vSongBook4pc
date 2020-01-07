@@ -43,7 +43,6 @@ HEADERS += \
     RowCache.h \
     RowLoader.h \
     FilterTableHeader.h \
-    vSongEditor.h \
     vSongHome.h \
     vSongItemData.h \
     vSongItemDelegate.h \
@@ -142,7 +141,6 @@ SOURCES += \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
     sql/parser/sqlite3_parser.cpp \
-    vSongEditor.cpp \
     vSongHome.cpp \
     vSongItemDelegate.cpp \
     vSongView.cpp
@@ -178,7 +176,6 @@ FORMS += \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
     TableBrowser.ui \
-    vSongEditor.ui \
     vSongHome.ui \
     vSongView.ui
 

@@ -1,6 +1,6 @@
 -ID:/QtP/vSongBook4PC/libs/qscintilla/Qt4Qt5
 -ID:/QtP/vSongBook4PC/libs/qscintilla/Qt4Qt5
--DBUILD_VERSION=20191231
+-DBUILD_VERSION=20200107
 -DSCINTILLA_QT
 -DSCI_LEXER
 -DWIN32

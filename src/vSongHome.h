@@ -54,6 +54,7 @@ private slots:
     void PopulateSonglists(QString setbook, QString searchstr, bool searchall);
 
     void on_TxtSearch_textChanged(const QString &arg1);
+    void OpenSongPreview(QModelIndex selected);
 };
 
 #endif // VSONGHOME_H

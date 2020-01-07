@@ -171,7 +171,6 @@ set(SQLB_MOC_HDR
 	src/SongModel.h
 	src/DbStructureModel.h
 	src/AppSplash.h
-	src/vSongEditor.h
 	src/vSongHome.h
 	src/vSongItemData.h
 	src/vSongItemDelegate.h
@@ -232,7 +231,6 @@ set(SQLB_SRC
 	src/SongModel.cpp
 	src/DbStructureModel.cpp
 	src/AppSplash.cpp
-	src/vSongEditor.cpp
 	src/vSongHome.cpp
 	src/vSongItemDelegate.cpp
 	src/vSongView.cpp
@@ -264,7 +262,6 @@ set(SQLB_FORMS
 	src/SelectItemsPopup.ui
 	src/TableBrowser.ui
 	src/AppSplash.ui
-	src/vSongEditor.ui
 	src/vSongHome.ui
 	src/vSongView.ui
 )
