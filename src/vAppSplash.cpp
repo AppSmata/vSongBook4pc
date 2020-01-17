@@ -1,4 +1,4 @@
-#include "AppSplash.h"
+#include "vAppSplash.h"
 #include "ui_AppSplash.h"
 
 AppSplash::AppSplash(QWidget *parent) :

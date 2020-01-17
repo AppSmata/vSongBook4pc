@@ -13,10 +13,14 @@
 #include <QObject>
 #include "vSongItemData.h"
 #include "vSongItemDelegate.h"
+#include "AboutDialog.h"
+#include "vSongView.h"
 
 int homefont, songfont;
 bool searchall, nightmode;
+char* db_file = "Data\\vSongBook.db";
 QString selected_book, selected_song, search_term;
+QString wFile = "Data\\vSongBook.db";
 std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
 vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHome)
@@ -35,18 +39,15 @@ vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHom
 
 bool vSongHome::PopulateSongbooks()
 {
-    bool retval = false;
-
-    QString wFile = "Data\\Songs.db";
-
-    if (db.open(wFile, true))
+	bool retval = false;
+    if (db.open(db_file, true))
     {
         int bookscount = ui->CmbSongbooks->count();
         if (bookscount > 0) ui->CmbSongbooks->clear();
 
         sqlite3* songsDb;
         char* err_msg = NULL, ** qryResult = NULL;
-        int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+        int row, col, rc = sqlite3_open_v2(db_file, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
         char* sqlQuery = "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;";
 
@@ -130,7 +131,7 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2("Data\\Songs.db", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(db_file, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	SqlQuery.append(" ORDER BY number ASC");
 	QByteArray bar = SqlQuery.toLocal8Bit();
@@ -172,19 +173,48 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 	sqlite3_close(db);
 
 	ui->LstResults->setCurrentIndex(songModel->index(0, 0));
-	OpenSongPreview(ui->LstResults->currentIndex());
+	OpenSongPreview(songModel->index(0, 0));
 }
 
-void vSongHome::OpenSongPreview(QModelIndex selectedIndex)
+void vSongHome::on_TxtSearch_textChanged(const QString &searchstr)
 {
-	QStandardItemModel* selected = new QStandardItemModel();
-	selected->index(selectedIndex.row(), selectedIndex.column());
-	//ui->TxtPreviewTitle->set
+	QString searchText = ui->TxtSearch->text();
+	PopulateSonglists(bookids[0], searchstr, true);
 }
 
-vSongHome::~vSongHome()
+void vSongHome::on_LstResults_clicked(const QModelIndex& index)
 {
-    delete ui;
+	OpenSongPreview(index);
+}
+
+void vSongHome::OpenSongPreview(const QModelIndex& index)
+{
+	int song = index.row();
+	QString songTitle = songtitles[song];
+	QString songContent = songcontents[song].replace("\\n", " \r\n");
+	QString songAlias = songaliases[song];
+
+	ui->TxtPreviewTitle->setText(songTitle);
+	ui->TxtEditorTitle->setText(songTitle);
+	ui->TxtPreviewContent->setPlainText(songContent);
+	ui->TxtEditorContent->setPlainText(songContent);
+	ui->TxtPreviewAlias->setPlainText(songAlias);
+}
+
+void vSongHome::on_LstResults_activated(const QModelIndex &index)
+{
+	OpenSongPreview(index);
+}
+
+void vSongHome::on_LstResults_doubleClicked(const QModelIndex &index)
+{
+	OpenSongPreview(index);
+}
+
+void vSongHome::openPresentation()
+{
+	vSongView* present = new vSongView();
+    present->showFullScreen();
 }
 
 void vSongHome::reloadSettings()
@@ -193,7 +223,163 @@ void vSongHome::reloadSettings()
 
 }
 
-void vSongHome::on_TxtSearch_textChanged(const QString &arg1)
+vSongHome::~vSongHome()
+{
+	delete ui;
+}
+
+
+void vSongHome::on_actionPresent_triggered()
+{
+    openPresentation();
+}
+
+void vSongHome::on_actionSave_triggered()
+{
+
+}
+
+void vSongHome::on_actionPresent_Song_triggered()
+{
+    openPresentation();
+}
+
+void vSongHome::on_actionBold_Text_triggered()
+{
+
+}
+
+void vSongHome::on_actionChange_Font_triggered()
+{
+
+}
+
+void vSongHome::on_actionSmaller_Font_triggered()
+{
+
+}
+
+void vSongHome::on_actionBigger_Font_triggered()
+{
+
+}
+
+void vSongHome::on_actionNext_Song_triggered()
+{
+
+}
+
+void vSongHome::on_actionPrevious_Song_triggered()
+{
+
+}
+
+void vSongHome::on_actionCheck_Updates_triggered()
+{
+
+}
+
+void vSongHome::on_actionContribute_triggered()
+{
+
+}
+
+void vSongHome::on_actionDonate_triggered()
+{
+
+}
+
+void vSongHome::on_actionUpdate_Songbooks_triggered()
+{
+
+}
+
+void vSongHome::on_actionManage_Songbooks_triggered()
+{
+
+}
+
+void vSongHome::on_actionEdit_Songbook_triggered()
+{
+
+}
+
+void vSongHome::on_actionNew_Songbook_triggered()
+{
+
+}
+
+void vSongHome::on_actionDelete_Song_triggered()
+{
+
+}
+
+void vSongHome::on_actionEdit_Song_triggered()
+{
+
+}
+
+void vSongHome::on_actionNew_Song_triggered()
+{
+
+}
+
+void vSongHome::on_actionManage_Settings_triggered()
+{
+
+}
+
+void vSongHome::on_actionReset_Settings_triggered()
+{
+
+}
+
+void vSongHome::on_actionHow_it_Works_triggered()
+{
+
+}
+
+void vSongHome::on_actionAbout_triggered()
+{
+
+}
+
+void vSongHome::on_actionExit_triggered()
+{
+
+}
+
+void vSongHome::on_actionBold_triggered()
+{
+
+}
+
+void vSongHome::on_actionSmaller_triggered()
+{
+
+}
+
+void vSongHome::on_actionBigger_triggered()
+{
+
+}
+
+void vSongHome::on_actionNext_triggered()
+{
+
+}
+
+void vSongHome::on_actionPrevious_triggered()
+{
+
+}
+
+void vSongHome::on_actionCancel_triggered()
+{
+
+}
+
+void vSongHome::on_actionDelete_triggered()
 {
 
 }

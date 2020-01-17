@@ -21,7 +21,6 @@ CONFIG(unittest) {
 }
 
 HEADERS += \
-    AppSplash.h \
     DbStructureModel.h \
     SongModel.h \
     SongItem.h \
@@ -43,6 +42,7 @@ HEADERS += \
     RowCache.h \
     RowLoader.h \
     FilterTableHeader.h \
+    vAppSplash.h \
     vSongHome.h \
     vSongItemData.h \
     vSongItemDelegate.h \
@@ -86,7 +86,6 @@ HEADERS += \
     sql/parser/sqlite3_parser.hpp
 
 SOURCES += \
-    AppSplash.cpp \
     DbStructureModel.cpp \
     SongModel.cpp \
     SongItem.cpp \
@@ -109,6 +108,7 @@ SOURCES += \
     FilterTableHeader.cpp \
     SqlExecutionArea.cpp \
     VacuumDialog.cpp \
+    vAppSplash.cpp \
     vSongBook.cpp \
     CipherDialog.cpp \
     ExportSqlDialog.cpp \
@@ -154,7 +154,6 @@ RESOURCES += icons/icons.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
-    AppSplash.ui \
     EditIndexDialog.ui \
     AboutDialog.ui \
     EditTableDialog.ui \
@@ -176,6 +175,7 @@ FORMS += \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
     TableBrowser.ui \
+    vAppSplash.ui \
     vSongHome.ui \
     vSongView.ui
 

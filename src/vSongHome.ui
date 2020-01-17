@@ -358,13 +358,12 @@
               <property name="toolButtonStyle">
                <enum>Qt::ToolButtonTextBesideIcon</enum>
               </property>
-              <addaction name="ActionPresent"/>
-              <addaction name="separator"/>
-              <addaction name="ActionPrevious"/>
-              <addaction name="ActionNext"/>
-              <addaction name="separator"/>
-              <addaction name="ActionEdit"/>
-              <addaction name="ActionBigger"/>
+              <addaction name="actionPresent"/>
+              <addaction name="actionPrevious"/>
+              <addaction name="actionNext"/>
+              <addaction name="actionBigger"/>
+              <addaction name="actionSmaller"/>
+              <addaction name="actionBold"/>
              </widget>
             </item>
             <item>
@@ -376,6 +375,12 @@
             </item>
             <item>
              <widget class="QPlainTextEdit" name="TxtPreviewContent">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="frameShadow">
                <enum>QFrame::Sunken</enum>
               </property>
@@ -456,9 +461,9 @@
               <property name="toolButtonStyle">
                <enum>Qt::ToolButtonTextBesideIcon</enum>
               </property>
-              <addaction name="ActionSave"/>
-              <addaction name="ActionDelete"/>
-              <addaction name="ActionCancel"/>
+              <addaction name="actionSave"/>
+              <addaction name="actionDelete"/>
+              <addaction name="actionCancel"/>
              </widget>
             </item>
             <item>
@@ -482,1038 +487,78 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="fileNewAction">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_new</normaloff>:/icons/db_new</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;New Database...</string>
-   </property>
-   <property name="toolTip">
-    <string>Create a new database file</string>
-   </property>
-   <property name="statusTip">
-    <string>Create a new database file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option is used to create a new database file.</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileOpenAction">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_open</normaloff>:/icons/db_open</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Open Database...</string>
-   </property>
-   <property name="toolTip">
-    <string>Open an existing database file</string>
-   </property>
-   <property name="statusTip">
-    <string>Open an existing database file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option is used to open an existing database file.</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+O</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileCloseAction">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/close</normaloff>:/icons/close</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Close Database</string>
-   </property>
-   <property name="toolTip">
-    <string>Close the current database file</string>
-   </property>
-   <property name="statusTip">
-    <string>Close the current database file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button closes the connection to the currently open database file</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+F4</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileRevertAction">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_revert</normaloff>:/icons/db_revert</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Revert Changes</string>
-   </property>
-   <property name="toolTip">
-    <string>Revert database to last saved state</string>
-   </property>
-   <property name="statusTip">
-    <string>Revert database to last saved state</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option is used to revert the current database file to its last saved state. All changes made since the last save operation are lost.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileSaveAction">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_save</normaloff>:/icons/db_save</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Write Changes</string>
-   </property>
-   <property name="toolTip">
-    <string>Write changes to the database file</string>
-   </property>
-   <property name="statusTip">
-    <string>Write changes to the database file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option is used to save changes to the database file.</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileCompactAction">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Compact &amp;Database...</string>
-   </property>
-   <property name="toolTip">
-    <string>Compact the database file, removing space wasted by deleted records</string>
-   </property>
-   <property name="statusTip">
-    <string>Compact the database file, removing space wasted by deleted records.</string>
-   </property>
-   <property name="whatsThis">
-    <string>Compact the database file, removing space wasted by deleted records.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileExitAction">
-   <property name="text">
-    <string>E&amp;xit</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Q</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
-   </property>
-  </action>
-  <action name="fileImportSQLAction">
-   <property name="text">
-    <string>&amp;Database from SQL file...</string>
-   </property>
-   <property name="toolTip">
-    <string>Import data from an .sql dump text file into a new or existing database.</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option lets you import data from an .sql dump text file into a new or existing database. SQL dump files can be created on most database engines, including MySQL and PostgreSQL.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileImportCSVAction">
-   <property name="text">
-    <string>&amp;Table from CSV file...</string>
-   </property>
-   <property name="toolTip">
-    <string>Open a wizard that lets you import data from a comma separated text file into a database table.</string>
-   </property>
-   <property name="whatsThis">
-    <string>Open a wizard that lets you import data from a comma separated text file into a database table. CSV files can be created on most database and spreadsheet applications.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileExportSQLAction">
-   <property name="text">
-    <string>&amp;Database to SQL file...</string>
-   </property>
-   <property name="toolTip">
-    <string>Export a database to a .sql dump text file.</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option lets you export a database to a .sql dump text file. SQL dump files contain all data necessary to recreate the database on most database engines, including MySQL and PostgreSQL.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileExportCSVAction">
-   <property name="text">
-    <string>&amp;Table(s) as CSV file...</string>
-   </property>
-   <property name="toolTip">
-    <string>Export a database table as a comma separated text file.</string>
-   </property>
-   <property name="whatsThis">
-    <string>Export a database table as a comma separated text file, ready to be imported into other database or spreadsheet applications.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="ActionPresent">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/present.png</normaloff>:/icons/present.png</iconset>
-   </property>
-   <property name="text">
-    <string>Present</string>
-   </property>
-   <property name="whatsThis">
-    <string>Open the Create Table wizard, where it is possible to define the name and fields for a new table in the database</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="ActionNext">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/next.png</normaloff>:/icons/next.png</iconset>
-   </property>
-   <property name="text">
-    <string>Next</string>
-   </property>
-   <property name="toolTip">
-    <string>Delete Table</string>
-   </property>
-   <property name="whatsThis">
-    <string>Open the Delete Table wizard, where you can select a database table to be dropped.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="ActionPrevious">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/last.png</normaloff>:/icons/last.png</iconset>
-   </property>
-   <property name="text">
-    <string>Previous</string>
-   </property>
-   <property name="whatsThis">
-    <string>Open the Modify Table wizard, where it is possible to rename an existing table. It is also possible to add or delete fields form a table, as well as modify field names and types.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="ActionEdit">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/smaller.png</normaloff>:/icons/smaller.png</iconset>
-   </property>
-   <property name="text">
-    <string>Smaller Text</string>
-   </property>
-   <property name="whatsThis">
-    <string>Open the Create Index wizard, where it is possible to define a new index on an existing database table.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="viewPreferencesAction">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/settings</normaloff>:/icons/settings</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Preferences...</string>
-   </property>
-   <property name="toolTip">
-    <string>Open the preferences window.</string>
-   </property>
-   <property name="whatsThis">
-    <string>Open the preferences window.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::PreferencesRole</enum>
-   </property>
-  </action>
-  <action name="viewDBToolbarAction">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/toolbar</normaloff>:/icons/toolbar</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;DB Toolbar</string>
-   </property>
-   <property name="whatsThis">
-    <string>Shows or hides the Database toolbar.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="helpWhatsThisAction">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/whatis</normaloff>:/icons/whatis</iconset>
-   </property>
-   <property name="text">
-    <string>W&amp;hat's This?</string>
-   </property>
-   <property name="shortcut">
-    <string>Shift+F1</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="helpAboutAction">
-   <property name="text">
-    <string>&amp;About</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::AboutRole</enum>
-   </property>
-  </action>
-  <action name="actionRecent_y_opened">
-   <property name="text">
-    <string>&amp;Recently opened</string>
-   </property>
-  </action>
-  <action name="actionSqlOpenTab">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/open_tab</normaloff>:/icons/open_tab</iconset>
-   </property>
-   <property name="text">
-    <string>Open &amp;tab</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button opens a new tab for the SQL editor</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+T</string>
-   </property>
-  </action>
-  <action name="actionExecuteSql">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/run</normaloff>:/icons/run</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Execute SQL</string>
-   </property>
-   <property name="toolTip">
-    <string>Execute all/selected SQL</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button executes the currently selected SQL statements. If no text is selected, all SQL statements are executed.</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Return</string>
-   </property>
-  </action>
-  <action name="actionSqlOpenFile">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/document_open</normaloff>:/icons/document_open</iconset>
-   </property>
-   <property name="text">
-    <string>Open SQL file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button opens a file containing SQL statements and loads it in a new editor tab</string>
-   </property>
-  </action>
-  <action name="actionSqlSaveFile">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/save_sql</normaloff>:/icons/save_sql</iconset>
-   </property>
-   <property name="text">
-    <string>Save SQL file</string>
-   </property>
-  </action>
-  <action name="actionLoadExtension">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/load_extension</normaloff>:/icons/load_extension</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Load Extension...</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionSqlExecuteLine">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/run_line</normaloff>:/icons/run_line</iconset>
-   </property>
-   <property name="text">
-    <string>Execute current line</string>
-   </property>
-   <property name="iconText">
-    <string>Execute line</string>
-   </property>
-   <property name="toolTip">
-    <string>Execute current line</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button executes the SQL statement present in the current editor line</string>
-   </property>
-   <property name="shortcut">
-    <string>Shift+F5</string>
-   </property>
-  </action>
-  <action name="actionExportCsvPopup">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Export as CSV file</string>
-   </property>
-   <property name="toolTip">
-    <string>Export table as comma separated values file</string>
-   </property>
-  </action>
-  <action name="actionWiki">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Wiki</string>
-   </property>
-   <property name="shortcut">
-    <string>F1</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionBug_report">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
-   </property>
-   <property name="text">
-    <string>Bug &amp;Report...</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionFeature_Request">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
-   </property>
-   <property name="text">
-    <string>Feature Re&amp;quest...</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionWebsite">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
-   </property>
-   <property name="text">
-    <string>Web&amp;site</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionDonatePatreon">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Donate on Patreon...</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionSaveProject">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/project_save</normaloff>:/icons/project_save</iconset>
-   </property>
-   <property name="text">
-    <string>Sa&amp;ve Project</string>
-   </property>
-   <property name="toolTip">
-    <string>Save the current session to a file</string>
-   </property>
-   <property name="statusTip">
-    <string>Save the current session to a file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button lets you save all the settings associated to the open DB to a DB4S project file</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionOpenProject">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/project_open</normaloff>:/icons/project_open</iconset>
-   </property>
-   <property name="text">
-    <string>Open &amp;Project...</string>
-   </property>
-   <property name="toolTip">
-    <string>Load a working session from a file</string>
-   </property>
-   <property name="statusTip">
-    <string>Load a working session from a file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button lets you open a DB4S project file</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileAttachAction">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_attach</normaloff>:/icons/db_attach</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Attach Database...</string>
-   </property>
-   <property name="toolTip">
-    <string>Add another database file to the current database connection</string>
-   </property>
-   <property name="statusTip">
-    <string>Add another database file to the current database connection</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button lets you add another database file to the current database connection</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionEncryption">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/encryption</normaloff>:/icons/encryption</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Set Encryption...</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionSqlSaveFileAs">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/save_sql</normaloff>:/icons/save_sql</iconset>
-   </property>
-   <property name="text">
-    <string>Save SQL file as</string>
-   </property>
-   <property name="toolTip">
-    <string>Save SQL file as</string>
-   </property>
-  </action>
-  <action name="actionSqlSaveFilePopup">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/save_sql</normaloff>:/icons/save_sql</iconset>
-   </property>
-   <property name="text">
-    <string>Save SQL file</string>
-   </property>
-   <property name="toolTip">
-    <string>Save SQL file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button saves the content of the current SQL editor tab to a file</string>
-   </property>
-  </action>
-  <action name="actionEditBrowseTable">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/table</normaloff>:/icons/table</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Browse Table</string>
-   </property>
-  </action>
-  <action name="actionEditCopyCreateStatement">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/copy</normaloff>:/icons/copy</iconset>
-   </property>
-   <property name="text">
-    <string>Copy Create statement</string>
-   </property>
-   <property name="toolTip">
-    <string>Copy the CREATE statement of the item to the clipboard</string>
-   </property>
-  </action>
-  <action name="actionSqlCipherFaq">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
-   </property>
-   <property name="text">
-    <string>SQLCipher &amp;FAQ</string>
-   </property>
-   <property name="toolTip">
-    <string>Opens the SQLCipher FAQ in a browser window</string>
-   </property>
-  </action>
-  <action name="fileExportJsonAction">
-   <property name="text">
-    <string>Table(&amp;s) to JSON...</string>
-   </property>
-   <property name="toolTip">
-    <string>Export one or more table(s) to a JSON file</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="fileOpenReadOnlyAction">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_open</normaloff>:/icons/db_open</iconset>
-   </property>
-   <property name="text">
-    <string>Open Data&amp;base Read Only...</string>
-   </property>
-   <property name="toolTip">
-    <string>Open an existing database file in read only mode</string>
-   </property>
-   <property name="statusTip">
-    <string>Open an existing database file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option is used to open an existing database file.</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+O</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionSqlResultsSave">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/save_table</normaloff>:/icons/save_table</iconset>
-   </property>
-   <property name="text">
-    <string>Save results</string>
-   </property>
-   <property name="toolTip">
-    <string>Save the results view</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button lets you save the results of the last executed query</string>
-   </property>
-  </action>
-  <action name="actionSqlFind">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/find</normaloff>:/icons/find</iconset>
-   </property>
-   <property name="text">
-    <string>Find text in SQL editor</string>
-   </property>
-   <property name="iconText">
-    <string>Find</string>
-   </property>
-   <property name="toolTip">
-    <string>Find text in SQL editor</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button opens the search bar of the editor</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+F</string>
-   </property>
-   <property name="shortcutContext">
-    <enum>Qt::WidgetShortcut</enum>
-   </property>
-  </action>
-  <action name="actionSqlFindReplace">
-   <property name="checkable">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/text_replace</normaloff>:/icons/text_replace</iconset>
-   </property>
-   <property name="text">
-    <string>Find or replace text in SQL editor</string>
-   </property>
-   <property name="iconText">
-    <string>Find or replace</string>
-   </property>
-   <property name="toolTip">
-    <string>Find or replace text in SQL editor</string>
-   </property>
-   <property name="whatsThis">
-    <string>This button opens the find/replace dialog for the current editor tab</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+H</string>
-   </property>
-   <property name="shortcutContext">
-    <enum>Qt::WidgetShortcut</enum>
-   </property>
-  </action>
-  <action name="actionSqlResultsExportCsv">
-   <property name="text">
-    <string>Export to &amp;CSV</string>
-   </property>
-  </action>
-  <action name="actionSqlResultsSaveAsView">
-   <property name="text">
-    <string>Save as &amp;view</string>
-   </property>
-   <property name="toolTip">
-    <string>Save as view</string>
-   </property>
-  </action>
-  <action name="viewProjectToolbarAction">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/toolbar</normaloff>:/icons/toolbar</iconset>
-   </property>
-   <property name="text">
-    <string>Project Toolbar</string>
-   </property>
-   <property name="whatsThis">
-    <string>Shows or hides the Project toolbar.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="viewExtraDBToolbarAction">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/toolbar</normaloff>:/icons/toolbar</iconset>
-   </property>
-   <property name="text">
-    <string>Extra DB Toolbar</string>
-   </property>
-  </action>
-  <action name="fileOpenActionPopup">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/db_open</normaloff>:/icons/db_open</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Open Database...</string>
-   </property>
-   <property name="toolTip">
-    <string>Open an existing database file</string>
-   </property>
-   <property name="statusTip">
-    <string>Open an existing database file</string>
-   </property>
-   <property name="whatsThis">
-    <string>This option is used to open an existing database file.</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::TextHeuristicRole</enum>
-   </property>
-  </action>
-  <action name="fileNewInMemoryDatabaseAction">
-   <property name="text">
-    <string>New In-&amp;Memory Database</string>
-   </property>
-  </action>
-  <action name="actionDropQualifiedCheck">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Drag &amp;&amp; Drop Qualified Names</string>
-   </property>
-   <property name="statusTip">
-    <string>Use qualified names (e.g. &quot;Table&quot;.&quot;Field&quot;) when dragging the objects and dropping them into the editor </string>
-   </property>
-   <property name="whatsThis">
-    <string>Use qualified names (e.g. &quot;Table&quot;.&quot;Field&quot;) when dragging the objects and dropping them into the editor </string>
-   </property>
-  </action>
-  <action name="actionEnquoteNamesCheck">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Drag &amp;&amp; Drop Enquoted Names</string>
-   </property>
-   <property name="statusTip">
-    <string>Use escaped identifiers (e.g. &quot;Table1&quot;) when dragging the objects and dropping them into the editor </string>
-   </property>
-   <property name="whatsThis">
-    <string>Use escaped identifiers (e.g. &quot;Table1&quot;) when dragging the objects and dropping them into the editor </string>
-   </property>
-  </action>
-  <action name="actionIntegrityCheck">
-   <property name="text">
-    <string>&amp;Integrity Check</string>
-   </property>
-   <property name="whatsThis">
-    <string>Runs the integrity_check pragma over the opened database and returns the results in the Execute SQL tab. This pragma does an integrity check of the entire database.</string>
-   </property>
-  </action>
-  <action name="actionForeignKeyCheck">
-   <property name="text">
-    <string>&amp;Foreign-Key Check</string>
-   </property>
-   <property name="whatsThis">
-    <string>Runs the foreign_key_check pragma over the opened database and returns the results in the Execute SQL tab</string>
-   </property>
-  </action>
-  <action name="actionQuickCheck">
-   <property name="text">
-    <string>&amp;Quick Integrity Check</string>
-   </property>
-   <property name="toolTip">
-    <string>Run a quick integrity check over the open DB</string>
-   </property>
-   <property name="whatsThis">
-    <string>Runs the quick_check pragma over the opened database and returns the results in the Execute SQL tab. This command does most of the checking of PRAGMA integrity_check but runs much faster.</string>
-   </property>
-  </action>
-  <action name="actionOptimize">
-   <property name="text">
-    <string>&amp;Optimize</string>
-   </property>
-   <property name="toolTip">
-    <string>Attempt to optimize the database</string>
-   </property>
-   <property name="whatsThis">
-    <string>Runs the optimize pragma over the opened database. This pragma might perform optimizations that will improve the performance of future queries.</string>
-   </property>
-  </action>
-  <action name="actionSqlPrint">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/print</normaloff>:/icons/print</iconset>
-   </property>
-   <property name="text">
-    <string>Print</string>
-   </property>
-   <property name="toolTip">
-    <string>Print text from current SQL editor tab</string>
-   </property>
-   <property name="statusTip">
-    <string/>
-   </property>
-   <property name="whatsThis">
-    <string>Open a dialog for printing the text in the current SQL editor tab</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
-   </property>
-   <property name="shortcutContext">
-    <enum>Qt::WidgetShortcut</enum>
-   </property>
-  </action>
-  <action name="ActionBigger">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/bigger.png</normaloff>:/icons/bigger.png</iconset>
-   </property>
-   <property name="text">
-    <string>Bigger Text</string>
-   </property>
-   <property name="toolTip">
-    <string>Print the structure of the opened database</string>
-   </property>
-   <property name="statusTip">
-    <string/>
-   </property>
-   <property name="whatsThis">
-    <string>Open a dialog for printing the structure of the opened database</string>
-   </property>
-   <property name="shortcutContext">
-    <enum>Qt::WidgetShortcut</enum>
-   </property>
-  </action>
-  <action name="actionSqlToggleComment">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/comment_block</normaloff>:/icons/comment_block</iconset>
-   </property>
-   <property name="text">
-    <string>Un/comment block of SQL code</string>
-   </property>
-   <property name="iconText">
-    <string>Un/comment block</string>
-   </property>
-   <property name="toolTip">
-    <string>Comment or uncomment current line or selected block of code</string>
-   </property>
-   <property name="whatsThis">
-    <string>Comment or uncomment the selected lines or the current line, when there is no selection. All the block is toggled according to the first line.</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+/</string>
-   </property>
-   <property name="shortcutContext">
-    <enum>Qt::WidgetShortcut</enum>
-   </property>
-  </action>
-  <action name="actionSqlStop">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/cancel</normaloff>:/icons/cancel</iconset>
-   </property>
-   <property name="text">
-    <string>Stop SQL execution</string>
-   </property>
-   <property name="iconText">
-    <string>Stop execution</string>
-   </property>
-   <property name="toolTip">
-    <string>Stop the currently running SQL script</string>
-   </property>
-  </action>
-  <action name="actionSaveProjectAs">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/project_save_as</normaloff>:/icons/project_save_as</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Save Project As...</string>
-   </property>
-   <property name="toolTip">
-    <string>Save the project in a file selected in a dialog</string>
-   </property>
-   <property name="statusTip">
-    <string>Save the project in a file selected in a dialog</string>
-   </property>
-   <property name="whatsThis">
-    <string>Save the project in a file selected in a dialog</string>
-   </property>
-  </action>
-  <action name="actionSaveAll">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/save_all</normaloff>:/icons/save_all</iconset>
-   </property>
-   <property name="text">
-    <string>Save A&amp;ll</string>
-   </property>
-   <property name="toolTip">
-    <string>Save DB file, project file and opened SQL files</string>
-   </property>
-   <property name="statusTip">
-    <string>Save DB file, project file and opened SQL files</string>
-   </property>
-   <property name="whatsThis">
-    <string>Save DB file, project file and opened SQL files</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+S</string>
-   </property>
-  </action>
-  <action name="actionPopupSchemaDockBrowseTable">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/table</normaloff>:/icons/table</iconset>
-   </property>
-   <property name="text">
-    <string>Browse Table</string>
-   </property>
-  </action>
-  <action name="ActionSave">
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>950</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuPreferences">
+     <property name="title">
+      <string>Preferences</string>
+     </property>
+     <addaction name="actionReset_Settings"/>
+     <addaction name="actionManage_Settings"/>
+    </widget>
+    <addaction name="menuPreferences"/>
+    <addaction name="actionHow_it_Works"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSongs">
+    <property name="title">
+     <string>Songs</string>
+    </property>
+    <addaction name="actionNew_Song"/>
+    <addaction name="actionEdit_Song"/>
+    <addaction name="actionDelete_Song"/>
+   </widget>
+   <widget class="QMenu" name="menuSongbooks">
+    <property name="title">
+     <string>Songbooks</string>
+    </property>
+    <addaction name="actionNew_Songbook"/>
+    <addaction name="actionEdit_Songbook"/>
+    <addaction name="actionManage_Songbooks"/>
+    <addaction name="actionUpdate_Songbooks"/>
+   </widget>
+   <widget class="QMenu" name="menuSupport">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionDonate"/>
+    <addaction name="actionContribute"/>
+    <addaction name="actionCheck_Updates"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionPresent_Song"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrevious_Song"/>
+    <addaction name="actionNext_Song"/>
+    <addaction name="separator"/>
+    <addaction name="actionSmaller_Font"/>
+    <addaction name="actionBigger_Font"/>
+    <addaction name="separator"/>
+    <addaction name="actionChange_Font"/>
+    <addaction name="actionBold_Text"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuSongs"/>
+   <addaction name="menuSongbooks"/>
+   <addaction name="menuSupport"/>
+  </widget>
+  <action name="actionSave">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
      <normaloff>:/icons/check.png</normaloff>:/icons/check.png</iconset>
@@ -1525,7 +570,7 @@
     <string>Save Changes</string>
    </property>
   </action>
-  <action name="ActionDelete">
+  <action name="actionDelete">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
      <normaloff>:/icons/delete.png</normaloff>:/icons/delete.png</iconset>
@@ -1534,757 +579,332 @@
     <string>Delete Song</string>
    </property>
   </action>
-  <action name="ActionCancel">
+  <action name="actionCancel">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/cancel</normaloff>:/icons/cancel</iconset>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </action>
+  <action name="actionPresent">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/present.png</normaloff>:/icons/present.png</iconset>
+   </property>
+   <property name="text">
+    <string>Present</string>
+   </property>
+   <property name="toolTip">
+    <string>Present Song</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="actionPrevious">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/last.png</normaloff>:/icons/last.png</iconset>
+   </property>
+   <property name="text">
+    <string>Previous</string>
+   </property>
+   <property name="toolTip">
+    <string>Previous Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Left</string>
+   </property>
+  </action>
+  <action name="actionNext">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/next.png</normaloff>:/icons/next.png</iconset>
+   </property>
+   <property name="text">
+    <string>Next</string>
+   </property>
+   <property name="toolTip">
+    <string>Next Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Right</string>
+   </property>
+  </action>
+  <action name="actionBigger">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/bigger.png</normaloff>:/icons/bigger.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bigger</string>
+   </property>
+   <property name="toolTip">
+    <string>Bigger Text</string>
+   </property>
+   <property name="shortcut">
+    <string>Up</string>
+   </property>
+  </action>
+  <action name="actionSmaller">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/smaller.png</normaloff>:/icons/smaller.png</iconset>
+   </property>
+   <property name="text">
+    <string>Smaller</string>
+   </property>
+   <property name="toolTip">
+    <string>Smaller Text</string>
+   </property>
+   <property name="shortcut">
+    <string>Down</string>
+   </property>
+  </action>
+  <action name="actionBold">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/bold.png</normaloff>:/icons/bold.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bold</string>
+   </property>
+   <property name="toolTip">
+    <string>Make Bold</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+B</string>
+   </property>
+  </action>
+  <action name="actionExit">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
      <normaloff>:/icons/close</normaloff>:/icons/close</iconset>
    </property>
    <property name="text">
-    <string>Cancel</string>
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionHow_it_Works">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/whatis</normaloff>:/icons/whatis</iconset>
+   </property>
+   <property name="text">
+    <string>How it Works</string>
+   </property>
+  </action>
+  <action name="actionReset_Settings">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/remove_extension</normaloff>:/icons/remove_extension</iconset>
+   </property>
+   <property name="text">
+    <string>Reset Settings</string>
+   </property>
+  </action>
+  <action name="actionManage_Settings">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/settings</normaloff>:/icons/settings</iconset>
+   </property>
+   <property name="text">
+    <string>Manage Settings</string>
+   </property>
+  </action>
+  <action name="actionNew_Song">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/field_add</normaloff>:/icons/field_add</iconset>
+   </property>
+   <property name="text">
+    <string>New Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionEdit_Song">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/edit_cond_formats.png</normaloff>:/icons/edit_cond_formats.png</iconset>
+   </property>
+   <property name="text">
+    <string>Edit Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionDelete_Song">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/delete.png</normaloff>:/icons/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionNew_Songbook">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/field_add</normaloff>:/icons/field_add</iconset>
+   </property>
+   <property name="text">
+    <string>New Songbook</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+N</string>
+   </property>
+  </action>
+  <action name="actionEdit_Songbook">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/edit_cond_formats.png</normaloff>:/icons/edit_cond_formats.png</iconset>
+   </property>
+   <property name="text">
+    <string>Edit Songbook</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+E</string>
+   </property>
+  </action>
+  <action name="actionManage_Songbooks">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/project_save_as</normaloff>:/icons/project_save_as</iconset>
+   </property>
+   <property name="text">
+    <string>Manage Songbooks</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Songbooks">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/refresh</normaloff>:/icons/refresh</iconset>
+   </property>
+   <property name="text">
+    <string>Update Songbooks</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+U</string>
+   </property>
+  </action>
+  <action name="actionDonate">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/filter</normaloff>:/icons/filter</iconset>
+   </property>
+   <property name="text">
+    <string>Donate</string>
+   </property>
+  </action>
+  <action name="actionContribute">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/add_record</normaloff>:/icons/add_record</iconset>
+   </property>
+   <property name="text">
+    <string>Contribute</string>
+   </property>
+  </action>
+  <action name="actionCheck_Updates">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/refresh</normaloff>:/icons/refresh</iconset>
+   </property>
+   <property name="text">
+    <string>Check Updates</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
+   </property>
+  </action>
+  <action name="actionPresent_Song">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/present.png</normaloff>:/icons/present.png</iconset>
+   </property>
+   <property name="text">
+    <string>Present Song</string>
+   </property>
+  </action>
+  <action name="actionPrevious_Song">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/last.png</normaloff>:/icons/last.png</iconset>
+   </property>
+   <property name="text">
+    <string>Previous Song</string>
+   </property>
+  </action>
+  <action name="actionNext_Song">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/next.png</normaloff>:/icons/next.png</iconset>
+   </property>
+   <property name="text">
+    <string>Next Song</string>
+   </property>
+  </action>
+  <action name="actionBigger_Font">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/bigger.png</normaloff>:/icons/bigger.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bigger Font</string>
+   </property>
+  </action>
+  <action name="actionSmaller_Font">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/smaller.png</normaloff>:/icons/smaller.png</iconset>
+   </property>
+   <property name="text">
+    <string>Smaller Font</string>
+   </property>
+  </action>
+  <action name="actionChange_Font">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/font.png</normaloff>:/icons/font.png</iconset>
+   </property>
+   <property name="text">
+    <string>Change Font</string>
+   </property>
+  </action>
+  <action name="actionBold_Text">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/bold.png</normaloff>:/icons/bold.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bold Text</string>
    </property>
   </action>
  </widget>
  <resources>
   <include location="icons/icons.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>fileExitAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileOpenAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileOpen()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileNewAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileNew()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileCloseAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileClose()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileCompactAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>compact()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>helpWhatsThisAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>helpWhatsThis()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>helpAboutAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>helpAbout()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileImportCSVAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>importTableFromCSV()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileExportCSVAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>exportTableToCSV()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileRevertAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileRevert()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileSaveAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileSave()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ActionEdit</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>createIndex()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ActionNext</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>deleteObject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ActionPrevious</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>editObject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileExportSQLAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>exportDatabaseToSQL()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileImportSQLAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>importDatabaseFromSQL()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>viewPreferencesAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>openPreferences()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlFind</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>vSongHome</receiver>
-   <slot>setFindFrameVisibility(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>34</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlFindReplace</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>openFindReplaceDialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>34</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ActionPresent</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>createTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionExecuteSql</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>executeQuery()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlOpenTab</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>openSqlTab()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlOpenFile</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>openSqlFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlSaveFile</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveSqlFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionLoadExtension</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>loadExtension()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlExecuteLine</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>executeQuery()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionExportCsvPopup</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>exportTableToCSV()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionOpenProject</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>loadProject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSaveProject</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveProject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileAttachAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileAttach()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionEncryption</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>editEncryption()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlSaveFilePopup</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveSqlFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlSaveFileAs</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveSqlFileAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionEditBrowseTable</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>switchToBrowseDataTab()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionEditCopyCreateStatement</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>copyCurrentCreateStatement()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileExportJsonAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>exportTableToJson()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileOpenReadOnlyAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileOpenReadOnly()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlResultsExportCsv</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveSqlResultsAsCsv()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlResultsSaveAsView</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveSqlResultsAsView()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileOpenActionPopup</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileOpen()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fileNewInMemoryDatabaseAction</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>fileNewInMemoryDatabase()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlPrint</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>openSqlPrintDialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ActionBigger</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>printDbStructure()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSqlToggleComment</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>toggleSqlBlockComment()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSaveProjectAs</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveProjectAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSaveAll</sender>
-   <signal>triggered()</signal>
-   <receiver>vSongHome</receiver>
-   <slot>saveAll()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>518</x>
-     <y>314</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>fileOpen()</slot>
   <slot>fileClose()</slot>

@@ -152,7 +152,7 @@ vSongBook::vSongBook(int& argc, char** argv) :
 
     // Show main window
     m_HomeWindow = new vSongHome();
-    m_HomeWindow->show();
+    m_HomeWindow->showMaximized();
     connect(this, &vSongBook::lastWindowClosed, this, &vSongBook::quit);
 
     // Open database if one was specified
