@@ -4,7 +4,6 @@
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
-#include <QtCore\qexception.h>
 
 char* app_db = "Data\\vSongBook.db";
 std::vector<QString> songverses1, songverses2, viewset, labels;
