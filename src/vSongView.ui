@@ -66,6 +66,33 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
+         <widget class="QToolBar" name="ToolbarMain">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="windowTitle">
+           <string notr="true">toolBar1</string>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+          <addaction name="actionTheme"/>
+          <addaction name="actionFont"/>
+          <addaction name="actionBold"/>
+          <addaction name="actionChorus"/>
+          <addaction name="actionLeft"/>
+          <addaction name="actionRight"/>
+          <addaction name="actionUp"/>
+          <addaction name="actionDown"/>
+          <addaction name="actionSmaller"/>
+          <addaction name="actionBigger"/>
+          <addaction name="actionClose"/>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="TopLayout">
           <item>
            <widget class="QLabel" name="LblKey">
@@ -104,7 +131,7 @@
              </font>
             </property>
             <property name="text">
-             <string>1# Only Believe</string>
+             <string>...</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -133,7 +160,7 @@
          </layout>
         </item>
         <item>
-         <widget class="Line" name="LIneTop">
+         <widget class="Line" name="LineTop">
           <property name="frameShadow">
            <enum>QFrame::Plain</enum>
           </property>
@@ -169,7 +196,7 @@
              </font>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fear not, little flock,&lt;/p&gt;&lt;p&gt;from the cross to the throne,&lt;/p&gt;&lt;p&gt;From death into life&lt;/p&gt;&lt;p&gt;He went for His own;&lt;/p&gt;&lt;p&gt;All power in earth,&lt;/p&gt;&lt;p&gt;all power above,&lt;/p&gt;&lt;p&gt;Is given to Him&lt;/p&gt;&lt;p&gt;for the flock of His love&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>...</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -228,7 +255,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="LblBook">
+         <widget class="QLabel" name="LblSongInfo">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -242,7 +269,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Songs of Worship</string>
+           <string>...</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -250,34 +277,13 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolBar" name="ToolbarMain">
+         <widget class="QLabel" name="LblAuthor">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="windowTitle">
-           <string notr="true">toolBar1</string>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
-          </property>
-          <addaction name="actionTheme"/>
-          <addaction name="actionFont"/>
-          <addaction name="actionBold"/>
-          <addaction name="actionChorus"/>
-          <addaction name="actionLeft"/>
-          <addaction name="actionRight"/>
-          <addaction name="actionUp"/>
-          <addaction name="actionDown"/>
-          <addaction name="actionSmaller"/>
-          <addaction name="actionBigger"/>
-          <addaction name="actionClose"/>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="LblStanza">
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
@@ -285,7 +291,23 @@
            </font>
           </property>
           <property name="text">
-           <string>Verse 1/3</string>
+           <string>...</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="LblVerse">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>18</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>...</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

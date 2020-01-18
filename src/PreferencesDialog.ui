@@ -657,22 +657,6 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
-        <widget class="SqlTextEdit" name="editDatabaseDefaultSqlText">
-         <property name="minimumSize">
-          <size>
-           <width>20</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>200</height>
-          </size>
-         </property>
-        </widget>
-       </item>
        <item row="7" column="0">
         <widget class="QLabel" name="labelDatabaseDefaultSqlText">
          <property name="text">
@@ -1874,14 +1858,6 @@ Can be set to 0 for disabling completion.</string>
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>SqlTextEdit</class>
-   <extends>QTextEdit</extends>
-   <header>sqltextedit.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>comboDefaultLocation</tabstop>

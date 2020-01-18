@@ -1,8 +1,10 @@
 #ifndef VSONGVIEW_H
 #define VSONGVIEW_H
 
+#include "sqlitedb.h"
 #include <QMainWindow>
 
+class RemoteDatabase;
 namespace Ui {
 class vSongView;
 }
@@ -12,10 +14,22 @@ class vSongView : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit vSongView(QWidget *parent = nullptr);
+    explicit vSongView(QWidget* parent = nullptr);
     ~vSongView();
 
+private:
+    Ui::vSongView* ui;
+
+    DBBrowserDB db;
+    RemoteDatabase* m_remoteDb;
+
 private slots:
+    bool GetSettings();
+    void InitializeSettings();
+    void PresentSong(QString setsong);
+    void ContentPrepare();
+    void SetPresentation();
+
     void on_actionClose_triggered();
     void on_BtnClose_clicked();
     void on_actionLeft_triggered();
@@ -31,8 +45,6 @@ private slots:
     void on_BtnDown_clicked();
     void on_BtnUp_clicked();
 
-private:
-    Ui::vSongView *ui;
 };
 
 #endif // VSONGVIEW_H

@@ -15,7 +15,6 @@ endif()
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${CMAKE_MODULE_PATH}")
 
 OPTION(ENABLE_TESTING "Enable the unit tests" OFF)
-OPTION(FORCE_INTERNAL_QSCINTILLA "Don't use the distribution's QScintilla library even if there is one" OFF)
 OPTION(FORCE_INTERNAL_QCUSTOMPLOT "Don't use distribution's QCustomPlot even if available" ON)
 OPTION(FORCE_INTERNAL_QHEXEDIT "Don't use distribution's QHexEdit even if available" ON)
 OPTION(ALL_WARNINGS "Enable some useful warning flags" OFF)
@@ -70,10 +69,6 @@ if(WIN32 AND MSVC)
 endif()
 
 find_package(Qt5 REQUIRED COMPONENTS Concurrent Gui LinguistTools Network PrintSupport Test Widgets Xml)
-
-if(NOT FORCE_INTERNAL_QSCINTILLA)
-    find_package(QScintilla 2.8.10 QUIET)
-endif()
 if(FORCE_INTERNAL_QCUSTOMPLOT)
     set(QCUSTOMPLOT_FOUND FALSE)
 else()
@@ -86,10 +81,6 @@ else()
 endif()
 set(JSON_DIR libs/json)
 
-if(NOT QSCINTILLA_FOUND)
-    set(QSCINTILLA_DIR libs/qscintilla/Qt4Qt5)
-    add_subdirectory(${QSCINTILLA_DIR})
-endif()
 if(NOT QHEXEDIT_FOUND)
     set(QHEXEDIT_DIR libs/qhexedit)
     set(QHEXEDIT_INCL_DIR ${QHEXEDIT_DIR}/src)
@@ -126,37 +117,26 @@ set(SQLB_HDR
 set(SQLB_MOC_HDR
 	src/sqlitedb.h
 	src/AboutDialog.h
-	src/EditIndexDialog.h
-	src/EditDialog.h
-	src/EditTableDialog.h
-	src/AddRecordDialog.h
 	src/ExportDataDialog.h
 	src/ExtendedTableWidget.h
 	src/FilterTableHeader.h
 	src/ImportCsvDialog.h
 	src/Settings.h
 	src/PreferencesDialog.h
-	src/SqlExecutionArea.h
 	src/VacuumDialog.h
 	src/sqlitetablemodel.h
 	src/RowLoader.h
 	src/RowCache.h
-	src/sqltextedit.h
-	src/docktextedit.h
 	src/vSongBook.h
 	src/CipherDialog.h
 	src/ExportSqlDialog.h
-	src/SqlUiLexer.h
 	src/FileDialog.h
-	src/ColumnDisplayFormatDialog.h
 	src/FilterLineEdit.h
 	src/RemoteDatabase.h
 	src/ForeignKeyEditorDelegate.h
 	src/PlotDock.h
 	src/RemoteModel.h
 	src/RemotePushDialog.h
-	src/FindReplaceDialog.h
-	src/ExtendedScintilla.h
 	src/FileExtensionManager.h
 	src/CondFormatManager.h
 	src/CipherSettings.h
@@ -166,7 +146,6 @@ set(SQLB_MOC_HDR
 	src/RunSql.h
 	src/ProxyDialog.h
 	src/SelectItemsPopup.h
-	src/TableBrowser.h
 	src/SongItem.h
 	src/SongModel.h
 	src/DbStructureModel.h
@@ -179,17 +158,12 @@ set(SQLB_MOC_HDR
 
 set(SQLB_SRC
 	src/AboutDialog.cpp
-	src/EditIndexDialog.cpp
-	src/EditDialog.cpp
-	src/EditTableDialog.cpp
-	src/AddRecordDialog.cpp
 	src/ExportDataDialog.cpp
 	src/ExtendedTableWidget.cpp
 	src/FilterTableHeader.cpp
 	src/ImportCsvDialog.cpp
 	src/Settings.cpp
 	src/PreferencesDialog.cpp
-	src/SqlExecutionArea.cpp
 	src/VacuumDialog.cpp
 	src/sqlitedb.cpp
 	src/sqlitetablemodel.cpp
@@ -197,24 +171,18 @@ set(SQLB_SRC
 	src/sql/sqlitetypes.cpp
 	src/sql/Query.cpp
 	src/sql/ObjectIdentifier.cpp
-	src/sqltextedit.cpp
-	src/docktextedit.cpp
 	src/csvparser.cpp
 	src/main.cpp
 	src/vSongBook.cpp
 	src/CipherDialog.cpp
 	src/ExportSqlDialog.cpp
-	src/SqlUiLexer.cpp
 	src/FileDialog.cpp
-	src/ColumnDisplayFormatDialog.cpp
 	src/FilterLineEdit.cpp
 	src/RemoteDatabase.cpp
 	src/ForeignKeyEditorDelegate.cpp
 	src/PlotDock.cpp
 	src/RemoteModel.cpp
 	src/RemotePushDialog.cpp
-	src/FindReplaceDialog.cpp
-	src/ExtendedScintilla.cpp
 	src/FileExtensionManager.cpp
 	src/CondFormatManager.cpp
 	src/Data.cpp
@@ -226,7 +194,6 @@ set(SQLB_SRC
 	src/ProxyDialog.cpp
 	src/IconCache.cpp
 	src/SelectItemsPopup.cpp
-	src/TableBrowser.cpp
 	src/SongItem.cpp
 	src/SongModel.cpp
 	src/DbStructureModel.cpp
@@ -241,26 +208,18 @@ set(SQLB_SRC
 
 set(SQLB_FORMS
 	src/AboutDialog.ui
-	src/EditIndexDialog.ui
-	src/EditDialog.ui
-	src/EditTableDialog.ui
-	src/AddRecordDialog.ui
 	src/ExportDataDialog.ui
 	src/ImportCsvDialog.ui
 	src/PreferencesDialog.ui
-	src/SqlExecutionArea.ui
 	src/VacuumDialog.ui
 	src/CipherDialog.ui
 	src/ExportSqlDialog.ui
-	src/ColumnDisplayFormatDialog.ui
 	src/PlotDock.ui
 	src/RemotePushDialog.ui
-	src/FindReplaceDialog.ui
 	src/FileExtensionManager.ui
 	src/CondFormatManager.ui
 	src/ProxyDialog.ui
 	src/SelectItemsPopup.ui
-	src/TableBrowser.ui
 	src/vAppSplash.ui
 	src/vSongHome.ui
 	src/vSongView.ui
@@ -407,11 +366,6 @@ if(QCUSTOMPLOT_FOUND)
 else()
     include_directories(${QCUSTOMPLOT_DIR})
 endif()
-if(QSCINTILLA_FOUND)
-    include_directories(${QSCINTILLA_INCLUDE_DIR})
-else()
-    include_directories(${QSCINTILLA_DIR})
-endif()
 
 add_executable(${PROJECT_NAME}
 		${SQLB_HDR}
@@ -437,18 +391,12 @@ endif()
 if(NOT QCUSTOMPLOT_FOUND)
     add_dependencies(${PROJECT_NAME} qcustomplot)
 endif()
-if(NOT QSCINTILLA_FOUND)
-    add_dependencies(${PROJECT_NAME} qscintilla2)
-endif()
 
 if(NOT QHEXEDIT_FOUND)
     link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QHEXEDIT_DIR}")
 endif()
 if(NOT QCUSTOMPLOT_FOUND)
     link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QCUSTOMPLOT_DIR}")
-endif()
-if(NOT QSCINTILLA_FOUND)
-    link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QSCINTILLA_DIR}")
 endif()
 
 set(QT_LIBS Qt5::Gui Qt5::Test Qt5::PrintSupport Qt5::Widgets Qt5::Network Qt5::Concurrent Qt5::Xml)
@@ -468,11 +416,6 @@ if(QCUSTOMPLOT_FOUND)
     target_link_libraries(${PROJECT_NAME} ${QCUSTOMPLOT_LIBRARIES})
 else()
     target_link_libraries(${PROJECT_NAME} qcustomplot)
-endif()
-if(QSCINTILLA_FOUND)
-    target_link_libraries(${PROJECT_NAME} ${QSCINTILLA_LIBRARIES})
-else()
-    target_link_libraries(${PROJECT_NAME} qscintilla2)
 endif()
 
 if(WIN32 AND MSVC)

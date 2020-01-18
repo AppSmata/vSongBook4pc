@@ -23,7 +23,6 @@ PreferencesDialog::PreferencesDialog(QWidget* parent, Tabs tab)
     ui->setupUi(this);
     ui->treeSyntaxHighlighting->setColumnHidden(0, true);
     ui->labelDatabaseDefaultSqlText->setVisible(false);
-    ui->editDatabaseDefaultSqlText->setVisible(false);
     ui->tableClientCerts->setColumnHidden(0, true);
 
     ui->fr_bin_bg->installEventFilter(this);
@@ -82,7 +81,6 @@ void PreferencesDialog::loadSettings()
     ui->checkHideSchemaLinebreaks->setChecked(Settings::getValue("db", "hideschemalinebreaks").toBool());
     ui->foreignKeysCheckBox->setChecked(Settings::getValue("db", "foreignkeys").toBool());
     ui->spinPrefetchSize->setValue(Settings::getValue("db", "prefetchsize").toInt());
-    ui->editDatabaseDefaultSqlText->setText(Settings::getValue("db", "defaultsqltext").toString());
 
     ui->defaultFieldTypeComboBox->addItems(DBBrowserDB::Datatypes);
 
@@ -209,8 +207,6 @@ void PreferencesDialog::saveSettings()
     Settings::setValue("db", "savedefaultlocation", ui->comboDefaultLocation->currentIndex());
     Settings::setValue("db", "hideschemalinebreaks", ui->checkHideSchemaLinebreaks->isChecked());
     Settings::setValue("db", "foreignkeys", ui->foreignKeysCheckBox->isChecked());
-    Settings::setValue("db", "prefetchsize", ui->spinPrefetchSize->value());
-    Settings::setValue("db", "defaultsqltext", ui->editDatabaseDefaultSqlText->text());
 
     Settings::setValue("db", "defaultfieldtype", ui->defaultFieldTypeComboBox->currentIndex());
 

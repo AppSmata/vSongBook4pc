@@ -1,8 +1,8 @@
 #include "vSongHome.h"
 #include "ui_vSongHome.h"
+#include "vSongBook.h"
 
 #include "sqlite.h"
-#include "vSongBook.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
@@ -20,7 +20,6 @@ int homefont, songfont;
 bool searchall, nightmode;
 char* db_file = "Data\\vSongBook.db";
 QString selected_book, selected_song, search_term;
-QString wFile = "Data\\vSongBook.db";
 std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
 
 vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHome)
