@@ -1,5 +1,5 @@
 #include "vAppSplash.h"
-#include "ui_AppSplash.h"
+#include "ui_vAppSplash.h"
 
 AppSplash::AppSplash(QWidget *parent) :
     QMainWindow(parent),
