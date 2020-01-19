@@ -4,8 +4,7 @@
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
-
-char* app_db = "Data\\vSongBook.db";
+char* app_db = "Data/vSongBook.db";
 std::vector<QString> songverses1, songverses2, viewset, labels;
 int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont;
 QString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide, view_fonty;
@@ -16,7 +15,7 @@ vSongView::vSongView(QWidget *parent) :
     ui(new Ui::vSongView)
 {
 	GetSettings();
-	InitializeSettings();
+	ReloadSettings();
 
     ui->setupUi(this);
     ui->BtnClose->hide();
@@ -29,36 +28,33 @@ vSongView::vSongView(QWidget *parent) :
 bool vSongView::GetSettings()
 {
 	bool retval = false;
-    if (db.open(app_db, true))
-    {
-        sqlite3* songsDb;
-        char* err_msg = NULL, ** qryResult = NULL;
-        int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	sqlite3* songsDb;
+	char* err_msg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-        char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
+	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
 
-        if (rc == SQLITE_OK)
-        {
-            rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-            for (int i = 1; i < row + 1; i++)
-            {
-                viewset.push_back(*(qryResult + i * col + 0));
-            }
-            sqlite3_free_table(qryResult);
-            sqlite3_close(songsDb);
-        }
-        retval = true;
-    }
-    else retval = false;
+		for (int i = 1; i < row + 1; i++)
+		{
+			viewset.push_back(*(qryResult + i * col + 0));
+		}
+		sqlite3_free_table(qryResult);
+		sqlite3_close(songsDb);
+		retval = true;
+	}
 
     return retval;
 }
 
-void vSongView::InitializeSettings()
+void vSongView::ReloadSettings()
 {
 	
 }
+
 void vSongView::PresentSong(QString setsongid)
 {
 	slides = 0;

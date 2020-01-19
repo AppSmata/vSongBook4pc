@@ -12,6 +12,10 @@
 #include "Settings.h"
 #include "version.h"
 
+#include "sqlite.h"
+#include "RunSql.h"
+#include "sqlitetablemodel.h"
+
 vSongBook::vSongBook(int& argc, char** argv) :
     QApplication(argc, argv)
 {
@@ -183,6 +187,28 @@ vSongBook::vSongBook(int& argc, char** argv) :
 vSongBook::~vSongBook()
 {
     delete m_HomeWindow;
+}
+
+void vSongBook::SetOption(QString title, QString content)
+{
+    sqlite3* db;
+    sqlite3_stmt* sqlqueryStmt;
+    char* zErrMsg = NULL;
+    int row, col, rc = sqlite3_open("Data/vSongBook.db", &db);
+
+    uint timenow = QDateTime::currentSecsSinceEpoch();
+    QString timeStr = QString::number(timenow);
+
+    QString SqlQuery = "UPDATE settings SET content = '" + content + "', updated='" + timeStr + 
+        "' WHERE title = '" + title + "'";
+
+    QByteArray bar = SqlQuery.toLocal8Bit();
+    char* sqlQuery = bar.data();
+
+    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+    sqlite3_close(db);
 }
 
 bool vSongBook::event(QEvent* event)

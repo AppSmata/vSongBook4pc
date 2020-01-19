@@ -25,7 +25,7 @@ private:
 
 private slots:
     bool GetSettings();
-    void InitializeSettings();
+    void ReloadSettings();
     void PresentSong(QString setsong);
     void ContentPrepare();
     void SetPresentation();

@@ -27,7 +27,6 @@ HEADERS += \
     sqlitedb.h \
     AboutDialog.h \
     Settings.h \
-    PreferencesDialog.h \
     ExportDataDialog.h \
     ImportCsvDialog.h \
     sql/sqlitetypes.h \
@@ -41,6 +40,7 @@ HEADERS += \
     vSongHome.h \
     vSongItemData.h \
     vSongItemDelegate.h \
+    vSongPrefs.h \
     vSongView.h \
     version.h \
     VacuumDialog.h \
@@ -80,7 +80,6 @@ SOURCES += \
     SongItem.cpp \
     sqlitedb.cpp \
     Settings.cpp \
-    PreferencesDialog.cpp \
     AboutDialog.cpp \
     ExportDataDialog.cpp \
     ImportCsvDialog.cpp \
@@ -120,6 +119,7 @@ SOURCES += \
     sql/parser/sqlite3_parser.cpp \
     vSongHome.cpp \
     vSongItemDelegate.cpp \
+    vSongPrefs.cpp \
     vSongView.cpp
 
 RESOURCES += icons/icons.qrc \
@@ -132,7 +132,6 @@ RESOURCES += icons/icons.qrc \
 
 FORMS += \
     AboutDialog.ui \
-    PreferencesDialog.ui \
     ExportDataDialog.ui \
     ImportCsvDialog.ui \
     VacuumDialog.ui \
@@ -146,6 +145,7 @@ FORMS += \
     SelectItemsPopup.ui \
     vAppSplash.ui \
     vSongHome.ui \
+    vSongPrefs.ui \
     vSongView.ui
 
 TRANSLATIONS += \

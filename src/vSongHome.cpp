@@ -15,61 +15,114 @@
 #include "vSongItemDelegate.h"
 #include "AboutDialog.h"
 #include "vSongView.h"
+#include "vSongPrefs.h"
 
 int homefont, songfont;
 bool searchall, nightmode;
-char* db_file = "Data\\vSongBook.db";
+char* db_file = "Data/vSongBook.db";
 QString selected_book, selected_song, search_term;
-std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, homesets;
+std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, homesets;
+
+QFont FontPreview, FontGeneral;
 
 vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHome)
 {
     ui->setupUi(this);
+	ui->SplitterMain->setStretchFactor(1, 3);
 
-    if (PopulateSongbooks())
-    {
-		PopulateSonglists(bookids[0], "", false);
-    }
-    else
+	GetSettings();
+	ReloadSettings();
+    if (!PopulateSongbooks())
     {
         QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
     }
 }
 
+bool vSongHome::GetSettings()
+{
+	bool retval = false;
+	sqlite3* songsDb;
+	char* err_msg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open_v2(db_file, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
+
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+
+		for (int i = 1; i < row + 1; i++)
+		{
+			homesets.push_back(*(qryResult + i * col + 0));
+		}
+		sqlite3_free_table(qryResult);
+		sqlite3_close(songsDb);
+		retval = true;
+	}
+
+	return retval;
+}
+
+void vSongHome::ReloadSettings()
+{
+	FontPreview.setFamily(QString::fromUtf8("Trebuchet MS"));
+	FontPreview.setPointSize(homesets[11].toInt());
+	FontPreview.setBold(false);
+	FontPreview.setWeight(50);
+
+	FontGeneral.setFamily(QString::fromUtf8("Trebuchet MS"));
+	FontGeneral.setPointSize(homesets[5].toInt());
+	FontGeneral.setBold(false);
+	FontGeneral.setWeight(50);
+
+	ui->TxtSearch->setFont(FontGeneral);
+	ui->CmbSongbooks->setFont(FontGeneral);
+	ui->TxtEditorTitle->setFont(FontGeneral);
+	ui->TxtEditorContent->setFont(FontGeneral);
+
+	ui->TxtPreviewTitle->setFont(FontPreview);
+	ui->TxtPreviewContent->setFont(FontPreview);
+	ui->TxtPreviewAlias->setFont(FontPreview);
+}
+
+
+void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
+{
+    //PopulateSonglists(bookids[index], "", false);
+    //ui->TxtSearch->setText(index + "");
+}
+
 bool vSongHome::PopulateSongbooks()
 {
 	bool retval = false;
-    if (db.open(db_file, true))
-    {
-        int bookscount = ui->CmbSongbooks->count();
-        if (bookscount > 0) ui->CmbSongbooks->clear();
+	int bookscount = ui->CmbSongbooks->count();
+	if (bookscount > 0) ui->CmbSongbooks->clear();
 
-        sqlite3* songsDb;
-        char* err_msg = NULL, ** qryResult = NULL;
-        int row, col, rc = sqlite3_open_v2(db_file, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	sqlite3* songsDb;
+	char* err_msg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open_v2(db_file, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-        char* sqlQuery = "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;";
+	char* sqlQuery = "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;";
 
-        if(rc == SQLITE_OK)
-        {
-            rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-            for (int i = 1; i < row + 1; i++)
-            {
-                QString title = *(qryResult + i * col + 1);
-                QString songs = *(qryResult + i * col + 2);
+		for (int i = 1; i < row + 1; i++)
+		{
+			QString title = *(qryResult + i * col + 1);
+			QString songs = *(qryResult + i * col + 2);
 
-                ui->CmbSongbooks->addItem(title + " (" + songs + ")");
+			ui->CmbSongbooks->addItem(title + " (" + songs + ")");
 
-                bookids.push_back(*(qryResult + i * col + 0));
-                booktitles.push_back(title);
-            }
-            sqlite3_free_table(qryResult);
-            sqlite3_close(songsDb);
-            ui->CmbSongbooks->setCurrentIndex(0);
-        }
-        retval = true;
-    } else retval = false;
+			bookids.push_back(*(qryResult + i * col + 0));
+			booktitles.push_back(title);
+		}
+		sqlite3_free_table(qryResult);
+		sqlite3_close(songsDb);
+		ui->CmbSongbooks->setCurrentIndex(0);
+		retval = true;
+	}
 
     return retval;
 }
@@ -153,12 +206,25 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 		songtitles.push_back(titles);
 		songaliases.push_back(*(qryResult + i * col + 3));
 		songcontents.push_back(contents);
+
+		contents = contents.replace("\\n", " ");
 		//songbooks.push_back(*(qryResult + i * col + 7) + " (" + *(qryResult + i * col + 8) + ")");
 
 		QStandardItem* songItem = new QStandardItem;
 		vSongItemData song;
-		song.title = titles;
-		song.content = contents.replace("\\n", " ");
+		
+		if (titles.length() > 40)
+		{
+			song.title = titles.left(35) + "...";
+		}
+		else song.title = titles;
+
+		if (contents.length() > 40)
+		{
+			song.content = contents.left(35) + "...";
+		}
+		else song.content = contents;
+
 		song.detail = "Songs of Worship; Has Chorus; 3 Verses; Key -;";
 		songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
 		songModel->appendRow(songItem);
@@ -175,9 +241,29 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 	OpenSongPreview(songModel->index(0, 0));
 }
 
+void vSongHome::OpenSongPreview(const QModelIndex& index)
+{
+	int song = index.row();
+	QString songTitle = songtitles[song];
+	QString songAlias = songaliases[song];
+	QString songContent = songcontents[song].replace("\\n", " \r\n");
+	vSongBook::SetOption("current_song", songids[song]);
+
+	ui->TxtPreviewTitle->setText(songTitle);
+	//ui->TxtEditorTitle->setText(songTitle);
+	ui->TxtPreviewContent->setPlainText(songContent);
+	//ui->TxtEditorContent->setPlainText(songContent);
+	ui->TxtPreviewAlias->setPlainText(songAlias);
+}
+
+void vSongHome::on_TxtSearch_returnPressed()
+{
+    QString searchText = ui->TxtSearch->text();
+    PopulateSonglists(bookids[0], searchText, true);
+}
+
 void vSongHome::on_TxtSearch_textChanged(const QString &searchstr)
 {
-	QString searchText = ui->TxtSearch->text();
 	PopulateSonglists(bookids[0], searchstr, true);
 }
 
@@ -186,21 +272,7 @@ void vSongHome::on_LstResults_clicked(const QModelIndex& index)
 	OpenSongPreview(index);
 }
 
-void vSongHome::OpenSongPreview(const QModelIndex& index)
-{
-	int song = index.row();
-	QString songTitle = songtitles[song];
-	QString songContent = songcontents[song].replace("\\n", " \r\n");
-	QString songAlias = songaliases[song];
-
-	ui->TxtPreviewTitle->setText(songTitle);
-	ui->TxtEditorTitle->setText(songTitle);
-	ui->TxtPreviewContent->setPlainText(songContent);
-	ui->TxtEditorContent->setPlainText(songContent);
-	ui->TxtPreviewAlias->setPlainText(songAlias);
-}
-
-void vSongHome::on_LstResults_activated(const QModelIndex &index)
+void vSongHome::on_LstResults_activated(const QModelIndex& index)
 {
 	OpenSongPreview(index);
 }
@@ -208,18 +280,13 @@ void vSongHome::on_LstResults_activated(const QModelIndex &index)
 void vSongHome::on_LstResults_doubleClicked(const QModelIndex &index)
 {
 	OpenSongPreview(index);
+    openPresentation();
 }
 
 void vSongHome::openPresentation()
 {
 	vSongView* present = new vSongView();
     present->showFullScreen();
-}
-
-void vSongHome::reloadSettings()
-{
-	//songModel->reloadData();
-
 }
 
 vSongHome::~vSongHome()
@@ -233,14 +300,14 @@ void vSongHome::on_actionPresent_triggered()
     openPresentation();
 }
 
+void vSongHome::on_actionPresent_Song_triggered()
+{
+	openPresentation();
+}
+
 void vSongHome::on_actionSave_triggered()
 {
 
-}
-
-void vSongHome::on_actionPresent_Song_triggered()
-{
-    openPresentation();
 }
 
 void vSongHome::on_actionBold_Text_triggered()
@@ -324,8 +391,8 @@ void vSongHome::on_actionNew_Song_triggered()
 }
 
 void vSongHome::on_actionManage_Settings_triggered()
-{
-
+{    
+    ManageSettings();
 }
 
 void vSongHome::on_actionReset_Settings_triggered()
@@ -381,4 +448,15 @@ void vSongHome::on_actionCancel_triggered()
 void vSongHome::on_actionDelete_triggered()
 {
 
+}
+
+void vSongHome::on_actionPreferences_triggered()
+{
+	ManageSettings();
+}
+
+void vSongHome::ManageSettings()
+{
+	vSongPrefs preferences(this);
+	preferences.exec();
 }

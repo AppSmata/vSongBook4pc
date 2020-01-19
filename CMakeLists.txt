@@ -122,7 +122,6 @@ set(SQLB_MOC_HDR
 	src/FilterTableHeader.h
 	src/ImportCsvDialog.h
 	src/Settings.h
-	src/PreferencesDialog.h
 	src/VacuumDialog.h
 	src/sqlitetablemodel.h
 	src/RowLoader.h
@@ -153,6 +152,7 @@ set(SQLB_MOC_HDR
 	src/vSongHome.h
 	src/vSongItemData.h
 	src/vSongItemDelegate.h
+	src/vSongPrefs.h
 	src/vSongView.h
 )
 
@@ -163,7 +163,6 @@ set(SQLB_SRC
 	src/FilterTableHeader.cpp
 	src/ImportCsvDialog.cpp
 	src/Settings.cpp
-	src/PreferencesDialog.cpp
 	src/VacuumDialog.cpp
 	src/sqlitedb.cpp
 	src/sqlitetablemodel.cpp
@@ -200,6 +199,7 @@ set(SQLB_SRC
 	src/vAppSplash.cpp
 	src/vSongHome.cpp
 	src/vSongItemDelegate.cpp
+	src/vSongPrefs.cpp
 	src/vSongView.cpp
 	src/sql/parser/ParserDriver.cpp
 	src/sql/parser/sqlite3_lexer.cpp
@@ -210,7 +210,6 @@ set(SQLB_FORMS
 	src/AboutDialog.ui
 	src/ExportDataDialog.ui
 	src/ImportCsvDialog.ui
-	src/PreferencesDialog.ui
 	src/VacuumDialog.ui
 	src/CipherDialog.ui
 	src/ExportSqlDialog.ui
@@ -222,6 +221,7 @@ set(SQLB_FORMS
 	src/SelectItemsPopup.ui
 	src/vAppSplash.ui
 	src/vSongHome.ui
+	src/vSongPrefs.ui
 	src/vSongView.ui
 )
 

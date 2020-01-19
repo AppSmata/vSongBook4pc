@@ -49,7 +49,10 @@ private:
 public slots:
 
 private slots:
-    void reloadSettings();
+    bool GetSettings();
+    void ReloadSettings();
+
+    void ManageSettings();
     bool PopulateSongbooks();
     void openPresentation();
     void PopulateSonglists(QString setbook, QString searchstr, bool searchall);
@@ -58,6 +61,7 @@ private slots:
     void on_LstResults_clicked(const QModelIndex& selected);
     void OpenSongPreview(const QModelIndex& selected);
 
+    void on_CmbSongbooks_currentIndexChanged(int index);
     void on_LstResults_activated(const QModelIndex &index);
     void on_LstResults_doubleClicked(const QModelIndex &index);
     void on_actionPresent_triggered();
@@ -91,6 +95,8 @@ private slots:
     void on_actionPrevious_triggered();
     void on_actionCancel_triggered();
     void on_actionDelete_triggered();
+    void on_actionPreferences_triggered();
+    void on_TxtSearch_returnPressed();
 };
 
 #endif // VSONGHOME_H

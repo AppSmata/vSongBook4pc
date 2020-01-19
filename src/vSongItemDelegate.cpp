@@ -59,7 +59,7 @@ void vSongItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opt
         painter->drawText(songText1, song.title);
 
         painter->setPen(QPen(Qt::black));
-        painter->setFont(QFont("Trebuchen MS", 12, 0, true));
+        painter->setFont(QFont("Trebuchen MS", 12, 0));
         painter->drawText(songNbRect, song.content);
 
         painter->restore();

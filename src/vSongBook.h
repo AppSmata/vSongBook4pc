@@ -21,7 +21,7 @@ public:
     bool dontShowHome() const { return m_dontShowHome; }
 
     vSongHome* homeWindow() { return m_HomeWindow; }
-
+    static void SetOption(QString title, QString content);
     static QString versionString();
 
 protected:
