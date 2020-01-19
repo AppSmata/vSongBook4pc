@@ -89,8 +89,7 @@ void vSongHome::ReloadSettings()
 void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
 {
 	int book = ui->CmbSongbooks->currentIndex();
-    //PopulateSonglists(bookids[index], "", false);
-    //ui->TxtSearch->setText(index + "");
+    PopulateSonglists(bookids[book], "", false);
 }
 
 bool vSongHome::PopulateSongbooks()
