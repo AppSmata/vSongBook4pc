@@ -25,16 +25,11 @@ HEADERS += \
     SongModel.h \
     SongItem.h \
     sqlitedb.h \
-    EditIndexDialog.h \
     AboutDialog.h \
-    EditTableDialog.h \
-    AddRecordDialog.h \
     Settings.h \
     PreferencesDialog.h \
-    EditDialog.h \
     ExportDataDialog.h \
     ImportCsvDialog.h \
-    sqltextedit.h \
     sql/sqlitetypes.h \
     csvparser.h \
     ExtendedTableWidget.h \
@@ -48,15 +43,12 @@ HEADERS += \
     vSongItemDelegate.h \
     vSongView.h \
     version.h \
-    SqlExecutionArea.h \
     VacuumDialog.h \
     vSongBook.h \
     sqlite.h \
     CipherDialog.h \
     ExportSqlDialog.h \
-    SqlUiLexer.h \
     FileDialog.h \
-    ColumnDisplayFormatDialog.h \
     FilterLineEdit.h \
     RemoteDatabase.h \
     ForeignKeyEditorDelegate.h \
@@ -64,8 +56,6 @@ HEADERS += \
     RemoteModel.h \
     RemotePushDialog.h \
     docktextedit.h \
-    FindReplaceDialog.h \
-    ExtendedScintilla.h \
     FileExtensionManager.h \
     CondFormatManager.h \
     Data.h \
@@ -79,7 +69,6 @@ HEADERS += \
     ProxyDialog.h \
     IconCache.h \
     SelectItemsPopup.h \
-    TableBrowser.h \
     sql/parser/ParserDriver.h \
     sql/parser/sqlite3_lexer.h \
     sql/parser/sqlite3_location.h \
@@ -90,40 +79,29 @@ SOURCES += \
     SongModel.cpp \
     SongItem.cpp \
     sqlitedb.cpp \
-    EditIndexDialog.cpp \
-    EditTableDialog.cpp \
-    AddRecordDialog.cpp \
     Settings.cpp \
     PreferencesDialog.cpp \
     AboutDialog.cpp \
-    EditDialog.cpp \
     ExportDataDialog.cpp \
     ImportCsvDialog.cpp \
-    sqltextedit.cpp \
     sql/sqlitetypes.cpp \
     csvparser.cpp \
     ExtendedTableWidget.cpp \
     sqlitetablemodel.cpp \
     RowLoader.cpp \
     FilterTableHeader.cpp \
-    SqlExecutionArea.cpp \
     VacuumDialog.cpp \
     vAppSplash.cpp \
     vSongBook.cpp \
     CipherDialog.cpp \
     ExportSqlDialog.cpp \
-    SqlUiLexer.cpp \
     FileDialog.cpp \
-    ColumnDisplayFormatDialog.cpp \
     FilterLineEdit.cpp \
     RemoteDatabase.cpp \
     ForeignKeyEditorDelegate.cpp \
     PlotDock.cpp \
     RemoteModel.cpp \
     RemotePushDialog.cpp \
-    docktextedit.cpp \
-    FindReplaceDialog.cpp \
-    ExtendedScintilla.cpp \
     FileExtensionManager.cpp \
     CondFormatManager.cpp \
     Data.cpp \
@@ -137,7 +115,6 @@ SOURCES += \
     ProxyDialog.cpp \
     IconCache.cpp \
     SelectItemsPopup.cpp \
-    TableBrowser.cpp \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
     sql/parser/sqlite3_parser.cpp \
@@ -154,27 +131,19 @@ RESOURCES += icons/icons.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
-    EditIndexDialog.ui \
     AboutDialog.ui \
-    EditTableDialog.ui \
-    AddRecordDialog.ui \
     PreferencesDialog.ui \
-    EditDialog.ui \
     ExportDataDialog.ui \
     ImportCsvDialog.ui \
-    SqlExecutionArea.ui \
     VacuumDialog.ui \
     CipherDialog.ui \
     ExportSqlDialog.ui \
-    ColumnDisplayFormatDialog.ui \
     PlotDock.ui \
     RemotePushDialog.ui \
-    FindReplaceDialog.ui \
     FileExtensionManager.ui \
     CondFormatManager.ui \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
-    TableBrowser.ui \
     vAppSplash.ui \
     vSongHome.ui \
     vSongView.ui
@@ -218,7 +187,6 @@ CONFIG(sqlcipher) {
 
 LIBPATH_QHEXEDIT=$$OUT_PWD/../libs/qhexedit
 LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
-LIBPATH_QSCINTILLA=$$OUT_PWD/../libs/qscintilla/Qt4Qt5
 LIBPATH_JSON=$$OUT_PWD/../libs/json
 unix {
     LIBS += -ldl
@@ -233,13 +201,11 @@ win32 {
     CONFIG(debug,debug|release) {
         LIBPATH_QHEXEDIT = $$LIBPATH_QHEXEDIT/debug
         LIBPATH_QCUSTOMPLOT = $$LIBPATH_QCUSTOMPLOT/debug
-        LIBPATH_QSCINTILLA = $$LIBPATH_QSCINTILLA/debug
         LIBPATH_JSON = $$LIBPATH_JSON/debug
     }
     CONFIG(release,debug|release) {
         LIBPATH_QHEXEDIT = $$LIBPATH_QHEXEDIT/release
         LIBPATH_QCUSTOMPLOT = $$LIBPATH_QCUSTOMPLOT/release
-        LIBPATH_QSCINTILLA = $$LIBPATH_QSCINTILLA/release
         LIBPATH_JSON = $$LIBPATH_JSON/release
     }
     QMAKE_CXXFLAGS += -DCHECKNEWVERSION
@@ -265,9 +231,9 @@ CONFIG(all_warnings) {
 }
 
 UI_DIR = .ui
-INCLUDEPATH += $$PWD/../libs/qhexedit/src $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5 $$PWD/../libs/json $$PWD/..
-LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_QCUSTOMPLOT -L$$LIBPATH_QSCINTILLA -lqhexedit -lqcustomplot -lqscintilla2
-DEPENDPATH += $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5 $$PWD/../libs/json
+INCLUDEPATH += $$PWD/../libs/qhexedit/src $$PWD/../libs/qcustomplot-source $$PWD/../libs/json $$PWD/..
+LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_QCUSTOMPLOT -lqhexedit -lqcustomplot
+DEPENDPATH += $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/json
 
 unix {
     # Below, the user can specify where all generated file can be placed
