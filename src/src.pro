@@ -55,7 +55,6 @@ HEADERS += \
     PlotDock.h \
     RemoteModel.h \
     RemotePushDialog.h \
-    docktextedit.h \
     FileExtensionManager.h \
     CondFormatManager.h \
     Data.h \
