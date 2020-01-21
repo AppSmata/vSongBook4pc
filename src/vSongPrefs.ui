@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>vSongPrefs</class>
- <widget class="QDialog" name="Manage Preferences">
+ <widget class="QDialog" name="vSongPrefs">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +9,12 @@
     <width>973</width>
     <height>502</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Trebuchet MS</family>
+    <pointsize>15</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Manage Preferences</string>
@@ -20,7 +26,7 @@
   <property name="sizeGripEnabled">
    <bool>false</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="MainLayout">
    <item>
     <layout class="QHBoxLayout" name="CentralWidget">
      <property name="bottomMargin">
@@ -48,6 +54,9 @@
          <property name="text">
           <string/>
          </property>
+         <property name="placeholderText">
+          <string>Search Settings</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -65,7 +74,7 @@
      <item>
       <layout class="QVBoxLayout" name="PanelRight">
        <item>
-        <widget class="QTabWidget" name="TabsMain">
+        <widget class="QTabWidget" name="PrefsTabs">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -84,19 +93,28 @@
          <property name="font">
           <font>
            <family>Trebuchet MS</family>
-           <pointsize>15</pointsize>
+           <pointsize>1</pointsize>
            <weight>50</weight>
            <bold>false</bold>
           </font>
          </property>
          <property name="tabPosition">
-          <enum>QTabWidget::North</enum>
+          <enum>QTabWidget::South</enum>
          </property>
          <property name="tabShape">
-          <enum>QTabWidget::Rounded</enum>
+          <enum>QTabWidget::Triangular</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
+         </property>
+         <property name="elideMode">
+          <enum>Qt::ElideNone</enum>
+         </property>
+         <property name="documentMode">
+          <bool>false</bool>
+         </property>
+         <property name="tabsClosable">
+          <bool>false</bool>
          </property>
          <property name="movable">
           <bool>true</bool>
@@ -105,6 +123,12 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="TabPage1">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
@@ -117,9 +141,9 @@
            <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
           </property>
           <attribute name="title">
-           <string>Tab Page 1</string>
+           <string/>
           </attribute>
-          <layout class="QVBoxLayout" name="LayoutPreview">
+          <layout class="QVBoxLayout" name="LayoutTabPage1">
            <property name="spacing">
             <number>3</number>
            </property>
@@ -159,7 +183,7 @@
            <item>
             <widget class="QGroupBox" name="GrpTabletMode">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+              <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -167,7 +191,7 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>30</height>
+               <height>0</height>
               </size>
              </property>
              <property name="title">
@@ -176,11 +200,19 @@
              <widget class="QRadioButton" name="BtnTabletMode">
               <property name="geometry">
                <rect>
-                <x>600</x>
-                <y>30</y>
-                <width>61</width>
-                <height>18</height>
+                <x>30</x>
+                <y>60</y>
+                <width>71</width>
+                <height>31</height>
                </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>20</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
                <string>ON</string>
@@ -194,6 +226,12 @@
                 <width>551</width>
                 <height>41</height>
                </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
               <property name="font">
                <font>
@@ -244,11 +282,19 @@
              <widget class="QRadioButton" name="BtnSearchCriteria">
               <property name="geometry">
                <rect>
-                <x>590</x>
-                <y>30</y>
-                <width>61</width>
-                <height>18</height>
+                <x>30</x>
+                <y>60</y>
+                <width>71</width>
+                <height>31</height>
                </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>20</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
                <string>ON</string>
@@ -271,7 +317,7 @@
               <property name="geometry">
                <rect>
                 <x>20</x>
-                <y>30</y>
+                <y>10</y>
                 <width>551</width>
                 <height>41</height>
                </rect>
@@ -291,10 +337,10 @@
              <widget class="QComboBox" name="CmbLanguage">
               <property name="geometry">
                <rect>
-                <x>461</x>
-                <y>30</y>
-                <width>181</width>
-                <height>31</height>
+                <x>20</x>
+                <y>50</y>
+                <width>311</width>
+                <height>41</height>
                </rect>
               </property>
               <property name="font">
@@ -305,36 +351,6 @@
                 <bold>false</bold>
                </font>
               </property>
-              <item>
-               <property name="text">
-                <string>English</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Swahili</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>French</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Spanish</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Portuguese</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Chichewa</string>
-               </property>
-              </item>
              </widget>
             </widget>
            </item>
@@ -352,18 +368,18 @@
              <widget class="QLineEdit" name="TxtYourName">
               <property name="geometry">
                <rect>
-                <x>30</x>
+                <x>20</x>
                 <y>30</y>
                 <width>601</width>
-                <height>31</height>
+                <height>41</height>
                </rect>
               </property>
              </widget>
              <widget class="QLabel" name="LblYourName">
               <property name="geometry">
                <rect>
-                <x>30</x>
-                <y>70</y>
+                <x>20</x>
+                <y>80</y>
                 <width>421</width>
                 <height>16</height>
                </rect>
@@ -389,9 +405,9 @@
            <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
           </property>
           <attribute name="title">
-           <string>Tab Page 2</string>
+           <string/>
           </attribute>
-          <layout class="QVBoxLayout" name="LayoutEditor">
+          <layout class="QVBoxLayout" name="LayoutTabPage2">
            <property name="spacing">
             <number>3</number>
            </property>
@@ -408,41 +424,457 @@
             <number>3</number>
            </property>
            <item>
+            <widget class="QLabel" name="LblTabPage2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Trebuchet MS</family>
+               <pointsize>20</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>App Font Options</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QGroupBox" name="GrpSampleText">
              <property name="title">
               <string> Sample Text: </string>
              </property>
-             <widget class="QPlainTextEdit" name="plainTextEdit">
+             <widget class="QPlainTextEdit" name="TxtSampleText">
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>20</y>
-                <width>651</width>
+                <y>30</y>
+                <width>601</width>
                 <height>71</height>
                </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>20</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <property name="plainText">
+               <string>Only Believe</string>
               </property>
              </widget>
             </widget>
            </item>
            <item>
-            <widget class="QGroupBox" name="groupBox">
+            <widget class="QGroupBox" name="GrpGeneralAppFont">
              <property name="title">
               <string> General App Font: </string>
              </property>
+             <widget class="QPushButton" name="BtnDownGeneralAppFont">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>40</width>
+                <height>40</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="images/images.qrc">
+                <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QSlider" name="SldGeneralAppFont">
+              <property name="geometry">
+               <rect>
+                <x>49</x>
+                <y>30</y>
+                <width>251</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="minimum">
+               <number>10</number>
+              </property>
+              <property name="maximum">
+               <number>50</number>
+              </property>
+              <property name="pageStep">
+               <number>5</number>
+              </property>
+              <property name="sliderPosition">
+               <number>20</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::TicksBothSides</enum>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="BtnUpGeneralAppFont">
+              <property name="geometry">
+               <rect>
+                <x>300</x>
+                <y>30</y>
+                <width>40</width>
+                <height>40</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="images/images.qrc">
+                <normaloff>:/Up_Black.png</normaloff>:/Up_Black.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="CmbGeneralAppFont">
+              <property name="geometry">
+               <rect>
+                <x>350</x>
+                <y>30</y>
+                <width>181</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>18</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="BtnGeneralAppFont">
+              <property name="geometry">
+               <rect>
+                <x>550</x>
+                <y>30</y>
+                <width>101</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>20</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>BOLD</string>
+              </property>
+             </widget>
             </widget>
            </item>
            <item>
-            <widget class="QGroupBox" name="groupBox_2">
+            <widget class="QGroupBox" name="GrpSongPreviewFont">
              <property name="title">
               <string> Song Preview Font: </string>
              </property>
+             <widget class="QComboBox" name="CmbSongPreviewFont">
+              <property name="geometry">
+               <rect>
+                <x>350</x>
+                <y>30</y>
+                <width>181</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>18</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+             </widget>
+             <widget class="QSlider" name="SldSongPreviewFont">
+              <property name="geometry">
+               <rect>
+                <x>49</x>
+                <y>30</y>
+                <width>251</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="minimum">
+               <number>10</number>
+              </property>
+              <property name="maximum">
+               <number>50</number>
+              </property>
+              <property name="pageStep">
+               <number>5</number>
+              </property>
+              <property name="sliderPosition">
+               <number>20</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::TicksBothSides</enum>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="BtnSongPreviewFont">
+              <property name="geometry">
+               <rect>
+                <x>550</x>
+                <y>30</y>
+                <width>101</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>20</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>BOLD</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="BtnUpSongPreviewFont">
+              <property name="geometry">
+               <rect>
+                <x>300</x>
+                <y>30</y>
+                <width>40</width>
+                <height>40</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="images/images.qrc">
+                <normaloff>:/Up_Black.png</normaloff>:/Up_Black.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="BtnDownSongPreviewFont">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>40</width>
+                <height>40</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="images/images.qrc">
+                <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
             </widget>
            </item>
            <item>
-            <widget class="QGroupBox" name="groupBox_3">
+            <widget class="QGroupBox" name="GrpSongPresentFont">
              <property name="title">
-              <string>Song Projection Font: </string>
+              <string>Song Presentation Font: </string>
              </property>
+             <widget class="QComboBox" name="CmbSongPresentFont">
+              <property name="geometry">
+               <rect>
+                <x>350</x>
+                <y>40</y>
+                <width>181</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>18</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+             </widget>
+             <widget class="QSlider" name="SldSongPresentFont">
+              <property name="geometry">
+               <rect>
+                <x>49</x>
+                <y>40</y>
+                <width>251</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="minimum">
+               <number>10</number>
+              </property>
+              <property name="pageStep">
+               <number>5</number>
+              </property>
+              <property name="sliderPosition">
+               <number>20</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::TicksBothSides</enum>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="BtnSongPresentFont">
+              <property name="geometry">
+               <rect>
+                <x>550</x>
+                <y>40</y>
+                <width>101</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>20</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>BOLD</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="BtnUpSongPresentFont">
+              <property name="geometry">
+               <rect>
+                <x>300</x>
+                <y>40</y>
+                <width>40</width>
+                <height>40</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="images/images.qrc">
+                <normaloff>:/Up_Black.png</normaloff>:/Up_Black.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="BtnDownSongPresentFont">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>40</y>
+                <width>40</width>
+                <height>40</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="images/images.qrc">
+                <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
             </widget>
            </item>
           </layout>
@@ -460,9 +892,9 @@
            <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
           </property>
           <attribute name="title">
-           <string>Tab Page 3</string>
+           <string/>
           </attribute>
-          <layout class="QVBoxLayout" name="LayoutEditor">
+          <layout class="QVBoxLayout" name="LayoutTabPage3">
            <property name="spacing">
             <number>3</number>
            </property>
@@ -478,39 +910,440 @@
            <property name="bottomMargin">
             <number>3</number>
            </property>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="TabPage4">
-          <property name="font">
-           <font>
-            <family>Trebuchet MS</family>
-            <pointsize>12</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="accessibleName">
-           <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
-          </property>
-          <attribute name="title">
-           <string>Tab Page 4</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="LayoutEditor">
-           <property name="spacing">
-            <number>3</number>
-           </property>
-           <property name="leftMargin">
-            <number>3</number>
-           </property>
-           <property name="topMargin">
-            <number>3</number>
-           </property>
-           <property name="rightMargin">
-            <number>3</number>
-           </property>
-           <property name="bottomMargin">
-            <number>3</number>
-           </property>
+           <item>
+            <widget class="QLabel" name="LblTabPage3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Trebuchet MS</family>
+               <pointsize>20</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Presentation Theme Options</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="TopLayout">
+             <item>
+              <widget class="QPushButton" name="BtnTheme1">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Black
+and
+White</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>White
+and
+Black</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Gray
+and
+White</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>White
+and
+Gray</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Blue
+and
+White</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="MidLayout">
+             <item>
+              <widget class="QPushButton" name="BtnTheme6">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>White
+and
+Blue</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme7">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Green
+and
+White</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme8">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>White
+and
+Green</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme9">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Orange
+and
+White</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme10">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>White
+and
+Orange</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="DownLayout">
+             <item>
+              <widget class="QPushButton" name="BtnTheme11">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Red
+and
+White</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme12">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>White
+and
+Red</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme13">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Black
+and
+Yellow</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme14">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Yellow
+and
+Black</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="BtnTheme15">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Trebuchet MS</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Custom
+Theme</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -519,20 +1352,11 @@
      </item>
     </layout>
    </item>
-   <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources>
   <include location="icons/icons.qrc"/>
+  <include location="images/images.qrc"/>
  </resources>
  <connections/>
 </ui>

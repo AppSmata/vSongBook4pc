@@ -22,6 +22,7 @@ public:
 
     vSongHome* homeWindow() { return m_HomeWindow; }
     static void SetOption(QString title, QString content);
+    static bool isTrue(int intvalue);
     static QString versionString();
 
 protected:

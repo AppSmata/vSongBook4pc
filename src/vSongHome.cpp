@@ -19,11 +19,11 @@
 
 int homefont, songfont;
 bool isReady, SearchAll, NightMode, isPreviewBold;
-char* db_file = "Data/vSongBook.db";
+char* home_db = "Data/vSongBook.db";
 QString selected_book, selected_song, search_term;
 std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, homesets;
 
-QFont FontPreview, FontGeneral;
+QFont HomeFontPreview, HomeFontGeneral;
 
 vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHome)
 {
@@ -48,7 +48,7 @@ bool vSongHome::GetSettings()
 	bool retval = false;
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(db_file, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(home_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
 
@@ -70,31 +70,31 @@ bool vSongHome::GetSettings()
 
 void vSongHome::ReloadSettings()
 {
+	homefont = homesets[8].toInt();
 	songfont = homesets[11].toInt();
-	homefont = homesets[5].toInt();
 
-	FontPreview.setFamily(QString::fromUtf8("Trebuchet MS"));
-	FontPreview.setPointSize(songfont);
-	FontPreview.setBold(isPreviewBold);
-	FontPreview.setWeight(50);
+	HomeFontPreview.setFamily(QString::fromUtf8("Trebuchet MS"));
+	HomeFontPreview.setPointSize(songfont);
+	HomeFontPreview.setBold(isPreviewBold);
+	HomeFontPreview.setWeight(50);
 
-	FontGeneral.setFamily(QString::fromUtf8("Trebuchet MS"));
-	FontGeneral.setPointSize(homefont);
-	FontGeneral.setBold(false);
-	FontGeneral.setWeight(50);
+	HomeFontGeneral.setFamily(QString::fromUtf8("Trebuchet MS"));
+	HomeFontGeneral.setPointSize(homefont);
+	HomeFontGeneral.setBold(false);
+	HomeFontGeneral.setWeight(50);
 	ReloadControls();
 }
 
 void vSongHome::ReloadControls()
 {
-	ui->TxtSearch->setFont(FontGeneral);
-	ui->CmbSongbooks->setFont(FontGeneral);
-	ui->TxtEditorTitle->setFont(FontGeneral);
-	ui->TxtEditorContent->setFont(FontGeneral);
+	ui->TxtSearch->setFont(HomeFontGeneral);
+	ui->CmbSongbooks->setFont(HomeFontGeneral);
+	ui->TxtEditorTitle->setFont(HomeFontGeneral);
+	ui->TxtEditorContent->setFont(HomeFontGeneral);
 
-	ui->TxtPreviewTitle->setFont(FontPreview);
-	ui->TxtPreviewContent->setFont(FontPreview);
-	ui->TxtPreviewAlias->setFont(FontPreview);
+	ui->TxtPreviewTitle->setFont(HomeFontPreview);
+	ui->TxtPreviewContent->setFont(HomeFontPreview);
+	ui->TxtPreviewAlias->setFont(HomeFontPreview);
 }
 
 void vSongHome::SongLast()
@@ -117,7 +117,7 @@ void vSongHome::FontSmaller()
 	if ((songfont - 2) > 9)
 	{
 		songfont = songfont - 2;
-		FontPreview.setPointSize(songfont);
+		HomeFontPreview.setPointSize(songfont);
 		vSongBook::SetOption("preview_font_size", QString::number(songfont));
 		ReloadControls();
 	}
@@ -125,10 +125,10 @@ void vSongHome::FontSmaller()
 
 void vSongHome::FontBigger()
 {
-	if ((songfont + 2) < 31)
+	if ((songfont + 2) < 51)
 	{
 		songfont = songfont + 2;
-		FontPreview.setPointSize(songfont);
+		HomeFontPreview.setPointSize(songfont);
 		vSongBook::SetOption("preview_font_size", QString::number(songfont));
 		ReloadControls();
 	}
@@ -138,7 +138,7 @@ void vSongHome::FontBold()
 {
 	if (isPreviewBold) isPreviewBold = false;
 	else isPreviewBold = true;
-	FontPreview.setBold(isPreviewBold);
+	HomeFontPreview.setBold(isPreviewBold);
 	ReloadControls();
 }
 void vSongHome::OpenSettings()
@@ -160,7 +160,7 @@ bool vSongHome::PopulateSongbooks()
 
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(db_file, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(home_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	char* sqlQuery = "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;";
 
@@ -242,7 +242,7 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(db_file, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(home_db, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	SqlQuery.append(" ORDER BY number ASC");
 	QByteArray bar = SqlQuery.toLocal8Bit();
