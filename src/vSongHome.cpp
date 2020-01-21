@@ -11,14 +11,14 @@
 #include <limits>
 #include <QStandardItemModel>
 #include <QObject>
-#include "vSongItemData.h"
-#include "vSongItemDelegate.h"
+#include "vItemData.h"
+#include "vItemDelegate.h"
 #include "AboutDialog.h"
 #include "vSongView.h"
 #include "vSongPrefs.h"
 
 int homefont, songfont;
-bool searchall, nightmode;
+bool isReady, SearchAll, NightMode, isPreviewBold;
 char* db_file = "Data/vSongBook.db";
 QString selected_book, selected_song, search_term;
 std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, homesets;
@@ -29,11 +29,16 @@ vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHom
 {
     ui->setupUi(this);
 	ui->SplitterMain->setStretchFactor(1, 3);
+	isReady = isPreviewBold = false;
 
 	GetSettings();
 	ReloadSettings();
-    if (!PopulateSongbooks())
-    {
+	if (PopulateSongbooks())
+	{
+		PopulateSonglists(bookids[0], "", false);
+		isReady = true;
+	}
+	else {
         QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
     }
 }
@@ -65,16 +70,23 @@ bool vSongHome::GetSettings()
 
 void vSongHome::ReloadSettings()
 {
+	songfont = homesets[11].toInt();
+	homefont = homesets[5].toInt();
+
 	FontPreview.setFamily(QString::fromUtf8("Trebuchet MS"));
-	FontPreview.setPointSize(homesets[11].toInt());
-	FontPreview.setBold(false);
+	FontPreview.setPointSize(songfont);
+	FontPreview.setBold(isPreviewBold);
 	FontPreview.setWeight(50);
 
 	FontGeneral.setFamily(QString::fromUtf8("Trebuchet MS"));
-	FontGeneral.setPointSize(homesets[5].toInt());
+	FontGeneral.setPointSize(homefont);
 	FontGeneral.setBold(false);
 	FontGeneral.setWeight(50);
+	ReloadControls();
+}
 
+void vSongHome::ReloadControls()
+{
 	ui->TxtSearch->setFont(FontGeneral);
 	ui->CmbSongbooks->setFont(FontGeneral);
 	ui->TxtEditorTitle->setFont(FontGeneral);
@@ -85,11 +97,59 @@ void vSongHome::ReloadSettings()
 	ui->TxtPreviewAlias->setFont(FontPreview);
 }
 
+void vSongHome::SongLast()
+{
+	int index = ui->CmbSongbooks->currentIndex();
+	if ((index - 1) > ui->CmbSongbooks->count())
+	{
+		ui->CmbSongbooks->setCurrentIndex(index - 1);
+	}
+}
+
+/*
+void vSongHome::on_LstResults_clicked(const QModelIndex& index)
+{
+	OpenSongPreview(index);
+}
+*/
+void vSongHome::FontSmaller()
+{
+	if ((songfont - 2) > 9)
+	{
+		songfont = songfont - 2;
+		FontPreview.setPointSize(songfont);
+		vSongBook::SetOption("preview_font_size", QString::number(songfont));
+		ReloadControls();
+	}
+}
+
+void vSongHome::FontBigger()
+{
+	if ((songfont + 2) < 31)
+	{
+		songfont = songfont + 2;
+		FontPreview.setPointSize(songfont);
+		vSongBook::SetOption("preview_font_size", QString::number(songfont));
+		ReloadControls();
+	}
+}
+
+void vSongHome::FontBold()
+{
+	if (isPreviewBold) isPreviewBold = false;
+	else isPreviewBold = true;
+	FontPreview.setBold(isPreviewBold);
+	ReloadControls();
+}
+void vSongHome::OpenSettings()
+{
+	vSongPrefs preferences(this);
+	preferences.exec();
+}
 
 void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
 {
-	int book = ui->CmbSongbooks->currentIndex();
-    PopulateSonglists(bookids[book], "", false);
+	if (isReady) PopulateSonglists(bookids[index], "", false);
 }
 
 bool vSongHome::PopulateSongbooks()
@@ -127,19 +187,18 @@ bool vSongHome::PopulateSongbooks()
     return retval;
 }
 
-void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searchall)
+void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool SearchAll)
 {
 	QStringList strList;
 
 	QStandardItemModel* songModel = new QStandardItemModel();
 	
-	if (songModel->rowCount() > 0) {
+	if (songids.size() > 0) {
 		songids.clear();
 		songtitles.clear();
 		songaliases.clear();
 		songcontents.clear();
 		songbooks.clear();
-		songModel->clear();
 	}
 
 	QString searchtotals = " songs found in: " + booktitles[ui->CmbSongbooks->currentIndex()];
@@ -152,7 +211,7 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 	{
 		bool isNumeric;
 		int searchint = searchstr.toInt(&isNumeric, 10);
-		if (searchall)
+		if (SearchAll)
 		{
 			if (isNumeric)
 			{
@@ -191,9 +250,9 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 
 	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
+	int songcount = 0;
 	for (int i = 1; i < row + 1; i++)
-	{
-		
+	{		
 		QString numberstr = *(qryResult + i * col + 1);
 		QString titlestr = *(qryResult + i * col + 2);
 		QString titles = numberstr + "# " + titlestr;
@@ -206,12 +265,12 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 		songtitles.push_back(titles);
 		songaliases.push_back(*(qryResult + i * col + 3));
 		songcontents.push_back(contents);
+		songbooks.push_back(*(qryResult + i * col + 7));
 
 		contents = contents.replace("\\n", " ");
-		//songbooks.push_back(*(qryResult + i * col + 7) + " (" + *(qryResult + i * col + 8) + ")");
 
 		QStandardItem* songItem = new QStandardItem;
-		vSongItemData song;
+		vItemData song;
 		
 		if (titles.length() > 40)
 		{
@@ -225,13 +284,14 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 		}
 		else song.content = contents;
 
-		song.detail = "Songs of Worship; Has Chorus; 3 Verses; Key -;";
 		songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
 		songModel->appendRow(songItem);
+		songcount++;
 	}
-    
-    vSongItemDelegate *vItemDelegate = new vSongItemDelegate(this);
-    ui->LstResults->setItemDelegate(vItemDelegate);
+
+	ui->LblResult->setText(QString::number(songcount) + searchtotals);
+    vItemDelegate *itemDelegate = new vItemDelegate(this);
+    ui->LstResults->setItemDelegate(itemDelegate);
     ui->LstResults->setModel(songModel);
 
 	sqlite3_free_table(qryResult);
@@ -239,6 +299,18 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool searc
 
 	ui->LstResults->setCurrentIndex(songModel->index(0, 0));
 	OpenSongPreview(songModel->index(0, 0));
+}
+
+void vSongHome::SongNext()
+{
+	/*QStandardItemModel* songModel = new QStandardItemModel();
+	QModelIndex index = ui->LstResults->currentIndex();
+	int song = index.row();
+
+	if ((song + 1) < ui->CmbSongbooks->count())
+	{
+		ui->CmbSongbooks->setCurrentIndex(index + 1);
+	}*/
 }
 
 void vSongHome::OpenSongPreview(const QModelIndex& index)
@@ -252,8 +324,17 @@ void vSongHome::OpenSongPreview(const QModelIndex& index)
 	ui->TxtPreviewTitle->setText(songTitle);
 	//ui->TxtEditorTitle->setText(songTitle);
 	ui->TxtPreviewContent->setPlainText(songContent);
-	//ui->TxtEditorContent->setPlainText(songContent);
-	ui->TxtPreviewAlias->setPlainText(songAlias);
+	//ui->TxtEditorContent->setPlainText(songContent);\
+
+	if (songAlias.length() < 3)
+	{
+		ui->TxtPreviewAlias->hide();
+	}
+	else
+	{
+		ui->TxtPreviewAlias->show();
+		ui->TxtPreviewAlias->setPlainText(songAlias);
+	}
 }
 
 void vSongHome::on_TxtSearch_returnPressed()
@@ -392,7 +473,7 @@ void vSongHome::on_actionNew_Song_triggered()
 
 void vSongHome::on_actionManage_Settings_triggered()
 {    
-    ManageSettings();
+	OpenSettings();
 }
 
 void vSongHome::on_actionReset_Settings_triggered()
@@ -412,32 +493,32 @@ void vSongHome::on_actionAbout_triggered()
 
 void vSongHome::on_actionExit_triggered()
 {
-
+	this->close();
 }
 
 void vSongHome::on_actionBold_triggered()
 {
-
+	FontBold();
 }
 
 void vSongHome::on_actionSmaller_triggered()
 {
-
+	FontSmaller();
 }
 
 void vSongHome::on_actionBigger_triggered()
 {
-
+	FontBigger();
 }
 
 void vSongHome::on_actionNext_triggered()
 {
-
+	SongNext();
 }
 
 void vSongHome::on_actionPrevious_triggered()
 {
-
+	SongLast();
 }
 
 void vSongHome::on_actionCancel_triggered()
@@ -452,11 +533,6 @@ void vSongHome::on_actionDelete_triggered()
 
 void vSongHome::on_actionPreferences_triggered()
 {
-	ManageSettings();
+	OpenSettings();
 }
 
-void vSongHome::ManageSettings()
-{
-	vSongPrefs preferences(this);
-	preferences.exec();
-}

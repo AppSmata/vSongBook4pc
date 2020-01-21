@@ -2,7 +2,6 @@
 #define VSONGHOME_H
 
 #include "sqlitedb.h"
-#include <SongModel.h>
 
 #include <memory>
 #include <QMainWindow>
@@ -50,9 +49,16 @@ public slots:
 
 private slots:
     bool GetSettings();
+    void ReloadControls();
     void ReloadSettings();
 
-    void ManageSettings();
+    void SongLast();
+    void SongNext();
+    void FontSmaller();
+    void FontBigger();
+    void FontBold();
+    void OpenSettings();
+
     bool PopulateSongbooks();
     void openPresentation();
     void PopulateSonglists(QString setbook, QString searchstr, bool searchall);
@@ -64,6 +70,7 @@ private slots:
     void on_CmbSongbooks_currentIndexChanged(int index);
     void on_LstResults_activated(const QModelIndex &index);
     void on_LstResults_doubleClicked(const QModelIndex &index);
+
     void on_actionPresent_triggered();
     void on_actionSave_triggered();
     void on_actionPresent_Song_triggered();

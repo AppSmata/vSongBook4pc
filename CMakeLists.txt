@@ -145,13 +145,11 @@ set(SQLB_MOC_HDR
 	src/RunSql.h
 	src/ProxyDialog.h
 	src/SelectItemsPopup.h
-	src/SongItem.h
-	src/SongModel.h
 	src/DbStructureModel.h
 	src/vAppSplash.h
 	src/vSongHome.h
-	src/vSongItemData.h
-	src/vSongItemDelegate.h
+	src/vItemData.h
+	src/vItemDelegate.h
 	src/vSongPrefs.h
 	src/vSongView.h
 )
@@ -193,12 +191,10 @@ set(SQLB_SRC
 	src/ProxyDialog.cpp
 	src/IconCache.cpp
 	src/SelectItemsPopup.cpp
-	src/SongItem.cpp
-	src/SongModel.cpp
 	src/DbStructureModel.cpp
 	src/vAppSplash.cpp
 	src/vSongHome.cpp
-	src/vSongItemDelegate.cpp
+	src/vItemDelegate.cpp
 	src/vSongPrefs.cpp
 	src/vSongView.cpp
 	src/sql/parser/ParserDriver.cpp

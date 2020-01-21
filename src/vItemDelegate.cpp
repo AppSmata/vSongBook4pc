@@ -1,20 +1,20 @@
 #include <QPainter>
 #include <QDebug>
-#include "vSongItemDelegate.h"
-#include "vSongItemData.h"
+#include "vItemDelegate.h"
+#include "vItemData.h"
 
-vSongItemDelegate::vSongItemDelegate(QObject* parent) :
+vItemDelegate::vItemDelegate(QObject* parent) :
     QStyledItemDelegate(parent)
 {
 
 }
 
-void vSongItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
+void vItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     if (index.isValid()) {
         painter->save();
         QVariant var = index.data(Qt::UserRole + 1);
-        vSongItemData song = var.value<vSongItemData>();
+        vItemData item = var.value<vItemData>();
 
         // item Rectangular area
         QRectF rect;
@@ -46,27 +46,35 @@ void vSongItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opt
             painter->setBrush(QColor("#FF7C00"));
             painter->drawPath(path);
         }
+        QRectF iconRect, itemText1, itemText2;
 
-        // Draw picture, text, number location area
-        QRectF iconRect = QRect(rect.left() + 5, rect.top() + 5, 40, 40);
-        QRectF songText1 = QRect(iconRect.right() + 5, iconRect.top(), rect.width() - 10 - iconRect.width(), 20);
-        QRectF songNbRect = QRect(songText1.left(), songText1.bottom() + 5, rect.width() - 10 - iconRect.width(), 20);
+        if (item.image.length() > 2)
+        {
+            iconRect = QRect(rect.left() + 5, rect.top() + 5, 40, 40);
+            itemText1 = QRect(iconRect.right() + 5, iconRect.top(), rect.width() - 10 - iconRect.width(), 20);
+            itemText2 = QRect(itemText1.left(), itemText1.bottom() + 5, rect.width() - 10 - iconRect.width(), 20);
 
-        painter->drawImage(iconRect, QImage("res/icon.png"));
+            painter->drawImage(iconRect, QImage(item.image));
+        }
+        else 
+        {
+            itemText1 = QRect(5, rect.top(), rect.width() - 10, 20);
+            itemText2 = QRect(itemText1.left(), itemText1.bottom() + 5, rect.width() - 10 - iconRect.width(), 20);
+        }
 
         painter->setPen(QPen(QColor(Qt::black)));
         painter->setFont(QFont("Trebuchen MS", 12, 75));
-        painter->drawText(songText1, song.title);
+        painter->drawText(itemText1, item.title);
 
         painter->setPen(QPen(Qt::black));
         painter->setFont(QFont("Trebuchen MS", 12, 0));
-        painter->drawText(songNbRect, song.content);
+        painter->drawText(itemText2, item.content);
 
         painter->restore();
     }
 }
 
-QSize vSongItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+QSize vItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     Q_UNUSED(index)
         return QSize(option.rect.width(), 50);

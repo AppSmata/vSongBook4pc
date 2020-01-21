@@ -1,12 +1,12 @@
-#ifndef VSONGITEMDELEGATE_H
-#define VSONGITEMDELEGATE_H
+#ifndef VITEMDELEGATE_H
+#define VITEMDELEGATE_H
 
 #include <QStyledItemDelegate>
 
-class vSongItemDelegate : public QStyledItemDelegate
+class vItemDelegate : public QStyledItemDelegate
 {
 public:
-    vSongItemDelegate(QObject *parent = nullptr);
+    vItemDelegate(QObject *parent = nullptr);
 
     // painting
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
@@ -14,4 +14,4 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 };
 
-#endif // VSONGITEMDELEGATE_H
+#endif // VITEMDELEGATE_H

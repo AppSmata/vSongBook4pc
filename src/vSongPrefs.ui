@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>762</width>
+    <width>973</width>
     <height>502</height>
    </rect>
   </property>
@@ -22,19 +22,31 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="CentralWidget">
      <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="PanelLeft">
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="TxtSearch">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Trebuchet MS</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -51,76 +63,456 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="PanelRight">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QTabWidget" name="TabsMain">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
          <property name="font">
           <font>
            <family>Trebuchet MS</family>
-           <pointsize>20</pointsize>
+           <pointsize>15</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
-         <property name="text">
-          <string>General Options</string>
+         <property name="tabPosition">
+          <enum>QTabWidget::North</enum>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="tabShape">
+          <enum>QTabWidget::Rounded</enum>
          </property>
-         <property name="title">
-          <string> Tablet Mode: </string>
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_4">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="movable">
+          <bool>true</bool>
          </property>
-         <property name="title">
-          <string> Search Criteria: </string>
+         <property name="tabBarAutoHide">
+          <bool>true</bool>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Preffered Language: </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string> Your Name/Name of your Church: </string>
-         </property>
+         <widget class="QWidget" name="TabPage1">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="accessibleName">
+           <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
+          </property>
+          <attribute name="title">
+           <string>Tab Page 1</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="LayoutPreview">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <property name="leftMargin">
+            <number>3</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>3</number>
+           </property>
+           <property name="bottomMargin">
+            <number>3</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="LabelTab1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Trebuchet MS</family>
+               <pointsize>20</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>General Options</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="GrpTabletMode">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="title">
+              <string> Tablet Mode: </string>
+             </property>
+             <widget class="QRadioButton" name="BtnTabletMode">
+              <property name="geometry">
+               <rect>
+                <x>600</x>
+                <y>30</y>
+                <width>61</width>
+                <height>18</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>ON</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="LblTabletMode">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>551</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>15</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Table Mode is when you are using a Touch Screen Input</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="GrpSearchCriteria">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string> Search Criteria: </string>
+             </property>
+             <widget class="QLabel" name="LblSearchCriteria">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>551</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>15</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Search all songbooks</string>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="BtnSearchCriteria">
+              <property name="geometry">
+               <rect>
+                <x>590</x>
+                <y>30</y>
+                <width>61</width>
+                <height>18</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>ON</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="GrpLanguage">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Preffered Language: </string>
+             </property>
+             <widget class="QLabel" name="LblLanguage">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>551</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>15</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Search all songbooks</string>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="CmbLanguage">
+              <property name="geometry">
+               <rect>
+                <x>461</x>
+                <y>30</y>
+                <width>181</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>15</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <item>
+               <property name="text">
+                <string>English</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Swahili</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>French</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Spanish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Portuguese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Chichewa</string>
+               </property>
+              </item>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="GrpYourName">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string> Your Name/Name of your Church: </string>
+             </property>
+             <widget class="QLineEdit" name="TxtYourName">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>30</y>
+                <width>601</width>
+                <height>31</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLabel" name="LblYourName">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>70</y>
+                <width>421</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>100 characteres remaineth ...</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="TabPage2">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="accessibleName">
+           <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
+          </property>
+          <attribute name="title">
+           <string>Tab Page 2</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="LayoutEditor">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <property name="leftMargin">
+            <number>3</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>3</number>
+           </property>
+           <property name="bottomMargin">
+            <number>3</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="GrpSampleText">
+             <property name="title">
+              <string> Sample Text: </string>
+             </property>
+             <widget class="QPlainTextEdit" name="plainTextEdit">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>20</y>
+                <width>651</width>
+                <height>71</height>
+               </rect>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox">
+             <property name="title">
+              <string> General App Font: </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string> Song Preview Font: </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>Song Projection Font: </string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="TabPage3">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="accessibleName">
+           <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
+          </property>
+          <attribute name="title">
+           <string>Tab Page 3</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="LayoutEditor">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <property name="leftMargin">
+            <number>3</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>3</number>
+           </property>
+           <property name="bottomMargin">
+            <number>3</number>
+           </property>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="TabPage4">
+          <property name="font">
+           <font>
+            <family>Trebuchet MS</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="accessibleName">
+           <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
+          </property>
+          <attribute name="title">
+           <string>Tab Page 4</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="LayoutEditor">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <property name="leftMargin">
+            <number>3</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>3</number>
+           </property>
+           <property name="bottomMargin">
+            <number>3</number>
+           </property>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
