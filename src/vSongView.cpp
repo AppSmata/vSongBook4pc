@@ -4,6 +4,7 @@
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
+
 char* app_db = "Data/vSongBook.db";
 std::vector<QString> songverses1, songverses2, viewset, labels;
 int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont;
@@ -61,34 +62,31 @@ void vSongView::PresentSong(QString setsongid)
 	if (songverses1.size() > 0) songverses1.clear();
 	if (songverses2.size() > 0) songverses2.clear();
 
-	if (db.open(app_db, true))
+	sqlite3* songsDb;
+	char* err_msg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+
+	QString SqlQuery = "SELECT number, songs.title, alias, songs.content, key, author, books.title FROM songs";
+	SqlQuery.append(" INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + setsongid);
+	QByteArray bar = SqlQuery.toLocal8Bit();
+	char* sqlQuery = bar.data();
+
+	if (rc == SQLITE_OK)
 	{
-		sqlite3* songsDb;
-		char* err_msg = NULL, ** qryResult = NULL;
-		int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-		QString SqlQuery = "SELECT number, songs.title, alias, songs.content, key, author, books.title FROM songs";
-		SqlQuery.append(" INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + setsongid);
-		QByteArray bar = SqlQuery.toLocal8Bit();
-		char* sqlQuery = bar.data();
+		number = *(qryResult + 1 * col + 0);
+		title = number + ". " + *(qryResult + 1 * col + 1);
+		alias = *(qryResult + 1 * col + 2);
+		content = *(qryResult + 1 * col + 3);
+		key = *(qryResult + 1 * col + 4);
+		author = *(qryResult + 1 * col + 5);
+		book = number + "# " + *(qryResult + 1 * col + 6);
 
-		if (rc == SQLITE_OK)
-		{
-			rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+		sqlite3_free_table(qryResult);
+		sqlite3_close(songsDb);
 
-			number = *(qryResult + 1 * col + 0);
-			title = number + ". " + *(qryResult + 1 * col + 1);
-			alias = *(qryResult + 1 * col + 2);
-			content = *(qryResult + 1 * col + 3);
-			key = *(qryResult + 1 * col + 4);
-			author = *(qryResult + 1 * col + 5);
-			book = number + "# " + *(qryResult + 1 * col + 6);
-			
-			sqlite3_free_table(qryResult);
-			sqlite3_close(songsDb);
-
-			ContentPrepare();
-		}
+		ContentPrepare();
 	}
 }
 

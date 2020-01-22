@@ -147,6 +147,8 @@ set(SQLB_MOC_HDR
 	src/SelectItemsPopup.h
 	src/DbStructureModel.h
 	src/vAppSplash.h
+	src/vSongBooks.h
+	src/vSongEdit.h
 	src/vSongHome.h
 	src/vItemData.h
 	src/vItemDelegate.h
@@ -193,6 +195,8 @@ set(SQLB_SRC
 	src/SelectItemsPopup.cpp
 	src/DbStructureModel.cpp
 	src/vAppSplash.cpp
+	src/vSongBooks.cpp
+	src/vSongEdit.cpp
 	src/vSongHome.cpp
 	src/vItemDelegate.cpp
 	src/vSongPrefs.cpp
@@ -216,6 +220,8 @@ set(SQLB_FORMS
 	src/ProxyDialog.ui
 	src/SelectItemsPopup.ui
 	src/vAppSplash.ui
+	src/vSongBooks.ui
+	src/vSongEdit.ui
 	src/vSongHome.ui
 	src/vSongPrefs.ui
 	src/vSongView.ui

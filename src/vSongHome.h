@@ -57,6 +57,9 @@ private slots:
     void FontSmaller();
     void FontBigger();
     void FontBold();
+    void NewSong();
+    void OpenEditor();
+    void ManageBooks();
     void OpenSettings();
 
     bool PopulateSongbooks();
@@ -104,6 +107,9 @@ private slots:
     void on_actionDelete_triggered();
     void on_actionPreferences_triggered();
     void on_TxtSearch_returnPressed();
+    void on_actionEdit_triggered();
+    void on_actionNewsong_triggered();
+    void on_actionSongbooks_triggered();
 };
 
 #endif // VSONGHOME_H

@@ -14,8 +14,10 @@
 #include "vItemData.h"
 #include "vItemDelegate.h"
 #include "AboutDialog.h"
-#include "vSongView.h"
+#include "vSongBooks.h"
+#include "vSongEdit.h"
 #include "vSongPrefs.h"
+#include "vSongView.h"
 
 int homefont, songfont;
 bool isReady, SearchAll, NightMode, isPreviewBold;
@@ -89,8 +91,6 @@ void vSongHome::ReloadControls()
 {
 	ui->TxtSearch->setFont(HomeFontGeneral);
 	ui->CmbSongbooks->setFont(HomeFontGeneral);
-	ui->TxtEditorTitle->setFont(HomeFontGeneral);
-	ui->TxtEditorContent->setFont(HomeFontGeneral);
 
 	ui->TxtPreviewTitle->setFont(HomeFontPreview);
 	ui->TxtPreviewContent->setFont(HomeFontPreview);
@@ -106,12 +106,6 @@ void vSongHome::SongLast()
 	}
 }
 
-/*
-void vSongHome::on_LstResults_clicked(const QModelIndex& index)
-{
-	OpenSongPreview(index);
-}
-*/
 void vSongHome::FontSmaller()
 {
 	if ((songfont - 2) > 9)
@@ -141,10 +135,29 @@ void vSongHome::FontBold()
 	HomeFontPreview.setBold(isPreviewBold);
 	ReloadControls();
 }
+
+void vSongHome::NewSong()
+{
+    vSongEdit editor(this, true);
+    editor.exec();
+}
+
+void vSongHome::ManageBooks()
+{
+	vSongBooks books(this);
+	books.exec();
+}
+
+void vSongHome::OpenEditor()
+{
+	vSongEdit editor(this, false);
+	editor.exec();
+}
+
 void vSongHome::OpenSettings()
 {
-	vSongPrefs preferences(this);
-	preferences.exec();
+    vSongPrefs preferences(this);
+    preferences.exec();
 }
 
 void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
@@ -155,8 +168,7 @@ void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
 bool vSongHome::PopulateSongbooks()
 {
 	bool retval = false;
-	int bookscount = ui->CmbSongbooks->count();
-	if (bookscount > 0) ui->CmbSongbooks->clear();
+	if (ui->CmbSongbooks->count() > 0) ui->CmbSongbooks->clear();
 
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
@@ -318,7 +330,7 @@ void vSongHome::OpenSongPreview(const QModelIndex& index)
 	int song = index.row();
 	QString songTitle = songtitles[song];
 	QString songAlias = songaliases[song];
-	QString songContent = songcontents[song].replace("\\n", " \r\n");
+	QString songContent = songcontents[song].replace("\\n", "\r\n");
 	vSongBook::SetOption("current_song", songids[song]);
 
 	ui->TxtPreviewTitle->setText(songTitle);
@@ -468,7 +480,7 @@ void vSongHome::on_actionEdit_Song_triggered()
 
 void vSongHome::on_actionNew_Song_triggered()
 {
-
+    NewSong();
 }
 
 void vSongHome::on_actionManage_Settings_triggered()
@@ -536,3 +548,18 @@ void vSongHome::on_actionPreferences_triggered()
 	OpenSettings();
 }
 
+
+void vSongHome::on_actionEdit_triggered()
+{
+    OpenEditor();
+}
+
+void vSongHome::on_actionNewsong_triggered()
+{
+    NewSong();
+}
+
+void vSongHome::on_actionSongbooks_triggered()
+{
+	ManageBooks();
+}

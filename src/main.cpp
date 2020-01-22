@@ -1,5 +1,7 @@
 #include "vSongBook.h"
 #include <QFile>
+#include <QSplashScreen>
+#include <QThread>
 
 void setStyle(const QString& qssFile)
 {
@@ -11,11 +13,18 @@ void setStyle(const QString& qssFile)
 
 int main( int argc, char ** argv )
 {
-    // Create application object. All the initialisation stuff happens in there
-    vSongBook a(argc, argv);
+    QApplication app(argc, argv);
+    QPixmap pixmap("res/splash.png");
+    QSplashScreen splash(pixmap, Qt::WindowStaysOnTopHint);
+    splash.show();
+   
+    app.thread()->sleep(3);
+    app.processEvents();
+    splash.close();
 
+    vSongBook vsb(argc, argv);
     setStyle("res/style.qss");
 
     // Run application
-    return a.exec();
+    return vsb.exec();
 }

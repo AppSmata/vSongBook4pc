@@ -20,23 +20,23 @@ public:
 
 private slots:
     bool GetSettings();
+    void ReloadSettings();
+    void SetUpStuff();
     void LoadNavigation(QString searchstr);
     void OpenSelectedTab(const QModelIndex& index);
-    void ReloadControls();
-    void ReloadSettings();
-
-    void on_LstNavigation_clicked(const QModelIndex &index);
-    void on_LstNavigation_doubleClicked(const QModelIndex &index);
-    void on_TxtSearch_textChanged(const QString &arg1);
 
     void ChangeGeneralFont(int newfont);
     void ChangePreviewFont(int newfont);
     void ChangePresentFont(int newfont);
 
+    void on_LstNavigation_clicked(const QModelIndex& index);
+    void on_LstNavigation_doubleClicked(const QModelIndex& index);
+    void on_TxtSearch_textChanged(const QString& arg1);
+
     void on_BtnTabletMode_clicked();
     void on_BtnSearchCriteria_clicked();
     void on_CmbLanguage_currentIndexChanged(int index);
-    void on_TxtYourName_textChanged(const QString &arg1);
+    void on_TxtYourName_textChanged(const QString& arg1);
 
     void on_BtnUpGeneralAppFont_clicked();
     void on_BtnDownGeneralAppFont_clicked();

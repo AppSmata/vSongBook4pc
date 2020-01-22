@@ -105,7 +105,7 @@
           <enum>QTabWidget::Triangular</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="elideMode">
           <enum>Qt::ElideNone</enum>
@@ -132,7 +132,7 @@
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
-            <pointsize>12</pointsize>
+            <pointsize>15</pointsize>
             <weight>50</weight>
             <bold>false</bold>
            </font>
@@ -200,8 +200,8 @@
              <widget class="QRadioButton" name="BtnTabletMode">
               <property name="geometry">
                <rect>
-                <x>30</x>
-                <y>60</y>
+                <x>560</x>
+                <y>50</y>
                 <width>71</width>
                 <height>31</height>
                </rect>
@@ -222,7 +222,7 @@
               <property name="geometry">
                <rect>
                 <x>20</x>
-                <y>20</y>
+                <y>40</y>
                 <width>551</width>
                 <height>41</height>
                </rect>
@@ -261,8 +261,8 @@
              <widget class="QLabel" name="LblSearchCriteria">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>20</y>
+                <x>30</x>
+                <y>40</y>
                 <width>551</width>
                 <height>41</height>
                </rect>
@@ -282,8 +282,8 @@
              <widget class="QRadioButton" name="BtnSearchCriteria">
               <property name="geometry">
                <rect>
-                <x>30</x>
-                <y>60</y>
+                <x>560</x>
+                <y>50</y>
                 <width>71</width>
                 <height>31</height>
                </rect>
@@ -316,8 +316,8 @@
              <widget class="QLabel" name="LblLanguage">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>10</y>
+                <x>30</x>
+                <y>40</y>
                 <width>551</width>
                 <height>41</height>
                </rect>
@@ -337,8 +337,8 @@
              <widget class="QComboBox" name="CmbLanguage">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>50</y>
+                <x>300</x>
+                <y>40</y>
                 <width>311</width>
                 <height>41</height>
                </rect>
@@ -379,7 +379,7 @@
               <property name="geometry">
                <rect>
                 <x>20</x>
-                <y>80</y>
+                <y>70</y>
                 <width>421</width>
                 <height>16</height>
                </rect>
@@ -396,7 +396,7 @@
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
-            <pointsize>12</pointsize>
+            <pointsize>15</pointsize>
             <weight>50</weight>
             <bold>false</bold>
            </font>
@@ -883,7 +883,7 @@
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
-            <pointsize>12</pointsize>
+            <pointsize>15</pointsize>
             <weight>50</weight>
             <bold>false</bold>
            </font>

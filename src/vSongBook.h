@@ -22,7 +22,9 @@ public:
 
     vSongHome* homeWindow() { return m_HomeWindow; }
     static void SetOption(QString title, QString content);
-    static bool isTrue(int intvalue);
+    static bool isTrue(int value);
+    static QString booltoInt(bool value);
+    static int setCmbValue(std::vector<QString> values, QString value);
     static QString versionString();
 
 protected:

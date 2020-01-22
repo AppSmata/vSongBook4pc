@@ -225,6 +225,9 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
              </widget>
             </item>
            </layout>
@@ -315,6 +318,8 @@
                <enum>Qt::ToolButtonTextBesideIcon</enum>
               </property>
               <addaction name="actionPresent"/>
+              <addaction name="actionEdit"/>
+              <addaction name="actionNewsong"/>
               <addaction name="actionBigger"/>
               <addaction name="actionSmaller"/>
               <addaction name="actionBold"/>
@@ -377,62 +382,6 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="WdgEditor">
-           <property name="font">
-            <font>
-             <family>Trebuchet MS</family>
-             <pointsize>12</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="accessibleName">
-            <string extracomment="This has to be equal to the tab title in all the main tabs">History</string>
-           </property>
-           <attribute name="title">
-            <string>Song Editor</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="LayoutEditor">
-            <property name="spacing">
-             <number>3</number>
-            </property>
-            <property name="leftMargin">
-             <number>3</number>
-            </property>
-            <property name="topMargin">
-             <number>3</number>
-            </property>
-            <property name="rightMargin">
-             <number>3</number>
-            </property>
-            <property name="bottomMargin">
-             <number>3</number>
-            </property>
-            <item>
-             <widget class="QToolBar" name="ToolbarEditor">
-              <property name="windowTitle">
-               <string notr="true">toolBar1</string>
-              </property>
-              <property name="toolButtonStyle">
-               <enum>Qt::ToolButtonTextBesideIcon</enum>
-              </property>
-              <addaction name="actionSave"/>
-              <addaction name="actionDelete"/>
-              <addaction name="actionCancel"/>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="TxtEditorTitle"/>
-            </item>
-            <item>
-             <widget class="QPlainTextEdit" name="TxtEditorContent">
-              <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOff</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
          </widget>
         </item>
        </layout>
@@ -474,15 +423,7 @@
     <addaction name="actionNew_Song"/>
     <addaction name="actionEdit_Song"/>
     <addaction name="actionDelete_Song"/>
-   </widget>
-   <widget class="QMenu" name="menuSongbooks">
-    <property name="title">
-     <string>Songbooks</string>
-    </property>
-    <addaction name="actionNew_Songbook"/>
-    <addaction name="actionEdit_Songbook"/>
-    <addaction name="actionManage_Songbooks"/>
-    <addaction name="actionUpdate_Songbooks"/>
+    <addaction name="actionSongbooks"/>
    </widget>
    <widget class="QMenu" name="menuSupport">
     <property name="title">
@@ -507,39 +448,8 @@
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuSongs"/>
-   <addaction name="menuSongbooks"/>
    <addaction name="menuSupport"/>
   </widget>
-  <action name="actionSave">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/check.png</normaloff>:/icons/check.png</iconset>
-   </property>
-   <property name="text">
-    <string>Save Song</string>
-   </property>
-   <property name="iconText">
-    <string>Save Changes</string>
-   </property>
-  </action>
-  <action name="actionDelete">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/delete.png</normaloff>:/icons/delete.png</iconset>
-   </property>
-   <property name="text">
-    <string>Delete Song</string>
-   </property>
-  </action>
-  <action name="actionCancel">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/cancel</normaloff>:/icons/cancel</iconset>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </action>
   <action name="actionPresent">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
@@ -711,54 +621,6 @@
     <string>Ctrl+D</string>
    </property>
   </action>
-  <action name="actionNew_Songbook">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/field_add</normaloff>:/icons/field_add</iconset>
-   </property>
-   <property name="text">
-    <string>New Songbook</string>
-   </property>
-   <property name="shortcut">
-    <string>Shift+N</string>
-   </property>
-  </action>
-  <action name="actionEdit_Songbook">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/edit_cond_formats.png</normaloff>:/icons/edit_cond_formats.png</iconset>
-   </property>
-   <property name="text">
-    <string>Edit Songbook</string>
-   </property>
-   <property name="shortcut">
-    <string>Shift+E</string>
-   </property>
-  </action>
-  <action name="actionManage_Songbooks">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/project_save_as</normaloff>:/icons/project_save_as</iconset>
-   </property>
-   <property name="text">
-    <string>Manage Songbooks</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+B</string>
-   </property>
-  </action>
-  <action name="actionUpdate_Songbooks">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/refresh</normaloff>:/icons/refresh</iconset>
-   </property>
-   <property name="text">
-    <string>Update Songbooks</string>
-   </property>
-   <property name="shortcut">
-    <string>Shift+U</string>
-   </property>
-  </action>
   <action name="actionDonate">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
@@ -862,6 +724,39 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionEdit">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Edit Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionNewsong">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/field_add</normaloff>:/icons/field_add</iconset>
+   </property>
+   <property name="text">
+    <string>New Song</string>
+   </property>
+  </action>
+  <action name="actionSongbooks">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/copy</normaloff>:/icons/copy</iconset>
+   </property>
+   <property name="text">
+    <string>Manage Books</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
    </property>
   </action>
  </widget>
