@@ -1,8 +1,10 @@
 #include "vSongEdit.h"
 #include "ui_vSongEdit.h"
+#include "vSongBook.h"
 
 #include <QTextCodec>
 #include <QLibraryInfo>
+#include <QMessageBox>
 #include <QLocale>
 
 #include "sqlite.h"
@@ -12,7 +14,7 @@
 char* edit_db = "Data/vSongBook.db";
 bool isNewSong;
 std::vector<QString> editset, book_ids, book_titles;
-QString song_id;
+QString song_id,song_title;
 
 vSongEdit::vSongEdit(QWidget *parent, bool newSong) :
     QDialog(parent),
@@ -107,12 +109,14 @@ void vSongEdit::LoadSong()
 	{
 		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
+		song_title = *(qryResult + 1 * col + 1);
+		QString alias = *(qryResult + 1 * col + 2);
 		QString lyrics = *(qryResult + 1 * col + 3);
 
 		ui->TxtNumber->setText(*(qryResult + 1 * col + 0));
-		ui->TxtTitle->setText(*(qryResult + 1 * col + 1));
-		ui->TxtAlias->setText(*(qryResult + 1 * col + 2));
-		ui->TxtContent->setPlainText(lyrics.replace("\\n", "\r\n"));
+		ui->TxtTitle->setText(vSongBook::ReplaceView(song_title));
+		ui->TxtAlias->setText(vSongBook::ReplaceView(alias));
+		ui->TxtContent->setPlainText(vSongBook::ReplaceView(lyrics));
 		ui->TxtKey->setText(*(qryResult + 1 * col + 4));
 		ui->TxtAuthor->setText(*(qryResult + 1 * col + 5));
 
@@ -200,7 +204,39 @@ void vSongEdit::on_actionSave_triggered()
 
 void vSongEdit::on_actionDelete_triggered()
 {
+	QMessageBox msgBox;
+	msgBox.setText("Oops! Just a minute ...");
+	msgBox.setInformativeText("Do you want to proceed with deleting the songbook: " + 
+		vSongBook::ReplaceView(song_title) + "? This action is irrevesible!");
+	msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+	msgBox.setDefaultButton(QMessageBox::No);
+	int ret = msgBox.exec();
 
+	switch (ret) {
+	case QMessageBox::Yes:
+		DeleteSong();
+		break;
+	default:
+		// should never be reached
+		break;
+	}
+}
+
+void vSongEdit::DeleteSong()
+{
+	sqlite3* db;
+	sqlite3_stmt* sqlqueryStmt;
+	char* zErrMsg = NULL;
+	int row, col, rc = sqlite3_open(edit_db, &db);
+
+	QString SqlQuery = "DELETE FROM songs WHERE songid=" + song_id;
+	QByteArray bar = SqlQuery.toLocal8Bit();
+	char* sqlQuery = bar.data();
+
+	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	sqlite3_close(db);
 }
 
 void vSongEdit::on_actionClear_triggered()

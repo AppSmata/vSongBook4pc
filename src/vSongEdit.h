@@ -26,6 +26,7 @@ private:
 
 private slots:
     bool GetSettings();
+    void DeleteSong();
     void ReloadSettings();
     bool PopulateSongbooks();
     void LoadSong();

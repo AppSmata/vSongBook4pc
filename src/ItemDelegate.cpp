@@ -1,20 +1,29 @@
-#include <QPainter>
-#include <QDebug>
-#include "vItemDelegate.h"
-#include "vItemData.h"
+#include "ItemDelegate.h"
+#include "ItemData.h"
 
-vItemDelegate::vItemDelegate(QObject* parent) :
+#include <QPainter>
+#include <QStyledItemDelegate>
+#include <QStyle>
+#include <QEvent>
+#include <QDebug>
+
+ItemDelegate::ItemDelegate(QObject* parent) :
     QStyledItemDelegate(parent)
 {
 
 }
 
-void vItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
+ItemDelegate::~ItemDelegate()
+{
+
+}
+
+void ItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     if (index.isValid()) {
         painter->save();
         QVariant var = index.data(Qt::UserRole + 1);
-        vItemData item = var.value<vItemData>();
+        ItemData item = var.value<ItemData>();
 
         // item Rectangular area
         QRectF rect;
@@ -36,16 +45,21 @@ void vItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option,
 
         // Change background color when hovering or selecting
         if (option.state.testFlag(QStyle::State_MouseOver)) {
-            //painter->setPen(QPen(QColor("#FF7C00")));
             painter->setPen(QPen(QColor("#FF4500")));
             painter->setBrush(QColor("#FF4500"));
             painter->drawPath(path);
         }
-        if (option.state.testFlag(QStyle::State_Selected)) {
+        else if (option.state.testFlag(QStyle::State_Selected)) {
             painter->setPen(QPen(QColor("#FF7C00")));
             painter->setBrush(QColor("#FF7C00"));
             painter->drawPath(path);
         }
+        else {
+            painter->setPen(QPen(QColor("#FFFFFF")));
+            painter->setBrush(QColor("#FFFFFF"));
+            painter->drawPath(path);
+        }
+
         QRectF iconRect, itemText1, itemText2;
 
         if (item.image.length() > 2)
@@ -63,7 +77,7 @@ void vItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option,
         }
 
         painter->setPen(QPen(QColor(Qt::black)));
-        painter->setFont(QFont("Trebuchen MS", 12, 75));
+        painter->setFont(QFont("Trebuchen MS", 12, QFont::Bold));
         painter->drawText(itemText1, item.title);
 
         painter->setPen(QPen(Qt::black));
@@ -74,7 +88,7 @@ void vItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option,
     }
 }
 
-QSize vItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+QSize ItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     Q_UNUSED(index)
         return QSize(option.rect.width(), 50);

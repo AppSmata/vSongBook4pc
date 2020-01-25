@@ -8,6 +8,7 @@
 #include <QAction>
 
 #include "vSongBook.h"
+#include "vSongView.h"
 #include "vSongHome.h"
 #include "Settings.h"
 #include "version.h"
@@ -156,32 +157,12 @@ vSongBook::vSongBook(int& argc, char** argv) :
 
     // Show main window
     m_HomeWindow = new vSongHome();
-    m_HomeWindow->showMaximized();
+    m_HomeWindow->show();
+    //m_ViewWindow = new vSongView();
+    //m_ViewWindow->show();
+    //m_HomeWindow->showMaximized();
     connect(this, &vSongBook::lastWindowClosed, this, &vSongBook::quit);
 
-    // Open database if one was specified
-    if(fileToOpen.size())
-    {
-        /*if(m_HomeWindow->fileOpen(fileToOpen, false, readOnly))
-        {
-            // If database could be opened run the SQL scripts
-            for(const QString& f : sqlToExecute)
-            {
-                QFile file(f);
-                if(file.open(QIODevice::ReadOnly))
-                {
-                    m_HomeWindow->getDb().executeMultiSQL(file.readAll(), false, true);
-                    file.close();
-                }
-            }
-            if(!sqlToExecute.isEmpty())
-                m_HomeWindow->refresh();
-
-            // Jump to table if the -t/--table parameter was set
-            if(!tableToBrowse.isEmpty())
-                m_HomeWindow->switchToBrowseDataTab(sqlb::ObjectIdentifier("main", tableToBrowse.toStdString()));
-        }*/
-    }
 }
 
 vSongBook::~vSongBook()
@@ -193,6 +174,20 @@ bool vSongBook::isTrue(int value)
 {
     if (value == 0) return false;
     else if (value == 1) return true;
+}
+
+QString vSongBook::ReplaceList(QString text)
+{
+    text = text.replace("\\n", " ");
+    text = text.replace("\\", "");
+    return text;
+}
+
+QString vSongBook::ReplaceView(QString text)
+{
+    text = text.replace("\\n", "\r\n");
+    text = text.replace("\\", "");
+    return text;
 }
 
 QString vSongBook::booltoInt(bool value)

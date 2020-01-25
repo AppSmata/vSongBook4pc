@@ -1,4 +1,5 @@
 #include "vSongView.h"
+#include "vSongBook.h"
 #include "ui_vSongView.h"
 
 #include "sqlite.h"
@@ -135,9 +136,9 @@ void vSongView::ContentPrepare()
 void vSongView::SetPresentation()
 {
 	slideno = slideindex + 1;
-	slide = songverses2[slideindex].replace("\\n", "\n\r");
-	ui->LblTitle->setText(title);
-	ui->LblContent->setText(slide);
+	slide = songverses2[slideindex];
+	ui->LblTitle->setText(vSongBook::ReplaceView(title));
+	ui->LblContent->setText(vSongBook::ReplaceView(slide));
 	ui->LblKey->setText(key);
 	ui->LblAuthor->setText(author);
 	ui->LblSongInfo->setText(book);

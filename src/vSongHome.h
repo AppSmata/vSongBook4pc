@@ -59,6 +59,7 @@ private slots:
     void FontBold();
     void NewSong();
     void OpenEditor();
+    void OpenOnline();
     void ManageBooks();
     void OpenSettings();
 
@@ -110,6 +111,7 @@ private slots:
     void on_actionEdit_triggered();
     void on_actionNewsong_triggered();
     void on_actionSongbooks_triggered();
+    void on_actionOnline_triggered();
 };
 
 #endif // VSONGHOME_H

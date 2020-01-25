@@ -42,6 +42,7 @@ HEADERS += \
     vSongHome.h \
     vSongItemData.h \
     vSongItemDelegate.h \
+    vSongOnline.h \
     vSongPrefs.h \
     vSongView.h \
     version.h \
@@ -122,6 +123,7 @@ SOURCES += \
     vSongEdit.cpp \
     vSongHome.cpp \
     vSongItemDelegate.cpp \
+    vSongOnline.cpp \
     vSongPrefs.cpp \
     vSongView.cpp
 
@@ -150,6 +152,7 @@ FORMS += \
     vSongBooks.ui \
     vSongEdit.ui \
     vSongHome.ui \
+    vSongOnline.ui \
     vSongPrefs.ui \
     vSongView.ui
 

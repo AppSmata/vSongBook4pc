@@ -1,17 +1,21 @@
-#ifndef VITEMDELEGATE_H
-#define VITEMDELEGATE_H
+#ifndef ITEMDELEGATE_H
+#define ITEMDELEGATE_H
 
 #include <QStyledItemDelegate>
+#include <QModelIndex>
+#include <QStandardItemModel>
 
-class vItemDelegate : public QStyledItemDelegate
+class ItemDelegate : public QStyledItemDelegate
 {
+    Q_OBJECT
+signals:
+
 public:
-    vItemDelegate(QObject *parent = nullptr);
+    explicit ItemDelegate(QObject* parent = nullptr);
+    ~ItemDelegate();
 
-    // painting
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
-
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 };
 
-#endif // VITEMDELEGATE_H
+#endif ITEMDELEGATE_H

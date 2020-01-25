@@ -1,4 +1,5 @@
 #include "vSongPrefs.h"
+#include "vSongBook.h"
 #include "ui_vSongPrefs.h"
 #include "sqlite.h"
 #include "RunSql.h"
@@ -6,9 +7,8 @@
 #include <QStandardItemModel>
 #include <QObject>
 
-#include "vSongBook.h"
-#include "vItemData.h"
-#include "vItemDelegate.h"
+#include "ItemData.h"
+#include "ItemDelegate.h"
 
 char* pref_db = "Data/vSongBook.db";
 int fontgeneral, fontpreview, fontpresent;
@@ -173,7 +173,8 @@ void vSongPrefs::LoadNavigation(QString searchstr)
 		navigations.push_back(*(qryResult + i * col + 0));
 
 		QStandardItem* naviItem = new QStandardItem;
-		vItemData navigation;
+		ItemData navigation;
+		navigation.image = "res/settings.png";
 		navigation.title = *(qryResult + i * col + 2);
 		navigation.content = *(qryResult + i * col + 3);
 
@@ -181,9 +182,11 @@ void vSongPrefs::LoadNavigation(QString searchstr)
 		naviModel->appendRow(naviItem);
 	}
 
-	vItemDelegate* itemDelegate = new vItemDelegate(this);
+	ItemDelegate* itemDelegate = new ItemDelegate(this);
 	ui->LstNavigation->setItemDelegate(itemDelegate);
 	ui->LstNavigation->setModel(naviModel);
+	ui->LstNavigation->setSpacing(1);
+	ui->LstNavigation->setStyleSheet("* { background-color: #D3D3D3; }");
 
 	sqlite3_free_table(qryResult);
 	sqlite3_close(db);

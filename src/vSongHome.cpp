@@ -1,3 +1,4 @@
+#include "vSongBook.h"
 #include "vSongHome.h"
 #include "ui_vSongHome.h"
 #include "vSongBook.h"
@@ -11,12 +12,13 @@
 #include <limits>
 #include <QStandardItemModel>
 #include <QObject>
-#include "vItemData.h"
-#include "vItemDelegate.h"
+#include "ItemData.h"
+#include "ItemDelegate.h"
 #include "AboutDialog.h"
 #include "vSongBooks.h"
 #include "vSongEdit.h"
 #include "vSongPrefs.h"
+#include "vSongOnline.h"
 #include "vSongView.h"
 
 int homefont, songfont;
@@ -154,6 +156,12 @@ void vSongHome::OpenEditor()
 	editor.exec();
 }
 
+void vSongHome::OpenOnline()
+{
+    vSongOnline online(this);
+    online.exec();
+}
+
 void vSongHome::OpenSettings()
 {
     vSongPrefs preferences(this);
@@ -202,7 +210,6 @@ bool vSongHome::PopulateSongbooks()
 void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool SearchAll)
 {
 	QStringList strList;
-
 	QStandardItemModel* songModel = new QStandardItemModel();
 	
 	if (songids.size() > 0) {
@@ -279,10 +286,11 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 		songcontents.push_back(contents);
 		songbooks.push_back(*(qryResult + i * col + 7));
 
-		contents = contents.replace("\\n", " ");
+		titles = vSongBook::ReplaceList(titles);
+		contents = vSongBook::ReplaceList(contents);
 
 		QStandardItem* songItem = new QStandardItem;
-		vItemData song;
+		ItemData song;
 		
 		if (titles.length() > 40)
 		{
@@ -302,15 +310,20 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 	}
 
 	ui->LblResult->setText(QString::number(songcount) + searchtotals);
-    vItemDelegate *itemDelegate = new vItemDelegate(this);
+    ItemDelegate *itemDelegate = new ItemDelegate(this);
     ui->LstResults->setItemDelegate(itemDelegate);
     ui->LstResults->setModel(songModel);
+	ui->LstResults->setSpacing(1);
+	ui->LstResults->setStyleSheet("* { background-color: #D3D3D3; }");
 
 	sqlite3_free_table(qryResult);
 	sqlite3_close(db);
 
-	ui->LstResults->setCurrentIndex(songModel->index(0, 0));
-	OpenSongPreview(songModel->index(0, 0));
+	if (songcount > 0)
+	{
+		ui->LstResults->setCurrentIndex(songModel->index(0, 0));
+		OpenSongPreview(songModel->index(0, 0));
+	}
 }
 
 void vSongHome::SongNext()
@@ -328,15 +341,14 @@ void vSongHome::SongNext()
 void vSongHome::OpenSongPreview(const QModelIndex& index)
 {
 	int song = index.row();
-	QString songTitle = songtitles[song];
-	QString songAlias = songaliases[song];
-	QString songContent = songcontents[song].replace("\\n", "\r\n");
+	QString songTitle = vSongBook::ReplaceView(songtitles[song]);
+	QString songAlias = vSongBook::ReplaceView(songaliases[song]);
+	QString songContent = vSongBook::ReplaceView(songcontents[song]);
+
 	vSongBook::SetOption("current_song", songids[song]);
 
 	ui->TxtPreviewTitle->setText(songTitle);
-	//ui->TxtEditorTitle->setText(songTitle);
 	ui->TxtPreviewContent->setPlainText(songContent);
-	//ui->TxtEditorContent->setPlainText(songContent);\
 
 	if (songAlias.length() < 3)
 	{
@@ -500,7 +512,8 @@ void vSongHome::on_actionHow_it_Works_triggered()
 
 void vSongHome::on_actionAbout_triggered()
 {
-
+    AboutDialog about(this);
+    about.exec();
 }
 
 void vSongHome::on_actionExit_triggered()
@@ -562,4 +575,9 @@ void vSongHome::on_actionNewsong_triggered()
 void vSongHome::on_actionSongbooks_triggered()
 {
 	ManageBooks();
+}
+
+void vSongHome::on_actionOnline_triggered()
+{
+    OpenOnline();
 }

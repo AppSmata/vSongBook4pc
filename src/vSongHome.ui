@@ -424,6 +424,7 @@
     <addaction name="actionEdit_Song"/>
     <addaction name="actionDelete_Song"/>
     <addaction name="actionSongbooks"/>
+    <addaction name="actionOnline"/>
    </widget>
    <widget class="QMenu" name="menuSupport">
     <property name="title">
@@ -555,7 +556,7 @@
      <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
    </property>
    <property name="text">
-    <string>About</string>
+    <string>About vSongBook</string>
    </property>
   </action>
   <action name="actionHow_it_Works">
@@ -757,6 +758,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionOnline">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/browser_open</normaloff>:/icons/browser_open</iconset>
+   </property>
+   <property name="text">
+    <string>Online Content</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
  </widget>
