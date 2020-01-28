@@ -1,6 +1,8 @@
-#include "vSongView.h"
+#include "AsBase.h"
+#include "AsUtils.h"
+#include "vSongPresent.h"
 #include "vSongBook.h"
-#include "ui_vSongView.h"
+#include "ui_vSongPresent.h"
 
 #include "sqlite.h"
 #include "RunSql.h"
@@ -12,9 +14,9 @@ int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont;
 QString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide, view_fonty;
 bool haschorus;
 
-vSongView::vSongView(QWidget *parent) :
+vSongPresent::vSongPresent(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::vSongView)
+    ui(new Ui::vSongPresent)
 {
 	GetSettings();
 	ReloadSettings();
@@ -27,7 +29,7 @@ vSongView::vSongView(QWidget *parent) :
 	PresentSong(viewset[23]);
 }
 
-bool vSongView::GetSettings()
+bool vSongPresent::GetSettings()
 {
 	bool retval = false;
 	sqlite3* songsDb;
@@ -52,12 +54,12 @@ bool vSongView::GetSettings()
     return retval;
 }
 
-void vSongView::ReloadSettings()
+void vSongPresent::ReloadSettings()
 {
 	
 }
 
-void vSongView::PresentSong(QString setsongid)
+void vSongPresent::PresentSong(QString setsongid)
 {
 	slides = 0;
 	if (songverses1.size() > 0) songverses1.clear();
@@ -66,10 +68,8 @@ void vSongView::PresentSong(QString setsongid)
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
-
-	QString SqlQuery = "SELECT number, songs.title, alias, songs.content, key, author, books.title FROM songs";
-	SqlQuery.append(" INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + setsongid);
-	QByteArray bar = SqlQuery.toLocal8Bit();
+	
+	QByteArray bar = AsUtils::SONG_SINGLE_SQL(setsongid).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
 	if (rc == SQLITE_OK)
@@ -91,7 +91,7 @@ void vSongView::PresentSong(QString setsongid)
 	}
 }
 
-void vSongView::ContentPrepare()
+void vSongPresent::ContentPrepare()
 {
 	if (content.contains("CHORUS")) haschorus = true;
 	else haschorus = false;
@@ -133,12 +133,12 @@ void vSongView::ContentPrepare()
 	SetPresentation();
 }
 
-void vSongView::SetPresentation()
+void vSongPresent::SetPresentation()
 {
 	slideno = slideindex + 1;
 	slide = songverses2[slideindex];
-	ui->LblTitle->setText(vSongBook::ReplaceView(title));
-	ui->LblContent->setText(vSongBook::ReplaceView(slide));
+	ui->LblTitle->setText(AsBase::ReplaceView(title));
+	ui->LblContent->setText(AsBase::ReplaceView(slide));
 	ui->LblKey->setText(key);
 	ui->LblAuthor->setText(author);
 	ui->LblSongInfo->setText(book);
@@ -163,78 +163,78 @@ void vSongView::SetPresentation()
 	}
 }
 
-vSongView::~vSongView()
+vSongPresent::~vSongPresent()
 {
     delete ui;
 }
 
-void vSongView::on_actionClose_triggered()
+void vSongPresent::on_actionClose_triggered()
 {
     this->close();
 }
 
-void vSongView::on_BtnClose_clicked()
+void vSongPresent::on_BtnClose_clicked()
 {
     this->close();
 }
 
-void vSongView::on_actionLeft_triggered()
+void vSongPresent::on_actionLeft_triggered()
 {
 
 }
 
-void vSongView::on_actionRight_triggered()
+void vSongPresent::on_actionRight_triggered()
 {
 
 }
 
-void vSongView::on_actionBigger_triggered()
+void vSongPresent::on_actionBigger_triggered()
 {
 
 }
 
-void vSongView::on_actionSmaller_triggered()
+void vSongPresent::on_actionSmaller_triggered()
 {
 
 }
 
-void vSongView::on_actionFont_triggered()
+void vSongPresent::on_actionFont_triggered()
 {
 
 }
 
-void vSongView::on_actionBold_triggered()
+void vSongPresent::on_actionBold_triggered()
 {
 
 }
 
-void vSongView::on_actionTheme_triggered()
+void vSongPresent::on_actionTheme_triggered()
 {
 
 }
 
-void vSongView::on_actionChorus_triggered()
+void vSongPresent::on_actionChorus_triggered()
 {
 
 }
 
-void vSongView::on_actionUp_triggered()
+void vSongPresent::on_actionUp_triggered()
 {
 
 }
 
-void vSongView::on_actionDown_triggered()
+void vSongPresent::on_actionDown_triggered()
 {
 
 }
 
 
-void vSongView::on_BtnDown_clicked()
+void vSongPresent::on_BtnDown_clicked()
 {
 
 }
 
-void vSongView::on_BtnUp_clicked()
+void vSongPresent::on_BtnUp_clicked()
 {
 
 }

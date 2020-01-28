@@ -1,5 +1,9 @@
-#include "vSongBooks.h"
-#include "ui_vSongBooks.h"
+#include "AsBase.h"
+#include "AsUtils.h"
+
+#include "vSongBooklist.h"
+#include "ui_vSongBooklist.h"
+
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
@@ -11,29 +15,29 @@
 #include <QMessageBox>
 #include <QLocale>
 
-#include "ItemData.h"
-#include "ItemDelegate.h"
+#include "AsItem.h"
+#include "AsDelegate.h"
 
 char* book_db = "Data/vSongBook.db";
 bool isNewBook;
 std::vector<QString> booksets, booklist;
-QString Songbookid, Title, Code, Content;
+QString Songbookid, Title, Tags, Content;
 
-vSongBooks::vSongBooks(QWidget *parent) :
+vSongBooklist::vSongBooklist(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::vSongBooks)
+    ui(new Ui::vSongBooklist)
 {
     ui->setupUi(this);
 	isNewBook = false;
 	LoadBooklist("");
 }
 
-vSongBooks::~vSongBooks()
+vSongBooklist::~vSongBooklist()
 {
     delete ui;
 }
 
-void vSongBooks::LoadBooklist(QString searchstr)
+void vSongBooklist::LoadBooklist(QString searchstr)
 {
 	QStringList strList;
 
@@ -41,19 +45,11 @@ void vSongBooks::LoadBooklist(QString searchstr)
 
 	if (booklist.size() > 0) booklist.clear();
 
-	QString SqlQuery = "SELECT bookid, title, code, content, songs FROM books";
-
-	if (!searchstr.isEmpty())
-	{
-		SqlQuery.append(" WHERE title LIKE '%" + searchstr + "%' OR code LIKE '%" + searchstr + "%' OR content LIKE '%" + searchstr + "%'");
-	}
-
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col, rc = sqlite3_open_v2(book_db, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	SqlQuery.append(" ORDER BY position");
-	QByteArray bar = SqlQuery.toLocal8Bit();
+	QByteArray bar = AsUtils::BOOK_SEARCH_SQL(searchstr).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
 	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
@@ -63,7 +59,7 @@ void vSongBooks::LoadBooklist(QString searchstr)
 		booklist.push_back(*(qryResult + i * col + 0));
 
 		QStandardItem* bookItem = new QStandardItem;
-		ItemData songbooklist;
+		AsItem songbooklist;
 		songbooklist.title = *(qryResult + i * col + 1);
 
 		QString contents = *(qryResult + i * col + 4);
@@ -76,8 +72,8 @@ void vSongBooks::LoadBooklist(QString searchstr)
 		bookModel->appendRow(bookItem);
 	}
 
-	ItemDelegate* itemDelegate = new ItemDelegate(this);
-	ui->LstBooks->setItemDelegate(itemDelegate);
+	AsDelegate* asDelegate = new AsDelegate(this);
+	ui->LstBooks->setItemDelegate(asDelegate);
 	ui->LstBooks->setModel(bookModel);
 
 	sqlite3_free_table(qryResult);
@@ -90,19 +86,18 @@ void vSongBooks::LoadBooklist(QString searchstr)
 	LoadBook();
 }
 
-void vSongBooks::GetUpdates()
+void vSongBooklist::GetUpdates()
 {
 
 }
 
-void vSongBooks::LoadBook()
+void vSongBooklist::LoadBook()
 {
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col, rc = sqlite3_open_v2(book_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	QString SqlQuery = "SELECT bookid, title, code, content, songs FROM books WHERE bookid=" + Songbookid;
-	QByteArray bar = SqlQuery.toLocal8Bit();
+	QByteArray bar = AsUtils::BOOK_SINGLE_SQL(Songbookid).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
 	if (rc == SQLITE_OK)
@@ -124,19 +119,19 @@ void vSongBooks::LoadBook()
 	}
 }
 
-void vSongBooks::on_LstBooks_clicked(const QModelIndex &index)
+void vSongBooklist::on_LstBooks_clicked(const QModelIndex &index)
 {
 	int setbook = booklist[index.row()].toInt();
 	Songbookid = QString::number(setbook);
 	LoadBook();
 }
 
-void vSongBooks::on_TxtSearch_textChanged(const QString & searchstr)
+void vSongBooklist::on_TxtSearch_textChanged(const QString & searchstr)
 {
 	LoadBooklist(searchstr);
 }
 
-void vSongBooks::SaveNewBook()
+void vSongBooklist::SaveNewBook()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
@@ -147,13 +142,10 @@ void vSongBooks::SaveNewBook()
 	QString timeStr = QString::number(timenow);
 
 	Title = ui->TxtTitle->text();
-	Code = ui->TxtCode->text();
+	Tags = ui->TxtCode->text();
 	Content = ui->TxtContent->toPlainText();
 
-	QString SqlQuery = "INSERT INTO books ( title, code, content, songs, created ) VALUES ( " +
-		Title + "', " + Code + "', " + Content + "', 0, " + timeStr + ")";
-
-	QByteArray bar = SqlQuery.toLocal8Bit();
+	QByteArray bar = AsUtils::BOOK_INSERT_SQL(Title, Tags, Content).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
 	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
@@ -163,7 +155,7 @@ void vSongBooks::SaveNewBook()
 	isNewBook = false;
 }
 
-void vSongBooks::SaveChanges()
+void vSongBooklist::SaveChanges()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
@@ -174,13 +166,10 @@ void vSongBooks::SaveChanges()
 	QString timeStr = QString::number(timenow);
 
 	Title = ui->TxtTitle->text();
-	Code = ui->TxtCode->text();
+	Tags = ui->TxtCode->text();
 	Content = ui->TxtContent->toPlainText();
 
-	QString SqlQuery = "UPDATE books SET title = '" + Title + "', code = '" + Code +
-		"', content = '" + Content + "', updated='" + timeStr + "' WHERE bookid=" + Songbookid;
-
-	QByteArray bar = SqlQuery.toLocal8Bit();
+	QByteArray bar = AsUtils::BOOK_UPDATE_SQL(Songbookid, Title, Tags, Content).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
 	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
@@ -189,26 +178,21 @@ void vSongBooks::SaveChanges()
 	sqlite3_close(db);
 }
 
-void vSongBooks::DeleteBook()
+void vSongBooklist::DeleteBook()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
 	char* zErrMsg = NULL;
 	int row, col, rc = sqlite3_open(book_db, &db);
 
-	QString SqlQuery = "DELETE FROM books WHERE bookid=" + Songbookid + ";";
-	SqlQuery.append("DELETE FROM songs WHERE bookid=" + Songbookid);
-	QByteArray bar = SqlQuery.toLocal8Bit();
-	char* sqlQuery = bar.data();
-
-	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	//rc = sqlite3_exec(db, AsUtils::BOOK_DELETE_SQL(Songbookid), 0, 0, &zErrMsg);
 
 	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	sqlite3_close(db);
 	LoadBooklist("");
 }
 
-void vSongBooks::on_actionNew_triggered()
+void vSongBooklist::on_actionNew_triggered()
 {
 	isNewBook = true;
 	ui->LblDescription->setText("Start a new SongBook!");
@@ -217,18 +201,18 @@ void vSongBooks::on_actionNew_triggered()
 	ui->TxtContent->clear();
 }
 
-void vSongBooks::on_actionSave_triggered()
+void vSongBooklist::on_actionSave_triggered()
 {
 	if (isNewBook) SaveNewBook();
     else SaveChanges();
 	LoadBooklist("");
 }
 
-void vSongBooks::on_actionDelete_triggered()
+void vSongBooklist::on_actionDelete_triggered()
 {
     QMessageBox msgBox;
     msgBox.setText("Oops! Just a minute...");
-    msgBox.setInformativeText("Do you want to proceed with deleting the songbook: " + Title + " (" + Code + ")? " +
+    msgBox.setInformativeText("Do you want to proceed with deleting the songbook: " + Title + " (" + Tags + ")? " +
         "All the songs in this songbook will be lost!");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
@@ -244,13 +228,13 @@ void vSongBooks::on_actionDelete_triggered()
     }
 }
 
-void vSongBooks::on_actionRefresh_triggered()
+void vSongBooklist::on_actionRefresh_triggered()
 {
 	isNewBook = false;
 	LoadBooklist("");
 }
 
-void vSongBooks::on_actionUpdate_triggered()
+void vSongBooklist::on_actionUpdate_triggered()
 {
 	LoadBooklist("");
 }

@@ -1,5 +1,5 @@
-#ifndef VSONGPREFS_H
-#define VSONGPREFS_H
+#ifndef VSONGPREFERENCES_H
+#define VSONGPREFERENCES_H
 
 #include <QDialog>
 #include <QModelIndex>
@@ -7,16 +7,16 @@
 class QStandardItemModel;
 
 namespace Ui {
-class vSongPrefs;
+class vSongPreferences;
 }
 
-class vSongPrefs : public QDialog
+class vSongPreferences : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit vSongPrefs(QWidget *parent = nullptr);
-    ~vSongPrefs();
+    explicit vSongPreferences(QWidget *parent = nullptr);
+    ~vSongPreferences();
 
 private slots:
     bool GetSettings();
@@ -73,8 +73,8 @@ private slots:
     void on_BtnTheme15_clicked();
 
 private:
-    Ui::vSongPrefs*ui;
+    Ui::vSongPreferences*ui;
     QStandardItemModel* naviModel;
 };
 
-#endif VSONGPREFS_H
+#endif VSONGPREFERENCES_H

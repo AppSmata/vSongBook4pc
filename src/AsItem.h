@@ -9,12 +9,12 @@ typedef enum {
     S_YELLOW,
 } ItemStatus;
 
-struct ItemData {
+struct AsItem {
     QString image;
     QString title;
     QString content;
 };
 
-Q_DECLARE_METATYPE(ItemData)
+Q_DECLARE_METATYPE(AsItem)
 
 #endif //ITEMDATA_H

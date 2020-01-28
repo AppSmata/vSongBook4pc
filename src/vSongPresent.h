@@ -1,24 +1,24 @@
-#ifndef VSONGVIEW_H
-#define VSONGVIEW_H
+#ifndef VSONGPRESENT_H
+#define VSONGPRESENT_H
 
 #include "sqlitedb.h"
 #include <QMainWindow>
 
 class RemoteDatabase;
 namespace Ui {
-class vSongView;
+class vSongPresent;
 }
 
-class vSongView : public QMainWindow
+class vSongPresent : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit vSongView(QWidget* parent = nullptr);
-    ~vSongView();
+    explicit vSongPresent(QWidget* parent = nullptr);
+    ~vSongPresent();
 
 private:
-    Ui::vSongView* ui;
+    Ui::vSongPresent* ui;
 
     DBBrowserDB db;
     RemoteDatabase* m_remoteDb;
@@ -47,4 +47,4 @@ private slots:
 
 };
 
-#endif // VSONGVIEW_H
+#endif // VSONGPRESENT_H

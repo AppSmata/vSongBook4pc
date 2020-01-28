@@ -8,7 +8,7 @@
 #include <QAction>
 
 #include "vSongBook.h"
-#include "vSongView.h"
+#include "vSongPresent.h"
 #include "vSongHome.h"
 #include "Settings.h"
 #include "version.h"
@@ -78,8 +78,7 @@ vSongBook::vSongBook(int& argc, char** argv) :
     qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(INT_MAX));
 
     // Parse command line
-    QString fileToOpen;
-    QString tableToBrowse;
+    QString fileToOpen, tableToBrowse;
     QStringList sqlToExecute;
     bool readOnly = false;
     m_dontShowHome = false;
@@ -157,75 +156,13 @@ vSongBook::vSongBook(int& argc, char** argv) :
 
     // Show main window
     m_HomeWindow = new vSongHome();
-    m_HomeWindow->show();
-    //m_ViewWindow = new vSongView();
-    //m_ViewWindow->show();
-    //m_HomeWindow->showMaximized();
+    m_HomeWindow->showMaximized();
     connect(this, &vSongBook::lastWindowClosed, this, &vSongBook::quit);
-
 }
 
 vSongBook::~vSongBook()
 {
     delete m_HomeWindow;
-}
-
-bool vSongBook::isTrue(int value)
-{
-    if (value == 0) return false;
-    else if (value == 1) return true;
-}
-
-QString vSongBook::ReplaceList(QString text)
-{
-    text = text.replace("\\n", " ");
-    text = text.replace("\\", "");
-    return text;
-}
-
-QString vSongBook::ReplaceView(QString text)
-{
-    text = text.replace("\\n", "\r\n");
-    text = text.replace("\\", "");
-    return text;
-}
-
-QString vSongBook::booltoInt(bool value)
-{
-    if (value == true) return "1";
-    else if (value == false) return "0";
-}
-
-int vSongBook::setCmbValue(std::vector<QString> values, QString value)
-{
-    int retvalue;
-    for (int v = 0; v < values.size(); v++)
-    {
-        if (value == values[v]) retvalue = v;
-    }
-    return retvalue;
-}
-
-void vSongBook::SetOption(QString title, QString content)
-{
-    sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
-    char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open("Data/vSongBook.db", &db);
-
-    uint timenow = QDateTime::currentSecsSinceEpoch();
-    QString timeStr = QString::number(timenow);
-
-    QString SqlQuery = "UPDATE settings SET content = '" + content + "', updated='" + timeStr + 
-        "' WHERE title = '" + title + "'";
-
-    QByteArray bar = SqlQuery.toLocal8Bit();
-    char* sqlQuery = bar.data();
-
-    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
-
-    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
-    sqlite3_close(db);
 }
 
 bool vSongBook::event(QEvent* event)

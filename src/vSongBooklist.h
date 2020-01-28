@@ -1,5 +1,5 @@
-#ifndef VSONGBOOKS_H
-#define VSONGBOOKS_H
+#ifndef VSONGBOOKLIST_H
+#define VSONGBOOKLIST_H
 
 #include <QDialog>
 #include <QModelIndex>
@@ -7,16 +7,16 @@
 class QStandardItemModel;
 
 namespace Ui {
-class vSongBooks;
+class vSongBooklist;
 }
 
-class vSongBooks : public QDialog
+class vSongBooklist : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit vSongBooks(QWidget *parent = nullptr);
-    ~vSongBooks();
+    explicit vSongBooklist(QWidget *parent = nullptr);
+    ~vSongBooklist();
 
 private slots:
     void LoadBook();
@@ -36,8 +36,8 @@ private slots:
     void on_actionUpdate_triggered();
 
 private:
-    Ui::vSongBooks *ui;
+    Ui::vSongBooklist*ui;
     QStandardItemModel* bookModel;
 };
 
-#endif // VSONGBOOKS_H
+#endif // VSONGBOOKLIST_H

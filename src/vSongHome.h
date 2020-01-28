@@ -20,7 +20,7 @@ class RemoteDatabase;
 class QStandardItemModel;
 
 namespace Ui {
-class vSongHome;
+    class vSongHome;
 }
 
 class vSongHome : public QMainWindow
@@ -28,7 +28,7 @@ class vSongHome : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit vSongHome(QWidget *parent = nullptr);
+    explicit vSongHome(QWidget* parent = nullptr);
     ~vSongHome();
 
     DBBrowserDB& getDb() { return db; }
@@ -37,7 +37,7 @@ public:
 private:
     Ui::vSongHome* ui;
 
-    QStandardItemModel *songModel;
+    QStandardItemModel* songModel;
 
     DBBrowserDB db;
     RemoteDatabase* m_remoteDb;
@@ -48,12 +48,9 @@ private:
 public slots:
 
 private slots:
-    bool GetSettings();
     void ReloadControls();
     void ReloadSettings();
 
-    void SongLast();
-    void SongNext();
     void FontSmaller();
     void FontBigger();
     void FontBold();
@@ -65,15 +62,15 @@ private slots:
 
     bool PopulateSongbooks();
     void openPresentation();
-    void PopulateSonglists(QString setbook, QString searchstr, bool searchall);
+    void PopulateSonglists(QString Searchstr);
 
-    void on_TxtSearch_textChanged(const QString &searchstr);
+    void on_TxtSearch_textChanged(const QString& searchstr);
     void on_LstResults_clicked(const QModelIndex& selected);
     void OpenSongPreview(const QModelIndex& selected);
 
     void on_CmbSongbooks_currentIndexChanged(int index);
-    void on_LstResults_activated(const QModelIndex &index);
-    void on_LstResults_doubleClicked(const QModelIndex &index);
+    void on_LstResults_activated(const QModelIndex& index);
+    void on_LstResults_doubleClicked(const QModelIndex& index);
 
     void on_actionPresent_triggered();
     void on_actionSave_triggered();

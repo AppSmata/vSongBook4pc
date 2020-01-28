@@ -5,14 +5,14 @@
 #include <QModelIndex>
 #include <QStandardItemModel>
 
-class ItemDelegate : public QStyledItemDelegate
+class AsDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 signals:
 
 public:
-    explicit ItemDelegate(QObject* parent = nullptr);
-    ~ItemDelegate();
+    explicit AsDelegate(QObject* parent = nullptr);
+    ~AsDelegate();
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;

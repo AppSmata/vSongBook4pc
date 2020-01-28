@@ -99,140 +99,146 @@ if(ENABLE_TESTING)
     enable_testing()
 endif()
 
-set(SQLB_HDR
+set(VSB_HDR
+	src/Data.h
+	src/IconCache.h
 	src/version.h
 	src/sql/sqlitetypes.h
 	src/sql/Query.h
 	src/sql/ObjectIdentifier.h
 	src/csvparser.h
 	src/sqlite.h
-	src/Data.h
-	src/IconCache.h
 	src/sql/parser/ParserDriver.h
 	src/sql/parser/sqlite3_lexer.h
 	src/sql/parser/sqlite3_location.h
 	src/sql/parser/sqlite3_parser.hpp
 )
 
-set(SQLB_MOC_HDR
-	src/sqlitedb.h
+set(VSB_MOC_HDR
 	src/AboutDialog.h
-	src/ExportDataDialog.h
-	src/ExtendedTableWidget.h
-	src/FilterTableHeader.h
-	src/ImportCsvDialog.h
-	src/Settings.h
-	src/VacuumDialog.h
-	src/sqlitetablemodel.h
-	src/RowLoader.h
-	src/RowCache.h
-	src/vSongBook.h
+	src/AsBase.h
+	src/AsCheckable.h
+	src/AsDelegate.h
+	src/AsItem.h
+	src/AsUtils.h
 	src/CipherDialog.h
+	src/CipherSettings.h
+	src/CondFormat.h
+	src/CondFormatManager.h
+	src/DbStructureModel.h
+	src/DotenvFormat.h
+	src/ExportDataDialog.h
 	src/ExportSqlDialog.h
+	src/ExtendedTableWidget.h
 	src/FileDialog.h
+	src/FileExtensionManager.h
 	src/FilterLineEdit.h
-	src/RemoteDatabase.h
+	src/FilterTableHeader.h
 	src/ForeignKeyEditorDelegate.h
+	src/ImportCsvDialog.h
+	src/Palette.h
 	src/PlotDock.h
+	src/ProxyDialog.h
+	src/RemoteDatabase.h
 	src/RemoteModel.h
 	src/RemotePushDialog.h
-	src/FileExtensionManager.h
-	src/CondFormatManager.h
-	src/CipherSettings.h
-	src/DotenvFormat.h
-	src/Palette.h
-	src/CondFormat.h
+	src/RowCache.h
+	src/RowLoader.h
 	src/RunSql.h
-	src/ProxyDialog.h
 	src/SelectItemsPopup.h
-	src/DbStructureModel.h
-	src/ItemCheckable.h
-	src/ItemData.h
-	src/ItemDelegate.h
+	src/Settings.h
+	src/sqlitedb.h
+	src/sqlitetablemodel.h
+	src/AsUtils.h
+	src/VacuumDialog.h
 	src/vAppSplash.h
-	src/vSongBooks.h
-	src/vSongEdit.h
+	src/vSongBook.h
+	src/vSongBooklist.h
+	src/vSongEditor.h
 	src/vSongHome.h
-	src/vSongPrefs.h
 	src/vSongOnline.h
-	src/vSongView.h
+	src/vSongPreferences.h
+	src/vSongPresent.h
 )
 
-set(SQLB_SRC
+set(VSB_SRC
 	src/AboutDialog.cpp
-	src/ExportDataDialog.cpp
-	src/ExtendedTableWidget.cpp
-	src/FilterTableHeader.cpp
-	src/ImportCsvDialog.cpp
-	src/Settings.cpp
-	src/VacuumDialog.cpp
-	src/sqlitedb.cpp
-	src/sqlitetablemodel.cpp
-	src/RowLoader.cpp
-	src/sql/sqlitetypes.cpp
-	src/sql/Query.cpp
-	src/sql/ObjectIdentifier.cpp
-	src/csvparser.cpp
-	src/main.cpp
-	src/vSongBook.cpp
+	src/AsBase.cpp
+	src/AsCheckable.cpp
+	src/AsDelegate.cpp
+	src/AsUtils.cpp
 	src/CipherDialog.cpp
+	src/CipherSettings.cpp
+	src/CondFormat.cpp
+	src/CondFormatManager.cpp
+	src/csvparser.cpp
+	src/Data.cpp
+	src/DbStructureModel.cpp
+	src/DotenvFormat.cpp
+	src/ExportDataDialog.cpp
 	src/ExportSqlDialog.cpp
+	src/ExtendedTableWidget.cpp
 	src/FileDialog.cpp
+	src/FileExtensionManager.cpp
 	src/FilterLineEdit.cpp
-	src/RemoteDatabase.cpp
+	src/FilterTableHeader.cpp
 	src/ForeignKeyEditorDelegate.cpp
+	src/IconCache.cpp
+	src/ImportCsvDialog.cpp
+	src/main.cpp
+	src/Palette.cpp
 	src/PlotDock.cpp
+	src/ProxyDialog.cpp
+	src/RemoteDatabase.cpp
 	src/RemoteModel.cpp
 	src/RemotePushDialog.cpp
-	src/FileExtensionManager.cpp
-	src/CondFormatManager.cpp
-	src/Data.cpp
-	src/CipherSettings.cpp
-	src/DotenvFormat.cpp
-	src/Palette.cpp
-	src/CondFormat.cpp
+	src/RowLoader.cpp
 	src/RunSql.cpp
-	src/ProxyDialog.cpp
-	src/IconCache.cpp
 	src/SelectItemsPopup.cpp
-	src/DbStructureModel.cpp
-	src/ItemCheckable.cpp
-	src/ItemDelegate.cpp
-	src/vAppSplash.cpp
-	src/vSongBooks.cpp
-	src/vSongEdit.cpp
-	src/vSongHome.cpp
-	src/vSongPrefs.cpp
-	src/vSongOnline.cpp
-	src/vSongView.cpp
+	src/Settings.cpp
+	src/sql/ObjectIdentifier.cpp
 	src/sql/parser/ParserDriver.cpp
 	src/sql/parser/sqlite3_lexer.cpp
 	src/sql/parser/sqlite3_parser.cpp
+	src/sql/Query.cpp
+	src/sql/sqlitetypes.cpp
+	src/sqlitedb.cpp
+	src/sqlitetablemodel.cpp
+	src/VacuumDialog.cpp
+	src/vAppSplash.cpp
+	src/vSongBook.cpp
+	src/vSongBooklist.cpp
+	src/vSongEditor.cpp
+	src/vSongHome.cpp
+	src/vSongOnline.cpp
+	src/vSongPreferences.cpp
+	src/vSongPresent.cpp
 )
 
-set(SQLB_FORMS
+set(VSB_FORMS
 	src/AboutDialog.ui
-	src/ExportDataDialog.ui
-	src/ImportCsvDialog.ui
-	src/VacuumDialog.ui
 	src/CipherDialog.ui
-	src/ExportSqlDialog.ui
-	src/PlotDock.ui
-	src/RemotePushDialog.ui
-	src/FileExtensionManager.ui
 	src/CondFormatManager.ui
+	src/ExportDataDialog.ui
+	src/ExportSqlDialog.ui
+	src/FileExtensionManager.ui
+	src/ImportCsvDialog.ui
+	src/PlotDock.ui
 	src/ProxyDialog.ui
+	src/RemotePushDialog.ui
 	src/SelectItemsPopup.ui
+	src/VacuumDialog.ui
 	src/vAppSplash.ui
-	src/vSongBooks.ui
-	src/vSongEdit.ui
+	src/vSongBooklist.ui
+	src/vSongEditor.ui
 	src/vSongHome.ui
-	src/vSongPrefs.ui
 	src/vSongOnline.ui
-	src/vSongView.ui
+	src/vSongPreferences.ui
+	src/vSongPresent.ui
+
 )
 
-set(SQLB_RESOURCES
+set(VSB_RESOURCES
 	src/images/images.qrc
 	src/icons/icons.qrc
 	src/translations/flags/flags.qrc
@@ -242,13 +248,13 @@ set(SQLB_RESOURCES
 	src/qstyle/style.qrc
 )
 
-set(SQLB_MISC
+set(VSB_MISC
     src/sql/parser/sqlite3_parser.yy
     src/sql/parser/sqlite3_lexer.ll
 )
 
 # Translation files
-set(SQLB_TSS
+set(VSB_TSS
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_ar_SA.ts"
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_cs.ts"
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_zh.ts"
@@ -296,15 +302,15 @@ set(LICENSE_FILES
 	LICENSE-PLUGINS
 )
 
-qt5_wrap_ui(SQLB_FORM_HDR ${SQLB_FORMS})
-if(SQLB_TSS)
+qt5_wrap_ui(VSB_FORM_HDR ${VSB_FORMS})
+if(VSB_TSS)
 	# add translations
-	foreach(SQLB_TS ${SQLB_TSS})
-		SET_SOURCE_FILES_PROPERTIES("${SQLB_TS}" PROPERTIES OUTPUT_LOCATION "${CMAKE_SOURCE_DIR}/src/translations")
-	endforeach(SQLB_TS ${SQLB_TSS})
-	qt5_add_translation(SQLB_QMS ${SQLB_TSS})
-endif(SQLB_TSS)
-qt5_add_resources(SQLB_RESOURCES_RCC ${SQLB_RESOURCES})
+	foreach(VSB_TS ${VSB_TSS})
+		SET_SOURCE_FILES_PROPERTIES("${VSB_TS}" PROPERTIES OUTPUT_LOCATION "${CMAKE_SOURCE_DIR}/src/translations")
+	endforeach(VSB_TS ${VSB_TSS})
+	qt5_add_translation(VSB_QMS ${VSB_TSS})
+endif(VSB_TSS)
+qt5_add_resources(VSB_RESOURCES_RCC ${VSB_RESOURCES})
 
 #icon and correct libs/subsystem for windows
 if(WIN32)
@@ -315,12 +321,12 @@ if(WIN32)
 	# resource compilation for MinGW
 		ADD_CUSTOM_COMMAND(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o"
 			COMMAND windres "-I${CMAKE_CURRENT_SOURCE_DIR}" "-i${CMAKE_CURRENT_SOURCE_DIR}/src/winapp.rc" -o "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o" VERBATIM)
-		set(SQLB_SRC ${SQLB_SRC} "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o")
+		set(VSB_SRC ${VSB_SRC} "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o")
 		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-subsystem,windows")
 		set(WIN32_STATIC_LINK -Wl,-Bstatic -lssl -lcrypto -lws2_32)
 		set(ADDITIONAL_LIBS lzma)
 	ELSE( MINGW )
-		set(SQLB_SRC ${SQLB_SRC} "${CMAKE_CURRENT_SOURCE_DIR}/src/winapp.rc")
+		set(VSB_SRC ${VSB_SRC} "${CMAKE_CURRENT_SOURCE_DIR}/src/winapp.rc")
 	ENDIF( MINGW )
 else()
 	set(LPTHREAD pthread)
@@ -375,12 +381,12 @@ else()
 endif()
 
 add_executable(${PROJECT_NAME}
-		${SQLB_HDR}
-		${SQLB_SRC}
-		${SQLB_FORM_HDR}
-		${SQLB_MOC}
-		${SQLB_RESOURCES_RCC}
-		${SQLB_MISC})
+		${VSB_HDR}
+		${VSB_SRC}
+		${VSB_FORM_HDR}
+		${VSB_MOC}
+		${VSB_RESOURCES_RCC}
+		${VSB_MISC})
 
 
 # Warnings

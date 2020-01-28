@@ -1,15 +1,15 @@
-#include "ItemCheckable.h"
+#include "AsCheckable.h"
 
-ItemCheckable::ItemCheckable(QObject* parent) :
+AsCheckable::AsCheckable(QObject* parent) :
     QStringListModel(parent) {
 }
 
-ItemCheckable::ItemCheckable(const QStringList& strings, QObject* parent) :
+AsCheckable::AsCheckable(const QStringList& strings, QObject* parent) :
     QStringListModel(strings, parent) {
 
 }
 
-Qt::ItemFlags ItemCheckable::flags(const QModelIndex& index) const {
+Qt::ItemFlags AsCheckable::flags(const QModelIndex& index) const {
     Qt::ItemFlags defaultFlags = QStringListModel::flags(index);
     if (index.isValid()) {
         return defaultFlags | Qt::ItemIsUserCheckable;
@@ -17,7 +17,7 @@ Qt::ItemFlags ItemCheckable::flags(const QModelIndex& index) const {
     return defaultFlags;
 }
 
-QVariant ItemCheckable::data(const QModelIndex& index,
+QVariant AsCheckable::data(const QModelIndex& index,
     int role) const {
     if (!index.isValid())
         return QVariant();
@@ -33,7 +33,7 @@ QVariant ItemCheckable::data(const QModelIndex& index,
     return QStringListModel::data(index, role);
 }
 
-bool ItemCheckable::setData(const QModelIndex& index,
+bool AsCheckable::setData(const QModelIndex& index,
     const QVariant& value, int role) {
 
     if (!index.isValid() || role != Qt::CheckStateRole)
@@ -48,7 +48,7 @@ bool ItemCheckable::setData(const QModelIndex& index,
     return true;
 }
 
-void ItemCheckable::save() {
+void AsCheckable::save() {
     QFile file("required_components.txt");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;

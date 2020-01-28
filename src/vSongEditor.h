@@ -1,5 +1,5 @@
-#ifndef VSONGEDIT_H
-#define VSONGEDIT_H
+#ifndef VSONGEDITOR_H
+#define VSONGEDITOR_H
 
 #include "sqlitedb.h"
 #include <QDialog>
@@ -7,25 +7,24 @@
 class RemoteDatabase;
 
 namespace Ui {
-class vSongEdit;
+class vSongEditor;
 }
 
-class vSongEdit : public QDialog
+class vSongEditor : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit vSongEdit(QWidget *parent = nullptr, bool newSong = false);
-    ~vSongEdit();
+    explicit vSongEditor(QWidget *parent = nullptr, bool newSong = false);
+    ~vSongEditor();
 
 private:
-    Ui::vSongEdit *ui;
+    Ui::vSongEditor*ui;
 
     DBBrowserDB db;
     RemoteDatabase* m_remoteDb;
 
 private slots:
-    bool GetSettings();
     void DeleteSong();
     void ReloadSettings();
     bool PopulateSongbooks();
@@ -37,4 +36,4 @@ private slots:
     void on_actionClear_triggered();
 };
 
-#endif // VSONGEDIT_H
+#endif // VSONGEDITOR_H

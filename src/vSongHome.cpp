@@ -3,6 +3,8 @@
 #include "ui_vSongHome.h"
 #include "vSongBook.h"
 
+#include "AsBase.h"
+#include "AsUtils.h"
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
@@ -12,14 +14,14 @@
 #include <limits>
 #include <QStandardItemModel>
 #include <QObject>
-#include "ItemData.h"
-#include "ItemDelegate.h"
+#include "AsItem.h"
+#include "AsDelegate.h"
 #include "AboutDialog.h"
-#include "vSongBooks.h"
-#include "vSongEdit.h"
-#include "vSongPrefs.h"
+#include "vSongBooklist.h"
+#include "vSongEditor.h"
+#include "vSongPreferences.h"
 #include "vSongOnline.h"
-#include "vSongView.h"
+#include "vSongPresent.h"
 
 int homefont, songfont;
 bool isReady, SearchAll, NightMode, isPreviewBold;
@@ -29,47 +31,29 @@ std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, song
 
 QFont HomeFontPreview, HomeFontGeneral;
 
-vSongHome::vSongHome(QWidget *parent) : QMainWindow(parent), ui(new Ui::vSongHome)
+vSongHome::vSongHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::vSongHome)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	ui->SplitterMain->setStretchFactor(1, 3);
 	isReady = isPreviewBold = false;
 
-	GetSettings();
-	ReloadSettings();
-	if (PopulateSongbooks())
+	if (QFile::exists(AsUtils::DB_FILE()))
 	{
-		PopulateSonglists(bookids[0], "", false);
-		isReady = true;
-	}
-	else {
-        QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
-    }
-}
-
-bool vSongHome::GetSettings()
-{
-	bool retval = false;
-	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(home_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
-
-	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
-
-	if (rc == SQLITE_OK)
-	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
-
-		for (int i = 1; i < row + 1; i++)
+		homesets = AsBase::AppSettings();
+		ReloadSettings();
+		if (PopulateSongbooks())
 		{
-			homesets.push_back(*(qryResult + i * col + 0));
+			PopulateSonglists("");
+			isReady = true;
 		}
-		sqlite3_free_table(qryResult);
-		sqlite3_close(songsDb);
-		retval = true;
+		else {
+			QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
+		}
 	}
-
-	return retval;
+	else
+	{
+		db.create(AsUtils::DB_FILE());
+	}
 }
 
 void vSongHome::ReloadSettings()
@@ -99,22 +83,13 @@ void vSongHome::ReloadControls()
 	ui->TxtPreviewAlias->setFont(HomeFontPreview);
 }
 
-void vSongHome::SongLast()
-{
-	int index = ui->CmbSongbooks->currentIndex();
-	if ((index - 1) > ui->CmbSongbooks->count())
-	{
-		ui->CmbSongbooks->setCurrentIndex(index - 1);
-	}
-}
-
 void vSongHome::FontSmaller()
 {
 	if ((songfont - 2) > 9)
 	{
 		songfont = songfont - 2;
 		HomeFontPreview.setPointSize(songfont);
-		vSongBook::SetOption("preview_font_size", QString::number(songfont));
+		AsBase::SetOption("preview_font_size", QString::number(songfont));
 		ReloadControls();
 	}
 }
@@ -125,7 +100,7 @@ void vSongHome::FontBigger()
 	{
 		songfont = songfont + 2;
 		HomeFontPreview.setPointSize(songfont);
-		vSongBook::SetOption("preview_font_size", QString::number(songfont));
+		AsBase::SetOption("preview_font_size", QString::number(songfont));
 		ReloadControls();
 	}
 }
@@ -140,37 +115,37 @@ void vSongHome::FontBold()
 
 void vSongHome::NewSong()
 {
-    vSongEdit editor(this, true);
-    editor.exec();
+	vSongEditor editor(this, true);
+	editor.exec();
 }
 
 void vSongHome::ManageBooks()
 {
-	vSongBooks books(this);
+	vSongBooklist books(this);
 	books.exec();
 }
 
 void vSongHome::OpenEditor()
 {
-	vSongEdit editor(this, false);
+	vSongEditor editor(this, false);
 	editor.exec();
 }
 
 void vSongHome::OpenOnline()
 {
-    vSongOnline online(this);
-    online.exec();
+	vSongOnline online(this);
+	online.exec();
 }
 
 void vSongHome::OpenSettings()
 {
-    vSongPrefs preferences(this);
-    preferences.exec();
+	vSongPreferences preferences(this);
+	preferences.exec();
 }
 
 void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
 {
-	if (isReady) PopulateSonglists(bookids[index], "", false);
+	if (isReady) PopulateSonglists("");
 }
 
 bool vSongHome::PopulateSongbooks()
@@ -180,18 +155,20 @@ bool vSongHome::PopulateSongbooks()
 
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(home_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col;
+	int rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	char* sqlQuery = "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;";
-
+	QByteArray bar = AsUtils::BOOK_LIST_SQL("1").toLocal8Bit();
+	char* sqlQuery = bar.data();
+	
 	if (rc == SQLITE_OK)
 	{
 		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
 		for (int i = 1; i < row + 1; i++)
 		{
-			QString title = *(qryResult + i * col + 1);
-			QString songs = *(qryResult + i * col + 2);
+			QString title = *(qryResult + i * col + 3);
+			QString songs = *(qryResult + i * col + 5);
 
 			ui->CmbSongbooks->addItem(title + " (" + songs + ")");
 
@@ -204,14 +181,14 @@ bool vSongHome::PopulateSongbooks()
 		retval = true;
 	}
 
-    return retval;
+	return retval;
 }
 
-void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool SearchAll)
+void vSongHome::PopulateSonglists(QString SearchStr)
 {
 	QStringList strList;
 	QStandardItemModel* songModel = new QStandardItemModel();
-	
+
 	if (songids.size() > 0) {
 		songids.clear();
 		songtitles.clear();
@@ -220,50 +197,22 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 		songbooks.clear();
 	}
 
-	QString searchtotals = " songs found in: " + booktitles[ui->CmbSongbooks->currentIndex()];
-
-	QString SqlQuery = "SELECT songid, number, songs.title, alias, songs.content, key, author, books.title, code FROM songs";
-	SqlQuery.append(" INNER JOIN books ON books.bookid = songs.bookid WHERE");
-
-	if (searchstr.isEmpty()) SqlQuery.append(" songs.bookid=" + setbook);
-	else
-	{
-		bool isNumeric;
-		int searchint = searchstr.toInt(&isNumeric, 10);
-		if (SearchAll)
-		{
-			if (isNumeric)
-			{
-				SqlQuery.append(" number=" + searchstr);
-				searchtotals.append(" songs found with number: " + searchstr + "#");
-			}
-			else
-			{
-				SqlQuery.append(" songs.title LIKE '%" + searchstr + "%' OR alias LIKE '%" + searchstr +
-					"%' OR songs.content LIKE '%" + searchstr + "%'");
-				searchtotals.append(" songs found with words: \"" + searchstr + "\"");
-			}
-		}
-		else
-		{
-			if (isNumeric)
-			{
-				SqlQuery.append(" songs.bookid=" + setbook + " AND number=" + searchstr);
-				searchtotals.append(" songs found with number: " + searchstr + "#");
-			}
-			else
-			{
-				SqlQuery.append(" songs.bookid=" + setbook + " AND songs.title LIKE '%" + searchstr + "%' OR songs.bookid=" + setbook + " AND alias LIKE '%" + searchstr + "%' OR songs.bookid=" + setbook + " AND songs.content LIKE '%" + searchstr + "%'");
-				searchtotals.append(" songs found with words: \"" + searchstr + "\"");
-			}
-		}
-	}
+	QString ResultCount = " songs in: " + booktitles[ui->CmbSongbooks->currentIndex()];
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col, rc = sqlite3_open_v2(home_db, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	SqlQuery.append(" ORDER BY number ASC");
+	if (!SearchStr.isEmpty())
+	{
+		ResultCount = " ";
+		bool isNumeric;
+		int searchint = SearchStr.toInt(&isNumeric, 10);
+		if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
+		else ResultCount.append("songs found with: \"" + SearchStr + "\"");
+	}
+
+	QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[ui->CmbSongbooks->currentIndex()], ui->ChkSearchCriteria->isChecked());
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();
 
@@ -271,27 +220,27 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 
 	int songcount = 0;
 	for (int i = 1; i < row + 1; i++)
-	{		
-		QString numberstr = *(qryResult + i * col + 1);
-		QString titlestr = *(qryResult + i * col + 2);
+	{
+		QString numberstr = *(qryResult + i * col + 2);
+		QString titlestr = *(qryResult + i * col + 4);
 		QString titles = numberstr + "# " + titlestr;
-		QString contents = *(qryResult + i * col + 4);
+		QString contents = *(qryResult + i * col + 6);
 
-		if (searchstr.isEmpty()) strList.append(titles);
-		else strList.append(titles + " (" + *(qryResult + i * col + 8) + ")");
+		if (SearchStr.isEmpty()) strList.append(titles);
+		else strList.append(titles + " (" + *(qryResult + i * col + 10) + ")");
 
 		songids.push_back(*(qryResult + i * col + 0));
 		songtitles.push_back(titles);
 		songaliases.push_back(*(qryResult + i * col + 3));
 		songcontents.push_back(contents);
-		songbooks.push_back(*(qryResult + i * col + 7));
+		songbooks.push_back(*(qryResult + i * col + 10));
 
-		titles = vSongBook::ReplaceList(titles);
-		contents = vSongBook::ReplaceList(contents);
+		titles = AsBase::ReplaceList(titles);
+		contents = AsBase::ReplaceList(contents);
 
 		QStandardItem* songItem = new QStandardItem;
-		ItemData song;
-		
+		AsItem song;
+
 		if (titles.length() > 40)
 		{
 			song.title = titles.left(35) + "...";
@@ -309,10 +258,10 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 		songcount++;
 	}
 
-	ui->LblResult->setText(QString::number(songcount) + searchtotals);
-    ItemDelegate *itemDelegate = new ItemDelegate(this);
-    ui->LstResults->setItemDelegate(itemDelegate);
-    ui->LstResults->setModel(songModel);
+	ui->LblResult->setText(QString::number(songcount) + ResultCount);
+	AsDelegate* itemDelegate = new AsDelegate(this);
+	ui->LstResults->setItemDelegate(itemDelegate);
+	ui->LstResults->setModel(songModel);
 	ui->LstResults->setSpacing(1);
 	ui->LstResults->setStyleSheet("* { background-color: #D3D3D3; }");
 
@@ -326,26 +275,14 @@ void vSongHome::PopulateSonglists(QString setbook, QString searchstr, bool Searc
 	}
 }
 
-void vSongHome::SongNext()
-{
-	/*QStandardItemModel* songModel = new QStandardItemModel();
-	QModelIndex index = ui->LstResults->currentIndex();
-	int song = index.row();
-
-	if ((song + 1) < ui->CmbSongbooks->count())
-	{
-		ui->CmbSongbooks->setCurrentIndex(index + 1);
-	}*/
-}
-
 void vSongHome::OpenSongPreview(const QModelIndex& index)
 {
 	int song = index.row();
-	QString songTitle = vSongBook::ReplaceView(songtitles[song]);
-	QString songAlias = vSongBook::ReplaceView(songaliases[song]);
-	QString songContent = vSongBook::ReplaceView(songcontents[song]);
+	QString songTitle = AsBase::ReplaceView(songtitles[song]);
+	QString songAlias = AsBase::ReplaceView(songaliases[song]);
+	QString songContent = AsBase::ReplaceView(songcontents[song]);
 
-	vSongBook::SetOption("current_song", songids[song]);
+	AsBase::SetOption("current_song", songids[song]);
 
 	ui->TxtPreviewTitle->setText(songTitle);
 	ui->TxtPreviewContent->setPlainText(songContent);
@@ -363,13 +300,12 @@ void vSongHome::OpenSongPreview(const QModelIndex& index)
 
 void vSongHome::on_TxtSearch_returnPressed()
 {
-    QString searchText = ui->TxtSearch->text();
-    PopulateSonglists(bookids[0], searchText, true);
+	PopulateSonglists(ui->TxtSearch->text());
 }
 
-void vSongHome::on_TxtSearch_textChanged(const QString &searchstr)
+void vSongHome::on_TxtSearch_textChanged(const QString& SearchStr)
 {
-	PopulateSonglists(bookids[0], searchstr, true);
+	PopulateSonglists(SearchStr);
 }
 
 void vSongHome::on_LstResults_clicked(const QModelIndex& index)
@@ -382,16 +318,16 @@ void vSongHome::on_LstResults_activated(const QModelIndex& index)
 	OpenSongPreview(index);
 }
 
-void vSongHome::on_LstResults_doubleClicked(const QModelIndex &index)
+void vSongHome::on_LstResults_doubleClicked(const QModelIndex& index)
 {
 	OpenSongPreview(index);
-    openPresentation();
+	openPresentation();
 }
 
 void vSongHome::openPresentation()
 {
-	vSongView* present = new vSongView();
-    present->showFullScreen();
+	vSongPresent* present = new vSongPresent();
+	present->showFullScreen();
 }
 
 vSongHome::~vSongHome()
@@ -402,7 +338,7 @@ vSongHome::~vSongHome()
 
 void vSongHome::on_actionPresent_triggered()
 {
-    openPresentation();
+	openPresentation();
 }
 
 void vSongHome::on_actionPresent_Song_triggered()
@@ -492,11 +428,11 @@ void vSongHome::on_actionEdit_Song_triggered()
 
 void vSongHome::on_actionNew_Song_triggered()
 {
-    NewSong();
+	NewSong();
 }
 
 void vSongHome::on_actionManage_Settings_triggered()
-{    
+{
 	OpenSettings();
 }
 
@@ -512,8 +448,8 @@ void vSongHome::on_actionHow_it_Works_triggered()
 
 void vSongHome::on_actionAbout_triggered()
 {
-    AboutDialog about(this);
-    about.exec();
+	AboutDialog about(this);
+	about.exec();
 }
 
 void vSongHome::on_actionExit_triggered()
@@ -538,12 +474,12 @@ void vSongHome::on_actionBigger_triggered()
 
 void vSongHome::on_actionNext_triggered()
 {
-	SongNext();
+	
 }
 
 void vSongHome::on_actionPrevious_triggered()
 {
-	SongLast();
+
 }
 
 void vSongHome::on_actionCancel_triggered()
@@ -564,12 +500,12 @@ void vSongHome::on_actionPreferences_triggered()
 
 void vSongHome::on_actionEdit_triggered()
 {
-    OpenEditor();
+	OpenEditor();
 }
 
 void vSongHome::on_actionNewsong_triggered()
 {
-    NewSong();
+	NewSong();
 }
 
 void vSongHome::on_actionSongbooks_triggered()
@@ -579,5 +515,5 @@ void vSongHome::on_actionSongbooks_triggered()
 
 void vSongHome::on_actionOnline_triggered()
 {
-    OpenOnline();
+	OpenOnline();
 }

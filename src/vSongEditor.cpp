@@ -1,6 +1,9 @@
-#include "vSongEdit.h"
-#include "ui_vSongEdit.h"
+#include "AsBase.h"
+#include "AsUtils.h"
+#include "vSongEditor.h"
+#include "ui_vSongEditor.h"
 #include "vSongBook.h"
+#include "AsBase.h"
 
 #include <QTextCodec>
 #include <QLibraryInfo>
@@ -16,13 +19,13 @@ bool isNewSong;
 std::vector<QString> editset, book_ids, book_titles;
 QString song_id,song_title;
 
-vSongEdit::vSongEdit(QWidget *parent, bool newSong) :
+vSongEditor::vSongEditor(QWidget *parent, bool newSong) :
     QDialog(parent),
-    ui(new Ui::vSongEdit)
+    ui(new Ui::vSongEditor)
 {
 	isNewSong = newSong;
     ui->setupUi(this);
-	GetSettings();
+	editset = AsBase::AppSettings();
 	PopulateSongbooks();
 	if (isNewSong)
 	{
@@ -35,32 +38,7 @@ vSongEdit::vSongEdit(QWidget *parent, bool newSong) :
 	}
 }
 
-bool vSongEdit::GetSettings()
-{
-	bool retval = false;
-	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(edit_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
-
-	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
-
-	if (rc == SQLITE_OK)
-	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
-
-		for (int i = 1; i < row + 1; i++)
-		{
-			editset.push_back(*(qryResult + i * col + 0));
-		}
-		sqlite3_free_table(qryResult);
-		sqlite3_close(songsDb);
-		retval = true;
-	}
-
-	return retval;
-}
-
-bool vSongEdit::PopulateSongbooks()
+bool vSongEditor::PopulateSongbooks()
 {
 	bool retval = false;
 	if (ui->CmbSongbooks->count() > 0) ui->CmbSongbooks->clear();
@@ -69,7 +47,8 @@ bool vSongEdit::PopulateSongbooks()
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col, rc = sqlite3_open_v2(edit_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	char* sqlQuery = "SELECT bookid, title, songs FROM books WHERE enabled=1 ORDER BY position;";
+	QByteArray bar = AsUtils::BOOK_LIST_SQL("1").toLocal8Bit();
+	char* sqlQuery = bar.data();
 
 	if (rc == SQLITE_OK)
 	{
@@ -94,15 +73,13 @@ bool vSongEdit::PopulateSongbooks()
 	return retval;
 }
 
-void vSongEdit::LoadSong()
+void vSongEditor::LoadSong()
 {
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col, rc = sqlite3_open_v2(edit_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	QString SqlQuery = "SELECT number, songs.title, alias, songs.content, key, author, books.title FROM songs";
-	SqlQuery.append(" INNER JOIN books ON books.bookid = songs.bookid WHERE songs.songid=" + song_id);
-	QByteArray bar = SqlQuery.toLocal8Bit();
+	QByteArray bar = AsUtils::SONG_SINGLE_SQL(song_id).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
 	if (rc == SQLITE_OK)
@@ -114,9 +91,9 @@ void vSongEdit::LoadSong()
 		QString lyrics = *(qryResult + 1 * col + 3);
 
 		ui->TxtNumber->setText(*(qryResult + 1 * col + 0));
-		ui->TxtTitle->setText(vSongBook::ReplaceView(song_title));
-		ui->TxtAlias->setText(vSongBook::ReplaceView(alias));
-		ui->TxtContent->setPlainText(vSongBook::ReplaceView(lyrics));
+		ui->TxtTitle->setText(AsBase::ReplaceView(song_title));
+		ui->TxtAlias->setText(AsBase::ReplaceView(alias));
+		ui->TxtContent->setPlainText(AsBase::ReplaceView(lyrics));
 		ui->TxtKey->setText(*(qryResult + 1 * col + 4));
 		ui->TxtAuthor->setText(*(qryResult + 1 * col + 5));
 
@@ -125,12 +102,12 @@ void vSongEdit::LoadSong()
 	}
 }
 
-void vSongEdit::ReloadSettings()
+void vSongEditor::ReloadSettings()
 {
 
 }
 
-void vSongEdit::SaveNewSong()
+void vSongEditor::SaveNewSong()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
@@ -148,20 +125,17 @@ void vSongEdit::SaveNewSong()
 	QString Key = ui->TxtKey->text();
 	QString Author = ui->TxtAuthor->text();
 
-	QString SqlQuery = "INSERT INTO songs ( number, title, alias, content, key, bookid, created ) VALUES ( " + 
-		Number + "', " + Title + "', " + Alias + "', " + Content.replace("\r\n", "\n") + "', " + Key + "', " + 
-		Author + "', " + Bookid + ", " + timeStr + ")";
+	//QByteArray bar = "", //AsUtils::SONG_INSERT_SQL(Number, Title, Alias, Content.replace("\r\n", "\n"), 
+	//	Key, Author, Bookid).toLocal8Bit();
+	//char* sqlQuery = bar.data();
 
-	QByteArray bar = SqlQuery.toLocal8Bit();
-	char* sqlQuery = bar.data();
-
-	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	//rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	sqlite3_close(db);
 }
 
-void vSongEdit::SaveChanges()
+void vSongEditor::SaveChanges()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
@@ -178,36 +152,33 @@ void vSongEdit::SaveChanges()
 	QString Key = ui->TxtKey->text();
 	QString Author = ui->TxtAuthor->text();
 
-	QString SqlQuery = "UPDATE songs SET number = '" + Number + "', title = '" + Title +
-		"', alias = '" + Alias + "', content = '" + Content.replace("\r\n", "\n") + "', key = '" + Key +
-		"', author = '" + Author + "', updated='" + timeStr + "' WHERE songid=" + song_id;
+	//QByteArray bar = "", //AsUtils::SONG_UPDATE_SQL(Number, Title, Alias, Content.replace("\r\n", "\n"),
+	//	Key, Author, song_id).toLocal8Bit();
+	//char* sqlQuery = bar.data();
 
-	QByteArray bar = SqlQuery.toLocal8Bit();
-	char* sqlQuery = bar.data();
-
-	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	//rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	sqlite3_close(db);
 }
 
-vSongEdit::~vSongEdit()
+vSongEditor::~vSongEditor()
 {
     delete ui;
 }
 
-void vSongEdit::on_actionSave_triggered()
+void vSongEditor::on_actionSave_triggered()
 {
 	if (isNewSong) SaveNewSong();
 	else SaveChanges();
 }
 
-void vSongEdit::on_actionDelete_triggered()
+void vSongEditor::on_actionDelete_triggered()
 {
 	QMessageBox msgBox;
 	msgBox.setText("Oops! Just a minute ...");
 	msgBox.setInformativeText("Do you want to proceed with deleting the songbook: " + 
-		vSongBook::ReplaceView(song_title) + "? This action is irrevesible!");
+		AsBase::ReplaceView(song_title) + "? This action is irrevesible!");
 	msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 	msgBox.setDefaultButton(QMessageBox::No);
 	int ret = msgBox.exec();
@@ -222,24 +193,20 @@ void vSongEdit::on_actionDelete_triggered()
 	}
 }
 
-void vSongEdit::DeleteSong()
+void vSongEditor::DeleteSong()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
 	char* zErrMsg = NULL;
 	int row, col, rc = sqlite3_open(edit_db, &db);
 
-	QString SqlQuery = "DELETE FROM songs WHERE songid=" + song_id;
-	QByteArray bar = SqlQuery.toLocal8Bit();
-	char* sqlQuery = bar.data();
-
-	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	rc = sqlite3_exec(db, AsUtils::SONG_DELETE_SQL(song_id), 0, 0, &zErrMsg);
 
 	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	sqlite3_close(db);
 }
 
-void vSongEdit::on_actionClear_triggered()
+void vSongEditor::on_actionClear_triggered()
 {
 	ui->TxtNumber->setText("");
 	ui->TxtTitle->setText("");

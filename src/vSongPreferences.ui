@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>vSongPrefs</class>
- <widget class="QDialog" name="vSongPrefs">
+ <class>vSongPreferences</class>
+ <widget class="QDialog" name="vSongPreferences">
   <property name="geometry">
    <rect>
     <x>0</x>

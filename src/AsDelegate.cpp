@@ -1,5 +1,5 @@
-#include "ItemDelegate.h"
-#include "ItemData.h"
+#include "AsDelegate.h"
+#include "AsItem.h"
 
 #include <QPainter>
 #include <QStyledItemDelegate>
@@ -7,23 +7,23 @@
 #include <QEvent>
 #include <QDebug>
 
-ItemDelegate::ItemDelegate(QObject* parent) :
+AsDelegate::AsDelegate(QObject* parent) :
     QStyledItemDelegate(parent)
 {
 
 }
 
-ItemDelegate::~ItemDelegate()
+AsDelegate::~AsDelegate()
 {
 
 }
 
-void ItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
+void AsDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     if (index.isValid()) {
         painter->save();
         QVariant var = index.data(Qt::UserRole + 1);
-        ItemData item = var.value<ItemData>();
+        AsItem item = var.value<AsItem>();
 
         // item Rectangular area
         QRectF rect;
@@ -88,7 +88,7 @@ void ItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, 
     }
 }
 
-QSize ItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+QSize AsDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     Q_UNUSED(index)
         return QSize(option.rect.width(), 50);

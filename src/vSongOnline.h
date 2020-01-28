@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include "ItemDelegate.h"
+#include "AsDelegate.h"
 
 namespace Ui {
 class vSongOnline;
@@ -19,7 +19,8 @@ public:
     ~vSongOnline();
 
 private slots:
-    void onResult(QNetworkReply* reply);
+    void onBooksResult(QNetworkReply* reply);
+    void onSongsResult(QNetworkReply* reply);
     void createListView();
     void LoadBooks();
     void LoadSongs();
