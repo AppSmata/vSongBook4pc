@@ -35,6 +35,46 @@
      <item>
       <layout class="QVBoxLayout" name="MainPanel">
        <item>
+        <layout class="QHBoxLayout" name="LayoutFeedback">
+         <item>
+          <widget class="QLabel" name="LblFeedback">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Feedback Message</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="BtnFeedback">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="icons/icons.qrc">
+             <normaloff>:/icons/close</normaloff>:/icons/close</iconset>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QComboBox" name="CmbSongbooks"/>
@@ -56,6 +96,7 @@
            <addaction name="actionSave"/>
            <addaction name="actionDelete"/>
            <addaction name="actionClear"/>
+           <addaction name="actionExtra"/>
           </widget>
          </item>
         </layout>
@@ -86,7 +127,7 @@
            <item>
             <widget class="QLineEdit" name="TxtNumber">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -305,8 +346,18 @@
     <string>Clear Text</string>
    </property>
   </action>
+  <action name="actionExtra">
+   <property name="icon">
+    <iconset resource="images/images.qrc">
+     <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
+   </property>
+   <property name="text">
+    <string>Extra Fileds</string>
+   </property>
+  </action>
  </widget>
  <resources>
+  <include location="images/images.qrc"/>
   <include location="icons/icons.qrc"/>
  </resources>
  <connections/>

@@ -37,14 +37,15 @@ HEADERS += \
     RowLoader.h \
     FilterTableHeader.h \
     vAppSplash.h \
-    vSongBooks.h \
-    vSongEdit.h \
+    vSongBooklist.h \
+    vSongEditor.h \
     vSongHome.h \
-    vSongItemData.h \
-    vSongItemDelegate.h \
+    AsItem.h \
+    AsDelegate.h \
     vSongOnline.h \
-    vSongPrefs.h \
-    vSongView.h \
+    vSongPreferences.h \
+    vSongPresent.h \
+    vSongTutorial.h \
     version.h \
     VacuumDialog.h \
     vSongBook.h \
@@ -119,13 +120,14 @@ SOURCES += \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
     sql/parser/sqlite3_parser.cpp \
-    vSongBooks.cpp \
-    vSongEdit.cpp \
+    vSongBooklist.cpp \
+    vSongEditor.cpp \
     vSongHome.cpp \
-    vSongItemDelegate.cpp \
+    AsDelegate.cpp \
     vSongOnline.cpp \
-    vSongPrefs.cpp \
-    vSongView.cpp
+    vSongPreferences.cpp \
+    vSongPresent.cpp \
+    vSongTutorial.cpp
 
 RESOURCES += icons/icons.qrc \
              images/images.qrc \
@@ -149,12 +151,13 @@ FORMS += \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
     vAppSplash.ui \
-    vSongBooks.ui \
-    vSongEdit.ui \
+    vSongBooklist.ui \
+    vSongEditor.ui \
     vSongHome.ui \
     vSongOnline.ui \
-    vSongPrefs.ui \
-    vSongView.ui
+    vSongPreferences.ui \
+    vSongPresent.ui \
+    vSongTutorial.ui
 
 TRANSLATIONS += \
     translations/sqlb_ar_SA.ts \

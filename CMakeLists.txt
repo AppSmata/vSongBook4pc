@@ -159,6 +159,7 @@ set(VSB_MOC_HDR
 	src/vSongOnline.h
 	src/vSongPreferences.h
 	src/vSongPresent.h
+	src/vSongTutorial.h
 )
 
 set(VSB_SRC
@@ -213,6 +214,7 @@ set(VSB_SRC
 	src/vSongOnline.cpp
 	src/vSongPreferences.cpp
 	src/vSongPresent.cpp
+	src/vSongTutorial.cpp
 )
 
 set(VSB_FORMS
@@ -235,6 +237,7 @@ set(VSB_FORMS
 	src/vSongOnline.ui
 	src/vSongPreferences.ui
 	src/vSongPresent.ui
+	src/vSongTutorial.ui
 
 )
 

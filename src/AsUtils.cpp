@@ -51,8 +51,8 @@ QString AsUtils::USERID() { return "userid"; }
 
 QString AsUtils::TIMENOW()
 {
-	uint timenow = QDateTime::currentSecsSinceEpoch();
-	return QString::number(timenow);
+	uint time_now = QDateTime::currentSecsSinceEpoch();
+	return QString::number(time_now);
 }
 
 QString AsUtils::CREATE_BOOKS_TABLE_SQL()
@@ -98,6 +98,7 @@ QString AsUtils::CREATE_SETTINGS_NAVI_TABLE_SQL()
 		NAVID() + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
 		ENABLED() + " INTEGER NOT NULL DEFAULT '0', " +
 		TITLE() + " VARCHAR(100), " +
+		CONTENT() + " VARCHAR(1000), " +
 		EXTRA() + " VARCHAR(100), " +
 		TAGS() + " VARCHAR(50));";
 }
@@ -172,18 +173,18 @@ QString AsUtils::BOOK_SEARCH_SQL(QString Search)
 	return SqlQuery;
 }
 
-QString AsUtils::BOOK_INSERT_SQL(QString Title, QString Tags, QString Content)
+QString AsUtils::BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Songs)
 {
 	return "INSERT INTO " + TBL_BOOKS() +
-		"( " + TITLE() + ", " + TAGS() + ", " + CONTENT() + ", " + QCOUNT() + ", " + CREATED() +
-		" ) VALUES ( " + Title + "', " + Tags + "', " + Content + "', 0, " + TIMENOW() + ")";
+		"( " + TITLE() + ", " + CATEGORYID() + ", " + TAGS() + ", " + CONTENT() + ", " + QCOUNT() + ", " + CREATED() +
+		" ) VALUES ( '" + Title + "', " + Category + "', " + Tags + "', '" + Content + "', " + Songs + ", " + TIMENOW() + ")";
 }
 
 QString AsUtils::BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content)
 {
 	return "UPDATE " + TBL_BOOKS() + " SET " + TITLE() + "='" + Title + "', " + TAGS() + "='" + Tags +
 		"', " + CONTENT() + "='" + Content + "', " + UPDATED() + "='" + TIMENOW() +
-		"' WHERE " + BOOKID() + "='" + Bookid + "'";
+		"' WHERE " + BOOKID() + "=" + Bookid;
 }
 
 QString AsUtils::BOOK_SONGS_COUNT_SQL(QString Bookid, QString Songs)
@@ -244,7 +245,9 @@ QString AsUtils::SONG_SELECT_SQL()
 		TBL_SONGS() + "." + TITLE() + ", " +
 		TBL_SONGS() + "." + TAGS() + ", " +
 		TBL_SONGS() + "." + CONTENT() + ", " +
-		ISFAV() + ", " +
+		KEY() + ", " +
+		AUTHOR() + ", " +
+		ISFAV() + ", " +  
 		TBL_SONGS() + "." + CREATED() + ", " +
 		TBL_SONGS() + "." + UPDATED() + ", " +
 		TBL_BOOKS() + "." + TITLE() +
@@ -305,24 +308,24 @@ QString AsUtils::SONG_SINGLE_SQL(QString Song)
 	return SONG_SELECT_SQL() + " WHERE " + SONGID() + "=" + Song;
 }
 
-QString AsUtils::SONG_INSERT_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid)
+QString AsUtils::SONG_INSERT_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid, QString Categoryid)
 {
 	return "INSERT INTO " + TBL_SONGS() +
-		"( " + NUMBER() + ", " + TITLE() + ", " + ALIAS() + ", " + CONTENT() + ", " + KEY() + ", " +
-		BOOKID() + ", " + CREATED() + " ) VALUES ( " + Number + "', " + Title + "', " + Alias + "', " + Content.replace("\r\n", "\n") + "', " + Key + "', " +
-		Author + "', " + Bookid + ", " + TIMENOW() + ")";
+		"( " + NUMBER() + ", " + TITLE() + ", " + ALIAS() + ", " + CONTENT() + ", " + KEY() + ", " + BOOKID() + ", " +
+		CATEGORYID() + ", " + CREATED() + " ) VALUES ( " + Number + "', " + Title + "', " + Alias + "', " +
+		Content.replace("\r\n", "\n") + "', " + Key + "', " + Author + "', " + Bookid + "', " + Categoryid + ", " + TIMENOW() + ")";
 }
 
 QString AsUtils::SONG_UPDATE_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid)
 {
-	return "UPDATE " + TBL_SONGS() + " SET " + NUMBER() + "='" + Number + "', " + TITLE() + "='" + Title +
-		"', " + ALIAS() + "='" + Alias + "', " + CONTENT() + "='" + Content + "', " + KEY() + "='" + Key +
-		"', " + UPDATED() + "='" + TIMENOW() + "' WHERE " + SONGID() + "='" + Songid + "'";
+	return "UPDATE " + TBL_SONGS() + " SET " + NUMBER() + "=" + Number + ", " + TITLE() + "='" + Title +
+		"', " + ALIAS() + "='" + Alias + "', " + CONTENT() + "='" + Content + "', " + KEY() + "='" + Key + 
+		"', " + AUTHOR() + "='" + Author + "', " + UPDATED() + "='" + TIMENOW() + "' WHERE " + SONGID() + "=" + Songid;
 }
 
 char* AsUtils::SONG_DELETE_SQL(QString Songid)
 {
-	QString SqlQuery = "DELETE FROM " + TBL_SONGS() + " WHERE " + SONGID() + "= " + Songid;
+	QString SqlQuery = "DELETE FROM " + TBL_SONGS() + " WHERE " + SONGID() + "=" + Songid;
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	return bar.data();
 }
@@ -331,4 +334,46 @@ QString AsUtils::UPDATE_SETTINGS_SQL(QString Title, QString Value)
 {
 	return "UPDATE " + TBL_SETTINGS() + " SET " + CONTENT() + "='" + Value + "', " +
 		UPDATED() + "='" + TIMENOW() + "' WHERE " + TITLE() + "='" + Title + "'";
+}
+
+QString AsUtils::SETTINGS_NAVI_SQL()
+{
+	QString SqlQuery = "INSERT INTO " + TBL_SETTINGS_NAVI() + "(" + ENABLED() + ", " + TITLE() + ", " + CONTENT() + 
+		", " + EXTRA() + ", " + TAGS() + ") VALUES ";
+	SqlQuery.append("('1', 'General Options', 'Essential preferences', 'general, overrall', NULL),");
+	SqlQuery.append("('1', 'App Font Options', 'Font Management for the app, preview, presentation', 'fonts, app', NULL),");
+	SqlQuery.append("('1', 'Presentation Themes', 'Set your prefferred theme for presentation', 'projector, projection, presentation', NULL);");
+	return SqlQuery;
+}
+
+QString AsUtils::SETTINGS_SQL()
+{
+	QString SqlQuery = "INSERT INTO " + TBL_SETTINGS() + "(" + TITLE() + ", " + CONTENT() + ", " + CREATED() + ") VALUES ";
+	SqlQuery.append("('install_date', NULL, " + TIMENOW() + "),");
+	SqlQuery.append("('app_user', NULL, " + TIMENOW() + "),");
+	SqlQuery.append("('theme', '3', " + TIMENOW() + "),");
+	SqlQuery.append("('language', 'English', " + TIMENOW() + "),");
+	SqlQuery.append("('show_startpage', '1', " + TIMENOW() + "),");
+	SqlQuery.append("('selected_book', NULL, " + TIMENOW() + "),");
+	SqlQuery.append("('selected_song', NULL, " + TIMENOW() + "),");
+	SqlQuery.append("('list_font_bold', '0', " + TIMENOW() + "),");
+	SqlQuery.append("('general_font_size', '18', " + TIMENOW() + "),");
+	SqlQuery.append("('general_font_type', 'Trebuchet MS', " + TIMENOW() + "),");
+	SqlQuery.append("('general_font_bold','1'," + TIMENOW() + "),");
+	SqlQuery.append("('preview_font_size', '20', " + TIMENOW() + "),");
+	SqlQuery.append("('preview_font_type', 'Trebuchet MS', " + TIMENOW() + "),");
+	SqlQuery.append("('preview_font_bold', '0', " + TIMENOW() + "),");
+	SqlQuery.append("('present_font_size', '40', " + TIMENOW() + "),");
+	SqlQuery.append("('present_font_type', 'Trebuchet MS', " + TIMENOW() + "),");
+	SqlQuery.append("('present_font_bold', '1', " + TIMENOW() + "),");
+	SqlQuery.append("('edit_mode', '0', " + TIMENOW() + "),");
+	SqlQuery.append("('last_window_startup', '1', " + TIMENOW() + "),");
+	SqlQuery.append("('last_window_width', '14085', " + TIMENOW() + "),");
+	SqlQuery.append("('last_window_height', '8655', " + TIMENOW() + "),");
+	SqlQuery.append("('tablet_mode', '0', " + TIMENOW() + "),");
+	SqlQuery.append("('show_help_first', '1', " + TIMENOW() + "),");
+	SqlQuery.append("('current_song', NULL, " + TIMENOW() + "),");
+	SqlQuery.append("('search_allbooks', '1', " + TIMENOW() + "),");
+	SqlQuery.append("('app_theme', '2', " + TIMENOW() + ");");
+	return SqlQuery;
 }

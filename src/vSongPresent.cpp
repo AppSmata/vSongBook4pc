@@ -8,55 +8,274 @@
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
-char* app_db = "Data/vSongBook.db";
-std::vector<QString> songverses1, songverses2, viewset, labels;
-int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont;
+std::vector<QString> songverses1, songverses2, view_set, labels;
+int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont, view_font_size;
 QString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide, view_fonty;
-bool haschorus;
+bool haschorus, isBold;
+QFont PresentFont;
+QIcon iconWhite, iconBlack;
 
 vSongPresent::vSongPresent(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::vSongPresent)
 {
-	GetSettings();
-	ReloadSettings();
-
     ui->setupUi(this);
-    ui->BtnClose->hide();
+	
+	iconWhite.addFile(QString::fromUtf8(":/Down_White.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconBlack.addFile(QString::fromUtf8(":/Down_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
+
+	view_set = AsBase::AppSettings();
+	ui->LblApp->setText(qApp->applicationName() + " " + qApp->applicationVersion() + " - " + view_set[1]);
+	ReloadSettings();
+	if (!AsBase::isTrue(view_set[21].toInt()))
+	{
+		ui->BtnClose->hide();
+	}
     ui->BtnDown->hide();
     ui->BtnUp->hide();
-
-	PresentSong(viewset[23]);
+	this_song = view_set[23].toInt();
+	PresentSong(view_set[23]);
+	SetTheme();
 }
 
-bool vSongPresent::GetSettings()
+void vSongPresent::SetTheme()
 {
-	bool retval = false;
-	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int theme = view_set[25].toInt();
 
-	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
-
-	if (rc == SQLITE_OK)
+	switch (theme)
 	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+		case 1:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
 
-		for (int i = 1; i < row + 1; i++)
-		{
-			viewset.push_back(*(qryResult + i * col + 0));
-		}
-		sqlite3_free_table(qryResult);
-		sqlite3_close(songsDb);
-		retval = true;
+		case 2:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 3:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
+		case 4:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 5:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
+		case 6:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 7:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
+		case 8:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 9:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
+		case 10:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 11:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
+		case 12:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 13:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
+		case 14:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
+			ui->LblApp->setStyleSheet("* { color: #000000; }");
+			ui->LblKey->setStyleSheet("* { color: #000000; }");
+			ui->LblTitle->setStyleSheet("* { color: #000000; }");
+			ui->LblContent->setStyleSheet("* { color: #000000; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
+			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
+			ui->LblVerse->setStyleSheet("* { color: #000000; }");
+			ui->BtnDown->setIcon(iconBlack);
+			ui->BtnUp->setIcon(iconBlack);
+			break;
+
+		case 15:
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
+			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
+			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconWhite);
+			ui->BtnUp->setIcon(iconWhite);
+			break;
+
 	}
-
-    return retval;
 }
 
 void vSongPresent::ReloadSettings()
 {
-	
+	view_font_size = view_set[14].toInt();
+
+	PresentFont.setFamily(view_set[15]);
+	PresentFont.setPointSize(view_font_size);
+	PresentFont.setBold(AsBase::isTrue(view_set[16].toInt()));
+	PresentFont.setWeight(50);
+
+	ReloadControls();	
+}
+
+void vSongPresent::ReloadControls()
+{
+	//ui->LblKey->setFont(PresentFont);
+	ui->LblTitle->setFont(PresentFont);
+	//ui->LblSongInfo->setFont(PresentFont);
+	//ui->LblVerse->setFont(PresentFont);
+	ui->LblContent->setFont(PresentFont);
 }
 
 void vSongPresent::PresentSong(QString setsongid)
@@ -67,22 +286,21 @@ void vSongPresent::PresentSong(QString setsongid)
 
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(app_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 	
 	QByteArray bar = AsUtils::SONG_SINGLE_SQL(setsongid).toLocal8Bit();
 	char* sqlQuery = bar.data();
+	rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
 	if (rc == SQLITE_OK)
 	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
-
-		number = *(qryResult + 1 * col + 0);
-		title = number + ". " + *(qryResult + 1 * col + 1);
-		alias = *(qryResult + 1 * col + 2);
-		content = *(qryResult + 1 * col + 3);
-		key = *(qryResult + 1 * col + 4);
-		author = *(qryResult + 1 * col + 5);
-		book = number + "# " + *(qryResult + 1 * col + 6);
+		number = *(qryResult + 1 * col + 2);
+		title = number + ". " + *(qryResult + 1 * col + 4);
+		alias = *(qryResult + 1 * col + 3);
+		content = *(qryResult + 1 * col + 6);
+		key = *(qryResult + 1 * col + 7);
+		author = *(qryResult + 1 * col + 8);
+		book = number + "# " + *(qryResult + 1 * col + 12);
 
 		sqlite3_free_table(qryResult);
 		sqlite3_close(songsDb);
@@ -121,8 +339,8 @@ void vSongPresent::ContentPrepare()
 			songverses2.push_back(chorus);
 			slides = slides + 2;
 
-			QString label = "VERSE " + k;
-			label.append(" / " + songverses1.size());
+			QString label = "VERSE " + QString::number(k);
+			label.append(" / " + QString::number(songverses1.size()));
 			labels.push_back(label);
 			labels.push_back("CHORUS ");
 			k++;
@@ -147,18 +365,21 @@ void vSongPresent::SetPresentation()
 	if (slideindex == 0)
 	{
 		ui->BtnDown->show();
+		ui->LblBottom->show();
 		ui->BtnUp->hide();
 	}
 
 	else if (slideindex == (slides - 1))
 	{
 		ui->BtnDown->hide();
+		ui->LblBottom->show();
 		ui->BtnUp->show();
 	}
 
 	else
 	{
 		ui->BtnDown->show();
+		ui->LblBottom->hide();
 		ui->BtnUp->show();
 	}
 }
@@ -180,22 +401,46 @@ void vSongPresent::on_BtnClose_clicked()
 
 void vSongPresent::on_actionLeft_triggered()
 {
-
+	if ((view_font_size - 2) > 9)
+	{
+		view_font_size = view_font_size - 2;
+		PresentFont.setPointSize(view_font_size);
+		AsBase::SetOption("present_font_size", QString::number(view_font_size));
+		ReloadControls();
+	}
 }
 
 void vSongPresent::on_actionRight_triggered()
 {
-
+	if ((view_font_size + 2) < 99)
+	{
+		view_font_size = view_font_size + 2;
+		PresentFont.setPointSize(view_font_size);
+		AsBase::SetOption("present_font_size", QString::number(view_font_size));
+		ReloadControls();
+	}
 }
 
 void vSongPresent::on_actionBigger_triggered()
 {
-
+	if ((view_font_size + 2) < 99)
+	{
+		view_font_size = view_font_size + 2;
+		PresentFont.setPointSize(view_font_size);
+		AsBase::SetOption("present_font_size", QString::number(view_font_size));
+		ReloadControls();
+	}
 }
 
 void vSongPresent::on_actionSmaller_triggered()
 {
-
+	if ((view_font_size - 2) > 9)
+	{
+		view_font_size = view_font_size - 2;
+		PresentFont.setPointSize(view_font_size);
+		AsBase::SetOption("present_font_size", QString::number(view_font_size));
+		ReloadControls();
+	}
 }
 
 void vSongPresent::on_actionFont_triggered()
@@ -205,7 +450,10 @@ void vSongPresent::on_actionFont_triggered()
 
 void vSongPresent::on_actionBold_triggered()
 {
-
+	if (isBold) isBold = false;
+	else isBold = true;
+	PresentFont.setBold(isBold);
+	ReloadControls();
 }
 
 void vSongPresent::on_actionTheme_triggered()
@@ -220,21 +468,37 @@ void vSongPresent::on_actionChorus_triggered()
 
 void vSongPresent::on_actionUp_triggered()
 {
-
+	if (slideindex != 0)
+	{
+		slideindex = slideindex - 1;
+		SetPresentation();
+	}
 }
 
 void vSongPresent::on_actionDown_triggered()
 {
-
-}
-
-
-void vSongPresent::on_BtnDown_clicked()
-{
-
+	if (slideindex != (slides - 1))
+	{
+		slideindex = slideindex + 1;
+		SetPresentation();
+	}
 }
 
 void vSongPresent::on_BtnUp_clicked()
 {
-
+	if (slideindex != 0)
+	{
+		slideindex = slideindex - 1;
+		SetPresentation();
+	}
 }
+
+void vSongPresent::on_BtnDown_clicked()
+{
+	if (slideindex != (slides - 1))
+	{
+		slideindex = slideindex + 1;
+		SetPresentation();
+	}
+}
+

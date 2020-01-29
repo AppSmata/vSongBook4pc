@@ -1355,8 +1355,8 @@ Theme</string>
   </layout>
  </widget>
  <resources>
-  <include location="icons/icons.qrc"/>
   <include location="images/images.qrc"/>
+  <include location="icons/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

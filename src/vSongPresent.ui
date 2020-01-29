@@ -66,31 +66,48 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QToolBar" name="ToolbarMain">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="windowTitle">
-           <string notr="true">toolBar1</string>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
-          </property>
-          <addaction name="actionTheme"/>
-          <addaction name="actionFont"/>
-          <addaction name="actionBold"/>
-          <addaction name="actionChorus"/>
-          <addaction name="actionLeft"/>
-          <addaction name="actionRight"/>
-          <addaction name="actionUp"/>
-          <addaction name="actionDown"/>
-          <addaction name="actionSmaller"/>
-          <addaction name="actionBigger"/>
-          <addaction name="actionClose"/>
-         </widget>
+         <layout class="QHBoxLayout" name="HeadLayout">
+          <item>
+           <widget class="QLabel" name="LblApp">
+            <property name="font">
+             <font>
+              <family>Trebuchet MS</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string> vSongBook version2.5.5</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolBar" name="ToolbarMain">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="windowTitle">
+             <string notr="true">toolBar1</string>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <addaction name="actionTheme"/>
+            <addaction name="actionFont"/>
+            <addaction name="actionBold"/>
+            <addaction name="actionChorus"/>
+            <addaction name="actionLeft"/>
+            <addaction name="actionRight"/>
+            <addaction name="actionUp"/>
+            <addaction name="actionDown"/>
+            <addaction name="actionSmaller"/>
+            <addaction name="actionBigger"/>
+            <addaction name="actionClose"/>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <layout class="QHBoxLayout" name="TopLayout">
@@ -236,9 +253,9 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="LblBottomLeft">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -246,7 +263,7 @@
           <property name="minimumSize">
            <size>
             <width>30</width>
-            <height>0</height>
+            <height>55</height>
            </size>
           </property>
           <property name="text">
@@ -257,7 +274,7 @@
         <item>
          <widget class="QLabel" name="LblSongInfo">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -300,6 +317,18 @@
         </item>
         <item>
          <widget class="QLabel" name="LblVerse">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
@@ -310,7 +339,7 @@
            <string>...</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -341,6 +370,25 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="LblBottom">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>55</width>
+            <height>55</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="BtnUp">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -367,9 +415,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="LblBottomRight">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -377,7 +425,7 @@
           <property name="minimumSize">
            <size>
             <width>30</width>
-            <height>0</height>
+            <height>55</height>
            </size>
           </property>
           <property name="text">

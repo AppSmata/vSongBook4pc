@@ -24,11 +24,12 @@ private:
     RemoteDatabase* m_remoteDb;
 
 private slots:
-    bool GetSettings();
     void ReloadSettings();
+    void ReloadControls();
     void PresentSong(QString setsong);
     void ContentPrepare();
     void SetPresentation();
+    void SetTheme();
 
     void on_actionClose_triggered();
     void on_BtnClose_clicked();

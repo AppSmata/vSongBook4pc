@@ -7,10 +7,14 @@
 #include <QEvent>
 #include <QDebug>
 
-AsDelegate::AsDelegate(QObject* parent) :
+QString AsFontFamily;
+int AsFontSize;
+
+AsDelegate::AsDelegate(QObject* parent, QString fontFamily, int fontSize) :
     QStyledItemDelegate(parent)
 {
-
+    AsFontFamily = fontFamily;
+    AsFontSize = fontSize;
 }
 
 AsDelegate::~AsDelegate()
@@ -77,11 +81,11 @@ void AsDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, co
         }
 
         painter->setPen(QPen(QColor(Qt::black)));
-        painter->setFont(QFont("Trebuchen MS", 12, QFont::Bold));
+        painter->setFont(QFont(AsFontFamily, 12, QFont::Bold));
         painter->drawText(itemText1, item.title);
 
         painter->setPen(QPen(Qt::black));
-        painter->setFont(QFont("Trebuchen MS", 12, 0));
+        painter->setFont(QFont(AsFontFamily, 12, 0));
         painter->drawText(itemText2, item.content);
 
         painter->restore();

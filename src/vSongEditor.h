@@ -25,15 +25,18 @@ private:
     RemoteDatabase* m_remoteDb;
 
 private slots:
+    void ShowFeedback(bool show);
     void DeleteSong();
     void ReloadSettings();
     bool PopulateSongbooks();
     void LoadSong();
-    void SaveNewSong();
     void SaveChanges();
+    void ShowExtraFields();
     void on_actionSave_triggered();
     void on_actionDelete_triggered();
     void on_actionClear_triggered();
+    void on_actionExtra_triggered();
+    void on_BtnFeedback_clicked();
 };
 
 #endif // VSONGEDITOR_H

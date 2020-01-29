@@ -16,11 +16,11 @@ int main( int argc, char ** argv )
     QApplication app(argc, argv);
     QPixmap pixmap("res/splash.png");
     QSplashScreen splash(pixmap, Qt::WindowStaysOnTopHint);
-    //splash.show();
+    splash.show();
    
-    //app.thread()->sleep(3);
-    //app.processEvents();
-    //splash.close();
+    app.thread()->sleep(3);
+    app.processEvents();
+    splash.close();
 
     vSongBook vsb(argc, argv);
     setStyle("res/style.qss");

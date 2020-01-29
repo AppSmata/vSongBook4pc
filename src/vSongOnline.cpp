@@ -1,8 +1,11 @@
 #include "vSongOnline.h"
 #include "ui_vSongOnline.h"
 #include "AsItem.h"
-#include <QDebug>
 
+#include "AsBase.h"
+#include "AsUtils.h"
+
+#include <QDebug>
 #include <QtCore>
 #include <QtNetwork>
 #include <QJsonDocument>
@@ -16,11 +19,10 @@
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
-char* onmy_db = "Data/vSongBook.db";
-QString booksresult;
+QString networkresult;
 const int iterations = 20;
 QVector<int> vector;
-std::vector<QString> catids, titles;
+std::vector<QString> catids, titles, tags, contents, songnos;
 QStringList selecteds, selectedBooks;
 
 vSongOnline::vSongOnline(QWidget *parent) :
@@ -51,8 +53,8 @@ void vSongOnline::onBooksResult(QNetworkReply* reply)
     }
     else
     {
-        booksresult = (QString)reply->readAll();
-        QJsonDocument jsonResponse = QJsonDocument::fromJson(booksresult.toUtf8());
+        networkresult = (QString)reply->readAll();
+        QJsonDocument jsonResponse = QJsonDocument::fromJson(networkresult.toUtf8());
         QJsonObject jsonObject = jsonResponse.object();
         QJsonArray jsonArray = jsonObject["data"].toArray();
         
@@ -73,48 +75,10 @@ void vSongOnline::onBooksResult(QNetworkReply* reply)
             book.title = QString::number(count) + ". " + title;
             book.content = songs + " " + code + " songs";
             catids.push_back(obj["categoryid"].toString());
-            titles.push_back(title + " (" + songs + " songs)");
-
-            bookItem->setData(QVariant::fromValue(book), Qt::UserRole + 1);
-            bookModel->appendRow(bookItem);
-            count++;
-        }
-        createListView();
-    }
-}
-
-void vSongOnline::onSongsResult(QNetworkReply* reply)
-{
-    showProgress(false);
-    if (reply->error()) {
-        qDebug() << reply->errorString();
-        return;
-    }
-    else
-    {
-        booksresult = (QString)reply->readAll();
-        QJsonDocument jsonResponse = QJsonDocument::fromJson(booksresult.toUtf8());
-        QJsonObject jsonObject = jsonResponse.object();
-        QJsonArray jsonArray = jsonObject["data"].toArray();
-
-        bookModel = new QStandardItemModel();
-
-        int count = 1;
-        foreach(const QJsonValue & value, jsonArray)
-        {
-            QJsonObject obj = value.toObject();
-            QString title = obj["title"].toString();
-            QString code = obj["backpath"].toString();
-            QString songs = obj["qcount"].toString();
-
-            QStandardItem* bookItem = new QStandardItem;
-            AsItem book;
-
-            book.image = "res/check.png";
-            book.title = QString::number(count) + ". " + title;
-            book.content = songs + " " + code + " songs";
-            catids.push_back(obj["categoryid"].toString());
-            titles.push_back(title + " (" + songs + " songs)");
+            titles.push_back(title);
+            tags.push_back(obj["backpath"].toString());
+            contents.push_back(obj["contents"].toString());
+            songnos.push_back(songs);
 
             bookItem->setData(QVariant::fromValue(book), Qt::UserRole + 1);
             bookModel->appendRow(bookItem);
@@ -180,14 +144,6 @@ void vSongOnline::on_LstBooks_clicked(const QModelIndex &index)
     }
 }
 
-void vSongOnline::LoadSongs()
-{
-    QString books = selectedBooks[0] + "";
-    for (int i = 1; i < selectedBooks.size(); i++) {
-        books = books + "," + selectedBooks[i];
-    }
-}
-
 void vSongOnline::on_BtnProceed_clicked()
 {
     QString selectedones;
@@ -207,7 +163,6 @@ void vSongOnline::on_BtnProceed_clicked()
 
         switch (ret) {
         case QMessageBox::Yes:
-            showProgress(true);
             LoadSongs();
             break;
         default:
@@ -225,6 +180,60 @@ void vSongOnline::on_BtnProceed_clicked()
 void vSongOnline::on_BtnCancel_clicked()
 {
     this->close();
+}
+
+void vSongOnline::LoadSongs()
+{
+    showProgress(true);
+    QString books = selecteds[0];
+    int bookid = selecteds[0].toInt();
+    AsBase::NewBook(titles[bookid], catids[bookid], tags[bookid], contents[bookid], songnos[bookid]);
+
+    for (int i = 1; i < selecteds.size(); i++) {
+        books = books + "," + selecteds[i];
+        int bookid = selecteds[1].toInt();
+        AsBase::NewBook(titles[bookid], catids[bookid], tags[bookid], contents[bookid], songnos[bookid]);
+    }
+
+    qnam = new QNetworkAccessManager();
+    QObject::connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onSongsResult(QNetworkReply*)));
+    request.setUrl(QUrl("http://sing.appsmata.com/as-api/posts-select.php?books=" + books));
+    qnam->get(request);
+}
+
+void vSongOnline::onSongsResult(QNetworkReply* reply)
+{
+    showProgress(false);
+    if (reply->error()) {
+        qDebug() << reply->errorString();
+        return;
+    }
+    else
+    {
+        networkresult = (QString)reply->readAll();
+        QJsonDocument jsonResponse = QJsonDocument::fromJson(networkresult.toUtf8());
+        QJsonObject jsonObject = jsonResponse.object();
+        QJsonArray jsonArray = jsonObject["data"].toArray();
+
+        bookModel = new QStandardItemModel();
+
+        int count = 1;
+        foreach(const QJsonValue & value, jsonArray)
+        {
+            QJsonObject obj = value.toObject();
+
+            QString Bookid = obj["bookid"].toString();
+            QString Categoryid = obj["categoryid"].toString();
+            QString Number = obj["number"].toString();
+            QString Title = obj["title"].toString();
+            QString Alias = obj["alias"].toString();
+            QString Content = obj["content"].toString();
+
+            AsBase::NewSong(Bookid, Categoryid, Number, Title, Alias, Content, "", "");
+            count++;
+        }
+        this->close();
+    }
 }
 
 vSongOnline::~vSongOnline()

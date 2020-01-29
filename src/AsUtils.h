@@ -68,20 +68,22 @@ public:
 	static QString BOOK_LIST_SQL(QString State);
 	static QString BOOK_SINGLE_SQL(QString Book);
 	static QString BOOK_SEARCH_SQL(QString Search);
-	static QString BOOK_INSERT_SQL(QString Title, QString Tags, QString Content);
+	static QString BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Songs);
 	static QString BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content);
 	static QString BOOK_SONGS_COUNT_SQL(QString Bookid, QString Songs);
 	static char* BOOK_DELETE_SQL(QString Bookid);
 
 	static QString HISTORY_SELECT_SQL(QString STATE);
 
+	static QString SETTINGS_SQL();
 	static char* SETTINGS_SELECT_SQL();
+	static QString SETTINGS_NAVI_SQL();
 	static QString SETTINGS_NAVI_SELECT_SQL(QString Search);
 
 	static QString SONG_SELECT_SQL();
 	static QString SONG_SEARCH_SQL(QString SearchStr, QString Bookid, bool SearchAll);
 	static QString SONG_SINGLE_SQL(QString Song);
-	static QString SONG_INSERT_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid);
+	static QString SONG_INSERT_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid, QString Categoryid);
 	static QString SONG_UPDATE_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid);
 	static char* SONG_DELETE_SQL(QString Songid);
 

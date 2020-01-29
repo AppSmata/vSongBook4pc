@@ -22,7 +22,6 @@ private slots:
     void LoadBook();
     void GetUpdates();
     void LoadBooklist(QString searchstr);
-    void SaveNewBook();
     void SaveChanges();
     void DeleteBook();
 

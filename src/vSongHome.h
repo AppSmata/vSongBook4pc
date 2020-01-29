@@ -48,6 +48,7 @@ private:
 public slots:
 
 private slots:
+    void HomeInit();
     void ReloadControls();
     void ReloadSettings();
 
@@ -93,7 +94,6 @@ private slots:
     void on_actionNew_Song_triggered();
     void on_actionManage_Settings_triggered();
     void on_actionReset_Settings_triggered();
-    void on_actionHow_it_Works_triggered();
     void on_actionAbout_triggered();
     void on_actionExit_triggered();
     void on_actionBold_triggered();
@@ -109,6 +109,7 @@ private slots:
     void on_actionNewsong_triggered();
     void on_actionSongbooks_triggered();
     void on_actionOnline_triggered();
+    void on_actionTutorial_triggered();
 };
 
 #endif // VSONGHOME_H

@@ -23,7 +23,7 @@ vSongBook::vSongBook(int& argc, char** argv) :
     // Set organisation and application names
     setOrganizationName("AppSmata Solutions");
     setApplicationName("vSongBook");
-
+    setApplicationVersion("v2.5.5");
     // Set character encoding to UTF8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 

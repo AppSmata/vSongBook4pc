@@ -18,7 +18,6 @@
 #include "AsItem.h"
 #include "AsDelegate.h"
 
-char* book_db = "Data/vSongBook.db";
 bool isNewBook;
 std::vector<QString> booksets, booklist;
 QString Songbookid, Title, Tags, Content;
@@ -47,7 +46,7 @@ void vSongBooklist::LoadBooklist(QString searchstr)
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(book_db, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	QByteArray bar = AsUtils::BOOK_SEARCH_SQL(searchstr).toLocal8Bit();
 	char* sqlQuery = bar.data();
@@ -60,11 +59,12 @@ void vSongBooklist::LoadBooklist(QString searchstr)
 
 		QStandardItem* bookItem = new QStandardItem;
 		AsItem songbooklist;
-		songbooklist.title = *(qryResult + i * col + 1);
+		
+		songbooklist.title = *(qryResult + i * col + 3);
 
-		QString contents = *(qryResult + i * col + 4);
+		QString contents = *(qryResult + i * col + 5);
 		contents.append(" ");
-		contents.append(*(qryResult + i * col + 2));
+		contents.append(*(qryResult + i * col + 4));
 		contents.append(" songs");
 
 		songbooklist.content = contents;
@@ -95,7 +95,7 @@ void vSongBooklist::LoadBook()
 {
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(book_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	QByteArray bar = AsUtils::BOOK_SINGLE_SQL(Songbookid).toLocal8Bit();
 	char* sqlQuery = bar.data();
@@ -104,14 +104,14 @@ void vSongBooklist::LoadBook()
 	{
 		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-		QString title = *(qryResult + 1 * col + 1);
-		QString code = *(qryResult + 1 * col + 2);
-		QString content = *(qryResult + 1 * col + 3);
-		QString songs = *(qryResult + 1 * col + 4);
+		QString title = *(qryResult + 1 * col + 3);
+		QString code = *(qryResult + 1 * col + 4);
+		QString songs = *(qryResult + 1 * col + 5);
+		QString content = *(qryResult + 1 * col + 7);
 
 		ui->LblDescription->setText(title + " (" + code + ") has " + songs + " songs. " + content );
 		ui->TxtTitle->setText(title);
-		ui->TxtCode->setText(*(qryResult + 1 * col + 2));
+		ui->TxtCode->setText(code);
 		ui->TxtContent->setPlainText(content);
 
 		sqlite3_free_table(qryResult);
@@ -131,36 +131,12 @@ void vSongBooklist::on_TxtSearch_textChanged(const QString & searchstr)
 	LoadBooklist(searchstr);
 }
 
-void vSongBooklist::SaveNewBook()
-{
-	sqlite3* db;
-	sqlite3_stmt* sqlqueryStmt;
-	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(book_db, &db);
-
-	uint timenow = QDateTime::currentSecsSinceEpoch();
-	QString timeStr = QString::number(timenow);
-
-	Title = ui->TxtTitle->text();
-	Tags = ui->TxtCode->text();
-	Content = ui->TxtContent->toPlainText();
-
-	QByteArray bar = AsUtils::BOOK_INSERT_SQL(Title, Tags, Content).toLocal8Bit();
-	char* sqlQuery = bar.data();
-
-	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
-
-	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
-	sqlite3_close(db);
-	isNewBook = false;
-}
-
 void vSongBooklist::SaveChanges()
 {
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
 	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(book_db, &db);
+	int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	uint timenow = QDateTime::currentSecsSinceEpoch();
 	QString timeStr = QString::number(timenow);
@@ -183,7 +159,7 @@ void vSongBooklist::DeleteBook()
 	sqlite3* db;
 	sqlite3_stmt* sqlqueryStmt;
 	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(book_db, &db);
+	int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	//rc = sqlite3_exec(db, AsUtils::BOOK_DELETE_SQL(Songbookid), 0, 0, &zErrMsg);
 
@@ -203,7 +179,14 @@ void vSongBooklist::on_actionNew_triggered()
 
 void vSongBooklist::on_actionSave_triggered()
 {
-	if (isNewBook) SaveNewBook();
+	if (isNewBook)
+	{
+		Title = ui->TxtTitle->text();
+		Tags = ui->TxtCode->text();
+		Content = ui->TxtContent->toPlainText();
+		AsBase::NewBook(Title, "", Tags, Content, "0");
+		isNewBook = false;
+	}
     else SaveChanges();
 	LoadBooklist("");
 }

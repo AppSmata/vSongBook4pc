@@ -22,12 +22,12 @@
 #include "vSongPreferences.h"
 #include "vSongOnline.h"
 #include "vSongPresent.h"
+#include "vSongTutorial.h"
 
-int homefont, songfont;
+int home_fontgen, home_fontprev;
 bool isReady, SearchAll, NightMode, isPreviewBold;
-char* home_db = "Data/vSongBook.db";
 QString selected_book, selected_song, search_term;
-std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, homesets;
+std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, home_sets;
 
 QFont HomeFontPreview, HomeFontGeneral;
 
@@ -37,39 +37,55 @@ vSongHome::vSongHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::vSongHom
 	ui->SplitterMain->setStretchFactor(1, 3);
 	isReady = isPreviewBold = false;
 
-	if (QFile::exists(AsUtils::DB_FILE()))
+	this->setWindowTitle(qApp->applicationName() + " " + qApp->applicationVersion());
+
+	if (QFile::exists(AsUtils::DB_FILE())) HomeInit();
+	else
 	{
-		homesets = AsBase::AppSettings();
-		ReloadSettings();
-		if (PopulateSongbooks())
+		db.create(AsUtils::DB_FILE());
+		AsBase::InitialDbOps();
+		HomeInit();
+	}
+}
+
+void vSongHome::HomeInit()
+{
+	home_sets = AsBase::AppSettings();
+	ReloadSettings();
+
+	if (PopulateSongbooks())
+	{
+		if (ui->CmbSongbooks->count() > 0)
 		{
 			PopulateSonglists("");
 			isReady = true;
 		}
-		else {
-			QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
+		else
+		{
+			//ui->MainTabRight->hide();
+			OpenOnline();
 		}
 	}
-	else
-	{
-		db.create(AsUtils::DB_FILE());
+	else {
+		QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
 	}
 }
 
 void vSongHome::ReloadSettings()
 {
-	homefont = homesets[8].toInt();
-	songfont = homesets[11].toInt();
+	home_fontgen = home_sets[8].toInt();
+	home_fontprev = home_sets[11].toInt();
 
-	HomeFontPreview.setFamily(QString::fromUtf8("Trebuchet MS"));
-	HomeFontPreview.setPointSize(songfont);
-	HomeFontPreview.setBold(isPreviewBold);
+	HomeFontGeneral.setFamily(home_sets[9]);
+	HomeFontGeneral.setPointSize(home_fontgen);
+	HomeFontGeneral.setBold(AsBase::isTrue(home_sets[10].toInt()));
+	HomeFontGeneral.setWeight(50);
+
+	HomeFontPreview.setFamily(home_sets[12]);
+	HomeFontPreview.setPointSize(home_fontprev);
+	HomeFontPreview.setBold(AsBase::isTrue(home_sets[13].toInt()));
 	HomeFontPreview.setWeight(50);
 
-	HomeFontGeneral.setFamily(QString::fromUtf8("Trebuchet MS"));
-	HomeFontGeneral.setPointSize(homefont);
-	HomeFontGeneral.setBold(false);
-	HomeFontGeneral.setWeight(50);
 	ReloadControls();
 }
 
@@ -85,22 +101,22 @@ void vSongHome::ReloadControls()
 
 void vSongHome::FontSmaller()
 {
-	if ((songfont - 2) > 9)
+	if ((home_fontprev - 2) > 9)
 	{
-		songfont = songfont - 2;
-		HomeFontPreview.setPointSize(songfont);
-		AsBase::SetOption("preview_font_size", QString::number(songfont));
+		home_fontprev = home_fontprev - 2;
+		HomeFontPreview.setPointSize(home_fontprev);
+		AsBase::SetOption("preview_font_size", QString::number(home_fontprev));
 		ReloadControls();
 	}
 }
 
 void vSongHome::FontBigger()
 {
-	if ((songfont + 2) < 51)
+	if ((home_fontprev + 2) < 51)
 	{
-		songfont = songfont + 2;
-		HomeFontPreview.setPointSize(songfont);
-		AsBase::SetOption("preview_font_size", QString::number(songfont));
+		home_fontprev = home_fontprev + 2;
+		HomeFontPreview.setPointSize(home_fontprev);
+		AsBase::SetOption("preview_font_size", QString::number(home_fontprev));
 		ReloadControls();
 	}
 }
@@ -201,7 +217,7 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(home_db, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	if (!SearchStr.isEmpty())
 	{
@@ -241,16 +257,10 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 		QStandardItem* songItem = new QStandardItem;
 		AsItem song;
 
-		if (titles.length() > 40)
-		{
-			song.title = titles.left(35) + "...";
-		}
+		if (titles.length() > 40) song.title = titles.left(35) + "...";
 		else song.title = titles;
 
-		if (contents.length() > 40)
-		{
-			song.content = contents.left(35) + "...";
-		}
+		if (contents.length() > 40) song.content = contents.left(35) + "...";
 		else song.content = contents;
 
 		songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
@@ -259,7 +269,7 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 	}
 
 	ui->LblResult->setText(QString::number(songcount) + ResultCount);
-	AsDelegate* itemDelegate = new AsDelegate(this);
+	AsDelegate* itemDelegate = new AsDelegate(this, home_sets[9], home_fontgen);
 	ui->LstResults->setItemDelegate(itemDelegate);
 	ui->LstResults->setModel(songModel);
 	ui->LstResults->setSpacing(1);
@@ -441,11 +451,6 @@ void vSongHome::on_actionReset_Settings_triggered()
 
 }
 
-void vSongHome::on_actionHow_it_Works_triggered()
-{
-
-}
-
 void vSongHome::on_actionAbout_triggered()
 {
 	AboutDialog about(this);
@@ -516,4 +521,10 @@ void vSongHome::on_actionSongbooks_triggered()
 void vSongHome::on_actionOnline_triggered()
 {
 	OpenOnline();
+}
+
+void vSongHome::on_actionTutorial_triggered()
+{
+	vSongTutorial* tutorial = new vSongTutorial();
+	tutorial->show();
 }

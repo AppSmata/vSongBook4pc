@@ -11,7 +11,7 @@ class AsDelegate : public QStyledItemDelegate
 signals:
 
 public:
-    explicit AsDelegate(QObject* parent = nullptr);
+    explicit AsDelegate(QObject* parent = nullptr, QString fontFamily = "Trebuchet MS", int fontSize = 25);
     ~AsDelegate();
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;

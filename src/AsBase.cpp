@@ -79,7 +79,7 @@ std::vector<QString> AsBase::AppSettings()
     return settings;
 }
 
-void UpdateSongCount(QString Bookid, QString Count)
+void AsBase::UpdateSongCount(QString Bookid, QString Count)
 {
     sqlite3* db;
     sqlite3_stmt* sqlqueryStmt;
@@ -93,4 +93,69 @@ void UpdateSongCount(QString Bookid, QString Count)
 
     if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
     sqlite3_close(db);
+}
+
+void AsBase::execSQL(QString SqlQuery)
+{
+    sqlite3* db;
+    sqlite3_stmt* sqlqueryStmt;
+    char* zErrMsg = NULL;
+    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+
+    QByteArray bar = SqlQuery.toLocal8Bit();
+    char* sqlQuery = bar.data();
+
+    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+
+    sqlite3_close(db);
+}
+
+void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Content, QString Songs)
+{
+    sqlite3* db;
+    sqlite3_stmt* sqlqueryStmt;
+    char* zErrMsg = NULL;
+    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+
+    uint timenow = QDateTime::currentSecsSinceEpoch();
+    QString timeStr = QString::number(timenow);
+
+    QByteArray bar = AsUtils::BOOK_INSERT_SQL(Title, Category, Tags, Content, Songs).toLocal8Bit();
+    char* sqlQuery = bar.data();
+
+    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+    sqlite3_close(db);
+}
+
+void AsBase::NewSong(QString Bookid, QString Category, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author)
+{
+    sqlite3* db;
+    sqlite3_stmt* sqlqueryStmt;
+    char* zErrMsg = NULL;
+    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+
+    QByteArray bar = AsUtils::SONG_INSERT_SQL(Number, Title, Alias, Content, Key, Author, Bookid, Category).toLocal8Bit();
+    char* sqlQuery = bar.data();
+
+    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+    sqlite3_close(db);
+}
+
+void AsBase::InitialDbOps()
+{
+    QString timenow = AsUtils::TIMENOW();
+    AsBase::execSQL(AsUtils::CREATE_BOOKS_TABLE_SQL());
+    AsBase::execSQL(AsUtils::CREATE_HISTORY_TABLE_SQL());
+    AsBase::execSQL(AsUtils::CREATE_SETTINGS_NAVI_TABLE_SQL());
+    AsBase::execSQL(AsUtils::CREATE_SETTINGS_TABLE_SQL());
+    AsBase::execSQL(AsUtils::CREATE_SONGS_TABLE_SQL());
+
+    AsBase::execSQL(AsUtils::SETTINGS_NAVI_SQL());    
+    AsBase::execSQL(AsUtils::SETTINGS_SQL());
 }
