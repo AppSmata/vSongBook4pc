@@ -6,7 +6,6 @@
 class AsUtils
 {
 public:
-
 	static QString DB_FILE();
 	static char* APP_DB();
 

@@ -189,20 +189,50 @@
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="ChkSearchCriteria">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Search All Songbooks</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QCheckBox" name="ChkSearchCriteria">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Search All Songbooks</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Sunken</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="ChkDarkMode">
+                <property name="text">
+                 <string>Dark Mode</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <widget class="QLabel" name="LblResult">
@@ -323,6 +353,7 @@
               <addaction name="actionBigger"/>
               <addaction name="actionSmaller"/>
               <addaction name="actionBold"/>
+              <addaction name="actionFont"/>
               <addaction name="actionPreferences"/>
              </widget>
             </item>
@@ -423,6 +454,10 @@
     <addaction name="actionNew_Song"/>
     <addaction name="actionEdit_Song"/>
     <addaction name="actionDelete_Song"/>
+    <addaction name="separator"/>
+    <addaction name="actionSearch"/>
+    <addaction name="actionSearchAll"/>
+    <addaction name="separator"/>
     <addaction name="actionSongbooks"/>
     <addaction name="actionOnline"/>
    </widget>
@@ -442,13 +477,14 @@
     <property name="title">
      <string>View</string>
     </property>
-    <addaction name="actionPresent_Song"/>
     <addaction name="separator"/>
     <addaction name="actionSmaller_Font"/>
     <addaction name="actionBigger_Font"/>
     <addaction name="separator"/>
     <addaction name="actionChange_Font"/>
     <addaction name="actionBold_Text"/>
+    <addaction name="separator"/>
+    <addaction name="actionDarkMode"/>
    </widget>
    <widget class="QMenu" name="menuContact_Us">
     <property name="title">
@@ -479,43 +515,13 @@
     <string>F5</string>
    </property>
   </action>
-  <action name="actionPrevious">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/last.png</normaloff>:/icons/last.png</iconset>
-   </property>
-   <property name="text">
-    <string>Previous</string>
-   </property>
-   <property name="toolTip">
-    <string>Previous Song</string>
-   </property>
-   <property name="shortcut">
-    <string>Left</string>
-   </property>
-  </action>
-  <action name="actionNext">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/next.png</normaloff>:/icons/next.png</iconset>
-   </property>
-   <property name="text">
-    <string>Next</string>
-   </property>
-   <property name="toolTip">
-    <string>Next Song</string>
-   </property>
-   <property name="shortcut">
-    <string>Right</string>
-   </property>
-  </action>
   <action name="actionBigger">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
      <normaloff>:/icons/bigger.png</normaloff>:/icons/bigger.png</iconset>
    </property>
    <property name="text">
-    <string>Bigger</string>
+    <string>+</string>
    </property>
    <property name="toolTip">
     <string>Bigger Text</string>
@@ -530,7 +536,7 @@
      <normaloff>:/icons/smaller.png</normaloff>:/icons/smaller.png</iconset>
    </property>
    <property name="text">
-    <string>Smaller</string>
+    <string>-</string>
    </property>
    <property name="toolTip">
     <string>Smaller Text</string>
@@ -665,33 +671,6 @@
     <string>Ctrl+U</string>
    </property>
   </action>
-  <action name="actionPresent_Song">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/present.png</normaloff>:/icons/present.png</iconset>
-   </property>
-   <property name="text">
-    <string>Present Song</string>
-   </property>
-  </action>
-  <action name="actionPrevious_Song">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/last.png</normaloff>:/icons/last.png</iconset>
-   </property>
-   <property name="text">
-    <string>Previous Song</string>
-   </property>
-  </action>
-  <action name="actionNext_Song">
-   <property name="icon">
-    <iconset resource="icons/icons.qrc">
-     <normaloff>:/icons/next.png</normaloff>:/icons/next.png</iconset>
-   </property>
-   <property name="text">
-    <string>Next Song</string>
-   </property>
-  </action>
   <action name="actionBigger_Font">
    <property name="icon">
     <iconset resource="icons/icons.qrc">
@@ -734,7 +713,7 @@
      <normaloff>:/icons/keyword</normaloff>:/icons/keyword</iconset>
    </property>
    <property name="text">
-    <string>Preferences</string>
+    <string>Options</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -746,7 +725,7 @@
      <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
    </property>
    <property name="text">
-    <string>Edit Song</string>
+    <string>Edit</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -758,7 +737,7 @@
      <normaloff>:/icons/field_add</normaloff>:/icons/field_add</iconset>
    </property>
    <property name="text">
-    <string>New Song</string>
+    <string>New</string>
    </property>
   </action>
   <action name="actionSongbooks">
@@ -808,6 +787,52 @@
   <action name="actionBug_Report">
    <property name="text">
     <string>Bug Report</string>
+   </property>
+  </action>
+  <action name="actionFont">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/font.png</normaloff>:/icons/font.png</iconset>
+   </property>
+   <property name="text">
+    <string>Font</string>
+   </property>
+   <property name="toolTip">
+    <string>Change Font Type</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/icons/find</normaloff>:/icons/find</iconset>
+   </property>
+   <property name="text">
+    <string>Search a Song</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionSearchAll">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Search all Songs</string>
+   </property>
+  </action>
+  <action name="actionDarkMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dark Mode</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+D</string>
    </property>
   </action>
  </widget>

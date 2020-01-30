@@ -19,6 +19,7 @@ public:
     ~vSongPreferences();
 
 private slots:
+    void SelectedTheme(int theme);
     bool GetSettings();
     void ReloadSettings();
     void SetUpStuff();

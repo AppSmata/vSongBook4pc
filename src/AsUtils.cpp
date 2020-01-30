@@ -375,5 +375,6 @@ QString AsUtils::SETTINGS_SQL()
 	SqlQuery.append("('current_song', NULL, " + TIMENOW() + "),");
 	SqlQuery.append("('search_allbooks', '1', " + TIMENOW() + "),");
 	SqlQuery.append("('app_theme', '2', " + TIMENOW() + ");");
+	SqlQuery.append("('dark_mode', '0', " + TIMENOW() + ");");
 	return SqlQuery;
 }

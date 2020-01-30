@@ -14,7 +14,7 @@
 
 char* pref_db = "Data/vSongBook.db";
 int fontgeneral, fontpreview, fontpresent;
-std::vector<QString> prefsets, navigations, languages, fontFamily;
+std::vector<QString> pref_sets, navigations, languages, pref_fonts;
 QFont PrefFontGeneral, PrefFontPreview, PrefFontPresent;
 
 vSongPreferences::vSongPreferences(QWidget* parent) :
@@ -25,11 +25,6 @@ vSongPreferences::vSongPreferences(QWidget* parent) :
 	GetSettings();
 	ReloadSettings();
 	SetUpStuff();
-}
-
-vSongPreferences::~vSongPreferences()
-{
-	delete ui;
 }
 
 bool vSongPreferences::GetSettings()
@@ -47,7 +42,7 @@ bool vSongPreferences::GetSettings()
 
 		for (int i = 1; i < row + 1; i++)
 		{
-			prefsets.push_back(*(qryResult + i * col + 0));
+			pref_sets.push_back(*(qryResult + i * col + 0));
 		}
 		sqlite3_free_table(qryResult);
 		sqlite3_close(songsDb);
@@ -59,45 +54,47 @@ bool vSongPreferences::GetSettings()
 
 void vSongPreferences::ReloadSettings()
 {
-	fontgeneral = prefsets[8].toInt();
-	fontpreview = prefsets[11].toInt();
-	fontpresent = prefsets[14].toInt();
+	fontgeneral = pref_sets[8].toInt();
+	fontpreview = pref_sets[11].toInt();
+	fontpresent = pref_sets[14].toInt();
 
-	ui->BtnTabletMode->setChecked(AsBase::isTrue(prefsets[21].toInt()));
-	ui->BtnSearchCriteria->setChecked(AsBase::isTrue(prefsets[24].toInt()));
-	ui->BtnGeneralAppFont->setChecked(AsBase::isTrue(prefsets[10].toInt()));
-	ui->BtnSongPreviewFont->setChecked(AsBase::isTrue(prefsets[13].toInt()));
-	ui->BtnSongPresentFont->setChecked(AsBase::isTrue(prefsets[16].toInt()));
+	ui->BtnTabletMode->setChecked(AsBase::isTrue(pref_sets[21].toInt()));
+	ui->BtnSearchCriteria->setChecked(AsBase::isTrue(pref_sets[24].toInt()));
+	ui->BtnGeneralAppFont->setChecked(AsBase::isTrue(pref_sets[10].toInt()));
+	ui->BtnSongPreviewFont->setChecked(AsBase::isTrue(pref_sets[13].toInt()));
+	ui->BtnSongPresentFont->setChecked(AsBase::isTrue(pref_sets[16].toInt()));
 
-	ui->CmbLanguage->setCurrentIndex(AsBase::setCmbValue(languages, prefsets[3]));
-	ui->CmbGeneralAppFont->setCurrentIndex(AsBase::setCmbValue(fontFamily, prefsets[9]));
-	ui->CmbSongPreviewFont->setCurrentIndex(AsBase::setCmbValue(fontFamily, prefsets[12]));
-	ui->CmbSongPresentFont->setCurrentIndex(AsBase::setCmbValue(fontFamily, prefsets[15]));
+	ui->CmbLanguage->setCurrentIndex(AsBase::setCmbValue(languages, pref_sets[3]));
+	ui->CmbGeneralAppFont->setCurrentIndex(AsBase::setCmbValue(pref_fonts, pref_sets[9]));
+	ui->CmbSongPreviewFont->setCurrentIndex(AsBase::setCmbValue(pref_fonts, pref_sets[12]));
+	ui->CmbSongPresentFont->setCurrentIndex(AsBase::setCmbValue(pref_fonts, pref_sets[15]));
 
-	ui->TxtYourName->setText(prefsets[1]);
+	ui->TxtYourName->setText(pref_sets[1]);
 
-	PrefFontGeneral.setFamily(prefsets[9]);
+	PrefFontGeneral.setFamily(pref_sets[9]);
 	PrefFontGeneral.setPointSize(fontgeneral);
-	PrefFontGeneral.setBold(AsBase::isTrue(prefsets[10].toInt()));
+	PrefFontGeneral.setBold(AsBase::isTrue(pref_sets[10].toInt()));
 	PrefFontGeneral.setWeight(50);
 
-	PrefFontPreview.setFamily(prefsets[12]);
+	PrefFontPreview.setFamily(pref_sets[12]);
 	PrefFontPreview.setPointSize(fontpreview);
-	PrefFontPreview.setBold(AsBase::isTrue(prefsets[13].toInt()));
+	PrefFontPreview.setBold(AsBase::isTrue(pref_sets[13].toInt()));
 	PrefFontPreview.setWeight(50);
 
-	PrefFontPresent.setFamily(prefsets[15]);
+	PrefFontPresent.setFamily(pref_sets[15]);
 	PrefFontPresent.setPointSize(fontpresent);
-	PrefFontPresent.setBold(AsBase::isTrue(prefsets[16].toInt()));
+	PrefFontPresent.setBold(AsBase::isTrue(pref_sets[16].toInt()));
 	PrefFontPresent.setWeight(50);
 
-	ui->GrpGeneralAppFont->setTitle(" App General Font " + prefsets[8] + " ");
-	ui->GrpSongPreviewFont->setTitle(" Song Preview Font " + prefsets[11] + " ");
-	ui->GrpSongPresentFont->setTitle(" Song Presentation Font " + prefsets[14] + " ");
+	ui->GrpGeneralAppFont->setTitle(" App General Font " + pref_sets[8] + " ");
+	ui->GrpSongPreviewFont->setTitle(" Song Preview Font " + pref_sets[11] + " ");
+	ui->GrpSongPresentFont->setTitle(" Song Presentation Font " + pref_sets[14] + " ");
 
 	ui->SldGeneralAppFont->setValue(fontgeneral);
 	ui->SldSongPreviewFont->setValue(fontpreview);
 	ui->SldSongPresentFont->setValue(fontpresent);
+
+	SelectedTheme(pref_sets[25].toInt());
 }
 
 void vSongPreferences::SetUpStuff()
@@ -118,30 +115,306 @@ void vSongPreferences::SetUpStuff()
 		ui->CmbLanguage->addItem(languages[l]);
 	}
 
-	fontFamily.clear();
+	pref_fonts.clear();
 	ui->CmbGeneralAppFont->clear();
 	ui->CmbSongPreviewFont->clear();
 	ui->CmbSongPresentFont->clear();
 
-	fontFamily.push_back("Arial");
-	fontFamily.push_back("Calibri");
-	fontFamily.push_back("Century Gothic");
-	fontFamily.push_back("Comic Sans MS");
-	fontFamily.push_back("Corbel");
-	fontFamily.push_back("Courier New");
-	fontFamily.push_back("Palatino");
-	fontFamily.push_back("Linotype");
-	fontFamily.push_back("Tahoma");
-	fontFamily.push_back("Tempus Sans ITC");
-	fontFamily.push_back("Times New Roman");
-	fontFamily.push_back("Trebuchet MS");
-	fontFamily.push_back("Verdana");
+	pref_fonts.push_back("Arial");
+	pref_fonts.push_back("Calibri");
+	pref_fonts.push_back("Century Gothic");
+	pref_fonts.push_back("Comic Sans MS");
+	pref_fonts.push_back("Corbel");
+	pref_fonts.push_back("Courier New");
+	pref_fonts.push_back("Palatino");
+	pref_fonts.push_back("Linotype");
+	pref_fonts.push_back("Tahoma");
+	pref_fonts.push_back("Tempus Sans ITC");
+	pref_fonts.push_back("Times New Roman");
+	pref_fonts.push_back("Trebuchet MS");
+	pref_fonts.push_back("Verdana");
 
-	for (int f = 0; f < fontFamily.size(); f++)
+	for (int f = 0; f < pref_fonts.size(); f++)
 	{
-		ui->CmbGeneralAppFont->addItem(fontFamily[f]);
-		ui->CmbSongPreviewFont->addItem(fontFamily[f]);
-		ui->CmbSongPresentFont->addItem(fontFamily[f]);
+		ui->CmbGeneralAppFont->addItem(pref_fonts[f]);
+		ui->CmbSongPreviewFont->addItem(pref_fonts[f]);
+		ui->CmbSongPresentFont->addItem(pref_fonts[f]);
+	}
+}
+
+void vSongPreferences::SelectedTheme(int theme)
+{
+	switch (theme)
+	{
+		case 1:
+			ui->BtnTheme1->setChecked(true);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 2:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(true);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 3:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(true);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 4:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(true);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 5:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(true);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 6:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(true);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 7:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(true);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 8:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(true);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 9:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(true);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 10:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(true);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 11:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(true);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 12:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(true);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 13:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(true);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 14:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(true);
+			ui->BtnTheme15->setChecked(false);
+			break;
+
+		case 15:
+			ui->BtnTheme1->setChecked(false);
+			ui->BtnTheme2->setChecked(false);
+			ui->BtnTheme3->setChecked(false);
+			ui->BtnTheme4->setChecked(false);
+			ui->BtnTheme5->setChecked(false);
+			ui->BtnTheme6->setChecked(false);
+			ui->BtnTheme7->setChecked(false);
+			ui->BtnTheme8->setChecked(false);
+			ui->BtnTheme9->setChecked(false);
+			ui->BtnTheme10->setChecked(false);
+			ui->BtnTheme11->setChecked(false);
+			ui->BtnTheme12->setChecked(false);
+			ui->BtnTheme13->setChecked(false);
+			ui->BtnTheme14->setChecked(false);
+			ui->BtnTheme15->setChecked(true);
+			break;
 	}
 }
 
@@ -297,7 +570,7 @@ void vSongPreferences::on_SldGeneralAppFont_valueChanged(int value)
 
 void vSongPreferences::on_CmbGeneralAppFont_currentIndexChanged(int index)
 {
-	QString newfont = fontFamily[index];
+	QString newfont = pref_fonts[index];
 	PrefFontGeneral.setFamily(newfont);
 	ui->TxtSampleText->setFont(PrefFontGeneral);
 	AsBase::SetOption("general_font_type", newfont);
@@ -335,7 +608,7 @@ void vSongPreferences::on_SldSongPreviewFont_valueChanged(int value)
 
 void vSongPreferences::on_CmbSongPreviewFont_currentIndexChanged(int index)
 {
-	QString newfont = fontFamily[index];
+	QString newfont = pref_fonts[index];
 	PrefFontPreview.setFamily(newfont);
 	ui->TxtSampleText->setFont(PrefFontPreview);
 	AsBase::SetOption("preview_font_type", newfont);
@@ -373,7 +646,7 @@ void vSongPreferences::on_SldSongPresentFont_valueChanged(int value)
 
 void vSongPreferences::on_CmbSongPresentFont_currentIndexChanged(int index)
 {
-	QString newfont = fontFamily[index];
+	QString newfont = pref_fonts[index];
 	PrefFontPresent.setFamily(newfont);
 	ui->TxtSampleText->setFont(PrefFontPresent);
 	AsBase::SetOption("present_font_type", newfont);
@@ -389,299 +662,94 @@ void vSongPreferences::on_BtnSongPresentFont_clicked()
 void vSongPreferences::on_BtnTheme1_clicked()
 {
 	AsBase::SetOption("app_theme", "1");
-	ui->BtnTheme1->setChecked(true);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(1);
 }
 
 void vSongPreferences::on_BtnTheme2_clicked()
 {
 	AsBase::SetOption("app_theme", "2");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(true);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(2);
 }
 
 void vSongPreferences::on_BtnTheme3_clicked()
 {
 	AsBase::SetOption("app_theme", "3");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(true);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(3);
 }
 
 void vSongPreferences::on_BtnTheme4_clicked()
 {
 	AsBase::SetOption("app_theme", "4");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(true);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(4);
 }
 
 void vSongPreferences::on_BtnTheme5_clicked()
 {
 	AsBase::SetOption("app_theme", "5");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(true);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(5);
 }
 
 void vSongPreferences::on_BtnTheme6_clicked()
 {
 	AsBase::SetOption("app_theme", "6");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(true);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(6);
 }
 
 void vSongPreferences::on_BtnTheme7_clicked()
 {
 	AsBase::SetOption("app_theme", "7");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(true);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(7);
 }
 
 void vSongPreferences::on_BtnTheme8_clicked()
 {
 	AsBase::SetOption("app_theme", "8");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(true);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(8);
 }
 
 void vSongPreferences::on_BtnTheme9_clicked()
 {
 	AsBase::SetOption("app_theme", "9");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(true);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(9);
 }
 
 void vSongPreferences::on_BtnTheme10_clicked()
 {
 	AsBase::SetOption("app_theme", "10");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(true);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(10);
 }
 
 void vSongPreferences::on_BtnTheme11_clicked()
 {
 	AsBase::SetOption("app_theme", "11");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(true);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(11);
 }
 
 void vSongPreferences::on_BtnTheme12_clicked()
 {
 	AsBase::SetOption("app_theme", "12");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(true);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(12);
 }
 
 void vSongPreferences::on_BtnTheme13_clicked()
 {
 	AsBase::SetOption("app_theme", "13");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(true);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(13);
 }
 
 void vSongPreferences::on_BtnTheme14_clicked()
 {
 	AsBase::SetOption("app_theme", "14");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(true);
-	ui->BtnTheme15->setChecked(false);
+	SelectedTheme(14);
 }
 
 void vSongPreferences::on_BtnTheme15_clicked()
 {
 	AsBase::SetOption("app_theme", "15");
-	ui->BtnTheme1->setChecked(false);
-	ui->BtnTheme2->setChecked(false);
-	ui->BtnTheme3->setChecked(false);
-	ui->BtnTheme4->setChecked(false);
-	ui->BtnTheme5->setChecked(false);
-	ui->BtnTheme6->setChecked(false);
-	ui->BtnTheme7->setChecked(false);
-	ui->BtnTheme8->setChecked(false);
-	ui->BtnTheme9->setChecked(false);
-	ui->BtnTheme10->setChecked(false);
-	ui->BtnTheme11->setChecked(false);
-	ui->BtnTheme12->setChecked(false);
-	ui->BtnTheme13->setChecked(false);
-	ui->BtnTheme14->setChecked(false);
-	ui->BtnTheme15->setChecked(true);
+	SelectedTheme(15);
+}
+
+vSongPreferences::~vSongPreferences()
+{
+	delete ui;
 }

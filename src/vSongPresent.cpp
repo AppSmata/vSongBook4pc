@@ -8,250 +8,181 @@
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
-std::vector<QString> songverses1, songverses2, view_set, labels;
-int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont, view_font_size;
+std::vector<QString> songverses1, songverses2, labels, view_set, view_fonts;
+int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont, view_font_size, view_fonttype, view_theme;
 QString setsong, bookid, songid, number, title, alias, content, key, author, book, chorus, slide, view_fonty;
 bool haschorus, isBold;
 QFont PresentFont;
-QIcon iconWhite, iconBlack;
+QIcon iconDownWhite, iconDownBlack, iconUpWhite, iconUpBlack;
 
 vSongPresent::vSongPresent(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::vSongPresent)
 {
     ui->setupUi(this);
+	SetUpStuff();
 	
-	iconWhite.addFile(QString::fromUtf8(":/Down_White.png"), QSize(), QIcon::Normal, QIcon::Off);
-	iconBlack.addFile(QString::fromUtf8(":/Down_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
-
-	view_set = AsBase::AppSettings();
-	ui->LblApp->setText(qApp->applicationName() + " " + qApp->applicationVersion() + " - " + view_set[1]);
-	ReloadSettings();
-	if (!AsBase::isTrue(view_set[21].toInt()))
-	{
-		ui->BtnClose->hide();
-	}
-    ui->BtnDown->hide();
-    ui->BtnUp->hide();
 	this_song = view_set[23].toInt();
 	PresentSong(view_set[23]);
 	SetTheme();
 }
 
+void vSongPresent::SetUpStuff()
+{
+	view_fonts.push_back("Arial");
+	view_fonts.push_back("Calibri");
+	view_fonts.push_back("Century Gothic");
+	view_fonts.push_back("Comic Sans MS");
+	view_fonts.push_back("Corbel");
+	view_fonts.push_back("Courier New");
+	view_fonts.push_back("Palatino");
+	view_fonts.push_back("Linotype");
+	view_fonts.push_back("Tahoma");
+	view_fonts.push_back("Tempus Sans ITC");
+	view_fonts.push_back("Times New Roman");
+	view_fonts.push_back("Trebuchet MS");
+	view_fonts.push_back("Verdana");
+
+	iconDownWhite.addFile(QString::fromUtf8(":/Down_White.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconDownBlack.addFile(QString::fromUtf8(":/Down_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
+
+	iconUpWhite.addFile(QString::fromUtf8(":/Up_White.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconUpBlack.addFile(QString::fromUtf8(":/Up_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
+
+	view_set = AsBase::AppSettings();
+	ui->LblApp->setText(qApp->applicationName() + " " + qApp->applicationVersion() + " - " + view_set[1]);
+	ReloadSettings();
+
+	if (!AsBase::isTrue(view_set[21].toInt()))
+	{
+		ui->BtnClose->hide();
+	}
+	ui->BtnDown->hide();
+	ui->BtnUp->hide();
+
+	if (view_set[12] == "Arial") view_fonttype = 1;
+	else if (view_set[12] == "Calibri") view_fonttype = 2;
+	else if (view_set[12] == "Century Gothic") view_fonttype = 3;
+	else if (view_set[12] == "Comic Sans MS") view_fonttype = 4;
+	else if (view_set[12] == "Corbel") view_fonttype = 5;
+	else if (view_set[12] == "Courier New") view_fonttype = 6;
+	else if (view_set[12] == "Palatino") view_fonttype = 7;
+	else if (view_set[12] == "Linotype") view_fonttype = 8;
+	else if (view_set[12] == "Tahoma") view_fonttype = 9;
+	else if (view_set[12] == "Tempus Sans ITC") view_fonttype = 10;
+	else if (view_set[12] == "Trebuchet MS") view_fonttype = 11;
+	else if (view_set[12] == "Verdana") view_fonttype = 12;
+
+	view_theme = view_set[25].toInt();
+}
+
 void vSongPresent::SetTheme()
 {
-	int theme = view_set[25].toInt();
-
-	switch (theme)
+	switch (view_theme)
 	{
 		case 1:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 2:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 3:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #A9A9A9; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #A9A9A9; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 4:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 5:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #0000FF; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #0000FF; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 6:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #0000FF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #0000FF; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 7:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #00FF00; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #00FF00; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 8:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #00FF00; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #00FF00; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 9:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFA500; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFA500; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 10:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #FFA500; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #FFA500; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 11:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FF0000; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FF0000; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 12:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #FF0000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #FF0000; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 13:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; color: #FFFF00; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; color: #FFFF00; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 		case 14:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; }");
-			ui->LblApp->setStyleSheet("* { color: #000000; }");
-			ui->LblKey->setStyleSheet("* { color: #000000; }");
-			ui->LblTitle->setStyleSheet("* { color: #000000; }");
-			ui->LblContent->setStyleSheet("* { color: #000000; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #000000; }");
-			ui->LblAuthor->setStyleSheet("* { color: #000000; }");
-			ui->LblVerse->setStyleSheet("* { color: #000000; }");
-			ui->BtnDown->setIcon(iconBlack);
-			ui->BtnUp->setIcon(iconBlack);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #FFFF00; color: #000000; }");
+			ui->statusbar->setStyleSheet("* { background-color: #FFFF00; color: #000000; }");
+			ui->BtnDown->setIcon(iconDownBlack);
+			ui->BtnUp->setIcon(iconUpBlack);
 			break;
 
 		case 15:
-			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; }");
-			ui->statusbar->setStyleSheet("* { background-color: #000000; }");
-			ui->LblApp->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblKey->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblTitle->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblContent->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblSongInfo->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblAuthor->setStyleSheet("* { color: #FFFFFF; }");
-			ui->LblVerse->setStyleSheet("* { color: #FFFFFF; }");
-			ui->BtnDown->setIcon(iconWhite);
-			ui->BtnUp->setIcon(iconWhite);
+			ui->WidgetCentral->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
+			ui->statusbar->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
+			ui->BtnDown->setIcon(iconDownWhite);
+			ui->BtnUp->setIcon(iconUpWhite);
 			break;
 
 	}
@@ -445,7 +376,20 @@ void vSongPresent::on_actionSmaller_triggered()
 
 void vSongPresent::on_actionFont_triggered()
 {
+	switch (view_fonttype)
+	{
+		case 12:
+			view_fonttype = 1;
+			PresentFont.setFamily(view_fonts[view_fonttype]);
+			AsBase::SetOption("present_font_type", view_fonts[view_fonttype]);
+			ReloadControls();
 
+		default:
+			view_fonttype = view_fonttype + 1;
+			PresentFont.setFamily(view_fonts[view_fonttype]);
+			AsBase::SetOption("present_font_type", view_fonts[view_fonttype]);
+			ReloadControls();
+	}
 }
 
 void vSongPresent::on_actionBold_triggered()
@@ -458,7 +402,17 @@ void vSongPresent::on_actionBold_triggered()
 
 void vSongPresent::on_actionTheme_triggered()
 {
+	switch (view_theme)
+	{
+		case 15:
+			view_theme = 1;
+			AsBase::SetOption("app_theme", QString::number(view_theme));
 
+		default:
+			view_theme = view_theme + 1;
+			AsBase::SetOption("app_theme", QString::number(view_theme));
+	}
+	SetTheme();
 }
 
 void vSongPresent::on_actionChorus_triggered()

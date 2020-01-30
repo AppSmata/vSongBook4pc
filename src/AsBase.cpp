@@ -159,3 +159,21 @@ void AsBase::InitialDbOps()
     AsBase::execSQL(AsUtils::SETTINGS_NAVI_SQL());    
     AsBase::execSQL(AsUtils::SETTINGS_SQL());
 }
+
+void AsBase::ResetSettings()
+{
+    sqlite3* db;
+    sqlite3_stmt* sqlqueryStmt;
+    char* zErrMsg = NULL;
+    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+
+    QByteArray bar = "DROP TABLE " + AsUtils::TBL_SETTINGS().toLocal8Bit();
+    char* sqlQuery = bar.data();
+
+    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+
+    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+    sqlite3_close(db);
+    
+    AsBase::execSQL(AsUtils::SETTINGS_NAVI_SQL());
+}

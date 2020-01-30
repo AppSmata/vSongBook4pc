@@ -49,20 +49,16 @@ public slots:
 
 private slots:
     void HomeInit();
+    void SetDarkMode();
     void ReloadControls();
     void ReloadSettings();
 
+    void FontChange();
     void FontSmaller();
     void FontBigger();
     void FontBold();
-    void NewSong();
-    void OpenEditor();
-    void OpenOnline();
-    void ManageBooks();
-    void OpenSettings();
 
     bool PopulateSongbooks();
-    void openPresentation();
     void PopulateSonglists(QString Searchstr);
 
     void on_TxtSearch_textChanged(const QString& searchstr);
@@ -74,21 +70,13 @@ private slots:
     void on_LstResults_doubleClicked(const QModelIndex& index);
 
     void on_actionPresent_triggered();
-    void on_actionSave_triggered();
-    void on_actionPresent_Song_triggered();
     void on_actionBold_Text_triggered();
     void on_actionChange_Font_triggered();
     void on_actionSmaller_Font_triggered();
     void on_actionBigger_Font_triggered();
-    void on_actionNext_Song_triggered();
-    void on_actionPrevious_Song_triggered();
     void on_actionCheck_Updates_triggered();
     void on_actionContribute_triggered();
     void on_actionDonate_triggered();
-    void on_actionUpdate_Songbooks_triggered();
-    void on_actionManage_Songbooks_triggered();
-    void on_actionEdit_Songbook_triggered();
-    void on_actionNew_Songbook_triggered();
     void on_actionDelete_Song_triggered();
     void on_actionEdit_Song_triggered();
     void on_actionNew_Song_triggered();
@@ -99,9 +87,6 @@ private slots:
     void on_actionBold_triggered();
     void on_actionSmaller_triggered();
     void on_actionBigger_triggered();
-    void on_actionNext_triggered();
-    void on_actionPrevious_triggered();
-    void on_actionCancel_triggered();
     void on_actionDelete_triggered();
     void on_actionPreferences_triggered();
     void on_TxtSearch_returnPressed();
@@ -110,6 +95,12 @@ private slots:
     void on_actionSongbooks_triggered();
     void on_actionOnline_triggered();
     void on_actionTutorial_triggered();
+    void on_actionFont_triggered();
+    void on_actionSearch_triggered();
+    void on_actionSearchAll_triggered();
+    void on_ChkSearchCriteria_clicked();
+    void on_actionDarkMode_triggered();
+    void on_ChkDarkMode_clicked();
 };
 
 #endif // VSONGHOME_H

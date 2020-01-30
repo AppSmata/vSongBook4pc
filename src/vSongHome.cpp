@@ -24,10 +24,11 @@
 #include "vSongPresent.h"
 #include "vSongTutorial.h"
 
-int home_fontgen, home_fontprev;
-bool isReady, SearchAll, NightMode, isPreviewBold;
+int home_fontgen, home_fontprev, home_fonttype;
+bool isReady, searchAll, isDarkMode, isPreviewBold;
 QString selected_book, selected_song, search_term;
-std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, home_sets;
+std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories;
+std::vector<QString> home_fonts, home_sets;
 
 QFont HomeFontPreview, HomeFontGeneral;
 
@@ -35,7 +36,8 @@ vSongHome::vSongHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::vSongHom
 {
 	ui->setupUi(this);
 	ui->SplitterMain->setStretchFactor(1, 3);
-	isReady = isPreviewBold = false;
+	isReady = false; 
+	ui->ChkDarkMode->hide();
 
 	this->setWindowTitle(qApp->applicationName() + " " + qApp->applicationVersion());
 
@@ -62,8 +64,8 @@ void vSongHome::HomeInit()
 		}
 		else
 		{
-			//ui->MainTabRight->hide();
-			OpenOnline();
+			vSongOnline online(this);
+			online.exec();
 		}
 	}
 	else {
@@ -73,6 +75,10 @@ void vSongHome::HomeInit()
 
 void vSongHome::ReloadSettings()
 {
+	isPreviewBold = AsBase::isTrue(home_sets[13].toInt());
+	searchAll = AsBase::isTrue(home_sets[24].toInt());
+	isDarkMode = AsBase::isTrue(home_sets[26].toInt());
+
 	home_fontgen = home_sets[8].toInt();
 	home_fontprev = home_sets[11].toInt();
 
@@ -83,20 +89,71 @@ void vSongHome::ReloadSettings()
 
 	HomeFontPreview.setFamily(home_sets[12]);
 	HomeFontPreview.setPointSize(home_fontprev);
-	HomeFontPreview.setBold(AsBase::isTrue(home_sets[13].toInt()));
+	HomeFontPreview.setBold(isPreviewBold);
 	HomeFontPreview.setWeight(50);
 
+	home_fonts.push_back("Arial");
+	home_fonts.push_back("Calibri");
+	home_fonts.push_back("Century Gothic");
+	home_fonts.push_back("Comic Sans MS");
+	home_fonts.push_back("Corbel");
+	home_fonts.push_back("Courier New");
+	home_fonts.push_back("Palatino");
+	home_fonts.push_back("Linotype");
+	home_fonts.push_back("Tahoma");
+	home_fonts.push_back("Tempus Sans ITC");
+	home_fonts.push_back("Times New Roman");
+	home_fonts.push_back("Trebuchet MS");
+	home_fonts.push_back("Verdana");
+
+	if (home_sets[12] == "Arial") home_fonttype = 1;
+	else if (home_sets[12] == "Calibri") home_fonttype = 2;
+	else if (home_sets[12] == "Century Gothic") home_fonttype = 3;
+	else if (home_sets[12] == "Comic Sans MS") home_fonttype = 4;
+	else if (home_sets[12] == "Corbel") home_fonttype = 5;
+	else if (home_sets[12] == "Courier New") home_fonttype = 6;
+	else if (home_sets[12] == "Palatino") home_fonttype = 7;
+	else if (home_sets[12] == "Linotype") home_fonttype = 8;
+	else if (home_sets[12] == "Tahoma") home_fonttype = 9;
+	else if (home_sets[12] == "Tempus Sans ITC") home_fonttype = 10;
+	else if (home_sets[12] == "Trebuchet MS") home_fonttype = 11;
+	else if (home_sets[12] == "Verdana") home_fonttype = 12;
+
 	ReloadControls();
+	SetDarkMode();
 }
 
 void vSongHome::ReloadControls()
 {
+	ui->ChkSearchCriteria->setChecked(searchAll);
+	ui->actionSearchAll->setChecked(searchAll);
+	ui->ChkDarkMode->setChecked(isDarkMode);
+	ui->actionDarkMode->setChecked(isDarkMode);
+
 	ui->TxtSearch->setFont(HomeFontGeneral);
 	ui->CmbSongbooks->setFont(HomeFontGeneral);
 
 	ui->TxtPreviewTitle->setFont(HomeFontPreview);
 	ui->TxtPreviewContent->setFont(HomeFontPreview);
 	ui->TxtPreviewAlias->setFont(HomeFontPreview);
+}
+
+void vSongHome::FontChange()
+{
+	switch (home_fonttype)
+	{
+		case 12:
+			home_fonttype = 1;
+			HomeFontPreview.setFamily(home_fonts[home_fonttype]);
+			AsBase::SetOption("preview_font_type", home_fonts[home_fonttype]);
+			ReloadControls();
+
+		default:
+			home_fonttype = home_fonttype + 1;
+			HomeFontPreview.setFamily(home_fonts[home_fonttype]);
+			AsBase::SetOption("preview_font_type", home_fonts[home_fonttype]);
+			ReloadControls();
+	}
 }
 
 void vSongHome::FontSmaller()
@@ -127,36 +184,6 @@ void vSongHome::FontBold()
 	else isPreviewBold = true;
 	HomeFontPreview.setBold(isPreviewBold);
 	ReloadControls();
-}
-
-void vSongHome::NewSong()
-{
-	vSongEditor editor(this, true);
-	editor.exec();
-}
-
-void vSongHome::ManageBooks()
-{
-	vSongBooklist books(this);
-	books.exec();
-}
-
-void vSongHome::OpenEditor()
-{
-	vSongEditor editor(this, false);
-	editor.exec();
-}
-
-void vSongHome::OpenOnline()
-{
-	vSongOnline online(this);
-	online.exec();
-}
-
-void vSongHome::OpenSettings()
-{
-	vSongPreferences preferences(this);
-	preferences.exec();
 }
 
 void vSongHome::on_CmbSongbooks_currentIndexChanged(int index)
@@ -200,6 +227,34 @@ bool vSongHome::PopulateSongbooks()
 	return retval;
 }
 
+void vSongHome::SetDarkMode()
+{
+	if (isDarkMode)
+	{
+		ui->WidgetCentral->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
+		ui->statusbar->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
+	}
+	else
+	{
+		ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
+		ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
+	}
+	/*delete ui;
+	ui->setupUi(this);
+	ui->SplitterMain->setStretchFactor(1, 3);
+	isReady = false;
+
+	this->setWindowTitle(qApp->applicationName() + " " + qApp->applicationVersion());
+
+	if (QFile::exists(AsUtils::DB_FILE())) HomeInit();
+	else
+	{
+		db.create(AsUtils::DB_FILE());
+		AsBase::InitialDbOps();
+		HomeInit();
+	}*/
+}
+
 void vSongHome::PopulateSonglists(QString SearchStr)
 {
 	QStringList strList;
@@ -228,7 +283,7 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 		else ResultCount.append("songs found with: \"" + SearchStr + "\"");
 	}
 
-	QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[ui->CmbSongbooks->currentIndex()], ui->ChkSearchCriteria->isChecked());
+	QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[ui->CmbSongbooks->currentIndex()], searchAll);
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();
 
@@ -331,64 +386,34 @@ void vSongHome::on_LstResults_activated(const QModelIndex& index)
 void vSongHome::on_LstResults_doubleClicked(const QModelIndex& index)
 {
 	OpenSongPreview(index);
-	openPresentation();
+	vSongPresent* present = new vSongPresent();
+	present->showFullScreen();
 }
 
-void vSongHome::openPresentation()
+void vSongHome::on_actionPresent_triggered()
 {
 	vSongPresent* present = new vSongPresent();
 	present->showFullScreen();
 }
 
-vSongHome::~vSongHome()
-{
-	delete ui;
-}
-
-
-void vSongHome::on_actionPresent_triggered()
-{
-	openPresentation();
-}
-
-void vSongHome::on_actionPresent_Song_triggered()
-{
-	openPresentation();
-}
-
-void vSongHome::on_actionSave_triggered()
-{
-
-}
-
 void vSongHome::on_actionBold_Text_triggered()
 {
-
+    FontBold();
 }
 
 void vSongHome::on_actionChange_Font_triggered()
 {
-
+	FontChange();
 }
 
 void vSongHome::on_actionSmaller_Font_triggered()
 {
-
+    FontSmaller();
 }
 
 void vSongHome::on_actionBigger_Font_triggered()
 {
-
-}
-
-void vSongHome::on_actionNext_Song_triggered()
-{
-
-}
-
-void vSongHome::on_actionPrevious_Song_triggered()
-{
-
+    FontBigger();
 }
 
 void vSongHome::on_actionCheck_Updates_triggered()
@@ -406,26 +431,6 @@ void vSongHome::on_actionDonate_triggered()
 
 }
 
-void vSongHome::on_actionUpdate_Songbooks_triggered()
-{
-
-}
-
-void vSongHome::on_actionManage_Songbooks_triggered()
-{
-
-}
-
-void vSongHome::on_actionEdit_Songbook_triggered()
-{
-
-}
-
-void vSongHome::on_actionNew_Songbook_triggered()
-{
-
-}
-
 void vSongHome::on_actionDelete_Song_triggered()
 {
 
@@ -433,22 +438,26 @@ void vSongHome::on_actionDelete_Song_triggered()
 
 void vSongHome::on_actionEdit_Song_triggered()
 {
-
+    vSongEditor editor(this, false);
+    editor.exec();
 }
 
 void vSongHome::on_actionNew_Song_triggered()
 {
-	NewSong();
+	vSongEditor editor(this, true);
+	editor.exec();
 }
 
 void vSongHome::on_actionManage_Settings_triggered()
 {
-	OpenSettings();
+	vSongPreferences options(this);
+	options.exec();
 }
 
 void vSongHome::on_actionReset_Settings_triggered()
 {
-
+    AsBase::ResetSettings();
+	this->close();
 }
 
 void vSongHome::on_actionAbout_triggered()
@@ -477,21 +486,6 @@ void vSongHome::on_actionBigger_triggered()
 	FontBigger();
 }
 
-void vSongHome::on_actionNext_triggered()
-{
-	
-}
-
-void vSongHome::on_actionPrevious_triggered()
-{
-
-}
-
-void vSongHome::on_actionCancel_triggered()
-{
-
-}
-
 void vSongHome::on_actionDelete_triggered()
 {
 
@@ -499,32 +493,119 @@ void vSongHome::on_actionDelete_triggered()
 
 void vSongHome::on_actionPreferences_triggered()
 {
-	OpenSettings();
+	vSongPreferences options(this);
+	options.exec();
 }
 
 
 void vSongHome::on_actionEdit_triggered()
 {
-	OpenEditor();
+	vSongEditor editor(this, false);
+	editor.exec();
 }
 
 void vSongHome::on_actionNewsong_triggered()
 {
-	NewSong();
+	vSongBooklist books(this);
+	books.exec();
 }
 
 void vSongHome::on_actionSongbooks_triggered()
 {
-	ManageBooks();
+	vSongBooklist books(this);
+	books.exec();
 }
 
 void vSongHome::on_actionOnline_triggered()
 {
-	OpenOnline();
+	vSongOnline online(this);
+	online.exec();
 }
 
 void vSongHome::on_actionTutorial_triggered()
 {
 	vSongTutorial* tutorial = new vSongTutorial();
 	tutorial->show();
+}
+
+void vSongHome::on_actionFont_triggered()
+{
+	FontChange();
+}
+
+void vSongHome::on_actionSearch_triggered()
+{
+	ui->TxtSearch->setFocus();
+}
+
+vSongHome::~vSongHome()
+{
+	delete ui;
+}
+
+void vSongHome::on_actionSearchAll_triggered()
+{
+	if (searchAll)
+	{
+		searchAll = false;
+		AsBase::SetOption("search_allbooks", "0");
+	}
+	else
+	{
+		searchAll = true;
+		AsBase::SetOption("search_allbooks", "1");
+	}
+	ui->ChkSearchCriteria->setChecked(searchAll);
+	ui->actionSearchAll->setChecked(searchAll);
+}
+
+
+void vSongHome::on_ChkSearchCriteria_clicked()
+{
+	if (searchAll)
+	{
+		searchAll = false;
+		AsBase::SetOption("search_allbooks", "0");
+	}
+	else
+	{
+		searchAll = true;
+		AsBase::SetOption("search_allbooks", "1");
+	}
+	ui->ChkSearchCriteria->setChecked(searchAll);
+	ui->actionSearchAll->setChecked(searchAll);
+}
+
+void vSongHome::on_actionDarkMode_triggered()
+{
+	if (isDarkMode)
+	{
+		isDarkMode = false;
+		AsBase::SetOption("dark_mode", "0");
+	}
+	else
+	{
+		isDarkMode = true;
+		AsBase::SetOption("dark_mode", "1");
+	}
+	ui->ChkDarkMode->setChecked(isDarkMode);
+	ui->actionDarkMode->setChecked(isDarkMode);
+	SetDarkMode();
+}
+
+void vSongHome::on_ChkDarkMode_clicked()
+{
+	if (isDarkMode)
+	{
+		isDarkMode = false;
+		AsBase::SetOption("dark_mode", "0");
+	}
+	else
+	{
+		isDarkMode = true;
+		AsBase::SetOption("dark_mode", "1");
+	}
+	ui->ChkDarkMode->setChecked(isDarkMode);
+	ui->actionDarkMode->setChecked(isDarkMode);
+	SetDarkMode();
 }

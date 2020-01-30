@@ -24,6 +24,7 @@ private:
     RemoteDatabase* m_remoteDb;
 
 private slots:
+    void SetUpStuff();
     void ReloadSettings();
     void ReloadControls();
     void PresentSong(QString setsong);
