@@ -1,4 +1,4 @@
-project(vSongBook)
+project(vsongbook)
 cmake_minimum_required(VERSION 2.8.12.2)
 
 # BUILD_VERSION is the current date in YYYYMMDD format. It is only
@@ -206,7 +206,6 @@ set(VSB_SRC
 	src/sqlitedb.cpp
 	src/sqlitetablemodel.cpp
 	src/VacuumDialog.cpp
-	src/vAppSplash.cpp
 	src/vSongBook.cpp
 	src/vSongBooklist.cpp
 	src/vSongEditor.cpp
@@ -435,7 +434,7 @@ else()
 endif()
 
 if(WIN32 AND MSVC)
-	set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "vSongBook")
+	set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "vsongbook")
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
 	set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_DEFINITIONS_DEBUG "_CONSOLE")
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")

@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core gui network widgets printsupport concurrent xml
 
-TARGET = vSongBook
+TARGET = vsongbook
 
 CONFIG += debug_and_release
 CONFIG += qt
@@ -203,7 +203,7 @@ os2 {
     RC_FILE = os2app.rc
 }
 win32 {
-    TARGET = "vSongBook"
+    TARGET = "vsongbook"
     RC_FILE = winapp.rc
     INCLUDEPATH += $$PWD
     CONFIG(debug,debug|release) {
@@ -224,7 +224,7 @@ win32 {
     DEPENDPATH += $$PWD/../../../dev/SQLite
 }
 macx {
-    TARGET = "vSongBook"
+    TARGET = "vsongbook"
     RC_FILE = macapp.icns
     QT += macextras opengl
     INCLUDEPATH += /usr/local/include
@@ -253,7 +253,7 @@ unix {
     #
     # The values of each variable changes between supported platforms and are describe as follow
 
-    # Default configuration for package vSongBook.
+    # Default configuration for package vsongbook.
     # The default prefix is /usr/local
     !defined(PREFIX, var):        PREFIX = /usr/local
     !defined(BINDIR, var):        BINDIR = $$PREFIX/bin
@@ -265,15 +265,15 @@ unix {
 
     # Icon
     icon.path = $$DATADIR/icons/hicolor/256x256/apps/
-    icon.files = icons/vSongBook.png
+    icon.files = icons/vsongbook.png
     INSTALLS += icon
 
     # Desktop metadata
     desktop.path = $$DATADIR/applications/
-    desktop.files = ../distri/vSongBook.desktop
+    desktop.files = ../distri/vsongbook.desktop
     INSTALLS += desktop
     appdata.path = $$DATADIR/appdata/
-    appdata.files = ../distri/vSongBook.desktop.appdata.xml
+    appdata.files = ../distri/vsongbook.desktop.appdata.xml
     INSTALLS += appdata
 }
 
