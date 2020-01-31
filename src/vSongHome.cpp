@@ -36,7 +36,9 @@ vSongHome::vSongHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::vSongHom
 {
 	ui->setupUi(this);
 	ui->SplitterMain->setStretchFactor(1, 3);
-	isReady = false; 
+	isReady = false;
+
+	ui->line->hide();
 	ui->ChkDarkMode->hide();
 
 	this->setWindowTitle(qApp->applicationName() + " " + qApp->applicationVersion());
@@ -229,7 +231,7 @@ bool vSongHome::PopulateSongbooks()
 
 void vSongHome::SetDarkMode()
 {
-	if (isDarkMode)
+	/*if (isDarkMode)
 	{
 		ui->WidgetCentral->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
 		ui->statusbar->setStyleSheet("* { background-color: #000000; color: #FFFFFF; }");
@@ -239,7 +241,7 @@ void vSongHome::SetDarkMode()
 		ui->WidgetCentral->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
 		ui->statusbar->setStyleSheet("* { background-color: #FFFFFF; color: #000000; }");
 	}
-	/*delete ui;
+	delete ui;
 	ui->setupUi(this);
 	ui->SplitterMain->setStretchFactor(1, 3);
 	isReady = false;

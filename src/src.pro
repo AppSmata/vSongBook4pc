@@ -22,7 +22,6 @@ CONFIG(unittest) {
 
 HEADERS += \
     DbStructureModel.h \
-    SongModel.h \
     SongItem.h \
     sqlitedb.h \
     AboutDialog.h \
@@ -79,7 +78,6 @@ HEADERS += \
 
 SOURCES += \
     DbStructureModel.cpp \
-    SongModel.cpp \
     SongItem.cpp \
     sqlitedb.cpp \
     Settings.cpp \
