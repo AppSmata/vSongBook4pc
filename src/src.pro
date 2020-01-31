@@ -92,7 +92,6 @@ SOURCES += \
     RowLoader.cpp \
     FilterTableHeader.cpp \
     VacuumDialog.cpp \
-    vAppSplash.cpp \
     vSongBook.cpp \
     CipherDialog.cpp \
     ExportSqlDialog.cpp \
