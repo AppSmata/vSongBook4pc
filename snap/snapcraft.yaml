@@ -1,22 +1,16 @@
-          name:                   vSongBook  # the name of the snap
-          # version:              3.10.1  # the version of the snap
+          name:                   vsongbook  # the name of the snap
+          # version:              2.5.5  # the version of the snap
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
           summary:                vSongBook  # 79 char long summary
           description:            |
-            SQLite Database Browser is a visual tool used to create, design and edit database files compatible with SQLite. Its interface is based on Qt, and is meant to be used for users and developers that want to create databases, edit and search data using a familiar spreadsheet-like interface, without the need to learn complicated SQL commands. Controls and wizards are available for users to:
-            * Create and compact database files
-            * Create, define, modify and delete tables
-            * Create, define and delete indexes
-            * Browse, edit, add and delete records
-            * Search records
-            * Import and export records as text
-            * Import and export tables from/to CSV files
-            * Import and export databases from/to SQL dump files
-            * Issue SQL queries and inspect the results
-            * Examine a log of all SQL commands issued by the application
-            SQLite Database Browser is not a visual shell for the sqlite command line tool. It does not require familiarity with SQL commands.
+            vSongBook (Virtual Songbook) is a high quality, visual, open source tool to give users access to song lyrics of major worship and praise songbooks used in christian gatherings be it in church, weddings, funerals or anywhere where one feels like singing.
+            * Browse, edit, add, and delete songs
+            * Search songs realtime
+            * Adjust font types and sizes among other display preferences
+            * View songs in presentation mode for use over projector.
+
           confinement:            strict  # use "strict" to enforce system access only via declared interfaces
 
           grade:                  devel
@@ -55,7 +49,6 @@
               # - libx11-xcb1
               # - libx11-xcb-dev
               # - libxcb-xkb-dev
-              - libqt5scintilla2-dev
               - git
           parts:
               # wrappers:
@@ -142,3 +135,4 @@
                       - usr/lib/unity-settings-daemon-1.0/gtk-modules/at-spi2-atk.desktop
                   prime:
                   - $wanted
+
