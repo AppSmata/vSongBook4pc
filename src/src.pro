@@ -22,9 +22,12 @@ CONFIG(unittest) {
 
 HEADERS += \
     DbStructureModel.h \
-    SongItem.h \
     sqlitedb.h \
     AboutDialog.h \
+    AsBase.h \
+    AsDelegate.h \
+    AsItem.h \
+    AsUtils.h \
     Settings.h \
     ExportDataDialog.h \
     ImportCsvDialog.h \
@@ -35,12 +38,9 @@ HEADERS += \
     RowCache.h \
     RowLoader.h \
     FilterTableHeader.h \
-    vAppSplash.h \
     vSongBooklist.h \
     vSongEditor.h \
     vSongHome.h \
-    AsItem.h \
-    AsDelegate.h \
     vSongOnline.h \
     vSongPreferences.h \
     vSongPresent.h \
@@ -78,10 +78,11 @@ HEADERS += \
 
 SOURCES += \
     DbStructureModel.cpp \
-    SongItem.cpp \
     sqlitedb.cpp \
     Settings.cpp \
     AboutDialog.cpp \
+    AsBase.cpp \
+    AsUtils.cpp \
     ExportDataDialog.cpp \
     ImportCsvDialog.cpp \
     sql/sqlitetypes.cpp \
@@ -148,7 +149,6 @@ FORMS += \
     CondFormatManager.ui \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
-    vAppSplash.ui \
     vSongBooklist.ui \
     vSongEditor.ui \
     vSongHome.ui \
