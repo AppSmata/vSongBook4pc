@@ -46,6 +46,7 @@ vSongHome::vSongHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::vSongHom
 	if (QFile::exists(AsUtils::DB_FILE())) HomeInit();
 	else
 	{
+        QDir().mkdir("Data");
 		db.create(AsUtils::DB_FILE());
 		AsBase::InitialDbOps();
 		HomeInit();
@@ -279,8 +280,7 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 	if (!SearchStr.isEmpty())
 	{
 		ResultCount = " ";
-		bool isNumeric;
-		int searchint = SearchStr.toInt(&isNumeric, 10);
+        bool isNumeric;
 		if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
 		else ResultCount.append("songs found with: \"" + SearchStr + "\"");
 	}
