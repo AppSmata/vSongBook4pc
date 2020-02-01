@@ -239,7 +239,7 @@ void CondFormatManager::on_buttonBox_clicked(QAbstractButton* button)
     else if (button == ui->buttonBox->button(QDialogButtonBox::Ok))
         accept();
     else if (button == ui->buttonBox->button(QDialogButtonBox::Help))
-        QDesktopServices::openUrl(QUrl("https://github.com/vSongBook/vSongBook4PC/wiki/Conditional-Formats"));
+        QDesktopServices::openUrl(QUrl("https://github.com/vsongbook/vsongbook/wiki/Conditional-Formats"));
     else if (button == ui->buttonBox->button(QDialogButtonBox::Reset)) {
         if (QMessageBox::warning(this,
                                  QApplication::applicationName(),

@@ -1,39 +1,18 @@
 Makefile
-vSongBook.pro.user
+vsongbook.pro.user
 .qmake.stash
 CMakeLists.txt.user
 CMakeFiles
 *.cmake
 *.cxx_parameters
-cmake*.cmake
-CMAKECache.txt
-install_*.txt
-qrc_*.cpp
-ui_*.cpp
-ui_*.h
-*.vcxproj
-*.filters
-*.ipch
-*.sln
-*.suo
-*.db
-*.opendb
-Solution.VC.*
 
 # ignore any build folders
 build*/
 # folder with temporary test data
 testdata/
-x64/
-win32/
-Debug/
-Release/
-CMakeFiles/
-vSongBook.dir/
-vSongBook_autogen/
 
 src/.ui/
-src/vSongBook
+src/vsongbook
 src/Makefile*
 src/debug
 src/release

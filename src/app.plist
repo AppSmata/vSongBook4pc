@@ -29,7 +29,7 @@
 				<string>sqbpro</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>vSongBook Project</string>
+			<string>DB Browser for SQLite Project</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>****</string>
@@ -59,11 +59,11 @@
 	<key>CFBundleIconFile</key>
 	<string>@ICON@</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.sourceforge.vSongBook</string>
+	<string>net.sourceforge.vsongbook</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>vSongBook</string>
+	<string>DB Browser for SQLite</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

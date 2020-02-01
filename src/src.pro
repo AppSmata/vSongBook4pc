@@ -21,16 +21,18 @@ CONFIG(unittest) {
 }
 
 HEADERS += \
-    DbStructureModel.h \
     sqlitedb.h \
+    MainWindow.h \
+    EditIndexDialog.h \
     AboutDialog.h \
-    AsBase.h \
-    AsDelegate.h \
-    AsItem.h \
-    AsUtils.h \
+    EditTableDialog.h \
+    AddRecordDialog.h \
     Settings.h \
+    PreferencesDialog.h \
+    EditDialog.h \
     ExportDataDialog.h \
     ImportCsvDialog.h \
+    sqltextedit.h \
     sql/sqlitetypes.h \
     csvparser.h \
     ExtendedTableWidget.h \
@@ -38,26 +40,27 @@ HEADERS += \
     RowCache.h \
     RowLoader.h \
     FilterTableHeader.h \
-    vSongBooklist.h \
-    vSongEditor.h \
-    vSongHome.h \
-    vSongOnline.h \
-    vSongPreferences.h \
-    vSongPresent.h \
-    vSongTutorial.h \
     version.h \
+    SqlExecutionArea.h \
     VacuumDialog.h \
-    vSongBook.h \
+    DbStructureModel.h \
+    Application.h \
     sqlite.h \
     CipherDialog.h \
     ExportSqlDialog.h \
+    SqlUiLexer.h \
     FileDialog.h \
+    ColumnDisplayFormatDialog.h \
     FilterLineEdit.h \
     RemoteDatabase.h \
     ForeignKeyEditorDelegate.h \
     PlotDock.h \
+    RemoteDock.h \
     RemoteModel.h \
     RemotePushDialog.h \
+    docktextedit.h \
+    FindReplaceDialog.h \
+    ExtendedScintilla.h \
     FileExtensionManager.h \
     CondFormatManager.h \
     Data.h \
@@ -71,37 +74,50 @@ HEADERS += \
     ProxyDialog.h \
     IconCache.h \
     SelectItemsPopup.h \
+    TableBrowser.h \
     sql/parser/ParserDriver.h \
     sql/parser/sqlite3_lexer.h \
     sql/parser/sqlite3_location.h \
     sql/parser/sqlite3_parser.hpp
 
 SOURCES += \
-    DbStructureModel.cpp \
     sqlitedb.cpp \
+    MainWindow.cpp \
+    EditIndexDialog.cpp \
+    EditTableDialog.cpp \
+    AddRecordDialog.cpp \
     Settings.cpp \
+    PreferencesDialog.cpp \
     AboutDialog.cpp \
-    AsBase.cpp \
-    AsUtils.cpp \
+    EditDialog.cpp \
     ExportDataDialog.cpp \
     ImportCsvDialog.cpp \
+    sqltextedit.cpp \
     sql/sqlitetypes.cpp \
     csvparser.cpp \
     ExtendedTableWidget.cpp \
     sqlitetablemodel.cpp \
     RowLoader.cpp \
     FilterTableHeader.cpp \
+    SqlExecutionArea.cpp \
     VacuumDialog.cpp \
-    vSongBook.cpp \
+    DbStructureModel.cpp \
+    Application.cpp \
     CipherDialog.cpp \
     ExportSqlDialog.cpp \
+    SqlUiLexer.cpp \
     FileDialog.cpp \
+    ColumnDisplayFormatDialog.cpp \
     FilterLineEdit.cpp \
     RemoteDatabase.cpp \
     ForeignKeyEditorDelegate.cpp \
     PlotDock.cpp \
+    RemoteDock.cpp \
     RemoteModel.cpp \
     RemotePushDialog.cpp \
+    docktextedit.cpp \
+    FindReplaceDialog.cpp \
+    ExtendedScintilla.cpp \
     FileExtensionManager.cpp \
     CondFormatManager.cpp \
     Data.cpp \
@@ -115,46 +131,41 @@ SOURCES += \
     ProxyDialog.cpp \
     IconCache.cpp \
     SelectItemsPopup.cpp \
+    TableBrowser.cpp \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
-    sql/parser/sqlite3_parser.cpp \
-    vSongBooklist.cpp \
-    vSongEditor.cpp \
-    vSongHome.cpp \
-    AsDelegate.cpp \
-    vSongOnline.cpp \
-    vSongPreferences.cpp \
-    vSongPresent.cpp \
-    vSongTutorial.cpp
+    sql/parser/sqlite3_parser.cpp
 
 RESOURCES += icons/icons.qrc \
-             images/images.qrc \
              translations/flags/flags.qrc \
              translations/translations.qrc \
              certs/CaCerts.qrc \
-             qstyle/style.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
+    MainWindow.ui \
+    EditIndexDialog.ui \
     AboutDialog.ui \
+    EditTableDialog.ui \
+    AddRecordDialog.ui \
+    PreferencesDialog.ui \
+    EditDialog.ui \
     ExportDataDialog.ui \
     ImportCsvDialog.ui \
+    SqlExecutionArea.ui \
     VacuumDialog.ui \
     CipherDialog.ui \
     ExportSqlDialog.ui \
+    ColumnDisplayFormatDialog.ui \
     PlotDock.ui \
+    RemoteDock.ui \
     RemotePushDialog.ui \
+    FindReplaceDialog.ui \
     FileExtensionManager.ui \
     CondFormatManager.ui \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
-    vSongBooklist.ui \
-    vSongEditor.ui \
-    vSongHome.ui \
-    vSongOnline.ui \
-    vSongPreferences.ui \
-    vSongPresent.ui \
-    vSongTutorial.ui
+    TableBrowser.ui
 
 TRANSLATIONS += \
     translations/sqlb_ar_SA.ts \
@@ -195,6 +206,7 @@ CONFIG(sqlcipher) {
 
 LIBPATH_QHEXEDIT=$$OUT_PWD/../libs/qhexedit
 LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
+LIBPATH_QSCINTILLA=$$OUT_PWD/../libs/qscintilla/Qt4Qt5
 LIBPATH_JSON=$$OUT_PWD/../libs/json
 unix {
     LIBS += -ldl
@@ -203,17 +215,19 @@ os2 {
     RC_FILE = os2app.rc
 }
 win32 {
-    TARGET = "vsongbook"
+    TARGET = "DB Browser for SQLite"
     RC_FILE = winapp.rc
     INCLUDEPATH += $$PWD
     CONFIG(debug,debug|release) {
         LIBPATH_QHEXEDIT = $$LIBPATH_QHEXEDIT/debug
         LIBPATH_QCUSTOMPLOT = $$LIBPATH_QCUSTOMPLOT/debug
+        LIBPATH_QSCINTILLA = $$LIBPATH_QSCINTILLA/debug
         LIBPATH_JSON = $$LIBPATH_JSON/debug
     }
     CONFIG(release,debug|release) {
         LIBPATH_QHEXEDIT = $$LIBPATH_QHEXEDIT/release
         LIBPATH_QCUSTOMPLOT = $$LIBPATH_QCUSTOMPLOT/release
+        LIBPATH_QSCINTILLA = $$LIBPATH_QSCINTILLA/release
         LIBPATH_JSON = $$LIBPATH_JSON/release
     }
     QMAKE_CXXFLAGS += -DCHECKNEWVERSION
@@ -224,7 +238,7 @@ win32 {
     DEPENDPATH += $$PWD/../../../dev/SQLite
 }
 macx {
-    TARGET = "vsongbook"
+    TARGET = "DB Browser for SQLite"
     RC_FILE = macapp.icns
     QT += macextras opengl
     INCLUDEPATH += /usr/local/include
@@ -239,9 +253,9 @@ CONFIG(all_warnings) {
 }
 
 UI_DIR = .ui
-INCLUDEPATH += $$PWD/../libs/qhexedit/src $$PWD/../libs/qcustomplot-source $$PWD/../libs/json $$PWD/..
-LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_QCUSTOMPLOT -lqhexedit -lqcustomplot
-DEPENDPATH += $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/json
+INCLUDEPATH += $$PWD/../libs/qhexedit/src $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5 $$PWD/../libs/json $$PWD/..
+LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_QCUSTOMPLOT -L$$LIBPATH_QSCINTILLA -lqhexedit -lqcustomplot -lqscintilla2
+DEPENDPATH += $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5 $$PWD/../libs/json
 
 unix {
     # Below, the user can specify where all generated file can be placed

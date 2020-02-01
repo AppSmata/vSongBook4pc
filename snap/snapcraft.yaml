@@ -1,5 +1,5 @@
           name:                   vsongbook  # the name of the snap
-          # version:              2.5.5  # the version of the snap
+          # version:              3.10.1  # the version of the snap
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
@@ -13,11 +13,11 @@
           confinement:            strict  # use "strict" to enforce system access only via declared interfaces
 
           grade:                  devel
-          icon:                   images/vSongBook.svg
+          icon:                   images/vsongbook.svg
           type:                   app
 
           apps:
-            sqlitebrowser:
+            vsongbook:
               command:            desktop-launch $SNAP/bin/vsongbook
               desktop:            share/applications/vsongbook.desktop
               environment:
@@ -48,12 +48,13 @@
               # - libx11-xcb1
               # - libx11-xcb-dev
               # - libxcb-xkb-dev
+              - libqt5scintilla2-dev
               - git
           parts:
               # wrappers:
               #     plugin:         dump
               #     source:         snap/
-              sqlitebrowser:
+              vsongbook:
                   # source-type:  git
                   plugin:         cmake
                   configflags:    ["-DUSE_QT5=True", "-Dsqlcipher=1", "-Wno-dev","-DSQLITE_ENABLE_JSON1=1"]
@@ -134,4 +135,3 @@
                       - usr/lib/unity-settings-daemon-1.0/gtk-modules/at-spi2-atk.desktop
                   prime:
                   - $wanted
-

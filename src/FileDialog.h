@@ -13,7 +13,7 @@
 static const QString FILE_FILTER_SQLDB(QObject::tr("SQLite Database Files (*.db *.sqlite *.sqlite3 *.db3)"));
 
 // SQLite DB Project File Extensions
-static const QString FILE_FILTER_SQLPRJ(QObject::tr("vSongBook Project Files (*.sqbpro)"));
+static const QString FILE_FILTER_SQLPRJ(QObject::tr("DB Browser for SQLite Project Files (*.sqbpro)"));
 static const QString FILE_EXT_SQLPRJ_DEFAULT(".sqbpro");
 
 // SQL File Extensions Filter
