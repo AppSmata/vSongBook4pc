@@ -35,7 +35,7 @@
         <file alias="toolbar">layout_sidebar.png</file>
         <file alias="down">bullet_arrow_down.png</file>
         <file alias="up">bullet_arrow_up.png</file>
-        <file alias="appicon">vSongBook.png</file>
+        <file alias="appicon">vsongbook.png</file>
         <file alias="browser_open">internet-web-browser.png</file>
         <file>package.png</file>
         <file alias="project_open">package_go.png</file>
@@ -98,15 +98,5 @@
         <file alias="edit_cond_formats">style_edit.png</file>
         <file alias="clear_cond_formats">style_delete.png</file>
         <file alias="add_cond_format">style_add.png</file>
-        <file>bigger.png</file>
-        <file>edit.png</file>
-        <file>last.png</file>
-        <file>next.png</file>
-        <file>present.png</file>
-        <file>smaller.png</file>
-        <file>bold.png</file>
-        <file>font.png</file>
-        <file>check.png</file>
-        <file>delete.png</file>
     </qresource>
 </RCC>

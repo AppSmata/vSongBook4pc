@@ -3,6 +3,7 @@
 #include "Settings.h"
 #include "sqlitetablemodel.h"
 #include "FileDialog.h"
+#include "TableBrowser.h"     // Just for BrowseDataTableSettings, not for the actual table browser class
 
 #include <QPrinter>
 #include <QPrintPreviewDialog>
@@ -150,9 +151,9 @@ void PlotDock::updatePlot(SqliteTableModel* model, BrowseDataTableSettings* sett
             }
         } else {
             // Get the plot columns to select from the stored browse table information
-            //sItemX = m_currentTableSettings->plotXAxis;
+            sItemX = m_currentTableSettings->plotXAxis;
 
-            //mapItemsY = m_currentTableSettings->plotYAxes;
+            mapItemsY = m_currentTableSettings->plotYAxes;
         }
 
         ui->treePlotColumns->clear();
@@ -499,17 +500,17 @@ void PlotDock::on_treePlotColumns_itemChanged(QTreeWidgetItem* changeitem, int c
         // Save settings for this table
         if(m_currentTableSettings)
         {
-            /*if(changeitem->checkState(column) == Qt::Checked)
+            if(changeitem->checkState(column) == Qt::Checked)
                 m_currentTableSettings->plotXAxis = changeitem->text(PlotColumnField);
             else
-                m_currentTableSettings->plotXAxis = QString();*/
+                m_currentTableSettings->plotXAxis = QString();
         }
     } else if(column == PlotColumnY) {
         // Save check state of this column
         if(m_currentTableSettings)
         {
-            //PlotSettings& plot_settings = m_currentTableSettings->plotYAxes[changeitem->text(PlotColumnField)];
-            //plot_settings.active = (changeitem->checkState(column) == Qt::Checked);
+            PlotSettings& plot_settings = m_currentTableSettings->plotYAxes[changeitem->text(PlotColumnField)];
+            plot_settings.active = (changeitem->checkState(column) == Qt::Checked);
         }
 
         if(changeitem->checkState(column) == Qt::Checked)
@@ -525,10 +526,10 @@ void PlotDock::on_treePlotColumns_itemChanged(QTreeWidgetItem* changeitem, int c
             // Save settings for this table
             if(m_currentTableSettings)
             {
-                /*PlotSettings& plot_settings = m_currentTableSettings->plotYAxes[changeitem->text(PlotColumnField)];
+                PlotSettings& plot_settings = m_currentTableSettings->plotYAxes[changeitem->text(PlotColumnField)];
                 plot_settings.colour = colour;
                 plot_settings.lineStyle = ui->comboLineType->currentIndex();
-                plot_settings.pointShape = (ui->comboPointShape->currentIndex() > 0 ? (ui->comboPointShape->currentIndex()+1) : ui->comboPointShape->currentIndex());*/
+                plot_settings.pointShape = (ui->comboPointShape->currentIndex() > 0 ? (ui->comboPointShape->currentIndex()+1) : ui->comboPointShape->currentIndex());
             }
         }
     }
@@ -560,18 +561,18 @@ void PlotDock::on_treePlotColumns_itemDoubleClicked(QTreeWidgetItem* item, int c
             // Save settings for this table
             if(m_currentTableSettings)
             {
-                /*PlotSettings& plot_settings = m_currentTableSettings->plotYAxes[item->text(PlotColumnField)];
+                PlotSettings& plot_settings = m_currentTableSettings->plotYAxes[item->text(PlotColumnField)];
                 plot_settings.active = (item->checkState(column) == Qt::Checked);
                 plot_settings.colour = color;
                 plot_settings.lineStyle = ui->comboLineType->currentIndex();
-                plot_settings.pointShape = (ui->comboPointShape->currentIndex() > 0 ? (ui->comboPointShape->currentIndex()+1) : ui->comboPointShape->currentIndex());*/
+                plot_settings.pointShape = (ui->comboPointShape->currentIndex() > 0 ? (ui->comboPointShape->currentIndex()+1) : ui->comboPointShape->currentIndex());
             }
         } else {
             item->setCheckState(column, Qt::Unchecked);
 
             // Save settings for this table
-            //if(m_currentTableSettings)
-             //   m_currentTableSettings->plotYAxes.remove(item->text(PlotColumnField));
+            if(m_currentTableSettings)
+                m_currentTableSettings->plotYAxes.remove(item->text(PlotColumnField));
         }
     }
 
@@ -643,13 +644,13 @@ void PlotDock::on_comboLineType_currentIndexChanged(int index)
     // Save settings for this table
     if(m_currentTableSettings)
     {
-        /*QMap<QString, PlotSettings>& graphs = m_currentTableSettings->plotYAxes;
+        QMap<QString, PlotSettings>& graphs = m_currentTableSettings->plotYAxes;
         auto it = graphs.begin();
         while(it != graphs.end())
         {
             it.value().lineStyle = lineStyle;
             ++it;
-        }*/
+        }
     }
 }
 
@@ -678,13 +679,13 @@ void PlotDock::on_comboPointShape_currentIndexChanged(int index)
     // Save settings for this table
     if(m_currentTableSettings)
     {
-        /*QMap<QString, PlotSettings>& graphs = m_currentTableSettings->plotYAxes;
+        QMap<QString, PlotSettings>& graphs = m_currentTableSettings->plotYAxes;
         auto it = graphs.begin();
         while(it != graphs.end())
         {
             it.value().pointShape = shape;
             ++it;
-        }*/
+        }
     }
 }
 

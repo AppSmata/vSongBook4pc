@@ -4,7 +4,7 @@
 
 for imgsize in 16 32 64 128
 do
-	convert ../icons/vSongBook.png -resize "$imgsize"x"$imgsize" -background transparent icon"$imgsize".png
+	convert ../icons/vsongbook.png -resize "$imgsize"x"$imgsize" -background transparent icon"$imgsize".png
 	files="$files icon$imgsize.png"
 done
 

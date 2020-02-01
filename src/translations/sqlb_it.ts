@@ -5,8 +5,8 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../AboutDialog.ui" line="14"/>
-        <source>About vSongBook</source>
-        <translation>Informazioni su vSongBook</translation>
+        <source>About DB Browser for SQLite</source>
+        <translation>Informazioni su DB Browser for SQLite</translation>
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="47"/>
@@ -15,8 +15,8 @@
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="102"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://vSongBook.org&quot;&gt;http://vSongBook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB-Browser for SQLite è uno strumento grafico opensource e freeware usato per creare, struttutturare e modificare file database di SQLite&lt;/p&gt;&lt;p&gt;È rilasciato sotto la licenza Mozilla Public License Version 2, così come sotto la licenza GNU General Public License Version 3 o successive. È possibile modificarlo e redistribuirlo sotto le condizioni specificate da queste licenze.&lt;/p&gt;&lt;p&gt;Si veda &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; e &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; per ulteriori dettagli.&lt;/p&gt;&lt;p&gt;Per ulteriori dettagli riguardo questo programma visitate il nostro sito web a: &lt;a href=&quot;http://vSongBook.org&quot;&gt;http://vSongBook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;Questo software usa GPL/LGPL QT Toolkit da &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;Si veda &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; per  termini di licenza e informazioni.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;Utilizza inoltre Silk-Iconset di Mark James, rilasciato sotto licenza Creative Commons Attribution 2.5 e 3.0.&lt;br/&gt;Si veda &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; per ulteriori dettagli.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB Browser for SQLite is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://vsongbook.org&quot;&gt;http://vsongbook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB-Browser for SQLite è uno strumento grafico opensource e freeware usato per creare, struttutturare e modificare file database di SQLite&lt;/p&gt;&lt;p&gt;È rilasciato sotto la licenza Mozilla Public License Version 2, così come sotto la licenza GNU General Public License Version 3 o successive. È possibile modificarlo e redistribuirlo sotto le condizioni specificate da queste licenze.&lt;/p&gt;&lt;p&gt;Si veda &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; e &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; per ulteriori dettagli.&lt;/p&gt;&lt;p&gt;Per ulteriori dettagli riguardo questo programma visitate il nostro sito web a: &lt;a href=&quot;http://vsongbook.org&quot;&gt;http://vsongbook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;Questo software usa GPL/LGPL QT Toolkit da &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;Si veda &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; per  termini di licenza e informazioni.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;Utilizza inoltre Silk-Iconset di Mark James, rilasciato sotto licenza Creative Commons Attribution 2.5 e 3.0.&lt;br/&gt;Si veda &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; per ulteriori dettagli.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="17"/>
@@ -207,8 +207,8 @@
     </message>
     <message>
         <location filename="../Application.cpp" line="99"/>
-        <source>This is vSongBook version %1.</source>
-        <translation>Questo è vSongBook versione %1.</translation>
+        <source>This is DB Browser for SQLite version %1.</source>
+        <translation>Questo è DB Browser for SQLite versione %1.</translation>
     </message>
     <message>
         <location filename="../Application.cpp" line="104"/>
@@ -782,64 +782,64 @@ Annullo l&apos;esecuzione %3.</translation>
     </message>
 </context>
 <context>
-    <name>SongModel</name>
+    <name>DbStructureModel</name>
     <message>
-        <location filename="../SongModel.cpp" line="22"/>
+        <location filename="../DbStructureModel.cpp" line="22"/>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="22"/>
+        <location filename="../DbStructureModel.cpp" line="22"/>
         <source>Object</source>
         <translation>Oggetto</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="22"/>
+        <location filename="../DbStructureModel.cpp" line="22"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="22"/>
+        <location filename="../DbStructureModel.cpp" line="22"/>
         <source>Schema</source>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="22"/>
+        <location filename="../DbStructureModel.cpp" line="22"/>
         <source>Database</source>
         <translation>Database</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="165"/>
+        <location filename="../DbStructureModel.cpp" line="165"/>
         <source>Browsables</source>
         <translation>Navigabili</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="170"/>
+        <location filename="../DbStructureModel.cpp" line="170"/>
         <source>All</source>
         <translation>Tutti</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="179"/>
+        <location filename="../DbStructureModel.cpp" line="179"/>
         <source>Temporary</source>
         <translation>Temporaneo</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="326"/>
+        <location filename="../DbStructureModel.cpp" line="326"/>
         <source>Tables (%1)</source>
         <translation>Tabelle (%1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="331"/>
+        <location filename="../DbStructureModel.cpp" line="331"/>
         <source>Indices (%1)</source>
         <translation>Indici (%1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="336"/>
+        <location filename="../DbStructureModel.cpp" line="336"/>
         <source>Views (%1)</source>
         <translation>Viste (%1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="341"/>
+        <location filename="../DbStructureModel.cpp" line="341"/>
         <source>Triggers (%1)</source>
         <translation>Triggers (%1)</translation>
     </message>
@@ -2455,47 +2455,47 @@ x~y	Intervallo: valori tra x e y
     </message>
 </context>
 <context>
-    <name>vSongHome</name>
+    <name>MainWindow</name>
     <message>
-        <location filename="../vSongHome.ui" line="14"/>
-        <source>vSongBook</source>
-        <translation>vSongBook</translation>
+        <location filename="../MainWindow.ui" line="14"/>
+        <source>DB Browser for SQLite</source>
+        <translation>DB Browser for SQLite</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="53"/>
-        <location filename="../vSongHome.ui" line="56"/>
+        <location filename="../MainWindow.ui" line="53"/>
+        <location filename="../MainWindow.ui" line="56"/>
         <source>Database Structure</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Struttura database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="96"/>
+        <location filename="../MainWindow.ui" line="96"/>
         <source>This is the structure of the opened database.
-You can drag SQL statements from an object row and drop them into other applications or into another instance of &apos;vSongBook&apos;.
+You can drag SQL statements from an object row and drop them into other applications or into another instance of &apos;DB Browser for SQLite&apos;.
 </source>
         <translation>Questa è la struttura del database aperto.
-Puoi trascinare SQL da una riga oggetto e rilasciarli dentro altri applicativi o in altre istanze di àvSongBook&apos;.
+Puoi trascinare SQL da una riga oggetto e rilasciarli dentro altri applicativi o in altre istanze di àDB Browser for SQLite&apos;.
 </translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="121"/>
-        <location filename="../vSongHome.ui" line="124"/>
+        <location filename="../MainWindow.ui" line="121"/>
+        <location filename="../MainWindow.ui" line="124"/>
         <source>Browse Data</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Naviga nei dati</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="144"/>
+        <location filename="../MainWindow.ui" line="144"/>
         <source>&amp;Table:</source>
         <translation>&amp;Tabella:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="154"/>
+        <location filename="../MainWindow.ui" line="154"/>
         <source>Select a table to browse data</source>
         <translation>Seleziona una tabella per navigare tra i dati</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="157"/>
+        <location filename="../MainWindow.ui" line="157"/>
         <source>Use this list to select a table to be displayed in the database view</source>
         <translation>Usa questa lista per selezionare una tabella da visualizzare nella vista del database</translation>
     </message>
@@ -2504,39 +2504,39 @@ Puoi trascinare SQL da una riga oggetto e rilasciarli dentro altri applicativi o
         <translation type="vanished">Aggiorna i dati della tabella selezionata [F5, Ctrl+R]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2039"/>
+        <location filename="../MainWindow.ui" line="2039"/>
         <source>This button refreshes the data in the currently selected table.</source>
         <translation>Questo pulsante aggiorna i dati della tabella selezionata.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2477"/>
+        <location filename="../MainWindow.ui" line="2477"/>
         <source>Clear Filters</source>
         <translation>Pulisci Filtri</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2480"/>
+        <location filename="../MainWindow.ui" line="2480"/>
         <source>Clear all filters</source>
         <translation>Cancella tutti i filtri</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2483"/>
-        <location filename="../vSongHome.ui" line="2486"/>
+        <location filename="../MainWindow.ui" line="2483"/>
+        <location filename="../MainWindow.ui" line="2486"/>
         <source>This button clears all the filters set in the header input fields for the currently browsed table.</source>
         <translation>Questo pulsante pulisce tutti i filtri impostati nella riga d&apos;intestazione per la tabella corrente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2495"/>
+        <location filename="../MainWindow.ui" line="2495"/>
         <source>Save Table As...</source>
         <translation>Salva Tabella Come...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2498"/>
-        <location filename="../vSongHome.ui" line="2501"/>
+        <location filename="../MainWindow.ui" line="2498"/>
+        <location filename="../MainWindow.ui" line="2501"/>
         <source>Save the table as currently displayed</source>
         <translation>Salva la tabella così come visualizzata</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2504"/>
+        <location filename="../MainWindow.ui" line="2504"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This popup menu provides the following options applying to the currently browsed and filtered table:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Export to CSV: this option exports the data of the browsed table as currently displayed (after filters, display formats and order column) to a CSV file.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Save as view: this option saves the current setting of the browsed table (filters, display formats and order column) as an SQL view that you can later browse or use in SQL statements.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Questo menù fornisce le seguenti opzioni applicabili alla tabella filtrata e visualizzata correntemente:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Esporta in CSV: questa opzione esporta i dati della tabella così come visualizzati (con filtri, riordine delle colonne e formati) in un file CSV.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Salva come vista: questa opzione salva le impostazioni correnti della tabella visualizzata (filtri, riordine delle colonne e formati) come vista SQL che puoi successivamente visualizzare o utilizzare come statement.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -2549,46 +2549,46 @@ Puoi trascinare SQL da una riga oggetto e rilasciarli dentro altri applicativi o
         <translation type="vanished">Stampa i dati visualizzati [Ctrl+P]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2462"/>
+        <location filename="../MainWindow.ui" line="2462"/>
         <source>Print currently browsed table data. Print selection if more than one cell is selected.</source>
         <translation>Stampa i dati visualizzati. Stampa la selezione se più di una cella è selezionata.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2516"/>
-        <location filename="../vSongHome.ui" line="2519"/>
+        <location filename="../MainWindow.ui" line="2516"/>
+        <location filename="../MainWindow.ui" line="2519"/>
         <source>Insert a new record in the current table</source>
         <translation>Inserisci un nuovo valore nella tabella corrente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2522"/>
+        <location filename="../MainWindow.ui" line="2522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This button creates a new record in the database. Hold the mouse button to open a pop-up menu of different options:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;New Record&lt;/span&gt;: insert a new record with default values in the database.&lt;/li&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Insert Values...&lt;/span&gt;: open a dialog for entering values before they are inserted in the database. This allows to enter values acomplishing the different constraints. This dialog is also open if the &lt;span style=&quot; font-weight:600;&quot;&gt;New Record&lt;/span&gt; option fails due to these constraints.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Questo pulsante crea una nuova riga nel database. Mantieni premuto il tasto del mouse per ottenere più opzioni:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Nuova Riga&lt;/span&gt;: inserisce una nuova riga con i valori predefiniti.&lt;/li&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Inserisci Valori...&lt;/span&gt;: apre una finestra per inserire i valori prima che vengano immessi nel database. Questo permette che l&apos;immissione dei valori rispetti diversi limiti (constraints). Questa finestra si apre anche se l&apos;opzione &lt;span style=&quot; font-weight:600;&quot;&gt;Nuova Riga&lt;/span&gt; fallisce a causa di questi limiti (constraints).&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2277"/>
-        <location filename="../vSongHome.ui" line="2513"/>
+        <location filename="../MainWindow.ui" line="2277"/>
+        <location filename="../MainWindow.ui" line="2513"/>
         <source>New Record</source>
         <translation>Nuova Riga</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2534"/>
+        <location filename="../MainWindow.ui" line="2534"/>
         <source>Delete the current record</source>
         <translation>Elimina il valore corrente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2537"/>
-        <location filename="../vSongHome.ui" line="2540"/>
+        <location filename="../MainWindow.ui" line="2537"/>
+        <location filename="../MainWindow.ui" line="2540"/>
         <source>This button deletes the record or records currently selected in the table</source>
         <translation>Questo pulsante elimina la/e righe selezionate nella tabella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2531"/>
-        <location filename="../vSongHome.cpp" line="3885"/>
+        <location filename="../MainWindow.ui" line="2531"/>
+        <location filename="../MainWindow.cpp" line="3885"/>
         <source>Delete Record</source>
         <translation>Elimina Riga</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="205"/>
+        <location filename="../MainWindow.ui" line="205"/>
         <source>This is the database table view. You can do the following actions:
  - Start writing for editing inline the value.
  - Double-click any record to edit its contents in the cell editor window.
@@ -2605,103 +2605,103 @@ Puoi trascinare SQL da una riga oggetto e rilasciarli dentro altri applicativi o
  - Operazioni di selezione e copia/incolla.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="235"/>
+        <location filename="../MainWindow.ui" line="235"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scroll to the beginning&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scorri all&apos;ìinizio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="238"/>
+        <location filename="../MainWindow.ui" line="238"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates to the beginning in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cliccare questo pulsante scorre la vista all&apos;inizio della tabella.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="241"/>
+        <location filename="../MainWindow.ui" line="241"/>
         <source>|&lt;</source>
         <translation>|&lt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="255"/>
+        <location filename="../MainWindow.ui" line="255"/>
         <source>Scroll one page upwards</source>
         <translation>Scorri di una pagina in su</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="258"/>
+        <location filename="../MainWindow.ui" line="258"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates one page of records upwards in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cliccando questo pulsante la vista scorre le righe di una pagina verso l&apos;inizio della tabella.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="261"/>
+        <location filename="../MainWindow.ui" line="261"/>
         <source>&lt;</source>
         <translation>&lt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="272"/>
+        <location filename="../MainWindow.ui" line="272"/>
         <source>0 - 0 of 0</source>
         <translation>0 - 0 di 0</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="282"/>
+        <location filename="../MainWindow.ui" line="282"/>
         <source>Scroll one page downwards</source>
         <translation>Scorri di una pagina in giù</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="285"/>
+        <location filename="../MainWindow.ui" line="285"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates one page of records downwards in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cliccando questo pulsante la vista scorre le righe di una pagina verso il fondo della tabella.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="288"/>
+        <location filename="../MainWindow.ui" line="288"/>
         <source>&gt;</source>
         <translation>&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="302"/>
+        <location filename="../MainWindow.ui" line="302"/>
         <source>Scroll to the end</source>
         <translation>Scorri alla fine</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="305"/>
+        <location filename="../MainWindow.ui" line="305"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Clicking this button navigates up to the end in the table view above.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Cliccando questo pulsante la vista scorre al fondo della tabella.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="308"/>
+        <location filename="../MainWindow.ui" line="308"/>
         <source>&gt;|</source>
         <translation>&gt;|</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="332"/>
+        <location filename="../MainWindow.ui" line="332"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to jump to the specified record&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicca qui per saltare alla riga specificata&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="335"/>
+        <location filename="../MainWindow.ui" line="335"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This button is used to navigate to the record number specified in the Go to area.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Questo pulsante è utilizzato per navigare alla riga impostata nell&apos;area &quot;Vai a&quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="338"/>
+        <location filename="../MainWindow.ui" line="338"/>
         <source>Go to:</source>
         <translation>Vai a:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="345"/>
+        <location filename="../MainWindow.ui" line="345"/>
         <source>Enter record number to browse</source>
         <translation>Inserisci il numero di riga a cui scorrere</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="348"/>
+        <location filename="../MainWindow.ui" line="348"/>
         <source>Type a record number in this area and click the Go to: button to display the record in the database view</source>
         <translation>Inserisci un numero in quest&apos;area e clicca sul pul pulsante &quot;Vai a&quot; per visualizzare la riga selezionata</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="351"/>
+        <location filename="../MainWindow.ui" line="351"/>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="361"/>
-        <location filename="../vSongHome.ui" line="364"/>
+        <location filename="../MainWindow.ui" line="361"/>
+        <location filename="../MainWindow.ui" line="364"/>
         <source>Edit Pragmas</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Modifica Pragmas</translation>
@@ -2711,119 +2711,119 @@ Puoi trascinare SQL da una riga oggetto e rilasciarli dentro altri applicativi o
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.sqlite.org/pragma.html#pragma_case_sensitive_like&quot;&gt;Case Sensitive Like&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="471"/>
+        <location filename="../MainWindow.ui" line="471"/>
         <source>Warning: this pragma is not readable and this value has been inferred. Writing the pragma might overwrite a redefined LIKE provided by an SQLite extension.</source>
         <translation>Attenzione: questo pragma non è leggibile e questo valore è stato dedotto. Scrivere i pragma può sovrascrivere un LIKE ridefinito provvisto da un&apos;estensione di SQLite.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="894"/>
-        <location filename="../vSongHome.ui" line="897"/>
+        <location filename="../MainWindow.ui" line="894"/>
+        <location filename="../MainWindow.ui" line="897"/>
         <source>Execute SQL</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>Esegui SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="918"/>
+        <location filename="../MainWindow.ui" line="918"/>
         <source>toolBar1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="967"/>
+        <location filename="../MainWindow.ui" line="967"/>
         <source>&amp;File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="971"/>
+        <location filename="../MainWindow.ui" line="971"/>
         <source>&amp;Import</source>
         <translation>&amp;Importa</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="978"/>
+        <location filename="../MainWindow.ui" line="978"/>
         <source>&amp;Export</source>
         <translation>&amp;Esporta</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1007"/>
+        <location filename="../MainWindow.ui" line="1007"/>
         <source>&amp;Edit</source>
         <translation>&amp;Modifica</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1019"/>
+        <location filename="../MainWindow.ui" line="1019"/>
         <source>&amp;View</source>
         <translation>&amp;Visualizza</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1028"/>
+        <location filename="../MainWindow.ui" line="1028"/>
         <source>&amp;Help</source>
         <translation>&amp;Aiuto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1044"/>
+        <location filename="../MainWindow.ui" line="1044"/>
         <source>&amp;Tools</source>
         <translation>&amp;Strumenti</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1065"/>
+        <location filename="../MainWindow.ui" line="1065"/>
         <source>DB Toolbar</source>
         <translation>Barra degli strumenti del DB</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1084"/>
+        <location filename="../MainWindow.ui" line="1084"/>
         <source>Edit Database &amp;Cell</source>
         <translation>Modifica &amp;cella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1096"/>
+        <location filename="../MainWindow.ui" line="1096"/>
         <source>SQL &amp;Log</source>
         <translation>&amp;Log SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1114"/>
+        <location filename="../MainWindow.ui" line="1114"/>
         <source>Show S&amp;QL submitted by</source>
         <translation>Mostra l&apos;S&amp;QL inviato da</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1131"/>
+        <location filename="../MainWindow.ui" line="1131"/>
         <source>User</source>
         <translation>Utente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1136"/>
+        <location filename="../MainWindow.ui" line="1136"/>
         <source>Application</source>
         <translation>Applicazione</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1141"/>
+        <location filename="../MainWindow.ui" line="1141"/>
         <source>Error Log</source>
         <translation>Registro errori</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1168"/>
+        <location filename="../MainWindow.ui" line="1168"/>
         <source>This button clears the contents of the SQL logs</source>
         <translation>Questo pulsante cancella il contenuto del log SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1171"/>
+        <location filename="../MainWindow.ui" line="1171"/>
         <source>&amp;Clear</source>
         <translation>&amp;Pulisci</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1180"/>
+        <location filename="../MainWindow.ui" line="1180"/>
         <source>This panel lets you examine a log of all SQL commands issued by the application or by yourself</source>
         <translation>Questo pannello ti permette di esaminare il log di tutti i comandi SQL inviati dall&apos;applicazione o da te stesso</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1228"/>
+        <location filename="../MainWindow.ui" line="1228"/>
         <source>&amp;Plot</source>
         <translation>&amp;Grafica</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1239"/>
+        <location filename="../MainWindow.ui" line="1239"/>
         <source>DB Sche&amp;ma</source>
         <translation>Sche&amp;ma DB</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1252"/>
+        <location filename="../MainWindow.ui" line="1252"/>
         <source>This is the structure of the opened database.
 You can drag multiple object names from the Name column and drop them into the SQL editor and you can adjust the properties of the dropped names using the context menu. This would help you in composing SQL statements.
 You can drag SQL statements from the Schema column and drop them into the SQL editor or into other applications.
@@ -2834,427 +2834,427 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
 </translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1285"/>
+        <location filename="../MainWindow.ui" line="1285"/>
         <source>&amp;Remote</source>
         <translation>&amp;Remoto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1294"/>
-        <location filename="../vSongHome.ui" line="2190"/>
+        <location filename="../MainWindow.ui" line="1294"/>
+        <location filename="../MainWindow.ui" line="2190"/>
         <source>Project Toolbar</source>
         <translation>Barra degli strumenti di progetto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1313"/>
+        <location filename="../MainWindow.ui" line="1313"/>
         <source>Extra DB toolbar</source>
         <translation>Barra degli strumenti extra DB</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1316"/>
-        <location filename="../vSongHome.ui" line="1390"/>
-        <location filename="../vSongHome.ui" line="1393"/>
+        <location filename="../MainWindow.ui" line="1316"/>
+        <location filename="../MainWindow.ui" line="1390"/>
+        <location filename="../MainWindow.ui" line="1393"/>
         <source>Close the current database file</source>
         <translation>Chiudi il file di database corrente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1336"/>
+        <location filename="../MainWindow.ui" line="1336"/>
         <source>&amp;New Database...</source>
         <translation>&amp;Nuovo Database...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1339"/>
-        <location filename="../vSongHome.ui" line="1342"/>
+        <location filename="../MainWindow.ui" line="1339"/>
+        <location filename="../MainWindow.ui" line="1342"/>
         <source>Create a new database file</source>
         <translation>Crea un nuovo file di database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1345"/>
+        <location filename="../MainWindow.ui" line="1345"/>
         <source>This option is used to create a new database file.</source>
         <translation>Questa opzione è utilizzata per creare un nuovo file di database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1348"/>
+        <location filename="../MainWindow.ui" line="1348"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1360"/>
-        <location filename="../vSongHome.ui" line="2245"/>
+        <location filename="../MainWindow.ui" line="1360"/>
+        <location filename="../MainWindow.ui" line="2245"/>
         <source>&amp;Open Database...</source>
         <translation>&amp;Apri Database...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1363"/>
-        <location filename="../vSongHome.ui" line="1366"/>
-        <location filename="../vSongHome.ui" line="2060"/>
-        <location filename="../vSongHome.ui" line="2248"/>
-        <location filename="../vSongHome.ui" line="2251"/>
+        <location filename="../MainWindow.ui" line="1363"/>
+        <location filename="../MainWindow.ui" line="1366"/>
+        <location filename="../MainWindow.ui" line="2060"/>
+        <location filename="../MainWindow.ui" line="2248"/>
+        <location filename="../MainWindow.ui" line="2251"/>
         <source>Open an existing database file</source>
         <translation>Apre un file di database esistente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1369"/>
-        <location filename="../vSongHome.ui" line="2063"/>
-        <location filename="../vSongHome.ui" line="2254"/>
+        <location filename="../MainWindow.ui" line="1369"/>
+        <location filename="../MainWindow.ui" line="2063"/>
+        <location filename="../MainWindow.ui" line="2254"/>
         <source>This option is used to open an existing database file.</source>
         <translation>Questa opzione è utilizzata per aprire un file esistente di database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1372"/>
+        <location filename="../MainWindow.ui" line="1372"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1387"/>
+        <location filename="../MainWindow.ui" line="1387"/>
         <source>&amp;Close Database</source>
         <translation>&amp;Chiudi Database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1396"/>
+        <location filename="../MainWindow.ui" line="1396"/>
         <source>This button closes the connection to the currently open database file</source>
         <translation>Questo pulsnate chiude la connessione al file di database attualmente aperto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1399"/>
+        <location filename="../MainWindow.ui" line="1399"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1414"/>
+        <location filename="../MainWindow.ui" line="1414"/>
         <source>&amp;Revert Changes</source>
         <translation>&amp;Ripristina le modifiche</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1417"/>
-        <location filename="../vSongHome.ui" line="1420"/>
+        <location filename="../MainWindow.ui" line="1417"/>
+        <location filename="../MainWindow.ui" line="1420"/>
         <source>Revert database to last saved state</source>
         <translation>Ripristina il database all&apos;ultimo stato salvato</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1423"/>
+        <location filename="../MainWindow.ui" line="1423"/>
         <source>This option is used to revert the current database file to its last saved state. All changes made since the last save operation are lost.</source>
         <translation>Questa opzione è utilizzata per ripristinare il file di database al suo ultimo stato salvato. Tutte le modifiche fatte dall&apos;ultima opzione di salvataggio sono perse.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1438"/>
+        <location filename="../MainWindow.ui" line="1438"/>
         <source>&amp;Write Changes</source>
         <translation>&amp;Salva le modifiche</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1441"/>
-        <location filename="../vSongHome.ui" line="1444"/>
+        <location filename="../MainWindow.ui" line="1441"/>
+        <location filename="../MainWindow.ui" line="1444"/>
         <source>Write changes to the database file</source>
         <translation>Scrive le modifiche sul file di database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1447"/>
+        <location filename="../MainWindow.ui" line="1447"/>
         <source>This option is used to save changes to the database file.</source>
         <translation>Questa opzione è utilizzata per salvare le modifiche sul file di database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1450"/>
+        <location filename="../MainWindow.ui" line="1450"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1461"/>
+        <location filename="../MainWindow.ui" line="1461"/>
         <source>Compact &amp;Database...</source>
         <translation>&amp;Compatta Database...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1464"/>
+        <location filename="../MainWindow.ui" line="1464"/>
         <source>Compact the database file, removing space wasted by deleted records</source>
         <translation>Compatta il file di database, rimuovendo lo spazio sprecato dalle righe eliminate</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1467"/>
-        <location filename="../vSongHome.ui" line="1470"/>
+        <location filename="../MainWindow.ui" line="1467"/>
+        <location filename="../MainWindow.ui" line="1470"/>
         <source>Compact the database file, removing space wasted by deleted records.</source>
         <translation>Compatta il file di database rimuovendo lo spazio sprecato dalle righe eliminate.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1478"/>
+        <location filename="../MainWindow.ui" line="1478"/>
         <source>E&amp;xit</source>
         <translation>&amp;Esci</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1481"/>
+        <location filename="../MainWindow.ui" line="1481"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1489"/>
+        <location filename="../MainWindow.ui" line="1489"/>
         <source>&amp;Database from SQL file...</source>
         <translation>&amp;Database dal file SQL...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1492"/>
+        <location filename="../MainWindow.ui" line="1492"/>
         <source>Import data from an .sql dump text file into a new or existing database.</source>
         <translation>Importa i dati da un file di testo di dump .sql all&apos;interno di un database nuovo o esistente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1495"/>
+        <location filename="../MainWindow.ui" line="1495"/>
         <source>This option lets you import data from an .sql dump text file into a new or existing database. SQL dump files can be created on most database engines, including MySQL and PostgreSQL.</source>
         <translation>Questa opzione ti permette d&apos;importare i dati da un file di testo di dump .sql all&apos;interno di un database nuovo o esistente. I file di dump SQL possono essere creati dalla maggiorparte dei motori SQL, inclusi MySQL e PostgreSQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1503"/>
+        <location filename="../MainWindow.ui" line="1503"/>
         <source>&amp;Table from CSV file...</source>
         <translation>&amp;Tabella da file CSV...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1506"/>
+        <location filename="../MainWindow.ui" line="1506"/>
         <source>Open a wizard that lets you import data from a comma separated text file into a database table.</source>
         <translation>Apre un wizard che ti permette d&apos;importare dati da un file CSV all&apos;interno di una tabella del database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1509"/>
+        <location filename="../MainWindow.ui" line="1509"/>
         <source>Open a wizard that lets you import data from a comma separated text file into a database table. CSV files can be created on most database and spreadsheet applications.</source>
         <translation>Apre un wizard che ti permette d&apos;importare dati da un file CSV all&apos;interno di una tabella del database. I file CSV possono essere creati dalla maggiorparte delle applicazioni database o foglio di calcolo.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1517"/>
+        <location filename="../MainWindow.ui" line="1517"/>
         <source>&amp;Database to SQL file...</source>
         <translation>&amp;Database in file SQL...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1520"/>
+        <location filename="../MainWindow.ui" line="1520"/>
         <source>Export a database to a .sql dump text file.</source>
         <translation>Esporta un database in un file di testo di dump .sql.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1523"/>
+        <location filename="../MainWindow.ui" line="1523"/>
         <source>This option lets you export a database to a .sql dump text file. SQL dump files contain all data necessary to recreate the database on most database engines, including MySQL and PostgreSQL.</source>
         <translation>Questa opzione ti permette di esportare un database in un file di testo di dump .sql. Il file di dump SQL contiene tutti i dati necessari per ricreare il database sulla maggiorparte di motori di database, inclusi MySQL e PostgreSQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1531"/>
+        <location filename="../MainWindow.ui" line="1531"/>
         <source>&amp;Table(s) as CSV file...</source>
         <translation>&amp;Tabella(e) come file CSV...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1534"/>
+        <location filename="../MainWindow.ui" line="1534"/>
         <source>Export a database table as a comma separated text file.</source>
         <translation>Esporta la tabella del database come un file di testo CSV.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1537"/>
+        <location filename="../MainWindow.ui" line="1537"/>
         <source>Export a database table as a comma separated text file, ready to be imported into other database or spreadsheet applications.</source>
         <translation>Esporta la tabella del database come un file di testo CSV, pronto per essere importato in un altro database o foglio di calcolo.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1552"/>
+        <location filename="../MainWindow.ui" line="1552"/>
         <source>&amp;Create Table...</source>
         <translation>&amp;Crea tabella...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1555"/>
+        <location filename="../MainWindow.ui" line="1555"/>
         <source>Open the Create Table wizard, where it is possible to define the name and fields for a new table in the database</source>
         <translation>Apre un wizard per la creazione di una tabella, dov&apos;è possibile definire il nome e i campi di una nuova tabella del database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1570"/>
+        <location filename="../MainWindow.ui" line="1570"/>
         <source>&amp;Delete Table...</source>
         <translation>&amp;Elimina tabella...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1573"/>
-        <location filename="../vSongHome.cpp" line="1886"/>
+        <location filename="../MainWindow.ui" line="1573"/>
+        <location filename="../MainWindow.cpp" line="1886"/>
         <source>Delete Table</source>
         <translation>Elimina Tabella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1576"/>
+        <location filename="../MainWindow.ui" line="1576"/>
         <source>Open the Delete Table wizard, where you can select a database table to be dropped.</source>
         <translation>Apre un wizard per la cancellazione della tabella, da qui puoi selezionare la tabella del database da eliminare.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1591"/>
+        <location filename="../MainWindow.ui" line="1591"/>
         <source>&amp;Modify Table...</source>
         <translation>&amp;Modifica Tabella...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1594"/>
+        <location filename="../MainWindow.ui" line="1594"/>
         <source>Open the Modify Table wizard, where it is possible to rename an existing table. It is also possible to add or delete fields form a table, as well as modify field names and types.</source>
         <translation>Apre un wizard per la modifica di una tabella, da qui è possibile rinominare una tabella esistente. Si può anche aggiungere o rimuovere campi da una tabella così come modificarne il nome o il tipo.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1609"/>
+        <location filename="../MainWindow.ui" line="1609"/>
         <source>Create &amp;Index...</source>
         <translation>Crea &amp;Indice...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1612"/>
+        <location filename="../MainWindow.ui" line="1612"/>
         <source>Open the Create Index wizard, where it is possible to define a new index on an existing database table.</source>
         <translation>Apre un wizard per la crazione di un indice, da qui è possibile definire un nuovo indice s&apos;una tabella di database pre-esistente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1624"/>
+        <location filename="../MainWindow.ui" line="1624"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Preferenze...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1627"/>
-        <location filename="../vSongHome.ui" line="1630"/>
+        <location filename="../MainWindow.ui" line="1627"/>
+        <location filename="../MainWindow.ui" line="1630"/>
         <source>Open the preferences window.</source>
         <translation>Apre la finestra delle preferenze.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1645"/>
+        <location filename="../MainWindow.ui" line="1645"/>
         <source>&amp;DB Toolbar</source>
         <translation>&amp;Barra degli strumenti</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1648"/>
+        <location filename="../MainWindow.ui" line="1648"/>
         <source>Shows or hides the Database toolbar.</source>
         <translation>Mostra o nasconde la barra degli strumenti del database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1694"/>
+        <location filename="../MainWindow.ui" line="1694"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1760"/>
+        <location filename="../MainWindow.ui" line="1760"/>
         <source>Execute line</source>
         <translation>Esegui riga</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1849"/>
+        <location filename="../MainWindow.ui" line="1849"/>
         <source>Sa&amp;ve Project</source>
         <translation>Sal&amp;va Progetto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2107"/>
+        <location filename="../MainWindow.ui" line="2107"/>
         <source>Find</source>
         <translation>Trova</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2134"/>
+        <location filename="../MainWindow.ui" line="2134"/>
         <source>Find or replace</source>
         <translation>Trova o sostituisci</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2366"/>
+        <location filename="../MainWindow.ui" line="2366"/>
         <source>Print text from current SQL editor tab</source>
         <translation>Stampa testo dalla scheda corrente dell&apos;editor SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2393"/>
+        <location filename="../MainWindow.ui" line="2393"/>
         <source>Print the structure of the opened database</source>
         <translation>Stampa la struttura del database aperto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2414"/>
+        <location filename="../MainWindow.ui" line="2414"/>
         <source>Un/comment block of SQL code</source>
         <translation>De/Commenta il blocco di codice SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2417"/>
+        <location filename="../MainWindow.ui" line="2417"/>
         <source>Un/comment block</source>
         <translation>De/Commenta il blocco</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2420"/>
+        <location filename="../MainWindow.ui" line="2420"/>
         <source>Comment or uncomment current line or selected block of code</source>
         <translation>Commenta o decommenta la riga corrente o il blocco selezionato di codice</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2423"/>
+        <location filename="../MainWindow.ui" line="2423"/>
         <source>Comment or uncomment the selected lines or the current line, when there is no selection. All the block is toggled according to the first line.</source>
         <translation>Commenta o decommenta le righe selezionate o la riga corrente, quando non c&apos;è nessuna selezione. Tutti i blocchi sono modificati in accordo alla prima riga.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2426"/>
+        <location filename="../MainWindow.ui" line="2426"/>
         <source>Ctrl+/</source>
         <translation>Ctrl+/</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2438"/>
+        <location filename="../MainWindow.ui" line="2438"/>
         <source>Stop SQL execution</source>
         <translation>Ferma esecuzione SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2441"/>
+        <location filename="../MainWindow.ui" line="2441"/>
         <source>Stop execution</source>
         <translation>Ferma esecuzione</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2444"/>
+        <location filename="../MainWindow.ui" line="2444"/>
         <source>Stop the currently running SQL script</source>
         <translation>Ferma lo script SQL attualmente in esecuzione</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2549"/>
+        <location filename="../MainWindow.ui" line="2549"/>
         <source>&amp;Save Project As...</source>
         <translation>&amp;Salva Progetto Come...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2552"/>
-        <location filename="../vSongHome.ui" line="2555"/>
-        <location filename="../vSongHome.ui" line="2558"/>
+        <location filename="../MainWindow.ui" line="2552"/>
+        <location filename="../MainWindow.ui" line="2555"/>
+        <location filename="../MainWindow.ui" line="2558"/>
         <source>Save the project in a file selected in a dialog</source>
         <translation>Salva il progetto in un file selezionato tramite una finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2567"/>
+        <location filename="../MainWindow.ui" line="2567"/>
         <source>Save A&amp;ll</source>
         <translation>Salva T&amp;utto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2570"/>
-        <location filename="../vSongHome.ui" line="2573"/>
-        <location filename="../vSongHome.ui" line="2576"/>
+        <location filename="../MainWindow.ui" line="2570"/>
+        <location filename="../MainWindow.ui" line="2573"/>
+        <location filename="../MainWindow.ui" line="2576"/>
         <source>Save DB file, project file and opened SQL files</source>
         <translation>Salva il file DB, file di progetto e tutti i file SQL aperti</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2579"/>
+        <location filename="../MainWindow.ui" line="2579"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1660"/>
+        <location filename="../MainWindow.ui" line="1660"/>
         <source>W&amp;hat&apos;s This?</source>
         <translation>Cos&apos;è &amp;questo?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2036"/>
+        <location filename="../MainWindow.ui" line="2036"/>
         <source>Refresh the data in the selected table</source>
         <translation>Aggiorna i dati della tabella selezionata</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2456"/>
+        <location filename="../MainWindow.ui" line="2456"/>
         <source>Print currently browsed table data</source>
         <translation>Stampa i dati della tabella attualmente in esplorazione</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1663"/>
+        <location filename="../MainWindow.ui" line="1663"/>
         <source>Shift+F1</source>
         <translation>Shift+F1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1671"/>
+        <location filename="../MainWindow.ui" line="1671"/>
         <source>&amp;About</source>
         <translation>&amp;Informazioni</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1679"/>
+        <location filename="../MainWindow.ui" line="1679"/>
         <source>&amp;Recently opened</source>
         <translation>&amp;Aperti di recente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1688"/>
+        <location filename="../MainWindow.ui" line="1688"/>
         <source>Open &amp;tab</source>
         <translation>Apri &amp;scheda</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1691"/>
+        <location filename="../MainWindow.ui" line="1691"/>
         <source>This button opens a new tab for the SQL editor</source>
         <translation>Questo pulsante apre una nuova schede dell&apos;editor SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1703"/>
+        <location filename="../MainWindow.ui" line="1703"/>
         <source>&amp;Execute SQL</source>
         <translation>&amp;Esegui SQL</translation>
     </message>
@@ -3263,35 +3263,35 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Esegue tutti/selezionati SQL [F5, Ctrl+Invio, Ctrl+R]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1709"/>
+        <location filename="../MainWindow.ui" line="1709"/>
         <source>This button executes the currently selected SQL statements. If no text is selected, all SQL statements are executed.</source>
         <translation>Questo pulsante esegue gli statement SQL evidenziati. Se nessun testo è selezionato, tutti gli statement SQL vengono eseguiti.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1721"/>
+        <location filename="../MainWindow.ui" line="1721"/>
         <source>Open SQL file</source>
         <translation>Apri file SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1724"/>
+        <location filename="../MainWindow.ui" line="1724"/>
         <source>This button opens a file containing SQL statements and loads it in a new editor tab</source>
         <translation>Questo pulsante apre un file contenente statement SQL e lo carica in una nuova scheda dell&apos;editor</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1733"/>
-        <location filename="../vSongHome.ui" line="1939"/>
-        <location filename="../vSongHome.ui" line="1942"/>
+        <location filename="../MainWindow.ui" line="1733"/>
+        <location filename="../MainWindow.ui" line="1939"/>
+        <location filename="../MainWindow.ui" line="1942"/>
         <source>Save SQL file</source>
         <translation>Salva file SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1745"/>
+        <location filename="../MainWindow.ui" line="1745"/>
         <source>&amp;Load Extension...</source>
         <translation>&amp;Carica Estensioni...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1757"/>
-        <location filename="../vSongHome.ui" line="1763"/>
+        <location filename="../MainWindow.ui" line="1757"/>
+        <location filename="../MainWindow.ui" line="1763"/>
         <source>Execute current line</source>
         <translation>Esegue la riga corrente</translation>
     </message>
@@ -3300,47 +3300,47 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Esegue la riga corrente [Shift+F5]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1766"/>
+        <location filename="../MainWindow.ui" line="1766"/>
         <source>This button executes the SQL statement present in the current editor line</source>
         <translation>Questo pulsante esegue lo statement SQL presente nella riga corrente dell&apos;editor</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1769"/>
+        <location filename="../MainWindow.ui" line="1769"/>
         <source>Shift+F5</source>
         <translation>Shift+F5</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1777"/>
+        <location filename="../MainWindow.ui" line="1777"/>
         <source>Export as CSV file</source>
         <translation>Esporta come file CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1780"/>
+        <location filename="../MainWindow.ui" line="1780"/>
         <source>Export table as comma separated values file</source>
         <translation>Esporta la tabella come file CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1789"/>
+        <location filename="../MainWindow.ui" line="1789"/>
         <source>&amp;Wiki</source>
         <translation>&amp;Wiki</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1801"/>
+        <location filename="../MainWindow.ui" line="1801"/>
         <source>Bug &amp;Report...</source>
         <translation>Bug &amp;Report...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1813"/>
+        <location filename="../MainWindow.ui" line="1813"/>
         <source>Feature Re&amp;quest...</source>
         <translation>Richiesta &amp;Funzionalità...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1825"/>
+        <location filename="../MainWindow.ui" line="1825"/>
         <source>Web&amp;site</source>
         <translation>Sito &amp;Web</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1837"/>
+        <location filename="../MainWindow.ui" line="1837"/>
         <source>&amp;Donate on Patreon...</source>
         <translation>&amp;Dona su Patreon...</translation>
     </message>
@@ -3349,188 +3349,188 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Sal&amp;va Progetto...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1852"/>
-        <location filename="../vSongHome.ui" line="1855"/>
+        <location filename="../MainWindow.ui" line="1852"/>
+        <location filename="../MainWindow.ui" line="1855"/>
         <source>Save the current session to a file</source>
         <translation>Salva la sessione correte in un file</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1858"/>
+        <location filename="../MainWindow.ui" line="1858"/>
         <source>This button lets you save all the settings associated to the open DB to a DB4S project file</source>
         <translation>Questo pulsante ti permette di salvare tutte le impostazioni associate al DB aperto in un file di progetto di DB4S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1870"/>
+        <location filename="../MainWindow.ui" line="1870"/>
         <source>Open &amp;Project...</source>
         <translation>Apri &amp;Progetto...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1873"/>
-        <location filename="../vSongHome.ui" line="1876"/>
+        <location filename="../MainWindow.ui" line="1873"/>
+        <location filename="../MainWindow.ui" line="1876"/>
         <source>Load a working session from a file</source>
         <translation>Carica una sessione di lavoro da file</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1879"/>
+        <location filename="../MainWindow.ui" line="1879"/>
         <source>This button lets you open a DB4S project file</source>
         <translation>Questo pulsante ti permette di aprire un file di progetto DB4S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1894"/>
+        <location filename="../MainWindow.ui" line="1894"/>
         <source>&amp;Attach Database...</source>
         <translation>&amp;Collega Database...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1897"/>
-        <location filename="../vSongHome.ui" line="1900"/>
+        <location filename="../MainWindow.ui" line="1897"/>
+        <location filename="../MainWindow.ui" line="1900"/>
         <source>Add another database file to the current database connection</source>
         <translation>Aggiunge un altro file di database alla connessione corrente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1903"/>
+        <location filename="../MainWindow.ui" line="1903"/>
         <source>This button lets you add another database file to the current database connection</source>
         <translation>Questo pulsante ti permette di aggiungere un altro file alla connessione corrente</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1915"/>
+        <location filename="../MainWindow.ui" line="1915"/>
         <source>&amp;Set Encryption...</source>
         <translation>&amp;Imposta cifratura...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1927"/>
-        <location filename="../vSongHome.ui" line="1930"/>
+        <location filename="../MainWindow.ui" line="1927"/>
+        <location filename="../MainWindow.ui" line="1930"/>
         <source>Save SQL file as</source>
         <translation>Salva file SQL come</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1945"/>
+        <location filename="../MainWindow.ui" line="1945"/>
         <source>This button saves the content of the current SQL editor tab to a file</source>
         <translation>Questo pulsante salva il contenuto della scheda di editor SQL in un file</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1954"/>
+        <location filename="../MainWindow.ui" line="1954"/>
         <source>&amp;Browse Table</source>
         <translation>&amp;Naviga Tabella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1963"/>
+        <location filename="../MainWindow.ui" line="1963"/>
         <source>Copy Create statement</source>
         <translation>Copia statement CREATE</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1966"/>
+        <location filename="../MainWindow.ui" line="1966"/>
         <source>Copy the CREATE statement of the item to the clipboard</source>
         <translation>Copia lo statement CREATE negli appunti</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1971"/>
+        <location filename="../MainWindow.ui" line="1971"/>
         <source>Edit display format</source>
         <translation>Modifica formato di visualizzazione</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1974"/>
+        <location filename="../MainWindow.ui" line="1974"/>
         <source>Edit the display format of the data in this column</source>
         <translation>Modifica il formato di visualizzazione dei dati in questa colonna</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1982"/>
+        <location filename="../MainWindow.ui" line="1982"/>
         <source>Show rowid column</source>
         <translation>Mostra colonna rowid</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1985"/>
+        <location filename="../MainWindow.ui" line="1985"/>
         <source>Toggle the visibility of the rowid column</source>
         <translation>Mostra/nasconde la colonna rowid</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1990"/>
-        <location filename="../vSongHome.cpp" line="3564"/>
+        <location filename="../MainWindow.ui" line="1990"/>
+        <location filename="../MainWindow.cpp" line="3564"/>
         <source>Set encoding</source>
         <translation>Imposta codifica</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1993"/>
+        <location filename="../MainWindow.ui" line="1993"/>
         <source>Change the encoding of the text in the table cells</source>
         <translation>Modifica la codifica dle testo nelle celle della tabella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1998"/>
+        <location filename="../MainWindow.ui" line="1998"/>
         <source>Set encoding for all tables</source>
         <translation>Imposta la codifica per tutte le tabelle</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2001"/>
+        <location filename="../MainWindow.ui" line="2001"/>
         <source>Change the default encoding assumed for all tables in the database</source>
         <translation>Modifica il valore predefinito di codifica per tutte le tabelle del database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2010"/>
+        <location filename="../MainWindow.ui" line="2010"/>
         <source>SQLCipher &amp;FAQ</source>
         <translation>SLQCipher &amp;FAQ</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2013"/>
+        <location filename="../MainWindow.ui" line="2013"/>
         <source>Opens the SQLCipher FAQ in a browser window</source>
         <translation>Apre le SQLCipher FAQ in una finestra del browser</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2018"/>
+        <location filename="../MainWindow.ui" line="2018"/>
         <source>Table(&amp;s) to JSON...</source>
         <translation>Tabella(&amp;e) in JSON...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2021"/>
+        <location filename="../MainWindow.ui" line="2021"/>
         <source>Export one or more table(s) to a JSON file</source>
         <translation>Esporta una o più tabelle in un file JSON</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2033"/>
+        <location filename="../MainWindow.ui" line="2033"/>
         <source>Refresh</source>
         <translation>Aggiorna</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2042"/>
+        <location filename="../MainWindow.ui" line="2042"/>
         <source>F5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2054"/>
+        <location filename="../MainWindow.ui" line="2054"/>
         <source>Open Data&amp;base Read Only...</source>
         <translation>Apri un Data&amp;base in Sola Lettura...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2057"/>
+        <location filename="../MainWindow.ui" line="2057"/>
         <source>Open an existing database file in read only mode</source>
         <translation>Apre un file databse esistente in modalità sola lettura</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2074"/>
+        <location filename="../MainWindow.ui" line="2074"/>
         <source>Unlock view editing</source>
         <translation>Sblocca la modifica della vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2077"/>
+        <location filename="../MainWindow.ui" line="2077"/>
         <source>This unlocks the current view for editing. However, you will need appropriate triggers for editing.</source>
         <translation>Sblocca la vista corrente per modificarla. Per poterla modificare avrai comunque bisogno degli appropriati trigger.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2086"/>
+        <location filename="../MainWindow.ui" line="2086"/>
         <source>Save results</source>
         <translation>Salva risultati</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2089"/>
+        <location filename="../MainWindow.ui" line="2089"/>
         <source>Save the results view</source>
         <translation>Salva i risultati della vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2092"/>
+        <location filename="../MainWindow.ui" line="2092"/>
         <source>This button lets you save the results of the last executed query</source>
         <translation>Questo pulsante ti permette di salvare i risultati dell&apos;ultima query eseguita</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2104"/>
-        <location filename="../vSongHome.ui" line="2110"/>
+        <location filename="../MainWindow.ui" line="2104"/>
+        <location filename="../MainWindow.ui" line="2110"/>
         <source>Find text in SQL editor</source>
         <translation>Trova testo nell&apos;editor SQL</translation>
     </message>
@@ -3539,18 +3539,18 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Trova testo nell&apos;editor SQL [Ctrl+F]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2113"/>
+        <location filename="../MainWindow.ui" line="2113"/>
         <source>This button opens the search bar of the editor</source>
         <translation>Questo pulsante apre la barra di ricerca dell&apos;editor</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2116"/>
+        <location filename="../MainWindow.ui" line="2116"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2131"/>
-        <location filename="../vSongHome.ui" line="2137"/>
+        <location filename="../MainWindow.ui" line="2131"/>
+        <location filename="../MainWindow.ui" line="2137"/>
         <source>Find or replace text in SQL editor</source>
         <translation>Trova e/o sostituisci testo nell&apos;editor SQL</translation>
     </message>
@@ -3559,182 +3559,182 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Trova e/o sostituisce il testo nell&apos;editor SQL [Ctrl+H]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2140"/>
+        <location filename="../MainWindow.ui" line="2140"/>
         <source>This button opens the find/replace dialog for the current editor tab</source>
         <translation>Questo pulsante apre la finestra di ricerca/sostituzione testo per la scheda corrente dell&apos;editor</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2143"/>
+        <location filename="../MainWindow.ui" line="2143"/>
         <source>Ctrl+H</source>
         <translation>Ctrl+H</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2151"/>
-        <location filename="../vSongHome.ui" line="2213"/>
+        <location filename="../MainWindow.ui" line="2151"/>
+        <location filename="../MainWindow.ui" line="2213"/>
         <source>Export to &amp;CSV</source>
         <translation>Esporta in &amp;CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2156"/>
-        <location filename="../vSongHome.ui" line="2227"/>
+        <location filename="../MainWindow.ui" line="2156"/>
+        <location filename="../MainWindow.ui" line="2227"/>
         <source>Save as &amp;view</source>
         <translation>Salva come &amp;vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2159"/>
+        <location filename="../MainWindow.ui" line="2159"/>
         <source>Save as view</source>
         <translation>Salva come vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2164"/>
+        <location filename="../MainWindow.ui" line="2164"/>
         <source>Hide column(s)</source>
         <translation>Nascondi colonna(e)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2167"/>
+        <location filename="../MainWindow.ui" line="2167"/>
         <source>Hide selected column(s)</source>
         <translation>Nasconde la(e) colonna(e) selezionata(e)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2172"/>
+        <location filename="../MainWindow.ui" line="2172"/>
         <source>Show all columns</source>
         <translation>Mostra tutte le colonne</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2175"/>
+        <location filename="../MainWindow.ui" line="2175"/>
         <source>Show all columns that were hidden</source>
         <translation>Mostra tutte le colonne nascoste</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2193"/>
+        <location filename="../MainWindow.ui" line="2193"/>
         <source>Shows or hides the Project toolbar.</source>
         <translation>Mostra o nasconde la barra degli strumenti di progetto.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2208"/>
+        <location filename="../MainWindow.ui" line="2208"/>
         <source>Extra DB Toolbar</source>
         <translation>Barra degli strumenti DB estesa</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2216"/>
-        <location filename="../vSongHome.ui" line="2219"/>
+        <location filename="../MainWindow.ui" line="2216"/>
+        <location filename="../MainWindow.ui" line="2219"/>
         <source>Export the filtered data to CSV</source>
         <translation>Esporta i dati filtrati in CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2222"/>
+        <location filename="../MainWindow.ui" line="2222"/>
         <source>This button exports the data of the browsed table as currently displayed (after filters, display formats and order column) as a CSV file.</source>
         <translation>Questo pulsante esporta i dati della tabella così come visualizzati (applicando  filtri, formati e ordine delle colonne) in un file CSV.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2230"/>
-        <location filename="../vSongHome.ui" line="2233"/>
+        <location filename="../MainWindow.ui" line="2230"/>
+        <location filename="../MainWindow.ui" line="2233"/>
         <source>Save the current filter, sort column and display formats as a view</source>
         <translation>Salva il filtro corrente, ordine colonne e formati dati come vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2236"/>
+        <location filename="../MainWindow.ui" line="2236"/>
         <source>This button saves the current setting of the browsed table (filters, display formats and order column) as an SQL view that you can later browse or use in SQL statements.</source>
         <translation>Questo pulsante salva le impostazioni della tabella visualizzata (filtri, formati e ordine colonne) in una vista SQL che puoi successivamente navigare o utilizzare in statement SQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2262"/>
+        <location filename="../MainWindow.ui" line="2262"/>
         <source>Insert Values...</source>
         <translation>Inserisci Valori...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2265"/>
-        <location filename="../vSongHome.ui" line="2268"/>
+        <location filename="../MainWindow.ui" line="2265"/>
+        <location filename="../MainWindow.ui" line="2268"/>
         <source>Open a dialog for inserting values in a new record</source>
         <translation>Apre una finestra per l&apos;inermento di valori all&apos;interno di un nuovo record</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2280"/>
-        <location filename="../vSongHome.ui" line="2283"/>
+        <location filename="../MainWindow.ui" line="2280"/>
+        <location filename="../MainWindow.ui" line="2283"/>
         <source>Insert new record using default values in browsed table</source>
         <translation>Inserisce un nuovo record utilizzando i valori di default della tabella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2288"/>
+        <location filename="../MainWindow.ui" line="2288"/>
         <source>New In-&amp;Memory Database</source>
         <translation>Nuovo Database In &amp;Memoria</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2296"/>
+        <location filename="../MainWindow.ui" line="2296"/>
         <source>Drag &amp;&amp; Drop Qualified Names</source>
         <translation>Trascina &amp;&amp; Rilascia Nomi Qualificati</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2299"/>
-        <location filename="../vSongHome.ui" line="2302"/>
+        <location filename="../MainWindow.ui" line="2299"/>
+        <location filename="../MainWindow.ui" line="2302"/>
         <source>Use qualified names (e.g. &quot;Table&quot;.&quot;Field&quot;) when dragging the objects and dropping them into the editor </source>
         <translation>Usa nomi qualificati (es. &quot;Table&quot;.&quot;Campo&quot;) quando trascini gli oggetti e li rilasci all&apos;interno dell&apos;editor </translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2310"/>
+        <location filename="../MainWindow.ui" line="2310"/>
         <source>Drag &amp;&amp; Drop Enquoted Names</source>
         <translation>Trascina &amp;&amp; Rilascia Nomi Quotati</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2313"/>
-        <location filename="../vSongHome.ui" line="2316"/>
+        <location filename="../MainWindow.ui" line="2313"/>
+        <location filename="../MainWindow.ui" line="2316"/>
         <source>Use escaped identifiers (e.g. &quot;Table1&quot;) when dragging the objects and dropping them into the editor </source>
         <translation>Usa gl&apos;identificatori di citazione (es. &quot;Tabella1&quot;) quando trascini e rilasci gli oggetti nell&apos;editor </translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2321"/>
+        <location filename="../MainWindow.ui" line="2321"/>
         <source>&amp;Integrity Check</source>
         <translation>Controllo &amp;Integrità</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2324"/>
+        <location filename="../MainWindow.ui" line="2324"/>
         <source>Runs the integrity_check pragma over the opened database and returns the results in the Execute SQL tab. This pragma does an integrity check of the entire database.</source>
         <translation>Avvia il controllo integrità (integrity check pragma) sul database aperto e riporta il risultato nella scheda &quot;Esegui SQL&quot;. Questa operazione esegue un controllo d&apos;integrità sull&apos;intero database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2329"/>
+        <location filename="../MainWindow.ui" line="2329"/>
         <source>&amp;Foreign-Key Check</source>
         <translation>Controlla Chiave &amp;Esterna</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2332"/>
+        <location filename="../MainWindow.ui" line="2332"/>
         <source>Runs the foreign_key_check pragma over the opened database and returns the results in the Execute SQL tab</source>
         <translation>Avvia il controllo chiavi esterne (foreign_key_check pragma) nel database aperto e riporta il risultato nella scheda &quot;Esegui SQL&quot;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2337"/>
+        <location filename="../MainWindow.ui" line="2337"/>
         <source>&amp;Quick Integrity Check</source>
         <translation>Controllo Integrità &amp;Veloce</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2340"/>
+        <location filename="../MainWindow.ui" line="2340"/>
         <source>Run a quick integrity check over the open DB</source>
         <translation>Avvia un controllo veloce d&apos;integrità sul DB aperto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2343"/>
+        <location filename="../MainWindow.ui" line="2343"/>
         <source>Runs the quick_check pragma over the opened database and returns the results in the Execute SQL tab. This command does most of the checking of PRAGMA integrity_check but runs much faster.</source>
         <translation>Avvia un controllo veloce d&apos;integrità (quick_check pragma) sul database e riporta il risultato nella scheda &quot;Esegui SQL&quot;. Quest comando esegue la maggiorparte dei controlli d&apos;integrità del controllo completo, ma in modo molto più veloce.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2348"/>
+        <location filename="../MainWindow.ui" line="2348"/>
         <source>&amp;Optimize</source>
         <translation>&amp;Ottimizza</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2351"/>
+        <location filename="../MainWindow.ui" line="2351"/>
         <source>Attempt to optimize the database</source>
         <translation>Prova ad ottimizzare il database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2354"/>
+        <location filename="../MainWindow.ui" line="2354"/>
         <source>Runs the optimize pragma over the opened database. This pragma might perform optimizations that will improve the performance of future queries.</source>
         <translation>Avvia l&apos;ottimizzazione del database aperto. Questa operazione potrebbe eseguire delle ottimizzazione che miglioreranno le performance delle query future.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2363"/>
-        <location filename="../vSongHome.ui" line="2390"/>
-        <location filename="../vSongHome.ui" line="2453"/>
+        <location filename="../MainWindow.ui" line="2363"/>
+        <location filename="../MainWindow.ui" line="2390"/>
+        <location filename="../MainWindow.ui" line="2453"/>
         <source>Print</source>
         <translation>Stampa</translation>
     </message>
@@ -3743,7 +3743,7 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Stampa il testo della scheda editor SQL [Ctrl+P]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2372"/>
+        <location filename="../MainWindow.ui" line="2372"/>
         <source>Open a dialog for printing the text in the current SQL editor tab</source>
         <translation>Apre una finetra per la stampa del testo nella scheda dell&apos;editor SQL</translation>
     </message>
@@ -3752,119 +3752,119 @@ Puoi trascinare statement SQL dalla colonna Schema e rilasciarli dentro l&apos;e
         <translation type="vanished">Stampa la struttura del database aperto [Ctrl+P]</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2399"/>
+        <location filename="../MainWindow.ui" line="2399"/>
         <source>Open a dialog for printing the structure of the opened database</source>
         <translation>Apre una finestra per la stampa della struttura del database aperto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2375"/>
-        <location filename="../vSongHome.ui" line="2402"/>
-        <location filename="../vSongHome.ui" line="2465"/>
+        <location filename="../MainWindow.ui" line="2375"/>
+        <location filename="../MainWindow.ui" line="2402"/>
+        <location filename="../MainWindow.ui" line="2465"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1706"/>
+        <location filename="../MainWindow.ui" line="1706"/>
         <source>Execute all/selected SQL</source>
         <translation>Esegui tutti gli SQL o quelli selezionati</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1712"/>
+        <location filename="../MainWindow.ui" line="1712"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Invio</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="319"/>
+        <location filename="../MainWindow.cpp" line="319"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="324"/>
+        <location filename="../MainWindow.cpp" line="324"/>
         <source>Ctrl+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="329"/>
+        <location filename="../MainWindow.cpp" line="329"/>
         <source>Ctrl+I</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="334"/>
+        <location filename="../MainWindow.cpp" line="334"/>
         <source>Ctrl+E</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="369"/>
+        <location filename="../MainWindow.cpp" line="369"/>
         <source>Reset Window Layout</source>
         <translation>Ripristina disposizione finestra</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="370"/>
+        <location filename="../MainWindow.cpp" line="370"/>
         <source>Alt+0</source>
         <translation>Alt+0</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="397"/>
+        <location filename="../MainWindow.cpp" line="397"/>
         <source>The database is currenctly busy.</source>
         <translation>Il database è occupato.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="403"/>
+        <location filename="../MainWindow.cpp" line="403"/>
         <source>Click here to interrupt the currently running query.</source>
         <translation>Clicca qui per interrompere la query in esecuzione.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="411"/>
+        <location filename="../MainWindow.cpp" line="411"/>
         <source>Encrypted</source>
         <translation>Criptato</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="412"/>
+        <location filename="../MainWindow.cpp" line="412"/>
         <source>Database is encrypted using SQLCipher</source>
         <translation>Il database è stato criptato utilizzando SQLCipher</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="418"/>
+        <location filename="../MainWindow.cpp" line="418"/>
         <source>Read only</source>
         <translation>Sola lettura</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="419"/>
+        <location filename="../MainWindow.cpp" line="419"/>
         <source>Database file is read only. Editing the database is disabled.</source>
         <translation>Il file di database è in sola lettura. Le modifiche al database sono disabilitate.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="425"/>
+        <location filename="../MainWindow.cpp" line="425"/>
         <source>Database encoding</source>
         <translation>Codifica Database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="555"/>
-        <location filename="../vSongHome.cpp" line="3222"/>
+        <location filename="../MainWindow.cpp" line="555"/>
+        <location filename="../MainWindow.cpp" line="3222"/>
         <source>Choose a database file</source>
         <translation>Seleziona un file di database</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="599"/>
+        <location filename="../MainWindow.cpp" line="599"/>
         <source>Could not open database file.
 Reason: %1</source>
         <translation>Impossibile aprire il file di database.
 Motivo: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="613"/>
-        <location filename="../vSongHome.cpp" line="1785"/>
-        <location filename="../vSongHome.cpp" line="3077"/>
+        <location filename="../MainWindow.cpp" line="613"/>
+        <location filename="../MainWindow.cpp" line="1785"/>
+        <location filename="../MainWindow.cpp" line="3077"/>
         <source>Choose a filename to save under</source>
         <translation>Seleziona un nome file per il salvataggio</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="634"/>
+        <location filename="../MainWindow.cpp" line="634"/>
         <source>In-Memory database</source>
         <translation>Database In-Memoria</translation>
     </message>
     <message numerus="yes">
-        <location filename="../vSongHome.cpp" line="740"/>
+        <location filename="../MainWindow.cpp" line="740"/>
         <source>%n row(s)</source>
         <translation>
             <numerusform>%n righe</numerusform>
@@ -3872,7 +3872,7 @@ Motivo: %1</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../vSongHome.cpp" line="742"/>
+        <location filename="../MainWindow.cpp" line="742"/>
         <source>, %n column(s)</source>
         <translation>
             <numerusform>, %n colonna(e)</numerusform>
@@ -3880,158 +3880,158 @@ Motivo: %1</translation>
         </translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="755"/>
+        <location filename="../MainWindow.cpp" line="755"/>
         <source>. Sum: %1; Average: %2; Min: %3; Max: %4</source>
         <translation>. Somma: %1; Media: %2; Min: %3; Max: %4</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="909"/>
+        <location filename="../MainWindow.cpp" line="909"/>
         <source>You are still executing SQL statements. When closing the database now the execution will be stopped. maybe leaving the database in an incosistent state. Are you sure you want to close the database?</source>
         <translation>Sto ancora eseguendo degli SQL. Se chiudi ora il database l&apos;esecuzione verrà terminata lasciando potenzialmente il database in uno stato inconsistente. Sei sicuro di voler chiudere il database?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="995"/>
+        <location filename="../MainWindow.cpp" line="995"/>
         <source>Do you want to save the changes made to the project file %1?</source>
         <translation>Vuoi salvare le modifiche fatte al file di progetto %1?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1050"/>
+        <location filename="../MainWindow.cpp" line="1050"/>
         <source>Error deleting record:
 %1</source>
         <translation>Errore eliminando le righe:
 %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1059"/>
+        <location filename="../MainWindow.cpp" line="1059"/>
         <source>Please select a record first</source>
         <translation>Si prega di selezionare prima un record</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1147"/>
+        <location filename="../MainWindow.cpp" line="1147"/>
         <source>determining row count...</source>
         <translation>determino il numero di righe...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1150"/>
+        <location filename="../MainWindow.cpp" line="1150"/>
         <source>%1 - %2 of &gt;= %3</source>
         <translation>%1 - %2 di &gt;= %3</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1154"/>
+        <location filename="../MainWindow.cpp" line="1154"/>
         <source>%1 - %2 of %3</source>
         <translation>%1 - %2 di %3</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1186"/>
-        <location filename="../vSongHome.cpp" line="1200"/>
+        <location filename="../MainWindow.cpp" line="1186"/>
+        <location filename="../MainWindow.cpp" line="1200"/>
         <source>There is no database opened. Please open or create a new database file.</source>
         <translation>Non c&apos;è un database aperto. Si prega di aprire o creare un nuovo file di database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1225"/>
+        <location filename="../MainWindow.cpp" line="1225"/>
         <source>Are you sure you want to delete the table &apos;%1&apos;?
 All data associated with the table will be lost.</source>
         <translation>Sei sicuro di voler eliminare la tabella &apos;%1&apos;?
 Tutti i dati associati alla tabella andranno perduti.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1227"/>
+        <location filename="../MainWindow.cpp" line="1227"/>
         <source>Are you sure you want to delete the view &apos;%1&apos;?</source>
         <translation>Sei sicuro di voler eliminare la vista &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1229"/>
+        <location filename="../MainWindow.cpp" line="1229"/>
         <source>Are you sure you want to delete the trigger &apos;%1&apos;?</source>
         <translation>Sei sicuro di voler eliminare il trigger &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1231"/>
+        <location filename="../MainWindow.cpp" line="1231"/>
         <source>Are you sure you want to delete the index &apos;%1&apos;?</source>
         <translation>Sei sicuro di voler eliminare l&apos;indice &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1242"/>
+        <location filename="../MainWindow.cpp" line="1242"/>
         <source>Error: could not delete the table.</source>
         <translation>Errore: impssibile eliminare la tabella.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1244"/>
+        <location filename="../MainWindow.cpp" line="1244"/>
         <source>Error: could not delete the view.</source>
         <translation>Errore: impossibile eliminare la vista.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1246"/>
+        <location filename="../MainWindow.cpp" line="1246"/>
         <source>Error: could not delete the trigger.</source>
         <translation>Errore: impossibile eliminare il trigger.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1248"/>
+        <location filename="../MainWindow.cpp" line="1248"/>
         <source>Error: could not delete the index.</source>
         <translation>Errore: impossibile eliminare l&apos;indice.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1250"/>
+        <location filename="../MainWindow.cpp" line="1250"/>
         <source>Message from database engine:
 %1</source>
         <translation>Messaggio dal database:
 %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1279"/>
+        <location filename="../MainWindow.cpp" line="1279"/>
         <source>Editing the table requires to save all pending changes now.
 Are you sure you want to save the database?</source>
         <translation>Per modificare la tabella bisogna salvare tutte le modifiche pendenti.
 Sei sicuro di voler salvare il database?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1298"/>
+        <location filename="../MainWindow.cpp" line="1298"/>
         <source>Error checking foreign keys after table modification. The changes will be reverted.</source>
         <translation>Errore nel controllo delle chiavi esterne dopo le modifiche alla tabella. Le modifiche saranno eliminate.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1301"/>
+        <location filename="../MainWindow.cpp" line="1301"/>
         <source>This table did not pass a foreign-key check.&lt;br/&gt;You should run &apos;Tools | Foreign-Key Check&apos; and fix the reported issues.</source>
         <translation>Questa tabella non ha passato il controllo sulle chiavi esterne.&lt;br/&gt;Dovresti avviare &apos;Strumenti | Controllo Chiavi Esterne&apos; e correggere i problemi riportati.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1410"/>
+        <location filename="../MainWindow.cpp" line="1410"/>
         <source>You are already executing SQL statements. Do you want to stop them in order to execute the current statements instead? Note that this might leave the database in an inconsistent state.</source>
         <translation>Sto eseguendo degli SQL. Vuoi fermarli per poter eseguire invece l&apos;SQL corrente? Nota che questo potrebbe lasciare il database in uno stato inconsistente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1457"/>
+        <location filename="../MainWindow.cpp" line="1457"/>
         <source>-- EXECUTING SELECTION IN &apos;%1&apos;
 --</source>
         <translation>-- ESEGUO LA SELEZIONE IN &apos;%1&apos;
 --</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1478"/>
+        <location filename="../MainWindow.cpp" line="1478"/>
         <source>-- EXECUTING LINE IN &apos;%1&apos;
 --</source>
         <translation>-- ESEGUO LINEA IN &apos;%1&apos;
 --</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1486"/>
+        <location filename="../MainWindow.cpp" line="1486"/>
         <source>-- EXECUTING ALL IN &apos;%1&apos;
 --</source>
         <translation>-- ESEGUO TUTTO IN &apos;%1&apos;
 --</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1516"/>
-        <location filename="../vSongHome.cpp" line="1519"/>
+        <location filename="../MainWindow.cpp" line="1516"/>
+        <location filename="../MainWindow.cpp" line="1519"/>
         <source>At line %1:</source>
         <translation>Alla riga %1:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1516"/>
+        <location filename="../MainWindow.cpp" line="1516"/>
         <source>Result: %1</source>
         <translation>Risultato: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1519"/>
+        <location filename="../MainWindow.cpp" line="1519"/>
         <source>Result: %2</source>
         <translation>Risultato: %2</translation>
     </message>
@@ -4044,19 +4044,19 @@ Sei sicuro di voler salvare il database?</translation>
 -- Risultato: %2</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1579"/>
+        <location filename="../MainWindow.cpp" line="1579"/>
         <source>Setting PRAGMA values or vacuuming will commit your current transaction.
 Are you sure?</source>
         <translation>Impostare i valori PRAGMA o pulizia chiuderanno la transazione corrente.
 Sei sicuro?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1597"/>
+        <location filename="../MainWindow.cpp" line="1597"/>
         <source>Execution finished with errors.</source>
         <translation>Esecuzione completata con errori.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1599"/>
+        <location filename="../MainWindow.cpp" line="1599"/>
         <source>Execution finished without errors.</source>
         <translation>Esecuzione completata senza errori.</translation>
     </message>
@@ -4073,7 +4073,7 @@ Sei sicuro?</translation>
         <translation type="vanished">query in esecuzione</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1573"/>
+        <location filename="../MainWindow.cpp" line="1573"/>
         <source>%1 rows returned in %2ms</source>
         <translation>%1 righe ritornate in %2ms</translation>
     </message>
@@ -4094,7 +4094,7 @@ Sei sicuro?</translation>
 -- Risultato: %3</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1652"/>
+        <location filename="../MainWindow.cpp" line="1652"/>
         <source>Choose text files</source>
         <translation>Seleziona i file di testo</translation>
     </message>
@@ -4103,7 +4103,7 @@ Sei sicuro?</translation>
         <translation type="vanished">File di testo(*.csv *.txt);;Tutti i files(*)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1727"/>
+        <location filename="../MainWindow.cpp" line="1727"/>
         <source>Error while saving the database file. This means that not all changes to the database were saved. You need to resolve the following error first.
 
 %1</source>
@@ -4112,116 +4112,116 @@ Sei sicuro?</translation>
 %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1736"/>
+        <location filename="../MainWindow.cpp" line="1736"/>
         <source>Are you sure you want to undo all changes made to the database file &apos;%1&apos; since the last save?</source>
         <translation>Sei sicuro di voler annullare tutte le modifiche effettuate al database &apos;%1&apos; dall&apos;ultimo salvataggio?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1766"/>
+        <location filename="../MainWindow.cpp" line="1766"/>
         <source>Choose a file to import</source>
         <translation>Seleziona un file da importare</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2350"/>
+        <location filename="../MainWindow.cpp" line="2350"/>
         <source>Text files(*.sql *.txt);;All files(*)</source>
         <translation>File di testo(*.sql *.txt);;Tutti i files(*)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1778"/>
+        <location filename="../MainWindow.cpp" line="1778"/>
         <source>Do you want to create a new database file to hold the imported data?
 If you answer no we will attempt to import the data in the SQL file to the current database.</source>
         <translation>Vuoi creare un nuovo file di database per mantenere i dati importati?
 Se rispondi di no proveremo ad importare i dati del file SQL all&apos;interno del database corrente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1789"/>
+        <location filename="../MainWindow.cpp" line="1789"/>
         <source>File %1 already exists. Please choose a different name.</source>
         <translation>Il file %1 esiste già. Si prega di scegliere un nome differente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1814"/>
+        <location filename="../MainWindow.cpp" line="1814"/>
         <source>Error importing data: %1</source>
         <translation>Errore nell&apos;importazione: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1816"/>
+        <location filename="../MainWindow.cpp" line="1816"/>
         <source>Import completed. Some foreign key constraints are violated. Please fix them before saving.</source>
         <translation>Importaizone completata. Alcuni vincoli per le chiavi esterne non sono rispettati. Si prega di correggerli prima di salvare.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1818"/>
+        <location filename="../MainWindow.cpp" line="1818"/>
         <source>Import completed.</source>
         <translation>Import completato.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1877"/>
+        <location filename="../MainWindow.cpp" line="1877"/>
         <source>Delete View</source>
         <translation>Elimina Vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1878"/>
+        <location filename="../MainWindow.cpp" line="1878"/>
         <source>Modify View</source>
         <translation>Modifica Vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1880"/>
+        <location filename="../MainWindow.cpp" line="1880"/>
         <source>Delete Trigger</source>
         <translation>Elimina Trigger</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1881"/>
+        <location filename="../MainWindow.cpp" line="1881"/>
         <source>Modify Trigger</source>
         <translation>Modifica Trigger</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1883"/>
+        <location filename="../MainWindow.cpp" line="1883"/>
         <source>Delete Index</source>
         <translation>Elimina Indice</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1884"/>
+        <location filename="../MainWindow.cpp" line="1884"/>
         <source>Modify Index</source>
         <translation>Modifica Indice</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1887"/>
+        <location filename="../MainWindow.cpp" line="1887"/>
         <source>Modify Table</source>
         <translation>Modifica Tabella</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1941"/>
+        <location filename="../MainWindow.cpp" line="1941"/>
         <source>&amp;%1 %2</source>
         <translation>&amp;%1 %2</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2174"/>
+        <location filename="../MainWindow.cpp" line="2174"/>
         <source>Setting PRAGMA values will commit your current transaction.
 Are you sure?</source>
         <translation>Impostare i valori di PRAGMA chiuderà la transaione corrente.
 Sei sicuro?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2229"/>
+        <location filename="../MainWindow.cpp" line="2229"/>
         <source>Do you want to save the changes made to SQL tabs in a new project file?</source>
         <translation>Vuoi salvare le modifiche effettuate alle schede SQL in un nuovo file di progetto?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2230"/>
+        <location filename="../MainWindow.cpp" line="2230"/>
         <source>Do you want to save the changes made to SQL tabs in the project file %1?</source>
         <translation>Vuoi salvare le modifiche fatte alle schede SQL nel file di progetto %1?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2250"/>
+        <location filename="../MainWindow.cpp" line="2250"/>
         <source>Do you want to save the changes made to the SQL file %1?</source>
         <translation>Vuoi salvare le modifiche fatte al file SQL %1?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2276"/>
+        <location filename="../MainWindow.cpp" line="2276"/>
         <source>The statements in this tab are still executing. Closing the tab will stop the execution. This might leave the database in an inconsistent state. Are you sure you want to close the tab?</source>
         <translation>Gli SQL in questa scheda sono ancora in esecuzione. Chiudere la scheda bloccherà l&apos;esecuzione. Questo potrebbe lasciare il database in uno stato inconsistente. Sei sicuro di voler chiudere la scheda?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2349"/>
+        <location filename="../MainWindow.cpp" line="2349"/>
         <source>Select SQL file to open</source>
         <translation>Selezionare il file SQL da aprire</translation>
     </message>
@@ -4234,12 +4234,12 @@ Sei sicuro?</translation>
         <translation type="vanished">Impossibile salvare il file: %1.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2403"/>
+        <location filename="../MainWindow.cpp" line="2403"/>
         <source>Select file name</source>
         <translation>Seleziona il nome del file</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2434"/>
+        <location filename="../MainWindow.cpp" line="2434"/>
         <source>Select extension file</source>
         <translation>Seleziona l&apos;estensione del file</translation>
     </message>
@@ -4248,107 +4248,107 @@ Sei sicuro?</translation>
         <translation type="vanished">Estensioni(*.so *.dll);;Tutti i files(*)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2441"/>
+        <location filename="../MainWindow.cpp" line="2441"/>
         <source>Extension successfully loaded.</source>
         <translation>Estensione caricata con successo.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2443"/>
+        <location filename="../MainWindow.cpp" line="2443"/>
         <source>Error loading extension: %1</source>
         <translation>Errore nel caricamento dell&apos;estensione: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2460"/>
+        <location filename="../MainWindow.cpp" line="2460"/>
         <source>Could not open find resource file: %1</source>
         <translation>Non posso aprire il file di risorse: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2551"/>
-        <location filename="../vSongHome.cpp" line="2894"/>
+        <location filename="../MainWindow.cpp" line="2551"/>
+        <location filename="../MainWindow.cpp" line="2894"/>
         <source>Don&apos;t show again</source>
         <translation>Non mostrare di nuovo</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2554"/>
+        <location filename="../MainWindow.cpp" line="2554"/>
         <source>New version available.</source>
         <translation>Nuova versione disponibile.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2555"/>
-        <source>A new vSongBook version is available (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Please download at &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</source>
-        <translation>Una nuova versione di vSongBook è disponibile (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Si prega di scaricarla da &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</translation>
+        <location filename="../MainWindow.cpp" line="2555"/>
+        <source>A new DB Browser for SQLite version is available (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Please download at &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</source>
+        <translation>Una nuova versione di DB Browser for SQLite è disponibile (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Si prega di scaricarla da &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2772"/>
+        <location filename="../MainWindow.cpp" line="2772"/>
         <source>Choose a project file to open</source>
         <translation>Seleziona un file di progetto da aprire</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2773"/>
-        <source>vSongBook project file (*.sqbpro)</source>
-        <translation>File di progetto vSongBook (*.sqbpro)</translation>
+        <location filename="../MainWindow.cpp" line="2773"/>
+        <source>DB Browser for SQLite project file (*.sqbpro)</source>
+        <translation>File di progetto DB Browser for SQLite (*.sqbpro)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2898"/>
-        <source>This project file is using an old file format because it was created using vSongBook version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert all your project files to the new file format because support for older formats might be dropped at some point in the future. You can convert your files by simply opening and re-saving them.</source>
+        <location filename="../MainWindow.cpp" line="2898"/>
+        <source>This project file is using an old file format because it was created using DB Browser for SQLite version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert all your project files to the new file format because support for older formats might be dropped at some point in the future. You can convert your files by simply opening and re-saving them.</source>
         <translation>Questo file di progetto utilizza un vecchio formato poiché è stato creato con la versione 3.10 o antecedente. Il caricamento di questo formato è ancora supportato, ma ti suggeriamo di convertire tutti i tuoi files di progetto al nuovo formato poiché il supporto ai formati precedenti potrebbe essere eliminato in futuro. Puoi convertire i tuoi file semplicemente aprendoli e salvandoli nuovamente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3093"/>
+        <location filename="../MainWindow.cpp" line="3093"/>
         <source>Could not open project file for writing.
 Reason: %1</source>
         <translation>Non posso scrivere nel file di progetto.
 Motivo: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3454"/>
+        <location filename="../MainWindow.cpp" line="3454"/>
         <source>Duplicate records</source>
         <translation>Duplica i records</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3454"/>
+        <location filename="../MainWindow.cpp" line="3454"/>
         <source>Duplicate record</source>
         <translation>Duplica il record</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3459"/>
+        <location filename="../MainWindow.cpp" line="3459"/>
         <source>Ctrl+&quot;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3560"/>
+        <location filename="../MainWindow.cpp" line="3560"/>
         <source>Please choose a new encoding for all tables.</source>
         <translation>Si prega di scegliere una nuova codifica per tutte le tabelle.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3562"/>
+        <location filename="../MainWindow.cpp" line="3562"/>
         <source>Please choose a new encoding for this table.</source>
         <translation>Si prega di scegliere una nuova codifica per questa tabella.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3565"/>
+        <location filename="../MainWindow.cpp" line="3565"/>
         <source>%1
 Leave the field empty for using the database encoding.</source>
         <translation>%1
 Lasciare il campo vuoto per utilizzare la codifica del database.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3577"/>
+        <location filename="../MainWindow.cpp" line="3577"/>
         <source>This encoding is either not valid or not supported.</source>
         <translation>Questa codifica non è valida o non è supportata.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3641"/>
+        <location filename="../MainWindow.cpp" line="3641"/>
         <source>Please enter a pseudo-primary key in order to enable editing on this view. This should be the name of a unique column in the view.</source>
         <translation>Si prega d&apos;inserire una pseudo-chiave primaria in modo da abilitare le modifiche su questa vista. Deve corrispondere al nome di una colonna univoca nella vista.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3750"/>
+        <location filename="../MainWindow.cpp" line="3750"/>
         <source>Collation needed! Proceed?</source>
         <translation>Necessario confronto! Procedo?</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3751"/>
+        <location filename="../MainWindow.cpp" line="3751"/>
         <source>A table in this database requires a special collation function &apos;%1&apos; that this application can&apos;t provide without further knowledge.
 If you choose to proceed, be aware bad things can happen to your database.
 Create a backup!</source>
@@ -4357,57 +4357,57 @@ Se scegli di proseguire, sappi che potrebbero generarsi problemi nel tuo databas
 Crea un backup!</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3756"/>
+        <location filename="../MainWindow.cpp" line="3756"/>
         <source>creating collation</source>
         <translation>creo confronto</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3765"/>
+        <location filename="../MainWindow.cpp" line="3765"/>
         <source>Set a new name for the SQL tab. Use the &apos;&amp;&amp;&apos; character to allow using the following character as a keyboard shortcut.</source>
         <translation>Imposta un nuovo nome per la scheda SQL. Usa il carattere &apos;&amp;&amp;&apos; per utilizzare il carattere succesivo come scorciatoia da tastiera.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3817"/>
+        <location filename="../MainWindow.cpp" line="3817"/>
         <source>Please specify the view name</source>
         <translation>Si prega di specificare il nome della vista</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3821"/>
+        <location filename="../MainWindow.cpp" line="3821"/>
         <source>There is already an object with that name. Please choose a different name.</source>
         <translation>Esiste già un oggetto con quel nome. Si prega di scegliere un nome diverso.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3828"/>
+        <location filename="../MainWindow.cpp" line="3828"/>
         <source>View successfully created.</source>
         <translation>Vista creata con successo.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3830"/>
+        <location filename="../MainWindow.cpp" line="3830"/>
         <source>Error creating view: %1</source>
         <translation>Errore nella creazione della vista: %1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3845"/>
+        <location filename="../MainWindow.cpp" line="3845"/>
         <source>There is no filter set for this table. View will not be created.</source>
         <translation>Non c&apos;è filtro impostato per questa tabella. La vista non sarà creata.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3883"/>
+        <location filename="../MainWindow.cpp" line="3883"/>
         <source>Delete Records</source>
         <translation>Elimina i Records</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3890"/>
+        <location filename="../MainWindow.cpp" line="3890"/>
         <source>This action will open a new SQL tab for running:</source>
         <translation>Questa azione aprirà una nuova scheda SQL per eseguire:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3892"/>
+        <location filename="../MainWindow.cpp" line="3892"/>
         <source>Press Help for opening the corresponding SQLite reference page.</source>
         <translation>Premi Aiuto per aprire la pagina di riferimento SQLite corrispondente.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="4006"/>
+        <location filename="../MainWindow.cpp" line="4006"/>
         <source>Busy (%1)</source>
         <translation>Occupato (%1)</translation>
     </message>
@@ -5242,8 +5242,8 @@ Può essere impostato a 0 per disabilitare il completamento.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="1597"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;While supporting the REGEXP operator SQLite doesn&apos;t implement any regular expression&lt;br/&gt;algorithm but calls back the running application. vSongBook implements this&lt;br/&gt;algorithm for you to let you use REGEXP out of the box. However, as there are multiple possible&lt;br/&gt;implementations of this and you might want to use another one, you&apos;re free to disable the&lt;br/&gt;application&apos;s implementation and load your own by using an extension. Requires restart of the application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anche se SQLite supporta l&apos;operatore REGEXP non implementa alcun algoritmo&lt;br/&gt;di espressione regolare, ma richiama l&apos;applicativo in esecuzione. vSongBook implementa questo&lt;br/&gt;algoritmo per te per permetterti di usare le REGEXP immediatamente. Ci sono però multiple implementazioni&lt;br/&gt;possibili e potresti voler utilizzare una o l&apos;altra, sei libero di disabilitare l&apos;implementazione&lt;br/&gt;dell&apos;applicativo e caricare la tua utilizzando un&apos;estensione. Richiede il riavvio dell&apos;applicativo.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;While supporting the REGEXP operator SQLite doesn&apos;t implement any regular expression&lt;br/&gt;algorithm but calls back the running application. DB Browser for SQLite implements this&lt;br/&gt;algorithm for you to let you use REGEXP out of the box. However, as there are multiple possible&lt;br/&gt;implementations of this and you might want to use another one, you&apos;re free to disable the&lt;br/&gt;application&apos;s implementation and load your own by using an extension. Requires restart of the application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anche se SQLite supporta l&apos;operatore REGEXP non implementa alcun algoritmo&lt;br/&gt;di espressione regolare, ma richiama l&apos;applicativo in esecuzione. DB Browser for SQLite implementa questo&lt;br/&gt;algoritmo per te per permetterti di usare le REGEXP immediatamente. Ci sono però multiple implementazioni&lt;br/&gt;possibili e potresti voler utilizzare una o l&apos;altra, sei libero di disabilitare l&apos;implementazione&lt;br/&gt;dell&apos;applicativo e caricare la tua utilizzando un&apos;estensione. Richiede il riavvio dell&apos;applicativo.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="1600"/>
@@ -5506,8 +5506,8 @@ Tutte le tue preferenze andranno perse e verranno utilizzati i valori predefinit
     </message>
     <message>
         <location filename="../FileDialog.h" line="16"/>
-        <source>vSongBook Project Files (*.sqbpro)</source>
-        <translation>File di progetto vSongBook (*.sqbpro)</translation>
+        <source>DB Browser for SQLite Project Files (*.sqbpro)</source>
+        <translation>File di progetto DB Browser for SQLite (*.sqbpro)</translation>
     </message>
     <message>
         <location filename="../FileDialog.h" line="20"/>

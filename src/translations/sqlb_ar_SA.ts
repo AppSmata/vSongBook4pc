@@ -5,7 +5,7 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../AboutDialog.ui" line="14"/>
-        <source>About vSongBook</source>
+        <source>About DB Browser for SQLite</source>
         <translation>عن «متصفّح قواعد بيانات SQLite»</translation>
     </message>
     <message>
@@ -15,12 +15,12 @@
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="102"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://vSongBook.org&quot;&gt;http://vSongBook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;«متصفّح قواعد بيانات SQLite» أداة رسوميّة مفتوحة المصدر ومجانية، تُستخدم لإنشاء ملفّات قواعد بيانات SQLite وتصميمها وتحريرها.&lt;/p&gt;&lt;p&gt;الأداة مرخّصة برخصتين، الإصدارة الثانية من رخصة موزيلا العمومية، والإصدارة الثالثة وما بعدها من رخصة غنو العمومية. يمكنك تعديل الأداة أو إعادة توزيعها بشروط تلك الرخص.&lt;/p&gt;&lt;p&gt;طالع &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; و&lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; للتفاصيل.&lt;/p&gt;&lt;p&gt;من فضلك زُر موقع الوِب هذا لمعلومات أكثر عن البرمجية: &lt;a href=&quot;http://vSongBook.org&quot;&gt;http://vSongBook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم هذه البرمجية عُدّة أدوات كيوت المرخّصة تحت GPL/LGPL وذلك من &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; لشروط الترخيص والمعلومات.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم البرمجية أيضًا طقم أيقونات الحرير/Silk للمؤلّف Mark James المرخّصة برخصة المشاع الإبداعي - النسبة ٢٫٥ و٣٫٠.&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; للتفاصيل.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB Browser for SQLite is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://vsongbook.org&quot;&gt;http://vsongbook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;«متصفّح قواعد بيانات SQLite» أداة رسوميّة مفتوحة المصدر ومجانية، تُستخدم لإنشاء ملفّات قواعد بيانات SQLite وتصميمها وتحريرها.&lt;/p&gt;&lt;p&gt;الأداة مرخّصة برخصتين، الإصدارة الثانية من رخصة موزيلا العمومية، والإصدارة الثالثة وما بعدها من رخصة غنو العمومية. يمكنك تعديل الأداة أو إعادة توزيعها بشروط تلك الرخص.&lt;/p&gt;&lt;p&gt;طالع &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; و&lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; للتفاصيل.&lt;/p&gt;&lt;p&gt;من فضلك زُر موقع الوِب هذا لمعلومات أكثر عن البرمجية: &lt;a href=&quot;http://vsongbook.org&quot;&gt;http://vsongbook.org&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم هذه البرمجية عُدّة أدوات كيوت المرخّصة تحت GPL/LGPL وذلك من &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; لشروط الترخيص والمعلومات.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم البرمجية أيضًا طقم أيقونات الحرير/Silk للمؤلّف Mark James المرخّصة برخصة المشاع الإبداعي - النسبة ٢٫٥ و٣٫٠.&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; للتفاصيل.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://vSongBook.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://vSongBook.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html dir=&quot;rtl&quot;&gt;&lt;p&gt;«متصفّح قواعد بيانات SQLite» أداة رسوميّة مفتوحة المصدر ومجانية، تُستخدم لإنشاء ملفّات قواعد بيانات SQLite وتصميمها وتحريرها.&lt;/p&gt;&lt;p&gt;الأداة مرخّصة برخصتين، الإصدارة الثانية من رخصة موزيلا العمومية، والإصدارة الثالثة وما بعدها من رخصة غنو العمومية. يمكنك تعديل الأداة أو إعادة توزيعها بشروط تلك الرخص.&lt;/p&gt;&lt;p&gt;طالع &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; و&lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; للتفاصيل.&lt;/p&gt;&lt;p&gt;من فضلك زُر موقع الوِب هذا لمعلومات أكثر عن البرمجية: &lt;a href=&quot;http://vSongBook.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://vSongBook.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم هذه البرمجية عُدّة أدوات كيوت المرخّصة تحت GPL/LGPL وذلك من &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; لشروط الترخيص والمعلومات.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم البرمجية أيضًا طقم أيقونات الحرير/Silk للمؤلّف Mark James المرخّصة برخصة المشاع الإبداعي - النسبة ٢٫٥ و٣٫٠.&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; للتفاصيل.&lt;/span&gt;&lt;/p&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB Browser for SQLite is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://vsongbook.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://vsongbook.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="vanished">&lt;html dir=&quot;rtl&quot;&gt;&lt;p&gt;«متصفّح قواعد بيانات SQLite» أداة رسوميّة مفتوحة المصدر ومجانية، تُستخدم لإنشاء ملفّات قواعد بيانات SQLite وتصميمها وتحريرها.&lt;/p&gt;&lt;p&gt;الأداة مرخّصة برخصتين، الإصدارة الثانية من رخصة موزيلا العمومية، والإصدارة الثالثة وما بعدها من رخصة غنو العمومية. يمكنك تعديل الأداة أو إعادة توزيعها بشروط تلك الرخص.&lt;/p&gt;&lt;p&gt;طالع &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; و&lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; للتفاصيل.&lt;/p&gt;&lt;p&gt;من فضلك زُر موقع الوِب هذا لمعلومات أكثر عن البرمجية: &lt;a href=&quot;http://vsongbook.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://vsongbook.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم هذه البرمجية عُدّة أدوات كيوت المرخّصة تحت GPL/LGPL وذلك من &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; لشروط الترخيص والمعلومات.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم البرمجية أيضًا طقم أيقونات الحرير/Silk للمؤلّف Mark James المرخّصة برخصة المشاع الإبداعي - النسبة ٢٫٥ و٣٫٠.&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; للتفاصيل.&lt;/span&gt;&lt;/p&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="19"/>
@@ -189,7 +189,7 @@
     </message>
     <message>
         <location filename="../Application.cpp" line="99"/>
-        <source>This is vSongBook version %1.</source>
+        <source>This is DB Browser for SQLite version %1.</source>
         <translation>هذا «متصفّح قواعد بيانات» للإصدارة %L1 من SQLite.</translation>
     </message>
     <message>
@@ -218,7 +218,7 @@
         <translation>‎  [ملف]‎		‫افتح قاعدة بيانات SQLite المذكورة</translation>
     </message>
     <message>
-        <source>This is vSongBook version %1%2.</source>
+        <source>This is DB Browser for SQLite version %1%2.</source>
         <translation type="vanished">هذا «متصفّح قواعد بيانات» للإصدارة %L1%L2 من SQLite.</translation>
     </message>
     <message>
@@ -754,24 +754,24 @@ Aborting execution%3.</source>
     </message>
 </context>
 <context>
-    <name>SongModel</name>
+    <name>DbStructureModel</name>
     <message>
-        <location filename="../SongModel.cpp" line="19"/>
+        <location filename="../DbStructureModel.cpp" line="19"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="19"/>
+        <location filename="../DbStructureModel.cpp" line="19"/>
         <source>Object</source>
         <translation>الكائن</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="19"/>
+        <location filename="../DbStructureModel.cpp" line="19"/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="19"/>
+        <location filename="../DbStructureModel.cpp" line="19"/>
         <source>Schema</source>
         <translation>المخطّط</translation>
     </message>
@@ -780,42 +780,42 @@ Aborting execution%3.</source>
         <translation type="vanished">ما يمكن تصفّحه (%L1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="19"/>
+        <location filename="../DbStructureModel.cpp" line="19"/>
         <source>Database</source>
         <translation>قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="162"/>
+        <location filename="../DbStructureModel.cpp" line="162"/>
         <source>Browsables</source>
         <translation>ما يمكن تصفّحه</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="167"/>
+        <location filename="../DbStructureModel.cpp" line="167"/>
         <source>All</source>
         <translation>الكلّ</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="176"/>
+        <location filename="../DbStructureModel.cpp" line="176"/>
         <source>Temporary</source>
         <translation>مؤقّتة</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="314"/>
+        <location filename="../DbStructureModel.cpp" line="314"/>
         <source>Tables (%1)</source>
         <translation>الجداول (%L1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="319"/>
+        <location filename="../DbStructureModel.cpp" line="319"/>
         <source>Indices (%1)</source>
         <translation>الفهارس (%L1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="324"/>
+        <location filename="../DbStructureModel.cpp" line="324"/>
         <source>Views (%1)</source>
         <translation>المناظير (%L1)</translation>
     </message>
     <message>
-        <location filename="../SongModel.cpp" line="329"/>
+        <location filename="../DbStructureModel.cpp" line="329"/>
         <source>Triggers (%1)</source>
         <translation>المحفّزات (%L1)</translation>
     </message>
@@ -2536,96 +2536,96 @@ x~y	Range: values between x and y
     </message>
 </context>
 <context>
-    <name>vSongHome</name>
+    <name>MainWindow</name>
     <message>
-        <location filename="../vSongHome.ui" line="14"/>
-        <source>vSongBook</source>
+        <location filename="../MainWindow.ui" line="14"/>
+        <source>DB Browser for SQLite</source>
         <translation>متصفّح قواعد بيانات SQLite</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="53"/>
-        <location filename="../vSongHome.ui" line="56"/>
+        <location filename="../MainWindow.ui" line="53"/>
+        <location filename="../MainWindow.ui" line="56"/>
         <source>Database Structure</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>بنية قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="96"/>
+        <location filename="../MainWindow.ui" line="96"/>
         <source>This is the structure of the opened database.
-You can drag SQL statements from an object row and drop them into other applications or into another instance of &apos;vSongBook&apos;.
+You can drag SQL statements from an object row and drop them into other applications or into another instance of &apos;DB Browser for SQLite&apos;.
 </source>
         <translation>هذه بنية قاعدة البيانات المفتوحة.
 يمكنك سحب إفادات SQL من صفّ في الكائن وإسقاطها في التطبيقات الأخرى أو إلى سيرورة أخرى من ”متصفّح قواعد بيانات SQLite“.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2036"/>
+        <location filename="../MainWindow.ui" line="2036"/>
         <source>Refresh the data in the selected table</source>
         <translation>أنعشِ البيانات في الجدول المحدّد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2411"/>
+        <location filename="../MainWindow.ui" line="2411"/>
         <source>Un/comment block of SQL code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2414"/>
+        <location filename="../MainWindow.ui" line="2414"/>
         <source>Un/comment block</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2417"/>
+        <location filename="../MainWindow.ui" line="2417"/>
         <source>Comment or uncomment current line or selected block of code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2420"/>
+        <location filename="../MainWindow.ui" line="2420"/>
         <source>Comment or uncomment the selected lines or the current line, when there is no selection. All the block is toggled according to the first line.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2423"/>
+        <location filename="../MainWindow.ui" line="2423"/>
         <source>Ctrl+/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2435"/>
+        <location filename="../MainWindow.ui" line="2435"/>
         <source>Stop SQL execution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2438"/>
+        <location filename="../MainWindow.ui" line="2438"/>
         <source>Stop execution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2441"/>
+        <location filename="../MainWindow.ui" line="2441"/>
         <source>Stop the currently running SQL script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2474"/>
+        <location filename="../MainWindow.ui" line="2474"/>
         <source>Clear Filters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2480"/>
-        <location filename="../vSongHome.ui" line="2483"/>
+        <location filename="../MainWindow.ui" line="2480"/>
+        <location filename="../MainWindow.ui" line="2483"/>
         <source>This button clears all the filters set in the header input fields for the currently browsed table.</source>
         <translation>يمسح هذا الزرّ كلّ المرشّحات المضبوطة في حقول الدخل في الترويسة للجدول المتصفّح حاليًا.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2492"/>
+        <location filename="../MainWindow.ui" line="2492"/>
         <source>Save Table As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2495"/>
-        <location filename="../vSongHome.ui" line="2498"/>
+        <location filename="../MainWindow.ui" line="2495"/>
+        <location filename="../MainWindow.ui" line="2498"/>
         <source>Save the table as currently displayed</source>
         <translation>احفظ الجدول كما هو معروض حاليًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2501"/>
+        <location filename="../MainWindow.ui" line="2501"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This popup menu provides the following options applying to the currently browsed and filtered table:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Export to CSV: this option exports the data of the browsed table as currently displayed (after filters, display formats and order column) to a CSV file.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Save as view: this option saves the current setting of the browsed table (filters, display formats and order column) as an SQL view that you can later browse or use in SQL statements.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;p&gt;توفّر القائمة المنبثقة هذه الخيارات الآتية والتي تنطبق على الجدول المتصفّح والمرشّح حاليًا:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;صدّر بنسق CSV: يُصدّر هذا الخيار البيانات في الجدول المتصفّح كما هي معروضة حاليًا (بعد المرشّحات وتنسيقات العرض وعمود الفرز) إلى ملف بنسق CSV.&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;احفظ كمنظور: يحفظ هذا الخيار الإعداد الحالي للجدول المتصفّح (المرشّحات وتنسيقات العرض وعمود الفرز) في منظور SQL يمكنك تصفّحه لاحقًا أو استخدامه في إفادات SQL.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
@@ -2634,28 +2634,28 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2453"/>
+        <location filename="../MainWindow.ui" line="2453"/>
         <source>Print currently browsed table data</source>
         <translation>اطبع بيانات الجدول المتصفّح حاليًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2459"/>
+        <location filename="../MainWindow.ui" line="2459"/>
         <source>Print currently browsed table data. Print selection if more than one cell is selected.</source>
         <translation>اطبع بيانات الجدول المتصفّح حاليًا. اطبع التحديد إن كانت هناك أكثر من خليّة واحدة محدّدة.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2519"/>
+        <location filename="../MainWindow.ui" line="2519"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This button creates a new record in the database. Hold the mouse button to open a pop-up menu of different options:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;New Record&lt;/span&gt;: insert a new record with default values in the database.&lt;/li&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Insert Values...&lt;/span&gt;: open a dialog for entering values before they are inserted in the database. This allows to enter values acomplishing the different constraints. This dialog is also open if the &lt;span style=&quot; font-weight:600;&quot;&gt;New Record&lt;/span&gt; option fails due to these constraints.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;p&gt;يُنشئ هذا الزرّ سجلًا جديدًا في قاعدة البيانات. أبقِ زرّ الفأرة مضغوطًا لفتح قائمة منبثقة فيها عدّ’ خيارات:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;سجلّ جديد&lt;/span&gt;: لإدراج سجلّ جديد يحمل القيم المبدئية في قاعدة البيانات.&lt;/li&gt;&lt;li&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;أدرِج قيم...&lt;/span&gt;: لفتح حواريّ لإدخال القيم قبل إدراجها في جدول البيانات. يتيح هذا إدخال القيم حسب القيود المختلفة. يُفتح هذا الحواريّ أيضًا إن فشل الخيار &lt;span style=&quot; font-weight:600;&quot;&gt;سجلّ جديد&lt;/span&gt; بسبب هذه القيود.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2534"/>
-        <location filename="../vSongHome.ui" line="2537"/>
+        <location filename="../MainWindow.ui" line="2534"/>
+        <location filename="../MainWindow.ui" line="2537"/>
         <source>This button deletes the record or records currently selected in the table</source>
         <translation>يحذف هذا الزرّ السجلّ أو السجلّات المحدّدة حاليًا في الجدول</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="205"/>
+        <location filename="../MainWindow.ui" line="205"/>
         <source>This is the database table view. You can do the following actions:
  - Start writing for editing inline the value.
  - Double-click any record to edit its contents in the cell editor window.
@@ -2676,18 +2676,18 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">&lt;p&gt;&lt;a href=&quot;https://www.sqlite.org/pragma.html#pragma_case_sensitive_like&quot;&gt;Case Sensitive Like&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="471"/>
+        <location filename="../MainWindow.ui" line="471"/>
         <source>Warning: this pragma is not readable and this value has been inferred. Writing the pragma might overwrite a redefined LIKE provided by an SQLite extension.</source>
         <translation>تحذير: لا يمكن قراءة pragma هذه، ولهذا استُنتجت هذه القيمة. كتابة pragma قد يكتب على LIKE مُعاد تعريفها وفّرها امتداد SQLite.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="918"/>
+        <location filename="../MainWindow.ui" line="918"/>
         <source>toolBar1</source>
         <translation>شريط الأدوات1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="121"/>
-        <location filename="../vSongHome.ui" line="124"/>
+        <location filename="../MainWindow.ui" line="121"/>
+        <location filename="../MainWindow.ui" line="124"/>
         <source>Browse Data</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>تصفّح البيانات</translation>
@@ -2697,12 +2697,12 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">الجدول:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="154"/>
+        <location filename="../MainWindow.ui" line="154"/>
         <source>Select a table to browse data</source>
         <translation>اختر جدولًا لتصفّح بياناته</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="157"/>
+        <location filename="../MainWindow.ui" line="157"/>
         <source>Use this list to select a table to be displayed in the database view</source>
         <translation>استخدم هذه القائمة لاختيار جدول ليُعرض في منظور قاعدة البيانات</translation>
     </message>
@@ -2711,27 +2711,27 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">أنعِش البيانات في الجدول المحدّد.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2039"/>
+        <location filename="../MainWindow.ui" line="2039"/>
         <source>This button refreshes the data in the currently selected table.</source>
         <translation>يُنعش هذا الزرّ البيانات في الجدول المحدّد حاليًا.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="255"/>
+        <location filename="../MainWindow.ui" line="255"/>
         <source>Scroll one page upwards</source>
         <translation>مرّر صفحة واحدة للأمام</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="258"/>
+        <location filename="../MainWindow.ui" line="258"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates one page of records upwards in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;ينقلك هذا الزرّ صفحة واحدة من السجلّات لأعلى في منظور الجدول أعلاه.&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="282"/>
+        <location filename="../MainWindow.ui" line="282"/>
         <source>Scroll one page downwards</source>
         <translation>مرّر صفحة واحدة للأسفل</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="285"/>
+        <location filename="../MainWindow.ui" line="285"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates one page of records downwards in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;ينقلك هذا الزرّ صفحة واحدة من السجلّات لأسفل في منظور الجدول أعلاه.&lt;/html&gt;</translation>
     </message>
@@ -2744,33 +2744,33 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">الجدول/الجداول إلى JSON...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2021"/>
+        <location filename="../MainWindow.ui" line="2021"/>
         <source>Export one or more table(s) to a JSON file</source>
         <translation>صدّر جدولًا أو أكثر إلى ملف JSON</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2033"/>
+        <location filename="../MainWindow.ui" line="2033"/>
         <source>Refresh</source>
         <translation>أنعِش</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2042"/>
+        <location filename="../MainWindow.ui" line="2042"/>
         <source>F5</source>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2477"/>
+        <location filename="../MainWindow.ui" line="2477"/>
         <source>Clear all filters</source>
         <translation>امسح كلّ المرشّحات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="144"/>
+        <location filename="../MainWindow.ui" line="144"/>
         <source>&amp;Table:</source>
         <translation>الج&amp;دول:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2513"/>
-        <location filename="../vSongHome.ui" line="2516"/>
+        <location filename="../MainWindow.ui" line="2513"/>
+        <location filename="../MainWindow.ui" line="2516"/>
         <source>Insert a new record in the current table</source>
         <translation>أدرِج سجلًا جديدًا في الجدول الحالي</translation>
     </message>
@@ -2779,13 +2779,13 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">يُنشئ هذا الزرّ سجلًا جديدًا فارغًا في جدول البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2274"/>
-        <location filename="../vSongHome.ui" line="2510"/>
+        <location filename="../MainWindow.ui" line="2274"/>
+        <location filename="../MainWindow.ui" line="2510"/>
         <source>New Record</source>
         <translation>سجلّ جديد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2531"/>
+        <location filename="../MainWindow.ui" line="2531"/>
         <source>Delete the current record</source>
         <translation>احذف السجلّ الحالي</translation>
     </message>
@@ -2794,8 +2794,8 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">يحذف هذا الزرّ السجلّ المحدّد حاليًا في قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2528"/>
-        <location filename="../vSongHome.cpp" line="3783"/>
+        <location filename="../MainWindow.ui" line="2528"/>
+        <location filename="../MainWindow.cpp" line="3783"/>
         <source>Delete Record</source>
         <translation>احذف السجلّ</translation>
     </message>
@@ -2804,17 +2804,17 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">هذا منظور قاعدة البيانات. يمكنك نقر أيّ سجلّ مزدوجًا لتحرير محتوياته في نافذة محرّر الخلايا.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="235"/>
+        <location filename="../MainWindow.ui" line="235"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scroll to the beginning&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;مرّر إلى البداية&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="238"/>
+        <location filename="../MainWindow.ui" line="238"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button navigates to the beginning in the table view above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;ينقلك هذا الزرّ إلى بداية منظور الجدول أعلاه.&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="241"/>
+        <location filename="../MainWindow.ui" line="241"/>
         <source>|&lt;</source>
         <translation>|&lt;</translation>
     </message>
@@ -2827,12 +2827,12 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;نقر هذا الزّرّ سينقلك إلى ال‍ 100 سطر التّالية في منظور الجدول أعلاه.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="261"/>
+        <location filename="../MainWindow.ui" line="261"/>
         <source>&lt;</source>
         <translation>&lt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="272"/>
+        <location filename="../MainWindow.ui" line="272"/>
         <source>0 - 0 of 0</source>
         <translation>٠ - ٠ من أصل ٠</translation>
     </message>
@@ -2845,58 +2845,58 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;نقر هذا الزّرّ سينقلك إلى ال‍ 100 سطر السّابقة في منظور الجدول أعلاه.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="288"/>
+        <location filename="../MainWindow.ui" line="288"/>
         <source>&gt;</source>
         <translation>&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="302"/>
+        <location filename="../MainWindow.ui" line="302"/>
         <source>Scroll to the end</source>
         <translation>مرّر إلى النهاية</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="305"/>
+        <location filename="../MainWindow.ui" line="305"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Clicking this button navigates up to the end in the table view above.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;ينقلك هذا الزرّ إلى نهاية منظور الجدول أعلاه.&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="308"/>
+        <location filename="../MainWindow.ui" line="308"/>
         <source>&gt;|</source>
         <translation>&gt;|</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="332"/>
+        <location filename="../MainWindow.ui" line="332"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to jump to the specified record&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;انقر هنا للانتقال إلى السجلّ المحدّد&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="335"/>
+        <location filename="../MainWindow.ui" line="335"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This button is used to navigate to the record number specified in the Go to area.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;يُستخدم هذا الزرّ في التنقّل إلى رقم السطر المحدّد في منطقة ”انتقل إلى“.&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="338"/>
+        <location filename="../MainWindow.ui" line="338"/>
         <source>Go to:</source>
         <translation>انتقل إلى:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="345"/>
+        <location filename="../MainWindow.ui" line="345"/>
         <source>Enter record number to browse</source>
         <translation>أدخِل رقم السجلّ لتصفّحه</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="348"/>
+        <location filename="../MainWindow.ui" line="348"/>
         <source>Type a record number in this area and click the Go to: button to display the record in the database view</source>
         <translation>اكتب رقم سجلّ في هذا المربّع وانقر زرّ ”انتقل إلى:“ لعرض السجلّ في منظور قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="351"/>
+        <location filename="../MainWindow.ui" line="351"/>
         <source>1</source>
         <translation>١</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="361"/>
-        <location filename="../vSongHome.ui" line="364"/>
+        <location filename="../MainWindow.ui" line="361"/>
+        <location filename="../MainWindow.ui" line="364"/>
         <source>Edit Pragmas</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>حرّر Pragmas</translation>
@@ -3018,17 +3018,17 @@ You can drag SQL statements from an object row and drop them into other applicat
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.sqlite.org/pragma.html#pragma_wal_autocheckpoint&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;نقطة فحص WAL الآلية&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1084"/>
+        <location filename="../MainWindow.ui" line="1084"/>
         <source>Edit Database &amp;Cell</source>
         <translation>تحرير &amp;خليّة قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1239"/>
+        <location filename="../MainWindow.ui" line="1239"/>
         <source>DB Sche&amp;ma</source>
         <translation>م&amp;خطّط قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1252"/>
+        <location filename="../MainWindow.ui" line="1252"/>
         <source>This is the structure of the opened database.
 You can drag multiple object names from the Name column and drop them into the SQL editor and you can adjust the properties of the dropped names using the context menu. This would help you in composing SQL statements.
 You can drag SQL statements from the Schema column and drop them into the SQL editor or into other applications.
@@ -3038,30 +3038,30 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
 يمكنك سحب إفادات SQL من عمود ”المخطّط“ وإسقاطها في محرّر SQL أو في أيّ تطبيق آخر.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1285"/>
+        <location filename="../MainWindow.ui" line="1285"/>
         <source>&amp;Remote</source>
         <translation>الب&amp;عيد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="894"/>
-        <location filename="../vSongHome.ui" line="897"/>
+        <location filename="../MainWindow.ui" line="894"/>
+        <location filename="../MainWindow.ui" line="897"/>
         <source>Execute SQL</source>
         <extracomment>This has to be equal to the tab title in all the main tabs</extracomment>
         <translation>نفّذ SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1757"/>
-        <location filename="../vSongHome.ui" line="1763"/>
+        <location filename="../MainWindow.ui" line="1757"/>
+        <location filename="../MainWindow.ui" line="1763"/>
         <source>Execute current line</source>
         <translation>نفّذ السطر الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1766"/>
+        <location filename="../MainWindow.ui" line="1766"/>
         <source>This button executes the SQL statement present in the current editor line</source>
         <translation>يُنفّذ هذا الزرّ إفادة SQL الظاهرة في سطر المحرّر الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1769"/>
+        <location filename="../MainWindow.ui" line="1769"/>
         <source>Shift+F5</source>
         <translation>Shift+F5</translation>
     </message>
@@ -3070,17 +3070,17 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">ا&amp;فتح قاعدة بيانات للقراءة فقط...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2057"/>
+        <location filename="../MainWindow.ui" line="2057"/>
         <source>Open an existing database file in read only mode</source>
         <translation>افتح ملف قاعدة بيانات موجود في وضع القراءة فقط</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2074"/>
+        <location filename="../MainWindow.ui" line="2074"/>
         <source>Unlock view editing</source>
         <translation>اسمح بتحرير المنظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2077"/>
+        <location filename="../MainWindow.ui" line="2077"/>
         <source>This unlocks the current view for editing. However, you will need appropriate triggers for editing.</source>
         <translation>يسمح هذا بتحرير المنظور الحالي. مع ذلك ستحتاج إلى المحفّزات المناسبة لإجراء التحرير.</translation>
     </message>
@@ -3089,7 +3089,7 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">أسئلة شائعة عن SQLCipher...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2013"/>
+        <location filename="../MainWindow.ui" line="2013"/>
         <source>Opens the SQLCipher FAQ in a browser window</source>
         <translation>يفتح الأسئلة الشائعة عن SQLCipher في نافذة المتصفّح</translation>
     </message>
@@ -3098,87 +3098,87 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="obsolete">ن&amp;فّذ SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="967"/>
+        <location filename="../MainWindow.ui" line="967"/>
         <source>&amp;File</source>
         <translation>مل&amp;ف</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="971"/>
+        <location filename="../MainWindow.ui" line="971"/>
         <source>&amp;Import</source>
         <translation>ا&amp;ستورِد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="978"/>
+        <location filename="../MainWindow.ui" line="978"/>
         <source>&amp;Export</source>
         <translation>&amp;صدّر</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1007"/>
+        <location filename="../MainWindow.ui" line="1007"/>
         <source>&amp;Edit</source>
         <translation>ت&amp;حرير</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1019"/>
+        <location filename="../MainWindow.ui" line="1019"/>
         <source>&amp;View</source>
         <translation>من&amp;ظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1028"/>
+        <location filename="../MainWindow.ui" line="1028"/>
         <source>&amp;Help</source>
         <translation>م&amp;ساعدة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1044"/>
+        <location filename="../MainWindow.ui" line="1044"/>
         <source>&amp;Tools</source>
         <translation>أ&amp;دوات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1065"/>
+        <location filename="../MainWindow.ui" line="1065"/>
         <source>DB Toolbar</source>
         <translation>شريط قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1096"/>
+        <location filename="../MainWindow.ui" line="1096"/>
         <source>SQL &amp;Log</source>
         <translation>س&amp;جلّ SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1114"/>
+        <location filename="../MainWindow.ui" line="1114"/>
         <source>Show S&amp;QL submitted by</source>
         <translation>اعرض SQL الذي ن&amp;فّذه</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1131"/>
+        <location filename="../MainWindow.ui" line="1131"/>
         <source>User</source>
         <translation>المستخدم</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1136"/>
+        <location filename="../MainWindow.ui" line="1136"/>
         <source>Application</source>
         <translation>التطبيق</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1141"/>
+        <location filename="../MainWindow.ui" line="1141"/>
         <source>Error Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1168"/>
+        <location filename="../MainWindow.ui" line="1168"/>
         <source>This button clears the contents of the SQL logs</source>
         <translation>يمسح هذا الزرّ محتويات سجلّات SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1171"/>
+        <location filename="../MainWindow.ui" line="1171"/>
         <source>&amp;Clear</source>
         <translation>ا&amp;مسح</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1180"/>
+        <location filename="../MainWindow.ui" line="1180"/>
         <source>This panel lets you examine a log of all SQL commands issued by the application or by yourself</source>
         <translation>تتيح لك هذه اللوحة فحص كلّ أوامر SQL التي نفّذها التطبيق أو المستخدم</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1228"/>
+        <location filename="../MainWindow.ui" line="1228"/>
         <source>&amp;Plot</source>
         <translation>الر&amp;سم البياني</translation>
     </message>
@@ -3303,315 +3303,315 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">حرّر خليّة قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1336"/>
+        <location filename="../MainWindow.ui" line="1336"/>
         <source>&amp;New Database...</source>
         <translation>قاعدة بيانات &amp;جديدة...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1339"/>
-        <location filename="../vSongHome.ui" line="1342"/>
+        <location filename="../MainWindow.ui" line="1339"/>
+        <location filename="../MainWindow.ui" line="1342"/>
         <source>Create a new database file</source>
         <translation>أنشِئ ملف قاعدة بيانات جديد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1345"/>
+        <location filename="../MainWindow.ui" line="1345"/>
         <source>This option is used to create a new database file.</source>
         <translation>يُستخدم هذا الخيار لإنشاء ملف قاعدة بيانات جديد.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1348"/>
+        <location filename="../MainWindow.ui" line="1348"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1360"/>
-        <location filename="../vSongHome.ui" line="2242"/>
+        <location filename="../MainWindow.ui" line="1360"/>
+        <location filename="../MainWindow.ui" line="2242"/>
         <source>&amp;Open Database...</source>
         <translation>ا&amp;فتح قاعدة بيانات...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1363"/>
-        <location filename="../vSongHome.ui" line="1366"/>
-        <location filename="../vSongHome.ui" line="2060"/>
-        <location filename="../vSongHome.ui" line="2245"/>
-        <location filename="../vSongHome.ui" line="2248"/>
+        <location filename="../MainWindow.ui" line="1363"/>
+        <location filename="../MainWindow.ui" line="1366"/>
+        <location filename="../MainWindow.ui" line="2060"/>
+        <location filename="../MainWindow.ui" line="2245"/>
+        <location filename="../MainWindow.ui" line="2248"/>
         <source>Open an existing database file</source>
         <translation>افتح ملف قاعدة بيانات موجود</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1369"/>
-        <location filename="../vSongHome.ui" line="2063"/>
-        <location filename="../vSongHome.ui" line="2251"/>
+        <location filename="../MainWindow.ui" line="1369"/>
+        <location filename="../MainWindow.ui" line="2063"/>
+        <location filename="../MainWindow.ui" line="2251"/>
         <source>This option is used to open an existing database file.</source>
         <translation>يُستخدم هذا الخيار لفتح ملف قاعدة بيانات موجود.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1372"/>
+        <location filename="../MainWindow.ui" line="1372"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1387"/>
+        <location filename="../MainWindow.ui" line="1387"/>
         <source>&amp;Close Database</source>
         <translation>أ&amp;غلِق قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1396"/>
+        <location filename="../MainWindow.ui" line="1396"/>
         <source>This button closes the connection to the currently open database file</source>
         <translation>يُغلق هذا الزرّ الاتصال بملف قاعدة البيانات المفتوح حاليًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1399"/>
+        <location filename="../MainWindow.ui" line="1399"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1414"/>
+        <location filename="../MainWindow.ui" line="1414"/>
         <source>&amp;Revert Changes</source>
         <translation>أرجِ&amp;ع التعديلات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1417"/>
-        <location filename="../vSongHome.ui" line="1420"/>
+        <location filename="../MainWindow.ui" line="1417"/>
+        <location filename="../MainWindow.ui" line="1420"/>
         <source>Revert database to last saved state</source>
         <translation>أرجِع قاعدة البيانات إلى آخر حالة محفوظة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1423"/>
+        <location filename="../MainWindow.ui" line="1423"/>
         <source>This option is used to revert the current database file to its last saved state. All changes made since the last save operation are lost.</source>
         <translation>يُستخدم هذا الخيار لإرجاع ملف قاعدة البيانات إلى آخر حالة محفوظة له. ستفقد كلّ التعديلات عليه منذ آخر عملية حفظ مُجراة.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1438"/>
+        <location filename="../MainWindow.ui" line="1438"/>
         <source>&amp;Write Changes</source>
         <translation>ا&amp;كتب التعديلات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1441"/>
-        <location filename="../vSongHome.ui" line="1444"/>
+        <location filename="../MainWindow.ui" line="1441"/>
+        <location filename="../MainWindow.ui" line="1444"/>
         <source>Write changes to the database file</source>
         <translation>اكتب التعديلات في ملف قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1447"/>
+        <location filename="../MainWindow.ui" line="1447"/>
         <source>This option is used to save changes to the database file.</source>
         <translation>يُستخدم هذا الخيار لكتابة التعديلات في ملف قاعدة البيانات.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1450"/>
+        <location filename="../MainWindow.ui" line="1450"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1461"/>
+        <location filename="../MainWindow.ui" line="1461"/>
         <source>Compact &amp;Database...</source>
         <translation>رُصّ &amp;قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1464"/>
+        <location filename="../MainWindow.ui" line="1464"/>
         <source>Compact the database file, removing space wasted by deleted records</source>
         <translation>رُصّ ملف قاعدة البيانات، مُزيلًا المساحة الضائعة بسبب حذف السجلّات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1467"/>
-        <location filename="../vSongHome.ui" line="1470"/>
+        <location filename="../MainWindow.ui" line="1467"/>
+        <location filename="../MainWindow.ui" line="1470"/>
         <source>Compact the database file, removing space wasted by deleted records.</source>
         <translation>رُصّ ملف قاعدة البيانات، مُزيلًا المساحة الضائعة بسبب حذف السجلّات.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1478"/>
+        <location filename="../MainWindow.ui" line="1478"/>
         <source>E&amp;xit</source>
         <translation>ا&amp;خرج</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1481"/>
+        <location filename="../MainWindow.ui" line="1481"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1489"/>
+        <location filename="../MainWindow.ui" line="1489"/>
         <source>&amp;Database from SQL file...</source>
         <translation>&amp;قاعدة بيانات من ملف SQL...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1492"/>
+        <location filename="../MainWindow.ui" line="1492"/>
         <source>Import data from an .sql dump text file into a new or existing database.</source>
         <translation>استورِد بيانات من ملف ‎.sql نصّي مفرّغ إلى قاعدة بيانات جديدة أو موجودة.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1495"/>
+        <location filename="../MainWindow.ui" line="1495"/>
         <source>This option lets you import data from an .sql dump text file into a new or existing database. SQL dump files can be created on most database engines, including MySQL and PostgreSQL.</source>
         <translation>يتيح لك هذا الخيار استيراد البيانات من ملف ‎.sql نصّي مفرّغ إلى قاعدة بيانات جديدة أو موجودة. يمكن إنشاء ملفات SQL المفرّغة في أغلب محرّكات قواعد البيانات، بما فيها MySQL وPostgreSQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1503"/>
+        <location filename="../MainWindow.ui" line="1503"/>
         <source>&amp;Table from CSV file...</source>
         <translation>ج&amp;دولًا من ملف CSV...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1506"/>
+        <location filename="../MainWindow.ui" line="1506"/>
         <source>Open a wizard that lets you import data from a comma separated text file into a database table.</source>
         <translation>افتح مرشدًا يساعدك في استيراد البيانات من ملف نصّي مقسوم بفواصل إلى جدول قاعدة البيانات.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1509"/>
+        <location filename="../MainWindow.ui" line="1509"/>
         <source>Open a wizard that lets you import data from a comma separated text file into a database table. CSV files can be created on most database and spreadsheet applications.</source>
         <translation>افتح مرشدًا يساعدك في استيراد البيانات من ملف نصّي مقسوم بفواصل إلى جدول قاعدة البيانات. يمكن إنشاء ملفات CSV في أغلب تطبيقات قواعد البيانات والجداول الممتدّة.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1517"/>
+        <location filename="../MainWindow.ui" line="1517"/>
         <source>&amp;Database to SQL file...</source>
         <translation>&amp;قاعدة بيانات إلى ملف SQL...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1520"/>
+        <location filename="../MainWindow.ui" line="1520"/>
         <source>Export a database to a .sql dump text file.</source>
         <translation>صدّر قاعدة بيانات إلى ملف ‎.sql نصّي مفرّغ.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1523"/>
+        <location filename="../MainWindow.ui" line="1523"/>
         <source>This option lets you export a database to a .sql dump text file. SQL dump files contain all data necessary to recreate the database on most database engines, including MySQL and PostgreSQL.</source>
         <translation>يتيح لك هذا الخيار تصدير قاعدة بيانات إلى ملف ‎.sql نصّي مفرّغ. يمكن لملفات SQL المفرّغة احتواء كلّ البيانات الضرورية لإعادة إنشاء قاعدة البيانات في أغلب محرّكات قواعد البيانات، فما فيها MySQL وPostgreSQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1531"/>
+        <location filename="../MainWindow.ui" line="1531"/>
         <source>&amp;Table(s) as CSV file...</source>
         <translation>الج&amp;داول كملف CSV...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1534"/>
+        <location filename="../MainWindow.ui" line="1534"/>
         <source>Export a database table as a comma separated text file.</source>
         <translation>صدّر جدول قاعدة بيانات كملف نصّي مقسوم بفواصل.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1537"/>
+        <location filename="../MainWindow.ui" line="1537"/>
         <source>Export a database table as a comma separated text file, ready to be imported into other database or spreadsheet applications.</source>
         <translation>صدّر جدول قاعدة بيانات كملف نصّي مقسوم بفواصل، جاهز ليُستورد إلى تطبيقات قواعد البيانات أو الجداول الممتدّة الأخرى.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1552"/>
+        <location filename="../MainWindow.ui" line="1552"/>
         <source>&amp;Create Table...</source>
         <translation>أ&amp;نشِئ جدولًا...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1555"/>
+        <location filename="../MainWindow.ui" line="1555"/>
         <source>Open the Create Table wizard, where it is possible to define the name and fields for a new table in the database</source>
         <translation>افتح مرشد إنشاء الجدول، حيث تستطيع تحديد اسم وحقول للجدول الجديد في قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1570"/>
+        <location filename="../MainWindow.ui" line="1570"/>
         <source>&amp;Delete Table...</source>
         <translation>ا&amp;حذف الجدول...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1573"/>
-        <location filename="../vSongHome.cpp" line="1815"/>
+        <location filename="../MainWindow.ui" line="1573"/>
+        <location filename="../MainWindow.cpp" line="1815"/>
         <source>Delete Table</source>
         <translation>احذف الجدول</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1576"/>
+        <location filename="../MainWindow.ui" line="1576"/>
         <source>Open the Delete Table wizard, where you can select a database table to be dropped.</source>
         <translation>افتح مرشد حذف الجدول، حيث يمكنك تحديد جدول قاعدة البيانات الذي سيُحذف.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1591"/>
+        <location filename="../MainWindow.ui" line="1591"/>
         <source>&amp;Modify Table...</source>
         <translation>&amp;عدّل الجدول...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1594"/>
+        <location filename="../MainWindow.ui" line="1594"/>
         <source>Open the Modify Table wizard, where it is possible to rename an existing table. It is also possible to add or delete fields form a table, as well as modify field names and types.</source>
         <translation>افتح مرشد تعديل الجدول، حيث يمكنك تغيير اسم أحد الجداول الموجودة. يمكنك أيضًا إضافة حقول أو حذفها إلى ومن الجدول، كما وتعديل أسماء الحقول وأنواعها.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1609"/>
+        <location filename="../MainWindow.ui" line="1609"/>
         <source>Create &amp;Index...</source>
         <translation>أنشِئ &amp;فهرسًا...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1612"/>
+        <location filename="../MainWindow.ui" line="1612"/>
         <source>Open the Create Index wizard, where it is possible to define a new index on an existing database table.</source>
         <translation>افتح جدول إنشاء الفهارس، حيث يمكنك تحديد فهرس جديد في جدول قاعدة بيانات موجود.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1624"/>
+        <location filename="../MainWindow.ui" line="1624"/>
         <source>&amp;Preferences...</source>
         <translation>التف&amp;ضيلات...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1627"/>
-        <location filename="../vSongHome.ui" line="1630"/>
+        <location filename="../MainWindow.ui" line="1627"/>
+        <location filename="../MainWindow.ui" line="1630"/>
         <source>Open the preferences window.</source>
         <translation>افتح نافذة التفضيلات.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1645"/>
+        <location filename="../MainWindow.ui" line="1645"/>
         <source>&amp;DB Toolbar</source>
         <translation>شريط &amp;قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1648"/>
+        <location filename="../MainWindow.ui" line="1648"/>
         <source>Shows or hides the Database toolbar.</source>
         <translation>يعرض أو يُخفي شريط قاعدة البيانات..</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1694"/>
+        <location filename="../MainWindow.ui" line="1694"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1660"/>
+        <location filename="../MainWindow.ui" line="1660"/>
         <source>W&amp;hat&apos;s This?</source>
         <translation>ما ه&amp;ذا؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1663"/>
+        <location filename="../MainWindow.ui" line="1663"/>
         <source>Shift+F1</source>
         <translation>Shift+F1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1706"/>
+        <location filename="../MainWindow.ui" line="1706"/>
         <source>Execute all/selected SQL</source>
         <translation>نفّذ كلّ إفادات SQL أو المحدّد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1709"/>
+        <location filename="../MainWindow.ui" line="1709"/>
         <source>This button executes the currently selected SQL statements. If no text is selected, all SQL statements are executed.</source>
         <translation>يُنفّذ هذا الزرّ إفادات SQL المحدّدة حاليًا. إن لم هناك أيّ نصّ محدّد، ستُنفّذ كلّ إفادات SQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1745"/>
+        <location filename="../MainWindow.ui" line="1745"/>
         <source>&amp;Load Extension...</source>
         <translation>&amp;حمّل امتدادًا...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1760"/>
+        <location filename="../MainWindow.ui" line="1760"/>
         <source>Execute line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1789"/>
+        <location filename="../MainWindow.ui" line="1789"/>
         <source>&amp;Wiki</source>
         <translation>الوي&amp;كي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1801"/>
+        <location filename="../MainWindow.ui" line="1801"/>
         <source>Bug &amp;Report...</source>
         <translation>أبلِغ عن علّ&amp;ة...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1813"/>
+        <location filename="../MainWindow.ui" line="1813"/>
         <source>Feature Re&amp;quest...</source>
         <translation>ا&amp;طلب ميزة...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1825"/>
+        <location filename="../MainWindow.ui" line="1825"/>
         <source>Web&amp;site</source>
         <translation>موقع الو&amp;بّ</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1837"/>
+        <location filename="../MainWindow.ui" line="1837"/>
         <source>&amp;Donate on Patreon...</source>
         <translation>تبرّع &amp;عبر باتريون...</translation>
     </message>
@@ -3620,329 +3620,329 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">اح&amp;فظ المشروع...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1858"/>
+        <location filename="../MainWindow.ui" line="1858"/>
         <source>This button lets you save all the settings associated to the open DB to a DB4S project file</source>
         <translation>يتيح لك هذا الزرّ حفظ كلّ الإعدادات المرتبطة بقاعدة البيانات المفتوحة في ملفّ مشروع DB4S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1870"/>
+        <location filename="../MainWindow.ui" line="1870"/>
         <source>Open &amp;Project...</source>
         <translation>افتح م&amp;شروعًا...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1879"/>
+        <location filename="../MainWindow.ui" line="1879"/>
         <source>This button lets you open a DB4S project file</source>
         <translation>يتيح لك هذا الزرّ فتح ملف مشروع DB4S</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1894"/>
+        <location filename="../MainWindow.ui" line="1894"/>
         <source>&amp;Attach Database...</source>
         <translation>أر&amp;فِق قاعدة بيانات...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1897"/>
-        <location filename="../vSongHome.ui" line="1900"/>
+        <location filename="../MainWindow.ui" line="1897"/>
+        <location filename="../MainWindow.ui" line="1900"/>
         <source>Add another database file to the current database connection</source>
         <translation>أضِف ملف قاعدة بيانات آخر إلى اتصال قاعدة البيانات الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1903"/>
+        <location filename="../MainWindow.ui" line="1903"/>
         <source>This button lets you add another database file to the current database connection</source>
         <translation>يتيح لك هذا الزرّ إضافة ملف قاعدة بيانات آخر إلى اتصال قاعدة البيانات الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1915"/>
+        <location filename="../MainWindow.ui" line="1915"/>
         <source>&amp;Set Encryption...</source>
         <translation>ا&amp;ضبط التعمية...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2010"/>
+        <location filename="../MainWindow.ui" line="2010"/>
         <source>SQLCipher &amp;FAQ</source>
         <translation>أ&amp;سئلة شائعة عن SQLCipher</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2018"/>
+        <location filename="../MainWindow.ui" line="2018"/>
         <source>Table(&amp;s) to JSON...</source>
         <translation>الج&amp;دول/الجداول إلى JSON...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2054"/>
+        <location filename="../MainWindow.ui" line="2054"/>
         <source>Open Data&amp;base Read Only...</source>
         <translation>افتح قاع&amp;دة بيانات للقراءة فقط...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2086"/>
+        <location filename="../MainWindow.ui" line="2086"/>
         <source>Save results</source>
         <translation>احفظ النتائج</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2089"/>
+        <location filename="../MainWindow.ui" line="2089"/>
         <source>Save the results view</source>
         <translation>احفظ منظور النتائج</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2092"/>
+        <location filename="../MainWindow.ui" line="2092"/>
         <source>This button lets you save the results of the last executed query</source>
         <translation>يتيح لك هذا الزرّ حفظ نتائج آخر استعلام نُفّذ</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2104"/>
-        <location filename="../vSongHome.ui" line="2110"/>
+        <location filename="../MainWindow.ui" line="2104"/>
+        <location filename="../MainWindow.ui" line="2110"/>
         <source>Find text in SQL editor</source>
         <translation>ابحث عن النصوص في محرّر SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2107"/>
+        <location filename="../MainWindow.ui" line="2107"/>
         <source>Find</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2113"/>
+        <location filename="../MainWindow.ui" line="2113"/>
         <source>This button opens the search bar of the editor</source>
         <translation>يفتح هذا الزرّ شريط البحث للمحرّر</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2116"/>
+        <location filename="../MainWindow.ui" line="2116"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2128"/>
-        <location filename="../vSongHome.ui" line="2134"/>
+        <location filename="../MainWindow.ui" line="2128"/>
+        <location filename="../MainWindow.ui" line="2134"/>
         <source>Find or replace text in SQL editor</source>
         <translation>ابحث أو استبدل النصوص في محرّر SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2131"/>
+        <location filename="../MainWindow.ui" line="2131"/>
         <source>Find or replace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2137"/>
+        <location filename="../MainWindow.ui" line="2137"/>
         <source>This button opens the find/replace dialog for the current editor tab</source>
         <translation>يفتح هذا الزرّ حواريّ البحث والاستبدال للسان المحرّر الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2140"/>
+        <location filename="../MainWindow.ui" line="2140"/>
         <source>Ctrl+H</source>
         <translation type="unfinished">Ctrl+H</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2148"/>
-        <location filename="../vSongHome.ui" line="2210"/>
+        <location filename="../MainWindow.ui" line="2148"/>
+        <location filename="../MainWindow.ui" line="2210"/>
         <source>Export to &amp;CSV</source>
         <translation>&amp;صدّر بنسق CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2153"/>
-        <location filename="../vSongHome.ui" line="2224"/>
+        <location filename="../MainWindow.ui" line="2153"/>
+        <location filename="../MainWindow.ui" line="2224"/>
         <source>Save as &amp;view</source>
         <translation>احفظ كمن&amp;ظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2156"/>
+        <location filename="../MainWindow.ui" line="2156"/>
         <source>Save as view</source>
         <translation>احفظ كمنظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2161"/>
+        <location filename="../MainWindow.ui" line="2161"/>
         <source>Hide column(s)</source>
         <translation>أخفِ العمود/الأعمدة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2164"/>
+        <location filename="../MainWindow.ui" line="2164"/>
         <source>Hide selected column(s)</source>
         <translation>أخفِ العمود/الأعمدة المحدّدة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2169"/>
+        <location filename="../MainWindow.ui" line="2169"/>
         <source>Show all columns</source>
         <translation>أعرض كلّ الأعمدة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2172"/>
+        <location filename="../MainWindow.ui" line="2172"/>
         <source>Show all columns that were hidden</source>
         <translation>اعرض كلّ الأعمدة التي أُخفيت</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2190"/>
+        <location filename="../MainWindow.ui" line="2190"/>
         <source>Shows or hides the Project toolbar.</source>
         <translation>اعرض أو أخفِ شريط أدوات المشروع.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2205"/>
+        <location filename="../MainWindow.ui" line="2205"/>
         <source>Extra DB Toolbar</source>
         <translation>شريط أدوات قواعد البيانات الإضافي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2213"/>
-        <location filename="../vSongHome.ui" line="2216"/>
+        <location filename="../MainWindow.ui" line="2213"/>
+        <location filename="../MainWindow.ui" line="2216"/>
         <source>Export the filtered data to CSV</source>
         <translation>صدّر البيانات المرشّحة إلى CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2219"/>
+        <location filename="../MainWindow.ui" line="2219"/>
         <source>This button exports the data of the browsed table as currently displayed (after filters, display formats and order column) as a CSV file.</source>
         <translation>يُصدّر هذا الزرّ بيانات الجدول المتصفّح كما هي معروضة حاليًا (بعد المرشّحات وتنسيقات العرض وعمود الفرز) كملف CSV.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2227"/>
-        <location filename="../vSongHome.ui" line="2230"/>
+        <location filename="../MainWindow.ui" line="2227"/>
+        <location filename="../MainWindow.ui" line="2230"/>
         <source>Save the current filter, sort column and display formats as a view</source>
         <translation>احفظ المرشّح الحالي وعمود الفرز وتنسيقات العرض كمنظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2233"/>
+        <location filename="../MainWindow.ui" line="2233"/>
         <source>This button saves the current setting of the browsed table (filters, display formats and order column) as an SQL view that you can later browse or use in SQL statements.</source>
         <translation>يحفظ هذا الزرّ الإعداد الحالي للجدول المتصفّح (المرشّحات وتنسيقات العرض وعمود الفرز) في منظور SQL يمكنك تصفّحه لاحقًا أو استخدامه في إفادات SQL.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2259"/>
+        <location filename="../MainWindow.ui" line="2259"/>
         <source>Insert Values...</source>
         <translation>أدرِج قيم...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2262"/>
-        <location filename="../vSongHome.ui" line="2265"/>
+        <location filename="../MainWindow.ui" line="2262"/>
+        <location filename="../MainWindow.ui" line="2265"/>
         <source>Open a dialog for inserting values in a new record</source>
         <translation>افتح حواريّ لإدراج القيم في سجلّ جديد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2277"/>
-        <location filename="../vSongHome.ui" line="2280"/>
+        <location filename="../MainWindow.ui" line="2277"/>
+        <location filename="../MainWindow.ui" line="2280"/>
         <source>Insert new record using default values in browsed table</source>
         <translation>أدرِج سجلًا جديدًا مستخدمًا القيم المبدئية في الجدول المتصفّح</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2285"/>
+        <location filename="../MainWindow.ui" line="2285"/>
         <source>New In-&amp;Memory Database</source>
         <translation>قاعدة بيانات جديدة في ال&amp;ذاكرة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2293"/>
+        <location filename="../MainWindow.ui" line="2293"/>
         <source>Drag &amp;&amp; Drop Qualified Names</source>
         <translation>اسحب وأسقِط الأسماء المؤهّلة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2296"/>
-        <location filename="../vSongHome.ui" line="2299"/>
+        <location filename="../MainWindow.ui" line="2296"/>
+        <location filename="../MainWindow.ui" line="2299"/>
         <source>Use qualified names (e.g. &quot;Table&quot;.&quot;Field&quot;) when dragging the objects and dropping them into the editor </source>
         <translation>استخدم الأسماء المؤهّلة (مثل ‎&quot;Table&quot;.&quot;Field&quot;‎) عند سحب الكائنات وإسقاطها في المحرّر.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2307"/>
+        <location filename="../MainWindow.ui" line="2307"/>
         <source>Drag &amp;&amp; Drop Enquoted Names</source>
         <translation>اسحب وأسقِط الأسماء مقتبسةً</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2310"/>
-        <location filename="../vSongHome.ui" line="2313"/>
+        <location filename="../MainWindow.ui" line="2310"/>
+        <location filename="../MainWindow.ui" line="2313"/>
         <source>Use escaped identifiers (e.g. &quot;Table1&quot;) when dragging the objects and dropping them into the editor </source>
         <translation>استخدم المُعرّفات مهرّبة (مثلًا &quot;Table1&quot;) عند سحب الكائنات وإسقاطها في المحرّر</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2318"/>
+        <location filename="../MainWindow.ui" line="2318"/>
         <source>&amp;Integrity Check</source>
         <translation>فحص ال&amp;سلامة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2321"/>
+        <location filename="../MainWindow.ui" line="2321"/>
         <source>Runs the integrity_check pragma over the opened database and returns the results in the Execute SQL tab. This pragma does an integrity check of the entire database.</source>
         <translation>يُشغّل integrity_check pragma على قاعدة البيانات المفتوحة ويُعيد النتائج في لسان ”نفّذ SQL“. يُجري pragma فحص سلامة على قاعدة البيانات كاملةً.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2326"/>
+        <location filename="../MainWindow.ui" line="2326"/>
         <source>&amp;Foreign-Key Check</source>
         <translation>فحص الم&amp;فتاح الأجنبي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2329"/>
+        <location filename="../MainWindow.ui" line="2329"/>
         <source>Runs the foreign_key_check pragma over the opened database and returns the results in the Execute SQL tab</source>
         <translation>يُشغّل foreign_key_check pragma على قاعدة البيانات المفتوحة ويُعيد النتائج في لسان ”نفّذ SQL“</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2334"/>
+        <location filename="../MainWindow.ui" line="2334"/>
         <source>&amp;Quick Integrity Check</source>
         <translation>فحص سلام&amp;ة سريع</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2337"/>
+        <location filename="../MainWindow.ui" line="2337"/>
         <source>Run a quick integrity check over the open DB</source>
         <translation>يُشغّل فحص سلامة سريع على قاعدة البيانات المفتوحة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2340"/>
+        <location filename="../MainWindow.ui" line="2340"/>
         <source>Runs the quick_check pragma over the opened database and returns the results in the Execute SQL tab. This command does most of the checking of PRAGMA integrity_check but runs much faster.</source>
         <translation>يُشغّل quick_check pragma على قاعدة البيانات المفتوحة ويُعيد النتائج في لسان ”نفّذ SQL“. يُجري هذا الأمر أغلب ما تُجريه PRAGMA integrity_check إلّا أنّه أسرع.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2345"/>
+        <location filename="../MainWindow.ui" line="2345"/>
         <source>&amp;Optimize</source>
         <translation>ح&amp;سّن</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2348"/>
+        <location filename="../MainWindow.ui" line="2348"/>
         <source>Attempt to optimize the database</source>
         <translation>حاوِل تحسين قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2351"/>
+        <location filename="../MainWindow.ui" line="2351"/>
         <source>Runs the optimize pragma over the opened database. This pragma might perform optimizations that will improve the performance of future queries.</source>
         <translation>يُشغّل optimize pragma على قاعدة البيانات المفتوحة. قد تؤدّي pragma تحسينات تُحسّن من أداء الاستعلامات مستقبلًا.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2360"/>
-        <location filename="../vSongHome.ui" line="2387"/>
-        <location filename="../vSongHome.ui" line="2450"/>
+        <location filename="../MainWindow.ui" line="2360"/>
+        <location filename="../MainWindow.ui" line="2387"/>
+        <location filename="../MainWindow.ui" line="2450"/>
         <source>Print</source>
         <translation>اطبع</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2363"/>
+        <location filename="../MainWindow.ui" line="2363"/>
         <source>Print text from current SQL editor tab</source>
         <translation>اطبع النصّ من لسان محرّر SQL الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2369"/>
+        <location filename="../MainWindow.ui" line="2369"/>
         <source>Open a dialog for printing the text in the current SQL editor tab</source>
         <translation>افتح حواريّ لطباعة النصّ في لسان محرّر SQL الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2390"/>
+        <location filename="../MainWindow.ui" line="2390"/>
         <source>Print the structure of the opened database</source>
         <translation>اطبع بنية قاعدة البيانات المفتوحة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2396"/>
+        <location filename="../MainWindow.ui" line="2396"/>
         <source>Open a dialog for printing the structure of the opened database</source>
         <translation>افتح حواريّ لطباعة بنية قاعدة البيانات المفتوحة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2546"/>
+        <location filename="../MainWindow.ui" line="2546"/>
         <source>&amp;Save Project As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2549"/>
-        <location filename="../vSongHome.ui" line="2552"/>
-        <location filename="../vSongHome.ui" line="2555"/>
+        <location filename="../MainWindow.ui" line="2549"/>
+        <location filename="../MainWindow.ui" line="2552"/>
+        <location filename="../MainWindow.ui" line="2555"/>
         <source>Save the project in a file selected in a dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2564"/>
+        <location filename="../MainWindow.ui" line="2564"/>
         <source>Save A&amp;ll</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2567"/>
-        <location filename="../vSongHome.ui" line="2570"/>
-        <location filename="../vSongHome.ui" line="2573"/>
+        <location filename="../MainWindow.ui" line="2567"/>
+        <location filename="../MainWindow.ui" line="2570"/>
+        <location filename="../MainWindow.ui" line="2573"/>
         <source>Save DB file, project file and opened SQL files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2576"/>
+        <location filename="../MainWindow.ui" line="2576"/>
         <source>Ctrl+Shift+S</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3951,62 +3951,62 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&amp;عن...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1679"/>
+        <location filename="../MainWindow.ui" line="1679"/>
         <source>&amp;Recently opened</source>
         <translation>المفتوحة حدي&amp;ثًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1688"/>
+        <location filename="../MainWindow.ui" line="1688"/>
         <source>Open &amp;tab</source>
         <translation>افتح ل&amp;سانًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1294"/>
-        <location filename="../vSongHome.ui" line="2187"/>
+        <location filename="../MainWindow.ui" line="1294"/>
+        <location filename="../MainWindow.ui" line="2187"/>
         <source>Project Toolbar</source>
         <translation>شريط أدوات المشروع</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1313"/>
+        <location filename="../MainWindow.ui" line="1313"/>
         <source>Extra DB toolbar</source>
         <translation>شريط أدوات قواعد البيانات الإضافي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1316"/>
-        <location filename="../vSongHome.ui" line="1390"/>
-        <location filename="../vSongHome.ui" line="1393"/>
+        <location filename="../MainWindow.ui" line="1316"/>
+        <location filename="../MainWindow.ui" line="1390"/>
+        <location filename="../MainWindow.ui" line="1393"/>
         <source>Close the current database file</source>
         <translation>أغلِق ملف قاعدة البيانات الحالي</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1671"/>
+        <location filename="../MainWindow.ui" line="1671"/>
         <source>&amp;About</source>
         <translation>&amp;عن</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1691"/>
+        <location filename="../MainWindow.ui" line="1691"/>
         <source>This button opens a new tab for the SQL editor</source>
         <translation>يفتح هذا الزرّ لسانًا جديدًا لمحرّر SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1703"/>
+        <location filename="../MainWindow.ui" line="1703"/>
         <source>&amp;Execute SQL</source>
         <translation>ن&amp;فّذ SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1721"/>
+        <location filename="../MainWindow.ui" line="1721"/>
         <source>Open SQL file</source>
         <translation>افتح ملف SQL</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1724"/>
+        <location filename="../MainWindow.ui" line="1724"/>
         <source>This button opens a file containing SQL statements and loads it in a new editor tab</source>
         <translation>يفتح هذا الزرّ ملفًا يحتوي إفادات SQL ويحمّله في لسان محرّر جديد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1733"/>
-        <location filename="../vSongHome.ui" line="1939"/>
-        <location filename="../vSongHome.ui" line="1942"/>
+        <location filename="../MainWindow.ui" line="1733"/>
+        <location filename="../MainWindow.ui" line="1939"/>
+        <location filename="../MainWindow.ui" line="1942"/>
         <source>Save SQL file</source>
         <translation>احفظ ملف SQL</translation>
     </message>
@@ -4015,17 +4015,17 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">&amp;حمّل امتدادًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="327"/>
+        <location filename="../MainWindow.cpp" line="327"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1777"/>
+        <location filename="../MainWindow.ui" line="1777"/>
         <source>Export as CSV file</source>
         <translation>صدّر كملف بنسق CSV</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1780"/>
+        <location filename="../MainWindow.ui" line="1780"/>
         <source>Export table as comma separated values file</source>
         <translation>صدّر الجدول كملف نصّي مقسوم بفواصل</translation>
     </message>
@@ -4042,13 +4042,13 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">موقع الو&amp;بّ...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1849"/>
+        <location filename="../MainWindow.ui" line="1849"/>
         <source>Sa&amp;ve Project</source>
         <translation>احف&amp;ظ المشروع</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1852"/>
-        <location filename="../vSongHome.ui" line="1855"/>
+        <location filename="../MainWindow.ui" line="1852"/>
+        <location filename="../MainWindow.ui" line="1855"/>
         <source>Save the current session to a file</source>
         <translation>احفظ الجلسة الحالية في ملف</translation>
     </message>
@@ -4057,8 +4057,8 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">افتح م&amp;شروعًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1873"/>
-        <location filename="../vSongHome.ui" line="1876"/>
+        <location filename="../MainWindow.ui" line="1873"/>
+        <location filename="../MainWindow.ui" line="1876"/>
         <source>Load a working session from a file</source>
         <translation>حمّل جلسة عمل من ملف</translation>
     </message>
@@ -4071,132 +4071,132 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">ا&amp;ضبط التعمية</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1927"/>
-        <location filename="../vSongHome.ui" line="1930"/>
+        <location filename="../MainWindow.ui" line="1927"/>
+        <location filename="../MainWindow.ui" line="1930"/>
         <source>Save SQL file as</source>
         <translation>احفظ ملف SQL كَ‍</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1945"/>
+        <location filename="../MainWindow.ui" line="1945"/>
         <source>This button saves the content of the current SQL editor tab to a file</source>
         <translation>يحفظ هذا الزرّ محتويات لسان محرّر SQL الحالي في ملف</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1954"/>
+        <location filename="../MainWindow.ui" line="1954"/>
         <source>&amp;Browse Table</source>
         <translation>ت&amp;صفّح الجدول</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1963"/>
+        <location filename="../MainWindow.ui" line="1963"/>
         <source>Copy Create statement</source>
         <translation>انسخ إفادة الإنشاء</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1966"/>
+        <location filename="../MainWindow.ui" line="1966"/>
         <source>Copy the CREATE statement of the item to the clipboard</source>
         <translation>انسخ إفادة CREATE للعنصر إلى الحافظة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1971"/>
+        <location filename="../MainWindow.ui" line="1971"/>
         <source>Edit display format</source>
         <translation>حرّر تنسيق العرض</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1974"/>
+        <location filename="../MainWindow.ui" line="1974"/>
         <source>Edit the display format of the data in this column</source>
         <translation>حرّر تنسيق عرض البيانات في هذا العمود</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1982"/>
+        <location filename="../MainWindow.ui" line="1982"/>
         <source>Show rowid column</source>
         <translation>اعرض عمود معرّف الصفوف</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1985"/>
+        <location filename="../MainWindow.ui" line="1985"/>
         <source>Toggle the visibility of the rowid column</source>
         <translation>بدّل ظهور عمود معرّف الصفوف/rowid</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1990"/>
-        <location filename="../vSongHome.cpp" line="3474"/>
+        <location filename="../MainWindow.ui" line="1990"/>
+        <location filename="../MainWindow.cpp" line="3474"/>
         <source>Set encoding</source>
         <translation>اضبط الترميز</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1993"/>
+        <location filename="../MainWindow.ui" line="1993"/>
         <source>Change the encoding of the text in the table cells</source>
         <translation>غيّر ترميز النصوص في خلايا الجدول</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1998"/>
+        <location filename="../MainWindow.ui" line="1998"/>
         <source>Set encoding for all tables</source>
         <translation>اضبط ترميز كلّ الجداول</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2001"/>
+        <location filename="../MainWindow.ui" line="2001"/>
         <source>Change the default encoding assumed for all tables in the database</source>
         <translation>غيّر الترميز المبدئي المفترض في كلّ جداول قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3368"/>
+        <location filename="../MainWindow.cpp" line="3368"/>
         <source>Duplicate record</source>
         <translation>كرّر السّجلّ</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="1712"/>
+        <location filename="../MainWindow.ui" line="1712"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Enter</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="312"/>
+        <location filename="../MainWindow.cpp" line="312"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../vSongHome.ui" line="2372"/>
-        <location filename="../vSongHome.ui" line="2399"/>
-        <location filename="../vSongHome.ui" line="2462"/>
+        <location filename="../MainWindow.ui" line="2372"/>
+        <location filename="../MainWindow.ui" line="2399"/>
+        <location filename="../MainWindow.ui" line="2462"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="317"/>
+        <location filename="../MainWindow.cpp" line="317"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="322"/>
+        <location filename="../MainWindow.cpp" line="322"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="404"/>
+        <location filename="../MainWindow.cpp" line="404"/>
         <source>Encrypted</source>
         <translation>معمّاة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="405"/>
+        <location filename="../MainWindow.cpp" line="405"/>
         <source>Database is encrypted using SQLCipher</source>
         <translation>قاعدة البيانات معمّاة باستخدام SQLCipher</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="411"/>
+        <location filename="../MainWindow.cpp" line="411"/>
         <source>Read only</source>
         <translation>للقراءة فقط</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="412"/>
+        <location filename="../MainWindow.cpp" line="412"/>
         <source>Database file is read only. Editing the database is disabled.</source>
         <translation>ملف قاعدة البيانات للقراءة فقط. تحرير قاعدة البيانات معطّل.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="418"/>
+        <location filename="../MainWindow.cpp" line="418"/>
         <source>Database encoding</source>
         <translation>ترميز قاعدة البيانات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="546"/>
-        <location filename="../vSongHome.cpp" line="3142"/>
+        <location filename="../MainWindow.cpp" line="546"/>
+        <location filename="../MainWindow.cpp" line="3142"/>
         <source>Choose a database file</source>
         <translation>اختر ملف قاعدة بيانات</translation>
     </message>
@@ -4205,9 +4205,9 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
         <translation type="vanished">نسق الملفّ غير صالح.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="602"/>
-        <location filename="../vSongHome.cpp" line="1714"/>
-        <location filename="../vSongHome.cpp" line="2998"/>
+        <location filename="../MainWindow.cpp" line="602"/>
+        <location filename="../MainWindow.cpp" line="1714"/>
+        <location filename="../MainWindow.cpp" line="2998"/>
         <source>Choose a filename to save under</source>
         <translation>اختر اسمًا للملف لحفظه به</translation>
     </message>
@@ -4218,25 +4218,25 @@ You can drag SQL statements from the Schema column and drop them into the SQL ed
 </translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="992"/>
+        <location filename="../MainWindow.cpp" line="992"/>
         <source>Error deleting record:
 %1</source>
         <translation>خطأ أثناء حذف السجلّ:
 %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1001"/>
+        <location filename="../MainWindow.cpp" line="1001"/>
         <source>Please select a record first</source>
         <translation>من فضلك اختر سجلًا أوّلًا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1096"/>
+        <location filename="../MainWindow.cpp" line="1096"/>
         <source>%1 - %2 of %3</source>
         <translation>‏%L1 - ‏%L2 من أصل %L3</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1128"/>
-        <location filename="../vSongHome.cpp" line="1142"/>
+        <location filename="../MainWindow.cpp" line="1128"/>
+        <location filename="../MainWindow.cpp" line="1142"/>
         <source>There is no database opened. Please open or create a new database file.</source>
         <translation>لا قواعد بيانات مفتوحة. من فضلك افتح ملف قاعدة بيانات أو أنشِئ واحدًا جديدًا.</translation>
     </message>
@@ -4277,7 +4277,7 @@ All data associated with the %1 will be lost.</source>
         <translation type="vanished">اختر ملفًّا نصّيًّا</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1588"/>
+        <location filename="../MainWindow.cpp" line="1588"/>
         <source>Text files(*.csv *.txt);;All files(*)</source>
         <translation>الملفات النصّية(*.csv *.txt);;كلّ الملفات(*)</translation>
     </message>
@@ -4286,7 +4286,7 @@ All data associated with the %1 will be lost.</source>
         <translation type="vanished">اكتمل الاستيراد</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1662"/>
+        <location filename="../MainWindow.cpp" line="1662"/>
         <source>Error while saving the database file. This means that not all changes to the database were saved. You need to resolve the following error first.
 
 %1</source>
@@ -4295,312 +4295,312 @@ All data associated with the %1 will be lost.</source>
 %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1671"/>
+        <location filename="../MainWindow.cpp" line="1671"/>
         <source>Are you sure you want to undo all changes made to the database file &apos;%1&apos; since the last save?</source>
         <translation>أمتأكّد من التراجع عن كلّ التعديلات المُجراة على ملف قاعدة البيانات ”%L1“ منذ آخر حفظ؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1696"/>
+        <location filename="../MainWindow.cpp" line="1696"/>
         <source>Choose a file to import</source>
         <translation>اختر ملفًا لاستيراده</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1697"/>
-        <location filename="../vSongHome.cpp" line="2270"/>
-        <location filename="../vSongHome.cpp" line="2339"/>
+        <location filename="../MainWindow.cpp" line="1697"/>
+        <location filename="../MainWindow.cpp" line="2270"/>
+        <location filename="../MainWindow.cpp" line="2339"/>
         <source>Text files(*.sql *.txt);;All files(*)</source>
         <translation>الملفات النصّية(*.sql *.txt);;كلّ الملفات(*)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1707"/>
+        <location filename="../MainWindow.cpp" line="1707"/>
         <source>Do you want to create a new database file to hold the imported data?
 If you answer no we will attempt to import the data in the SQL file to the current database.</source>
         <translation>أتريد إنشاء ملف قاعدة بيانات جديد ليحتفظ بالبيانات المستوردة؟
 إن كانت إجابتك ”لا“ فسنحاول استيراد البيانات من ملف SQL إلى قاعدة البيانات الحالية.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1718"/>
+        <location filename="../MainWindow.cpp" line="1718"/>
         <source>File %1 already exists. Please choose a different name.</source>
         <translation>الملف %L1 موجود بالفعل. من فضلك اختر اسمًا آخر.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1743"/>
+        <location filename="../MainWindow.cpp" line="1743"/>
         <source>Error importing data: %1</source>
         <translation>خطأ أثناء استيراد البيانات: %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1747"/>
+        <location filename="../MainWindow.cpp" line="1747"/>
         <source>Import completed.</source>
         <translation>اكتمل الاستيراد.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1806"/>
+        <location filename="../MainWindow.cpp" line="1806"/>
         <source>Delete View</source>
         <translation>احذف المنظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1807"/>
+        <location filename="../MainWindow.cpp" line="1807"/>
         <source>Modify View</source>
         <translation>عدّل المنظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1809"/>
+        <location filename="../MainWindow.cpp" line="1809"/>
         <source>Delete Trigger</source>
         <translation>احذف المحفّز</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1810"/>
+        <location filename="../MainWindow.cpp" line="1810"/>
         <source>Modify Trigger</source>
         <translation>عدّل المحفّز</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1812"/>
+        <location filename="../MainWindow.cpp" line="1812"/>
         <source>Delete Index</source>
         <translation>احذف الفهرس</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1813"/>
+        <location filename="../MainWindow.cpp" line="1813"/>
         <source>Modify Index</source>
         <translation>عدّل الفهرس</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1816"/>
+        <location filename="../MainWindow.cpp" line="1816"/>
         <source>Modify Table</source>
         <translation>عدّل الجدول</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1871"/>
+        <location filename="../MainWindow.cpp" line="1871"/>
         <source>&amp;%1 %2</source>
         <translation>&amp;%L1 %L2</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2156"/>
+        <location filename="../MainWindow.cpp" line="2156"/>
         <source>Do you want to save the changes made to SQL tabs in a new project file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2157"/>
+        <location filename="../MainWindow.cpp" line="2157"/>
         <source>Do you want to save the changes made to SQL tabs in the project file %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2177"/>
+        <location filename="../MainWindow.cpp" line="2177"/>
         <source>Do you want to save the changes made to the SQL file %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2203"/>
+        <location filename="../MainWindow.cpp" line="2203"/>
         <source>The statements in this tab are still executing. Closing the tab will stop the execution. This might leave the database in an inconsistent state. Are you sure you want to close the tab?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2365"/>
+        <location filename="../MainWindow.cpp" line="2365"/>
         <source>Extensions(*.so *.dylib *.dll);;All files(*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2390"/>
+        <location filename="../MainWindow.cpp" line="2390"/>
         <source>Could not open find resource file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2697"/>
+        <location filename="../MainWindow.cpp" line="2697"/>
         <source>Choose a project file to open</source>
         <translation>اختر ملف مشروع لفتحه</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2819"/>
-        <source>This project file is using an old file format because it was created using vSongBook version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert all your project files to the new file format because support for older formats might be dropped at some point in the future. You can convert your files by simply opening and re-saving them.</source>
+        <location filename="../MainWindow.cpp" line="2819"/>
+        <source>This project file is using an old file format because it was created using DB Browser for SQLite version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert all your project files to the new file format because support for older formats might be dropped at some point in the future. You can convert your files by simply opening and re-saving them.</source>
         <translation>يستخدم ملف المشروع هذا نسق ملفات قديم لأنه أُنشأ باستخدام «متصفّح قواعد بيانات SQLite» بإصدارة ٣٫١٠ أو أقل. تحميل نسق الملفات هذا مدعوم بشكل كلي حتى الآن، إلا أننا ننصحك بتحويل كل ملفات المشاريع لديك لتستخدم النسق الجديد لأن دعم النسق القديمة قد ينتهي في المستقبل. يمكنك تحويل ملفاتك بفتحها وإعادة حفظها فحسب.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3014"/>
+        <location filename="../MainWindow.cpp" line="3014"/>
         <source>Could not open project file for writing.
 Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3368"/>
+        <location filename="../MainWindow.cpp" line="3368"/>
         <source>Duplicate records</source>
         <translation>كرّر السجلّات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3373"/>
+        <location filename="../MainWindow.cpp" line="3373"/>
         <source>Ctrl+&quot;</source>
         <translation>Ctrl+&quot;</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3543"/>
+        <location filename="../MainWindow.cpp" line="3543"/>
         <source>Please enter a pseudo-primary key in order to enable editing on this view. This should be the name of a unique column in the view.</source>
         <translation>من فضلك أدخِل مفتاحًا أساسيًا زائفًا (pseudo) لتفعيل التحرير في هذا المنظور. يجب أن يكون المفتاح اسمًا لأحد الأعمدة الفريدة في المنظور.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2102"/>
+        <location filename="../MainWindow.cpp" line="2102"/>
         <source>Setting PRAGMA values will commit your current transaction.
 Are you sure?</source>
         <translation>سيؤّدي ضبط قيم PRAGMA إلى إيداع المعاملة الحالية.
 أمتأكّد؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="362"/>
+        <location filename="../MainWindow.cpp" line="362"/>
         <source>Reset Window Layout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="363"/>
+        <location filename="../MainWindow.cpp" line="363"/>
         <source>Alt+0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="390"/>
+        <location filename="../MainWindow.cpp" line="390"/>
         <source>The database is currenctly busy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="396"/>
+        <location filename="../MainWindow.cpp" line="396"/>
         <source>Click here to interrupt the currently running query.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="588"/>
+        <location filename="../MainWindow.cpp" line="588"/>
         <source>Could not open database file.
 Reason: %1</source>
         <translation>تعذّر فتح ملف قاعدة البيانات.
 السبب: %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="623"/>
+        <location filename="../MainWindow.cpp" line="623"/>
         <source>In-Memory database</source>
         <translation>قاعدة بيانات في الذاكرة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="875"/>
+        <location filename="../MainWindow.cpp" line="875"/>
         <source>You are still executing SQL statements. When closing the database now the execution will be stopped. maybe leaving the database in an incosistent state. Are you sure you want to close the database?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1089"/>
+        <location filename="../MainWindow.cpp" line="1089"/>
         <source>determining row count...</source>
         <translation>يحدّد عدد الصفوف...</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1092"/>
+        <location filename="../MainWindow.cpp" line="1092"/>
         <source>%1 - %2 of &gt;= %3</source>
         <translation>‏%L1 - ‏%L2 من أصل &gt;= ‏%L3</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1167"/>
+        <location filename="../MainWindow.cpp" line="1167"/>
         <source>Are you sure you want to delete the table &apos;%1&apos;?
 All data associated with the table will be lost.</source>
         <translation>أمتأكّد من حذف الجدول ”%L1“؟
 ستفقد كلّ البيانات المرتبطة بالجدول.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1169"/>
+        <location filename="../MainWindow.cpp" line="1169"/>
         <source>Are you sure you want to delete the view &apos;%1&apos;?</source>
         <translation>أمتأكّد من حذف المنظور ”%L1“؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1171"/>
+        <location filename="../MainWindow.cpp" line="1171"/>
         <source>Are you sure you want to delete the trigger &apos;%1&apos;?</source>
         <translation>أمتأكّد من حذف المحفّز ”%L1“؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1173"/>
+        <location filename="../MainWindow.cpp" line="1173"/>
         <source>Are you sure you want to delete the index &apos;%1&apos;?</source>
         <translation>أمتأكّد من حذف الفهرس ”%L1“؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1184"/>
+        <location filename="../MainWindow.cpp" line="1184"/>
         <source>Error: could not delete the table.</source>
         <translation>خطأ: تعذّر حذف الجدول.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1186"/>
+        <location filename="../MainWindow.cpp" line="1186"/>
         <source>Error: could not delete the view.</source>
         <translation>خطأ: تعذّر حذف المنظور.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1188"/>
+        <location filename="../MainWindow.cpp" line="1188"/>
         <source>Error: could not delete the trigger.</source>
         <translation>خطأ: تعذّر حذف المحفّز.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1190"/>
+        <location filename="../MainWindow.cpp" line="1190"/>
         <source>Error: could not delete the index.</source>
         <translation>خطأ: تعذّر حذف الفهرس.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1192"/>
+        <location filename="../MainWindow.cpp" line="1192"/>
         <source>Message from database engine:
 %1</source>
         <translation>الرسالة من محرّك قواعد البيانات:
 %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1221"/>
+        <location filename="../MainWindow.cpp" line="1221"/>
         <source>Editing the table requires to save all pending changes now.
 Are you sure you want to save the database?</source>
         <translation>تحرير الجدول يطلب حفظ كلّ التغييرات المرجأة الآن.
 أمتأكّد من حفظ قاعدة البيانات؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1240"/>
+        <location filename="../MainWindow.cpp" line="1240"/>
         <source>Error checking foreign keys after table modification. The changes will be reverted.</source>
         <translation>خطأ أثناء فحص المفاتيح الأجنبية بعد تعديل الجدول. ستُعكس التغييرات.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1243"/>
+        <location filename="../MainWindow.cpp" line="1243"/>
         <source>This table did not pass a foreign-key check.&lt;br/&gt;You should run &apos;Tools | Foreign-Key Check&apos; and fix the reported issues.</source>
         <translation>لم يمرّ الجدول من فحص المفتاح الأجنبي.&lt;br/&gt;عليك تشغيل ”أدوات -&gt; فحص المفتاح الأجنبي“ وإصلاح المشاكل المبلّغ عنها.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1352"/>
+        <location filename="../MainWindow.cpp" line="1352"/>
         <source>You are already executing SQL statements. Do you want to stop them in order to execute the current statements instead? Note that this might leave the database in an inconsistent state.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1399"/>
+        <location filename="../MainWindow.cpp" line="1399"/>
         <source>-- EXECUTING SELECTION IN &apos;%1&apos;
 --</source>
         <translation>-- ينفّذ التحديد في ”%1“
 --</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1420"/>
+        <location filename="../MainWindow.cpp" line="1420"/>
         <source>-- EXECUTING LINE IN &apos;%1&apos;
 --</source>
         <translation>-- ينفّذ السطر في ”%1“
 --</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1428"/>
+        <location filename="../MainWindow.cpp" line="1428"/>
         <source>-- EXECUTING ALL IN &apos;%1&apos;
 --</source>
         <translation>-- ينفّذ الكلّ في ”%1“
 --</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1458"/>
-        <location filename="../vSongHome.cpp" line="1461"/>
+        <location filename="../MainWindow.cpp" line="1458"/>
+        <location filename="../MainWindow.cpp" line="1461"/>
         <source>At line %1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1458"/>
-        <location filename="../vSongHome.cpp" line="1461"/>
+        <location filename="../MainWindow.cpp" line="1458"/>
+        <location filename="../MainWindow.cpp" line="1461"/>
         <source>Result: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1521"/>
+        <location filename="../MainWindow.cpp" line="1521"/>
         <source>Setting PRAGMA values or vacuuming will commit your current transaction.
 Are you sure?</source>
         <translation>سيؤّدي ضبط قيم PRAGMA أو التنظيف إلى إيداع المعاملة الحالية.
 أمتأكّد؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3904"/>
+        <location filename="../MainWindow.cpp" line="3904"/>
         <source>Busy (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4613,7 +4613,7 @@ Are you sure?</source>
         <translation type="vanished">ينفّذ الاستعلام</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1515"/>
+        <location filename="../MainWindow.cpp" line="1515"/>
         <source>%1 rows returned in %2ms</source>
         <translation>أُرجع من الصّفوف %L1 خلال %L2م‌ث</translation>
     </message>
@@ -4630,37 +4630,37 @@ Are you sure?</source>
 -- النتيجة: %L3</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1587"/>
+        <location filename="../MainWindow.cpp" line="1587"/>
         <source>Choose text files</source>
         <translation>اختر ملفات نصّية</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1745"/>
+        <location filename="../MainWindow.cpp" line="1745"/>
         <source>Import completed. Some foreign key constraints are violated. Please fix them before saving.</source>
         <translation>اكتمل الاستيراد. انتُهكت بعض قيود المفتاح الأجنبي. من فضلك أصلِحها قبل الحفظ.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2269"/>
+        <location filename="../MainWindow.cpp" line="2269"/>
         <source>Select SQL file to open</source>
         <translation>اختر ملف SQL لفتحه</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2278"/>
+        <location filename="../MainWindow.cpp" line="2278"/>
         <source>Couldn&apos;t read file: %1.</source>
         <translation>تعذّرت قراءة الملف: %L1.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2319"/>
+        <location filename="../MainWindow.cpp" line="2319"/>
         <source>Couldn&apos;t save file: %1.</source>
         <translation>تعذّر حفظ الملف: %L1.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2338"/>
+        <location filename="../MainWindow.cpp" line="2338"/>
         <source>Select file name</source>
         <translation>اختر اسم الملف</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2364"/>
+        <location filename="../MainWindow.cpp" line="2364"/>
         <source>Select extension file</source>
         <translation>اختر ملف الامتداد</translation>
     </message>
@@ -4669,38 +4669,38 @@ Are you sure?</source>
         <translation type="vanished">الامتدادات(*.so *.dll);;كلّ الملفات(*)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2371"/>
+        <location filename="../MainWindow.cpp" line="2371"/>
         <source>Extension successfully loaded.</source>
         <translation>نجح تحميل الامتداد.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2373"/>
+        <location filename="../MainWindow.cpp" line="2373"/>
         <source>Error loading extension: %1</source>
         <translation>خطأ أثناء تحميل الامتداد: %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2481"/>
-        <location filename="../vSongHome.cpp" line="2815"/>
+        <location filename="../MainWindow.cpp" line="2481"/>
+        <location filename="../MainWindow.cpp" line="2815"/>
         <source>Don&apos;t show again</source>
         <translation>لا تعرض ثانيةً</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2484"/>
+        <location filename="../MainWindow.cpp" line="2484"/>
         <source>New version available.</source>
         <translation>تتوفّر إصدارة جديدة.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2485"/>
-        <source>A new vSongBook version is available (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Please download at &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</source>
+        <location filename="../MainWindow.cpp" line="2485"/>
+        <source>A new DB Browser for SQLite version is available (%1.%2.%3).&lt;br/&gt;&lt;br/&gt;Please download at &lt;a href=&apos;%4&apos;&gt;%4&lt;/a&gt;.</source>
         <translation>تتوفّر إصدارة جديدة من «متصفّح قواعد بيانات SQLite» ‏(%L1٫‏%L2٫‏%L3).&lt;br/&gt;&lt;br/&gt;من فضلك نزّلها من &lt;a href=&apos;%4&apos;&gt;%L4&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3648"/>
+        <location filename="../MainWindow.cpp" line="3648"/>
         <source>Collation needed! Proceed?</source>
         <translation>التجميع مطلوب! أنتابع؟</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3649"/>
+        <location filename="../MainWindow.cpp" line="3649"/>
         <source>A table in this database requires a special collation function &apos;%1&apos; that this application can&apos;t provide without further knowledge.
 If you choose to proceed, be aware bad things can happen to your database.
 Create a backup!</source>
@@ -4709,52 +4709,52 @@ Create a backup!</source>
 خُذ نسخة احتياطيّة!</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3654"/>
+        <location filename="../MainWindow.cpp" line="3654"/>
         <source>creating collation</source>
         <translation>يُنشئ تجميعة</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3663"/>
+        <location filename="../MainWindow.cpp" line="3663"/>
         <source>Set a new name for the SQL tab. Use the &apos;&amp;&amp;&apos; character to allow using the following character as a keyboard shortcut.</source>
         <translation>ضع اسمًا جديدًا للسان SQL. استخدم محرف ”&amp;&amp;“ ليُتاح استخدام المحرف الذي يليه كاختصار لوحة مفاتيح.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3715"/>
+        <location filename="../MainWindow.cpp" line="3715"/>
         <source>Please specify the view name</source>
         <translation>من فضلك حدّد اسم المنظور</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3719"/>
+        <location filename="../MainWindow.cpp" line="3719"/>
         <source>There is already an object with that name. Please choose a different name.</source>
         <translation>هناك كائن بنفس الاسم. من فضلك اختر اسمًا آخر.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3726"/>
+        <location filename="../MainWindow.cpp" line="3726"/>
         <source>View successfully created.</source>
         <translation>نجح إنشاء المنظور.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3728"/>
+        <location filename="../MainWindow.cpp" line="3728"/>
         <source>Error creating view: %1</source>
         <translation>خطأ أثناء إنشاء المنظور: %L1</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3743"/>
+        <location filename="../MainWindow.cpp" line="3743"/>
         <source>There is no filter set for this table. View will not be created.</source>
         <translation>لا مرشّح مضبوط لهذا الجدول. لن يُنشأ المنظور.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3781"/>
+        <location filename="../MainWindow.cpp" line="3781"/>
         <source>Delete Records</source>
         <translation>احذف السجلّات</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3788"/>
+        <location filename="../MainWindow.cpp" line="3788"/>
         <source>This action will open a new SQL tab for running:</source>
         <translation>سيفتح هذا الإجراء لسان SQL جديد لتشغيل:</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3790"/>
+        <location filename="../MainWindow.cpp" line="3790"/>
         <source>Press Help for opening the corresponding SQLite reference page.</source>
         <translation>انقر ”مساعدة“ لفتح صفحة SQLite المرجعية المناسبة.</translation>
     </message>
@@ -4771,40 +4771,40 @@ Create a backup!</source>
         <translation type="vanished">اختر ملفًا لفتحه</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="2698"/>
-        <location filename="../vSongHome.cpp" line="2999"/>
-        <source>vSongBook project file (*.sqbpro)</source>
+        <location filename="../MainWindow.cpp" line="2698"/>
+        <location filename="../MainWindow.cpp" line="2999"/>
+        <source>DB Browser for SQLite project file (*.sqbpro)</source>
         <translation>ملف مشروع «متصفّح قواعد بيانات SQLite» ‏(*.sqbpro)</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3472"/>
+        <location filename="../MainWindow.cpp" line="3472"/>
         <source>Please choose a new encoding for this table.</source>
         <translation>من فضلك اختر ترميزًا جديدًا لهذا الجدول.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3470"/>
+        <location filename="../MainWindow.cpp" line="3470"/>
         <source>Please choose a new encoding for all tables.</source>
         <translation>من فضلك اختر ترميزًا جديدًا لكلّ الجداول.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1539"/>
+        <location filename="../MainWindow.cpp" line="1539"/>
         <source>Execution finished with errors.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="1541"/>
+        <location filename="../MainWindow.cpp" line="1541"/>
         <source>Execution finished without errors.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3475"/>
+        <location filename="../MainWindow.cpp" line="3475"/>
         <source>%1
 Leave the field empty for using the database encoding.</source>
         <translation>%L1
 اترك الحقل فارغًا لاستخدام ترميز قاعدة البيانات.</translation>
     </message>
     <message>
-        <location filename="../vSongHome.cpp" line="3487"/>
+        <location filename="../MainWindow.cpp" line="3487"/>
         <source>This encoding is either not valid or not supported.</source>
         <translation>إمّا أنّ هذا الترميز غير صالح أو أنّه غير مدعوم.</translation>
     </message>
@@ -5689,7 +5689,7 @@ Can be set to 0 for disabling completion.</source>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="1595"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;While supporting the REGEXP operator SQLite doesn&apos;t implement any regular expression&lt;br/&gt;algorithm but calls back the running application. vSongBook implements this&lt;br/&gt;algorithm for you to let you use REGEXP out of the box. However, as there are multiple possible&lt;br/&gt;implementations of this and you might want to use another one, you&apos;re free to disable the&lt;br/&gt;application&apos;s implementation and load your own by using an extension. Requires restart of the application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;While supporting the REGEXP operator SQLite doesn&apos;t implement any regular expression&lt;br/&gt;algorithm but calls back the running application. DB Browser for SQLite implements this&lt;br/&gt;algorithm for you to let you use REGEXP out of the box. However, as there are multiple possible&lt;br/&gt;implementations of this and you might want to use another one, you&apos;re free to disable the&lt;br/&gt;application&apos;s implementation and load your own by using an extension. Requires restart of the application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html dir=&quot;rtl&quot;&gt;مع أنّ معامل REGEX مدعوم، إلّا أنّ SQLITE ليس فيها أية خوارزمية تعابير نمطية منجزة، بل تنادي التطبيق الجاري. «متصفّح قواعد بيانات SQLite» ينفّذ هذه الخوارزمية لك لتستخدم REGEXP دون عناء. مع ذلك، يختلف تنفيذ هذه الميزة ولربّما تحتاج استخدام واحدة أخرى، لذا فأنت حرّ في تعطيل طريقة التطبيق في التنفيذ وتحميل أيّ من تلك باستخدام احد الامتدادات. إعادة تشغيل التطبيق مطلوبة.&lt;/html&gt;</translation>
     </message>
     <message>
