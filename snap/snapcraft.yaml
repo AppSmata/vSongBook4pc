@@ -3,7 +3,7 @@
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
-          summary:                DB Browser for SQLite  # 79 char long summary
+          summary:                vSongBook  # 79 char long summary
           description:            |
             vSongBook (Virtual Songbook) is a high quality, visual, open source tool to give users access to song lyrics of major worship and praise songbooks used in christian gatherings be it in church, weddings, funerals or anywhere where one feels like singing.
             * Browse, edit, add, and delete songs

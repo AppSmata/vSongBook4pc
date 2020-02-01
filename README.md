@@ -7,7 +7,7 @@
 [![Coverity][coverity-img]][coverity]
 [![Patreon][patreon-img]][patreon]
 
-![vSongBook Screenshot](https://github.com/vSongBook/vSongBook4PC/raw/master/images/vSongBook.png "vSongBook Screenshot")
+![vSongBook Screenshot](https://github.com/vSongBook/vSongBook4PC/raw/master/images/vsongbook.png "vSongBook Screenshot")
 
 ## What it is
 
