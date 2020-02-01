@@ -1,5 +1,5 @@
           name:                   vsongbook  # the name of the snap
-          # version:              3.10.1  # the version of the snap
+          # version:              2.5.5  # the version of the snap
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
@@ -13,7 +13,7 @@
           confinement:            strict  # use "strict" to enforce system access only via declared interfaces
 
           grade:                  devel
-          icon:                   images/vsongbook.svg
+          icon:                   images/appicon.png
           type:                   app
 
           apps:
