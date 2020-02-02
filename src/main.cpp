@@ -1,14 +1,30 @@
 #include "Application.h"
+#include <QFile>
+#include <QSplashScreen>
+#include <QThread>
+
+void setStyle(const QString& qssFile)
+{
+    QFile qss(qssFile);
+    qss.open(QFile::ReadOnly);
+    qApp->setStyleSheet(qss.readAll());
+    qss.close();
+}
 
 int main( int argc, char ** argv )
 {
-    // Create application object. All the initialisation stuff happens in there
-    Application a(argc, argv);
+    QApplication app(argc, argv);
+    QPixmap pixmap("res/splash.png");
+    QSplashScreen splash(pixmap, Qt::WindowStaysOnTopHint);
+    splash.show();
 
-    // Quit application now if user doesn't want to see the UI
-    if(a.dontShowMainWindow())
-        return 0;
+    app.thread()->sleep(3);
+    app.processEvents();
+    splash.close();
+
+    Application vsb(argc, argv);
+    setStyle("res/style.qss");
 
     // Run application
-    return a.exec();
+    return vsb.exec();
 }
