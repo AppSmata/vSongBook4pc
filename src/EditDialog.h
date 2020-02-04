@@ -32,7 +32,7 @@ protected:
     void showEvent(QShowEvent* ev) override;
 
 private slots:
-    void importData();
+    void importData(bool asLink = false);
     void exportData();
     void setNull();
     void updateApplyButton();
@@ -51,6 +51,7 @@ private slots:
 
 signals:
     void recordTextUpdated(const QPersistentModelIndex& idx, const QByteArray& bArrdata, bool isBlob);
+    void requestUrlOrFileOpen(const QString& urlString);
 
 private:
     Ui::EditDialog* ui;
@@ -99,6 +100,7 @@ private:
     bool promptInvalidData(const QString& data_type, const QString& errorString);
     void setDataInBuffer(const QByteArray& bArrdata, DataSources source);
     void setStackCurrentIndex(int editMode);
+    void openDataWithExternal();
 };
 
 #endif

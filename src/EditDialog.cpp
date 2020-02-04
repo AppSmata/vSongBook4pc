@@ -19,6 +19,7 @@
 #include <QPainter>
 #include <QClipboard>
 #include <QTextDocument>
+#include <QMenu>
 
 #include <Qsci/qsciscintilla.h>
 #include <json.hpp>
@@ -64,6 +65,30 @@ EditDialog::EditDialog(QWidget* parent)
     ui->editorImage->addAction(ui->actionPrintImage);
     ui->editorBinary->addAction(ui->actionPrint);
     ui->editorBinary->addAction(ui->actionCopyHexAscii);
+
+    // Set up popup menus
+    QMenu* popupImportFileMenu = new QMenu(this);
+    popupImportFileMenu->addAction(ui->actionImportInMenu);
+    popupImportFileMenu->addAction(ui->actionImportAsLink);
+    ui->actionImport->setMenu(popupImportFileMenu);
+
+    connect(ui->actionImportAsLink, &QAction::triggered, this, [&]() {
+        importData(/* asLink */ true);
+    });
+
+    connect(ui->actionOpenInApp, &QAction::triggered, this, [&]() {
+        switch (dataSource) {
+        case SciBuffer:
+            emit requestUrlOrFileOpen(sciEdit->text());
+            break;
+        case QtBuffer:
+            emit requestUrlOrFileOpen(ui->qtEdit->toPlainText());
+            break;
+        default:
+            return;
+        }
+    });
+    connect(ui->actionOpenInExternal, &QAction::triggered, this, &EditDialog::openDataWithExternal);
 
     mustIndentAndCompact = Settings::getValue("databrowser", "indent_compact").toBool();
     ui->actionIndent->setChecked(mustIndentAndCompact);
@@ -310,7 +335,7 @@ void EditDialog::loadData(const QByteArray& bArrdata)
     }
 }
 
-void EditDialog::importData()
+void EditDialog::importData(bool asLink)
 {
     // Get list of supported image file formats to include them in the file dialog filter
     QString image_formats;
@@ -363,16 +388,22 @@ void EditDialog::importData()
                 );
     if(QFile::exists(fileName))
     {
-        QFile file(fileName);
-        if(file.open(QIODevice::ReadOnly))
-        {
-            QByteArray d = file.readAll();
-            loadData(d);
-            file.close();
+        if(asLink) {
+            QByteArray fileNameBa = fileName.toUtf8();
+            loadData(fileNameBa);
+            updateCellInfoAndMode(fileNameBa);
+        } else {
+            QFile file(fileName);
+            if(file.open(QIODevice::ReadOnly))
+            {
+                QByteArray d = file.readAll();
+                loadData(d);
+                file.close();
 
-            // Update the cell data info in the bottom left of the Edit Cell
-            // and update mode (if required) to the just imported data type.
-            updateCellInfoAndMode(d);
+                // Update the cell data info in the bottom left of the Edit Cell
+                // and update mode (if required) to the just imported data type.
+                updateCellInfoAndMode(d);
+            }
         }
     }
 }
@@ -1146,4 +1177,74 @@ void EditDialog::setWordWrapping(bool value)
     // Set wrap lines
     sciEdit->setWrapMode(value ? QsciScintilla::WrapWord : QsciScintilla::WrapNone);
     ui->qtEdit->setWordWrapMode(value ? QTextOption::WrapAtWordBoundaryOrAnywhere : QTextOption::NoWrap);
+}
+
+void EditDialog::openDataWithExternal()
+{
+    QString extension;
+    switch (dataType) {
+    case Image: {
+        // Images get special treatment.
+        // Determine the likely filename extension.
+        QByteArray cellData = hexEdit->data();
+        QBuffer imageBuffer(&cellData);
+        QImageReader imageReader(&imageBuffer);
+        extension = imageReader.format().toLower().prepend(".");
+        break;
+    }
+    case Binary:
+        extension = FILE_EXT_BIN_DEFAULT;
+        break;
+    case RtlText:
+    case Text:
+        if (ui->comboMode->currentIndex() == XmlEditor)
+            extension = FILE_EXT_XML_DEFAULT;
+        else
+            extension = FILE_EXT_TXT_DEFAULT;
+        break;
+    case JSON:
+        extension = FILE_EXT_JSON_DEFAULT;
+        break;
+    case SVG:
+        extension = FILE_EXT_SVG_DEFAULT;
+        break;
+    case XML:
+        extension = FILE_EXT_XML_DEFAULT;
+        break;
+    case Null:
+        return;
+    }
+    QTemporaryFile file (QDir::tempPath() + QString("/DB4S-XXXXXX") + extension);
+
+    if(file.open())
+    {
+        switch (dataSource) {
+        case HexBuffer:
+            file.write(hexEdit->data());
+            break;
+        case SciBuffer:
+            file.write(sciEdit->text().toUtf8());
+            break;
+        case QtBuffer:
+            file.write(ui->qtEdit->toPlainText().toUtf8());
+            break;
+        }
+        file.close();
+
+        emit requestUrlOrFileOpen(file.fileName());
+
+        QMessageBox::StandardButton reply = QMessageBox::information
+            (nullptr,
+             QApplication::applicationName(),
+             tr("The data has been saved to a temporary file and has been opened with the default application."
+                "You can edit now the file and when your are ready, you can apply the saved new data to the cell editor or cancel any changes."),
+             QMessageBox::Apply | QMessageBox::Cancel);
+
+        QFile readFile(file.fileName());
+        if(reply == QMessageBox::Apply && readFile.open(QIODevice::ReadOnly)){
+            QByteArray d = readFile.readAll();
+            loadData(d);
+            readFile.close();
+        }
+    }
 }

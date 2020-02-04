@@ -98,15 +98,8 @@
         <file alias="edit_cond_formats">style_edit.png</file>
         <file alias="clear_cond_formats">style_delete.png</file>
         <file alias="add_cond_format">style_add.png</file>
-        <file>bigger.png</file>
-        <file>edit.png</file>
-        <file>last.png</file>
-        <file>next.png</file>
-        <file>present.png</file>
-        <file>smaller.png</file>
-        <file>bold.png</file>
-        <file>font.png</file>
-        <file>check.png</file>
-        <file>delete.png</file>
+        <file alias="open_in_app">application_link.png</file>
+        <file alias="document_link">document-link.png</file>
+        <file alias="open_data_in_app">application_go.png</file>
     </qresource>
 </RCC>

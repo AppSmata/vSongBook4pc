@@ -132,7 +132,7 @@ void MainWindow::init()
     connect(m_remoteDb, &RemoteDatabase::networkReady, [this]() {
         // Check for a new version if automatic update check aren't disabled in the settings dialog
         if(Settings::getValue("checkversion", "enabled").toBool())
-            m_remoteDb->fetch("https://download.vsongbook.org/currentrelease", RemoteDatabase::RequestTypeNewVersionCheck);
+            m_remoteDb->fetch("https://download.appsmata.com/vsongbook/currentrelease", RemoteDatabase::RequestTypeNewVersionCheck);
     });
 #endif
 
@@ -400,6 +400,7 @@ void MainWindow::init()
 
     // Connect some more signals and slots
     connect(editDock, &EditDialog::recordTextUpdated, this, &MainWindow::updateRecordText);
+    connect(editDock, &EditDialog::requestUrlOrFileOpen, this, &MainWindow::openUrlOrFile);
     connect(ui->dbTreeWidget->selectionModel(), &QItemSelectionModel::currentChanged, this, &MainWindow::changeTreeSelection);
     connect(ui->dockEdit, &QDockWidget::visibilityChanged, this, &MainWindow::toggleEditDock);
     connect(m_remoteDb, SIGNAL(openFile(QString)), this, SLOT(fileOpen(QString)));
@@ -725,7 +726,7 @@ bool MainWindow::closeProject()
              QApplication::applicationName(),
              tr("Do you want to save the changes made to the project file '%1'?").
              arg(QFileInfo(currentProjectFilename).fileName()),
-             QMessageBox::Save | QMessageBox::No | QMessageBox::Cancel);
+             QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
         switch(reply) {
         case QMessageBox::Save:
             saveProject();
@@ -749,6 +750,9 @@ void MainWindow::attachPlot(ExtendedTableWidget* tableWidget, SqliteTableModel* 
         // Connect plot selection to the current table results widget.
         connect(plotDock, SIGNAL(pointsSelected(int,int)), tableWidget, SLOT(selectTableLines(int, int)));
         connect(tableWidget, &ExtendedTableWidget::destroyed, plotDock, &PlotDock::resetPlot);
+        // Disconnect requestUrlOrFileOpen in order to make sure that there is only one connection. Otherwise we can open it several times.
+        disconnect(tableWidget, &ExtendedTableWidget::requestUrlOrFileOpen, this, &MainWindow::openUrlOrFile);
+        connect(tableWidget, &ExtendedTableWidget::requestUrlOrFileOpen, this, &MainWindow::openUrlOrFile);
     }
 }
 
@@ -1054,7 +1058,7 @@ void MainWindow::executeQuery()
 
             // Need to set the end position here before adjusting the start line
             int execute_to_line = execute_from_line;
-            int execute_to_index = editor->text(execute_to_line).length() - 1;     // The -1 compensates for the line break at the end of the line
+            int execute_to_index = editor->text(execute_to_line).remove('\n').remove('\r').length();     // This chops the line break at the end of the line
             execute_to_position = editor->positionFromLineIndex(execute_to_line, execute_to_index);
 
             QByteArray firstPartEntireSQL = sqlWidget->getSql().toUtf8().left(execute_from_position);
@@ -1080,9 +1084,13 @@ void MainWindow::executeQuery()
 
         // Special case: if the start position is at the end of a line, then move to the beggining of next line.
         // Otherwise for the typical case, the line reference is one less than expected.
-        // Note that execute_from_index uses character positions and not byte positions, so text().length() must be used.
-        if (editor->text(execute_from_line).length() == execute_from_index+1) {
+        // Note that execute_from_index uses character positions and not byte positions, so at() can be used.
+        QChar char_at_index = editor->text(execute_from_line).at(execute_from_index);
+        if (char_at_index == '\r' || char_at_index == '\n') {
             execute_from_line++;
+            // The next lines could be empty, so skip all of them too.
+            while(editor->text(execute_from_line).trimmed().isEmpty())
+                execute_from_line++;
             execute_from_index = 0;
         }
 
@@ -1233,6 +1241,7 @@ void MainWindow::importTableFromCSV()
                 << FILE_FILTER_TSV
                 << FILE_FILTER_DSV
                 << FILE_FILTER_TXT
+                << FILE_FILTER_DAT
                 << FILE_FILTER_ALL;
 
     QStringList wFiles = FileDialog::getOpenFileNames(
@@ -1827,7 +1836,7 @@ bool MainWindow::askSaveSqlTab(int index, bool& ignoreUnattachedBuffers)
             QMessageBox::StandardButton reply = QMessageBox::question(nullptr,
                                                                       QApplication::applicationName(),
                                                                       message,
-                                                                      QMessageBox::Save | QMessageBox::No | QMessageBox::Cancel);
+                                                                      QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
             switch(reply) {
             case QMessageBox::Save:
                 saveProject();
@@ -1844,7 +1853,7 @@ bool MainWindow::askSaveSqlTab(int index, bool& ignoreUnattachedBuffers)
                                       QApplication::applicationName(),
                                       tr("Do you want to save the changes made to the SQL file %1?").
                                       arg(QFileInfo(sqlExecArea->fileName()).fileName()),
-                                      QMessageBox::Save | QMessageBox::No | QMessageBox::Cancel);
+                                      QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
             switch(reply) {
             case QMessageBox::Save:
                 saveSqlFile(index);
@@ -2232,7 +2241,7 @@ void MainWindow::on_actionSqlCipherFaq_triggered() const
 
 void MainWindow::on_actionWebsite_triggered() const
 {
-    QDesktopServices::openUrl(QUrl("https://vsongbook.org"));
+    QDesktopServices::openUrl(QUrl("https://appsmata.com/vsongbook"));
 }
 
 void MainWindow::on_actionDonatePatreon_triggered() const
@@ -3325,4 +3334,17 @@ void MainWindow::showContextMenuSqlTabBar(const QPoint& pos)
     menuTabs->addAction(actionDuplicate);
     menuTabs->addAction(actionClose);
     menuTabs->exec(ui->tabSqlAreas->mapToGlobal(pos));
+}
+
+void MainWindow::openUrlOrFile(const QString& urlString)
+{
+    QUrl url = QUrl::fromUserInput(urlString, QFileInfo(db.currentFile()).path(), QUrl::AssumeLocalFile);
+    if(url.isValid()) {
+        if(QDesktopServices::openUrl(url))
+            showStatusMessage5s(tr("Opening '%1'...").arg(url.toDisplayString()));
+        else
+            showStatusMessage5s(tr("There was an error opening '%1'...").arg(url.toDisplayString()));
+
+    } else
+        showStatusMessage5s(tr("Value is not a valid URL or filename: %1").arg(url.errorString()));
 }

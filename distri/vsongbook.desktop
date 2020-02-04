@@ -1,12 +1,13 @@
 [Desktop Entry]
-Name=vSongBook
-Comment=vSongBook is an application giving users the freedom to sing anywhere anytime
-Comment[de]=vSongBook est une application qui donne aux utilisateurs la liberté de chanter partout et à tout moment
-Comment[fr]=vSongBook ist eine Anwendung, mit der Benutzer jederzeit und überall singen können
+Name=DB Browser for SQLite
+Comment=DB Browser for SQLite is a light GUI editor for SQLite databases
+Comment[de]=DB Browser for SQLite ist ein GUI-Editor für SQLite-Datenbanken
+Comment[fr]=Un éditeur graphique léger pour les bases de données SQLite
+Comment[es]=«DB Browser for SQLite» es un editor gráfico de bases de datos SQLite
 Exec=vsongbook %f
 Icon=vsongbook
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Categories=Education;Utility;
-MimeType=application/vsongbook;application/x-vsongbook;application/x-sqlite2;application/x-sqlite3;
+Categories=Development;Utility;Database;
+MimeType=application/vnd.db4s-project+xml;application/vsongbook;application/x-vsongbook;application/vnd.sqlite3;application/geopackage+sqlite3;application/x-sqlite2;application/x-sqlite3;
