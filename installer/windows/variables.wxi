@@ -14,7 +14,7 @@
 
     <?define AppIcon="..\..\src\iconwin.ico" ?>
     <?define AppComments="$(var.Name) is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite." ?>
-    <?define AppContact="db4s-dev@vsongbook.org" ?>
+    <?define AppContact="db4s-dev@appsmata.com/vsongbook" ?>
     <?define AppReadme="https://github.com/vsongbook/vsongbook" ?>
     <?define AppHelpLink="https://github.com/vsongbook/vsongbook/wiki" ?>
     <?define AppSupportLink="https://github.com/vsongbook/vsongbook/issues" ?>

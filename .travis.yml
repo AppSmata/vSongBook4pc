@@ -72,10 +72,9 @@ after_success:
 notifications:
   email:
    recipients:
-   - mkleusberg@gmail.com
-   - innermous@gmail.com
-   - justin@postgresql.org
-   - mgrojo@gmail.com
+   - jacksiroke@gmail.com
+   - appsmatake@gmail.com
+   - vsongbookapp@gmail.com
    on_success: never
    on_failure: always
   slack:

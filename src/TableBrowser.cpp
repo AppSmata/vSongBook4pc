@@ -29,7 +29,9 @@ TableBrowser::TableBrowser(QWidget* parent) :
     gotoValidator(new QIntValidator(0, 0, this)),
     db(nullptr),
     dbStructureModel(nullptr),
-    m_model(nullptr)
+    m_model(nullptr),
+    m_adjustRows(false),
+    m_columnsResized(false)
 {
     ui->setupUi(this);
 
@@ -40,7 +42,7 @@ TableBrowser::TableBrowser(QWidget* parent) :
     ui->editGlobalFilter->setPlaceholderText(tr("Filter in all columns"));
     ui->editGlobalFilter->setConditionFormatContextMenuEnabled(false);
 
-    // Set uo popup menus
+    // Set up popup menus
     popupNewRecordMenu = new QMenu(this);
     popupNewRecordMenu->addAction(ui->newRecordAction);
     popupNewRecordMenu->addAction(ui->insertValuesAction);
@@ -317,7 +319,8 @@ void TableBrowser::init(DBBrowserDB* _db)
         delete m_model;
     m_model = new SqliteTableModel(*db, this);
 
-    connect(m_model, &SqliteTableModel::finishedFetch, this, &TableBrowser::updateRecordsetLabel);
+    connect(m_model, &SqliteTableModel::finishedFetch, this, &TableBrowser::fetchedData);
+
 }
 
 void TableBrowser::reset()
@@ -469,9 +472,8 @@ void TableBrowser::updateTable()
         // Enable editing in general, but lock view editing
         unlockViewEditing(false);
 
-        // Column widths
-        for(int i=1;i<m_model->columnCount();i++)
-            ui->dataTable->setColumnWidth(i, ui->dataTable->horizontalHeader()->defaultSectionSize());
+        // Prepare for setting an initial column width based on the content.
+        m_columnsResized = false;
 
         // Encoding
         m_model->setEncoding(m_defaultEncoding);
@@ -535,6 +537,7 @@ void TableBrowser::updateTable()
         // Plot
         emit updatePlot(ui->dataTable, m_model, &m_settings[tablename], false);
     }
+
 
     // Show/hide menu options depending on whether this is a table or a view
     if(db->getObjectByName(currentlyBrowsedTableName()) && db->getObjectByName(currentlyBrowsedTableName())->type() == sqlb::Object::Table)
@@ -741,7 +744,12 @@ void TableBrowser::updateRecordsetLabel()
     }
     ui->labelRecordset->setText(txt);
 
-    enableEditing(m_model->rowCountAvailable() != SqliteTableModel::RowCount::Unknown);
+    // Enable editing only for tables or views with editing unlocked for which the row count is already available
+    sqlb::ObjectIdentifier current_table = currentlyBrowsedTableName();
+    bool is_table_or_unlocked_view = !m_model->query().empty() && db->getObjectByName(current_table) && (
+                (db->getObjectByName(current_table)->type() == sqlb::Object::View && m_model->hasPseudoPk()) ||
+                (db->getObjectByName(current_table)->type() == sqlb::Object::Table));
+    enableEditing(m_model->rowCountAvailable() != SqliteTableModel::RowCount::Unknown && is_table_or_unlocked_view);
 }
 
 void TableBrowser::applySettings(const BrowseDataTableSettings& storedData, bool skipFilters)
@@ -755,7 +763,7 @@ void TableBrowser::applySettings(const BrowseDataTableSettings& storedData, bool
     showRowidColumn(storedData.showRowid, skipFilters);
 
     // Enable editing in general and (un)lock view editing depending on the settings
-    unlockViewEditing(!storedData.unlockViewPk.isEmpty(), storedData.unlockViewPk);
+    unlockViewEditing(!storedData.unlockViewPk.isEmpty() && storedData.unlockViewPk != "_rowid_", storedData.unlockViewPk);
 
     // Column hidden status
     on_actionShowAllColumns_triggered();
@@ -765,6 +773,7 @@ void TableBrowser::applySettings(const BrowseDataTableSettings& storedData, bool
     // Column widths
     for(auto widthIt=storedData.columnWidths.constBegin();widthIt!=storedData.columnWidths.constEnd();++widthIt)
         ui->dataTable->setColumnWidth(widthIt.key(), widthIt.value());
+    m_columnsResized = true;
 
     // Filters
     if(!skipFilters)
@@ -1122,45 +1131,63 @@ void TableBrowser::showDataColumnPopupMenu(const QPoint& pos)
 
 void TableBrowser::showRecordPopupMenu(const QPoint& pos)
 {
-    if(!(db->getObjectByName(currentlyBrowsedTableName())->type() == sqlb::Object::Types::Table && !db->readOnly()))
-        return;
-
     int row = ui->dataTable->verticalHeader()->logicalIndexAt(pos);
     if (row == -1)
         return;
 
-    // Select the row if it is not already in the selection.
-    QModelIndexList rowList = ui->dataTable->selectionModel()->selectedRows();
-    bool found = false;
-    for (QModelIndex index : rowList) {
-        if (row == index.row()) {
-            found = true;
-            break;
-        }
-    }
-    if (!found)
-        ui->dataTable->selectRow(row);
-
-    rowList = ui->dataTable->selectionModel()->selectedRows();
-
-    QString duplicateText = rowList.count() > 1 ? tr("Duplicate records") : tr("Duplicate record");
-
     QMenu popupRecordMenu(this);
-    QAction* action = new QAction(duplicateText, &popupRecordMenu);
-    // Set shortcut for documentation purposes (the actual functional shortcut is not set here)
-    action->setShortcut(QKeySequence(tr("Ctrl+\"")));
-    popupRecordMenu.addAction(action);
 
-    connect(action, &QAction::triggered, [rowList, this]() {
-        for (const QModelIndex& index : rowList)
-            duplicateRecord(index.row());
-    });
+    // "Delete and duplicate records" can only be done on writable objects
+    if(db->getObjectByName(currentlyBrowsedTableName())->type() == sqlb::Object::Types::Table && !db->readOnly()) {
 
-    QAction* deleteRecordAction = new QAction(QIcon(":icons/delete_record"), ui->actionDeleteRecord->text(), &popupRecordMenu);
-    popupRecordMenu.addAction(deleteRecordAction);
+        // Select the row if it is not already in the selection.
+        QModelIndexList rowList = ui->dataTable->selectionModel()->selectedRows();
+        bool found = false;
+        for (QModelIndex index : rowList) {
+            if (row == index.row()) {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+            ui->dataTable->selectRow(row);
 
-    connect(deleteRecordAction, &QAction::triggered, [&]() {
-        deleteRecord();
+        rowList = ui->dataTable->selectionModel()->selectedRows();
+
+        QString duplicateText = rowList.count() > 1 ? tr("Duplicate records") : tr("Duplicate record");
+
+        QAction* action = new QAction(duplicateText, &popupRecordMenu);
+        // Set shortcut for documentation purposes (the actual functional shortcut is not set here)
+        action->setShortcut(QKeySequence(tr("Ctrl+\"")));
+        popupRecordMenu.addAction(action);
+
+        connect(action, &QAction::triggered, [rowList, this]() {
+            for (const QModelIndex& index : rowList)
+                duplicateRecord(index.row());
+        });
+
+        QAction* deleteRecordAction = new QAction(QIcon(":icons/delete_record"), ui->actionDeleteRecord->text(), &popupRecordMenu);
+        popupRecordMenu.addAction(deleteRecordAction);
+
+        connect(deleteRecordAction, &QAction::triggered, [&]() {
+            deleteRecord();
+        });
+
+        popupRecordMenu.addSeparator();
+    }
+
+    // "Adjust rows" can be done on any object
+    QAction* adjustRowHeightAction = new QAction(tr("Adjust rows to contents"), &popupRecordMenu);
+    adjustRowHeightAction->setCheckable(true);
+    adjustRowHeightAction->setChecked(m_adjustRows);
+    popupRecordMenu.addAction(adjustRowHeightAction);
+
+    connect(adjustRowHeightAction, &QAction::toggled, [&](bool checked) {
+        m_adjustRows = checked;
+        if(m_adjustRows)
+            ui->dataTable->resizeRowsToContents();
+        else
+            updateTable();
     });
 
     popupRecordMenu.exec(ui->dataTable->verticalHeader()->mapToGlobal(pos));
@@ -1529,5 +1556,28 @@ void TableBrowser::find(const QString& expr, bool forward, bool include_first, R
         else
             ui->editFindExpression->setStyleSheet("QLineEdit {color: white; background-color: rgb(255, 102, 102)}");
     } break;
+    }
+}
+
+void TableBrowser::fetchedData()
+{
+    updateRecordsetLabel();
+
+    // Adjust row height to contents. This has to be done each time new data is fetched.
+    if(m_adjustRows)
+        ui->dataTable->resizeRowsToContents();
+
+    // Don't resize the columns more than once to fit their contents. This is necessary because the finishedFetch signal of the model
+    // is emitted for each loaded prefetch block and we want to avoid column resizes while scrolling down.
+    if(m_columnsResized)
+        return;
+    m_columnsResized = true;
+
+    // Set column widths according to their contents but make sure they don't exceed a certain size
+    ui->dataTable->resizeColumnsToContents();
+    for(int i = 0; i < m_model->columnCount(); i++)
+    {
+        if(ui->dataTable->columnWidth(i) > 300)
+            ui->dataTable->setColumnWidth(i, 300);
     }
 }

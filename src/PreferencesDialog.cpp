@@ -133,7 +133,7 @@ void PreferencesDialog::loadSettings()
     // Remote settings
     ui->checkUseRemotes->setChecked(Settings::getValue("remote", "active").toBool());
     {
-        /*auto ca_certs = static_cast<Application*>(qApp)->mainWindow()->getRemote().caCertificates();
+        auto ca_certs = static_cast<Application*>(qApp)->mainWindow()->getRemote().caCertificates();
         ui->tableCaCerts->setRowCount(ca_certs.size());
         for(int i=0;i<ca_certs.size();i++)
         {
@@ -158,7 +158,7 @@ void PreferencesDialog::loadSettings()
             QTableWidgetItem* cert_serialno = new QTableWidgetItem(QString(cert.serialNumber()));
             cert_serialno->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
             ui->tableCaCerts->setItem(i, 4, cert_serialno);
-        }*/
+        }
     }
     {
         QStringList client_certs = Settings::getValue("remote", "client_certificates").toStringList();

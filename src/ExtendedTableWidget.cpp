@@ -236,6 +236,10 @@ ExtendedTableWidget::ExtendedTableWidget(QWidget* parent) :
     m_tableHeader = new FilterTableHeader(this);
     setHorizontalHeader(m_tableHeader);
 
+    // Disconnect clicking in header to select column, since we will use it for sorting.
+    // Note that, in order to work, this cannot be converted to the standard C++11 format.
+    disconnect(m_tableHeader, SIGNAL(sectionPressed(int)),this, SLOT(selectColumn(int)));
+
     // Set up vertical header context menu
     verticalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -901,6 +905,14 @@ void ExtendedTableWidget::cellClicked(const QModelIndex& index)
             emit foreignKeyClicked(sqlb::ObjectIdentifier(m->currentTableName().schema(), fk.table()),
                                    fk.columns().size() ? fk.columns().at(0) : "",
                                    m->data(index, Qt::EditRole).toByteArray());
+        else {
+            // If this column does not have a foreign-key, try to interpret it as a filename/URL and open it in external application.
+
+            // TODO: Qt is doing a contiguous selection when Control+Click is pressed. It should be disabled, but at least moving the
+            // current index gives better result.
+            setCurrentIndex(index);
+            emit requestUrlOrFileOpen(model()->data(index, Qt::EditRole).toString());
+        }
     }
 }
 
