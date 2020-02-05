@@ -215,7 +215,7 @@ os2 {
     RC_FILE = os2app.rc
 }
 win32 {
-    TARGET = "DB Browser for SQLite"
+    TARGET = "vSongBook"
     RC_FILE = winapp.rc
     INCLUDEPATH += $$PWD
     CONFIG(debug,debug|release) {
@@ -238,7 +238,7 @@ win32 {
     DEPENDPATH += $$PWD/../../../dev/SQLite
 }
 macx {
-    TARGET = "DB Browser for SQLite"
+    TARGET = "vSongBook"
     RC_FILE = macapp.icns
     QT += macextras opengl
     INCLUDEPATH += /usr/local/include

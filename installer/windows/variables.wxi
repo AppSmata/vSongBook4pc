@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-    <?define Name="DB Browser for SQLite" ?>
+    <?define Name="vSongBook" ?>
     <?define Team="$(var.Name) Team" ?>
     <?define Version="3.11.99" ?>
 

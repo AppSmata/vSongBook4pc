@@ -13,12 +13,12 @@ BEGIN
         BEGIN
             VALUE "FileVersion",      APP_VERSION "." xstr(BUILD_VERSION)
             VALUE "ProductVersion",   APP_VERSION "." xstr(BUILD_VERSION)
-            VALUE "FileDescription",  "DB Browser for SQLite"
-            VALUE "ProductName",      "DB Browser for SQLite"
-            VALUE "InternalName",     "DB Browser for SQLite"
-            VALUE "OriginalFilename", "DB Browser for SQLite.exe"
-            VALUE "CompanyName",      "DB Browser for SQLite Team"
-            VALUE "LegalCopyright",   "Copyright © DB Browser for SQLite Team"
+            VALUE "FileDescription",  "vSongBook"
+            VALUE "ProductName",      "vSongBook"
+            VALUE "InternalName",     "vSongBook"
+            VALUE "OriginalFilename", "vSongBook.exe"
+            VALUE "CompanyName",      "Appsmata Solutions"
+            VALUE "LegalCopyright",   "Copyright © Appsmata Solutions Team"
         END
     END
     BLOCK "VarFileInfo"
@@ -27,4 +27,4 @@ BEGIN
     END
 END
 
-IDI_DB4S ICON "iconwin.ico"
+IDI_DB4S ICON "vsongbook.ico"

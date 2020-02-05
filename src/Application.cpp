@@ -97,7 +97,7 @@ Application::Application(int& argc, char** argv) :
             qWarning() << qPrintable(tr("  [file]\t\tOpen this SQLite database"));
             m_dontShowMainWindow = true;
         } else if(arguments().at(i) == "-v" || arguments().at(i) == "--version") {
-            qWarning() << qPrintable(tr("This is DB Browser for SQLite version %1.").arg(versionString()));
+            qWarning() << qPrintable(tr("This is vSongBook version %1.").arg(versionString()));
             m_dontShowMainWindow = true;
         } else if(arguments().at(i) == "-s" || arguments().at(i) == "--sql") {
             // Run SQL file: If file exists add it to list of scripts to execute

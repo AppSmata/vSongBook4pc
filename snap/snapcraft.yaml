@@ -1,9 +1,9 @@
           name:                   vsongbook  # the name of the snap
-          # version:              3.12.1  # the version of the snap
+          # version:              3.12.2  # the version of the snap
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
-          summary:                vSongBook  # 79 char long summary
+          summary:                vSongBook: Songs of Worship, Nyimbo za Injili, Tenzi za Rohoni and more.  # 79 char long summary
           description:            |
             vSongBook (Virtual Songbook) is a high quality, visual, open source tool to give users access to song lyrics of major worship and praise songbooks used in christian gatherings be it in church, weddings, funerals or anywhere where one feels like singing. Controls and wizards are available for users to:
             * Browse, edit, add, and delete songs
