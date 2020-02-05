@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DB Browser for SQLite</string>
+   <string>vSongBook</string>
   </property>
   <property name="windowIcon">
    <iconset resource="icons/icons.qrc">
@@ -91,7 +91,7 @@
           </property>
           <property name="whatsThis">
            <string>This is the structure of the opened database.
-You can drag SQL statements from an object row and drop them into other applications or into another instance of 'DB Browser for SQLite'.
+You can drag SQL statements from an object row and drop them into other applications or into another instance of 'vSongBook'.
 </string>
           </property>
           <property name="dragEnabled">

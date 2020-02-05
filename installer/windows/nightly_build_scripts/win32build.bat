@@ -108,7 +108,7 @@ devenv /Build Release vsongbook.sln /project "ALL_BUILD"
 
 :: Rename SQLCipher
 CD "Release"
-MOVE "DB Browser for SQLite.exe" "DB Browser for SQLCipher.exe"
+MOVE "vSongBook.exe" "DB Browser for SQLCipher.exe"
 
 :: Build MSI
 CD C:\\git_repos\\vsongbook\\installer\\windows
@@ -120,8 +120,8 @@ MOVE /Y *.msi "%DEST_PATH%\DB.Browser.for.SQLite-%RUN_DATE%-win32.msi"
 :: Create ZIP
 CD %DEST_PATH%
 msiexec /a "DB.Browser.for.SQLite-%RUN_DATE%-win32.msi" /q TARGETDIR=%CD%\zip
-MOVE %CD%\zip\System\* "%CD%\zip\DB Browser for SQLite"
-%ZIP_EXE% a "DB.Browser.for.SQLite-%RUN_DATE%-win32.zip" "%CD%\zip\DB Browser for SQLite"
+MOVE %CD%\zip\System\* "%CD%\zip\vSongBook"
+%ZIP_EXE% a "DB.Browser.for.SQLite-%RUN_DATE%-win32.zip" "%CD%\zip\vSongBook"
 RMDIR /S /Q %CD%\zip
 
 

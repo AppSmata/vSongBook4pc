@@ -8,5 +8,5 @@ do
 	files="$files icon$imgsize.png"
 done
 
-convert $files ../iconwin.ico
+convert $files ../vsongbook.ico
 rm $files

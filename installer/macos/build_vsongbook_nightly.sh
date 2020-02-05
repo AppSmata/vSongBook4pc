@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Builds and uploads DB Browser for SQLite nightlies,
+# Builds and uploads vSongBook nightlies,
 # after updating the Homebrew dependencies
 
 QTVER="5.11.3"

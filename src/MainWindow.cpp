@@ -2159,7 +2159,7 @@ void MainWindow::checkNewVersion(const QString& versionstring, const QString& ur
             msgBox.addButton(QMessageBox::Ok);
             msgBox.setTextFormat(Qt::RichText);
             msgBox.setWindowTitle(tr("New version available."));
-            msgBox.setText(tr("A new DB Browser for SQLite version is available (%1.%2.%3).<br/><br/>"
+            msgBox.setText(tr("A new vSongBook version is available (%1.%2.%3).<br/><br/>"
                               "Please download at <a href='%4'>%4</a>.").arg(major).arg(minor).arg(patch).
                                 arg(url));
             msgBox.exec();
@@ -2381,7 +2381,7 @@ bool MainWindow::loadProject(QString filename, bool readOnly)
                        OpenProjectFile,
                        this,
                        tr("Choose a project file to open"),
-                       tr("DB Browser for SQLite project file (*.sqbpro)"));
+                       tr("vSongBook project file (*.sqbpro)"));
     }
 
     if(!filename.isEmpty())
@@ -2512,7 +2512,7 @@ bool MainWindow::loadProject(QString filename, bool readOnly)
                                 msgBox.addButton(QMessageBox::Ok);
                                 msgBox.setTextFormat(Qt::RichText);
                                 msgBox.setWindowTitle(qApp->applicationName());
-                                msgBox.setText(tr("This project file is using an old file format because it was created using DB Browser for SQLite "
+                                msgBox.setText(tr("This project file is using an old file format because it was created using vSongBook "
                                                   "version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert "
                                                   "all your project files to the new file format because support for older formats might be dropped "
                                                   "at some point in the future. You can convert your files by simply opening and re-saving them."));
