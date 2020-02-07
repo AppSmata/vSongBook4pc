@@ -1,9 +1,14 @@
 Makefile
 vsongbook.pro.user
 .qmake.stash
+CMakeCache.txt
 CMakeLists.txt.user
 CMakeFiles
 *.cmake
+*.cpp_parameters
+*.sln
+*.vcxproj
+*.vcxproj.filters
 *.cxx_parameters
 
 # ignore any build folders
