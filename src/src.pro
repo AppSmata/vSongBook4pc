@@ -25,6 +25,8 @@ HEADERS += \
     MainWindow.h \
     EditIndexDialog.h \
     AboutDialog.h \
+    AsBase.h \
+    AsDelegate.h \
     AsItem.h \
     AsUtils.h \
     EditTableDialog.h \
@@ -91,6 +93,7 @@ SOURCES += \
     Settings.cpp \
     PreferencesDialog.cpp \
     AboutDialog.cpp \
+    AsBase.cpp \
     AsUtils.cpp \
     EditDialog.cpp \
     ExportDataDialog.cpp \
