@@ -277,6 +277,13 @@ set(SQLB_FORMS
 	src/ProxyDialog.ui
 	src/SelectItemsPopup.ui
 	src/TableBrowser.ui
+	src/vSongBooklist.ui
+	src/vSongEditor.ui
+	src/vSongHome.ui
+	src/vSongOnline.ui
+	src/vSongPreferences.ui
+	src/vSongPresent.ui
+	src/vSongTutorial.ui
 )
 
 set(SQLB_RESOURCES
