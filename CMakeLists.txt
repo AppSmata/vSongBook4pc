@@ -126,6 +126,8 @@ set(SQLB_HDR
 set(SQLB_MOC_HDR
 	src/sqlitedb.h
 	src/AboutDialog.h
+	src/AsItem.h
+	src/AsUtils.h
 	src/EditIndexDialog.h
 	src/EditDialog.h
 	src/EditTableDialog.h
@@ -174,6 +176,7 @@ set(SQLB_MOC_HDR
 
 set(SQLB_SRC
 	src/AboutDialog.cpp
+	src/AsUtils.cpp
 	src/EditIndexDialog.cpp
 	src/EditDialog.cpp
 	src/EditTableDialog.cpp
