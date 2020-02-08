@@ -1,5 +1,5 @@
           name:                   vsongbook  # the name of the snap
-          # version:              3.12.2  # the version of the snap
+          # version:              3.12.4  # the version of the snap
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
