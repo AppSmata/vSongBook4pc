@@ -2,7 +2,7 @@
 #include "AsUtils.h"
 #include "vSongEditor.h"
 #include "ui_vSongEditor.h"
-#include "vSongBook.h"
+#include "Application.h"
 #include "AsBase.h"
 
 #include <QTextCodec>

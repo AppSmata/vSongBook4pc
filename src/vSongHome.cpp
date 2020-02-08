@@ -1,7 +1,6 @@
-#include "vSongBook.h"
+#include "Application.h"
 #include "vSongHome.h"
 #include "ui_vSongHome.h"
-#include "vSongBook.h"
 
 #include "AsBase.h"
 #include "AsUtils.h"
