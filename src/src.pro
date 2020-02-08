@@ -25,10 +25,6 @@ HEADERS += \
     MainWindow.h \
     EditIndexDialog.h \
     AboutDialog.h \
-    AsBase.h \
-    AsDelegate.h \
-    AsItem.h \
-    AsUtils.h \
     EditTableDialog.h \
     AddRecordDialog.h \
     Settings.h \
@@ -82,14 +78,7 @@ HEADERS += \
     sql/parser/ParserDriver.h \
     sql/parser/sqlite3_lexer.h \
     sql/parser/sqlite3_location.h \
-    sql/parser/sqlite3_parser.hpp \
-    vSongBooklist.h \
-    vSongEditor.h \
-    vSongHome.h \
-    vSongOnline.h \
-    vSongPreferences.h \
-    vSongPresent.h \
-    vSongTutorial.h \
+    sql/parser/sqlite3_parser.hpp
 
 SOURCES += \
     sqlitedb.cpp \
@@ -100,8 +89,6 @@ SOURCES += \
     Settings.cpp \
     PreferencesDialog.cpp \
     AboutDialog.cpp \
-    AsBase.cpp \
-    AsUtils.cpp \
     EditDialog.cpp \
     ExportDataDialog.cpp \
     ImportCsvDialog.cpp \
@@ -147,15 +134,7 @@ SOURCES += \
     TableBrowser.cpp \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
-    sql/parser/sqlite3_parser.cpp \
-    vSongBooklist.cpp \
-    vSongEditor.cpp \
-    vSongHome.cpp \
-    AsDelegate.cpp \
-    vSongOnline.cpp \
-    vSongPreferences.cpp \
-    vSongPresent.cpp \
-    vSongTutorial.cpp
+    sql/parser/sqlite3_parser.cpp
 
 RESOURCES += icons/icons.qrc \
              translations/flags/flags.qrc \
@@ -186,14 +165,7 @@ FORMS += \
     CondFormatManager.ui \
     ProxyDialog.ui \
     SelectItemsPopup.ui \
-    TableBrowser.ui \
-    vSongBooklist.ui \
-    vSongEditor.ui \
-    vSongHome.ui \
-    vSongOnline.ui \
-    vSongPreferences.ui \
-    vSongPresent.ui \
-    vSongTutorial.ui
+    TableBrowser.ui
 
 TRANSLATIONS += \
     translations/sqlb_ar_SA.ts \
