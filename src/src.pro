@@ -26,6 +26,7 @@ HEADERS += \
     EditIndexDialog.h \
     AboutDialog.h \
     AsBase.h \
+    AsCheckable.h \
     AsDelegate.h \
     AsItem.h \
     AsUtils.h \
@@ -94,6 +95,8 @@ SOURCES += \
     PreferencesDialog.cpp \
     AboutDialog.cpp \
     AsBase.cpp \
+    AsCheckable.cpp \
+    AsDelegate.cpp \
     AsUtils.cpp \
     EditDialog.cpp \
     ExportDataDialog.cpp \
