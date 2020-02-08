@@ -15,7 +15,7 @@
           confinement:            strict  # use "strict" to enforce system access only via declared interfaces
 
           grade:                  devel
-          icon:                   images/vsongbook.svg
+          icon:                   images/vsongbook.png
           type:                   app
 
           apps:
