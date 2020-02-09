@@ -127,7 +127,6 @@ set(SQLB_MOC_HDR
 	src/sqlitedb.h
 	src/AboutDialog.h
 	src/AsBase.h
-	src/AsCheckable.h
 	src/AsDelegate.h
 	src/AsItem.h
 	src/AsUtils.h
@@ -180,7 +179,6 @@ set(SQLB_MOC_HDR
 set(SQLB_SRC
 	src/AboutDialog.cpp
 	src/AsBase.cpp
-	src/AsCheckable.cpp
 	src/AsDelegate.cpp
 	src/AsUtils.cpp
 	src/EditIndexDialog.cpp
