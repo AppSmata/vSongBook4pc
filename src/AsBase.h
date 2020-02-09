@@ -12,7 +12,7 @@
 class AsBase
 {
 public:
-    static bool isTrue(int value);
+    /*static bool isTrue(int value);
     static QString ReplaceList(QString text);
     static QString ReplaceView(QString text);
     static QString booltoInt(bool value);
@@ -29,7 +29,7 @@ public:
     static void NewBook(QString Title, QString Category, QString Tags, QString Content, QString Songs);
     static void NewSong(QString Bookid, QString Category, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author);
 
-    static void ResetSettings();
+    static void ResetSettings();*/
 };
 
 #endif

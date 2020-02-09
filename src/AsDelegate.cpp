@@ -1,7 +1,7 @@
 #include "AsDelegate.h"
 #include "AsItem.h"
 
-#include <QPainter>
+/*#include <QPainter>
 #include <QStyledItemDelegate>
 #include <QStyle>
 #include <QEvent>
@@ -97,3 +97,4 @@ QSize AsDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex
     Q_UNUSED(index)
         return QSize(option.rect.width(), 50);
 }
+*/

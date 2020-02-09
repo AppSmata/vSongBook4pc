@@ -1,6 +1,6 @@
 #include "AsBase.h"
 
-#include "sqlite.h"
+/*#include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
@@ -176,4 +176,4 @@ void AsBase::ResetSettings()
     sqlite3_close(db);
     
     AsBase::execSQL(AsUtils::SETTINGS_NAVI_SQL());
-}
+}*/
