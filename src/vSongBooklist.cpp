@@ -134,9 +134,8 @@ void vSongBooklist::on_TxtSearch_textChanged(const QString & searchstr)
 void vSongBooklist::SaveChanges()
 {
 	sqlite3* db;
-	sqlite3_stmt* sqlqueryStmt;
 	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+	int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	uint timenow = QDateTime::currentSecsSinceEpoch();
 	QString timeStr = QString::number(timenow);
@@ -157,11 +156,10 @@ void vSongBooklist::SaveChanges()
 void vSongBooklist::DeleteBook()
 {
 	sqlite3* db;
-	sqlite3_stmt* sqlqueryStmt;
 	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+	int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
-	//rc = sqlite3_exec(db, AsUtils::BOOK_DELETE_SQL(Songbookid), 0, 0, &zErrMsg);
+	rc = sqlite3_exec(db, AsUtils::BOOK_DELETE_SQL(Songbookid), 0, 0, &zErrMsg);
 
 	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	sqlite3_close(db);

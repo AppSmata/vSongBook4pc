@@ -9,6 +9,7 @@
 
 #include "Application.h"
 #include "MainWindow.h"
+#include "vSongHome.h"
 #include "Settings.h"
 #include "version.h"
 
@@ -18,6 +19,7 @@ Application::Application(int& argc, char** argv) :
     // Set organisation and application names
     setOrganizationName("Appsmata Solutions");
     setApplicationName("vSongBook");
+	setApplicationVersion("2.5.5");
 
     // Set character encoding to UTF8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
@@ -151,8 +153,8 @@ Application::Application(int& argc, char** argv) :
     }
 
     // Show main window
-    m_mainWindow = new MainWindow();
-    m_mainWindow->show();
+    m_homepage = new vSongHome();
+    m_homepage->showMaximized();
     connect(this, &Application::lastWindowClosed, this, &Application::quit);
 
     // Open database if one was specified

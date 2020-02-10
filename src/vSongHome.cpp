@@ -280,6 +280,7 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 	{
 		ResultCount = " ";
         bool isNumeric;
+		int searchint = SearchStr.toInt(&isNumeric, 10);
 		if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
 		else ResultCount.append("songs found with: \"" + SearchStr + "\"");
 	}
@@ -325,7 +326,7 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 	}
 
 	ui->LblResult->setText(QString::number(songcount) + ResultCount);
-	AsDelegate* itemDelegate = new AsDelegate(this, home_sets[9], home_fontgen);
+	AsDelegate* itemDelegate = new AsDelegate(this);
 	ui->LstResults->setItemDelegate(itemDelegate);
 	ui->LstResults->setModel(songModel);
 	ui->LstResults->setSpacing(1);
