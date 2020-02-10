@@ -1,21 +1,22 @@
-#ifndef ITEMDELEGATE_H
-#define ITEMDELEGATE_H
+#ifndef ASDELEGATE_H
+#define ASDELEGATE_H
 
-/*#include <QStyledItemDelegate>
+#include <QStyledItemDelegate>
 #include <QModelIndex>
 #include <QStandardItemModel>
 
 class AsDelegate : public QStyledItemDelegate
 {
-    Q_OBJECT
-signals:
+	Q_OBJECT
+		signals :
 
 public:
-    explicit AsDelegate(QObject* parent = nullptr, QString fontFamily = "Trebuchet MS", int fontSize = 25);
-    ~AsDelegate();
+	explicit AsDelegate(QObject* parent = nullptr);
 
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
-};*/
+	void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+	QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 
-#endif ITEMDELEGATE_H
+	~AsDelegate();
+};
+
+#endif ASDELEGATE_H

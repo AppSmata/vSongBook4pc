@@ -44,7 +44,7 @@ if(WIN32 AND MSVC)
 	if(CMAKE_CL_64)
 		# Paths for 64-bit windows builds
 		set(OPENSSL_PATH "D:/OpenSSL-Win64" CACHE PATH "OpenSSL Path")
-		set(QT5_PATH "D:/Qt/5.12.5/msvc2017_64" CACHE PATH "Qt5 Path")
+		set(QT5_PATH "D:/Qt/5.9.9/msvc2015_64" CACHE PATH "Qt5 Path")
 
                 # Choose between SQLCipher or SQLite, depending whether
                 # -Dsqlcipher=1 is passed on the command line
@@ -56,7 +56,7 @@ if(WIN32 AND MSVC)
 	else()
 		# Paths for 32-bit windows builds
 		set(OPENSSL_PATH "D:/OpenSSL-Win32" CACHE PATH "OpenSSL Path")
-		set(QT5_PATH "D:/Qt/5.12.5/msvc2015" CACHE PATH "Qt5 Path")
+		set(QT5_PATH "D:/Qt/5.9.9/msvc2015" CACHE PATH "Qt5 Path")
 
                 # Choose between SQLCipher or SQLite, depending whether
                 # -Dsqlcipher=1 is passed on the command line
@@ -285,11 +285,13 @@ set(SQLB_FORMS
 )
 
 set(SQLB_RESOURCES
+	src/images/images.qrc
 	src/icons/icons.qrc
 	src/translations/flags/flags.qrc
 	src/translations/translations.qrc
 	src/certs/CaCerts.qrc
 	src/qdarkstyle/style.qrc
+	src/qstyle/style.qrc
 )
 
 set(SQLB_MISC
@@ -492,7 +494,7 @@ else()
 endif()
 
 if(WIN32 AND MSVC)
-	set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "vsongbook")
+	set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "vSongBook")
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
 	set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_DEFINITIONS_DEBUG "_CONSOLE")
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")

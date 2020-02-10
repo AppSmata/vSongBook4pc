@@ -159,9 +159,11 @@ SOURCES += \
     vSongTutorial.cpp
 
 RESOURCES += icons/icons.qrc \
+             images/images.qrc \
              translations/flags/flags.qrc \
              translations/translations.qrc \
              certs/CaCerts.qrc \
+             qstyle/style.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \

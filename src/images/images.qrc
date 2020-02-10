@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Down_Black.png</file>
+        <file>Down_White.png</file>
+        <file>Up_Black.png</file>
+        <file>Up_White.png</file>
+        <file>vSongBook.png</file>
+    </qresource>
+</RCC>
