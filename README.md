@@ -74,6 +74,7 @@ Follow us on Instagram: https://twitter.com/AppSmata
 
 ## Releases
 
+* [Version 2.5.5 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.5) - 2020-02-11
 * [Version 2.5.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.0) - 2019-11-29
 * [Version 2.4.5 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v2.4.5) - 2019-09-10
 
@@ -130,9 +131,6 @@ Modification or redistribution is permitted under the conditions of these licens
   [gitter-img]: https://badges.gitter.im/vSongBook/vSongBook.svg
   [gitter]: https://gitter.im/vSongBook/vSongBook
 
-  [slack-img]: https://img.shields.io/badge/chat-on%20slack-orange.svg
-  [slack]: https://join.slack.com/t/db4s/shared_invite/enQtMzc3MzY5OTU4NDgzLWRlYjk0ZmE5ZDEzYWVmNDQxYTYxNmJjNWVkMjI3ZmVjZTY2NDBjODY3YzNhNTNmZDVlNWI2ZGFjNTk5MjJkYmU
-
   [download-img]: https://img.shields.io/github/downloads/vSongBook/vSongBook/total.svg
   [download]: https://github.com/vSongBook/vSongBook4PC/releases
 
@@ -143,7 +141,7 @@ Modification or redistribution is permitted under the conditions of these licens
   [coverity]: https://scan.coverity.com/projects/vSongBook-vSongBook
 
   [patreon-img]: https://img.shields.io/badge/donate-Patreon-coral.svg
-  [patreon]: https://www.patreon.com/bePatron?u=11578749
+  [patreon]: https://www.patreon.com/AppSmata
 
   [wiki-img]: https://img.shields.io/badge/docs-Wiki-blue.svg
   [wiki]: https://github.com/vSongBook/vSongBook4PC/wiki
