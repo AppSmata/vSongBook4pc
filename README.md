@@ -45,7 +45,7 @@ Download nightly builds for Windows and OSX here:
 
 Download Windows releases here:
 
-* https://appsmata.com/vsongbook/#windows
+* https://Appsmata.com/vSongBook/#windows
 
 **Note** - If for some reason the standard Windows release does not work
 (e.g. gives an error), try a nightly build.  Nightly builds often fix bugs
@@ -70,7 +70,7 @@ Follow us on Instagram: https://twitter.com/AppSmata
 
 ## Website
 
-* https://appsmata.com/vsongbook
+* https://Appsmata.com/vSongBook
 
 ## Releases
 
