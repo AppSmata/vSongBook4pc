@@ -78,4 +78,4 @@ private:
     QStandardItemModel* naviModel;
 };
 
-#endif VSONGPREFERENCES_H
+#endif //VSONGPREFERENCES_H

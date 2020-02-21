@@ -4,7 +4,9 @@
 #include <QDialog>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include "AsDelegate.h"
+#include <QModelIndex>
+
+class QStandardItemModel;
 
 namespace Ui {
 class vSongOnline;
@@ -24,7 +26,6 @@ private slots:
     void createListView();
     void LoadBooks();
     void LoadSongs();
-    void progressManager(qint64 ist, qint64 max);
     void showProgress(bool show);
 
     void on_LstBooks_clicked(const QModelIndex &index);
@@ -38,4 +39,4 @@ private:
     QStandardItemModel* bookModel;
 };
 
-#endif VSONGONLINE_H
+#endif //VSONGONLINE_H

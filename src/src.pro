@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core gui network widgets printsupport concurrent xml
 
-TARGET = vsongbook
+TARGET = vSongBook
 
 CONFIG += debug_and_release
 CONFIG += qt
@@ -152,7 +152,6 @@ SOURCES += \
     vSongBooklist.cpp \
     vSongEditor.cpp \
     vSongHome.cpp \
-    AsDelegate.cpp \
     vSongOnline.cpp \
     vSongPreferences.cpp \
     vSongPresent.cpp \
@@ -163,7 +162,6 @@ RESOURCES += icons/icons.qrc \
              translations/flags/flags.qrc \
              translations/translations.qrc \
              certs/CaCerts.qrc \
-             qstyle/style.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \

@@ -1,8 +1,9 @@
+#include "vSongPresent.h"
+#include "ui_vSongPresent.h"
+
 #include "AsBase.h"
 #include "AsUtils.h"
-#include "vSongPresent.h"
 #include "Application.h"
-#include "ui_vSongPresent.h"
 
 #include "sqlite.h"
 #include "RunSql.h"
@@ -383,12 +384,14 @@ void vSongPresent::on_actionFont_triggered()
 			PresentFont.setFamily(view_fonts[view_fonttype]);
 			AsBase::SetOption("present_font_type", view_fonts[view_fonttype]);
 			ReloadControls();
+                        break;
 
 		default:
 			view_fonttype = view_fonttype + 1;
 			PresentFont.setFamily(view_fonts[view_fonttype]);
 			AsBase::SetOption("present_font_type", view_fonts[view_fonttype]);
 			ReloadControls();
+                        break;
 	}
 }
 
@@ -407,10 +410,12 @@ void vSongPresent::on_actionTheme_triggered()
 		case 15:
 			view_theme = 1;
 			AsBase::SetOption("app_theme", QString::number(view_theme));
+                        break;
 
 		default:
 			view_theme = view_theme + 1;
 			AsBase::SetOption("app_theme", QString::number(view_theme));
+                        break;
 	}
 	SetTheme();
 }

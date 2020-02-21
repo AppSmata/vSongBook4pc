@@ -1,18 +1,19 @@
-#include "AsBase.h"
-#include "AsUtils.h"
 #include "vSongPreferences.h"
-#include "Application.h"
 #include "ui_vSongPreferences.h"
+
+#include "Application.h"
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
-#include <QStandardItemModel>
-#include <QObject>
 
+#include "AsBase.h"
+#include "AsUtils.h"
 #include "AsItem.h"
 #include "AsDelegate.h"
 
-char* pref_db = "Data/vSongBook.db";
+#include <QStandardItemModel>
+#include <QObject>
+
 int fontgeneral, fontpreview, fontpresent;
 std::vector<QString> pref_sets, navigations, languages, pref_fonts;
 QFont PrefFontGeneral, PrefFontPreview, PrefFontPresent;
@@ -32,9 +33,9 @@ bool vSongPreferences::GetSettings()
 	bool retval = false;
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(pref_db, &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+        int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	char* sqlQuery = "SELECT content FROM settings ORDER BY settingid";
+        char const *sqlQuery = "SELECT content FROM settings ORDER BY settingid";
 
 	if (rc == SQLITE_OK)
 	{
@@ -428,7 +429,7 @@ void vSongPreferences::LoadNavigation(QString searchstr)
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(pref_db, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+        int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	QByteArray bar = AsUtils::SETTINGS_NAVI_SELECT_SQL(searchstr).toLocal8Bit();
 	char* sqlQuery = bar.data();

@@ -39,4 +39,4 @@ private:
     QStandardItemModel* bookModel;
 };
 
-#endif // VSONGBOOKLIST_H
+#endif //VSONGBOOKLIST_H

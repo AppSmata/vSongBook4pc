@@ -7,9 +7,7 @@
 #include <QEvent>
 #include <QDebug>
 
-AsDelegate::AsDelegate(QObject* parent) :
-	QStyledItemDelegate(parent)
-{ }
+AsDelegate::AsDelegate(QObject* parent) : QStyledItemDelegate(parent) { }
 
 AsDelegate::~AsDelegate()
 {
