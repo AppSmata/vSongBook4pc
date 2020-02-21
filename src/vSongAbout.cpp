@@ -13,7 +13,8 @@ vSongAbout::vSongAbout(QWidget *parent) :
 
     QString sqlite_version, sqlcipher_version;
     DBBrowserDB::getSqliteVersion(sqlite_version, sqlcipher_version);
-    if(sqlcipher_version.isNull())
+    
+	/*if(sqlcipher_version.isNull())
         sqlite_version = tr("SQLite Version ") + sqlite_version;
     else
         sqlite_version = tr("SQLCipher Version ") + sqlcipher_version + tr(" (based on SQLite %1)").arg(sqlite_version);
@@ -22,7 +23,8 @@ vSongAbout::vSongAbout(QWidget *parent) :
                                tr("Built for ") + QSysInfo::buildAbi() + ", running on " + QSysInfo::currentCpuArchitecture() + "\n\n" +
                                tr("Qt Version ") + QT_VERSION_STR + "\n\n" +
                                sqlite_version
-                               );
+                               );*/
+
 }
 
 vSongAbout::~vSongAbout()

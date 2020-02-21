@@ -125,7 +125,6 @@ set(SQLB_HDR
 
 set(SQLB_MOC_HDR
 	src/sqlitedb.h
-	src/AboutDialog.h
 	src/AsBase.h
 	src/AsDelegate.h
 	src/AsItem.h
@@ -174,6 +173,7 @@ set(SQLB_MOC_HDR
 	src/ProxyDialog.h
 	src/SelectItemsPopup.h
 	src/TableBrowser.h
+	src/vSongAbout.h
 	src/vSongBooklist.h
 	src/vSongEditor.h
 	src/vSongHome.h
@@ -184,7 +184,6 @@ set(SQLB_MOC_HDR
 )
 
 set(SQLB_SRC
-	src/AboutDialog.cpp
 	src/AsBase.cpp
 	src/AsDelegate.cpp
 	src/AsUtils.cpp
@@ -242,6 +241,7 @@ set(SQLB_SRC
 	src/sql/parser/ParserDriver.cpp
 	src/sql/parser/sqlite3_lexer.cpp
 	src/sql/parser/sqlite3_parser.cpp
+	src/vSongAbout.cpp
 	src/vSongBooklist.cpp
 	src/vSongEditor.cpp
 	src/vSongHome.cpp
@@ -252,7 +252,6 @@ set(SQLB_SRC
 )
 
 set(SQLB_FORMS
-	src/AboutDialog.ui
 	src/EditIndexDialog.ui
 	src/EditDialog.ui
 	src/EditTableDialog.ui
@@ -275,6 +274,7 @@ set(SQLB_FORMS
 	src/ProxyDialog.ui
 	src/SelectItemsPopup.ui
 	src/TableBrowser.ui
+	src/vSongAbout.ui
 	src/vSongBooklist.ui
 	src/vSongEditor.ui
 	src/vSongHome.ui
