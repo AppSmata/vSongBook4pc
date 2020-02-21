@@ -17,7 +17,7 @@
 #include "AsItem.h"
 #include "AsDelegate.h"
 
-#include "AboutDialog.h"
+#include "vSongAbout.h"
 #include "vSongBooklist.h"
 #include "vSongEditor.h"
 #include "vSongPreferences.h"
@@ -468,7 +468,7 @@ void vSongHome::on_actionReset_Settings_triggered()
 
 void vSongHome::on_actionAbout_triggered()
 {
-	AboutDialog about(this);
+	vSongAbout about(this);
 	about.exec();
 }
 

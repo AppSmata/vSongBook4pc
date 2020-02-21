@@ -2,19 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ar">
 <context>
-    <name>AboutDialog</name>
+    <name>vSongAbout</name>
     <message>
-        <location filename="../AboutDialog.ui" line="14"/>
+        <location filename="../vSongAbout.ui" line="14"/>
         <source>About vSongBook</source>
         <translation>عن «متصفّح قواعد بيانات SQLite»</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="47"/>
+        <location filename="../vSongAbout.ui" line="47"/>
         <source>Version</source>
         <translation>الإصدارة</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="102"/>
+        <location filename="../vSongAbout.ui" line="102"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;http://appsmata.com/vsongbook&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;«متصفّح قواعد بيانات SQLite» أداة رسوميّة مفتوحة المصدر ومجانية، تُستخدم لإنشاء ملفّات قواعد بيانات SQLite وتصميمها وتحريرها.&lt;/p&gt;&lt;p&gt;الأداة مرخّصة برخصتين، الإصدارة الثانية من رخصة موزيلا العمومية، والإصدارة الثالثة وما بعدها من رخصة غنو العمومية. يمكنك تعديل الأداة أو إعادة توزيعها بشروط تلك الرخص.&lt;/p&gt;&lt;p&gt;طالع &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; و&lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; للتفاصيل.&lt;/p&gt;&lt;p&gt;من فضلك زُر موقع الوِب هذا لمعلومات أكثر عن البرمجية: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;http://appsmata.com/vsongbook&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم هذه البرمجية عُدّة أدوات كيوت المرخّصة تحت GPL/LGPL وذلك من &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; لشروط الترخيص والمعلومات.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم البرمجية أيضًا طقم أيقونات الحرير/Silk للمؤلّف Mark James المرخّصة برخصة المشاع الإبداعي - النسبة ٢٫٥ و٣٫٠.&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; للتفاصيل.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -23,32 +23,32 @@
         <translation type="vanished">&lt;html dir=&quot;rtl&quot;&gt;&lt;p&gt;«متصفّح قواعد بيانات SQLite» أداة رسوميّة مفتوحة المصدر ومجانية، تُستخدم لإنشاء ملفّات قواعد بيانات SQLite وتصميمها وتحريرها.&lt;/p&gt;&lt;p&gt;الأداة مرخّصة برخصتين، الإصدارة الثانية من رخصة موزيلا العمومية، والإصدارة الثالثة وما بعدها من رخصة غنو العمومية. يمكنك تعديل الأداة أو إعادة توزيعها بشروط تلك الرخص.&lt;/p&gt;&lt;p&gt;طالع &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; و&lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; للتفاصيل.&lt;/p&gt;&lt;p&gt;من فضلك زُر موقع الوِب هذا لمعلومات أكثر عن البرمجية: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://appsmata.com/vsongbook&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم هذه البرمجية عُدّة أدوات كيوت المرخّصة تحت GPL/LGPL وذلك من &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; لشروط الترخيص والمعلومات.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;تستخدم البرمجية أيضًا طقم أيقونات الحرير/Silk للمؤلّف Mark James المرخّصة برخصة المشاع الإبداعي - النسبة ٢٫٥ و٣٫٠.&lt;br/&gt;طالع &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; للتفاصيل.&lt;/span&gt;&lt;/p&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source> (based on SQLite %1)</source>
         <translation> (مبنيّ على SQLite %1)</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="21"/>
+        <location filename="../vSongAbout.cpp" line="21"/>
         <source>Version </source>
         <translation>الإصدارة </translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="22"/>
+        <location filename="../vSongAbout.cpp" line="22"/>
         <source>Built for </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="23"/>
+        <location filename="../vSongAbout.cpp" line="23"/>
         <source>Qt Version </source>
         <translation>إصدارة كيوت: </translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source>SQLCipher Version </source>
         <translation>إصدارة SQLCipher: ‏</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="17"/>
+        <location filename="../vSongAbout.cpp" line="17"/>
         <source>SQLite Version </source>
         <translation>إصدارة SQLite: ‏</translation>
     </message>

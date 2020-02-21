@@ -2,19 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="cs">
 <context>
-    <name>AboutDialog</name>
+    <name>vSongAbout</name>
     <message>
-        <location filename="../AboutDialog.ui" line="14"/>
+        <location filename="../vSongAbout.ui" line="14"/>
         <source>About vSongBook</source>
         <translation>O DB Browser pro SQLite</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="47"/>
+        <location filename="../vSongAbout.ui" line="47"/>
         <source>Version</source>
         <translation>Verze</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="102"/>
+        <location filename="../vSongAbout.ui" line="102"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;http://appsmata.com/vsongbook&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -23,32 +23,32 @@
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB Browser pro SQLite je open source, freeware a vizualizační nástroj užívaný k tvorbě, návrhu a úpravě SQLite souborů databáze.&lt;/p&gt;&lt;p&gt;Je multilicencován pod Mozilla Public License Version 2, jakož i GNU General Public License Version 3 nebo pozdější. Můžete jej upravovat nebo redistribuovat podle podmínek těchto licencí.&lt;/p&gt;&lt;p&gt;Viz &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; a &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; pro více informací.&lt;/p&gt;&lt;p&gt;Pro získání více informací o tomto programu prosím navštivte naše webové stránky na: &lt;a href=&quot;https://appsmata.com/vsongbook&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://appsmata.com/vsongbook&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;Tento software užívá GPL/LGPL Qt Toolkit od &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;Viz &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; pro licenční podmínky a informace.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;Také využívá Silk icon set od Marka Jamese licencovaný pod licencí Creative Commons Attribution 2.5 a 3.0.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; pro více informací.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source> (based on SQLite %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="21"/>
+        <location filename="../vSongAbout.cpp" line="21"/>
         <source>Version </source>
         <translation>Verze </translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="22"/>
+        <location filename="../vSongAbout.cpp" line="22"/>
         <source>Built for </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="23"/>
+        <location filename="../vSongAbout.cpp" line="23"/>
         <source>Qt Version </source>
         <translation>verze Qt </translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source>SQLCipher Version </source>
         <translation>verze SQLCipher </translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="17"/>
+        <location filename="../vSongAbout.cpp" line="17"/>
         <source>SQLite Version </source>
         <translation>verze SQLite </translation>
     </message>

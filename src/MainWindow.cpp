@@ -3,7 +3,7 @@
 
 #include "Application.h"
 #include "EditIndexDialog.h"
-#include "AboutDialog.h"
+#include "vSongAbout.h"
 #include "EditTableDialog.h"
 #include "ImportCsvDialog.h"
 #include "ExportDataDialog.h"
@@ -912,7 +912,7 @@ void MainWindow::helpWhatsThis()
 
 void MainWindow::helpAbout()
 {
-    AboutDialog dialog(this);
+    vSongAbout dialog(this);
     dialog.exec();
 }
 

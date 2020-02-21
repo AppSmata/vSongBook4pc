@@ -2,19 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="uk_UA">
 <context>
-    <name>AboutDialog</name>
+    <name>vSongAbout</name>
     <message>
-        <location filename="../AboutDialog.ui" line="14"/>
+        <location filename="../vSongAbout.ui" line="14"/>
         <source>About vSongBook</source>
         <translation>Про Оглядач БД для SQLite</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="47"/>
+        <location filename="../vSongAbout.ui" line="47"/>
         <source>Version</source>
         <translation>Версія</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="102"/>
+        <location filename="../vSongAbout.ui" line="102"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;http://appsmata.com/vsongbook&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -36,32 +36,32 @@
         <translation type="vanished">Версія SQLite</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source> (based on SQLite %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="21"/>
+        <location filename="../vSongAbout.cpp" line="21"/>
         <source>Version </source>
         <translation>Версія</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="22"/>
+        <location filename="../vSongAbout.cpp" line="22"/>
         <source>Built for </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="23"/>
+        <location filename="../vSongAbout.cpp" line="23"/>
         <source>Qt Version </source>
         <translation>Версія Qt</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source>SQLCipher Version </source>
         <translation>Версія SQLCipher</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="17"/>
+        <location filename="../vSongAbout.cpp" line="17"/>
         <source>SQLite Version </source>
         <translation>Версія SQLite</translation>
     </message>

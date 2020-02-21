@@ -2,20 +2,20 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ko_KR">
 <context>
-    <name>AboutDialog</name>
+    <name>vSongAbout</name>
     <message>
-        <location filename="../AboutDialog.ui" line="14"/>
+        <location filename="../vSongAbout.ui" line="14"/>
         <source>About vSongBook</source>
         <translatorcomment>~에 대하여.. 보다는 ~~ 정보 라는 표현을 요즘에 많이 사용함.</translatorcomment>
         <translation>vSongBook 정보</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="47"/>
+        <location filename="../vSongAbout.ui" line="47"/>
         <source>Version</source>
         <translation>버전</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="102"/>
+        <location filename="../vSongAbout.ui" line="102"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook is an open source, freeware visual tool used to create, design and edit SQLite database files.&lt;/p&gt;&lt;p&gt;It is bi-licensed under the Mozilla Public License Version 2, as well as the GNU General Public License Version 3 or later. You can modify or redistribute it under the conditions of these licenses.&lt;/p&gt;&lt;p&gt;See &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt; and &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;For more information on this program please visit our website at: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;http://appsmata.com/vsongbook&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;This software uses the GPL/LGPL Qt Toolkit from &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for licensing terms and information.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;It also uses the Silk icon set by Mark James licensed under a Creative Commons Attribution 2.5 and 3.0 license.&lt;br/&gt;See &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; for details.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook(줄여서 DB4S)는 오픈소스, 프리웨어로 SQLite 데이터베이스 파일들을 생성, 설계하고 수정을 하기위한 비주얼 툴입니다.&lt;/p&gt;&lt;p&gt;이 프로그램은 이중 라이센스로 Mozilla Public License Version 2과 GNU General Public License Version 3 또는 그 이후 버전을 따릅니다. 따라서 이 프로그램은 이 라이센스를 충족하는 범위 내에서 수정하고 재배포 할 수 있습니다.&lt;/p&gt;&lt;p&gt;자세한 사항은 &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;과 &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/a&gt;를 참고하기 바랍니다. &lt;/p&gt;&lt;p&gt;이 프로그램에 대한 좀 더 자세한 정보는 우리 웹사이트에서 확인할 수 있습니다: &lt;a href=&quot;http://appsmata.com/vsongbook&quot;&gt;http://appsmata.com/vsongbook&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;이 소프트웨어는 GPL/LGPL Qt Toolkit을 사용합니다.&lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;라이센스 사항과 정보는 &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;를 참고하기 바랍니다.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;또한 이 프로그램은 Mark James의 Silk icon set을 Creative Commons Attribution 2.5와 3.0 라이센스 아래에서 사용하고 있습니다.&lt;br/&gt; 자세한 정보는 &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;를 참고하기 바랍니다.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -24,32 +24,32 @@
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vSongBook는 오픈소스, 프리웨어 시각화 툴로 SQLite 데이터베이스 파일을 생성하고, 설계하고 수정할 수 있습니다.&lt;/p&gt;&lt;p&gt;이 프로그램은 두 가지 라이센스를 따르는데 Mozilla Public License Version 2와 GNU General Public License Version 3 또는 그 이후 버전의 라이센스를 따릅니다. 여러분은 이 라이센스 하에서 수정하거나 재배포 할 수 있습니다.&lt;/p&gt;&lt;p&gt;자세한 내용은 &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/span&gt;&lt;/a&gt; 과 &lt;a href=&quot;https://www.mozilla.org/MPL/2.0/index.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.mozilla.org/MPL/2.0/index.txt&lt;/span&gt;&lt;/a&gt; 를 참고하시기 바랍니다.&lt;/p&gt;&lt;p&gt;이 프로그램에 대한 추가 정보를 알고 싶으시면 우리 웹사이트에 방문하세요: &lt;a href=&quot;https://appsmata.com/vsongbook&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://appsmata.com/vsongbook&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;이 소프트웨어는 &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt;의 GPL/LGPL Qt Toolkit을 사용합니다.&lt;/span&gt;&lt;span style=&quot; font-size:small;&quot;&gt;&lt;br/&gt;라이센스 조건과 정보는 &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/doc/qt-5/licensing.html&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://qt-project.org/doc/qt-5/licensing.html&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; 에서 보실 수 있습니다.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:small;&quot;&gt;또한 이 프로그램은 Mark James가 제작한 실크 아이콘 세트를 Creative Commons Attribution 2.5와 3.0 버전 라이센스 하에서 사용하고 있습니다.&lt;br/&gt;자세한 것은 &lt;/span&gt;&lt;a href=&quot;http://www.famfamfam.com/lab/icons/silk/&quot;&gt;&lt;span style=&quot; font-size:small; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.famfamfam.com/lab/icons/silk/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:small;&quot;&gt; 를 참고하세요.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source> (based on SQLite %1)</source>
         <translation>(SQLite %1 버전에 기반)</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="21"/>
+        <location filename="../vSongAbout.cpp" line="21"/>
         <source>Version </source>
         <translation>버전</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="22"/>
+        <location filename="../vSongAbout.cpp" line="22"/>
         <source>Built for </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="23"/>
+        <location filename="../vSongAbout.cpp" line="23"/>
         <source>Qt Version </source>
         <translation>Qt 버전</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="19"/>
+        <location filename="../vSongAbout.cpp" line="19"/>
         <source>SQLCipher Version </source>
         <translation>SQLCipher 버전</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="17"/>
+        <location filename="../vSongAbout.cpp" line="17"/>
         <source>SQLite Version </source>
         <translation>SQLite 버전</translation>
     </message>
