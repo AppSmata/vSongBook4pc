@@ -1,11 +1,11 @@
-#include "AboutDialog.h"
-#include "ui_AboutDialog.h"
+#include "vSongAbout.h"
+#include "ui_vSongAbout.h"
 #include "sqlitedb.h"
 #include "Application.h"
 
-AboutDialog::AboutDialog(QWidget *parent) :
+vSongAbout::vSongAbout(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AboutDialog)
+    ui(new Ui::vSongAbout)
 {
     ui->setupUi(this);
     this->setFixedSize(this->width(), this->height());
@@ -25,7 +25,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
                                );
 }
 
-AboutDialog::~AboutDialog()
+vSongAbout::~vSongAbout()
 {
     delete ui;
 }

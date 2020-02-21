@@ -133,10 +133,9 @@ void vSongEditor::ReloadSettings()
 
 void vSongEditor::SaveChanges()
 {
-	sqlite3* db;
-	sqlite3_stmt* sqlqueryStmt;
+        sqlite3* db;
 	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+        int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	QString Number = ui->TxtNumber->text();
 	QString Title = ui->TxtTitle->text();
@@ -211,10 +210,9 @@ void vSongEditor::on_actionDelete_triggered()
 
 void vSongEditor::DeleteSong()
 {
-	sqlite3* db;
-	sqlite3_stmt* sqlqueryStmt;
+        sqlite3* db;
 	char* zErrMsg = NULL;
-	int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+        int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	rc = sqlite3_exec(db, AsUtils::SONG_DELETE_SQL(song_id), 0, 0, &zErrMsg);
 

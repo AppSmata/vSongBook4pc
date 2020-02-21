@@ -1,26 +1,28 @@
 #include "vSongOnline.h"
 #include "ui_vSongOnline.h"
-#include "AsItem.h"
-
-#include "AsBase.h"
-#include "AsUtils.h"
-
-#include <QDebug>
-#include <QtCore>
-#include <QtNetwork>
-#include <QJsonDocument>
-
-#include <QTextCodec>
-#include <QLibraryInfo>
-#include <QMessageBox>
-#include <QLocale>
 
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
+#include "AsItem.h"
+#include "AsBase.h"
+#include "AsUtils.h"
+#include "AsDelegate.h"
+
+#include <QDebug>
+#include <QtCore>
+#include <QtNetwork>
+#include <QJsonDocument>
+#include <QTextCodec>
+#include <QLibraryInfo>
+#include <QMessageBox>
+#include <QLocale>
+#include <QStandardItemModel>
+#include <QObject>
+
 QString networkresult;
-const int iterations = 20;
+//const int iterations = 20;
 QVector<int> vector;
 std::vector<QString> catids, titles, tags, contents, songnos;
 QStringList selecteds, selectedBooks;
@@ -88,13 +90,6 @@ void vSongOnline::onBooksResult(QNetworkReply* reply)
     }
 }
 
-void vSongOnline::progressManager(qint64 ist, qint64 max)
-{
-    //ui->progressBar->setRange(0, max);
-    //ui->progressBar->setValue(ist);
-    //if (max < 0) hideProgress();
-}
-
 void vSongOnline::showProgress(bool show)
 {
     if (show)
@@ -136,7 +131,7 @@ void vSongOnline::on_LstBooks_clicked(const QModelIndex &index)
     selecteds.clear();
     selectedBooks.clear();
 
-    foreach(const QModelIndex & index, list)
+    foreach(const QModelIndex &index, list)
     {
         int selectint = catids[index.row()].toInt();
         selecteds.push_back(catids[selectint]);

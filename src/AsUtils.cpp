@@ -1,7 +1,7 @@
 #include "AsUtils.h"
 
 QString AsUtils::DB_FILE() { return R"(Data/vSongBook.db)"; }
-char* AsUtils::APP_DB() { return R"(Data/vSongBook.db)"; }
+char const *AsUtils::APP_DB() { return R"(Data/vSongBook.db)"; }
 
 QString AsUtils::TBL_BOOKS() { return "books"; }
 QString AsUtils::TBL_HISTORY() { return "history"; }
@@ -201,7 +201,7 @@ char* AsUtils::BOOK_DELETE_SQL(QString Bookid)
 	return bar.data();
 }
 
-QString AsUtils::HISTORY_SELECT_SQL(QString STATE)
+QString AsUtils::HISTORY_SELECT_SQL()
 {
 	return "SELECT " +
 		ENTRY() + ", " +
@@ -266,7 +266,7 @@ QString AsUtils::SONG_SEARCH_SQL(QString SearchStr, QString Bookid, bool SearchA
 	else
 	{
 		bool isNumeric;
-		int searchint = SearchStr.toInt(&isNumeric, 10);
+        SearchStr.toInt(&isNumeric, 10);
 		if (SearchAll)
 		{
 			if (isNumeric)
@@ -323,7 +323,7 @@ QString AsUtils::SONG_UPDATE_SQL(QString Number, QString Title, QString Alias, Q
 		"', " + AUTHOR() + "='" + Author + "', " + UPDATED() + "='" + TIMENOW() + "' WHERE " + SONGID() + "=" + Songid;
 }
 
-char* AsUtils::SONG_DELETE_SQL(QString Songid)
+char const *AsUtils::SONG_DELETE_SQL(QString Songid)
 {
 	QString SqlQuery = "DELETE FROM " + TBL_SONGS() + " WHERE " + SONGID() + "=" + Songid;
 	QByteArray bar = SqlQuery.toLocal8Bit();

@@ -7,7 +7,7 @@ class AsUtils
 {
 public:
 	static QString DB_FILE();
-	static char* APP_DB();
+    static char const *APP_DB();
 
 	static QString TBL_BOOKS();
 	static QString TBL_HISTORY();
@@ -72,7 +72,7 @@ public:
 	static QString BOOK_SONGS_COUNT_SQL(QString Bookid, QString Songs);
 	static char* BOOK_DELETE_SQL(QString Bookid);
 
-	static QString HISTORY_SELECT_SQL(QString STATE);
+    static QString HISTORY_SELECT_SQL();
 
 	static QString SETTINGS_SQL();
 	static char* SETTINGS_SELECT_SQL();
@@ -84,7 +84,7 @@ public:
 	static QString SONG_SINGLE_SQL(QString Song);
 	static QString SONG_INSERT_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid, QString Categoryid);
 	static QString SONG_UPDATE_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid);
-	static char* SONG_DELETE_SQL(QString Songid);
+    static char const *SONG_DELETE_SQL(QString Songid);
 
 	static QString UPDATE_SETTINGS_SQL(QString Title, QString Value);
 };

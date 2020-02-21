@@ -6,8 +6,10 @@
 
 bool AsBase::isTrue(int value)
 {
-    if (value == 0) return false;
-    else if (value == 1) return true;
+    bool result = false;
+    if (value == 0) result = false;
+    else if (value == 1) result = true;
+    return result;
 }
 
 QString AsBase::ReplaceList(QString text)
@@ -26,8 +28,10 @@ QString AsBase::ReplaceView(QString text)
 
 QString AsBase::booltoInt(bool value)
 {
-    if (value == true) return "1";
-    else if (value == false) return "0";
+    QString booltoint = "0";
+    if (value == true) booltoint = "1";
+    else if (value == false) booltoint = "0";
+    return booltoint;
 }
 
 int AsBase::setCmbValue(std::vector<QString> values, QString value)
@@ -43,9 +47,8 @@ int AsBase::setCmbValue(std::vector<QString> values, QString value)
 void AsBase::SetOption(QString Title, QString Content)
 {
     sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
     char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open("Data/vSongBook.db", &db);
+    int rc = sqlite3_open("Data/vSongBook.db", &db);
 
     QByteArray bar = AsUtils::UPDATE_SETTINGS_SQL(Title, Content).toLocal8Bit();
     char* sqlQuery = bar.data();
@@ -82,9 +85,8 @@ std::vector<QString> AsBase::AppSettings()
 void AsBase::UpdateSongCount(QString Bookid, QString Count)
 {
     sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
     char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
     QByteArray bar = AsUtils::BOOK_SONGS_COUNT_SQL(Bookid, Count).toLocal8Bit();
     char* sqlQuery = bar.data();
@@ -98,9 +100,8 @@ void AsBase::UpdateSongCount(QString Bookid, QString Count)
 void AsBase::execSQL(QString SqlQuery)
 {
     sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
     char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
     QByteArray bar = SqlQuery.toLocal8Bit();
     char* sqlQuery = bar.data();
@@ -115,9 +116,8 @@ void AsBase::execSQL(QString SqlQuery)
 void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Content, QString Songs)
 {
     sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
     char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
     uint timenow = QDateTime::currentSecsSinceEpoch();
     QString timeStr = QString::number(timenow);
@@ -134,9 +134,8 @@ void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Cont
 void AsBase::NewSong(QString Bookid, QString Category, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author)
 {
     sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
     char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
     QByteArray bar = AsUtils::SONG_INSERT_SQL(Number, Title, Alias, Content, Key, Author, Bookid, Category).toLocal8Bit();
     char* sqlQuery = bar.data();
@@ -163,9 +162,8 @@ void AsBase::InitialDbOps()
 void AsBase::ResetSettings()
 {
     sqlite3* db;
-    sqlite3_stmt* sqlqueryStmt;
     char* zErrMsg = NULL;
-    int row, col, rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
     QByteArray bar = "DROP TABLE " + AsUtils::TBL_SETTINGS().toLocal8Bit();
     char* sqlQuery = bar.data();

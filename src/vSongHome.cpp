@@ -13,9 +13,11 @@
 #include <limits>
 #include <QStandardItemModel>
 #include <QObject>
+
 #include "AsItem.h"
 #include "AsDelegate.h"
-#include "AboutDialog.h"
+
+#include "vSongAbout.h"
 #include "vSongBooklist.h"
 #include "vSongEditor.h"
 #include "vSongPreferences.h"
@@ -149,12 +151,14 @@ void vSongHome::FontChange()
 			HomeFontPreview.setFamily(home_fonts[home_fonttype]);
 			AsBase::SetOption("preview_font_type", home_fonts[home_fonttype]);
 			ReloadControls();
+                        break;
 
 		default:
 			home_fonttype = home_fonttype + 1;
 			HomeFontPreview.setFamily(home_fonts[home_fonttype]);
 			AsBase::SetOption("preview_font_type", home_fonts[home_fonttype]);
 			ReloadControls();
+                        break;
 	}
 }
 
@@ -278,11 +282,11 @@ void vSongHome::PopulateSonglists(QString SearchStr)
 
 	if (!SearchStr.isEmpty())
 	{
-		ResultCount = " ";
-        bool isNumeric;
-		int searchint = SearchStr.toInt(&isNumeric, 10);
-		if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
-		else ResultCount.append("songs found with: \"" + SearchStr + "\"");
+            ResultCount = " ";
+            bool isNumeric;
+            SearchStr.toInt(&isNumeric, 10);
+            if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
+            else ResultCount.append("songs found with: \"" + SearchStr + "\"");
 	}
 
 	QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[ui->CmbSongbooks->currentIndex()], searchAll);
@@ -464,7 +468,7 @@ void vSongHome::on_actionReset_Settings_triggered()
 
 void vSongHome::on_actionAbout_triggered()
 {
-	AboutDialog about(this);
+	vSongAbout about(this);
 	about.exec();
 }
 

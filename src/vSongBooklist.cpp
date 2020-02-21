@@ -1,6 +1,3 @@
-#include "AsBase.h"
-#include "AsUtils.h"
-
 #include "vSongBooklist.h"
 #include "ui_vSongBooklist.h"
 
@@ -15,6 +12,8 @@
 #include <QMessageBox>
 #include <QLocale>
 
+#include "AsBase.h"
+#include "AsUtils.h"
 #include "AsItem.h"
 #include "AsDelegate.h"
 
@@ -46,31 +45,36 @@ void vSongBooklist::LoadBooklist(QString searchstr)
 
 	sqlite3* db;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	QByteArray bar = AsUtils::BOOK_SEARCH_SQL(searchstr).toLocal8Bit();
-	char* sqlQuery = bar.data();
+        char* sqlQuery = bar.data();
 
-	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+        int row, col;
+        int rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-	for (int i = 1; i < row + 1; i++)
-	{
-		booklist.push_back(*(qryResult + i * col + 0));
+        if (rc == SQLITE_OK)
+        {
+            rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-		QStandardItem* bookItem = new QStandardItem;
-		AsItem songbooklist;
-		
-		songbooklist.title = *(qryResult + i * col + 3);
+            for (int i = 1; i < row + 1; i++)
+            {
+                booklist.push_back(*(qryResult + i * col + 0));
 
-		QString contents = *(qryResult + i * col + 5);
-		contents.append(" ");
-		contents.append(*(qryResult + i * col + 4));
-		contents.append(" songs");
+                QStandardItem* bookItem = new QStandardItem;
+                AsItem songbooklist;
 
-		songbooklist.content = contents;
-		bookItem->setData(QVariant::fromValue(songbooklist), Qt::UserRole + 1);
-		bookModel->appendRow(bookItem);
-	}
+                songbooklist.title = *(qryResult + i * col + 3);
+
+                QString contents = *(qryResult + i * col + 5);
+                contents.append(" ");
+                contents.append(*(qryResult + i * col + 4));
+                contents.append(" songs");
+
+                songbooklist.content = contents;
+                bookItem->setData(QVariant::fromValue(songbooklist), Qt::UserRole + 1);
+                bookModel->appendRow(bookItem);
+            }
+        }
 
 	AsDelegate* asDelegate = new AsDelegate(this);
 	ui->LstBooks->setItemDelegate(asDelegate);
@@ -94,28 +98,31 @@ void vSongBooklist::GetUpdates()
 void vSongBooklist::LoadBook()
 {
 	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+        char* err_msg = NULL, ** qryResult = NULL;
 
 	QByteArray bar = AsUtils::BOOK_SINGLE_SQL(Songbookid).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
-	if (rc == SQLITE_OK)
-	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+        int row, col;
+        int rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-		QString title = *(qryResult + 1 * col + 3);
-		QString code = *(qryResult + 1 * col + 4);
-		QString songs = *(qryResult + 1 * col + 5);
-		QString content = *(qryResult + 1 * col + 7);
+        if (rc == SQLITE_OK)
+        {
 
-		ui->LblDescription->setText(title + " (" + code + ") has " + songs + " songs. " + content );
-		ui->TxtTitle->setText(title);
-		ui->TxtCode->setText(code);
-		ui->TxtContent->setPlainText(content);
+            rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
 
-		sqlite3_free_table(qryResult);
-		sqlite3_close(songsDb);
+            QString title = *(qryResult + 1 * col + 3);
+            QString code = *(qryResult + 1 * col + 4);
+            QString songs = *(qryResult + 1 * col + 5);
+            QString content = *(qryResult + 1 * col + 7);
+
+            ui->LblDescription->setText(title + " (" + code + ") has " + songs + " songs. " + content );
+            ui->TxtTitle->setText(title);
+            ui->TxtCode->setText(code);
+            ui->TxtContent->setPlainText(content);
+
+            sqlite3_free_table(qryResult);
+            sqlite3_close(songsDb);
 	}
 }
 

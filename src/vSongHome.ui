@@ -437,16 +437,6 @@
     <property name="title">
      <string>File</string>
     </property>
-    <widget class="QMenu" name="menuPreferences">
-     <property name="title">
-      <string>Preferences</string>
-     </property>
-     <addaction name="actionReset_Settings"/>
-     <addaction name="actionManage_Settings"/>
-    </widget>
-    <addaction name="menuPreferences"/>
-    <addaction name="actionTutorial"/>
-    <addaction name="actionAbout"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuSongs">
@@ -467,13 +457,15 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionTutorial"/>
+    <addaction name="separator"/>
     <addaction name="actionDonate"/>
     <addaction name="actionCheck_Updates"/>
+    <addaction name="actionContribute"/>
     <addaction name="separator"/>
     <addaction name="actionFeature_Request"/>
     <addaction name="actionBug_Report"/>
-    <addaction name="separator"/>
-    <addaction name="actionContribute"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -496,11 +488,19 @@
     <addaction name="actionEmail"/>
     <addaction name="actionWebsite"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionManage_Settings"/>
+    <addaction name="actionReset_Settings"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuSongs"/>
-   <addaction name="menuSupport"/>
+   <addaction name="menuSettings"/>
    <addaction name="menuContact_Us"/>
+   <addaction name="menuSupport"/>
   </widget>
   <action name="actionPresent">
    <property name="icon">
