@@ -237,6 +237,7 @@ LIBPATH_QHEXEDIT=$$OUT_PWD/../libs/qhexedit
 LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
 LIBPATH_QSCINTILLA=$$OUT_PWD/../libs/qscintilla/Qt4Qt5
 LIBPATH_JSON=$$OUT_PWD/../libs/json
+
 unix {
     LIBS += -ldl
 }
@@ -265,6 +266,7 @@ win32 {
     LIBS += -L$$PWD/../../../dev/SQLite/ -lsqlite3
     INCLUDEPATH += $$PWD/../../../dev/SQLite
     DEPENDPATH += $$PWD/../../../dev/SQLite
+
 }
 macx {
     TARGET = "vSongBook"
