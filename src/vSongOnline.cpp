@@ -182,12 +182,12 @@ void vSongOnline::LoadSongs()
     showProgress(true);
     QString books = selecteds[0];
     int bookid = selecteds[0].toInt();
-    AsBase::NewBook(titles[bookid], catids[bookid], tags[bookid], contents[bookid], songnos[bookid]);
+    AsBase::NewBook(titles[bookid], catids[bookid], tags[bookid], contents[bookid], "1", songnos[bookid]);
 
     for (int i = 1; i < selecteds.size(); i++) {
         books = books + "," + selecteds[i];
         int bookid = selecteds[1].toInt();
-        AsBase::NewBook(titles[bookid], catids[bookid], tags[bookid], contents[bookid], songnos[bookid]);
+        AsBase::NewBook(titles[bookid], catids[bookid], tags[bookid], contents[bookid], QString::number(i), songnos[bookid]);
     }
 
     qnam = new QNetworkAccessManager();

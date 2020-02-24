@@ -38,6 +38,7 @@ vSongEditor::vSongEditor(QWidget *parent, bool newSong) :
 
 	if (isNewSong)
 	{
+		this->setWindowTitle("Save a New Song");
 		ui->actionSave->setText("Save a New Song");
 	}
 	else
@@ -133,9 +134,9 @@ void vSongEditor::ReloadSettings()
 
 void vSongEditor::SaveChanges()
 {
-        sqlite3* db;
+    sqlite3* db;
 	char* zErrMsg = NULL;
-        int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+	int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	QString Number = ui->TxtNumber->text();
 	QString Title = ui->TxtTitle->text();
@@ -184,6 +185,9 @@ void vSongEditor::on_actionSave_triggered()
 		Content = Content.replace("'", "''");
 
 		AsBase::NewSong(Bookid, Bookid, Number, Title, Alias, Content, Key, Author);
+		AsBase::UpdateSongCount(Bookid, AsBase::CountSongs(Bookid));
+
+		ui->TxtContent->setPlainText(AsUtils::SONG_INSERT_SQL(Number, Title, Alias, Content, Key, Author, Bookid, Bookid));
 	}
 	else SaveChanges();
 }
@@ -196,23 +200,27 @@ void vSongEditor::on_actionDelete_triggered()
 		AsBase::ReplaceView(song_title) + "? This action is irrevesible!");
 	msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 	msgBox.setDefaultButton(QMessageBox::No);
+
+	QString Bookid = book_ids[ui->CmbSongbooks->currentIndex()];
 	int ret = msgBox.exec();
 
-	switch (ret) {
-	case QMessageBox::Yes:
-		DeleteSong();
-		break;
-	default:
-		// should never be reached
-		break;
+	switch (ret) 
+	{
+		case QMessageBox::Yes:
+			DeleteSong();
+			AsBase::UpdateSongCount(Bookid, AsBase::CountSongs(Bookid));
+			break;
+		default:
+			// should never be reached
+			break;
 	}
 }
 
 void vSongEditor::DeleteSong()
 {
-        sqlite3* db;
+	sqlite3* db;
 	char* zErrMsg = NULL;
-        int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
 
 	rc = sqlite3_exec(db, AsUtils::SONG_DELETE_SQL(song_id), 0, 0, &zErrMsg);
 

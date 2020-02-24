@@ -173,17 +173,17 @@ QString AsUtils::BOOK_SEARCH_SQL(QString Search)
 	return SqlQuery;
 }
 
-QString AsUtils::BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Songs)
+QString AsUtils::BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Position, QString Songs)
 {
 	return "INSERT INTO " + TBL_BOOKS() +
-		"( " + TITLE() + ", " + CATEGORYID() + ", " + TAGS() + ", " + CONTENT() + ", " + QCOUNT() + ", " + CREATED() +
-		" ) VALUES ( '" + Title + "', " + Category + "', " + Tags + "', '" + Content + "', " + Songs + ", " + TIMENOW() + ")";
+		"( " + TITLE() + ", " + CATEGORYID() + ", " + TAGS() + ", " + CONTENT() + ", " + POSITION() + ", " + QCOUNT() + ", " + ENABLED() + ", " + CREATED() +
+		" ) VALUES ( '" + Title + "', '" + Category + "', '" + Tags + "', '" + Content + "', " + Position + ", " + Songs + ", 1, " + TIMENOW() + ")";
 }
 
-QString AsUtils::BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content)
+QString AsUtils::BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content, QString Songs)
 {
 	return "UPDATE " + TBL_BOOKS() + " SET " + TITLE() + "='" + Title + "', " + TAGS() + "='" + Tags +
-		"', " + CONTENT() + "='" + Content + "', " + UPDATED() + "='" + TIMENOW() +
+		"', " + CONTENT() + "='" + Content + "', " + QCOUNT() + "='" + Songs + "', " + UPDATED() + "='" + TIMENOW() +
 		"' WHERE " + BOOKID() + "=" + Bookid;
 }
 
@@ -312,8 +312,8 @@ QString AsUtils::SONG_INSERT_SQL(QString Number, QString Title, QString Alias, Q
 {
 	return "INSERT INTO " + TBL_SONGS() +
 		"( " + NUMBER() + ", " + TITLE() + ", " + ALIAS() + ", " + CONTENT() + ", " + KEY() + ", " + BOOKID() + ", " +
-		CATEGORYID() + ", " + CREATED() + " ) VALUES ( " + Number + "', " + Title + "', " + Alias + "', " +
-		Content.replace("\r\n", "\n") + "', " + Key + "', " + Author + "', " + Bookid + "', " + Categoryid + ", " + TIMENOW() + ")";
+		CATEGORYID() + ", " + CREATED() + " ) VALUES ( " + Number + ", '" + Title + "', '" + Alias + "', '" +
+		Content.replace("\r\n", "\n") + "', '" + Key + "', '" + Author + "', " + Bookid + ", " + Categoryid + ", " + TIMENOW() + ")";
 }
 
 QString AsUtils::SONG_UPDATE_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid)

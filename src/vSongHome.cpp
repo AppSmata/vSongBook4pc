@@ -42,7 +42,7 @@ vSongHome::vSongHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::vSongHom
 	ui->line->hide();
 	ui->ChkDarkMode->hide();
 
-	this->setWindowTitle(qApp->applicationName() + " " + qApp->applicationVersion());
+	this->setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
 
 	if (QFile::exists(AsUtils::DB_FILE())) HomeInit();
 	else
@@ -512,8 +512,8 @@ void vSongHome::on_actionEdit_triggered()
 
 void vSongHome::on_actionNewsong_triggered()
 {
-	vSongBooklist books(this);
-	books.exec();
+	vSongEditor editor(this, true);
+	editor.exec();
 }
 
 void vSongHome::on_actionSongbooks_triggered()

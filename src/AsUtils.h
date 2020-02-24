@@ -67,8 +67,8 @@ public:
 	static QString BOOK_LIST_SQL(QString State);
 	static QString BOOK_SINGLE_SQL(QString Book);
 	static QString BOOK_SEARCH_SQL(QString Search);
-	static QString BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Songs);
-	static QString BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content);
+	static QString BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Position, QString Songs);
+	static QString BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content, QString Songs);
 	static QString BOOK_SONGS_COUNT_SQL(QString Bookid, QString Songs);
 	static char* BOOK_DELETE_SQL(QString Bookid);
 
