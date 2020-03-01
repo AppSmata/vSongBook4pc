@@ -12,23 +12,23 @@ QMAKE_CXXFLAGS += -std=c++11
 
 HEADERS += \
     AppAbout.h \
-    AppBooklist.h \
     AppEditor.h \
     AppMain.h \
     AppOnline.h \
     AppPreferences.h \
     AppPresent.h \
+    AppSongbooks.h \
     AppTutorial.h \
     Settings.h
 
 SOURCES += \
     AppAbout.cpp \
-    AppBooklist.cpp \
     AppEditor.cpp \
     AppMain.cpp \
     AppOnline.cpp \
     AppPreferences.cpp \
     AppPresent.cpp \
+    AppSongbooks.cpp \
     AppTutorial.cpp \
     Settings.cpp
 
@@ -39,12 +39,12 @@ RESOURCES += icons/icons.qrc \
 
 FORMS += \
     AppAbout.ui \
-    AppBooklist.ui \
     AppEditor.ui \
     AppMain.ui \
     AppOnline.ui \
     AppPreferences.ui \
     AppPresent.ui \
+    AppSongbooks.ui \
     AppTutorial.ui
 
 TRANSLATIONS += \
