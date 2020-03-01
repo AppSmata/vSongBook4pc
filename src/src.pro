@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core gui network widgets printsupport concurrent xml
 
-TARGET = AppBook
+TARGET = vSongBook
 
 CONFIG += debug_and_release
 CONFIG += qt
@@ -13,6 +13,7 @@ QMAKE_CXXFLAGS += -std=c++11
 HEADERS += \
     AppAbout.h \
     AppEditor.h \
+    Application.h \
     AppMain.h \
     AppOnline.h \
     AppPreferences.h \
@@ -24,17 +25,18 @@ HEADERS += \
 SOURCES += \
     AppAbout.cpp \
     AppEditor.cpp \
+    Application.cpp \
     AppMain.cpp \
     AppOnline.cpp \
     AppPreferences.cpp \
     AppPresent.cpp \
     AppSongbooks.cpp \
     AppTutorial.cpp \
+    main.cpp \
     Settings.cpp
 
 RESOURCES += icons/icons.qrc \
              translations/flags/flags.qrc \
-             translations/translations.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
@@ -50,26 +52,19 @@ FORMS += \
 TRANSLATIONS += \
     translations/sqlb_de.ts \
     translations/sqlb_es_ES.ts \
-    translations/sqlb_fr.ts \
-    translations/sqlb_en_GB.ts
+    translations/sqlb_en_GB.ts \
+    translations/sqlb_fr.ts
 
 LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
 
-EXTRA_BINFILES += \
-        $${THIRDPARTY_PATH}/res/splashscreen.png \
-        $${THIRDPARTY_PATH}/res/style.qss
 unix {
     LIBS += -ldl
-    for(FILE,EXTRA_BINFILES){
-        QMAKE_POST_LINK += $$quote(cp $${FILE} $${DESTDIR}$$escape_expand(\n\t))
-    }
-
 }
 os2 {
     RC_FILE = os2app.rc
 }
 win32 {
-    TARGET = "AppBook"
+    TARGET = "vSongBook"
     RC_FILE = winapp.rc
     INCLUDEPATH += $$PWD
     CONFIG(debug,debug|release) {
@@ -80,16 +75,9 @@ win32 {
     }
     QMAKE_CXXFLAGS += -DCHECKNEWVERSION
 
-    EXTRA_BINFILES_WIN = $${EXTRA_BINFILES}
-    EXTRA_BINFILES_WIN ~= s,/,\\,g
-        DESTDIR_WIN = $${DESTDIR}
-    DESTDIR_WIN ~= s,/,\\,g
-    for(FILE,EXTRA_BINFILES_WIN){
-                QMAKE_POST_LINK +=$$quote(cmd /c copy /y $${FILE} $${DESTDIR_WIN}$$escape_expand(\n\t))
-    }
 }
 macx {
-    TARGET = "AppBook"
+    TARGET = "vSongBook"
     RC_FILE = macapp.icns
     QT += macextras opengl
     INCLUDEPATH += /usr/local/include
@@ -135,10 +123,10 @@ unix {
 
     # Desktop metadata
     desktop.path = $$DATADIR/applications/
-    desktop.files = ../distri/AppBook.desktop
+    desktop.files = ../distri/vsongbook.desktop
     INSTALLS += desktop
     appdata.path = $$DATADIR/appdata/
-    appdata.files = ../distri/AppBook.desktop.appdata.xml
+    appdata.files = ../distri/vsongbook.desktop.appdata.xml
     INSTALLS += appdata
 }
 

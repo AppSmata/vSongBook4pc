@@ -35,18 +35,18 @@ AppEditor::AppEditor(QWidget *parent, bool newSong) :
 	ShowExtraFields();
 	ShowFeedback(false);
 	editset = AsBase::AppSettings();
-	PopulateSongbooks();
+    PopulateSongbooks();*/
 
 	if (isNewSong)
 	{
 		this->setWindowTitle("Save a New Song");
 		ui->actionSave->setText("Save a New Song");
 	}
-	else
+    /*else
 	{
 		song_id = editset[23];
 		LoadSong();
-	}*/
+    }*/
 }
 
 /*void AppEditor::ShowFeedback(bool show)
