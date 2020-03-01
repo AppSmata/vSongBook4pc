@@ -75,12 +75,12 @@ set(APP_HDR
 
 set(APP_MOC_HDR
 	src/AppAbout.h
-	src/AppSongbooks.h
 	src/AppEditor.h
 	src/AppMain.h
 	src/AppOnline.h
 	src/AppPreferences.h
 	src/AppPresent.h
+	src/AppSongbooks.h
 	src/AppTutorial.h
 	src/Settings.h
 )
@@ -88,12 +88,12 @@ set(APP_MOC_HDR
 set(APP_SRC
 	src/Application.cpp
 	src/AppAbout.cpp
-	src/AppSongbooks.cpp
 	src/AppEditor.cpp
 	src/AppMain.cpp
 	src/AppOnline.cpp
 	src/AppPreferences.cpp
 	src/AppPresent.cpp
+	src/AppSongbooks.cpp
 	src/AppTutorial.cpp
 	src/main.cpp
 	src/Settings.cpp
@@ -101,12 +101,12 @@ set(APP_SRC
 
 set(APP_FORMS
 	src/AppAbout.ui
-	src/AppSongbooks.ui
 	src/AppEditor.ui
 	src/AppMain.ui
 	src/AppOnline.ui
 	src/AppPreferences.ui
 	src/AppPresent.ui
+	src/AppSongbooks.ui
 	src/AppTutorial.ui
 )
 
