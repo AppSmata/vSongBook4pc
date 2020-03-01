@@ -38,7 +38,6 @@ x64/
 win32/
 Debug/
 Release/
-build_*/
 CMakeFiles/
 vsongbook.dir/
 vsongbook_autogen/
