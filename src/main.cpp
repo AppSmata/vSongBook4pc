@@ -13,17 +13,17 @@ void setStyle(const QString& qssFile)
 
 int main(int argc, char** argv)
 {
-    QApplication app(argc, argv);
+    /*QApplication app(argc, argv);
     QPixmap pixmap("res/splash.png");
     QSplashScreen splash(pixmap, Qt::WindowStaysOnTopHint);
     splash.show();
 
     app.thread()->sleep(3);
     app.processEvents();
-    splash.close();
+    splash.close();*/
 
     Application vsb(argc, argv);
-    setStyle("res/style.qss");
+    //setStyle("res/style.qss");
 
     // Run application
     return vsb.exec();
