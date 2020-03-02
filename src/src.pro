@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core gui network widgets printsupport concurrent xml
 
-TARGET = sqlitebrowser
+TARGET = vSongBook
 
 CONFIG += debug_and_release
 CONFIG += qt
@@ -182,7 +182,8 @@ TRANSLATIONS += \
     translations/sqlb_ko_KR.ts \
     translations/sqlb_tr.ts \
     translations/sqlb_uk_UA.ts \
-    translations/sqlb_it.ts
+    translations/sqlb_it.ts \
+    translations/sqlb_ja.ts
 
 # SQLite / SQLCipher switch pieces
 CONFIG(sqlcipher) {
@@ -238,7 +239,7 @@ win32 {
     DEPENDPATH += $$PWD/../../../dev/SQLite
 }
 macx {
-    TARGET = "DB Browser for SQLite"
+    TARGET = "vSongBook"
     RC_FILE = macapp.icns
     QT += macextras opengl
     INCLUDEPATH += /usr/local/include
@@ -267,7 +268,7 @@ unix {
     #
     # The values of each variable changes between supported platforms and are describe as follow
 
-    # Default configuration for package sqlitebrowser.
+    # Default configuration for package vsongbook.
     # The default prefix is /usr/local
     !defined(PREFIX, var):        PREFIX = /usr/local
     !defined(BINDIR, var):        BINDIR = $$PREFIX/bin
@@ -279,15 +280,15 @@ unix {
 
     # Icon
     icon.path = $$DATADIR/icons/hicolor/256x256/apps/
-    icon.files = icons/sqlitebrowser.png
+    icon.files = icons/appicon.png
     INSTALLS += icon
 
     # Desktop metadata
     desktop.path = $$DATADIR/applications/
-    desktop.files = ../distri/sqlitebrowser.desktop
+    desktop.files = ../distri/vsongbook.desktop
     INSTALLS += desktop
     appdata.path = $$DATADIR/appdata/
-    appdata.files = ../distri/sqlitebrowser.desktop.appdata.xml
+    appdata.files = ../distri/vsongbook.desktop.appdata.xml
     INSTALLS += appdata
 }
 

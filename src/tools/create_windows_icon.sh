@@ -4,9 +4,9 @@
 
 for imgsize in 16 32 64 128
 do
-	convert ../icons/sqlitebrowser.png -resize "$imgsize"x"$imgsize" -background transparent icon"$imgsize".png
+	convert ../icons/app_icon.png -resize "$imgsize"x"$imgsize" -background transparent icon"$imgsize".png
 	files="$files icon$imgsize.png"
 done
 
-convert $files ../iconwin.ico
+convert $files ../app_icon.ico
 rm $files

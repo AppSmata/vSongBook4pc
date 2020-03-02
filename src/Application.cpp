@@ -16,7 +16,7 @@ Application::Application(int& argc, char** argv) :
     QApplication(argc, argv)
 {
     // Set organisation and application names
-    setOrganizationName("sqlitebrowser");
+    setOrganizationName("Appsmata Solutions");
     setApplicationName("vSongBook");
 
     // Set character encoding to UTF8
@@ -97,7 +97,7 @@ Application::Application(int& argc, char** argv) :
             qWarning() << qPrintable(tr("  [file]\t\tOpen this SQLite database"));
             m_dontShowMainWindow = true;
         } else if(arguments().at(i) == "-v" || arguments().at(i) == "--version") {
-            qWarning() << qPrintable(tr("This is vSongBook version %1.").arg(versionString()));
+            qWarning() << qPrintable(tr("This is DB Browser for SQLite version %1.").arg(versionString()));
             m_dontShowMainWindow = true;
         } else if(arguments().at(i) == "-s" || arguments().at(i) == "--sql") {
             // Run SQL file: If file exists add it to list of scripts to execute
@@ -152,7 +152,7 @@ Application::Application(int& argc, char** argv) :
 
     // Show main window
     m_mainWindow = new MainWindow();
-    m_mainWindow->showMaximized();
+    m_mainWindow->show();
     connect(this, &Application::lastWindowClosed, this, &Application::quit);
 
     // Open database if one was specified

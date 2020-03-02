@@ -1,304 +1,147 @@
-# DB Browser for SQLite
+# vSongBook on Your PC!!!
 
 [![Wiki][wiki-img]][wiki]
 [![Build Status][travis-img]][travis]
-[![Join the chat at https://gitter.im/sqlitebrowser/sqlitebrowser][gitter-img]][gitter]
-[![Join the chat at https://join.slack.com/t/db4s/shared_invite/enQtMzc3MzY5OTU4NDgzLWRlYjk0ZmE5ZDEzYWVmNDQxYTYxNmJjNWVkMjI3ZmVjZTY2NDBjODY3YzNhNTNmZDVlNWI2ZGFjNTk5MjJkYmU][slack-img]][slack]
 [![Download][download-img]][download]
 [![Qt][qt-img]][qt]
 [![Coverity][coverity-img]][coverity]
 [![Patreon][patreon-img]][patreon]
 
-![DB Browser for SQLite Screenshot](https://github.com/sqlitebrowser/sqlitebrowser/raw/master/images/sqlitebrowser.png "DB Browser for SQLite Screenshot")
+![vSongBook Screenshot](https://github.com/vSongBook/vSongBook4PC/raw/master/images/screenshot1.png "vSongBook Screenshot 1")
 
 ## What it is
 
-_DB Browser for SQLite_ (DB4S) is a high quality, visual, open source tool to
-create, design, and edit database files compatible with SQLite.
-
-DB4S is for users and developers who want to create, search, and edit
-databases.  DB4S uses a familiar spreadsheet-like interface, and complicated SQL commands do not have to be learned.
+_vSongBook_ (Virtual Songbook) is a high quality, visual, open source
+tool to give users access to song lyrics of major worship and praise 
+songbooks used in christian gatherings be it in church, weddings, 
+funerals or anywhere where one feels like singing.
 
 Controls and wizards are available for users to:
 
-* Create and compact database files
-* Create, define, modify and delete tables
-* Create, define, and delete indexes
-* Browse, edit, add, and delete records
-* Search records
-* Import and export records as text
-* Import and export tables from/to CSV files
-* Import and export databases from/to SQL dump files
-* Issue SQL queries and inspect the results
-* Examine a log of all SQL commands issued by the application
-* Plot simple graphs based on table or query data
+* Browse, edit, add, and delete songs
+* Search songs realtime
+* Adjust font types and sizes among other display preferences
+* View songs in presentation mode for use over projector.
 
 ## What it is not
 
-This program is not a visual shell for the sqlite command line tool, and does
-not require familiarity with SQL commands. It is a tool to be used by both
-developers and end users, and must remain as simple to use as possible
-in order to achieve these goals.
+This program is not a media player tool, and does teach you how to 
+sing some of the songs it comes with. It is a tool to be used by 
+anyone who knows the songs contained in it and must remain as simple
+to use as possible in order to achieve these goals.
 
 ## Wiki
 
 For user and developer documentation, check out our Wiki at:
-https://github.com/sqlitebrowser/sqlitebrowser/wiki.
+https://github.com/vSongBook/vSongBook4PC/wiki.
 
 ## Nightly builds
 
 Download nightly builds for Windows and OSX here:
 
-* https://nightlies.sqlitebrowser.org/latest
+* https://nightlies.appsmata.com/latest
 
 ## Windows
 
 Download Windows releases here:
 
-* https://sqlitebrowser.org/dl/#windows
+* https://Appsmata.com/vSongBook/#windows
 
 **Note** - If for some reason the standard Windows release does not work
 (e.g. gives an error), try a nightly build.  Nightly builds often fix bugs
 reported after the last release. :D
-
-## MacOS X / macOS
-
-DB Browser for SQLite works well on MacOS X / macOS.
-
-* OSX 10.8 (Mountain Lion) - 10.13 (High Sierra) are tested and known to work
-
-Download OSX releases here:
-
-* https://sqlitebrowser.org/dl/#macos
-
-The latest OSX binary can be installed via [Homebrew Cask](https://caskroom.github.io/ "Homebrew Cask"):
-
-```
-brew cask install db-browser-for-sqlite
-```
-
-## Linux
-
-DB Browser for SQLite works well on Linux.
-
-### Arch Linux
-
-Arch Linux provides a package through pacman.
-
-### Fedora
-
-Install for Fedora (i386 and x86_64) by issuing the following command:
-
-    $ sudo dnf install sqlitebrowser
-    
-### openSUSE
-
-    $ sudo zypper install sqlitebrowser
-
-### Debian
-
-Note that Debian focuses more on stability rather than newest features. Therefore packages will typically contain some older (but well tested) version, compared to the latest release.
-
-Update the cache using:
-
-    sudo apt-get update
-
-Install the package using:
-
-    sudo apt-get install sqlitebrowser
-
-
-### Ubuntu and Derivatives
-
-#### Stable release
-
-For Ubuntu and derivaties, [@deepsidhu1313](https://github.com/deepsidhu1313)
-provides a PPA with the latest release here:
-
-* https://launchpad.net/~linuxgndu/+archive/ubuntu/sqlitebrowser
-
-To add this ppa just type in these commands in terminal:
-
-    sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser
-
-Then update the cache using:
-
-    sudo apt-get update
-
-Install the package using:
-
-    sudo apt-get install sqlitebrowser
-
-Ubuntu 14.04.X, 15.04.X, 15.10.X and 16.04.X are supported for now (until
-Launchpad decides to discontinue building for any series).
-
-Ubuntu Precise (12.04) and Utopic (14.10) are not supported:
-* Precise does not have a new enough Qt package in its repository by default,
-  which is a dependency
-* Launchpad does not support Utopic any more, which has reached its End of
-  Life
-
-#### Nightly builds
-
-Nightly builds are available here:
-
-* https://launchpad.net/~linuxgndu/+archive/ubuntu/sqlitebrowser-testing
-
-To add this ppa, type these commands into the terminal:
-
-    sudo add-apt-repository -y ppa:linuxgndu/sqlitebrowser-testing
-
-Then update the cache using:
-
-    sudo apt-get update
-
-Install the package using:
-
-    sudo apt-get install sqlitebrowser
-
-### Other Linux
-
-On others, compile DB4S using the instructions
-in [BUILDING.md](BUILDING.md).
-
-## FreeBSD
-
-DB Browser for SQLite works well on FreeBSD, and there is a port for it (thanks
-to [lbartoletti](https://github.com/lbartoletti) :smile:).  DB4S can be installed
-using either this command:
-
-    # make -C /usr/ports/databases/sqlitebrowser install
-
-or this command:
-
-    # pkg install sqlitebrowser
-
-## Snap packages
-
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/sqlitebrowser)
-
-#### Snap Nightlies
-
-     snap install sqlitebrowser --devmode
-
-#### Snap Stable
-
-     snap install sqlitebrowser
-
 
 ## Compiling
 
 Instructions for compiling on Windows, OSX, Linux, and FreeBSD are
 in [BUILDING](BUILDING.md).
 
+## Facebook
+
+Follow us on Facebook: https://twitter.com/AppSmata
+
 ## Twitter
 
-Follow us on Twitter: https://twitter.com/sqlitebrowser
+Follow us on Twitter: https://twitter.com/AppSmata
+
+## Instagram
+
+Follow us on Instagram: https://twitter.com/AppSmata
 
 ## Website
 
-* https://sqlitebrowser.org
-
-## Old project page
-
-* https://sourceforge.net/projects/sqlitebrowser
+* https://Appsmata.com/vSongBook
 
 ## Releases
 
-* [Version 3.11.2 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.11.2) - 2019-04-03
-* [Version 3.11.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.11.1) - 2019-02-18
-* [Version 3.11.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.11.0) - 2019-02-07
-* [Version 3.10.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.10.1) - 2017-09-20
-* [Version 3.10.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.10.0) - 2017-08-20
-* [Version 3.9.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.9.1) - 2016-10-03
-* [Version 3.9.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.9.0) - 2016-08-24
-* [Version 3.8.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.8.0) - 2015-12-25
-* [Version 3.7.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.7.0) - 2015-06-14
-* [Version 3.6.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.6.0) - 2015-04-27
-* [Version 3.5.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.5.1) - 2015-02-08
-* [Version 3.5.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.5.0) - 2015-01-31
-* [Version 3.4.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.4.0) - 2014-10-29
-* [Version 3.3.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.3.1) - 2014-08-31 - Project renamed from "SQLite Database Browser"
-* [Version 3.3.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.3.0) - 2014-08-24
-* [Version 3.2.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/sqlb-3.2.0) - 2014-07-06
-* [Version 3.1.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/sqlb-3.1.0) - 2014-05-17
-* [Version 3.0.3 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/sqlb-3.0.3) - 2014-04-28
-* [Version 3.0.2 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/sqlb-3.0.2) - 2014-02-12
-* [Version 3.0.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/sqlb-3.0.1) - 2013-12-02
-* [Version 3.0 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/sqlb-3.0) - 2013-09-15
-* [Version 3.0rc1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/rc1) - 2013-09-09 - Project now on GitHub
-* Version 2.0b1 released - 2009-12-10 - Based on Qt4.6
-* Version 1.2 released - 2005-04-05
-* Version 1.1 released - 2004-07-20
-* Version 1.01 released - 2003-10-02
-* Version 1.0 released to public domain - 2003-08-19
+* [Version 2.5.5 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.5) - 2020-02-11
+* [Version 2.5.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.0) - 2019-11-29
+* [Version 2.4.5 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v2.4.5) - 2019-09-10
 
 ## History
 
-This program was developed originally by Mauricio Piacentini
-([@piacentini](https://github.com/piacentini)) from Tabuleiro Producoes, as
-the Arca Database Browser. The original version was used as a free companion
-tool to the Arca Database Xtra, a commercial product that embeds SQLite
-databases with some additional extensions to handle compressed and binary data.
+This program was originally developed for Android devices 
+[as an app](https://github.com/vSongBook/vSongAndy). It was first 
+conceived and developed in September 2014 by Jackson Siro
+([@Jacksiroke](https://github.com/Jacksiroke)) to solve his own problem of having to 
+carry around songbooks to church and wherever he went and needed to sing a 
+song since he already had the bible app on his smartphone. By then he was a 
+student at KTTC undertaking a diploma course in ICT. While at home
+during December the same year his father who came to his room to ask a 
+computer questions noticed the app on Jack's phone and he asked that he 
+be sent too the app to his phone. The happy father went to share the app
+Jack's elder brother and while at the End of Year Meetings at Mbale, 
+Kenya he endosed it there during one of his sermons. 
 
-The original code was trimmed and adjusted to be compatible with standard
-SQLite 2.x databases. The resulting program was renamed SQLite Database
-Browser, and released into the Public Domain by Mauricio. Icons were
-contributed by [Raquel Ravanini](http://www.raquelravanini.com), also from
-Tabuleiro. Jens Miltner ([@jmiltner](https://github.com/jmiltner)) contributed
-the code to support SQLite 3.x databases for the 1.2 release.
+Later on in mid 2015 Kevin Ngalonde, an Android Developer from Zimbabwe,
+agreed to host the app on his playstore account. Mid 2016 was when 
+Jack was able to host the app in his own PlayStore Account. The app 
+has been increasing getting updates and reviews over time and there 
+was need to have it for desktop computers.
 
-Pete Morgan ([@daffodil](https://github.com/daffodil)) created an initial
-project on GitHub with the code in 2012, where several contributors fixed and
-improved pieces over the years. René Peinthor ([@rp-](https://github.com/rp-))
-and Martin Kleusberg ([@MKleusberg](https://github.com/MKleusberg)) then
-became involved, and have been the main driving force from that point.  Justin
-Clift ([@justinclift](https://github.com/justinclift)) helps out with testing
-on OSX, and started the new github.com/sqlitebrowser organisation on GitHub.
+The first attempt to do a desktop for vSongBook was in late 2015 
+using Visual Basic 6.0 and Microsoft Access Database 2010 which is 
+[available on github also](https://github.com/vSongBook/vSongVB).
+Later on as Jacksiro kept on improving his programming skills he ported
+the app to Vb.net (c#) and that too is 
+[available on github](https://github.com/vSongBook/vSongWin). 
+A Windows Phone version is
+[available on github](https://github.com/vSongBook/vSongWinfon).
 
-[John T. Haller](http://johnhaller.com), of
-[PortableApps.com](http://portableapps.com) fame, created the new logo.  He
-based it on the Tango icon set (public domain).
-
-In August 2014, the project was renamed to "Database Browser for SQLite" at
-the request of [Richard Hipp](http://www.hwaci.com/drh) (creator of
-[SQLite](http://sqlite.org)), as the previous name was creating unintended
-support issues.
-
-In September 2014, the project was renamed to "DB Browser for SQLite", to
-avoid confusion with an existing application called "Database Browser".
+It is in mid 2018 that Jacksiro began to port the desktop app to c++.
+It was not easy for him because it until May 2019 that he was able to come
+up with something that he could show to the public. He has been able 
+so far to release the app in Sep 2019 using wxWidgets which he is now 
+abandonding under the branch wxbuilds to use Qt Api.
 
 ## Contributors
 
-View the list by going to the [__Contributors__ tab](https://github.com/sqlitebrowser/sqlitebrowser/graphs/contributors).
+View the list by going to the [__Contributors__ tab](https://github.com/vSongBook/vSongBook4PC/graphs/contributors).
 
 ## License
 
-DB Browser for SQLite is bi-licensed under the Mozilla Public License
+vSongBook is bi-licensed under the Mozilla Public License
 Version 2, as well as the GNU General Public License Version 3 or later.
 
 Modification or redistribution is permitted under the conditions of these licenses.
 
-  [travis-img]: https://travis-ci.org/sqlitebrowser/sqlitebrowser.svg?branch=master
-  [travis]: https://travis-ci.org/sqlitebrowser/sqlitebrowser
+  [travis-img]: https://travis-ci.org/vSongBook/vSongBook.svg?branch=master
+  [travis]: https://travis-ci.org/vSongBook/vSongBook
 
-  [gitter-img]: https://badges.gitter.im/sqlitebrowser/sqlitebrowser.svg
-  [gitter]: https://gitter.im/sqlitebrowser/sqlitebrowser
+  [gitter-img]: https://badges.gitter.im/vSongBook/vSongBook.svg
+  [gitter]: https://gitter.im/vSongBook/vSongBook
 
-  [slack-img]: https://img.shields.io/badge/chat-on%20slack-orange.svg
-  [slack]: https://join.slack.com/t/db4s/shared_invite/enQtMzc3MzY5OTU4NDgzLWRlYjk0ZmE5ZDEzYWVmNDQxYTYxNmJjNWVkMjI3ZmVjZTY2NDBjODY3YzNhNTNmZDVlNWI2ZGFjNTk5MjJkYmU
-
-  [download-img]: https://img.shields.io/github/downloads/sqlitebrowser/sqlitebrowser/total.svg
-  [download]: https://github.com/sqlitebrowser/sqlitebrowser/releases
+  [download-img]: https://img.shields.io/github/downloads/vSongBook/vSongBook/total.svg
+  [download]: https://github.com/vSongBook/vSongBook4PC/releases
 
   [qt-img]: https://img.shields.io/badge/Qt-qmake-green.svg
   [qt]: https://www.qt.io
 
   [coverity-img]: https://img.shields.io/coverity/scan/11712.svg
-  [coverity]: https://scan.coverity.com/projects/sqlitebrowser-sqlitebrowser
+  [coverity]: https://scan.coverity.com/projects/vSongBook-vSongBook
 
   [patreon-img]: https://img.shields.io/badge/donate-Patreon-coral.svg
-  [patreon]: https://www.patreon.com/bePatron?u=11578749
+  [patreon]: https://www.patreon.com/AppSmata
 
   [wiki-img]: https://img.shields.io/badge/docs-Wiki-blue.svg
-  [wiki]: https://github.com/sqlitebrowser/sqlitebrowser/wiki
+  [wiki]: https://github.com/vSongBook/vSongBook4PC/wiki

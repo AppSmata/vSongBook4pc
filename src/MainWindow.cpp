@@ -650,8 +650,8 @@ bool MainWindow::fileClose()
     if(execute_sql_worker && execute_sql_worker->isRunning())
     {
         if(QMessageBox::warning(this, qApp->applicationName(),
-                                tr("You are still executing SQL statements. When closing the database now the execution will be stopped. maybe "
-                                   "leaving the database in an incosistent state. Are you sure you want to close the database?"),
+                                tr("You are still executing SQL statements. Closing the database now will stop their execution, possibly "
+                                   "leaving the database in an inconsistent state. Are you sure you want to close the database?"),
                                 QMessageBox::Yes, QMessageBox::Cancel | QMessageBox::Default | QMessageBox::Escape) == QMessageBox::Cancel)
             return false;
 
@@ -944,7 +944,7 @@ void MainWindow::doubleClickTable(const QModelIndex& index)
 
     // * Don't allow editing of other objects than tables and editable views
     bool isEditingAllowed = !db.readOnly() && m_currentTabTableModel == ui->tableBrowser->model() &&
-            ui->tableBrowser->model()->isEditable();
+            ui->tableBrowser->model()->isEditable(index);
 
     // Enable or disable the Apply, Null, & Import buttons in the Edit Cell
     // dock depending on the value of the "isEditingAllowed" bool above
@@ -968,7 +968,7 @@ void MainWindow::dataTableSelectionChanged(const QModelIndex& index)
     }
 
     bool editingAllowed = !db.readOnly() && (m_currentTabTableModel == ui->tableBrowser->model()) &&
-            ui->tableBrowser->model()->isEditable();
+            ui->tableBrowser->model()->isEditable(index);
 
     // Don't allow editing of other objects than tables and editable views
     editDock->setReadOnly(!editingAllowed);
@@ -2066,7 +2066,7 @@ void MainWindow::reloadSettings()
         QFile f(":qdarkstyle/style.qss");
         if (!f.exists()) {
             QMessageBox::warning(this, qApp->applicationName(),
-                               tr("Could not open find resource file: %1").arg(f.fileName()));
+                               tr("Could not find resource file: %1").arg(f.fileName()));
         } else {
             f.open(QFile::ReadOnly | QFile::Text);
             QTextStream ts(&f);
@@ -2159,7 +2159,7 @@ void MainWindow::checkNewVersion(const QString& versionstring, const QString& ur
             msgBox.addButton(QMessageBox::Ok);
             msgBox.setTextFormat(Qt::RichText);
             msgBox.setWindowTitle(tr("New version available."));
-            msgBox.setText(tr("A new vSongBook version is available (%1.%2.%3).<br/><br/>"
+            msgBox.setText(tr("A new DB Browser for SQLite version is available (%1.%2.%3).<br/><br/>"
                               "Please download at <a href='%4'>%4</a>.").arg(major).arg(minor).arg(patch).
                                 arg(url));
             msgBox.exec();
@@ -2381,7 +2381,7 @@ bool MainWindow::loadProject(QString filename, bool readOnly)
                        OpenProjectFile,
                        this,
                        tr("Choose a project file to open"),
-                       tr("vSongBook project file (*.sqbpro)"));
+                       tr("DB Browser for SQLite project file (*.sqbpro)"));
     }
 
     if(!filename.isEmpty())
@@ -2512,7 +2512,7 @@ bool MainWindow::loadProject(QString filename, bool readOnly)
                                 msgBox.addButton(QMessageBox::Ok);
                                 msgBox.setTextFormat(Qt::RichText);
                                 msgBox.setWindowTitle(qApp->applicationName());
-                                msgBox.setText(tr("This project file is using an old file format because it was created using vSongBook "
+                                msgBox.setText(tr("This project file is using an old file format because it was created using DB Browser for SQLite "
                                                   "version 3.10 or lower. Loading this file format is still fully supported but we advice you to convert "
                                                   "all your project files to the new file format because support for older formats might be dropped "
                                                   "at some point in the future. You can convert your files by simply opening and re-saving them."));

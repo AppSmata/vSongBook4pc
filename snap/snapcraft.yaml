@@ -1,5 +1,5 @@
           name:                   vsongbook  # the name of the snap
-          # version:              3.12.5  # the version of the snap
+          # version:              3.10.1  # the version of the snap
           version:                master
           version-script:         printf "`cat currentrelease | head -n 1 `-`git rev-list master --count`-` git -C . rev-parse --short HEAD`"
 
@@ -15,7 +15,7 @@
           confinement:            strict  # use "strict" to enforce system access only via declared interfaces
 
           grade:                  devel
-          icon:                   images/vsongbook.png
+          icon:                   images/app_icon.svg
           type:                   app
 
           apps:
@@ -48,7 +48,7 @@
               - libqt5scintilla2-dev
               - git
           parts:
-              vsongbook:
+              sqlitebrowser:
                   plugin:         cmake
                   configflags:    ["-DUSE_QT5=True", "-Dsqlcipher=1", "-Wno-dev","-DSQLITE_ENABLE_JSON1=1"]
                   source:         .
@@ -87,7 +87,7 @@
                   plugin:         dump
                   after:
                   - desktop-qt5
-                  - vsongbook
+                  - sqlitebrowser
                   stage-packages:
                   - libc6
                   - libgcc1
