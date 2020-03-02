@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-    <?define Name="vSongBook" ?>
+    <?define Name="DB Browser for SQLite" ?>
     <?define Team="$(var.Name) Team" ?>
-    <?define Version="2.5.6" ?>
+    <?define Version="3.11.99" ?>
 
     <!--
     =============================================== Add/Remove Programs ================================================
@@ -12,13 +12,13 @@
     In the Programs and Features Control Panel tool, the application can have various entries like contact information.
     -->
 
-    <?define AppIcon="..\..\src\appicon.ico" ?>
+    <?define AppIcon="..\..\src\iconwin.ico" ?>
     <?define AppComments="$(var.Name) is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite." ?>
-    <?define AppContact="appsmatake@gmail.com" ?>
-    <?define AppReadme="https://github.com/Appsmata/vSongBook4PC" ?>
-    <?define AppHelpLink="https://github.com/Appsmata/vSongBook4PC/wiki" ?>
-    <?define AppSupportLink="https://github.com/Appsmata/vSongBook4PC/issues" ?>
-    <?define AppUpdateInfoLink="https://github.com/Appsmata/vSongBook4PC/releases" ?>
+    <?define AppContact="db4s-dev@sqlitebrowser.org" ?>
+    <?define AppReadme="https://github.com/sqlitebrowser/sqlitebrowser" ?>
+    <?define AppHelpLink="https://github.com/sqlitebrowser/sqlitebrowser/wiki" ?>
+    <?define AppSupportLink="https://github.com/sqlitebrowser/sqlitebrowser/issues" ?>
+    <?define AppUpdateInfoLink="https://github.com/sqlitebrowser/sqlitebrowser/releases" ?>
 
     <!--
     ================================================== Visual C++ CRT ==================================================
