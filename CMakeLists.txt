@@ -42,21 +42,60 @@ endif()
 
 if(WIN32 AND MSVC)
 	if(CMAKE_CL_64)
-		set(QT5_PATH "D:/Qt/5.9.9/msvc2015_64" CACHE PATH "Qt5 Path")
+		# Paths for 64-bit windows builds
+		set(OPENSSL_PATH "C:/dev/OpenSSL-Win64" CACHE PATH "OpenSSL Path")
+		set(QT5_PATH "C:/dev/Qt/5.12.6/msvc2017_64" CACHE PATH "Qt5 Path")
+
+                # Choose between SQLCipher or SQLite, depending whether
+                # -Dsqlcipher=1 is passed on the command line
+                if(sqlcipher)
+                        set(SQLITE3_PATH "C:/git_repos/SQLCipher-Win64" CACHE PATH "SQLCipher Path")
+                else()
+                        set(SQLITE3_PATH "C:/dev/SQLite-Win64" CACHE PATH "SQLite Path")
+                endif()
 	else()
-		set(QT5_PATH "D:/Qt/5.9.9/msvc2015" CACHE PATH "Qt5 Path")
+		# Paths for 32-bit windows builds
+		set(OPENSSL_PATH "C:/dev/OpenSSL-Win32" CACHE PATH "OpenSSL Path")
+		set(QT5_PATH "C:/dev/Qt/5.7/msvc2015" CACHE PATH "Qt5 Path")
+
+                # Choose between SQLCipher or SQLite, depending whether
+                # -Dsqlcipher=1 is passed on the command line
+                if(sqlcipher)
+                        set(SQLITE3_PATH "C:/git_repos/SQLCipher-Win32" CACHE PATH "SQLCipher Path")
+                else()
+                        set(SQLITE3_PATH "C:/dev/SQLite-Win32" CACHE PATH "SQLite Path")
+                endif()
 	endif()
-	set(CMAKE_PREFIX_PATH "${QT5_PATH}")
+	set(CMAKE_PREFIX_PATH "${QT5_PATH};${SQLITE3_PATH}")
 endif()
 
 find_package(Qt5 REQUIRED COMPONENTS Concurrent Gui LinguistTools Network PrintSupport Test Widgets Xml)
 
+if(NOT FORCE_INTERNAL_QSCINTILLA)
+    find_package(QScintilla 2.8.10 QUIET)
+endif()
 if(FORCE_INTERNAL_QCUSTOMPLOT)
     set(QCUSTOMPLOT_FOUND FALSE)
 else()
     find_package(QCustomPlot)
 endif()
+if(FORCE_INTERNAL_QHEXEDIT)
+    set(QHEXEDIT_FOUND FALSE)
+else()
+    find_package(QHexEdit)
+endif()
+set(JSON_DIR libs/json)
 
+if(NOT QSCINTILLA_FOUND)
+    set(QSCINTILLA_DIR libs/qscintilla/Qt4Qt5)
+    add_subdirectory(${QSCINTILLA_DIR})
+endif()
+if(NOT QHEXEDIT_FOUND)
+    set(QHEXEDIT_DIR libs/qhexedit)
+    set(QHEXEDIT_INCL_DIR ${QHEXEDIT_DIR}/src)
+    add_subdirectory(${QHEXEDIT_DIR})
+endif()
+add_subdirectory(${JSON_DIR})
 if(NOT QCUSTOMPLOT_FOUND)
     set(QCUSTOMPLOT_DIR libs/qcustomplot-source)
     add_subdirectory(${QCUSTOMPLOT_DIR})
@@ -69,61 +108,184 @@ if(ENABLE_TESTING)
     enable_testing()
 endif()
 
-set(APP_HDR
+set(SQLB_HDR
 	src/version.h
+	src/sql/sqlitetypes.h
+	src/sql/Query.h
+	src/sql/ObjectIdentifier.h
+	src/csvparser.h
+	src/sqlite.h
+	src/Data.h
+	src/IconCache.h
+	src/sql/parser/ParserDriver.h
+	src/sql/parser/sqlite3_lexer.h
+	src/sql/parser/sqlite3_location.h
+	src/sql/parser/sqlite3_parser.hpp
 )
 
-set(APP_MOC_HDR
-	src/AppAbout.h
-	src/AppEditor.h
-	src/AppMain.h
-	src/AppOnline.h
-	src/AppPreferences.h
-	src/AppPresent.h
-	src/AppSongbooks.h
-	src/AppTutorial.h
+set(SQLB_MOC_HDR
+	src/sqlitedb.h
+	src/AboutDialog.h
+	src/EditIndexDialog.h
+	src/EditDialog.h
+	src/EditTableDialog.h
+	src/AddRecordDialog.h
+	src/ExportDataDialog.h
+	src/ExtendedTableWidget.h
+	src/FilterTableHeader.h
+	src/ImportCsvDialog.h
+	src/MainWindow.h
 	src/Settings.h
+	src/PreferencesDialog.h
+	src/SqlExecutionArea.h
+	src/VacuumDialog.h
+	src/sqlitetablemodel.h
+	src/RowLoader.h
+	src/RowCache.h
+	src/sqltextedit.h
+	src/docktextedit.h
+	src/DbStructureModel.h
+	src/Application.h
+	src/CipherDialog.h
+	src/ExportSqlDialog.h
+	src/SqlUiLexer.h
+	src/FileDialog.h
+	src/ColumnDisplayFormatDialog.h
+	src/FilterLineEdit.h
+	src/RemoteDatabase.h
+	src/ForeignKeyEditorDelegate.h
+	src/PlotDock.h
+	src/RemoteDock.h
+	src/RemoteModel.h
+	src/RemotePushDialog.h
+	src/FindReplaceDialog.h
+	src/ExtendedScintilla.h
+	src/FileExtensionManager.h
+	src/CondFormatManager.h
+	src/CipherSettings.h
+	src/DotenvFormat.h
+	src/Palette.h
+	src/CondFormat.h
+	src/RunSql.h
+	src/ProxyDialog.h
+	src/SelectItemsPopup.h
+	src/TableBrowser.h
 )
 
-set(APP_SRC
-	src/Application.cpp
-	src/AppAbout.cpp
-	src/AppEditor.cpp
-	src/AppMain.cpp
-	src/AppOnline.cpp
-	src/AppPreferences.cpp
-	src/AppPresent.cpp
-	src/AppSongbooks.cpp
-	src/AppTutorial.cpp
-	src/main.cpp
+set(SQLB_SRC
+	src/AboutDialog.cpp
+	src/EditIndexDialog.cpp
+	src/EditDialog.cpp
+	src/EditTableDialog.cpp
+	src/AddRecordDialog.cpp
+	src/ExportDataDialog.cpp
+	src/ExtendedTableWidget.cpp
+	src/FilterTableHeader.cpp
+	src/ImportCsvDialog.cpp
+	src/MainWindow.cpp
 	src/Settings.cpp
+	src/PreferencesDialog.cpp
+	src/SqlExecutionArea.cpp
+	src/VacuumDialog.cpp
+	src/sqlitedb.cpp
+	src/sqlitetablemodel.cpp
+	src/RowLoader.cpp
+	src/sql/sqlitetypes.cpp
+	src/sql/Query.cpp
+	src/sql/ObjectIdentifier.cpp
+	src/sqltextedit.cpp
+	src/docktextedit.cpp
+	src/csvparser.cpp
+	src/DbStructureModel.cpp
+	src/main.cpp
+	src/Application.cpp
+	src/CipherDialog.cpp
+	src/ExportSqlDialog.cpp
+	src/SqlUiLexer.cpp
+	src/FileDialog.cpp
+	src/ColumnDisplayFormatDialog.cpp
+	src/FilterLineEdit.cpp
+	src/RemoteDatabase.cpp
+	src/ForeignKeyEditorDelegate.cpp
+	src/PlotDock.cpp
+	src/RemoteDock.cpp
+	src/RemoteModel.cpp
+	src/RemotePushDialog.cpp
+	src/FindReplaceDialog.cpp
+	src/ExtendedScintilla.cpp
+	src/FileExtensionManager.cpp
+	src/CondFormatManager.cpp
+	src/Data.cpp
+	src/CipherSettings.cpp
+	src/DotenvFormat.cpp
+	src/Palette.cpp
+	src/CondFormat.cpp
+	src/RunSql.cpp
+	src/ProxyDialog.cpp
+	src/IconCache.cpp
+	src/SelectItemsPopup.cpp
+	src/TableBrowser.cpp
+	src/sql/parser/ParserDriver.cpp
+	src/sql/parser/sqlite3_lexer.cpp
+	src/sql/parser/sqlite3_parser.cpp
 )
 
-set(APP_FORMS
-	src/AppAbout.ui
-	src/AppEditor.ui
-	src/AppMain.ui
-	src/AppOnline.ui
-	src/AppPreferences.ui
-	src/AppPresent.ui
-	src/AppSongbooks.ui
-	src/AppTutorial.ui
+set(SQLB_FORMS
+	src/AboutDialog.ui
+	src/EditIndexDialog.ui
+	src/EditDialog.ui
+	src/EditTableDialog.ui
+	src/AddRecordDialog.ui
+	src/ExportDataDialog.ui
+	src/ImportCsvDialog.ui
+	src/MainWindow.ui
+	src/PreferencesDialog.ui
+	src/SqlExecutionArea.ui
+	src/VacuumDialog.ui
+	src/CipherDialog.ui
+	src/ExportSqlDialog.ui
+	src/ColumnDisplayFormatDialog.ui
+	src/PlotDock.ui
+	src/RemoteDock.ui
+	src/RemotePushDialog.ui
+	src/FindReplaceDialog.ui
+	src/FileExtensionManager.ui
+	src/CondFormatManager.ui
+	src/ProxyDialog.ui
+	src/SelectItemsPopup.ui
+	src/TableBrowser.ui
 )
 
-set(APP_RESOURCES
+set(SQLB_RESOURCES
 	src/icons/icons.qrc
 	src/translations/flags/flags.qrc
 	src/translations/translations.qrc
+	src/certs/CaCerts.qrc
 	src/qdarkstyle/style.qrc
-	src/qstyle/style.qrc
+)
+
+set(SQLB_MISC
+    src/sql/parser/sqlite3_parser.yy
+    src/sql/parser/sqlite3_lexer.ll
 )
 
 # Translation files
-set(APP_TSS
+set(SQLB_TSS
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_ar_SA.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_cs.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_zh.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_zh_TW.ts"
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_de.ts"
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_es_ES.ts"
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_fr.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_ru.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_pl.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_pt_BR.ts"
 	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_en_GB.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_ko_KR.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_tr.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_uk_UA.ts"
+	"${CMAKE_SOURCE_DIR}/src/translations/sqlb_it.ts"
 )
 
 # Windows image format plugin files
@@ -156,15 +318,15 @@ set(LICENSE_FILES
 	LICENSE-PLUGINS
 )
 
-qt5_wrap_ui(APP_FORM_HDR ${APP_FORMS})
-if(APP_TSS)
+qt5_wrap_ui(SQLB_FORM_HDR ${SQLB_FORMS})
+if(SQLB_TSS)
 	# add translations
-	foreach(APP_TS ${APP_TSS})
-		SET_SOURCE_FILES_PROPERTIES("${APP_TS}" PROPERTIES OUTPUT_LOCATION "${CMAKE_SOURCE_DIR}/src/translations")
-	endforeach(APP_TS ${APP_TSS})
-	qt5_add_translation(APP_QMS ${APP_TSS})
-endif(APP_TSS)
-qt5_add_resources(APP_RESOURCES_RCC ${APP_RESOURCES})
+	foreach(SQLB_TS ${SQLB_TSS})
+		SET_SOURCE_FILES_PROPERTIES("${SQLB_TS}" PROPERTIES OUTPUT_LOCATION "${CMAKE_SOURCE_DIR}/src/translations")
+	endforeach(SQLB_TS ${SQLB_TSS})
+	qt5_add_translation(SQLB_QMS ${SQLB_TSS})
+endif(SQLB_TSS)
+qt5_add_resources(SQLB_RESOURCES_RCC ${SQLB_RESOURCES})
 
 #icon and correct libs/subsystem for windows
 if(WIN32)
@@ -175,12 +337,12 @@ if(WIN32)
 	# resource compilation for MinGW
 		ADD_CUSTOM_COMMAND(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o"
 			COMMAND windres "-I${CMAKE_CURRENT_SOURCE_DIR}" "-i${CMAKE_CURRENT_SOURCE_DIR}/src/winapp.rc" -o "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o" VERBATIM)
-		set(APP_SRC ${APP_SRC} "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o")
+		set(SQLB_SRC ${SQLB_SRC} "${CMAKE_CURRENT_BINARY_DIR}/sqlbicon.o")
 		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-subsystem,windows")
 		set(WIN32_STATIC_LINK -Wl,-Bstatic -lssl -lcrypto -lws2_32)
 		set(ADDITIONAL_LIBS lzma)
 	ELSE( MINGW )
-		set(APP_SRC ${APP_SRC} "${CMAKE_CURRENT_SOURCE_DIR}/src/winapp.rc")
+		set(SQLB_SRC ${SQLB_SRC} "${CMAKE_CURRENT_SOURCE_DIR}/src/winapp.rc")
 	ENDIF( MINGW )
 else()
 	set(LPTHREAD pthread)
@@ -191,25 +353,61 @@ if(APPLE)
 	add_definitions(-DCHECKNEWVERSION)
 endif(APPLE)
 
+# SQLCipher option
+if(sqlcipher)
+	add_definitions(-DENABLE_SQLCIPHER)
+	set(LIBSQLITE_NAME sqlcipher)
+else(sqlcipher)
+	set(LIBSQLITE_NAME sqlite3)
+endif(sqlcipher)
+
 # add extra library path for MacOS and FreeBSD
 set(EXTRAPATH APPLE OR ${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+if(EXTRAPATH)
+	find_library(LIBSQLITE ${LIBSQLITE_NAME} HINTS /usr/local/lib /usr/local/opt/sqlite/lib)
+	set(ADDITIONAL_INCLUDE_PATHS /usr/local/include /usr/local/opt/sqlite/include)
+else(EXTRAPATH)
+	find_library(LIBSQLITE ${LIBSQLITE_NAME})
+endif(EXTRAPATH)
+
+if(WIN32 AND MSVC)
+	find_path(SQLITE3_INCLUDE_DIR sqlite3.h)
+	if(sqlcipher)
+		find_file(SQLITE3_DLL sqlcipher.dll)
+	else(sqlcipher)
+		find_file(SQLITE3_DLL sqlite3.dll)
+	endif(sqlcipher)
+	include_directories(${SQLITE3_INCLUDE_DIR})
+endif()
 
 include_directories(
 		"${CMAKE_CURRENT_BINARY_DIR}"
+		${JSON_DIR}
 		${ADDITIONAL_INCLUDE_PATHS}
 		src)
+if(QHEXEDIT_FOUND)
+    include_directories(${QHEXEDIT_INCLUDE_DIR})
+else()
+    include_directories(${QHEXEDIT_INCL_DIR})
+endif()
 if(QCUSTOMPLOT_FOUND)
     include_directories(${QCUSTOMPLOT_INCLUDE_DIR})
 else()
     include_directories(${QCUSTOMPLOT_DIR})
 endif()
+if(QSCINTILLA_FOUND)
+    include_directories(${QSCINTILLA_INCLUDE_DIR})
+else()
+    include_directories(${QSCINTILLA_DIR})
+endif()
 
 add_executable(${PROJECT_NAME}
-		${APP_HDR}
-		${APP_SRC}
-		${APP_FORM_HDR}
-		${APP_MOC}
-		${APP_RESOURCES_RCC})
+		${SQLB_HDR}
+		${SQLB_SRC}
+		${SQLB_FORM_HDR}
+		${SQLB_MOC}
+		${SQLB_RESOURCES_RCC}
+		${SQLB_MISC})
 
 
 # Warnings
@@ -221,27 +419,52 @@ if (ALL_WARNINGS AND CMAKE_COMPILER_IS_GNUCC)
     endif()
 endif()
 
+if(NOT QHEXEDIT_FOUND)
+    add_dependencies(${PROJECT_NAME} qhexedit)
+endif()
 if(NOT QCUSTOMPLOT_FOUND)
     add_dependencies(${PROJECT_NAME} qcustomplot)
+endif()
+if(NOT QSCINTILLA_FOUND)
+    add_dependencies(${PROJECT_NAME} qscintilla2)
+endif()
+
+if(NOT QHEXEDIT_FOUND)
+    link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QHEXEDIT_DIR}")
 endif()
 if(NOT QCUSTOMPLOT_FOUND)
     link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QCUSTOMPLOT_DIR}")
 endif()
+if(NOT QSCINTILLA_FOUND)
+    link_directories("${CMAKE_CURRENT_BINARY_DIR}/${QSCINTILLA_DIR}")
+endif()
+
 set(QT_LIBS Qt5::Gui Qt5::Test Qt5::PrintSupport Qt5::Widgets Qt5::Network Qt5::Concurrent Qt5::Xml)
 
 target_link_libraries(${PROJECT_NAME}
     ${LPTHREAD}
     ${QT_LIBS}
     ${WIN32_STATIC_LINK}
+    ${LIBSQLITE}
     ${ADDITIONAL_LIBS})
+if(QHEXEDIT_FOUND)
+    target_link_libraries(${PROJECT_NAME} ${QHEXEDIT_LIBRARIES})
+else()
+    target_link_libraries(${PROJECT_NAME} qhexedit)
+endif()
 if(QCUSTOMPLOT_FOUND)
     target_link_libraries(${PROJECT_NAME} ${QCUSTOMPLOT_LIBRARIES})
 else()
     target_link_libraries(${PROJECT_NAME} qcustomplot)
 endif()
+if(QSCINTILLA_FOUND)
+    target_link_libraries(${PROJECT_NAME} ${QSCINTILLA_LIBRARIES})
+else()
+    target_link_libraries(${PROJECT_NAME} qscintilla2)
+endif()
 
 if(WIN32 AND MSVC)
-	set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "vSongBook")
+	set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "DB Browser for SQLite")
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
 	set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_DEFINITIONS_DEBUG "_CONSOLE")
 	set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")

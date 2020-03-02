@@ -7,7 +7,7 @@
 class QAction;
 class QTranslator;
 
-class AppMain;
+class MainWindow;
 
 class Application : public QApplication
 {
@@ -19,7 +19,7 @@ public:
 
     bool dontShowMainWindow() const { return m_dontShowMainWindow; }
 
-	AppMain* homepage() { return m_homepage; }
+    MainWindow* mainWindow() { return m_mainWindow; }
 
     static QString versionString();
 
@@ -28,7 +28,7 @@ protected:
 
 private:
     bool m_dontShowMainWindow;
-	AppMain* m_homepage;
+    MainWindow* m_mainWindow;
     QTranslator* m_translatorQt;
     QTranslator* m_translatorApp;
 };
