@@ -1,7 +1,7 @@
 #include "AppOnline.h"
 #include "ui_AppOnline.h"
 
-/*#include "sqlite.h"
+#include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 
@@ -19,7 +19,7 @@
 #include <QMessageBox>
 #include <QLocale>
 #include <QStandardItemModel>
-#include <QObject>*/
+#include <QObject>
 
 QString networkresult;
 //const int iterations = 20;
@@ -32,12 +32,12 @@ AppOnline::AppOnline(QWidget *parent) :
     ui(new Ui::AppOnline)
 {
     ui->setupUi(this);
-    //ui->TxtSearch->hide();
+    ui->TxtSearch->hide();
 
-    //LoadBooks();
+    LoadBooks();
 }
 
-/*void AppOnline::LoadBooks()
+void AppOnline::LoadBooks()
 {
     showProgress(true);
     qnam = new QNetworkAccessManager();
@@ -229,7 +229,7 @@ void AppOnline::onSongsResult(QNetworkReply* reply)
         }
         this->close();
     }
-}*/
+}
 
 AppOnline::~AppOnline()
 {

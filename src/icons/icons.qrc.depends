@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/icons">
-        <file alias="appicon">appicon.png</file>
+        <file alias="appicon">vsongbook.png</file>
         <file alias="db_new">database_add.png</file>
         <file alias="db_open">database_go.png</file>
         <file alias="db_revert">database_refresh.png</file>
@@ -107,15 +107,6 @@
         <file>bold.png</file>
         <file>font.png</file>
         <file>check.png</file>
-        <file>delete.png</file>        
-		    <file>Chapters.png</file>
-        <file>Down_Black.png</file>
-        <file>Down_White.png</file>
-        <file>Font_Bold.png</file>
-        <file>Font_Size.png</file>
-        <file>Font_Type.png</file>
-        <file>Theme.png</file>
-        <file>Up_Black.png</file>
-        <file>Up_White.png</file>
+        <file>delete.png</file>
     </qresource>
 </RCC>

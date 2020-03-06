@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core gui network widgets printsupport concurrent xml
 
-TARGET = sqlitebrowser
+TARGET = vsongbook
 
 CONFIG += debug_and_release
 CONFIG += qt
@@ -21,151 +21,119 @@ CONFIG(unittest) {
 }
 
 HEADERS += \
-    sqlitedb.h \
-    MainWindow.h \
-    EditIndexDialog.h \
-    AboutDialog.h \
-    EditTableDialog.h \
-    AddRecordDialog.h \
-    Settings.h \
-    PreferencesDialog.h \
-    EditDialog.h \
-    ExportDataDialog.h \
-    ImportCsvDialog.h \
-    sqltextedit.h \
-    sql/sqlitetypes.h \
-    csvparser.h \
-    ExtendedTableWidget.h \
-    sqlitetablemodel.h \
-    RowCache.h \
-    RowLoader.h \
-    FilterTableHeader.h \
-    version.h \
-    SqlExecutionArea.h \
-    VacuumDialog.h \
-    DbStructureModel.h \
-    Application.h \
-    sqlite.h \
-    CipherDialog.h \
-    ExportSqlDialog.h \
-    SqlUiLexer.h \
-    FileDialog.h \
-    ColumnDisplayFormatDialog.h \
-    FilterLineEdit.h \
-    RemoteDatabase.h \
-    ForeignKeyEditorDelegate.h \
-    PlotDock.h \
-    RemoteDock.h \
-    RemoteModel.h \
-    RemotePushDialog.h \
-    docktextedit.h \
-    FindReplaceDialog.h \
-    ExtendedScintilla.h \
-    FileExtensionManager.h \
-    CondFormatManager.h \
-    Data.h \
-    CipherSettings.h \
-    DotenvFormat.h \
-    Palette.h \
-    CondFormat.h \
-    sql/Query.h \
-    RunSql.h \
-    sql/ObjectIdentifier.h \
-    ProxyDialog.h \
-    IconCache.h \
-    SelectItemsPopup.h \
-    TableBrowser.h \
     sql/parser/ParserDriver.h \
     sql/parser/sqlite3_lexer.h \
     sql/parser/sqlite3_location.h \
-    sql/parser/sqlite3_parser.hpp
+    sql/parser/sqlite3_parser.hpp \
+    sql/ObjectIdentifier.h \
+    sql/Query.h \
+    sql/sqlitetypes.h \
+    AddRecordDialog.h \
+    AppAbout.h \
+    AppEditor.h \
+    AppHome.h \
+    Application.h \
+    AppOnline.h \
+    AppPreferences.h \
+    AppPresent.h \
+    AppSongbooks.h \
+    AppTutorial.h \
+    AsBase.h \
+    AsDelegate.h \
+    AsItem.h \
+    AsUtils.h \
+    CipherSettings.h \
+    CondFormat.h \
+    CondFormatManager.h \
+    csvparser.h \
+    Data.h \
+    DbStructureModel.h \
+    docktextedit.h \
+    DotenvFormat.h \
+    ExtendedScintilla.h \
+    ExtendedTableWidget.h \
+    FileDialog.h \
+    FilterLineEdit.h \
+    FilterTableHeader.h \
+    ForeignKeyEditorDelegate.h \
+    IconCache.h \
+    Palette.h \
+    RemoteDatabase.h \
+    RemoteModel.h \
+    RowCache.h \
+    RowLoader.h \
+    RunSql.h \
+    SelectItemsPopup.h \
+    Settings.h \
+    sqlite.h \
+    sqlitedb.h \
+    sqlitetablemodel.h \
+    sqltextedit.h \
+    SqlUiLexer.h \
+    version.h
 
 SOURCES += \
-    sqlitedb.cpp \
-    MainWindow.cpp \
-    EditIndexDialog.cpp \
-    EditTableDialog.cpp \
-    AddRecordDialog.cpp \
-    Settings.cpp \
-    PreferencesDialog.cpp \
-    AboutDialog.cpp \
-    EditDialog.cpp \
-    ExportDataDialog.cpp \
-    ImportCsvDialog.cpp \
-    sqltextedit.cpp \
-    sql/sqlitetypes.cpp \
-    csvparser.cpp \
-    ExtendedTableWidget.cpp \
-    sqlitetablemodel.cpp \
-    RowLoader.cpp \
-    FilterTableHeader.cpp \
-    SqlExecutionArea.cpp \
-    VacuumDialog.cpp \
-    DbStructureModel.cpp \
-    Application.cpp \
-    CipherDialog.cpp \
-    ExportSqlDialog.cpp \
-    SqlUiLexer.cpp \
-    FileDialog.cpp \
-    ColumnDisplayFormatDialog.cpp \
-    FilterLineEdit.cpp \
-    RemoteDatabase.cpp \
-    ForeignKeyEditorDelegate.cpp \
-    PlotDock.cpp \
-    RemoteDock.cpp \
-    RemoteModel.cpp \
-    RemotePushDialog.cpp \
-    docktextedit.cpp \
-    FindReplaceDialog.cpp \
-    ExtendedScintilla.cpp \
-    FileExtensionManager.cpp \
-    CondFormatManager.cpp \
-    Data.cpp \
-    CipherSettings.cpp \
-    DotenvFormat.cpp \
-    Palette.cpp \
-    CondFormat.cpp \
-    sql/Query.cpp \
-    RunSql.cpp \
     sql/ObjectIdentifier.cpp \
-    ProxyDialog.cpp \
-    IconCache.cpp \
-    SelectItemsPopup.cpp \
-    TableBrowser.cpp \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
-    sql/parser/sqlite3_parser.cpp
+    sql/parser/sqlite3_parser.cpp \
+    sql/Query.cpp \
+    sql/sqlitetypes.cpp \
+    AddRecordDialog.cpp \
+    AppAbout.cpp \
+    AppEditor.cpp \
+    AppHome.cpp \
+    Application.cpp \
+    AppOnline.cpp \
+    AppPreferences.cpp \
+    AppPresent.cpp \
+    AppSongbooks.cpp \
+    AppTutorial.cpp \
+    AsBase.cpp \
+    AsDelegate.cpp \
+    AsUtils.cpp \
+    CipherSettings.cpp \
+    CondFormat.cpp \
+    csvparser.cpp \
+    Data.cpp \
+    DbStructureModel.cpp \
+    docktextedit.cpp \
+    DotenvFormat.cpp \
+    ExtendedScintilla.cpp \
+    ExtendedTableWidget.cpp \
+    FileExtensionManager.cpp \
+    FilterLineEdit.cpp \
+    FilterTableHeader.cpp \
+    ForeignKeyEditorDelegate.cpp \
+    IconCache.cpp \
+    Palette.cpp 
+    RemoteDatabase.cpp \
+    RemoteModel.cpp \
+    RowLoader.cpp \
+    RunSql.cpp \
+    SelectItemsPopup.cpp \
+    Settings.cpp \
+    sqlitedb.cpp \
+    sqlitetablemodel.cpp \
+    sqltextedit.cpp \
+    SqlUiLexer.cpp
 
 RESOURCES += icons/icons.qrc \
+             images/images.qrc \
              translations/flags/flags.qrc \
              translations/translations.qrc \
              certs/CaCerts.qrc \
              qdarkstyle/style.qrc
 
 FORMS += \
-    MainWindow.ui \
-    EditIndexDialog.ui \
-    AboutDialog.ui \
-    EditTableDialog.ui \
-    AddRecordDialog.ui \
-    PreferencesDialog.ui \
-    EditDialog.ui \
-    ExportDataDialog.ui \
-    ImportCsvDialog.ui \
-    SqlExecutionArea.ui \
-    VacuumDialog.ui \
-    CipherDialog.ui \
-    ExportSqlDialog.ui \
-    ColumnDisplayFormatDialog.ui \
-    PlotDock.ui \
-    RemoteDock.ui \
-    RemotePushDialog.ui \
-    FindReplaceDialog.ui \
-    FileExtensionManager.ui \
-    CondFormatManager.ui \
-    ProxyDialog.ui \
-    SelectItemsPopup.ui \
-    TableBrowser.ui
+    AppAbout.ui \
+    AppSongbooks.ui \
+    AppEditor.ui \
+    AppHome.ui \
+    AppOnline.ui \
+    AppPreferences.ui \
+    AppPresent.ui \
+    AppTutorial.ui
 
 TRANSLATIONS += \
     translations/sqlb_ar_SA.ts \
@@ -208,6 +176,7 @@ LIBPATH_QHEXEDIT=$$OUT_PWD/../libs/qhexedit
 LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
 LIBPATH_QSCINTILLA=$$OUT_PWD/../libs/qscintilla/Qt4Qt5
 LIBPATH_JSON=$$OUT_PWD/../libs/json
+
 unix {
     LIBS += -ldl
 }
@@ -215,7 +184,7 @@ os2 {
     RC_FILE = os2app.rc
 }
 win32 {
-    TARGET = "DB Browser for SQLite"
+    TARGET = "vSongBook"
     RC_FILE = winapp.rc
     INCLUDEPATH += $$PWD
     CONFIG(debug,debug|release) {
@@ -236,9 +205,10 @@ win32 {
     LIBS += -L$$PWD/../../../dev/SQLite/ -lsqlite3
     INCLUDEPATH += $$PWD/../../../dev/SQLite
     DEPENDPATH += $$PWD/../../../dev/SQLite
+
 }
 macx {
-    TARGET = "DB Browser for SQLite"
+    TARGET = "vSongBook"
     RC_FILE = macapp.icns
     QT += macextras opengl
     INCLUDEPATH += /usr/local/include
@@ -267,7 +237,7 @@ unix {
     #
     # The values of each variable changes between supported platforms and are describe as follow
 
-    # Default configuration for package sqlitebrowser.
+    # Default configuration for package vsongbook.
     # The default prefix is /usr/local
     !defined(PREFIX, var):        PREFIX = /usr/local
     !defined(BINDIR, var):        BINDIR = $$PREFIX/bin
@@ -279,15 +249,15 @@ unix {
 
     # Icon
     icon.path = $$DATADIR/icons/hicolor/256x256/apps/
-    icon.files = icons/sqlitebrowser.png
+    icon.files = icons/vsongbook.png
     INSTALLS += icon
 
     # Desktop metadata
     desktop.path = $$DATADIR/applications/
-    desktop.files = ../distri/sqlitebrowser.desktop
+    desktop.files = ../distri/vsongbook.desktop
     INSTALLS += desktop
     appdata.path = $$DATADIR/appdata/
-    appdata.files = ../distri/sqlitebrowser.desktop.appdata.xml
+    appdata.files = ../distri/vsongbook.desktop.appdata.xml
     INSTALLS += appdata
 }
 

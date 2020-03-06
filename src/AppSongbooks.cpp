@@ -1,7 +1,7 @@
 #include "AppSongbooks.h"
 #include "ui_AppSongbooks.h"
 
-/*#include "sqlite.h"
+#include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
 #include <QStandardItemModel>
@@ -15,7 +15,7 @@
 #include "AsBase.h"
 #include "AsUtils.h"
 #include "AsItem.h"
-#include "AsDelegate.h"*/
+#include "AsDelegate.h"
 
 bool isNewBook;
 int bookcount;
@@ -28,10 +28,15 @@ AppSongbooks::AppSongbooks(QWidget *parent) :
 {
     ui->setupUi(this);
 	isNewBook = false;
-	//LoadBooklist("");
+	LoadBooklist("");
 }
 
-/*void AppSongbooks::LoadBooklist(QString searchstr)
+AppSongbooks::~AppSongbooks()
+{
+    delete ui;
+}
+
+void AppSongbooks::LoadBooklist(QString searchstr)
 {
 	QStringList strList;
 
@@ -224,9 +229,4 @@ void AppSongbooks::on_actionRefresh_triggered()
 void AppSongbooks::on_actionUpdate_triggered()
 {
 	LoadBooklist("");
-}*/
-
-AppSongbooks::~AppSongbooks()
-{
-	delete ui;
 }

@@ -27,4 +27,4 @@ BEGIN
     END
 END
 
-IDI_DB4S ICON "appicon.ico"
+IDI_DB4S ICON "vsongbook.ico"

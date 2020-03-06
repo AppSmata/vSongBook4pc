@@ -19,7 +19,7 @@ public:
     ~AppPreferences();
 
 private slots:
-    /*void SelectedTheme(int theme);
+    void SelectedTheme(int theme);
     bool GetSettings();
     void ReloadSettings();
     void SetUpStuff();
@@ -71,7 +71,7 @@ private slots:
     void on_BtnTheme12_clicked();
     void on_BtnTheme13_clicked();
     void on_BtnTheme14_clicked();
-    void on_BtnTheme15_clicked();*/
+    void on_BtnTheme15_clicked();
 
 private:
     Ui::AppPreferences*ui;

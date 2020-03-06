@@ -1,7 +1,7 @@
 #ifndef APPPRESENT_H
 #define APPPRESENT_H
 
-//#include "sqlitedb.h"
+#include "sqlitedb.h"
 #include <QMainWindow>
 
 class RemoteDatabase;
@@ -20,11 +20,11 @@ public:
 private:
     Ui::AppPresent* ui;
 
-    //DBBrowserDB db;
-    //RemoteDatabase* m_remoteDb;
+    DBBrowserDB db;
+    RemoteDatabase* m_remoteDb;
 
 private slots:
-    /*void SetUpStuff();
+    void SetUpStuff();
     void ReloadSettings();
     void ReloadControls();
     void PresentSong(QString setsong);
@@ -45,7 +45,7 @@ private slots:
     void on_actionUp_triggered();
     void on_actionDown_triggered();
     void on_BtnDown_clicked();
-    void on_BtnUp_clicked();*/
+    void on_BtnUp_clicked();
 
 };
 

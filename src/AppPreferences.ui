@@ -13,7 +13,7 @@
   <property name="font">
    <font>
     <family>Trebuchet MS</family>
-    <pointsize>15</pointsize>
+    <pointsize>12</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,7 @@
          <property name="font">
           <font>
            <family>Trebuchet MS</family>
-           <pointsize>15</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="inputMask">
@@ -132,7 +132,7 @@
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
             <weight>50</weight>
             <bold>false</bold>
            </font>
@@ -236,7 +236,7 @@
               <property name="font">
                <font>
                 <family>Trebuchet MS</family>
-                <pointsize>15</pointsize>
+                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <bold>false</bold>
                </font>
@@ -270,7 +270,7 @@
               <property name="font">
                <font>
                 <family>Trebuchet MS</family>
-                <pointsize>15</pointsize>
+                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <bold>false</bold>
                </font>
@@ -325,7 +325,7 @@
               <property name="font">
                <font>
                 <family>Trebuchet MS</family>
-                <pointsize>15</pointsize>
+                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <bold>false</bold>
                </font>
@@ -346,7 +346,7 @@
               <property name="font">
                <font>
                 <family>Trebuchet MS</family>
-                <pointsize>15</pointsize>
+                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <bold>false</bold>
                </font>
@@ -396,7 +396,7 @@
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
             <weight>50</weight>
             <bold>false</bold>
            </font>
@@ -496,7 +496,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="images/images.qrc">
                 <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
               </property>
               <property name="iconSize">
@@ -553,7 +553,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="images/images.qrc">
                 <normaloff>:/Up_Black.png</normaloff>:/Up_Black.png</iconset>
               </property>
               <property name="iconSize">
@@ -701,7 +701,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="images/images.qrc">
                 <normaloff>:/Up_Black.png</normaloff>:/Up_Black.png</iconset>
               </property>
               <property name="iconSize">
@@ -730,7 +730,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="images/images.qrc">
                 <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
               </property>
               <property name="iconSize">
@@ -830,7 +830,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="images/images.qrc">
                 <normaloff>:/Up_Black.png</normaloff>:/Up_Black.png</iconset>
               </property>
               <property name="iconSize">
@@ -859,7 +859,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="icons/icons.qrc">
+               <iconset resource="images/images.qrc">
                 <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
               </property>
               <property name="iconSize">
@@ -883,7 +883,7 @@
           <property name="font">
            <font>
             <family>Trebuchet MS</family>
-            <pointsize>15</pointsize>
+            <pointsize>12</pointsize>
             <weight>50</weight>
             <bold>false</bold>
            </font>
@@ -1356,6 +1356,7 @@ Theme</string>
  </widget>
  <resources>
   <include location="icons/icons.qrc"/>
+  <include location="images/images.qrc"/>
  </resources>
  <connections/>
 </ui>

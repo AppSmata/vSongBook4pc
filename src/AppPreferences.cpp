@@ -1,7 +1,7 @@
 #include "AppPreferences.h"
 #include "ui_AppPreferences.h"
 
-/*#include "Application.h"
+#include "Application.h"
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
@@ -9,7 +9,7 @@
 #include "AsBase.h"
 #include "AsUtils.h"
 #include "AsItem.h"
-#include "AsDelegate.h"*/
+#include "AsDelegate.h"
 
 #include <QStandardItemModel>
 #include <QObject>
@@ -23,11 +23,11 @@ AppPreferences::AppPreferences(QWidget* parent) :
     ui(new Ui::AppPreferences)
 {
     ui->setupUi(this);
-	//GetSettings();
-	//ReloadSettings();
-	//SetUpStuff();
+	GetSettings();
+	ReloadSettings();
+	SetUpStuff();
 }
-/*
+
 bool AppPreferences::GetSettings()
 {
 	bool retval = false;
@@ -748,7 +748,7 @@ void AppPreferences::on_BtnTheme15_clicked()
 {
 	AsBase::SetOption("app_theme", "15");
 	SelectedTheme(15);
-}*/
+}
 
 AppPreferences::~AppPreferences()
 {

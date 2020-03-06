@@ -8,7 +8,7 @@
 #include <QAction>
 
 #include "Application.h"
-#include "MainWindow.h"
+#include "AppHome.h"
 #include "Settings.h"
 #include "version.h"
 
@@ -16,8 +16,9 @@ Application::Application(int& argc, char** argv) :
     QApplication(argc, argv)
 {
     // Set organisation and application names
-    setOrganizationName("sqlitebrowser");
+    setOrganizationName("Appsmata Solutions");
     setApplicationName("vSongBook");
+	setApplicationVersion(APP_VERSION);
 
     // Set character encoding to UTF8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
@@ -151,38 +152,15 @@ Application::Application(int& argc, char** argv) :
     }
 
     // Show main window
-    m_mainWindow = new MainWindow();
-    m_mainWindow->showMaximized();
+    m_homepage = new AppHome();
+    m_homepage->showMaximized();
     connect(this, &Application::lastWindowClosed, this, &Application::quit);
 
-    // Open database if one was specified
-    if(fileToOpen.size())
-    {
-        if(m_mainWindow->fileOpen(fileToOpen, false, readOnly))
-        {
-            // If database could be opened run the SQL scripts
-            for(const QString& f : sqlToExecute)
-            {
-                QFile file(f);
-                if(file.open(QIODevice::ReadOnly))
-                {
-                    m_mainWindow->getDb().executeMultiSQL(file.readAll(), false, true);
-                    file.close();
-                }
-            }
-            if(!sqlToExecute.isEmpty())
-                m_mainWindow->refresh();
-
-            // Jump to table if the -t/--table parameter was set
-            if(!tableToBrowse.isEmpty())
-                m_mainWindow->switchToBrowseDataTab(sqlb::ObjectIdentifier("main", tableToBrowse.toStdString()));
-        }
-    }
 }
 
 Application::~Application()
 {
-    delete m_mainWindow;
+    delete m_homepage;
 }
 
 bool Application::event(QEvent* event)
@@ -190,7 +168,7 @@ bool Application::event(QEvent* event)
     switch(event->type())
     {
     case QEvent::FileOpen:
-        m_mainWindow->fileOpen(static_cast<QFileOpenEvent*>(event)->file());
+        //m_mainWindow->fileOpen(static_cast<QFileOpenEvent*>(event)->file());
         return true;
     default:
         return QApplication::event(event);

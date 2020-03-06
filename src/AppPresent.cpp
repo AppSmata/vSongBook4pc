@@ -1,13 +1,13 @@
 #include "AppPresent.h"
 #include "ui_AppPresent.h"
 
-/*#include "AsBase.h"
+#include "AsBase.h"
 #include "AsUtils.h"
 #include "Application.h"
 
 #include "sqlite.h"
 #include "RunSql.h"
-#include "sqlitetablemodel.h"*/
+#include "sqlitetablemodel.h"
 
 std::vector<QString> songverses1, songverses2, labels, view_set, view_fonts;
 int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont, view_font_size, view_fonttype, view_theme;
@@ -21,14 +21,13 @@ AppPresent::AppPresent(QWidget *parent) :
     ui(new Ui::AppPresent)
 {
     ui->setupUi(this);
-	//SetUpStuff();
+	SetUpStuff();
 	
-	//this_song = view_set[23].toInt();
-	//PresentSong(view_set[23]);
-	//SetTheme();
+	this_song = view_set[23].toInt();
+	PresentSong(view_set[23]);
+	SetTheme();
 }
 
-/*
 void AppPresent::SetUpStuff()
 {
 	view_fonts.push_back("Arial");
@@ -45,11 +44,11 @@ void AppPresent::SetUpStuff()
 	view_fonts.push_back("Trebuchet MS");
 	view_fonts.push_back("Verdana");
 
-	iconDownWhite.addFile(QString::fromUtf8(":/Down_White.png"), QSize(), QIcon::Normal, QIcon::Off);
-	iconDownBlack.addFile(QString::fromUtf8(":/Down_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconDownWhite.addFile(QString::fromUtf8(":/images/Down_White.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconDownBlack.addFile(QString::fromUtf8(":/images/Down_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
 
-	iconUpWhite.addFile(QString::fromUtf8(":/Up_White.png"), QSize(), QIcon::Normal, QIcon::Off);
-	iconUpBlack.addFile(QString::fromUtf8(":/Up_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconUpWhite.addFile(QString::fromUtf8(":/images/Up_White.png"), QSize(), QIcon::Normal, QIcon::Off);
+	iconUpBlack.addFile(QString::fromUtf8(":/images/Up_Black.png"), QSize(), QIcon::Normal, QIcon::Off);
 
 	view_set = AsBase::AppSettings();
 	ui->LblApp->setText(qApp->applicationName() + " " + qApp->applicationVersion() + " - " + view_set[1]);
@@ -317,6 +316,11 @@ void AppPresent::SetPresentation()
 	}
 }
 
+AppPresent::~AppPresent()
+{
+    delete ui;
+}
+
 void AppPresent::on_actionClose_triggered()
 {
     this->close();
@@ -456,9 +460,4 @@ void AppPresent::on_BtnDown_clicked()
 		SetPresentation();
 	}
 }
-*/
 
-AppPresent::~AppPresent()
-{
-	delete ui;
-}

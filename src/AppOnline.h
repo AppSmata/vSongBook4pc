@@ -21,7 +21,7 @@ public:
     ~AppOnline();
 
 private slots:
-    /*void onBooksResult(QNetworkReply* reply);
+    void onBooksResult(QNetworkReply* reply);
     void onSongsResult(QNetworkReply* reply);
     void createListView();
     void LoadBooks();
@@ -30,7 +30,7 @@ private slots:
 
     void on_LstBooks_clicked(const QModelIndex &index);
     void on_BtnProceed_clicked();
-    void on_BtnCancel_clicked();*/
+    void on_BtnCancel_clicked();
 
 private:
     Ui::AppOnline *ui;

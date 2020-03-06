@@ -13,7 +13,7 @@
   <property name="font">
    <font>
     <family>Trebuchet MS</family>
-    <pointsize>15</pointsize>
+    <pointsize>12</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -348,7 +348,7 @@
   </action>
   <action name="actionExtra">
    <property name="icon">
-    <iconset resource="icons/icons.qrc">
+    <iconset resource="images/images.qrc">
      <normaloff>:/Down_Black.png</normaloff>:/Down_Black.png</iconset>
    </property>
    <property name="text">
@@ -357,6 +357,7 @@
   </action>
  </widget>
  <resources>
+  <include location="images/images.qrc"/>
   <include location="icons/icons.qrc"/>
  </resources>
  <connections/>

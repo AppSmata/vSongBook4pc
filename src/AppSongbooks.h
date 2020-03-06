@@ -1,5 +1,5 @@
-#ifndef APPBOOKLIST_H
-#define APPBOOKLIST_H
+#ifndef APPSONGBOOKS_H
+#define APPSONGBOOKS_H
 
 #include <QDialog>
 #include <QModelIndex>
@@ -19,7 +19,7 @@ public:
     ~AppSongbooks();
 
 private slots:
-    /*void LoadBook();
+    void LoadBook();
     void GetUpdates();
     void LoadBooklist(QString searchstr);
     void SaveChanges();
@@ -32,11 +32,11 @@ private slots:
     void on_actionSave_triggered();
     void on_actionDelete_triggered();
     void on_actionRefresh_triggered();
-    void on_actionUpdate_triggered();*/
+    void on_actionUpdate_triggered();
 
 private:
     Ui::AppSongbooks*ui;
     QStandardItemModel* bookModel;
 };
 
-#endif //APPBOOKLIST_H
+#endif //APPSONGBOOKS_H
