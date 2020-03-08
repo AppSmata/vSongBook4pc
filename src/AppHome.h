@@ -82,7 +82,6 @@ private slots:
     void on_actionBold_triggered();
     void on_actionSmaller_triggered();
     void on_actionBigger_triggered();
-    void on_actionDelete_triggered();
     void on_actionPreferences_triggered();
     void on_TxtSearch_returnPressed();
     void on_actionEdit_triggered();

@@ -25,7 +25,7 @@
 #include "AppPresent.h"
 #include "AppTutorial.h"
 
-int home_fontgen, home_fontprev, home_fonttype;
+int home_fontgen, home_fontprev, home_fonttype, selectedbook;
 bool isReady, searchAll, isDarkMode, isPreviewBold;
 QString selected_book, selected_song, search_term;
 std::vector<QString> bookids, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories;
@@ -193,7 +193,8 @@ void AppHome::FontBold()
 
 void AppHome::on_CmbSongbooks_currentIndexChanged(int index)
 {
-	if (isReady) PopulateSonglists("");
+    selectedbook = index;
+    if (isReady) PopulateSonglists("");
 }
 
 bool AppHome::PopulateSongbooks()
@@ -203,8 +204,7 @@ bool AppHome::PopulateSongbooks()
 
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col;
-	int rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	QByteArray bar = AsUtils::BOOK_LIST_SQL("1").toLocal8Bit();
 	char* sqlQuery = bar.data();
@@ -257,64 +257,65 @@ void AppHome::PopulateSonglists(QString SearchStr)
             SearchStr.toInt(&isNumeric, 10);
             if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
             else ResultCount.append("songs found with: \"" + SearchStr + "\"");
-	}
-
+    }
     int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
-	QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[ui->CmbSongbooks->currentIndex()], searchAll);
+    QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[selectedbook], searchAll);
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();
 
-	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+    if (rc == SQLITE_OK)
+    {
+        rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+        int songcount = 0;
+        for (int i = 1; i < row + 1; i++)
+        {
+            QString numberstr = *(qryResult + i * col + 2);
+            QString titlestr = *(qryResult + i * col + 4);
+            QString titles = numberstr + "# " + titlestr;
+            QString contents = *(qryResult + i * col + 6);
 
-	int songcount = 0;
-	for (int i = 1; i < row + 1; i++)
-	{
-		QString numberstr = *(qryResult + i * col + 2);
-		QString titlestr = *(qryResult + i * col + 4);
-		QString titles = numberstr + "# " + titlestr;
-		QString contents = *(qryResult + i * col + 6);
+            if (SearchStr.isEmpty()) strList.append(titles);
+            else strList.append(titles + " (" + *(qryResult + i * col + 10) + ")");
 
-		if (SearchStr.isEmpty()) strList.append(titles);
-		else strList.append(titles + " (" + *(qryResult + i * col + 10) + ")");
+            songids.push_back(*(qryResult + i * col + 0));
+            songtitles.push_back(titles);
+            songaliases.push_back(*(qryResult + i * col + 3));
+            songcontents.push_back(contents);
+            songbooks.push_back(*(qryResult + i * col + 10));
 
-		songids.push_back(*(qryResult + i * col + 0));
-		songtitles.push_back(titles);
-		songaliases.push_back(*(qryResult + i * col + 3));
-		songcontents.push_back(contents);
-		songbooks.push_back(*(qryResult + i * col + 10));
+            titles = AsBase::ReplaceList(titles);
+            contents = AsBase::ReplaceList(contents);
 
-		titles = AsBase::ReplaceList(titles);
-		contents = AsBase::ReplaceList(contents);
+            QStandardItem* songItem = new QStandardItem;
+            AsItem song;
 
-		QStandardItem* songItem = new QStandardItem;
-		AsItem song;
+            if (titles.length() > 40) song.title = titles.left(35) + "...";
+            else song.title = titles;
 
-		if (titles.length() > 40) song.title = titles.left(35) + "...";
-		else song.title = titles;
+            if (contents.length() > 40) song.content = contents.left(35) + "...";
+            else song.content = contents;
 
-		if (contents.length() > 40) song.content = contents.left(35) + "...";
-		else song.content = contents;
+            songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
+            songModel->appendRow(songItem);
+            songcount++;
+        }
 
-		songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
-		songModel->appendRow(songItem);
-		songcount++;
-	}
+        ui->LblResult->setText(QString::number(songcount) + ResultCount);
+        AsDelegate* itemDelegate = new AsDelegate(this);
+        ui->LstResults->setItemDelegate(itemDelegate);
+        ui->LstResults->setModel(songModel);
+        ui->LstResults->setSpacing(1);
+        ui->LstResults->setStyleSheet("* { background-color: #D3D3D3; }");
 
-	ui->LblResult->setText(QString::number(songcount) + ResultCount);
-	AsDelegate* itemDelegate = new AsDelegate(this);
-	ui->LstResults->setItemDelegate(itemDelegate);
-	ui->LstResults->setModel(songModel);
-	ui->LstResults->setSpacing(1);
-	ui->LstResults->setStyleSheet("* { background-color: #D3D3D3; }");
+        sqlite3_free_table(qryResult);
+        sqlite3_close(db);
 
-	sqlite3_free_table(qryResult);
-	sqlite3_close(db);
-
-	if (songcount > 0)
-	{
-		ui->LstResults->setCurrentIndex(songModel->index(0, 0));
-		OpenSongPreview(songModel->index(0, 0));
-	}
+        if (songcount > 0)
+        {
+            ui->LstResults->setCurrentIndex(songModel->index(0, 0));
+            OpenSongPreview(songModel->index(0, 0));
+        }
+    }
 }
 
 void AppHome::OpenSongPreview(const QModelIndex& index)
@@ -461,11 +462,6 @@ void AppHome::on_actionSmaller_triggered()
 void AppHome::on_actionBigger_triggered()
 {
 	FontBigger();
-}
-
-void AppHome::on_actionDelete_triggered()
-{
-
 }
 
 void AppHome::on_actionPreferences_triggered()

@@ -77,7 +77,7 @@ Application::Application(int& argc, char** argv) :
     QString fileToOpen;
     QString tableToBrowse;
     QStringList sqlToExecute;
-    bool readOnly = false;
+    //bool readOnly = false;
     m_dontShowMainWindow = false;
     for(int i=1;i<arguments().size();i++)
     {
@@ -116,7 +116,7 @@ Application::Application(int& argc, char** argv) :
         } else if(arguments().at(i) == "-q" || arguments().at(i) == "--quit") {
             m_dontShowMainWindow = true;
         } else if(arguments().at(i) == "-R" || arguments().at(i) == "--read-only") {
-            readOnly = true;
+            //readOnly = true;
         } else if(arguments().at(i) == "-o" || arguments().at(i) == "--option" ||
                   arguments().at(i) == "-O" || arguments().at(i) == "--save-option") {
             const QString optionWarning = tr("The -o/--option and -O/--save-option options require an argument in the form group/setting=value");

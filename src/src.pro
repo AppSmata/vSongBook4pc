@@ -29,7 +29,6 @@ HEADERS += \
     AppAbout.h \
     AppEditor.h \
     AppHome.h \
-    Application.h \
     AppOnline.h \
     AppPreferences.h \
     AppPresent.h \
@@ -49,15 +48,12 @@ HEADERS += \
     Application.h \
     sqlite.h \
     SqlUiLexer.h \
-    FileDialog.h \
     FilterLineEdit.h \
     RemoteDatabase.h \
     ForeignKeyEditorDelegate.h \
     RemoteModel.h \
     docktextedit.h \
     ExtendedScintilla.h \
-    FileExtensionManager.h \
-    CondFormatManager.h \
     Data.h \
     CipherSettings.h \
     DotenvFormat.h \
@@ -67,7 +63,6 @@ HEADERS += \
     RunSql.h \
     sql/ObjectIdentifier.h \
     IconCache.h \
-    SelectItemsPopup.h \
     sql/parser/ParserDriver.h \
     sql/parser/sqlite3_lexer.h \
     sql/parser/sqlite3_location.h \
@@ -81,7 +76,6 @@ SOURCES += \
     AppAbout.cpp \
     AppEditor.cpp \
     AppHome.cpp \
-    Application.cpp \
     AppOnline.cpp \
     AppPreferences.cpp \
     AppPresent.cpp \
@@ -104,8 +98,6 @@ SOURCES += \
     RemoteModel.cpp \
     docktextedit.cpp \
     ExtendedScintilla.cpp \
-    FileExtensionManager.cpp \
-    CondFormatManager.cpp \
     Data.cpp \
     CipherSettings.cpp \
     DotenvFormat.cpp \
@@ -114,7 +106,6 @@ SOURCES += \
     sql/Query.cpp \
     RunSql.cpp \
     sql/ObjectIdentifier.cpp \
-    ProxyDialog.cpp \
     IconCache.cpp \
     sql/parser/ParserDriver.cpp \
     sql/parser/sqlite3_lexer.cpp \
