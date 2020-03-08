@@ -1,4 +1,4 @@
-project(vsongbook)
+project(vSongBook)
 cmake_minimum_required(VERSION 2.8.12.2)
 
 # BUILD_VERSION is the current date in YYYYMMDD format. It is only
@@ -51,7 +51,7 @@ if(WIN32 AND MSVC)
                 if(sqlcipher)
                         set(SQLITE3_PATH "C:/QtP/SQLCipher-Win64" CACHE PATH "SQLCipher Path")
                 else()
-                        set(SQLITE3_PATH "D:/SQLite-Win64" CACHE PATH "SQLite Path")
+                        set(SQLITE3_PATH "D:/SQLite" CACHE PATH "SQLite Path")
                 endif()
 	else()
 		# Paths for 32-bit windows builds
@@ -63,7 +63,7 @@ if(WIN32 AND MSVC)
                 if(sqlcipher)
                         set(SQLITE3_PATH "D:/QtP/SQLCipher-Win32" CACHE PATH "SQLCipher Path")
                 else()
-                        set(SQLITE3_PATH "D:/SQLite-Win32" CACHE PATH "SQLite Path")
+                        set(SQLITE3_PATH "D:/SQLite" CACHE PATH "SQLite Path")
                 endif()
 	endif()
 	set(CMAKE_PREFIX_PATH "${QT5_PATH};${SQLITE3_PATH}")
@@ -124,7 +124,6 @@ set(SQLB_HDR
 )
 
 set(SQLB_MOC_HDR
-	src/AddRecordDialog.h
 	src/AppAbout.h
 	src/AppEditor.h
 	src/AppHome.h

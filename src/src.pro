@@ -21,14 +21,11 @@ CONFIG(unittest) {
 }
 
 HEADERS += \
-    sql/parser/ParserDriver.h \
-    sql/parser/sqlite3_lexer.h \
-    sql/parser/sqlite3_location.h \
-    sql/parser/sqlite3_parser.hpp \
-    sql/ObjectIdentifier.h \
-    sql/Query.h \
-    sql/sqlitetypes.h \
-    AddRecordDialog.h \
+    AsBase.h \
+    AsDelegate.h \
+    AsItem.h \
+    AsUtils.h \
+    sqlitedb.h \
     AppAbout.h \
     AppEditor.h \
     AppHome.h \
@@ -38,48 +35,49 @@ HEADERS += \
     AppPresent.h \
     AppSongbooks.h \
     AppTutorial.h \
-    AsBase.h \
-    AsDelegate.h \
-    AsItem.h \
-    AsUtils.h \
-    CipherSettings.h \
-    CondFormat.h \
-    CondFormatManager.h \
+    Settings.h \
+    sqltextedit.h \
+    sql/sqlitetypes.h \
     csvparser.h \
-    Data.h \
-    DbStructureModel.h \
-    docktextedit.h \
-    DotenvFormat.h \
-    ExtendedScintilla.h \
     ExtendedTableWidget.h \
-    FileDialog.h \
-    FilterLineEdit.h \
-    FilterTableHeader.h \
-    ForeignKeyEditorDelegate.h \
-    IconCache.h \
-    Palette.h \
-    RemoteDatabase.h \
-    RemoteModel.h \
+    sqlitetablemodel.h \
     RowCache.h \
     RowLoader.h \
-    RunSql.h \
-    SelectItemsPopup.h \
-    Settings.h \
+    FilterTableHeader.h \
+    version.h \
+    DbStructureModel.h \
+    Application.h \
     sqlite.h \
-    sqlitedb.h \
-    sqlitetablemodel.h \
-    sqltextedit.h \
     SqlUiLexer.h \
-    version.h
+    FileDialog.h \
+    FilterLineEdit.h \
+    RemoteDatabase.h \
+    ForeignKeyEditorDelegate.h \
+    RemoteModel.h \
+    docktextedit.h \
+    ExtendedScintilla.h \
+    FileExtensionManager.h \
+    CondFormatManager.h \
+    Data.h \
+    CipherSettings.h \
+    DotenvFormat.h \
+    Palette.h \
+    CondFormat.h \
+    sql/Query.h \
+    RunSql.h \
+    sql/ObjectIdentifier.h \
+    IconCache.h \
+    SelectItemsPopup.h \
+    sql/parser/ParserDriver.h \
+    sql/parser/sqlite3_lexer.h \
+    sql/parser/sqlite3_location.h \
+    sql/parser/sqlite3_parser.hpp
 
 SOURCES += \
-    sql/ObjectIdentifier.cpp \
-    sql/parser/ParserDriver.cpp \
-    sql/parser/sqlite3_lexer.cpp \
-    sql/parser/sqlite3_parser.cpp \
-    sql/Query.cpp \
-    sql/sqlitetypes.cpp \
-    AddRecordDialog.cpp \
+    AsBase.cpp \
+    AsDelegate.cpp \
+    AsUtils.cpp \
+    sqlitedb.cpp \
     AppAbout.cpp \
     AppEditor.cpp \
     AppHome.cpp \
@@ -89,34 +87,39 @@ SOURCES += \
     AppPresent.cpp \
     AppSongbooks.cpp \
     AppTutorial.cpp \
-    AsBase.cpp \
-    AsDelegate.cpp \
-    AsUtils.cpp \
-    CipherSettings.cpp \
-    CondFormat.cpp \
-    csvparser.cpp \
-    Data.cpp \
-    DbStructureModel.cpp \
-    docktextedit.cpp \
-    DotenvFormat.cpp \
-    ExtendedScintilla.cpp \
-    ExtendedTableWidget.cpp \
-    FileExtensionManager.cpp \
-    FilterLineEdit.cpp \
-    FilterTableHeader.cpp \
-    ForeignKeyEditorDelegate.cpp \
-    IconCache.cpp \
-    Palette.cpp 
-    RemoteDatabase.cpp \
-    RemoteModel.cpp \
-    RowLoader.cpp \
-    RunSql.cpp \
-    SelectItemsPopup.cpp \
     Settings.cpp \
-    sqlitedb.cpp \
-    sqlitetablemodel.cpp \
     sqltextedit.cpp \
-    SqlUiLexer.cpp
+    sql/sqlitetypes.cpp \
+    csvparser.cpp \
+    ExtendedTableWidget.cpp \
+    sqlitetablemodel.cpp \
+    RowLoader.cpp \
+    FilterTableHeader.cpp \
+    DbStructureModel.cpp \
+    Application.cpp \
+    SqlUiLexer.cpp \
+    FilterLineEdit.cpp \
+    RemoteDatabase.cpp \
+    ForeignKeyEditorDelegate.cpp \
+    RemoteModel.cpp \
+    docktextedit.cpp \
+    FindReplaceDialog.cpp \
+    ExtendedScintilla.cpp \
+    FileExtensionManager.cpp \
+    CondFormatManager.cpp \
+    Data.cpp \
+    CipherSettings.cpp \
+    DotenvFormat.cpp \
+    Palette.cpp \
+    CondFormat.cpp \
+    sql/Query.cpp \
+    RunSql.cpp \
+    sql/ObjectIdentifier.cpp \
+    ProxyDialog.cpp \
+    IconCache.cpp \
+    sql/parser/ParserDriver.cpp \
+    sql/parser/sqlite3_lexer.cpp \
+    sql/parser/sqlite3_parser.cpp
 
 RESOURCES += icons/icons.qrc \
              images/images.qrc \

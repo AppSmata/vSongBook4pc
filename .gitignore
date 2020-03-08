@@ -8,7 +8,6 @@ CMakeFiles
 *.cpp_parameters
 *.db
 *.suo
-*.sln
 *.moc
 *.obj
 *.pdp
@@ -16,7 +15,6 @@ CMakeFiles
 *.log
 *.tlog
 *.opendb
-*.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
 *.cxx_parameters
