@@ -1,5 +1,4 @@
 Makefile
-vsongbook.pro.user
 .qmake.stash
 CMakeCache.txt
 CMakeLists.txt.user
@@ -40,7 +39,6 @@ CMakeFiles/
 vsongbook.dir/
 vsongbook_autogen/
 
-libs/
 src/.ui/
 src/vsongbook
 src/Makefile*
