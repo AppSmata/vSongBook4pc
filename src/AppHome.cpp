@@ -248,8 +248,7 @@ void AppHome::PopulateSonglists(QString SearchStr)
 	QString ResultCount = " songs in: " + booktitles[ui->CmbSongbooks->currentIndex()];
 
 	sqlite3* db;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    char* err_msg = NULL, ** qryResult = NULL;
 
 	if (!SearchStr.isEmpty())
 	{
@@ -260,6 +259,7 @@ void AppHome::PopulateSonglists(QString SearchStr)
             else ResultCount.append("songs found with: \"" + SearchStr + "\"");
 	}
 
+    int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 	QString SqlQuery = AsUtils::SONG_SEARCH_SQL(SearchStr, bookids[ui->CmbSongbooks->currentIndex()], searchAll);
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();

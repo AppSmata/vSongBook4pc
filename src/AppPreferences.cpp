@@ -111,7 +111,7 @@ void AppPreferences::SetUpStuff()
 	languages.push_back("Portuguesse");
 	languages.push_back("Chichewa");
 
-	for (int l = 0; l < languages.size(); l++)
+    for (decltype(languages.size()) l = 0; l < languages.size(); ++l)
 	{
 		ui->CmbLanguage->addItem(languages[l]);
 	}
@@ -135,7 +135,7 @@ void AppPreferences::SetUpStuff()
 	pref_fonts.push_back("Trebuchet MS");
 	pref_fonts.push_back("Verdana");
 
-	for (int f = 0; f < pref_fonts.size(); f++)
+    for (decltype(pref_fonts.size()) f = 0; f < pref_fonts.size(); ++f)
 	{
 		ui->CmbGeneralAppFont->addItem(pref_fonts[f]);
 		ui->CmbSongPreviewFont->addItem(pref_fonts[f]);
@@ -428,12 +428,12 @@ void AppPreferences::LoadNavigation(QString searchstr)
 	if (navigations.size() > 0) navigations.clear();
 
 	sqlite3* db;
-	char* err_msg = NULL, ** qryResult = NULL;
-        int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    char* err_msg = NULL, ** qryResult = NULL;
 
 	QByteArray bar = AsUtils::SETTINGS_NAVI_SELECT_SQL(searchstr).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
+    int row, col, rc = sqlite3_open_v2(AsUtils::APP_DB(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
 	for (int i = 1; i < row + 1; i++)

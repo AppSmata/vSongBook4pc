@@ -36,7 +36,7 @@ QString AsBase::booltoInt(bool value)
 
 int AsBase::setCmbValue(std::vector<QString> values, QString value)
 {
-    int retvalue;
+    int retvalue = 0;
     for (int v = 0; v < values.size(); v++)
     {
         if (value == values[v]) retvalue = v;

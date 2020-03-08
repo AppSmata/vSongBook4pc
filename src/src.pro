@@ -103,7 +103,6 @@ SOURCES += \
     ForeignKeyEditorDelegate.cpp \
     RemoteModel.cpp \
     docktextedit.cpp \
-    FindReplaceDialog.cpp \
     ExtendedScintilla.cpp \
     FileExtensionManager.cpp \
     CondFormatManager.cpp \
