@@ -1,15 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PreferredToolArchitecture>x86</PreferredToolArchitecture>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -22,12 +30,22 @@
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
@@ -41,13 +59,59 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">qscintilla2.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">qscintilla2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qscintilla2.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qscintilla2</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">qscintilla2</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">qscintilla2.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">qscintilla2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">qscintilla2.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">qscintilla2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -63,13 +127,13 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200307;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200307;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -84,28 +148,28 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015\include;D:\Qt\5.9.9\msvc2015\include\QtWidgets;D:\Qt\5.9.9\msvc2015\include\QtGui;D:\Qt\5.9.9\msvc2015\include\QtANGLE;D:\Qt\5.9.9\msvc2015\include\QtCore;D:\Qt\5.9.9\msvc2015\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200307;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200307;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -117,14 +181,48 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Lib>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x86</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200309;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qsciscintilla.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciscintilla.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qsciscintilla.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qsciscintilla.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -137,7 +235,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintilla.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintilla.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciscintilla.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -151,18 +253,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintilla.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintilla.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintilla.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintilla.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qsciscintilla.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintilla.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintilla.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qsciscintilla.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintilla.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintilla.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qsciscintillabase.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciscintillabase.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qsciscintillabase.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qsciscintillabase.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -175,7 +307,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintillabase.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintillabase.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciscintillabase.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -189,18 +325,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintillabase.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintillabase.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintillabase.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintillabase.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qsciscintillabase.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintillabase.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintillabase.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qsciscintillabase.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciscintillabase.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciscintillabase.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qsciabstractapis.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciabstractapis.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qsciabstractapis.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qsciabstractapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -213,7 +379,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciabstractapis.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciabstractapis.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciabstractapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -227,18 +397,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciabstractapis.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciabstractapis.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciabstractapis.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciabstractapis.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qsciabstractapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciabstractapis.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciabstractapis.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qsciabstractapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciabstractapis.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciabstractapis.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qsciapis.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciapis.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qsciapis.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qsciapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -251,7 +451,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciapis.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciapis.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qsciapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -265,18 +469,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciapis.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciapis.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciapis.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciapis.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qsciapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciapis.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciapis.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qsciapis.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qsciapis.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qsciapis.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexer.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexer.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexer.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexer.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -289,7 +523,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexer.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexer.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexer.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -303,18 +541,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexer.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexer.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexer.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexer.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexer.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexer.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexer.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexer.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexer.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexer.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexercustom.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexercustom.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexercustom.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexercustom.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -327,7 +595,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercustom.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercustom.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexercustom.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -341,18 +613,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercustom.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercustom.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercustom.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercustom.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexercustom.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercustom.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercustom.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexercustom.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercustom.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercustom.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexersql.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexersql.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexersql.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexersql.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -365,7 +667,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexersql.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexersql.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexersql.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -379,18 +685,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexersql.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexersql.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexersql.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexersql.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexersql.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexersql.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexersql.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexersql.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexersql.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexersql.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexerjson.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerjson.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexerjson.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexerjson.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -403,7 +739,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjson.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjson.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerjson.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -417,18 +757,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjson.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjson.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjson.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjson.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexerjson.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjson.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjson.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexerjson.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjson.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjson.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexerhtml.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerhtml.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexerhtml.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexerhtml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -441,7 +811,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerhtml.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerhtml.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerhtml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -455,18 +829,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerhtml.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerhtml.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerhtml.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerhtml.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexerhtml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerhtml.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerhtml.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexerhtml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerhtml.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerhtml.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexerxml.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerxml.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexerxml.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexerxml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -479,7 +883,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerxml.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerxml.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerxml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -493,18 +901,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerxml.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerxml.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerxml.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerxml.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexerxml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerxml.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerxml.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexerxml.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerxml.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerxml.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexerjavascript.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerjavascript.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexerjavascript.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexerjavascript.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -517,7 +955,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjavascript.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjavascript.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerjavascript.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -531,18 +973,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjavascript.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjavascript.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjavascript.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjavascript.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexerjavascript.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjavascript.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjavascript.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexerjavascript.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerjavascript.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerjavascript.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexercpp.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexercpp.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexercpp.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexercpp.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -555,7 +1027,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercpp.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercpp.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexercpp.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -569,18 +1045,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercpp.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercpp.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercpp.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercpp.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexercpp.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercpp.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercpp.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexercpp.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexercpp.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexercpp.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscilexerpython.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerpython.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscilexerpython.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscilexerpython.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -593,7 +1099,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerpython.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerpython.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscilexerpython.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -607,18 +1117,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerpython.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerpython.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerpython.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerpython.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscilexerpython.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerpython.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerpython.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscilexerpython.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscilexerpython.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscilexerpython.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\1ed7c3fce3270ffe1965e9f1927c2173\moc_qscimacro.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscimacro.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating Qsci/moc_qscimacro.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating Qsci/moc_qscimacro.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -631,7 +1171,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscimacro.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscimacro.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating Qsci/moc_qscimacro.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -645,18 +1189,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscimacro.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscimacro.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscimacro.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscimacro.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating Qsci/moc_qscimacro.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscimacro.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscimacro.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating Qsci/moc_qscimacro.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\qscimacro.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci\moc_qscimacro.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\47a88ddd02b90d5e00b787d38cfd2946\moc_SciClasses.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating moc_SciClasses.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating moc_SciClasses.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating moc_SciClasses.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -669,7 +1243,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciClasses.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciClasses.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating moc_SciClasses.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -683,18 +1261,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciClasses.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciClasses.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciClasses.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciClasses.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating moc_SciClasses.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciClasses.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciClasses.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating moc_SciClasses.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciClasses.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciClasses.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\47a88ddd02b90d5e00b787d38cfd2946\moc_ScintillaQt.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating moc_ScintillaQt.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating moc_ScintillaQt.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating moc_ScintillaQt.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -707,7 +1315,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\ScintillaQt.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_ScintillaQt.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating moc_ScintillaQt.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -721,18 +1333,48 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\ScintillaQt.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\ScintillaQt.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_ScintillaQt.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_ScintillaQt.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating moc_ScintillaQt.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\ScintillaQt.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_ScintillaQt.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating moc_ScintillaQt.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\ScintillaQt.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_ScintillaQt.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\47a88ddd02b90d5e00b787d38cfd2946\moc_SciAccessibility.cpp.rule">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating moc_SciAccessibility.cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating moc_SciAccessibility.cpp</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating moc_SciAccessibility.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -745,7 +1387,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciAccessibility.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciAccessibility.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating moc_SciAccessibility.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
@@ -759,17 +1405,60 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciAccessibility.h;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciAccessibility.h;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciAccessibility.cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciAccessibility.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating moc_SciAccessibility.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciAccessibility.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciAccessibility.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating moc_SciAccessibility.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\SciAccessibility.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\moc_SciAccessibility.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -779,7 +1468,11 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -788,12 +1481,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
