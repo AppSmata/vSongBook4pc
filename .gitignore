@@ -11,6 +11,8 @@ CMakeFiles
 *.moc
 *.obj
 *.pdp
+*.dll
+*.lib
 *.exe
 *.log
 *.tlog
