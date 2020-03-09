@@ -1,8 +1,6 @@
 # vSongBook on Your PC!!!  v2.5.6
 ### FREEDOM TO SING ANYWHERE ANYTIME
-Based on Qt 5.9.9 (MSVC 2015, 64 bit)
-Built on March 6 2020 23:24:44
-Copyright © 2016 - 2020 Appsmata Solutions
+Based on [Qt 5.9.9](https://qt.io) (MSVC 2015, 64 bit) Thanks to [DB Browser Developers](https://sqlitebrowser.org)
 
 ![vSongBook Screenshot](https://github.com/vSongBook/vSongBook4PC/raw/master/images/screenshot1.png "vSongBook Screenshot 1")
 
