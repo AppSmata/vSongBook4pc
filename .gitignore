@@ -11,6 +11,8 @@ CMakeFiles
 *.moc
 *.obj
 *.pdp
+*.dll
+*.lib
 *.exe
 *.log
 *.tlog
@@ -36,11 +38,12 @@ testdata/
 x64/
 win32/
 Debug/
-Release/
 CMakeFiles/
 vsongbook.dir/
 vsongbook_autogen/
 
+Release/*.dll
+publish/outputs/*.exe
 src/.ui/
 src/vsongbook
 src/Makefile*
