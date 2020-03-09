@@ -42,6 +42,8 @@ CMakeFiles/
 vsongbook.dir/
 vsongbook_autogen/
 
+Release/*.dll
+publish/outputs/*.exe
 src/.ui/
 src/vsongbook
 src/Makefile*
