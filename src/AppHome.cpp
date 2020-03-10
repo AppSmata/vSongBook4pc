@@ -134,7 +134,6 @@ void AppHome::ReloadControls()
 	ui->actionDarkMode->setChecked(isDarkMode);
 
 	ui->TxtSearch->setFont(HomeFontGeneral);
-	ui->CmbSongbooks->setFont(HomeFontGeneral);
 
 	ui->TxtPreviewTitle->setFont(HomeFontPreview);
 	ui->TxtPreviewContent->setFont(HomeFontPreview);
@@ -150,14 +149,14 @@ void AppHome::FontChange()
 			HomeFontPreview.setFamily(home_fonts[home_fonttype]);
 			AsBase::SetOption("preview_font_type", home_fonts[home_fonttype]);
 			ReloadControls();
-                        break;
+			break;
 
 		default:
 			home_fonttype = home_fonttype + 1;
 			HomeFontPreview.setFamily(home_fonts[home_fonttype]);
 			AsBase::SetOption("preview_font_type", home_fonts[home_fonttype]);
 			ReloadControls();
-                        break;
+			break;
 	}
 }
 
@@ -289,11 +288,10 @@ void AppHome::PopulateSonglists(QString SearchStr)
             QStandardItem* songItem = new QStandardItem;
             AsItem song;
 
-            if (titles.length() > 40) song.title = titles.left(35) + "...";
+            if (titles.length() > 40) song.title = titles.left(40) + "...";
             else song.title = titles;
 
-            if (contents.length() > 40) song.content = contents.left(35) + "...";
-            else song.content = contents;
+            song.content = contents.left(50) + "...";
 
             songItem->setData(QVariant::fromValue(song), Qt::UserRole + 1);
             songModel->appendRow(songItem);

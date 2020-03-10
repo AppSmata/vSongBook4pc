@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/images">
-        <file>About.png</file>
-        <file>Appsmata.png</file>
+        <file>Sidebar.png</file>
         <file>Chapters.png</file>
         <file>Down_Black.png</file>
         <file>Down_White.png</file>
@@ -12,6 +11,6 @@
         <file>Theme.png</file>
         <file>Up_Black.png</file>
         <file>Up_White.png</file>
-        <file>vsbtitle.png</file>
+        <file>version.png</file>
     </qresource>
 </RCC>
