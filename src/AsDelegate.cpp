@@ -73,11 +73,11 @@ void AsDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, co
 		}
 
 		painter->setPen(QPen(QColor(Qt::black)));
-		painter->setFont(QFont("Trebuchet MS", 12, QFont::Bold));
+		painter->setFont(QFont("Trebuchet MS", 10, QFont::Bold));
 		painter->drawText(itemText1, item.title);
 
 		painter->setPen(QPen(Qt::black));
-		painter->setFont(QFont("Trebuchet MS", 12, 0));
+		painter->setFont(QFont("Trebuchet MS", 10, 0));
 		painter->drawText(itemText2, item.content);
 
 		painter->restore();

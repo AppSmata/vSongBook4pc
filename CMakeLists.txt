@@ -27,6 +27,7 @@ endif()
 add_definitions(-std=c++17)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION "8.1")
 
 # Fix behavior of CMAKE_CXX_STANDARD when targeting macOS.
 if (POLICY CMP0025)

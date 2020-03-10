@@ -528,9 +528,6 @@
    <property name="toolTip">
     <string>Bigger Text</string>
    </property>
-   <property name="shortcut">
-    <string>Up</string>
-   </property>
   </action>
   <action name="actionSmaller">
    <property name="icon">
@@ -542,9 +539,6 @@
    </property>
    <property name="toolTip">
     <string>Smaller Text</string>
-   </property>
-   <property name="shortcut">
-    <string>Down</string>
    </property>
   </action>
   <action name="actionBold">
@@ -558,9 +552,6 @@
    <property name="toolTip">
     <string>Make Bold</string>
    </property>
-   <property name="shortcut">
-    <string>Shift+B</string>
-   </property>
   </action>
   <action name="actionExit">
    <property name="icon">
@@ -569,6 +560,9 @@
    </property>
    <property name="text">
     <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionAbout">
@@ -579,6 +573,9 @@
    <property name="text">
     <string>About vSongBook</string>
    </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
   </action>
   <action name="actionTutorial">
    <property name="icon">
@@ -587,6 +584,9 @@
    </property>
    <property name="text">
     <string>How it Works</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
   <action name="actionReset_Settings">
@@ -597,6 +597,9 @@
    <property name="text">
     <string>Reset Settings</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
   </action>
   <action name="actionManage_Settings">
    <property name="icon">
@@ -605,6 +608,9 @@
    </property>
    <property name="text">
     <string>Manage Settings</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionNew_Song">
@@ -681,6 +687,9 @@
    <property name="text">
     <string>Bigger Font</string>
    </property>
+   <property name="shortcut">
+    <string>Up</string>
+   </property>
   </action>
   <action name="actionSmaller_Font">
    <property name="icon">
@@ -689,6 +698,9 @@
    </property>
    <property name="text">
     <string>Smaller Font</string>
+   </property>
+   <property name="shortcut">
+    <string>Down</string>
    </property>
   </action>
   <action name="actionChange_Font">
@@ -699,6 +711,9 @@
    <property name="text">
     <string>Change Font</string>
    </property>
+   <property name="shortcut">
+    <string>F</string>
+   </property>
   </action>
   <action name="actionBold_Text">
    <property name="icon">
@@ -707,6 +722,9 @@
    </property>
    <property name="text">
     <string>Bold Text</string>
+   </property>
+   <property name="shortcut">
+    <string>B</string>
    </property>
   </action>
   <action name="actionPreferences">
@@ -717,9 +735,6 @@
    <property name="text">
     <string>Options</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
-   </property>
   </action>
   <action name="actionEdit">
    <property name="icon">
@@ -728,9 +743,6 @@
    </property>
    <property name="text">
     <string>Edit</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="actionNewsong">

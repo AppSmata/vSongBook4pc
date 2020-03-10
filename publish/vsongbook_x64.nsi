@@ -6,10 +6,10 @@
 !define APP_NAME "vSongBook"
 !define COMP_NAME "AppSmata Solutions"
 !define WEB_SITE "http://Appsmata.com/vSongBook"
-!define VERSION "2.5.6.5"
+!define VERSION "2.5.6.7"
 !define COPYRIGHT "© AppSmata Solutions 2019 - 2020"
 !define DESCRIPTION "${APP_NAME}"
-!define INSTALLER_NAME "D:\Cpp\vSongBook4PC\publish\latest\${APP_NAME}_${VERSION}_x64.exe"
+!define INSTALLER_NAME "D:\Cpp\vSongBook4PC\publish\${APP_NAME}_${VERSION}_x64.exe"
 !define MAIN_APP_EXE "vSongBook.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
 !define REG_ROOT "HKCU"
@@ -119,7 +119,6 @@ File "D:\Cpp\vSongBook4PC\Release\res\splash.png"
 File "D:\Cpp\vSongBook4PC\Release\res\style.qss"
 File "D:\Cpp\vSongBook4PC\Release\res\vSongBook.png"
 SetOutPath "$INSTDIR\Data"
-File "D:\Cpp\vSongBook4PC\Release\Data\init.log"
 File "D:\Cpp\vSongBook4PC\Release\Data\vSongBook.db"
         
 DetailPrint "Installing Visual C++ 2015 Redistributable (x64)"     
@@ -204,14 +203,14 @@ RmDir "$SMPROGRAMS\$SM_Folder"
 !endif
 
 !ifndef REG_START_MENU
-Delete "$SMPROGRAMS\mBible\${APP_NAME}.lnk"
-Delete "$SMPROGRAMS\mBible\Uninstall ${APP_NAME}.lnk"
+Delete "$SMPROGRAMS\vSongBook\${APP_NAME}.lnk"
+Delete "$SMPROGRAMS\vSongBook\Uninstall ${APP_NAME}.lnk"
 !ifdef WEB_SITE
-Delete "$SMPROGRAMS\mBible\${APP_NAME} Website.lnk"
+Delete "$SMPROGRAMS\vSongBook\${APP_NAME} Website.lnk"
 !endif
 Delete "$DESKTOP\${APP_NAME}.lnk"
 
-RmDir "$SMPROGRAMS\mBible"
+RmDir "$SMPROGRAMS\vSongBook"
 !endif
 
 DeleteRegKey ${REG_ROOT} "${REG_APP_PATH}"

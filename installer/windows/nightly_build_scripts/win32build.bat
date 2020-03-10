@@ -3,7 +3,7 @@ SET DEST_PATH=C:\\builds
 MKDIR "%DEST_PATH%"
 
 SET ZIP_EXE="C:\Program Files\7-Zip\7z.exe"
-SET SQLITE_DIR=C:\\dev\\SQLite-Win32
+SET SQLITE_DIR=D:\\SQLite\\Win32
 SET SQLCIPHER_DIR=C:\\git_repos\\SQLCipher-Win32
 SET SQLCIPHER_TAG=v4.1.0
 
@@ -25,7 +25,7 @@ CD C:\dev
 
 :: Update repositories
 ::git clone -b v3.4.2 https://github.com/sqlcipher/sqlcipher.git SQLCipher-Win32
-CD C:\\git_repos\\SQLCipher-Win32
+CD D:\\SQLCipher\\Win32
 git clean -dffx
 git checkout -f HEAD
 git checkout master
@@ -36,7 +36,7 @@ git pull
 git clean -dffx
 
 ::git clone -b %BRANCH% https://github.com/sqlitebrowser/sqlitebrowser.git "%DB4S_DIR%Win32"
-CD C:\\git_repos\\sqlitebrowser
+CD D:\\Cpp\\vSongBook4PC
 git clean -dffx
 git checkout -f HEAD
 git checkout master
