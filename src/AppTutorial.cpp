@@ -11,12 +11,7 @@ AppTutorial::AppTutorial(QWidget *parent) :
 	setStyleSheet("* { background-color: #FFFFFF; }");
 	ui->TabPage1->setStyleSheet("* { background-color: #EEEEEE; }");
 	ui->TabPage2->setStyleSheet("* { background-color: #EEEEEE; }");
-	ui->LblSidebar->setStyleSheet("* { padding-top: 30px; background: #FFFFFF url(:/images/Sidebar.png) center no-repeat; background-size: 100%; }");
-
-	HowsSidebar = "<html><head/><body>";
-	HowsSidebar.append("<p style=\" font-size:20pt; font-weight:600; color:#ffffff;\"><center>");
-	HowsSidebar.append("How<br/><br/><br/><br/><br/><br/><br/><br/>Works</center></p>");
-	HowsSidebar.append("</body></html>");
+	ui->LblSidebar->setStyleSheet("* { padding-top: 30px; background: #FFFFFF url(:/images/How.png) center no-repeat; background-size: 100%; }");
 
 	QByteArray hows_Sidebar = HowsSidebar.toLocal8Bit();
 	ui->LblSidebar->setText(QApplication::translate("AppTutorial", hows_Sidebar.data(), Q_NULLPTR));
