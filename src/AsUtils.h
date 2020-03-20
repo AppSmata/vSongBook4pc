@@ -6,87 +6,107 @@
 class AsUtils
 {
 public:
-	static QString DB_FILE();
-    static char const *APP_DB();
+	static QString DbNameQstr();
+    static char const *DbNameChar();
 
-	static QString TBL_BOOKS();
-	static QString TBL_HISTORY();
-	static QString TBL_SETTINGS();
-	static QString TBL_SETTINGS_NAVI();
-	static QString TBL_SONGS();
+	static QString TableBooks();
+	static QString TableHistory();
+	static QString TableSettings();
+	static QString TableSettingsNavi();
+	static QString TableSongs();
 	
 	
-	static QString BOOKID();
-	static QString CATEGORYID();
-	static QString ENABLED();
-	static QString TITLE();
-	static QString CONTENT();
-	static QString QCOUNT();
-	static QString POSITION();
-	static QString BACKPATH();
-	static QString NOTES();
-	static QString CREATED();
-	static QString UPDATED();
+	static QString ColumnBookid();
+	static QString ColumnCategoryid();
+	static QString ColumnEnabled();
+	static QString ColumnTitle();
+	static QString ColumnContent();
+	static QString ColumnQcount();
+	static QString ColumnPosition();
+	static QString ColumnBackpath();
+	static QString ColumnNotes();
+	static QString ColumnCreated();
+	static QString ColumnUpdated();
 
-	static QString ENTRY();
-	static QString TYPE();
-	static QString ITEM();
-	static QString EXTRA();
+	static QString ColumnEntry();
+	static QString ColumnType();
+	static QString ColumnItem();
+	static QString ColumnExtra();
 
-	static QString SETTINGID();
+	static QString ColumnSettingid();
 
-	static QString NAVID();
-	static QString TAGS();
+	static QString ColumnNavid();
+	static QString ColumnTags();
 
-	static QString SONGID();
-	static QString POSTID();
-	static QString NUMBER();
-	static QString BASETYPE();
-	static QString ALIAS();
-	static QString VIEWS();
-	static QString KEY();
-	static QString ISFAV();
-	static QString AUTHOR();
-	static QString WHAT();
-	static QString WHEN();
-	static QString WHERE();
-	static QString WHO();
-	static QString NETTHUMBS();
-	static QString ACOUNT();
-	static QString USERID();
+	static QString ColumnSongid();
+	static QString ColumnPostid();
+	static QString ColumnNumber();
+	static QString ColumnBasetype();
+	static QString ColumnAlias();
+	static QString ColumnViews();
+	static QString ColumnKey();
+	static QString ColumnIsfav();
+	static QString ColumnAuthor();
+	static QString ColumnWhat();
+	static QString ColumnWhen();
+	static QString ColumnWhere();
+	static QString ColumnWho();
+	static QString ColumnNetthumbs();
+	static QString ColumnAcount();
+	static QString ColumnUserid();
 
-	static QString TIMENOW();
+	static QString TimeNow();
+	static QString TimeDateNow();
 
-	static QString CREATE_BOOKS_TABLE_SQL();
-	static QString CREATE_HISTORY_TABLE_SQL();
-	static QString CREATE_SETTINGS_TABLE_SQL();
-	static QString CREATE_SETTINGS_NAVI_TABLE_SQL();
-	static QString CREATE_SONGS_TABLE_SQL();
+	static QString CreateBooksTableSql();
+	static QString CreateHistoryTableSql();
+	static QString CreateSettingsTableSql();
+	static QString CreateSettingsNaviTableSql();
+	static QString CreateSongsTableSql();
 
-	static QString BOOK_SELECT_SQL();
-	static QString BOOK_LIST_SQL(QString State);
-	static QString BOOK_SINGLE_SQL(QString Book);
-	static QString BOOK_SEARCH_SQL(QString Search);
-	static QString BOOK_INSERT_SQL(QString Title, QString Category, QString Tags, QString Content, QString Position, QString Songs);
-	static QString BOOK_UPDATE_SQL(QString Bookid, QString Title, QString Tags, QString Content, QString Songs);
-	static QString BOOK_SONGS_COUNT_SQL(QString Bookid, QString Songs);
-	static char* BOOK_DELETE_SQL(QString Bookid);
+	static QString BookSelectSql();
+	static QString BookListSql(QString State);
+	static QString BookSingleSql(QString Book);
+	static QString BookSearchSql(QString Search);
+	static QString BookInsertSql(QString Title, QString Category, QString Tags, QString Content, QString Position, QString Songs);
+	static QString BookUpdateSql(QString Bookid, QString Title, QString Tags, QString Content, QString Songs);
+	static QString BookSongsCountSql(QString Bookid, QString Songs);
+	static char* BookDeleteSql(QString Bookid);
 
-    static QString HISTORY_SELECT_SQL();
+    static QString HistorySelectSql();
 
-	static QString SETTINGS_SQL();
-	static char* SETTINGS_SELECT_SQL();
-	static QString SETTINGS_NAVI_SQL();
-	static QString SETTINGS_NAVI_SELECT_SQL(QString Search);
+	static QString SettingsSql();
+	static char* SettingsSelectSql();
+	static QString SettingsNaviSql();
+	static QString SettingsNaviSelectSql(QString Search);
 
-	static QString SONG_SELECT_SQL();
-	static QString SONG_SEARCH_SQL(QString SearchStr, QString Bookid, bool SearchAll);
-	static QString SONG_SINGLE_SQL(QString Song);
-	static QString SONG_INSERT_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid, QString Categoryid);
-	static QString SONG_UPDATE_SQL(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid);
-    static char const *SONG_DELETE_SQL(QString Songid);
+	static QString SongSelectSql();
+	static QString SongSearchSql(QString SearchStr, QString Bookid, bool SearchAll);
+	static QString SongSingleSql(QString Song);
+	static QString SongInsertSql(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author);
+	static QString SongUpdateSql(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid);
+    static char const *SongDeleteSql(QString Songid);
 
-	static QString UPDATE_SETTINGS_SQL(QString Title, QString Value);
+	static QString UpdateSettingsSql(QString Title, QString Value);
+
+	static QString BaseUrl();
+
+	static QString PostsLists();
+	static QString PostsSelect();
+	static QString PostsSingle();
+	static QString PostsAnswers();
+	static QString PostsSearch();
+	static QString PostsSlider();
+	static QString PostsByCategory();
+	static QString CategoriesAll();
+	static QString BooksSelect();
+	static QString Feedback();
+	static QString ShowComment();
+	static QString CountComment();
+	static QString BackgroundDrawer();
+	static QString UserSignin();
+	static QString UserSignup();
+	static QString UserLastseen();
 };
 
 #endif
