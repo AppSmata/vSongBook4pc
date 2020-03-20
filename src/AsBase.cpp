@@ -1,8 +1,12 @@
 #include "AsBase.h"
 
+#include <QFile>
+#include <QDir>
+
 #include "sqlite.h"
 #include "RunSql.h"
 #include "sqlitetablemodel.h"
+
 
 bool AsBase::isTrue(int value)
 {
@@ -50,7 +54,7 @@ void AsBase::SetOption(QString Title, QString Content)
     char* zErrMsg = NULL;
     int rc = sqlite3_open("Data/vSongBook.db", &db);
 
-    QByteArray bar = AsUtils::UPDATE_SETTINGS_SQL(Title, Content).toLocal8Bit();
+    QByteArray bar = AsUtils::UpdateSettingsSql(Title, Content).toLocal8Bit();
     char* sqlQuery = bar.data();
 
     rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
@@ -65,11 +69,11 @@ std::vector<QString> AsBase::AppSettings()
     sqlite3* songsDb;
     char* err_msg = NULL, ** qryResult = NULL;
     int row, col;
-    int rc = sqlite3_open_v2(AsUtils::APP_DB(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    int rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
     if (rc == SQLITE_OK)
     {
-        rc = sqlite3_get_table(songsDb, AsUtils::SETTINGS_SELECT_SQL(), &qryResult, &row, &col, &err_msg);
+        rc = sqlite3_get_table(songsDb, AsUtils::SettingsSelectSql(), &qryResult, &row, &col, &err_msg);
 
         for (int i = 1; i < row + 1; i++)
         {
@@ -82,121 +86,232 @@ std::vector<QString> AsBase::AppSettings()
     return settings;
 }
 
-void AsBase::execSQL(QString SqlQuery)
+/*
+	Save app logs & exception to vSongBook.log
+*/
+void AsBase::WriteLogs(QString Source, QString Message, QString Details, QString Exception)
+{
+	QDir DataDir;
+	if (!DataDir.exists("data")) DataDir.mkpath("data");
+
+	QFile Logfile("data/vSongBook.log");
+	if (!Logfile.exists()) Logfile.open(QIODevice::Append);
+	else Logfile.open(QIODevice::Append);
+
+	QString LogText = "\n<vsongbooklog>";
+	LogText.append("\n\t<source>" + Source + "</source>");
+	LogText.append("\n\t<time>" + AsUtils::TimeDateNow() + "</time>");
+	LogText.append("\n\t<message>" + Message + "</message>");
+	if (!Details.isEmpty())
+	{
+		if (Source == "SQLite") LogText.append("\n\t<SqlQuery>" + Details + "</SqlQuery>");
+		else LogText.append("\n\t<details>" + Details + "</details>");
+	}
+
+	if (!Exception.isEmpty())
+		LogText.append("\n\t<exception>" + Exception + "</exception>");
+	LogText.append("\n</vsongbooklog>\n");
+
+	QByteArray bar = LogText.toLocal8Bit();
+	char* logText = bar.data();
+
+	Logfile.write(logText, qstrlen(logText));
+	Logfile.close();
+}
+
+void AsBase::execSql(QString SqlQuery)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
-    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
     QByteArray bar = SqlQuery.toLocal8Bit();
     char* sqlQuery = bar.data();
 
-    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
-    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
-
-    sqlite3_close(db);
+		if (rc == SQLITE_OK) 
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", SqlQuery, "");
+		else 
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", SqlQuery, zErrMsg);
+		
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+	sqlite3_close(db);
 }
 
-void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Content, QString Position, QString Songs)
+void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Content, QString Songs, QString Position)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
-    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
     uint timenow = QDateTime::currentSecsSinceEpoch();
     QString timeStr = QString::number(timenow);
 
-    QByteArray bar = AsUtils::BOOK_INSERT_SQL(Title, Category, Tags, Content, Position, Songs).toLocal8Bit();
+	if (Position.isEmpty())
+	{
+		Position = AsBase::LastValue(AsUtils::ColumnPosition(), AsUtils::ColumnPosition(), AsUtils::ColumnPosition());
+	}
+
+    QByteArray bar = AsUtils::BookInsertSql(Title, Category, Tags, Content, Position, Songs).toLocal8Bit();
     char* sqlQuery = bar.data();
 
-    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
-    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
     sqlite3_close(db);
 }
 
 QString AsBase::CountSongs(QString Bookid)
 {
 	sqlite3* db;
+	char* zErrMsg = NULL;
 	char* err_msg = NULL, ** qryResult = NULL;
 	int row, col;
-	int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+	int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
+	QString songcount = "0";
 
-	QString SqlQuery = "SELECT COUNT() FROM " + AsUtils::TBL_SONGS() + 
-		" WHERE " + AsUtils::TBL_SONGS() + "." + AsUtils::BOOKID() + "=" + Bookid;
+	QString SqlQuery = "SELECT COUNT() FROM " + AsUtils::TableSongs() + 
+		" WHERE " + AsUtils::TableSongs() + "." + AsUtils::ColumnBookid() + "=" + Bookid;
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();
+	
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+		songcount = *(qryResult + 1 * col + 0);
 
-	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
-	QString songcount = *(qryResult + 1 * col + 0);
-	sqlite3_free(err_msg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+
 	sqlite3_close(db);
 
 	return songcount;
+}
+
+QString AsBase::LastValue(QString ColumnName, QString TableName, QString OrderColumn)
+{
+	sqlite3* db;
+	char* zErrMsg = NULL;
+	char* err_msg = NULL, ** qryResult = NULL;
+	int row, col;
+	int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
+	QString ColumnValue = "0";
+
+	QString SqlQuery = "SELECT " + ColumnName + " FROM " + TableName + " ORDER BY " + OrderColumn + " DESC LIMIT 1";
+	QByteArray bar = SqlQuery.toLocal8Bit();
+	char* sqlQuery = bar.data();
+
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+		ColumnValue = *(qryResult + 1 * col + 0);
+
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+
+	sqlite3_close(db);
+	int ClValue = ColumnValue.toInt() + 1;
+
+	return QString::number(ClValue);
 }
 
 void AsBase::UpdateSongCount(QString Bookid, QString Count)
 {
 	sqlite3* db;
 	char* zErrMsg = NULL;
-	int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+	int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
 	uint timenow = QDateTime::currentSecsSinceEpoch();
 	QString timeStr = QString::number(timenow);
 	
-	QString SqlQuery = "UPDATE " + AsUtils::TBL_BOOKS() + " SET " + AsUtils::QCOUNT() + "='" + Count + "', " + 
-		AsUtils::UPDATED() + "='" + AsUtils::TIMENOW() + "' WHERE " + AsUtils::BOOKID() + "=" + Bookid;
+	QString SqlQuery = "UPDATE " + AsUtils::TableBooks() + " SET " + AsUtils::ColumnQcount() + "='" + Count + "', " + 
+		AsUtils::ColumnUpdated() + "='" + AsUtils::TimeNow() + "' WHERE " + AsUtils::ColumnBookid() + "=" + Bookid;
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();
 
-	rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
-	if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+
 	sqlite3_close(db);
 }
 
-void AsBase::NewSong(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Bookid, QString Categoryid)
+void AsBase::NewSong(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
-    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
-    QByteArray bar = AsUtils::SONG_INSERT_SQL(Number, Title, Alias, Content, Key, Author, Bookid, Categoryid).toLocal8Bit();
+    QByteArray bar = AsUtils::SongInsertSql(Bookid, Categoryid, Number, Title, Alias, Content, Key, Author).toLocal8Bit();
     char* sqlQuery = bar.data();
 
-    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
-    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+
     sqlite3_close(db);
-}
-
-void AsBase::InitialDbOps()
-{
-    QString timenow = AsUtils::TIMENOW();
-    AsBase::execSQL(AsUtils::CREATE_BOOKS_TABLE_SQL());
-    AsBase::execSQL(AsUtils::CREATE_HISTORY_TABLE_SQL());
-    AsBase::execSQL(AsUtils::CREATE_SETTINGS_NAVI_TABLE_SQL());
-    AsBase::execSQL(AsUtils::CREATE_SETTINGS_TABLE_SQL());
-    AsBase::execSQL(AsUtils::CREATE_SONGS_TABLE_SQL());
-
-    AsBase::execSQL(AsUtils::SETTINGS_NAVI_SQL());    
-    AsBase::execSQL(AsUtils::SETTINGS_SQL());
 }
 
 void AsBase::ResetSettings()
 {
     sqlite3* db;
     char* zErrMsg = NULL;
-    int rc = sqlite3_open(AsUtils::APP_DB(), &db);
+    int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
-    QByteArray bar = "DROP TABLE " + AsUtils::TBL_SETTINGS().toLocal8Bit();
+    QByteArray bar = "DROP TABLE " + AsUtils::TableSettings().toLocal8Bit();
     char* sqlQuery = bar.data();
 
-    rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
-    if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+
     sqlite3_close(db);
     
-    AsBase::execSQL(AsUtils::SETTINGS_NAVI_SQL());
+    AsBase::execSql(AsUtils::SettingsNaviSql());
 }
