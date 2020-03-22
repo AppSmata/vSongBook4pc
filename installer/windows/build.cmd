@@ -1,7 +1,7 @@
 @echo off
 
 :: Output file name
-set MSI=DB.Browser.for.SQLite-%1
+set MSI=vSongBook-%1
 
 :: Set the ARCH based on the first parameter
 if "%1"=="" (

@@ -71,4 +71,3 @@ libs/*/*/*.a
 
 # Ignore .DS_Store files on OSX
 .DS_Store
-mbible.pro.user.18d33b5

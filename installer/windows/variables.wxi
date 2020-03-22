@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-    <?define Name="DB Browser for SQLite" ?>
+    <?define Name="vSongBook" ?>
     <?define Team="$(var.Name) Team" ?>
-    <?define Version="3.11.99" ?>
+    <?define Version="2.6.0" ?>
 
     <!--
     =============================================== Add/Remove Programs ================================================
@@ -13,12 +13,12 @@
     -->
 
     <?define AppIcon="..\..\src\iconwin.ico" ?>
-    <?define AppComments="$(var.Name) is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite." ?>
-    <?define AppContact="db4s-dev@sqlitebrowser.org" ?>
-    <?define AppReadme="https://github.com/sqlitebrowser/sqlitebrowser" ?>
-    <?define AppHelpLink="https://github.com/sqlitebrowser/sqlitebrowser/wiki" ?>
-    <?define AppSupportLink="https://github.com/sqlitebrowser/sqlitebrowser/issues" ?>
-    <?define AppUpdateInfoLink="https://github.com/sqlitebrowser/sqlitebrowser/releases" ?>
+    <?define AppComments="$(var.Name) is a high quality, visual, open source tool to give users access to song lyrics of major worship and praise songbooks used in christian gatherings be it in church, weddings, funerals or anywhere where one feels like singing.." ?>
+    <?define AppContact="appsmatake@gmail.com" ?>
+    <?define AppReadme="https://github.com/Appsmata/vSongBook4PC" ?>
+    <?define AppHelpLink="https://github.com/Appsmata/vSongBook4PC/wiki" ?>
+    <?define AppSupportLink="https://github.com/Appsmata/vSongBook4PC/issues" ?>
+    <?define AppUpdateInfoLink="https://github.com/Appsmata/vSongBook4PC/releases" ?>
 
     <!--
     ================================================== Visual C++ CRT ==================================================
@@ -41,7 +41,7 @@
     -->
 
     <?if $(sys.BUILDARCH)="x64"?>
-        <?define VCRedistPath="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Redist\MSVC\14.16.27012\MergeModules" ?>
+        <?define VCRedistPath="D:\PowerHouse\Microsoft Visual Studio\2017\Community\VC\Redist\MSVC\14.16.27012\MergeModules" ?>
         <?define VCRedistFile="Microsoft_VC141_CRT_$(sys.BUILDARCH).msm" ?>
     <?elseif $(sys.BUILDARCH)="x86"?>
         <?define VCRedistPath="C:\Program Files (x86)\Common Files\Merge Modules" ?>
@@ -55,19 +55,19 @@
     -->
 
     <?if $(sys.BUILDARCH)="x64"?>
-        <?define QtPath="C:\dev\Qt\5.12.6\msvc2017_64" ?>
-        <?define SQLitePath="C:\dev\SQLite-Win64" ?>
-        <?define SQLCipherPath="C:\git_repos\SQLCipher-Win64" ?>
-        <?define OpenSSLPath="C:\dev\OpenSSL-Win64" ?>
-        <?define SQLiteExePath="C:\builds\release-sqlite-win64\Release" ?>
-        <?define SQLCipherExePath="C:\builds\release-sqlcipher-win64\Release" ?>
+        <?define QtPath="D:/Qt/5.9.9/msvc2015_64" ?>
+        <?define SQLitePath="D:\dev\SQLite-Win64" ?>
+        <?define SQLCipherPath="D:\git_repos\SQLCipher-Win64" ?>
+        <?define OpenSSLPath="D:\dev\OpenSSL-Win64" ?>
+        <?define SQLiteExePath="D:\builds\release-sqlite-win64\Release" ?>
+        <?define SQLCipherExePath="D:\builds\release-sqlcipher-win64\Release" ?>
     <?elseif $(sys.BUILDARCH)="x86"?>
-        <?define QtPath="C:\dev\Qt\5.7\msvc2015" ?>
+        <?define QtPath="D:/Qt/5.9.9/msvc2015" ?>
         <?define SQLitePath="C:\dev\SQLite-Win32" ?>
         <?define SQLCipherPath="C:\git_repos\SQLCipher-Win32" ?>
-        <?define OpenSSLPath="C:\dev\OpenSSL-Win32" ?>
-        <?define SQLiteExePath="C:\builds\release-sqlite-win32\Release" ?>
-        <?define SQLCipherExePath="C:\builds\release-sqlcipher-win32\Release" ?>
+        <?define OpenSSLPath="D:\dev\OpenSSL-Win32" ?>
+        <?define SQLiteExePath="D:\builds\release-sqlite-win32\Release" ?>
+        <?define SQLCipherExePath="D:\builds\release-sqlcipher-win32\Release" ?>
     <?endif?>
 
 </Include>
