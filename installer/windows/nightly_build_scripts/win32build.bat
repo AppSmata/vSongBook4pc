@@ -21,15 +21,15 @@ CD D:\SQLite
 %ZIP_EXE% e sqlite*zip "-o%SQLITE_DIR%"
 
 ::git clone -b %BRANCH% https://github.com/Appsmata/vSongBook4PC.git "%DB4S_DIR%Win32"
-::CD D:\\Cpp\\vSongBook4PC
-::git clean -dffx
-::git checkout -f HEAD
-::git checkout master
-::git pull
-::git checkout %BRANCH%
-::git clean -dffx
-::git pull
-::git clean -dffx
+CD D:\\Cpp\\vSongBook4PC
+git clean -dffx
+git checkout -f HEAD
+git checkout master
+git pull
+git checkout %BRANCH%
+git clean -dffx
+git pull
+git clean -dffx
 
 :: WIN32 SQLITE BUILD PROCEDURE
 
@@ -56,7 +56,7 @@ cl /MD fileio.c test_windirent.c -link sqlite3.lib -dll -out:fileio.dll
 CD D:\\builds
 MKDIR "release-sqlite-win32"
 CD "release-sqlite-win32"
-cmake -G "Visual Studio 14 2015" -Wno-dev D:\\Cpp\\vSongBook4PC
+cmake -G "Visual Studio 15 2017" -Wno-dev D:\\Cpp\\vSongBook4PC
 
 :: Build package
 devenv /Build Release vSongBook.sln /project "ALL_BUILD"
