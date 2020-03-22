@@ -14,14 +14,14 @@ IF "%1"=="" (SET BRANCH="master") ELSE (SET BRANCH="%1")
 
 CD /d "D:\"
 if exist "%SQLITE_DIR%" rd /q /s "%SQLITE_DIR%"
-if exist "D:\\builds\\release-sqlite-win32" rd /q /s "D:\\builds\\release-sqlite-win32"
+if exist "D:\\builds\\release-vsb-win32" rd /q /s "D:\\builds\\release-vsb-win32"
 
 :: Unpack SQLite
 CD D:\SQLite
 %ZIP_EXE% e sqlite*zip "-o%SQLITE_DIR%"
 
 ::git clone -b %BRANCH% https://github.com/Appsmata/vSongBook4PC.git "%DB4S_DIR%Win32"
-CD D:\\Cpp\\vSongBook4PC
+CD D:\\git_repos\\vSongBook4PC
 git clean -dffx
 git checkout -f HEAD
 git checkout master
@@ -41,11 +41,11 @@ CD %SQLITE_DIR%
 cl sqlite3.c -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_STAT4 -DSQLITE_SOUNDEX -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_RTREE -DSQLITE_MAX_ATTACHED=125 -DSQLITE_API=__declspec(dllexport) -link -dll -out:sqlite3.dll
 
 :: Build extensions
-COPY D:\Cpp\vSongBook4PC\src\extensions\extension-functions.c
-COPY D:\Cpp\vSongBook4PC\src\extensions\extension-functions.def
+COPY D:\git_repos\vSongBook4PC\src\extensions\extension-functions.c
+COPY D:\git_repos\vSongBook4PC\src\extensions\extension-functions.def
 cl /MD extension-functions.c -link -dll -def:extension-functions.def -out:math.dll
-COPY D:\Cpp\vSongBook4PC\src\extensions\extension-formats.c
-COPY D:\Cpp\vSongBook4PC\src\extensions\extension-formats.def
+COPY D:\git_repos\vSongBook4PC\src\extensions\extension-formats.c
+COPY D:\git_repos\vSongBook4PC\src\extensions\extension-formats.def
 cl /MD extension-formats.c -link -dll -def:extension-formats.def -out:formats.dll
 curl -L -o fileio.c "https://sqlite.org/src/raw?filename=ext/misc/fileio.c&ci=trunk"
 curl -L -o test_windirent.c "https://sqlite.org/src/raw?filename=src/test_windirent.c&ci=trunk"
@@ -54,15 +54,15 @@ cl /MD fileio.c test_windirent.c -link sqlite3.lib -dll -out:fileio.dll
 
 :: Run CMake for SQLite x86
 CD D:\\builds
-MKDIR "release-sqlite-win32"
-CD "release-sqlite-win32"
-cmake -G "Visual Studio 15 2017" -Wno-dev D:\\Cpp\\vSongBook4PC
+MKDIR "release-vsb-win32"
+CD "release-vsb-win32"
+cmake -G "Visual Studio 15 2017" -Wno-dev D:\\git_repos\\vSongBook4PC
 
 :: Build package
 devenv /Build Release vSongBook.sln /project "ALL_BUILD"
 
 :: Build MSI
-CD D:\\Cpp\\vSongBook4PC\\installer\\windows
+CD D:\\git_repos\\vSongBook4PC\\installer\\windows
 CALL build.cmd win32
 
 :: Move package to DEST_PATH
