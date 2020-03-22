@@ -52,7 +52,7 @@ void AsBase::SetOption(QString Title, QString Content)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
-    int rc = sqlite3_open("Data/vSongBook.db", &db);
+    int rc = sqlite3_open("data/vSongBook.db", &db);
 
     QByteArray bar = AsUtils::UpdateSettingsSql(Title, Content).toLocal8Bit();
     char* sqlQuery = bar.data();
