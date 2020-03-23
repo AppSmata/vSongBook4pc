@@ -35,7 +35,7 @@ Solution.VC.*
 # folder with temporary test data
 testdata/
 x64/
-win32/
+builds/win32/src/
 Debug/
 CMakeFiles/
 vsongbook.dir/
