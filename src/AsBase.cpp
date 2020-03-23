@@ -295,13 +295,13 @@ void AsBase::UpdateSongCount(QString Bookid, QString Count)
 	sqlite3_close(db);
 }
 
-void AsBase::NewSong(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author)
+void AsBase::NewSong(QString Bookid, QString Categoryid, QString Number, QString Postid, QString Title, QString Alias, QString Content, QString Key, QString Author)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
     int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
-    QByteArray bar = AsUtils::SongInsertSql(Bookid, Categoryid, Number, Title, Alias, Content, Key, Author).toLocal8Bit();
+    QByteArray bar = AsUtils::SongInsertSql(Bookid, Categoryid, Number, Postid, Title, Alias, Content, Key, Author).toLocal8Bit();
     char* sqlQuery = bar.data();
 
 	if (rc == SQLITE_OK)

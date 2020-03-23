@@ -184,10 +184,10 @@ void AppEditor::on_actionSave_triggered()
 		Content = Content.replace("\n", "\\n");
 		Content = Content.replace("'", "''");
 
-		AsBase::NewSong(Bookid, Bookid, Number, Title, Alias, Content, Key, Author);
+		AsBase::NewSong(Bookid, Bookid, Number, "", Title, Alias, Content, Key, Author);
 		AsBase::UpdateSongCount(Bookid, AsBase::CountSongs(Bookid));
 
-		ui->TxtContent->setPlainText(AsUtils::SongInsertSql(Number, Title, Alias, Content, Key, Author, Bookid, Bookid));
+		ui->TxtContent->setPlainText(AsUtils::SongInsertSql(Number, "", Title, Alias, Content, Key, Author, Bookid, Bookid));
 	}
 	else SaveChanges();
 }

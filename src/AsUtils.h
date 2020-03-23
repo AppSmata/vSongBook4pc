@@ -83,7 +83,7 @@ public:
 	static QString SongSelectSql();
 	static QString SongSearchSql(QString SearchStr, QString Bookid, bool SearchAll);
 	static QString SongSingleSql(QString Song);
-	static QString SongInsertSql(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author);
+	static QString SongInsertSql(QString Bookid, QString Categoryid, QString Number, QString Postid, QString Title, QString Alias, QString Content, QString Key, QString Author);
 	static QString SongUpdateSql(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid);
     static char const *SongDeleteSql(QString Songid);
 

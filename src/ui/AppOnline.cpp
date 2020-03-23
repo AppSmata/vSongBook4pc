@@ -236,6 +236,7 @@ QString InsertSongs()
 		QString Bookid = obj["categoryid"].toString();
 		QString Categoryid = obj["categoryid"].toString();
 		QString Number = obj["number"].toString();
+		QString Postid = obj["postid"].toString();
 		QString Title = obj["title"].toString();
 		QString Alias = obj["alias"].toString();
 		QString Content = obj["content"].toString();
@@ -247,7 +248,7 @@ QString InsertSongs()
 		Content = Content.replace("\n", "\\n");
 		Content = Content.replace("'", "''");
 
-		AsBase::NewSong(Bookid, Categoryid, Number, Title, Alias, Content, "", Author);
+		AsBase::NewSong(Bookid, Categoryid, Number, Postid, Title, Alias, Content, "", Author);
 	}
 	return "Task Finished";
 }

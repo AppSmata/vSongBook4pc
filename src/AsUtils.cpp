@@ -131,7 +131,6 @@ QString AsUtils::CreateSongsTableSql()
 		ColumnPostid() + " INTEGER UNIQUE, " +
 		ColumnBookid() + " INTEGER, " +
 		ColumnCategoryid() + " INTEGER, " +
-		ColumnBasetype() + " VARCHAR(10), " +
 		ColumnNumber() + " INTEGER NOT NULL DEFAULT '0', " +
 		ColumnAlias() + " VARCHAR(250), " +
 		ColumnTitle() + " VARCHAR(100), " +
@@ -329,13 +328,13 @@ QString AsUtils::SongSingleSql(QString Song)
 	return SongSelectSql() + " WHERE " + ColumnSongid() + "=" + Song;
 }
 
-QString AsUtils::SongInsertSql(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author)
+QString AsUtils::SongInsertSql(QString Bookid, QString Categoryid, QString Number, QString Postid, QString Title, QString Alias, QString Content, QString Key, QString Author)
 {
 	return "INSERT INTO " + TableSongs() +
-		"( " + ColumnNumber() + ", " + ColumnTitle() + ", " + ColumnAlias() + ", " + ColumnContent() + ", " + ColumnKey() + 
-		", " + ColumnAuthor() + ", " + ColumnBookid() + ", " + ColumnCategoryid() + ", " + ColumnCreated() + " ) VALUES ( " +
-		Number + ", '" + Title + "', '" + Alias + "', '" + Content + "', '" + Key + "', '" + 
-		Author + "', " + Bookid + ", " + Categoryid + ", " + TimeNow() + ")";
+		"( " + ColumnNumber() + ", " + ColumnPostid() + ", " + ColumnTitle() + ", " + ColumnAlias() + ", " + 
+		ColumnContent() + ", " + ColumnKey() + ", " + ColumnAuthor() + ", " + ColumnBookid() + ", " + ColumnCategoryid() + 
+		", " + ColumnCreated() + " ) VALUES ( " + Number + ", '" + Postid + ", '" + Title + "', '" + Alias + "', '" + 
+		Content + "', '" + Key + "', '" + Author + "', " + Bookid + ", " + Categoryid + ", " + TimeNow() + ")";
 }
 
 QString AsUtils::SongUpdateSql(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid)

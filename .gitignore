@@ -32,7 +32,6 @@ ui_*.h
 Solution.VC.*
 
 # ignore any build folders
-build*/
 # folder with temporary test data
 testdata/
 x64/

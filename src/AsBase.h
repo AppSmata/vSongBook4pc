@@ -30,7 +30,7 @@ public:
     static void InitialDbOps();
 
     static void NewBook(QString Title, QString Category, QString Tags, QString Content, QString Songs, QString Position);
-    static void NewSong(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author);
+    static void NewSong(QString Bookid, QString Categoryid, QString Number, QString Postid, QString Title, QString Alias, QString Content, QString Key, QString Author);
 	static QString CountSongs(QString Bookid);
 	static QString LastValue(QString ColumnName, QString TableName, QString OrderColumn);
 
