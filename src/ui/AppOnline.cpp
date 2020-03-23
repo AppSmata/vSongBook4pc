@@ -49,9 +49,9 @@ void AppOnline::LoadBooks()
     showProgress(true);
     qnam = new QNetworkAccessManager();
     QObject::connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onBooksResult(QNetworkReply*)));
-    request.setUrl(QUrl(AsUtils::BaseUrl() + AsUtils::BooksSelect()));
+    request.setUrl(QUrl(AsBase::BaseUrl() + AsUtils::BooksSelect()));
 
-	AsBase::WriteLogs("Online", "Fetching books from online", "Url: " + AsUtils::BaseUrl() + AsUtils::BooksSelect() + " ", "");
+	AsBase::WriteLogs("Online", "Fetching books from online", "Url: " + AsBase::BaseUrl() + AsUtils::BooksSelect() + " ", "");
     qnam->get(request);
 }
 
@@ -218,12 +218,12 @@ void AppOnline::LoadSongs()
 
     qnam = new QNetworkAccessManager();
     QObject::connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onSongsResult(QNetworkReply*)));
-	request.setUrl(QUrl(AsUtils::BaseUrl() + AsUtils::PostsSelect() + "?books=" + books));
-	AsBase::WriteLogs("Online", "Fetching songs from online for books: " + books, "Url: " + AsUtils::BaseUrl() + AsUtils::PostsSelect() + "?books=" + books + " ", "");
+	request.setUrl(QUrl(AsBase::BaseUrl() + AsUtils::PostsSelect() + "?books=" + books));
+	AsBase::WriteLogs("Online", "Fetching songs from online for books: " + books, "Url: " + AsBase::BaseUrl() + AsUtils::PostsSelect() + "?books=" + books + " ", "");
     qnam->get(request);
 }
 
-void InsertSongs()
+QString InsertSongs()
 {
 	QJsonDocument jsonResponse = QJsonDocument::fromJson(networkresult.toUtf8());
 	QJsonObject jsonObject = jsonResponse.object();
@@ -239,9 +239,17 @@ void InsertSongs()
 		QString Title = obj["title"].toString();
 		QString Alias = obj["alias"].toString();
 		QString Content = obj["content"].toString();
+		QString Author = obj["who"].toString();
 
-		AsBase::NewSong(Bookid, Categoryid, Number, Title, Alias, Content.replace("\n", "\\n"), "", "");
+		Title = Title.replace("\n", "\\n");
+		Title = Title.replace("'", "''");
+
+		Content = Content.replace("\n", "\\n");
+		Content = Content.replace("'", "''");
+
+		AsBase::NewSong(Bookid, Categoryid, Number, Title, Alias, Content, "", Author);
 	}
+	return "Task Finished";
 }
 
 void AppOnline::onSongsResult(QNetworkReply* reply)

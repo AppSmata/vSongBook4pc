@@ -352,6 +352,11 @@ char const *AsUtils::SongDeleteSql(QString Songid)
 	return bar.data();
 }
 
+QString AsUtils::GetSettingsSql(QString Title)
+{
+	return "SELECT Content FROM " + TableSettings() + " WHERE " + ColumnTitle() + "='" + Title + "'";
+}
+
 QString AsUtils::UpdateSettingsSql(QString Title, QString Value)
 {
 	return "UPDATE " + TableSettings() + " SET " + ColumnContent() + "='" + Value + "', " +
@@ -398,13 +403,8 @@ QString AsUtils::SettingsSql()
 	SqlQuery.append("('search_allbooks', '1', " + TimeNow() + "),");
 	SqlQuery.append("('app_theme', '2', " + TimeNow() + "),");
 	SqlQuery.append("('dark_mode', '0', " + TimeNow() + ");");
+	SqlQuery.append("('base_url', 'http://sing.appsmata.com/', " + TimeNow() + ");");
 	return SqlQuery;
-}
-
-QString AsUtils::BaseUrl()
-{
-	return "http://sing.appsmata.com/"; // change this url with your base url
-	//return "http://localhost/vsongweb/";  // change this url with your base url
 }
 
 QString AsUtils::PostsLists()

@@ -87,9 +87,8 @@ public:
 	static QString SongUpdateSql(QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author, QString Songid);
     static char const *SongDeleteSql(QString Songid);
 
+	static QString AsUtils::GetSettingsSql(QString Title);
 	static QString UpdateSettingsSql(QString Title, QString Value);
-
-	static QString BaseUrl();
 
 	static QString PostsLists();
 	static QString PostsSelect();
