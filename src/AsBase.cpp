@@ -48,11 +48,44 @@ int AsBase::setCmbValue(std::vector<QString> values, QString value)
     return retvalue;
 }
 
+QString AsBase::BaseUrl()
+{
+	return GetOption("base_url");
+}
+
+QString AsBase::GetOption(QString Title)
+{
+	sqlite3* db;
+	char* zErrMsg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open(AsUtils::DbNameChar(), &db);
+	QString settingsValue = "";
+
+	QByteArray bar = AsUtils::GetSettingsSql(Title).toLocal8Bit();
+	char* sqlQuery = bar.data();
+
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &zErrMsg);
+		settingsValue = *(qryResult + 1 * col + 0);
+
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+		else
+			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+
+		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
+	}
+
+	sqlite3_close(db);
+
+	return settingsValue;
+}
+
 void AsBase::SetOption(QString Title, QString Content)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
-    int rc = sqlite3_open("data/vSongBook.db", &db);
+	int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
     QByteArray bar = AsUtils::UpdateSettingsSql(Title, Content).toLocal8Bit();
     char* sqlQuery = bar.data();
@@ -67,13 +100,13 @@ std::vector<QString> AsBase::AppSettings()
 {
     std::vector<QString> settings;
     sqlite3* songsDb;
-    char* err_msg = NULL, ** qryResult = NULL;
+    char* zErrMsg = NULL, ** qryResult = NULL;
     int row, col;
     int rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
     if (rc == SQLITE_OK)
     {
-        rc = sqlite3_get_table(songsDb, AsUtils::SettingsSelectSql(), &qryResult, &row, &col, &err_msg);
+        rc = sqlite3_get_table(songsDb, AsUtils::SettingsSelectSql(), &qryResult, &row, &col, &zErrMsg);
 
         for (int i = 1; i < row + 1; i++)
         {
@@ -176,10 +209,8 @@ void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Cont
 QString AsBase::CountSongs(QString Bookid)
 {
 	sqlite3* db;
-	char* zErrMsg = NULL;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col;
-	int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
+	char* zErrMsg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 	QString songcount = "0";
 
 	QString SqlQuery = "SELECT COUNT() FROM " + AsUtils::TableSongs() + 
@@ -189,7 +220,7 @@ QString AsBase::CountSongs(QString Bookid)
 	
 	if (rc == SQLITE_OK)
 	{
-		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &zErrMsg);
 		songcount = *(qryResult + 1 * col + 0);
 
 		if (rc == SQLITE_OK)
@@ -208,10 +239,8 @@ QString AsBase::CountSongs(QString Bookid)
 QString AsBase::LastValue(QString ColumnName, QString TableName, QString OrderColumn)
 {
 	sqlite3* db;
-	char* zErrMsg = NULL;
-	char* err_msg = NULL, ** qryResult = NULL;
-	int row, col;
-	int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
+	char* zErrMsg = NULL, ** qryResult = NULL;
+	int row, col, rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 	QString ColumnValue = "0";
 
 	QString SqlQuery = "SELECT " + ColumnName + " FROM " + TableName + " ORDER BY " + OrderColumn + " DESC LIMIT 1";
@@ -220,7 +249,7 @@ QString AsBase::LastValue(QString ColumnName, QString TableName, QString OrderCo
 
 	if (rc == SQLITE_OK)
 	{
-		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+		rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &zErrMsg);
 		ColumnValue = *(qryResult + 1 * col + 0);
 
 		if (rc == SQLITE_OK)
@@ -266,13 +295,13 @@ void AsBase::UpdateSongCount(QString Bookid, QString Count)
 	sqlite3_close(db);
 }
 
-void AsBase::NewSong(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author)
+void AsBase::NewSong(QString Bookid, QString Categoryid, QString Number, QString Postid, QString Title, QString Alias, QString Content, QString Key, QString Author)
 {
     sqlite3* db;
     char* zErrMsg = NULL;
     int rc = sqlite3_open(AsUtils::DbNameChar(), &db);
 
-    QByteArray bar = AsUtils::SongInsertSql(Bookid, Categoryid, Number, Title, Alias, Content, Key, Author).toLocal8Bit();
+    QByteArray bar = AsUtils::SongInsertSql(Bookid, Categoryid, Number, Postid, Title, Alias, Content, Key, Author).toLocal8Bit();
     char* sqlQuery = bar.data();
 
 	if (rc == SQLITE_OK)

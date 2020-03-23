@@ -22,6 +22,7 @@ public:
     static std::vector<QString> AppSettings();
 
     static int setCmbValue(std::vector<QString> values, QString value);
+	static QString AsBase::GetOption(QString Title);
     static void SetOption(QString Title, QString Content);
     static void UpdateSongCount(QString Bookid, QString Count);
 
@@ -29,9 +30,11 @@ public:
     static void InitialDbOps();
 
     static void NewBook(QString Title, QString Category, QString Tags, QString Content, QString Songs, QString Position);
-    static void NewSong(QString Bookid, QString Categoryid, QString Number, QString Title, QString Alias, QString Content, QString Key, QString Author);
+    static void NewSong(QString Bookid, QString Categoryid, QString Number, QString Postid, QString Title, QString Alias, QString Content, QString Key, QString Author);
 	static QString CountSongs(QString Bookid);
 	static QString LastValue(QString ColumnName, QString TableName, QString OrderColumn);
+
+	static QString BaseUrl();
 
     static void ResetSettings();
 };
