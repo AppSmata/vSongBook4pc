@@ -333,7 +333,7 @@ QString AsUtils::SongInsertSql(QString Bookid, QString Categoryid, QString Numbe
 	return "INSERT INTO " + TableSongs() +
 		"( " + ColumnNumber() + ", " + ColumnPostid() + ", " + ColumnTitle() + ", " + ColumnAlias() + ", " + 
 		ColumnContent() + ", " + ColumnKey() + ", " + ColumnAuthor() + ", " + ColumnBookid() + ", " + ColumnCategoryid() + 
-		", " + ColumnCreated() + " ) VALUES ( " + Number + ", '" + Postid + ", '" + Title + "', '" + Alias + "', '" + 
+		", " + ColumnCreated() + " ) VALUES ( " + Number + ", " + Postid + ", '" + Title + "', '" + Alias + "', '" + 
 		Content + "', '" + Key + "', '" + Author + "', " + Bookid + ", " + Categoryid + ", " + TimeNow() + ")";
 }
 
@@ -353,7 +353,7 @@ char const *AsUtils::SongDeleteSql(QString Songid)
 
 QString AsUtils::GetSettingsSql(QString Title)
 {
-	return "SELECT Content FROM " + TableSettings() + " WHERE " + ColumnTitle() + "='" + Title + "'";
+	return "SELECT content FROM " + TableSettings() + " WHERE " + ColumnTitle() + "='" + Title + "'";
 }
 
 QString AsUtils::UpdateSettingsSql(QString Title, QString Value)
@@ -401,7 +401,7 @@ QString AsUtils::SettingsSql()
 	SqlQuery.append("('current_song', NULL, " + TimeNow() + "),");
 	SqlQuery.append("('search_allbooks', '1', " + TimeNow() + "),");
 	SqlQuery.append("('app_theme', '2', " + TimeNow() + "),");
-	SqlQuery.append("('dark_mode', '0', " + TimeNow() + ");");
+	SqlQuery.append("('dark_mode', '0', " + TimeNow() + "),");
 	SqlQuery.append("('base_url', 'http://sing.appsmata.com/', " + TimeNow() + ");");
 	return SqlQuery;
 }

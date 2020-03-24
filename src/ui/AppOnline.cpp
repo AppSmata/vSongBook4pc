@@ -25,7 +25,7 @@
 
 #include "task.hpp"
 
-QString networkresult;
+QString networkResult, baseUrl;
 //const int iterations = 20;
 QVector<int> vector;
 QMovie *mMovie;
@@ -39,7 +39,7 @@ AppOnline::AppOnline(QWidget *parent) :
 	mMovie = new QMovie(":/images/loading.gif");
 	ui->LblProgress->setMovie(mMovie);
 	mMovie->start();
-
+	baseUrl = AsBase::BaseUrl();
     LoadBooks();
 }
 
@@ -49,9 +49,9 @@ void AppOnline::LoadBooks()
     showProgress(true);
     qnam = new QNetworkAccessManager();
     QObject::connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onBooksResult(QNetworkReply*)));
-    request.setUrl(QUrl(AsBase::BaseUrl() + AsUtils::BooksSelect()));
+    request.setUrl(QUrl(baseUrl + AsUtils::BooksSelect()));
 
-	AsBase::WriteLogs("Online", "Fetching books from online", "Url: " + AsBase::BaseUrl() + AsUtils::BooksSelect() + " ", "");
+	AsBase::WriteLogs("Online", "Fetching books from online", "Url: " + baseUrl + AsUtils::BooksSelect() + " ", "");
     qnam->get(request);
 }
 
@@ -59,7 +59,7 @@ void AppOnline::onBooksResult(QNetworkReply* reply)
 {
 	showProgress(false);
 	if (reply->error()) {
-		networkresult = (QString)reply->errorString();
+		networkResult = (QString)reply->errorString();
 		ui->TxtSearch->hide();
 		ui->LstBooks->hide();
 		ui->BtnProceed->hide();
@@ -67,14 +67,14 @@ void AppOnline::onBooksResult(QNetworkReply* reply)
 		ui->LblProgress->hide();
 		ui->LblDetails->show();
 
-		AsBase::WriteLogs("Online", "Failed to fetch books from online", "Reason: " + networkresult, "");
-		ui->LblDetails->setText("Failed to fetch books from online.\nReason: " + networkresult);
+		AsBase::WriteLogs("Online", "Failed to fetch books from online", "Reason: " + networkResult, "");
+		ui->LblDetails->setText("Failed to fetch books from online.\nReason: " + networkResult);
         return;
     }
     else
     {
-        networkresult = (QString)reply->readAll();
-        QJsonDocument jsonResponse = QJsonDocument::fromJson(networkresult.toUtf8());
+        networkResult = (QString)reply->readAll();
+        QJsonDocument jsonResponse = QJsonDocument::fromJson(networkResult.toUtf8());
         QJsonObject jsonObject = jsonResponse.object();
         QJsonArray jsonArray = jsonObject["data"].toArray();
         
@@ -218,14 +218,14 @@ void AppOnline::LoadSongs()
 
     qnam = new QNetworkAccessManager();
     QObject::connect(qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onSongsResult(QNetworkReply*)));
-	request.setUrl(QUrl(AsBase::BaseUrl() + AsUtils::PostsSelect() + "?books=" + books));
-	AsBase::WriteLogs("Online", "Fetching songs from online for books: " + books, "Url: " + AsBase::BaseUrl() + AsUtils::PostsSelect() + "?books=" + books + " ", "");
+	request.setUrl(QUrl(baseUrl + AsUtils::PostsSelect() + "?books=" + books));
+	AsBase::WriteLogs("Online", "Fetching songs from online for books: " + books, "Url: " + baseUrl + AsUtils::PostsSelect() + "?books=" + books + " ", "");
     qnam->get(request);
 }
 
 QString InsertSongs()
 {
-	QJsonDocument jsonResponse = QJsonDocument::fromJson(networkresult.toUtf8());
+	QJsonDocument jsonResponse = QJsonDocument::fromJson(networkResult.toUtf8());
 	QJsonObject jsonObject = jsonResponse.object();
 	QJsonArray jsonArray = jsonObject["data"].toArray();
 
@@ -257,7 +257,7 @@ void AppOnline::onSongsResult(QNetworkReply* reply)
 {
     if (reply->error()) {
 		showProgress(false);
-		networkresult = (QString)reply->errorString();
+		networkResult = (QString)reply->errorString();
 		ui->TxtSearch->hide();
 		ui->LstBooks->hide();
 		ui->BtnProceed->hide();
@@ -265,13 +265,13 @@ void AppOnline::onSongsResult(QNetworkReply* reply)
 		ui->LblProgress->hide();
 		ui->LblDetails->show();
 
-		AsBase::WriteLogs("Online", "Failed to fetch songs from online", "Reason: " + networkresult, "");
-		ui->LblDetails->setText("Failed to fetch songs from online.\nReason: " + networkresult);
+		AsBase::WriteLogs("Online", "Failed to fetch songs from online", "Reason: " + networkResult, "");
+		ui->LblDetails->setText("Failed to fetch songs from online.\nReason: " + networkResult);
         return;
     }
     else
     {
-        networkresult = (QString)reply->readAll();
+        networkResult = (QString)reply->readAll();
 		
 		Task::await([]() {
 			return InsertSongs();
