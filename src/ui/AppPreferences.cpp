@@ -18,6 +18,7 @@ int fontgeneral, fontpreview, fontpresent;
 std::vector<QString> pref_sets, navigations, languages, pref_fonts;
 QFont PrefFontGeneral, PrefFontPreview, PrefFontPresent;
 
+// AppPreferences Window Initiliser
 AppPreferences::AppPreferences(QWidget* parent) :
     QDialog(parent),
     ui(new Ui::AppPreferences)
@@ -28,14 +29,15 @@ AppPreferences::AppPreferences(QWidget* parent) :
 	SetUpStuff();
 }
 
+// Get App Settings with relation to the current active window
 bool AppPreferences::GetSettings()
 {
 	bool retval = false;
 	sqlite3* songsDb;
 	char* err_msg = NULL, ** qryResult = NULL;
-        int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-        char const *sqlQuery = "SELECT content FROM settings ORDER BY settingid";
+    char const *sqlQuery = "SELECT content FROM settings ORDER BY settingid";
 
 	if (rc == SQLITE_OK)
 	{
@@ -53,6 +55,7 @@ bool AppPreferences::GetSettings()
 	return retval;
 }
 
+// Reload App Settings 
 void AppPreferences::ReloadSettings()
 {
 	fontgeneral = pref_sets[8].toInt();
@@ -96,8 +99,10 @@ void AppPreferences::ReloadSettings()
 	ui->SldSongPresentFont->setValue(fontpresent);
 
 	SelectedTheme(pref_sets[25].toInt());
+
 }
 
+// Basic Custom setup of UI
 void AppPreferences::SetUpStuff()
 {
 	LoadNavigation("");
@@ -143,11 +148,12 @@ void AppPreferences::SetUpStuff()
 	}
 }
 
+// Getting the currently selected theme
 void AppPreferences::SelectedTheme(int theme)
 {
 	switch (theme)
 	{
-		case 1:
+		case 1: //Theme One
 			ui->BtnTheme1->setChecked(true);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -165,7 +171,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 2:
+		case 2: //Theme Two
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(true);
 			ui->BtnTheme3->setChecked(false);
@@ -183,7 +189,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 3:
+		case 3: //Theme Three
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(true);
@@ -201,7 +207,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 4:
+		case 4: //Theme Four
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -219,7 +225,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 5:
+		case 5: //Theme Five
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -237,7 +243,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 6:
+		case 6: //Theme Six
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -255,7 +261,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 7:
+		case 7: //Theme Seven
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -273,7 +279,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 8:
+		case 8: //Theme Eight
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -291,7 +297,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 9:
+		case 9: //Theme Nine
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -309,7 +315,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 10:
+		case 10: //Theme Ten
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -327,7 +333,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 11:
+		case 11: //Theme Eleven
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -345,7 +351,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 12:
+		case 12: //Theme Twelve
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -363,7 +369,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 13:
+		case 13: //Theme Thirteen
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -381,7 +387,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 14:
+		case 14: //Theme Fourteen
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -399,7 +405,7 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme15->setChecked(false);
 			break;
 
-		case 15:
+		case 15: //Theme Fifteen
 			ui->BtnTheme1->setChecked(false);
 			ui->BtnTheme2->setChecked(false);
 			ui->BtnTheme3->setChecked(false);
@@ -416,13 +422,14 @@ void AppPreferences::SelectedTheme(int theme)
 			ui->BtnTheme14->setChecked(false);
 			ui->BtnTheme15->setChecked(true);
 			break;
+
 	}
 }
 
+// Get the settings navigation
 void AppPreferences::LoadNavigation(QString searchstr)
 {
 	QStringList strList;
-
 	QStandardItemModel* naviModel = new QStandardItemModel();
 
 	if (navigations.size() > 0) navigations.clear();
@@ -462,31 +469,33 @@ void AppPreferences::LoadNavigation(QString searchstr)
 	ui->LstNavigation->setCurrentIndex(naviModel->index(0, 0));
 }
 
+// Show the appropriate selected tab
 void AppPreferences::OpenSelectedTab(const QModelIndex& index)
 {
 	int setTab = navigations[index.row()].toInt();
 	switch (setTab)
 	{
-	case 1:
-		ui->TabPage1->show();
-		ui->TabPage2->hide();
-		ui->TabPage3->hide();
-		break;
+		case 1:
+			ui->TabPage1->show();
+			ui->TabPage2->hide();
+			ui->TabPage3->hide();
+			break;
 
-	case 2:
-		ui->TabPage1->hide();
-		ui->TabPage2->show();
-		ui->TabPage3->hide();
-		break;
+		case 2:
+			ui->TabPage1->hide();
+			ui->TabPage2->show();
+			ui->TabPage3->hide();
+			break;
 
-	case 3:
-		ui->TabPage1->hide();
-		ui->TabPage2->hide();
-		ui->TabPage3->show();
-		break;
+		case 3:
+			ui->TabPage1->hide();
+			ui->TabPage2->hide();
+			ui->TabPage3->show();
+			break;
 	}
 }
 
+// Change the General Font Size of the App
 void AppPreferences::ChangeGeneralFont(int newfont)
 {
 	PrefFontGeneral.setPointSize(newfont);
@@ -495,6 +504,7 @@ void AppPreferences::ChangeGeneralFont(int newfont)
 	ui->GrpGeneralAppFont->setTitle(" App General Font " + QString::number(newfont) + " ");
 }
 
+// Change the Preview Font Size of the App
 void AppPreferences::ChangePreviewFont(int newfont)
 {
 	PrefFontPreview.setPointSize(newfont);
@@ -503,6 +513,7 @@ void AppPreferences::ChangePreviewFont(int newfont)
 	ui->GrpSongPreviewFont->setTitle(" Song Preview Font " + QString::number(newfont) + " ");
 }
 
+// Change the Presentation Font Size of the App
 void AppPreferences::ChangePresentFont(int newfont)
 {
 	PrefFontPresent.setPointSize(newfont);
@@ -511,41 +522,49 @@ void AppPreferences::ChangePresentFont(int newfont)
 	ui->GrpSongPresentFont->setTitle(" Song Presentation Font " + QString::number(newfont) + " ");
 }
 
+// On Text Change event function for TxtSearch
 void AppPreferences::on_TxtSearch_textChanged(const QString& searchstr)
 {
 	LoadNavigation(searchstr);
 }
 
+// On Click event function for LstNavigation
 void AppPreferences::on_LstNavigation_clicked(const QModelIndex& index)
 {
 	OpenSelectedTab(index);
 }
 
+// On Double Click event function for LstNavigation
 void AppPreferences::on_LstNavigation_doubleClicked(const QModelIndex& index)
 {
 	OpenSelectedTab(index);
 }
 
+// On Click event function for BtnTabletMode
 void AppPreferences::on_BtnTabletMode_clicked()
 {
 	AsBase::SetOption("tablet_mode", AsBase::booltoInt(ui->BtnTabletMode->isChecked()));
 }
 
+// On Click event function for BtnSearchCriteria
 void AppPreferences::on_BtnSearchCriteria_clicked()
 {
 	AsBase::SetOption("search_allbooks", AsBase::booltoInt(ui->BtnSearchCriteria->isChecked()));
 }
 
+// On Current Index Changed event function for CmbLanguage
 void AppPreferences::on_CmbLanguage_currentIndexChanged(int index)
 {
 	AsBase::SetOption("language", languages[index]);
 }
 
+// On Text Changed event function for TxtYourName
 void AppPreferences::on_TxtYourName_textChanged(const QString& newname)
 {
 	AsBase::SetOption("app_user", newname);
 }
 
+// On Click event function for BtnDownGeneralAppFont
 void AppPreferences::on_BtnDownGeneralAppFont_clicked()
 {
 	if ((fontgeneral - 2) > 9)
@@ -555,6 +574,7 @@ void AppPreferences::on_BtnDownGeneralAppFont_clicked()
 	}
 }
 
+// On Click event function for BtnUpGeneralAppFont
 void AppPreferences::on_BtnUpGeneralAppFont_clicked()
 {
 	if ((fontgeneral + 2) < 51)
@@ -564,11 +584,13 @@ void AppPreferences::on_BtnUpGeneralAppFont_clicked()
 	}
 }
 
+// On Value Changed event function for SldGeneralAppFont
 void AppPreferences::on_SldGeneralAppFont_valueChanged(int value)
 {
 	ChangeGeneralFont(value);
 }
 
+// On Current Index Changed event function for CmbGeneralAppFont
 void AppPreferences::on_CmbGeneralAppFont_currentIndexChanged(int index)
 {
 	QString newfont = pref_fonts[index];
@@ -577,6 +599,7 @@ void AppPreferences::on_CmbGeneralAppFont_currentIndexChanged(int index)
 	AsBase::SetOption("general_font_type", newfont);
 }
 
+// On Click event function for BtnGeneralAppFont
 void AppPreferences::on_BtnGeneralAppFont_clicked()
 {
 	PrefFontGeneral.setBold(ui->BtnGeneralAppFont->isChecked());
@@ -584,6 +607,7 @@ void AppPreferences::on_BtnGeneralAppFont_clicked()
 	AsBase::SetOption("general_font_bold", AsBase::booltoInt(ui->BtnGeneralAppFont->isChecked()));
 }
 
+// On Click event function for BtnDownSongPreviewFont
 void AppPreferences::on_BtnDownSongPreviewFont_clicked()
 {
 	if ((fontpreview - 2) > 9)
@@ -593,6 +617,7 @@ void AppPreferences::on_BtnDownSongPreviewFont_clicked()
 	}
 }
 
+// On Click event function for BtnUpSongPreviewFont
 void AppPreferences::on_BtnUpSongPreviewFont_clicked()
 {
 	if ((fontpreview + 2) < 51)
@@ -602,11 +627,13 @@ void AppPreferences::on_BtnUpSongPreviewFont_clicked()
 	}
 }
 
+// On Value Changed event function for SldSongPreviewFont
 void AppPreferences::on_SldSongPreviewFont_valueChanged(int value)
 {
 	ChangePreviewFont(value);
 }
 
+// On Current Index Changed event function for CmbSongPreviewFont
 void AppPreferences::on_CmbSongPreviewFont_currentIndexChanged(int index)
 {
 	QString newfont = pref_fonts[index];
@@ -615,6 +642,7 @@ void AppPreferences::on_CmbSongPreviewFont_currentIndexChanged(int index)
 	AsBase::SetOption("preview_font_type", newfont);
 }
 
+// On Click event function for BtnSongPreviewFont
 void AppPreferences::on_BtnSongPreviewFont_clicked()
 {
 	PrefFontPreview.setBold(ui->BtnSongPreviewFont->isChecked());
@@ -622,6 +650,7 @@ void AppPreferences::on_BtnSongPreviewFont_clicked()
 	AsBase::SetOption("preview_font_bold", AsBase::booltoInt(ui->BtnSongPreviewFont->isChecked()));
 }
 
+// On Click event function for BtnDownSongPresentFont
 void AppPreferences::on_BtnDownSongPresentFont_clicked()
 {
 	if ((fontpresent - 2) > 9)
@@ -631,6 +660,7 @@ void AppPreferences::on_BtnDownSongPresentFont_clicked()
 	}
 }
 
+// On Click event function for BtnUpSongPresentFont
 void AppPreferences::on_BtnUpSongPresentFont_clicked()
 {
 	if ((fontpresent + 2) < 99)
@@ -640,11 +670,13 @@ void AppPreferences::on_BtnUpSongPresentFont_clicked()
 	}
 }
 
+// On Value Changed event function for SldSongPresentFont
 void AppPreferences::on_SldSongPresentFont_valueChanged(int value)
 {
 	ChangePresentFont(value);
 }
 
+// On Current Index Changed event function for CmbSongPresentFont
 void AppPreferences::on_CmbSongPresentFont_currentIndexChanged(int index)
 {
 	QString newfont = pref_fonts[index];
@@ -653,6 +685,7 @@ void AppPreferences::on_CmbSongPresentFont_currentIndexChanged(int index)
 	AsBase::SetOption("present_font_type", newfont);
 }
 
+// On Click event function for BtnSongPresentFont
 void AppPreferences::on_BtnSongPresentFont_clicked()
 {
 	PrefFontPresent.setBold(ui->BtnSongPresentFont->isChecked());
@@ -660,96 +693,112 @@ void AppPreferences::on_BtnSongPresentFont_clicked()
 	AsBase::SetOption("present_font_bold", AsBase::booltoInt(ui->BtnSongPresentFont->isChecked()));
 }
 
+// On Click event function for BtnTheme1
 void AppPreferences::on_BtnTheme1_clicked()
 {
 	AsBase::SetOption("app_theme", "1");
 	SelectedTheme(1);
 }
 
+// On Click event function for BtnTheme2
 void AppPreferences::on_BtnTheme2_clicked()
 {
 	AsBase::SetOption("app_theme", "2");
 	SelectedTheme(2);
 }
 
+// On Click event function for BtnTheme3
 void AppPreferences::on_BtnTheme3_clicked()
 {
 	AsBase::SetOption("app_theme", "3");
 	SelectedTheme(3);
 }
 
+// On Click event function for BtnTheme4
 void AppPreferences::on_BtnTheme4_clicked()
 {
 	AsBase::SetOption("app_theme", "4");
 	SelectedTheme(4);
 }
 
+// On Click event function for BtnTheme5
 void AppPreferences::on_BtnTheme5_clicked()
 {
 	AsBase::SetOption("app_theme", "5");
 	SelectedTheme(5);
 }
 
+// On Click event function for BtnTheme6
 void AppPreferences::on_BtnTheme6_clicked()
 {
 	AsBase::SetOption("app_theme", "6");
 	SelectedTheme(6);
 }
 
+// On Click event function for BtnTheme7
 void AppPreferences::on_BtnTheme7_clicked()
 {
 	AsBase::SetOption("app_theme", "7");
 	SelectedTheme(7);
 }
 
+// On Click event function for BtnTheme8
 void AppPreferences::on_BtnTheme8_clicked()
 {
 	AsBase::SetOption("app_theme", "8");
 	SelectedTheme(8);
 }
 
+// On Click event function for BtnTheme9
 void AppPreferences::on_BtnTheme9_clicked()
 {
 	AsBase::SetOption("app_theme", "9");
 	SelectedTheme(9);
 }
 
+// On Click event function for BtnTheme10
 void AppPreferences::on_BtnTheme10_clicked()
 {
 	AsBase::SetOption("app_theme", "10");
 	SelectedTheme(10);
 }
 
+// On Click event function for BtnTheme11
 void AppPreferences::on_BtnTheme11_clicked()
 {
 	AsBase::SetOption("app_theme", "11");
 	SelectedTheme(11);
 }
 
+// On Click event function for BtnTheme12
 void AppPreferences::on_BtnTheme12_clicked()
 {
 	AsBase::SetOption("app_theme", "12");
 	SelectedTheme(12);
 }
 
+// On Click event function for BtnTheme13
 void AppPreferences::on_BtnTheme13_clicked()
 {
 	AsBase::SetOption("app_theme", "13");
 	SelectedTheme(13);
 }
 
+// On Click event function for BtnTheme14
 void AppPreferences::on_BtnTheme14_clicked()
 {
 	AsBase::SetOption("app_theme", "14");
 	SelectedTheme(14);
 }
 
+// On Click event function for BtnTheme15
 void AppPreferences::on_BtnTheme15_clicked()
 {
 	AsBase::SetOption("app_theme", "15");
 	SelectedTheme(15);
 }
 
+// Class Destructor
 AppPreferences::~AppPreferences()
 {
 	delete ui;

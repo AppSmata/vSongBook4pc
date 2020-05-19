@@ -249,6 +249,7 @@ QString InsertSongs()
 		Content = Content.replace("'", "''");
 
 		AsBase::NewSong(Bookid, Categoryid, Number, Postid, Title, Alias, Content, "", Author);
+
 	}
 	return "Task Finished";
 }

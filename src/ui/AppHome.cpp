@@ -28,8 +28,7 @@
 int home_fontgen, home_fontprev, home_fonttype, selectedbook;
 bool isReady, searchAll, isDarkMode, isPreviewBold;
 QString selected_book, selected_song, search_term;
-std::vector<QString> bookcats, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories;
-std::vector<QString> home_fonts, home_sets;
+std::vector<QString> bookcats, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, home_fonts, home_sets;
 
 QFont HomeFontPreview, HomeFontGeneral;
 
@@ -47,7 +46,7 @@ AppHome::AppHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::AppHome)
 	if (QFile::exists(AsUtils::DbNameQstr())) HomeInit();
 	else
 	{
-		AsBase::WriteLogs("Files", "Database file not found, resorting to creating a new one", "", "");
+		AsBase::WriteLogs("Files", "Database was not found, resorting to creating a new one", "", "");
         QDir().mkdir("data");
 		db.create(AsUtils::DbNameQstr());
 		AsBase::InitialDbOps();
@@ -55,6 +54,7 @@ AppHome::AppHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::AppHome)
 	}
 }
 
+// Initilizing Database Operations
 void AsBase::InitialDbOps()
 {
     AsBase::execSql(AsUtils::CreateBooksTableSql());
@@ -67,6 +67,7 @@ void AsBase::InitialDbOps()
     AsBase::execSql(AsUtils::SettingsSql());
 }
 
+// Initializing Home Window
 void AppHome::HomeInit()
 {
 	home_sets = AsBase::AppSettings();
@@ -81,14 +82,14 @@ void AppHome::HomeInit()
 		}
 		else
 		{
-			AsBase::WriteLogs("Data", "Database empty, resorting to going online", "", "");
+			AsBase::WriteLogs("Data", "Database is empty, resorting to going online", "", "");
 			AppOnline online(this);
 			online.exec();
 			HomeResume();
 		}
 	}
 	else {
-		QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to unknown error at the moment"));
+		QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to an unknown error at the moment"));
 	}
 }
 
@@ -106,7 +107,7 @@ void AppHome::HomeResume()
 		}
 		else
 		{
-			AsBase::WriteLogs("Data", "Database empty, resorting to user actions", "", "");
+			AsBase::WriteLogs("Data", "Database is empty, resorting to user actions", "", "");
 		}
 	}
 	else {
@@ -114,6 +115,7 @@ void AppHome::HomeResume()
 	}
 }
 
+// Reload App Settings when changes are made
 void AppHome::ReloadSettings()
 {
 	isPreviewBold = AsBase::isTrue(home_sets[13].toInt());
@@ -163,6 +165,7 @@ void AppHome::ReloadSettings()
 	ReloadControls();
 }
 
+// Reload controls with updated settings
 void AppHome::ReloadControls()
 {
 	ui->ChkSearchCriteria->setChecked(searchAll);
@@ -177,6 +180,7 @@ void AppHome::ReloadControls()
 	ui->TxtPreviewAlias->setFont(HomeFontPreview);
 }
 
+// Changing of font of the song preview
 void AppHome::FontChange()
 {
 	switch (home_fonttype)
@@ -197,6 +201,7 @@ void AppHome::FontChange()
 	}
 }
 
+// Reduce Preview Font Size
 void AppHome::FontSmaller()
 {
 	if ((home_fontprev - 2) > 9)
@@ -264,7 +269,6 @@ bool AppHome::PopulateSongbooks()
 		ui->CmbSongbooks->setCurrentIndex(0);
 		retval = true;
 	}
-
 	return retval;
 }
 
@@ -281,7 +285,7 @@ void AppHome::PopulateSonglists(QString SearchStr)
 		songbooks.clear();
 	}
 
-	QString ResultCount = " songs in: " + booktitles[ui->CmbSongbooks->currentIndex()];
+	QString ResultCount = " songs found in: " + booktitles[ui->CmbSongbooks->currentIndex()];
 
 	sqlite3* db;
     char* err_msg = NULL, ** qryResult = NULL;
@@ -325,7 +329,7 @@ void AppHome::PopulateSonglists(QString SearchStr)
             QStandardItem* songItem = new QStandardItem;
             AsItem song;
 
-            if (titles.length() > 40) song.title = titles.left(40) + "...";
+            if (titles.length() > 40) song.title = titles.left(40) + " ...";
             else song.title = titles;
 
             song.content = contents.left(50) + "...";

@@ -10,11 +10,11 @@ QString AsUtils::DbNameQstr() { return R"(data/vSongBook.db)"; }
 */
 char const *AsUtils::DbNameChar() { return R"(data/vSongBook.db)"; }
 
-QString AsUtils::TableBooks() { return "books"; }
-QString AsUtils::TableHistory() { return "history"; }
-QString AsUtils::TableSettings() { return "settings"; }
-QString AsUtils::TableSettingsNavi() { return "settings_navi"; }
-QString AsUtils::TableSongs() { return "songs"; }
+QString AsUtils::TableBooks() { return "as_books"; }
+QString AsUtils::TableHistory() { return "as_history"; }
+QString AsUtils::TableSettings() { return "as_settings"; }
+QString AsUtils::TableSettingsNavi() { return "as_settings_navi"; }
+QString AsUtils::TableSongs() { return "as_songs"; }
 
 
 QString AsUtils::ColumnBookid() { return "bookid"; }
@@ -89,7 +89,8 @@ QString AsUtils::CreateBooksTableSql()
 		ColumnContent() + " VARCHAR(1000), " +
 		ColumnBackpath() + " VARCHAR(250) UNIQUE, " +
 		ColumnCreated() + " VARCHAR(20), " +
-		ColumnUpdated() + " VARCHAR(20));";
+		ColumnUpdated() + " VARCHAR(20)" +
+	");";
 }
 
 QString AsUtils::CreateHistoryTableSql()
@@ -132,8 +133,8 @@ QString AsUtils::CreateSongsTableSql()
 		ColumnBookid() + " INTEGER, " +
 		ColumnCategoryid() + " INTEGER, " +
 		ColumnNumber() + " INTEGER NOT NULL DEFAULT '0', " +
-		ColumnAlias() + " VARCHAR(250), " +
 		ColumnTitle() + " VARCHAR(100), " +
+		ColumnAlias() + " VARCHAR(250), " +
 		ColumnTags() + " VARCHAR(100), " +
 		ColumnContent() + " VARCHAR(10000), " +
 		ColumnKey() + " VARCHAR(10), " +
