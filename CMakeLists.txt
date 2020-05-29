@@ -108,10 +108,15 @@ set(SQLB_HDR
 	src/IconCache.h
 	src/sqlite.h
 	src/version.h
-	src/task.hpp
+	src/task.h
 )
 
 set(SQLB_MOC_HDR
+	src/tabs/GhostWindow.h
+	src/tabs/TabBar.h
+	src/tabs/TabbedWindow.h
+	src/tabs/TabbedWindowPrivate.h
+	src/tabs/TabView.h
 	src/ui/AppAbout.h
 	src/ui/AppEditor.h
 	src/ui/AppHome.h
@@ -123,6 +128,7 @@ set(SQLB_MOC_HDR
 	src/ui/AppTutorial.h
 	src/AsBase.h
 	src/AsDelegate.h
+	src/AsException.h
 	src/AsItem.h
 	src/AsUtils.h
 	src/CipherSettings.h
@@ -149,6 +155,11 @@ set(SQLB_MOC_HDR
 )
 
 set(SQLB_SRC
+	src/tabs/GhostWindow.cpp
+	src/tabs/TabBar.cpp
+	src/tabs/TabbedWindow.cpp
+	src/tabs/TabbedWindowPrivate.cpp
+	src/tabs/TabView.cpp
 	src/sql/ObjectIdentifier.cpp
 	src/sql/parser/ParserDriver.cpp
 	src/sql/parser/sqlite3_lexer.cpp

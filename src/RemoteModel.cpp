@@ -1,8 +1,8 @@
 #include <QImage>
 
-#include "Data.h"
-#include "RemoteModel.h"
-#include "RemoteDatabase.h"
+#include <Data.h>
+#include <RemoteModel.h>
+#include <RemoteDatabase.h>
 
 using json = nlohmann::json;
 

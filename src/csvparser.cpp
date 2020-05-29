@@ -1,4 +1,4 @@
-#include "csvparser.h"
+#include <csvparser.h>
 
 #include <QTextStream>
 

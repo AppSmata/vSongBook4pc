@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <vector>
 
-#include "Palette.h"
+#include <Palette.h>
 
 namespace Ui {
     class CondFormatManager;

@@ -1,15 +1,15 @@
-#include "ui/AppPreferences.h"
-#include "ui_AppPreferences.h"
+#include <src\ui\AppPreferences.h>
+#include <ui_AppPreferences.h>
 
-#include "Application.h"
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <Application.h>
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
-#include "AsBase.h"
-#include "AsUtils.h"
-#include "AsItem.h"
-#include "AsDelegate.h"
+#include <AsBase.h>
+#include <AsUtils.h>
+#include <AsItem.h>
+#include <AsDelegate.h>
 
 #include <QStandardItemModel>
 #include <QObject>
@@ -18,41 +18,28 @@ int fontgeneral, fontpreview, fontpresent;
 std::vector<QString> pref_sets, navigations, languages, pref_fonts;
 QFont PrefFontGeneral, PrefFontPreview, PrefFontPresent;
 
-// AppPreferences Window Initiliser
-AppPreferences::AppPreferences(QWidget* parent) :
-    QDialog(parent),
+AppPreferences::AppPreferences(QWidget *parent) :
+    QMainWindow(parent),
     ui(new Ui::AppPreferences)
 {
     ui->setupUi(this);
 	GetSettings();
-	ReloadSettings();
 	SetUpStuff();
+	
 }
 
 // Get App Settings with relation to the current active window
-bool AppPreferences::GetSettings()
+void AppPreferences::GetSettings()
 {
-	bool retval = false;
-	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
-    int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	AsBase::WriteLogs("App Events", "Fetching App Settings", "", "");
+	pref_sets = AsBase::AppSettings();
 
-    char const *sqlQuery = "SELECT content FROM settings ORDER BY settingid";
-
-	if (rc == SQLITE_OK)
+	if (pref_sets.size() != 0)
 	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
-
-		for (int i = 1; i < row + 1; i++)
-		{
-			pref_sets.push_back(*(qryResult + i * col + 0));
-		}
-		sqlite3_free_table(qryResult);
-		sqlite3_close(songsDb);
-		retval = true;
+		AsBase::WriteLogs("App Events", "App Settings fetched successfully", "", "");
+		ReloadSettings();
 	}
-
-	return retval;
+	else AsBase::WriteLogs("App Events", "App Settings fetching was unsuccessful", "", "");
 }
 
 // Reload App Settings 
@@ -116,7 +103,7 @@ void AppPreferences::SetUpStuff()
 	languages.push_back("Portuguesse");
 	languages.push_back("Chichewa");
 
-    for (decltype(languages.size()) l = 0; l < languages.size(); ++l)
+	for (decltype(languages.size()) l = 0; l < languages.size(); ++l)
 	{
 		ui->CmbLanguage->addItem(languages[l]);
 	}
@@ -140,7 +127,7 @@ void AppPreferences::SetUpStuff()
 	pref_fonts.push_back("Trebuchet MS");
 	pref_fonts.push_back("Verdana");
 
-    for (decltype(pref_fonts.size()) f = 0; f < pref_fonts.size(); ++f)
+	for (decltype(pref_fonts.size()) f = 0; f < pref_fonts.size(); ++f)
 	{
 		ui->CmbGeneralAppFont->addItem(pref_fonts[f]);
 		ui->CmbSongPreviewFont->addItem(pref_fonts[f]);
@@ -153,275 +140,275 @@ void AppPreferences::SelectedTheme(int theme)
 {
 	switch (theme)
 	{
-		case 1: //Theme One
-			ui->BtnTheme1->setChecked(true);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 1: //Theme One
+		ui->BtnTheme1->setChecked(true);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 2: //Theme Two
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(true);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 2: //Theme Two
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(true);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 3: //Theme Three
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(true);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 3: //Theme Three
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(true);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 4: //Theme Four
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(true);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 4: //Theme Four
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(true);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 5: //Theme Five
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(true);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 5: //Theme Five
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(true);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 6: //Theme Six
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(true);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 6: //Theme Six
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(true);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 7: //Theme Seven
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(true);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 7: //Theme Seven
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(true);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 8: //Theme Eight
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(true);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 8: //Theme Eight
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(true);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 9: //Theme Nine
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(true);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 9: //Theme Nine
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(true);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 10: //Theme Ten
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(true);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 10: //Theme Ten
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(true);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 11: //Theme Eleven
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(true);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 11: //Theme Eleven
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(true);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 12: //Theme Twelve
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(true);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 12: //Theme Twelve
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(true);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 13: //Theme Thirteen
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(true);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 13: //Theme Thirteen
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(true);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 14: //Theme Fourteen
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(true);
-			ui->BtnTheme15->setChecked(false);
-			break;
+	case 14: //Theme Fourteen
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(true);
+		ui->BtnTheme15->setChecked(false);
+		break;
 
-		case 15: //Theme Fifteen
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(true);
-			break;
+	case 15: //Theme Fifteen
+		ui->BtnTheme1->setChecked(false);
+		ui->BtnTheme2->setChecked(false);
+		ui->BtnTheme3->setChecked(false);
+		ui->BtnTheme4->setChecked(false);
+		ui->BtnTheme5->setChecked(false);
+		ui->BtnTheme6->setChecked(false);
+		ui->BtnTheme7->setChecked(false);
+		ui->BtnTheme8->setChecked(false);
+		ui->BtnTheme9->setChecked(false);
+		ui->BtnTheme10->setChecked(false);
+		ui->BtnTheme11->setChecked(false);
+		ui->BtnTheme12->setChecked(false);
+		ui->BtnTheme13->setChecked(false);
+		ui->BtnTheme14->setChecked(false);
+		ui->BtnTheme15->setChecked(true);
+		break;
 
 	}
 }
@@ -435,12 +422,12 @@ void AppPreferences::LoadNavigation(QString searchstr)
 	if (navigations.size() > 0) navigations.clear();
 
 	sqlite3* db;
-    char* err_msg = NULL, ** qryResult = NULL;
+	char* err_msg = NULL, ** qryResult = NULL;
 
 	QByteArray bar = AsUtils::SettingsNaviSelectSql(searchstr).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
-    int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
 	for (int i = 1; i < row + 1; i++)
@@ -475,23 +462,23 @@ void AppPreferences::OpenSelectedTab(const QModelIndex& index)
 	int setTab = navigations[index.row()].toInt();
 	switch (setTab)
 	{
-		case 1:
-			ui->TabPage1->show();
-			ui->TabPage2->hide();
-			ui->TabPage3->hide();
-			break;
+	case 1:
+		ui->TabPage1->show();
+		ui->TabPage2->hide();
+		ui->TabPage3->hide();
+		break;
 
-		case 2:
-			ui->TabPage1->hide();
-			ui->TabPage2->show();
-			ui->TabPage3->hide();
-			break;
+	case 2:
+		ui->TabPage1->hide();
+		ui->TabPage2->show();
+		ui->TabPage3->hide();
+		break;
 
-		case 3:
-			ui->TabPage1->hide();
-			ui->TabPage2->hide();
-			ui->TabPage3->show();
-			break;
+	case 3:
+		ui->TabPage1->hide();
+		ui->TabPage2->hide();
+		ui->TabPage3->show();
+		break;
 	}
 }
 
@@ -801,5 +788,7 @@ void AppPreferences::on_BtnTheme15_clicked()
 // Class Destructor
 AppPreferences::~AppPreferences()
 {
-	delete ui;
+    delete ui;
 }
+
+

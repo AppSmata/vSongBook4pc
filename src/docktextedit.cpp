@@ -1,5 +1,5 @@
-#include "docktextedit.h"
-#include "Settings.h"
+#include <docktextedit.h>
+#include <Settings.h>
 
 #include <Qsci/qscistyle.h>
 #include <Qsci/qscilexerjson.h>

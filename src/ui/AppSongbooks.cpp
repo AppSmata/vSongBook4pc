@@ -1,9 +1,9 @@
-#include "ui/AppSongbooks.h"
-#include "ui_AppSongbooks.h"
+#include <src\ui\AppSongbooks.h>
+#include <ui_AppSongbooks.h>
 
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 #include <QStandardItemModel>
 #include <QObject>
 
@@ -12,10 +12,10 @@
 #include <QMessageBox>
 #include <QLocale>
 
-#include "AsBase.h"
-#include "AsUtils.h"
-#include "AsItem.h"
-#include "AsDelegate.h"
+#include <AsBase.h>
+#include <AsUtils.h>
+#include <AsItem.h>
+#include <AsDelegate.h>
 
 bool isNewBook;
 int bookcount;

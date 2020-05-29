@@ -1,4 +1,4 @@
-#include "IconCache.h"
+#include <IconCache.h>
 
 QIcon IconCache::null_icon;
 std::unordered_map<std::string, QIcon> IconCache::icons;

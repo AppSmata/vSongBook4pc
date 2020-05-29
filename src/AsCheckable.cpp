@@ -1,4 +1,4 @@
-#include "AsCheckable.h"
+#include <AsCheckable.h>
 
 AsCheckable::AsCheckable(QObject* parent) :
     QStringListModel(parent) {

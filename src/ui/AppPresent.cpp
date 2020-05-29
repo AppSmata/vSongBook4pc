@@ -1,13 +1,13 @@
-#include "ui/AppPresent.h"
-#include "ui_AppPresent.h"
+#include <src\ui\AppPresent.h>
+#include <ui_AppPresent.h>
 
-#include "AsBase.h"
-#include "AsUtils.h"
-#include "Application.h"
+#include <AsBase.h>
+#include <AsUtils.h>
+#include <Application.h>
 
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
 std::vector<QString> songverses1, songverses2, labels, view_set, view_fonts;
 int this_book, this_song, slides, slideno, slideindex, mainfont, smallfont, view_font_size, view_fonttype, view_theme;
@@ -316,11 +316,6 @@ void AppPresent::SetPresentation()
 	}
 }
 
-AppPresent::~AppPresent()
-{
-    delete ui;
-}
-
 void AppPresent::on_actionClose_triggered()
 {
     this->close();
@@ -461,3 +456,7 @@ void AppPresent::on_BtnDown_clicked()
 	}
 }
 
+AppPresent::~AppPresent()
+{
+	delete ui;
+}

@@ -1,9 +1,9 @@
-#include "PlotDock.h"
-#include "ui_PlotDock.h"
-#include "Settings.h"
-#include "sqlitetablemodel.h"
-#include "FileDialog.h"
-#include "TableBrowser.h"     // Just for BrowseDataTableSettings, not for the actual table browser class
+#include <PlotDock.h>
+#include <ui_PlotDock.h>
+#include <Settings.h>
+#include <sqlitetablemodel.h>
+#include <FileDialog.h>
+#include <TableBrowser.h>     // Just for BrowseDataTableSettings, not for the actual table browser class
 
 #include <QPrinter>
 #include <QPrintPreviewDialog>

@@ -1,7 +1,7 @@
 #ifndef SQLTEXTEDIT_H
 #define SQLTEXTEDIT_H
 
-#include "ExtendedScintilla.h"
+#include <ExtendedScintilla.h>
 
 class SqlUiLexer;
 

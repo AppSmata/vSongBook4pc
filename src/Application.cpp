@@ -1,7 +1,16 @@
-#include "Application.h"
-#include "ui/AppHome.h"
-#include "Settings.h"
-#include "version.h"
+#include <Application.h>
+#include <src\ui\AppHome.h>
+#include <src\tabs\TabbedWindow.h>
+
+#include <Settings.h>
+#include <version.h>
+#include <AsBase.h>
+
+#include <QApplication>
+#include <QMainWindow>
+#include <QToolBar>
+#include <QAction>
+#include <QMenuBar>
 
 #include <QFile>
 #include <QFileOpenEvent>
@@ -11,6 +20,12 @@
 #include <QLocale>
 #include <QDebug>
 #include <QAction>
+
+#include <QApplication>
+#include <QMainWindow>
+#include <QToolBar>
+#include <QAction>
+#include <QMenuBar>
 
 Application::Application(int& argc, char** argv) :
     QApplication(argc, argv)
@@ -70,15 +85,21 @@ Application::Application(int& argc, char** argv) :
 #endif
 
     // Show main window
-    m_homepage = new AppHome();
-    m_homepage->showMaximized();
-    connect(this, &Application::lastWindowClosed, this, &Application::quit);
 
+    AsBase::WriteLogs("Events", "Main Window opening", "", "");
+
+    m_tab = new TabbedWindow();
+    m_tab->resize(950, 600);
+    m_tab->showMaximized();
+
+    AppHome* m_homepage = new AppHome(m_tab);
+    m_tab->addView(m_homepage, QString("Search Tab 1"));
+    connect(this, &Application::lastWindowClosed, this, &Application::quit);
 }
 
 Application::~Application()
 {
-    delete m_homepage;
+    delete m_tab;
 }
 
 bool Application::event(QEvent* event)

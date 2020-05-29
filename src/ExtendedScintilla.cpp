@@ -1,8 +1,8 @@
-#include "ExtendedScintilla.h"
-#include "Settings.h"
+#include <ExtendedScintilla.h>
+#include <Settings.h>
 
-#include "Qsci/qscilexer.h"
-#include "Qsci/qsciprinter.h"
+#include <Qsci/qscilexer.h>
+#include <Qsci/qsciprinter.h>
 #ifdef Q_OS_MACX
 #include <Qsci/qscicommandset.h>
 #include <Qsci/qscicommand.h>

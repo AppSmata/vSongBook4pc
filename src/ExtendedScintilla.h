@@ -1,7 +1,7 @@
 #ifndef EXTENDEDSCINTILLA_H
 #define EXTENDEDSCINTILLA_H
 
-#include "Qsci/qsciscintilla.h"
+#include <Qsci/qsciscintilla.h>
 
 class QShortcut;
 

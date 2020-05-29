@@ -9,9 +9,9 @@
 #include <mutex>
 #include <vector>
 
-#include "RowCache.h"
-#include "sql/Query.h"
-#include "sql/sqlitetypes.h"
+#include <RowCache.h>
+#include <sql\Query.h>
+#include <sql\sqlitetypes.h>
 
 struct sqlite3;
 class DBBrowserDB;

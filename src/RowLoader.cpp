@@ -1,7 +1,7 @@
 #include <QDebug>
 
-#include "RowLoader.h"
-#include "sqlite.h"
+#include <RowLoader.h>
+#include <sqlite.h>
 
 namespace {
 

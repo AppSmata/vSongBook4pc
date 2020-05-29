@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QString>
 
-#include "RowCache.h"
+#include <RowCache.h>
 
 struct sqlite3;
 

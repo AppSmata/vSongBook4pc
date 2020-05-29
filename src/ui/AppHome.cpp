@@ -1,12 +1,12 @@
-#include "Application.h"
-#include "ui/AppHome.h"
-#include "ui_AppHome.h"
+#include <Application.h>
+#include <src\ui\AppHome.h>
+#include <ui_AppHome.h>
 
-#include "AsBase.h"
-#include "AsUtils.h"
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <AsBase.h>
+#include <AsUtils.h>
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
 #include <QWhatsThis>
 #include <QMessageBox>
@@ -14,30 +14,33 @@
 #include <QStandardItemModel>
 #include <QObject>
 
-#include "AsItem.h"
-#include "AsDelegate.h"
+#include <AsItem.h>
+#include <AsDelegate.h>
 
-#include "ui/AppAbout.h"
-#include "ui/AppSongbooks.h"
-#include "ui/AppEditor.h"
-#include "ui/AppPreferences.h"
-#include "ui/AppOnline.h"
-#include "ui/AppPresent.h"
-#include "ui/AppTutorial.h"
+#include <src\AsException.h>
+#include <src\ui\AppAbout.h>
+#include <src\ui\AppSongbooks.h>
+#include <src\ui\AppEditor.h>
+#include <src\ui\AppPreferences.h>
+#include <src\ui\AppOnline.h>
+#include <src\ui\AppPresent.h>
+#include <src\ui\AppTutorial.h>
 
 int home_fontgen, home_fontprev, home_fonttype, selectedbook;
 bool isReady, searchAll, isDarkMode, isPreviewBold;
 QString selected_book, selected_song, search_term;
 std::vector<QString> bookcats, songids, booktitles, songtitles, songaliases, songcontents, songbooks, bookcodes, histories, home_fonts, home_sets;
-
+TabbedWindow* mtab;
 QFont HomeFontPreview, HomeFontGeneral;
 
-AppHome::AppHome(QWidget* parent) : QMainWindow(parent), ui(new Ui::AppHome)
+AppHome::AppHome(TabbedWindow* parent) :
+	QMainWindow(parent), ui(new Ui::AppHome)
 {
 	ui->setupUi(this);
 	ui->SplitterMain->setStretchFactor(1, 3);
 	isReady = false;
 
+	mtab = parent;
 	ui->line->hide();
 	ui->ChkDarkMode->hide();
 
@@ -70,9 +73,16 @@ void AsBase::InitialDbOps()
 // Initializing Home Window
 void AppHome::HomeInit()
 {
+	AsBase::WriteLogs("App Events", "Fetching App Settings", "", "");
 	home_sets = AsBase::AppSettings();
-	ReloadSettings();
 
+	if (home_sets.size() != 0)
+	{
+		AsBase::WriteLogs("App Events", "App Settings fetched successfully", "", "");
+		ReloadSettings();
+	}
+	else AsBase::WriteLogs("App Events", "App Settings fetching was unsuccessful", "", "");
+	
 	if (PopulateSongbooks())
 	{
 		if (ui->CmbSongbooks->count() > 0)
@@ -90,6 +100,7 @@ void AppHome::HomeInit()
 	}
 	else {
 		QMessageBox::warning(this, qApp->applicationName(), tr("Oops! vSongBook could not generate view due to an unknown error at the moment"));
+		AsBase::WriteLogs("App Events", "Oops! vSongBook could not generate view due to an unknown error at the moment", "", "");
 	}
 }
 
@@ -162,7 +173,7 @@ void AppHome::ReloadSettings()
 	else if (home_sets[12] == "Trebuchet MS") home_fonttype = 11;
 	else if (home_sets[12] == "Verdana") home_fonttype = 12;
 
-	ReloadControls();
+	//ReloadControls();
 }
 
 // Reload controls with updated settings
@@ -244,7 +255,7 @@ bool AppHome::PopulateSongbooks()
 	if (ui->CmbSongbooks->count() > 0) ui->CmbSongbooks->clear();
 
 	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
+	char* zErrMsg = NULL, ** qryResult = NULL;
     int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
 	QByteArray bar = AsUtils::BookListSql("1").toLocal8Bit();
@@ -252,7 +263,11 @@ bool AppHome::PopulateSongbooks()
 	
 	if (rc == SQLITE_OK)
 	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
+		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("Database", "Db query to fetch books executed successfully", sqlQuery, zErrMsg);
+		else
+			AsBase::WriteLogs("Database", "Failed to execute db query to fetch books", sqlQuery, zErrMsg);
 
 		for (int i = 1; i < row + 1; i++)
 		{
@@ -265,10 +280,12 @@ bool AppHome::PopulateSongbooks()
 			booktitles.push_back(title);
 		}
 		sqlite3_free_table(qryResult);
+		sqlite3_free(zErrMsg);
 		sqlite3_close(songsDb);
 		ui->CmbSongbooks->setCurrentIndex(0);
 		retval = true;
 	}
+	else AsBase::WriteLogs("Database Error", "Database operation failed to execute", sqlQuery, zErrMsg);
 	return retval;
 }
 
@@ -287,25 +304,30 @@ void AppHome::PopulateSonglists(QString SearchStr)
 
 	QString ResultCount = " songs found in: " + booktitles[ui->CmbSongbooks->currentIndex()];
 
-	sqlite3* db;
-    char* err_msg = NULL, ** qryResult = NULL;
+	sqlite3* songsDb;
+    char* zErrMsg = NULL, ** qryResult = NULL;
 
 	if (!SearchStr.isEmpty())
 	{
-            ResultCount = " ";
-            bool isNumeric;
-            SearchStr.toInt(&isNumeric, 10);
-            if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
-            else ResultCount.append("songs found with: \"" + SearchStr + "\"");
+        ResultCount = " ";
+        bool isNumeric;
+        SearchStr.toInt(&isNumeric, 10);
+        if (isNumeric) ResultCount.append("songs found with number: " + SearchStr + "#");
+        else ResultCount.append("songs found with: \"" + SearchStr + "\"");
     }
-    int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+    int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
     QString SqlQuery = AsUtils::SongSearchSql(SearchStr, bookcats[selectedbook], searchAll);
 	QByteArray bar = SqlQuery.toLocal8Bit();
 	char* sqlQuery = bar.data();
 
     if (rc == SQLITE_OK)
     {
-        rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
+        rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("Database", "Db query to fetch songs executed successfully", sqlQuery, zErrMsg);
+		else
+			AsBase::WriteLogs("Database", "Failed to execute db query to fetch songs", sqlQuery, zErrMsg);
+
         int songcount = 0;
         for (int i = 1; i < row + 1; i++)
         {
@@ -347,7 +369,8 @@ void AppHome::PopulateSonglists(QString SearchStr)
         ui->LstResults->setStyleSheet("* { background-color: #D3D3D3; }");
 
         sqlite3_free_table(qryResult);
-        sqlite3_close(db);
+		sqlite3_free(zErrMsg);
+        sqlite3_close(songsDb);
 
         if (songcount > 0)
         {
@@ -355,6 +378,7 @@ void AppHome::PopulateSonglists(QString SearchStr)
             OpenSongPreview(songModel->index(0, 0));
         }
     }
+	else AsBase::WriteLogs("Database Error", "Database operation failed to execute", sqlQuery, zErrMsg);
 }
 
 void AppHome::OpenSongPreview(const QModelIndex& index)
@@ -455,20 +479,20 @@ void AppHome::on_actionDelete_Song_triggered()
 
 void AppHome::on_actionEdit_Song_triggered()
 {
-    AppEditor editor(this, false);
-    editor.exec();
+    //AppEditor editor(this, false);
+    //editor.exec();
 }
 
 void AppHome::on_actionNew_Song_triggered()
 {
-	AppEditor editor(this, true);
-	editor.exec();
+	//AppEditor editor(this, true);
+	//editor.exec();
 }
 
 void AppHome::on_actionManage_Settings_triggered()
 {
-	AppPreferences options(this);
-	options.exec();
+	AppPreferences* preferences = new AppPreferences();
+	mtab->addView(preferences, QString("Manage Preferences"));
 }
 
 void AppHome::on_actionReset_Settings_triggered()
@@ -505,21 +529,21 @@ void AppHome::on_actionBigger_triggered()
 
 void AppHome::on_actionPreferences_triggered()
 {
-	AppPreferences options(this);
-	options.exec();
+	AppPreferences* preferences = new AppPreferences();
+	mtab->addView(preferences, QString("Manage Preferences"));
 }
 
 
 void AppHome::on_actionEdit_triggered()
 {
-	AppEditor editor(this, false);
-	editor.exec();
+	AppEditor* preferences = new AppEditor(this, false);
+	mtab->addView(preferences, QString("Edit Song"));
 }
 
 void AppHome::on_actionNewsong_triggered()
 {
-	AppEditor editor(this, true);
-	editor.exec();
+	AppEditor* preferences = new AppEditor(this, true);
+	mtab->addView(preferences, QString("New Song"));
 }
 
 void AppHome::on_actionSongbooks_triggered()

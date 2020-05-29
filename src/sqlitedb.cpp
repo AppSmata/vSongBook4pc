@@ -1,9 +1,9 @@
-#include "sqlitedb.h"
-#include "sqlite.h"
-#include "sqlitetablemodel.h"
-#include "CipherSettings.h"
-#include "DotenvFormat.h"
-#include "Settings.h"
+#include <sqlitedb.h>
+#include <sqlite.h>
+#include <sqlitetablemodel.h>
+#include <CipherSettings.h>
+#include <DotenvFormat.h>
+#include <Settings.h>
 
 #include <QFile>
 #include <QMessageBox>

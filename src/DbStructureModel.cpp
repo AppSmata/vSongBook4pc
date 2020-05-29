@@ -1,8 +1,8 @@
-#include "DbStructureModel.h"
-#include "IconCache.h"
-#include "sqlitedb.h"
-#include "sqlitetablemodel.h"
-#include "Settings.h"
+#include <DbStructureModel.h>
+#include <IconCache.h>
+#include <sqlitedb.h>
+#include <sqlitetablemodel.h>
+#include <Settings.h>
 
 #include <QTreeWidgetItem>
 #include <QMimeData>

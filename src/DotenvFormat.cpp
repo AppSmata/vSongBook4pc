@@ -1,4 +1,4 @@
-#include "DotenvFormat.h"
+#include <DotenvFormat.h>
 
 #include <QRegularExpression>
 #include <QTextStream>

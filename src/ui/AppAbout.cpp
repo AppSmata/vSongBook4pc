@@ -1,7 +1,7 @@
-#include "ui/AppAbout.h"
-#include "ui_AppAbout.h"
-#include "sqlitedb.h"
-#include "Application.h"
+#include <src\ui\AppAbout.h>
+#include <ui_AppAbout.h>
+#include <sqlitedb.h>
+#include <Application.h>
 
 QString AboutSidebar, AboutTab1, AboutTab2, AboutTab3, AboutTab4;
 

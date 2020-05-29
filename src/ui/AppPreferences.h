@@ -1,26 +1,26 @@
 #ifndef APPPREFERENCES_H
 #define APPPREFERENCES_H
 
-#include <QDialog>
-#include <QModelIndex>
+#include <QMainWindow>
 
 class QStandardItemModel;
 
+class RemoteDatabase;
 namespace Ui {
 class AppPreferences;
 }
 
-class AppPreferences : public QDialog
+class AppPreferences : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit AppPreferences(QWidget *parent = nullptr);
+    explicit AppPreferences(QWidget* parent = nullptr);
     ~AppPreferences();
 
 private slots:
     void SelectedTheme(int theme);
-    bool GetSettings();
+    void GetSettings();
     void ReloadSettings();
     void SetUpStuff();
     void LoadNavigation(QString searchstr);
@@ -74,8 +74,8 @@ private slots:
     void on_BtnTheme15_clicked();
 
 private:
-    Ui::AppPreferences*ui;
+    Ui::AppPreferences* ui;
     QStandardItemModel* naviModel;
 };
 
-#endif //APPPREFERENCES_H
+#endif // APPPREFERENCES_H

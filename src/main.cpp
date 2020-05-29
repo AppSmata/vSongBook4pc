@@ -1,6 +1,6 @@
-#include "Application.h"
-#include "AsBase.h"
-#include "AsUtils.h"
+#include <Application.h>
+#include <AsBase.h>
+#include <AsUtils.h>
 
 #include <QFile>
 #include <QSplashScreen>
@@ -16,7 +16,7 @@ void setStyle(const QString& qssFile)
 
 int main(int argc, char** argv)
 {
-	AsBase::WriteLogs("Events", "App Started, MainWindow opened", "", "");
+	AsBase::WriteLogs("Events", "App Started, Splash screen opened", "", "");
 
 	QApplication app(argc, argv);
     QPixmap pixmap("res/splash.png");
@@ -27,6 +27,7 @@ int main(int argc, char** argv)
     app.processEvents();
     splash.close();
 
+    AsBase::WriteLogs("Events", "Splash screen closed", "", "");
     Application vsb(argc, argv);
     return vsb.exec();
 }

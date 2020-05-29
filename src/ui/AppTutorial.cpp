@@ -1,5 +1,5 @@
-#include "ui/AppTutorial.h"
-#include "ui_AppTutorial.h"
+#include <src\ui\AppTutorial.h>
+#include <ui_AppTutorial.h>
 
 QString HowsSidebar, HowsTab1, HowsTab2;
 

@@ -1,4 +1,4 @@
-#include "AsUtils.h"
+#include <AsUtils.h>
 
 /*
 	QString of the path to the database:: data/vSongBook.db
@@ -236,7 +236,7 @@ QString AsUtils::HistorySelectSql()
 
 char* AsUtils::SettingsSelectSql()
 {
-	QString SettingsQry = "SELECT " + ColumnContent() + " FROM " + TableSettings() + " ORDER BY " + ColumnSettingid();
+	QString SettingsQry = "SELECT " + ColumnContent() + " FROM " + TableSettings() + " ORDER BY " + ColumnSettingid() + ";";
 	QByteArray bar = SettingsQry.toLocal8Bit();
 	return bar.data();
 }

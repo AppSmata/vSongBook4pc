@@ -18,10 +18,10 @@
 
 #include <iterator>
 
-#include "RemoteDatabase.h"
-#include "version.h"
-#include "Settings.h"
-#include "sqlite.h"
+#include <RemoteDatabase.h>
+#include <version.h>
+#include <Settings.h>
+#include <sqlite.h>
 
 using json = nlohmann::json;
 

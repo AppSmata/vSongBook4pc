@@ -1,11 +1,12 @@
-#include "AsBase.h"
+#include <AsBase.h>
+#include <AsException.h>
 
 #include <QFile>
 #include <QDir>
 
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
 
 bool AsBase::isTrue(int value)
@@ -69,9 +70,9 @@ QString AsBase::GetOption(QString Title)
 		settingsValue = *(qryResult + 1 * col + 0);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
@@ -102,19 +103,27 @@ std::vector<QString> AsBase::AppSettings()
     sqlite3* songsDb;
     char* zErrMsg = NULL, ** qryResult = NULL;
     int row, col;
-    int rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-    if (rc == SQLITE_OK)
-    {
-        rc = sqlite3_get_table(songsDb, AsUtils::SettingsSelectSql(), &qryResult, &row, &col, &zErrMsg);
+	int rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 
-        for (int i = 1; i < row + 1; i++)
-        {
-            settings.push_back(*(qryResult + i * col + 0));
-        }
-        sqlite3_free_table(qryResult);
-        sqlite3_close(songsDb);
-    }
+	if (rc == SQLITE_OK)
+	{
+		rc = sqlite3_get_table(songsDb, AsUtils::SettingsSelectSql(), &qryResult, &row, &col, &zErrMsg);
+		if (rc == SQLITE_OK)
+			AsBase::WriteLogs("Database", "Db query to fetch settings executed successfully", AsUtils::SettingsSelectSql(), zErrMsg);
+		else
+			AsBase::WriteLogs("Database", "Failed to execute db query to fetch settings", AsUtils::SettingsSelectSql(), zErrMsg);
+
+		for (int i = 1; i < row + 1; i++)
+		{
+			settings.push_back(*(qryResult + i * col + 0));
+		}
+
+		sqlite3_free_table(qryResult);
+		sqlite3_free(zErrMsg);
+		sqlite3_close(songsDb);
+	}
+	else AsBase::WriteLogs("Database Error", "Database operation failed to execute", AsUtils::SettingsSelectSql(), zErrMsg);
 
     return settings;
 }
@@ -137,7 +146,7 @@ void AsBase::WriteLogs(QString Source, QString Message, QString Details, QString
 	LogText.append("\n\t<message>" + Message + "</message>");
 	if (!Details.isEmpty())
 	{
-		if (Source == "SQLite") LogText.append("\n\t<SqlQuery>" + Details + "</SqlQuery>");
+		if (Source == "Database") LogText.append("\n\t<query>" + Details + "</query>");
 		else LogText.append("\n\t<details>" + Details + "</details>");
 	}
 
@@ -166,12 +175,14 @@ void AsBase::execSql(QString SqlQuery)
 		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 		if (rc == SQLITE_OK) 
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", SqlQuery, "");
-		else 
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", SqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation executed successfully", SqlQuery, "");
+		else
+			AsBase::WriteLogs("Database", "Database operation failed to execute", SqlQuery, zErrMsg);
 		
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
+	else
+		AsBase::WriteLogs("Database", "Database operation failed to execute", SqlQuery, zErrMsg);
 	sqlite3_close(db);
 }
 
@@ -197,9 +208,9 @@ void AsBase::NewBook(QString Title, QString Category, QString Tags, QString Cont
 		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
@@ -224,9 +235,9 @@ QString AsBase::CountSongs(QString Bookid)
 		songcount = *(qryResult + 1 * col + 0);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
@@ -253,9 +264,9 @@ QString AsBase::LastValue(QString ColumnName, QString TableName, QString OrderCo
 		ColumnValue = *(qryResult + 1 * col + 0);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
@@ -285,9 +296,9 @@ void AsBase::UpdateSongCount(QString Bookid, QString Count)
 		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
@@ -309,9 +320,9 @@ void AsBase::NewSong(QString Bookid, QString Categoryid, QString Number, QString
 		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
@@ -333,9 +344,9 @@ void AsBase::ResetSettings()
 		rc = sqlite3_exec(db, sqlQuery, 0, 0, &zErrMsg);
 
 		if (rc == SQLITE_OK)
-			AsBase::WriteLogs("SQLite", "Database operation executed successfully", sqlQuery, "");
+			AsBase::WriteLogs("Database", "Database operation executed successfully", sqlQuery, "");
 		else
-			AsBase::WriteLogs("SQLite", "Database operation failed to execute", sqlQuery, zErrMsg);
+			AsBase::WriteLogs("Database", "Database operation failed to execute", sqlQuery, zErrMsg);
 
 		if (rc != SQLITE_OK) sqlite3_free(zErrMsg);
 	}
