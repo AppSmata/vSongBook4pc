@@ -42,7 +42,7 @@
      <height>0</height>
     </size>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_7">
+   <layout class="QVBoxLayout" name="MainLayout">
     <property name="spacing">
      <number>3</number>
     </property>
@@ -72,7 +72,7 @@
       <property name="handleWidth">
        <number>3</number>
       </property>
-      <widget class="QWidget" name="verticalLayoutWidget_3">
+      <widget class="QWidget" name="verticalLayoutWidget1">
        <layout class="QVBoxLayout" name="VLayoutLeft">
         <item>
          <widget class="QTabWidget" name="MainTabLeft">
@@ -268,7 +268,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="verticalLayoutWidget_4">
+      <widget class="QWidget" name="verticalLayoutWidget2">
        <layout class="QVBoxLayout" name="VLayoutRight">
         <item>
          <widget class="QTabWidget" name="MainTabRight">

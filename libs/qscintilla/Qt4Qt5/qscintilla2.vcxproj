@@ -78,7 +78,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -93,15 +93,15 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -114,7 +114,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -127,17 +127,17 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -150,7 +150,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -163,17 +163,17 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -186,7 +186,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -200,15 +200,15 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200527;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;SCINTILLA_QT;SCI_LEXER;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -227,7 +227,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -244,7 +244,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -261,7 +261,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -278,7 +278,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintilla.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -299,7 +299,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -316,7 +316,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -333,7 +333,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -350,7 +350,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciscintillabase.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -371,7 +371,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -388,7 +388,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -405,7 +405,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -422,7 +422,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciabstractapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -443,7 +443,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -460,7 +460,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -477,7 +477,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -494,7 +494,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qsciapis.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -515,7 +515,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -532,7 +532,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -549,7 +549,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -566,7 +566,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexer.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -587,7 +587,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -604,7 +604,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -621,7 +621,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -638,7 +638,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercustom.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -659,7 +659,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -676,7 +676,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -693,7 +693,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -710,7 +710,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexersql.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -731,7 +731,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -748,7 +748,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -765,7 +765,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -782,7 +782,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjson.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -803,7 +803,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -820,7 +820,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -837,7 +837,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -854,7 +854,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerhtml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -875,7 +875,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -892,7 +892,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -909,7 +909,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -926,7 +926,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerxml.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -947,7 +947,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -964,7 +964,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -981,7 +981,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -998,7 +998,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerjavascript.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1019,7 +1019,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1036,7 +1036,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1053,7 +1053,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1070,7 +1070,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexercpp.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1091,7 +1091,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1108,7 +1108,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1125,7 +1125,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1142,7 +1142,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscilexerpython.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1163,7 +1163,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1180,7 +1180,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1197,7 +1197,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1214,7 +1214,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\Qsci
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/Qsci/moc_qscimacro.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1235,7 +1235,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1252,7 +1252,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1269,7 +1269,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1286,7 +1286,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciClasses.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1307,7 +1307,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1324,7 +1324,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1341,7 +1341,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1358,7 +1358,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_ScintillaQt.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1379,7 +1379,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1396,7 +1396,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1413,7 +1413,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1430,7 +1430,7 @@ cd D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-D:\Qt\5.9.9\msvc2015_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
+D:\PowerHouse\Qt\5.15.0\msvc2019_64\bin\moc.exe @D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/moc_SciAccessibility.cpp_parameters
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1447,7 +1447,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <CustomBuild Include="D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeLists.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-D:\PowerHouse\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1455,12 +1455,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-D:\PowerHouse\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1468,12 +1468,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-D:\PowerHouse\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1481,12 +1481,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-D:\PowerHouse\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qscintilla/Qt4Qt5/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1494,7 +1494,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>

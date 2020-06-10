@@ -58,9 +58,19 @@ void TabbedWindow::removeView(int index)
 
 TabbedWindowPrivate::TabbedWindowPrivate(TabbedWindow* q_ptr)
 {
+    QFont font1;
+    font1.setFamily(QStringLiteral("Trebuchet MS"));
+    font1.setPointSize(12);
+    font1.setBold(false);
+    font1.setWeight(50);
+
     // Create tab widget
     tabs = new TabView();
     tabs->setDocumentMode(true);
+    tabs->setTabShape(QTabWidget::Triangular);
+    //tabs->setTabsClosable(true);
+    tabs->setMovable(true);
+    tabs->setFont(font1);
 
     // Set up main window
     this->q_ptr = q_ptr;

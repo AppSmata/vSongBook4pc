@@ -1,5 +1,6 @@
 #include <Application.h>
 #include <src\ui\AppHome.h>
+#include <src\ui\AppPreferences.h>
 #include <src\tabs\TabbedWindow.h>
 
 #include <Settings.h>
@@ -92,8 +93,12 @@ Application::Application(int& argc, char** argv) :
     m_tab->resize(950, 600);
     m_tab->showMaximized();
 
+    AppPreferences* preferences = new AppPreferences();
+    m_tab->addView(preferences, QString("Manage Preferences"));
+
     AppHome* m_homepage = new AppHome(m_tab);
     m_tab->addView(m_homepage, QString("Search Tab 1"));
+
     connect(this, &Application::lastWindowClosed, this, &Application::quit);
 }
 

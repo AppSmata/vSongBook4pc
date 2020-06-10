@@ -1,9 +1,9 @@
-#include <AsBase.h>
-#include <AsUtils.h>
-#include <src\ui\AppEditor.h>
-#include <ui_AppEditor.h>
-#include <Application.h>
-#include <AsBase.h>
+#include "AsBase.h"
+#include "AsUtils.h"
+#include "ui/AppEditor.h"
+#include "ui_AppEditor.h"
+#include "Application.h"
+#include "AsBase.h"
 
 #include <QTextCodec>
 #include <QLibraryInfo>
@@ -11,9 +11,9 @@
 #include <QLocale>
 #include <QTimer>
 
-#include <sqlite.h>
-#include <RunSql.h>
-#include <sqlitetablemodel.h>
+#include "sqlite.h"
+#include "RunSql.h"
+#include "sqlitetablemodel.h"
 
 bool isNewSong, extraFields;
 std::vector<QString> editset, book_ids, book_titles;
@@ -21,10 +21,11 @@ QString song_id, song_title;
 QTimer* tmrFeedback;
 
 AppEditor::AppEditor(QWidget *parent, bool newSong) :
-	QMainWindow(parent), ui(new Ui::AppEditor)
+    QDialog(parent),
+    ui(new Ui::AppEditor)
 {
     ui->setupUi(this);
-	/*tmrFeedback = new QTimer(this);
+	tmrFeedback = new QTimer(this);
 	tmrFeedback->setInterval(3000);
 	connect(tmrFeedback, SIGNAL(timeout()), this, SLOT(ShowFeedback(false)));
 
@@ -44,10 +45,10 @@ AppEditor::AppEditor(QWidget *parent, bool newSong) :
 	{
 		song_id = editset[23];
 		LoadSong();
-	}*/
+	}
 }
 
-/*void AppEditor::ShowFeedback(bool show)
+void AppEditor::ShowFeedback(bool show)
 {
 	if (show)
 	{
@@ -163,6 +164,11 @@ void AppEditor::SaveChanges()
 	sqlite3_close(db);
 }
 
+AppEditor::~AppEditor()
+{
+    delete ui;
+}
+
 void AppEditor::on_actionSave_triggered()
 {
 	if (isNewSong)
@@ -265,10 +271,4 @@ void AppEditor::ShowExtraFields()
 void AppEditor::on_BtnFeedback_clicked()
 {
 	ShowFeedback(false);
-}
-*/
-
-AppEditor::~AppEditor()
-{
-	delete ui;
 }

@@ -479,14 +479,14 @@ void AppHome::on_actionDelete_Song_triggered()
 
 void AppHome::on_actionEdit_Song_triggered()
 {
-    //AppEditor editor(this, false);
-    //editor.exec();
+    AppEditor editor(this, false);
+    editor.exec();
 }
 
 void AppHome::on_actionNew_Song_triggered()
 {
-	//AppEditor editor(this, true);
-	//editor.exec();
+	AppEditor editor(this, true);
+	editor.exec();
 }
 
 void AppHome::on_actionManage_Settings_triggered()
@@ -533,17 +533,16 @@ void AppHome::on_actionPreferences_triggered()
 	mtab->addView(preferences, QString("Manage Preferences"));
 }
 
-
 void AppHome::on_actionEdit_triggered()
 {
-	AppEditor* preferences = new AppEditor(this, false);
-	mtab->addView(preferences, QString("Edit Song"));
+	AppEditor editor(this, false);
+	editor.exec();
 }
 
 void AppHome::on_actionNewsong_triggered()
 {
-	AppEditor* preferences = new AppEditor(this, true);
-	mtab->addView(preferences, QString("New Song"));
+	AppEditor editor(this, true);
+	editor.exec();
 }
 
 void AppHome::on_actionSongbooks_triggered()
