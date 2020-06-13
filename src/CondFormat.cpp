@@ -1,7 +1,7 @@
-#include "CondFormat.h"
-#include "Settings.h"
-#include "Data.h"
-#include "sqlitedb.h"
+#include <CondFormat.h>
+#include <Settings.h>
+#include <Data.h>
+#include <sqlitedb.h>
 
 #include <QAbstractTableModel>
 

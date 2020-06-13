@@ -1,7 +1,7 @@
-#include "ui/AppAbout.h"
-#include "ui_AppAbout.h"
-#include "sqlitedb.h"
-#include "Application.h"
+#include <src\ui\AppAbout.h>
+#include <ui_AppAbout.h>
+#include <sqlitedb.h>
+#include <Application.h>
 
 QString AboutSidebar, AboutTab1, AboutTab2, AboutTab3, AboutTab4;
 
@@ -29,7 +29,7 @@ AppAbout::AppAbout(QWidget *parent) :
 	AboutTab1.append("</style></head><body style=\" font-family:'Trebuchet MS','Trebuchet MS','Trebuchet MS'; font-size:12pt; font-weight:400; font-style:normal;\">");
 	AboutTab1.append("<h3>GIVING YOU THE FREEDOM TO SING ANYWHERE ANYTIME</h3>");
 	AboutTab1.append("<p class=\"para\">Based on Qt 5.9.9 (MSVC 2015, 64 bit)<br/>");
-	AboutTab1.append("Built on March 20 2020 18:30:15<br/>");
+	AboutTab1.append("Built on April 20 2020 18:30:15<br/>");
 	AboutTab1.append("Copyright &copy; 2016 - 2020 Appsmata Solutions</p><hr/>");
 	AboutTab1.append("<p class=\"para\"><h2>What is vSongBook?</h2>");
 	AboutTab1.append("... it's an application that gives users access to songs sung in church services among other places ");

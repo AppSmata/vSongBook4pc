@@ -1,7 +1,7 @@
 #ifndef APPHOME_H
 #define APPHOME_H
 
-#include "sqlitedb.h"
+#include <sqlitedb.h>
 
 #include <memory>
 #include <QMainWindow>
@@ -15,6 +15,7 @@
 #include <QVBoxLayout>
 #include <QGroupBox>
 #include <QMessageBox>
+#include <src\tabs\TabbedWindow.h>
 
 class QStandardItemModel;
 
@@ -25,9 +26,9 @@ namespace Ui {
 class AppHome : public QMainWindow
 {
     Q_OBJECT
-
+        //QWidget
 public:
-    explicit AppHome(QWidget* parent = nullptr);
+    explicit AppHome(TabbedWindow* parent = nullptr);
     ~AppHome();
 
     DBBrowserDB& getDb() { return db; }

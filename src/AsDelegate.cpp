@@ -1,6 +1,7 @@
-#include "AsDelegate.h"
-#include "AsItem.h"
+#include <AsDelegate.h>
+#include <AsItem.h>
 
+#include <QPainterPath>
 #include <QPainter>
 #include <QStyledItemDelegate>
 #include <QStyle>

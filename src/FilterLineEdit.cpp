@@ -1,5 +1,5 @@
-#include "FilterLineEdit.h"
-#include "Settings.h"
+#include <FilterLineEdit.h>
+#include <Settings.h>
 
 #include <QTimer>
 #include <QKeyEvent>

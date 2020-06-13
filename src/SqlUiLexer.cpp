@@ -1,9 +1,9 @@
 #include <algorithm>
 
-#include "SqlUiLexer.h"
-#include "Qsci/qsciapis.h"
-#include "Settings.h"
-#include "sqlitedb.h"
+#include <SqlUiLexer.h>
+#include <Qsci/qsciapis.h>
+#include <Settings.h>
+#include <sqlitedb.h>
 
 SqlUiLexer::SqlUiLexer(QObject* parent) :
     QsciLexerSQL(parent)

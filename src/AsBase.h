@@ -1,13 +1,13 @@
 #ifndef ASBASE_H
 #define ASBASE_H
 
-#include "AsUtils.h"
+#include <AsUtils.h>
 #include <QtCore>
 #include <vector>
 
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
 class AsBase
 {

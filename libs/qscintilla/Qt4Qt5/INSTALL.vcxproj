@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -19,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C23A6AC1-AE65-3788-B653-FCDAC2641557}</ProjectGuid>
+    <ProjectGuid>{570EB894-EDF9-3C4B-9B81-EEBA444E7978}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -30,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -63,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -73,7 +76,7 @@
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -85,7 +88,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -95,7 +98,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -107,7 +110,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -117,7 +120,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -129,7 +132,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\.;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\include;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\lexlib;D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -139,7 +142,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -150,7 +153,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Cpp\vSongBook4PC\CMakeFiles\04ab0fbe42e051bbe1421cad19421922\INSTALL_force.rule">
+    <CustomBuild Include="D:\Cpp\Projects\vSongBook4PC\CMakeFiles\f1d7a4a75ab8218a55b4881e98e3c9d8\INSTALL_force.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd .
@@ -162,8 +165,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd .
@@ -175,8 +179,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 cd .
@@ -188,8 +193,9 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 cd .
@@ -201,19 +207,20 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qscintilla\Qt4Qt5\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Cpp\vSongBook4PC\ZERO_CHECK.vcxproj">
-      <Project>{7FB295BB-E9D5-33AC-B7DE-ACC51367A458}</Project>
+    <ProjectReference Include="D:\Cpp\Projects\vSongBook4PC\ZERO_CHECK.vcxproj">
+      <Project>{0B908114-7FB2-326A-8F79-EA6617556CEA}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Cpp\vSongBook4PC\ALL_BUILD.vcxproj">
-      <Project>{54D47CFD-6CD7-3065-BD54-208471952FEC}</Project>
+    <ProjectReference Include="D:\Cpp\Projects\vSongBook4PC\ALL_BUILD.vcxproj">
+      <Project>{6DF981EE-EAA7-3174-8D27-756217D91D1F}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

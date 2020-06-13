@@ -44,14 +44,14 @@ endif()
 if(WIN32 AND MSVC)
 	if(CMAKE_CL_64)
 		# Paths for 64-bit windows builds
-		set(OPENSSL_PATH "D:/OpenSSL/win64" CACHE PATH "OpenSSL Path")
-		set(QT5_PATH "D:/Qt/5.9.9/msvc2015_64" CACHE PATH "Qt5 Path")
-		set(SQLITE3_PATH "D:/SQLite/win64" CACHE PATH "SQLite Path")
+		set(OPENSSL_PATH "D:/Cpp/OpenSSL/win64" CACHE PATH "OpenSSL Path")
+		set(QT5_PATH "D:/PowerHouse/Qt/5.15.0/msvc2019_64" CACHE PATH "Qt5 Path")
+		set(SQLITE3_PATH "D:/Cpp/SQLite/win64" CACHE PATH "SQLite Path")
 	else()
 		# Paths for 32-bit windows builds
-		set(OPENSSL_PATH "D:/OpenSSL/Win32" CACHE PATH "OpenSSL Path")
-		set(QT5_PATH "D:/Qt/5.9.9/msvc2015" CACHE PATH "Qt5 Path")
-		set(SQLITE3_PATH "D:/SQLite/win32" CACHE PATH "SQLite Path")
+		set(OPENSSL_PATH "D:/Cpp/OpenSSL/Win32" CACHE PATH "OpenSSL Path")
+		set(QT5_PATH "D:/PowerHouse/Qt/5.15.0/msvc2019" CACHE PATH "Qt5 Path")
+		set(SQLITE3_PATH "D:/Cpp/SQLite/win32" CACHE PATH "SQLite Path")
 	endif()
 	set(CMAKE_PREFIX_PATH "${QT5_PATH};${SQLITE3_PATH}")
 endif()
@@ -108,10 +108,15 @@ set(SQLB_HDR
 	src/IconCache.h
 	src/sqlite.h
 	src/version.h
-	src/task.hpp
+	src/task.h
 )
 
 set(SQLB_MOC_HDR
+	src/tabs/GhostWindow.h
+	src/tabs/TabBar.h
+	src/tabs/TabbedWindow.h
+	src/tabs/TabbedWindowPrivate.h
+	src/tabs/TabView.h
 	src/ui/AppAbout.h
 	src/ui/AppEditor.h
 	src/ui/AppHome.h
@@ -123,7 +128,10 @@ set(SQLB_MOC_HDR
 	src/ui/AppTutorial.h
 	src/AsBase.h
 	src/AsDelegate.h
+	src/AsPreference.h
+	src/AsException.h
 	src/AsItem.h
+	src/AsPref.h
 	src/AsUtils.h
 	src/CipherSettings.h
 	src/CondFormat.h
@@ -149,6 +157,11 @@ set(SQLB_MOC_HDR
 )
 
 set(SQLB_SRC
+	src/tabs/GhostWindow.cpp
+	src/tabs/TabBar.cpp
+	src/tabs/TabbedWindow.cpp
+	src/tabs/TabbedWindowPrivate.cpp
+	src/tabs/TabView.cpp
 	src/sql/ObjectIdentifier.cpp
 	src/sql/parser/ParserDriver.cpp
 	src/sql/parser/sqlite3_lexer.cpp
@@ -166,6 +179,7 @@ set(SQLB_SRC
 	src/ui/AppTutorial.cpp
 	src/AsBase.cpp
 	src/AsDelegate.cpp
+	src/AsPreference.cpp
 	src/AsUtils.cpp
 	src/CipherSettings.cpp
 	src/CondFormat.cpp

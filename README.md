@@ -20,6 +20,7 @@ Based on [Qt 5.9.9](https://qt.io) (MSVC 2015, 64 bit); Lots of thanks to [DB Br
 
 ## Releases
 
+* [Version 2.6.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.6.0) - 2020-03-21
 * [Version 2.5.6 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.6) - 2020-03-06
 * [Version 2.5.5 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.5) - 2020-02-11
 * [Version 2.5.0 released](https://github.com/vSongBook/vSongBook4PC/releases/tag/v0.2.5.0) - 2019-11-29

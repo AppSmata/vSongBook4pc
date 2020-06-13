@@ -1,5 +1,5 @@
-#include "sqlitedb.h"
-#include "ForeignKeyEditorDelegate.h"
+#include <sqlitedb.h>
+#include <ForeignKeyEditorDelegate.h>
 
 #include <QComboBox>
 #include <QLineEdit>
@@ -187,4 +187,4 @@ void ForeignKeyEditorDelegate::updateEditorGeometry(QWidget* editor, const QStyl
     editor->setGeometry(option.rect);
 }
 
-#include "ForeignKeyEditorDelegate.moc"
+#include <ForeignKeyEditorDelegate.moc>

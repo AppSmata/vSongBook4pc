@@ -1,7 +1,7 @@
-#include "sql/ObjectIdentifier.h"
-#include "sqltextedit.h"
-#include "Settings.h"
-#include "SqlUiLexer.h"
+#include <sql\ObjectIdentifier.h>
+#include <sqltextedit.h>
+#include <Settings.h>
+#include <SqlUiLexer.h>
 
 #include <Qsci/qscicommandset.h>
 #include <Qsci/qscicommand.h>

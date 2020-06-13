@@ -4,9 +4,12 @@
 #include <QApplication>
 #include <QKeySequence>
 
+#include <src\tabs\TabbedWindow.h>
+
 class QAction;
 class QTranslator;
 
+class TabbedWindow;
 class AppHome;
 
 class Application : public QApplication
@@ -19,7 +22,7 @@ public:
 
     bool dontShowMainWindow() const { return m_dontShowMainWindow; }
 
-    AppHome* homepage() { return m_homepage; }
+    TabbedWindow* mainhometab() { return m_tab; }
 
     static QString versionString();
 
@@ -28,7 +31,7 @@ protected:
 
 private:
     bool m_dontShowMainWindow;
-	AppHome* m_homepage;
+    TabbedWindow* m_tab;
     QTranslator* m_translatorQt;
     QTranslator* m_translatorApp;
 };

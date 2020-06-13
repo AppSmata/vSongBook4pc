@@ -1,5 +1,5 @@
-#include "FilterTableHeader.h"
-#include "FilterLineEdit.h"
+#include <FilterTableHeader.h>
+#include <FilterLineEdit.h>
 
 #include <QApplication>
 #include <QTableView>

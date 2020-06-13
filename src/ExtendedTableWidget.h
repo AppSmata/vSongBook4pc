@@ -6,7 +6,7 @@
 #include <QSortFilterProxyModel>
 #include <unordered_set>
 
-#include "sql/Query.h"
+#include <sql\Query.h>
 
 class QMenu;
 class QMimeData;

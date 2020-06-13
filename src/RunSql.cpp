@@ -1,7 +1,7 @@
-#include "RunSql.h"
-#include "sqlite.h"
-#include "sqlitedb.h"
-#include "sqlitetablemodel.h"
+#include <RunSql.h>
+#include <sqlite.h>
+#include <sqlitedb.h>
+#include <sqlitetablemodel.h>
 
 #include <chrono>
 #include <QApplication>

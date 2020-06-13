@@ -1,5 +1,5 @@
-#include "CipherSettings.h"
-#include "sqlitedb.h"
+#include <CipherSettings.h>
+#include <sqlitedb.h>
 
 CipherSettings::CipherSettings()
     : keyFormat(Passphrase),

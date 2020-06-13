@@ -1,8 +1,8 @@
 #ifndef SQLITEDB_H
 #define SQLITEDB_H
 
-#include "sql/ObjectIdentifier.h"
-#include "sql/sqlitetypes.h"
+#include <sql\ObjectIdentifier.h>
+#include <sql\sqlitetypes.h>
 
 #include <condition_variable>
 #include <memory>

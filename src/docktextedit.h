@@ -1,7 +1,7 @@
 #ifndef DOCKTEXTEDIT_H
 #define DOCKTEXTEDIT_H
 
-#include "ExtendedScintilla.h"
+#include <ExtendedScintilla.h>
 
 class QsciLexerJSON;
 class QsciLexerXML;

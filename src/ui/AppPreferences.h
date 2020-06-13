@@ -1,38 +1,44 @@
 #ifndef APPPREFERENCES_H
 #define APPPREFERENCES_H
 
-#include <QDialog>
-#include <QModelIndex>
+#include <QMainWindow>
 
 class QStandardItemModel;
 
+class RemoteDatabase;
 namespace Ui {
 class AppPreferences;
 }
 
-class AppPreferences : public QDialog
+class AppPreferences : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit AppPreferences(QWidget *parent = nullptr);
+    explicit AppPreferences(QWidget* parent = nullptr);
     ~AppPreferences();
 
 private slots:
-    void SelectedTheme(int theme);
-    bool GetSettings();
+    void LoadNavigation(QString searchstr);
+    void AddRadio(QString title, QString description, int value);
+    void AddSelect(QString title, QString description, int value, std::vector<QString> options);
+    void AddTextbox(QString title, QString description, QString value);
+    void AddFontGroup(QString title, int fontsize, QString fontfamily, bool isbold);
+    void AddBlankWidget();
+    void on_TxtSearch_textChanged(const QString& arg1);
+    void CreateScrollArea();
+    void on_LstNavigation_clicked(const QModelIndex& index);
+    void on_LstNavigation_doubleClicked(const QModelIndex& index);
+    void OpenSelectedPreference(const QModelIndex& index);
+
+    /*void SelectedTheme(int theme);
+    void GetSettings();
     void ReloadSettings();
     void SetUpStuff();
-    void LoadNavigation(QString searchstr);
-    void OpenSelectedTab(const QModelIndex& index);
 
     void ChangeGeneralFont(int newfont);
     void ChangePreviewFont(int newfont);
     void ChangePresentFont(int newfont);
-
-    void on_LstNavigation_clicked(const QModelIndex& index);
-    void on_LstNavigation_doubleClicked(const QModelIndex& index);
-    void on_TxtSearch_textChanged(const QString& arg1);
 
     void on_BtnTabletMode_clicked();
     void on_BtnSearchCriteria_clicked();
@@ -71,11 +77,11 @@ private slots:
     void on_BtnTheme12_clicked();
     void on_BtnTheme13_clicked();
     void on_BtnTheme14_clicked();
-    void on_BtnTheme15_clicked();
+    void on_BtnTheme15_clicked();*/
 
 private:
-    Ui::AppPreferences*ui;
+    Ui::AppPreferences* ui;
     QStandardItemModel* naviModel;
 };
 
-#endif //APPPREFERENCES_H
+#endif // APPPREFERENCES_H

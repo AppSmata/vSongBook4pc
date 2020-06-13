@@ -1,9 +1,9 @@
-#include "sqlitetablemodel.h"
-#include "sqlitedb.h"
-#include "sqlite.h"
-#include "Settings.h"
-#include "Data.h"
-#include "CondFormat.h"
+#include <sqlitetablemodel.h>
+#include <sqlitedb.h>
+#include <sqlite.h>
+#include <Settings.h>
+#include <Data.h>
+#include <CondFormat.h>
 
 #include <QMessageBox>
 #include <QApplication>
@@ -16,7 +16,7 @@
 #include <QRegularExpression>
 #include <json.hpp>
 
-#include "RowLoader.h"
+#include <RowLoader.h>
 
 using json = nlohmann::json;
 

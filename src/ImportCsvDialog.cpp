@@ -1,10 +1,10 @@
-#include "ImportCsvDialog.h"
-#include "ui_ImportCsvDialog.h"
-#include "sqlitedb.h"
-#include "csvparser.h"
-#include "sqlite.h"
-#include "Settings.h"
-#include "Data.h"
+#include <ImportCsvDialog.h>
+#include <ui_ImportCsvDialog.h>
+#include <sqlitedb.h>
+#include <csvparser.h>
+#include <sqlite.h>
+#include <Settings.h>
+#include <Data.h>
 
 #include <QMessageBox>
 #include <QProgressDialog>

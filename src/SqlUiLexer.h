@@ -1,7 +1,7 @@
 #ifndef SQLUILEXER_H
 #define SQLUILEXER_H
 
-#include "Qsci/qscilexersql.h"
+#include <Qsci/qscilexersql.h>
 
 #include <map>
 

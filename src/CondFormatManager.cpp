@@ -1,8 +1,8 @@
-#include "CondFormatManager.h"
-#include "ui_CondFormatManager.h"
-#include "CondFormat.h"
-#include "Settings.h"
-#include "FilterLineEdit.h"
+#include <CondFormatManager.h>
+#include <ui_CondFormatManager.h>
+#include <CondFormat.h>
+#include <Settings.h>
+#include <FilterLineEdit.h>
 
 #include <QColorDialog>
 #include <QDesktopServices>

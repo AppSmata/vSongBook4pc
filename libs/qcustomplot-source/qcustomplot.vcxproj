@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -19,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E4283038-09E8-3B4C-ABDB-24F7240D3010}</ProjectGuid>
+    <ProjectGuid>{AF63EC01-42B1-377A-A195-F26F81BC76AC}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -30,22 +33,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -56,26 +59,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">qcustomplot.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">qcustomplot</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qcustomplot.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qcustomplot</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">qcustomplot.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">qcustomplot</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">qcustomplot.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">qcustomplot</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Debug;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Debug;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -90,15 +93,15 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Debug;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Debug;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Debug;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Debug;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -108,11 +111,11 @@
     <PreBuildEvent>
       <Message>Automatic MOC for target qcustomplot</Message>
       <Command>setlocal
-cd D:\Cpp\vSongBook4PC\libs\qcustomplot-source
+cd D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json Debug
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -E cmake_autogen D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -127,7 +130,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Release;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Release;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -140,17 +143,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Release;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Release;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Release;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_Release;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -160,11 +163,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PreBuildEvent>
       <Message>Automatic MOC for target qcustomplot</Message>
       <Command>setlocal
-cd D:\Cpp\vSongBook4PC\libs\qcustomplot-source
+cd D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json Release
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -E cmake_autogen D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json Release
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -179,7 +182,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_MinSizeRel;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_MinSizeRel;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -192,17 +195,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_MinSizeRel;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_MinSizeRel;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_MinSizeRel;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_MinSizeRel;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -212,11 +215,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PreBuildEvent>
       <Message>Automatic MOC for target qcustomplot</Message>
       <Command>setlocal
-cd D:\Cpp\vSongBook4PC\libs\qcustomplot-source
+cd D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json MinSizeRel
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -E cmake_autogen D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json MinSizeRel
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -231,7 +234,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_RelWithDebInfo;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_RelWithDebInfo;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) -std=c++17</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -245,15 +248,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200322;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_RelWithDebInfo;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BUILD_VERSION=20200609;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_RelWithDebInfo;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Cpp\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_RelWithDebInfo;D:\Qt\5.9.9\msvc2015_64\include;D:\Qt\5.9.9\msvc2015_64\include\QtWidgets;D:\Qt\5.9.9\msvc2015_64\include\QtGui;D:\Qt\5.9.9\msvc2015_64\include\QtANGLE;D:\Qt\5.9.9\msvc2015_64\include\QtCore;D:\Qt\5.9.9\msvc2015_64\.\mkspecs\win32-msvc;D:\Qt\5.9.9\msvc2015_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source;D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\include_RelWithDebInfo;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtWidgets;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtGui;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtANGLE;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtCore;D:\PowerHouse\Qt\5.15.0\msvc2019_64\.\mkspecs\win32-msvc;D:\PowerHouse\Qt\5.15.0\msvc2019_64\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -263,11 +266,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PreBuildEvent>
       <Message>Automatic MOC for target qcustomplot</Message>
       <Command>setlocal
-cd D:\Cpp\vSongBook4PC\libs\qcustomplot-source
+cd D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source
 if %errorlevel% neq 0 goto :cmEnd
 D:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json RelWithDebInfo
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -E cmake_autogen D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/qcustomplot_autogen.dir/AutogenInfo.json RelWithDebInfo
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -281,10 +284,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Cpp\vSongBook4PC\libs\qcustomplot-source\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
+    <CustomBuild Include="D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -292,12 +295,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -305,12 +308,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -318,12 +321,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/Cpp/vSongBook4PC -BD:/Cpp/vSongBook4PC --check-stamp-file D:/Cpp/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
+D:\Cpp\Projects\TBuild\ThirdParty\CMake\bin\cmake.exe -SD:/Cpp/Projects/vSongBook4PC -BD:/Cpp/Projects/vSongBook4PC --check-stamp-file D:/Cpp/Projects/vSongBook4PC/libs/qcustomplot-source/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -331,18 +334,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5Config.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\Qt\5.9.9\msvc2015_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5Config.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\PowerHouse\Qt\5.15.0\msvc2019_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\mocs_compilation.cpp" />
-    <ClCompile Include="D:\Cpp\vSongBook4PC\libs\qcustomplot-source\qcustomplot.cpp" />
+    <ClCompile Include="D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot_autogen\mocs_compilation.cpp" />
+    <ClCompile Include="D:\Cpp\Projects\vSongBook4PC\libs\qcustomplot-source\qcustomplot.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Cpp\vSongBook4PC\ZERO_CHECK.vcxproj">
-      <Project>{7FB295BB-E9D5-33AC-B7DE-ACC51367A458}</Project>
+    <ProjectReference Include="D:\Cpp\Projects\vSongBook4PC\ZERO_CHECK.vcxproj">
+      <Project>{0B908114-7FB2-326A-8F79-EA6617556CEA}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

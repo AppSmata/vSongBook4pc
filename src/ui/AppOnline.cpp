@@ -1,15 +1,15 @@
-#include "ui/AppOnline.h"
-#include "ui/AppHome.h"
-#include "ui_AppOnline.h"
+#include <src\ui\AppOnline.h>
+#include <src\ui\AppHome.h>
+#include <ui_AppOnline.h>
 
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
-#include "AsItem.h"
-#include "AsBase.h"
-#include "AsUtils.h"
-#include "AsDelegate.h"
+#include <AsItem.h>
+#include <AsBase.h>
+#include <AsUtils.h>
+#include <AsDelegate.h>
 
 #include <QMovie>
 #include <QDebug>
@@ -23,7 +23,7 @@
 #include <QStandardItemModel>
 #include <QObject>
 
-#include "task.hpp"
+#include <task.h>
 
 QString networkResult, baseUrl;
 //const int iterations = 20;
@@ -249,6 +249,7 @@ QString InsertSongs()
 		Content = Content.replace("'", "''");
 
 		AsBase::NewSong(Bookid, Categoryid, Number, Postid, Title, Alias, Content, "", Author);
+
 	}
 	return "Task Finished";
 }

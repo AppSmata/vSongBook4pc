@@ -1,125 +1,44 @@
-#include "ui/AppPreferences.h"
-#include "ui_AppPreferences.h"
+#include <src\ui\AppPreferences.h>
+#include <ui_AppPreferences.h>
 
-#include "Application.h"
-#include "sqlite.h"
-#include "RunSql.h"
-#include "sqlitetablemodel.h"
+#include <Application.h>
+#include <sqlite.h>
+#include <RunSql.h>
+#include <sqlitetablemodel.h>
 
-#include "AsBase.h"
-#include "AsUtils.h"
-#include "AsItem.h"
-#include "AsDelegate.h"
+#include <AsBase.h>
+#include <AsUtils.h>
+#include <AsItem.h>
+#include <AsPref.h>
+#include <AsDelegate.h>
+#include <AsPreference.h>
 
 #include <QStandardItemModel>
 #include <QObject>
+#include <QGroupBox>
+#include <QComboBox>
+#include <QRadioButton>
+#include <QScrollArea>
+#include <QPushButton>
+#include <QSlider>
 
 int fontgeneral, fontpreview, fontpresent;
-std::vector<QString> pref_sets, navigations, languages, pref_fonts;
-QFont PrefFontGeneral, PrefFontPreview, PrefFontPresent;
+std::vector<QString> languages, pref_sets, navigations, pref_fonts;
+QFont PrefFontGeneral, PrefFontPreview, PrefFontPresent, Font1, Font2;
 
-AppPreferences::AppPreferences(QWidget* parent) :
-    QDialog(parent),
+QStandardItemModel *naviModel;
+QStandardItemModel *prefModel;
+AsDelegate *asDelegate;
+AsPreference *asPreference;
+QScrollArea *ScrollArea;
+QWidget *ScrollPane;
+QVBoxLayout* LstSettings;
+
+AppPreferences::AppPreferences(QWidget *parent) :
+    QMainWindow(parent),
     ui(new Ui::AppPreferences)
 {
     ui->setupUi(this);
-	GetSettings();
-	ReloadSettings();
-	SetUpStuff();
-}
-
-bool AppPreferences::GetSettings()
-{
-	bool retval = false;
-	sqlite3* songsDb;
-	char* err_msg = NULL, ** qryResult = NULL;
-        int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &songsDb, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
-
-        char const *sqlQuery = "SELECT content FROM settings ORDER BY settingid";
-
-	if (rc == SQLITE_OK)
-	{
-		rc = sqlite3_get_table(songsDb, sqlQuery, &qryResult, &row, &col, &err_msg);
-
-		for (int i = 1; i < row + 1; i++)
-		{
-			pref_sets.push_back(*(qryResult + i * col + 0));
-		}
-		sqlite3_free_table(qryResult);
-		sqlite3_close(songsDb);
-		retval = true;
-	}
-
-	return retval;
-}
-
-void AppPreferences::ReloadSettings()
-{
-	fontgeneral = pref_sets[8].toInt();
-	fontpreview = pref_sets[11].toInt();
-	fontpresent = pref_sets[14].toInt();
-
-	ui->BtnTabletMode->setChecked(AsBase::isTrue(pref_sets[21].toInt()));
-	ui->BtnSearchCriteria->setChecked(AsBase::isTrue(pref_sets[24].toInt()));
-	ui->BtnGeneralAppFont->setChecked(AsBase::isTrue(pref_sets[10].toInt()));
-	ui->BtnSongPreviewFont->setChecked(AsBase::isTrue(pref_sets[13].toInt()));
-	ui->BtnSongPresentFont->setChecked(AsBase::isTrue(pref_sets[16].toInt()));
-
-	ui->CmbLanguage->setCurrentIndex(AsBase::setCmbValue(languages, pref_sets[3]));
-	ui->CmbGeneralAppFont->setCurrentIndex(AsBase::setCmbValue(pref_fonts, pref_sets[9]));
-	ui->CmbSongPreviewFont->setCurrentIndex(AsBase::setCmbValue(pref_fonts, pref_sets[12]));
-	ui->CmbSongPresentFont->setCurrentIndex(AsBase::setCmbValue(pref_fonts, pref_sets[15]));
-
-	ui->TxtYourName->setText(pref_sets[1]);
-
-	PrefFontGeneral.setFamily(pref_sets[9]);
-	PrefFontGeneral.setPointSize(fontgeneral);
-	PrefFontGeneral.setBold(AsBase::isTrue(pref_sets[10].toInt()));
-	PrefFontGeneral.setWeight(50);
-
-	PrefFontPreview.setFamily(pref_sets[12]);
-	PrefFontPreview.setPointSize(fontpreview);
-	PrefFontPreview.setBold(AsBase::isTrue(pref_sets[13].toInt()));
-	PrefFontPreview.setWeight(50);
-
-	PrefFontPresent.setFamily(pref_sets[15]);
-	PrefFontPresent.setPointSize(fontpresent);
-	PrefFontPresent.setBold(AsBase::isTrue(pref_sets[16].toInt()));
-	PrefFontPresent.setWeight(50);
-
-	ui->GrpGeneralAppFont->setTitle(" App General Font " + pref_sets[8] + " ");
-	ui->GrpSongPreviewFont->setTitle(" Song Preview Font " + pref_sets[11] + " ");
-	ui->GrpSongPresentFont->setTitle(" Song Presentation Font " + pref_sets[14] + " ");
-
-	ui->SldGeneralAppFont->setValue(fontgeneral);
-	ui->SldSongPreviewFont->setValue(fontpreview);
-	ui->SldSongPresentFont->setValue(fontpresent);
-
-	SelectedTheme(pref_sets[25].toInt());
-}
-
-void AppPreferences::SetUpStuff()
-{
-	LoadNavigation("");
-	languages.clear();
-	ui->CmbLanguage->clear();
-
-	languages.push_back("English");
-	languages.push_back("Swahili");
-	languages.push_back("French");
-	languages.push_back("Spanish");
-	languages.push_back("Portuguesse");
-	languages.push_back("Chichewa");
-
-    for (decltype(languages.size()) l = 0; l < languages.size(); ++l)
-	{
-		ui->CmbLanguage->addItem(languages[l]);
-	}
-
-	pref_fonts.clear();
-	ui->CmbGeneralAppFont->clear();
-	ui->CmbSongPreviewFont->clear();
-	ui->CmbSongPresentFont->clear();
 
 	pref_fonts.push_back("Arial");
 	pref_fonts.push_back("Calibri");
@@ -135,305 +54,56 @@ void AppPreferences::SetUpStuff()
 	pref_fonts.push_back("Trebuchet MS");
 	pref_fonts.push_back("Verdana");
 
-    for (decltype(pref_fonts.size()) f = 0; f < pref_fonts.size(); ++f)
-	{
-		ui->CmbGeneralAppFont->addItem(pref_fonts[f]);
-		ui->CmbSongPreviewFont->addItem(pref_fonts[f]);
-		ui->CmbSongPresentFont->addItem(pref_fonts[f]);
-	}
+	Font1.setFamily(QString::fromUtf8("Trebuchet MS"));
+	Font1.setPointSize(15);
+	Font1.setBold(true);
+	Font1.setWeight(50);
+
+	Font2.setFamily(QString::fromUtf8("Trebuchet MS"));
+	Font2.setPointSize(12);
+	Font2.setBold(false);
+
+	setStyleSheet("* { background-color: #FFFFFF; }");
+
+	ui->LblWindowTitle->setStyleSheet("* { padding: 5px; font-size: 35px; border-bottom: 1px solid #000; }");
+
+	ui->LblPageTitle->setStyleSheet("* { padding: 5px; font-size: 25px; border-bottom: 1px solid #000; }");
+
+	QString WindowTitle = "<img src=\":/images/vSongBook.png\" width=\"50\" style=\"margin-bottom: -20px;\"> Manage Preferences";
+	QByteArray window_title = WindowTitle.toLocal8Bit();
+	ui->LblWindowTitle->setText(QApplication::translate("AppPreferences", window_title.data(), Q_NULLPTR));
+
+	ui->TxtSearch->setStyleSheet("* { font-size: 18px; padding: 10px; background: #eee; 10px; margin: 5px; border-radius: 5px; border: 1px solid #000; }");
+	
+	ui->LstNavigation->setStyleSheet("* { border: 0px; padding: 5px; }");
+	ui->PanelRight->setStyleSheet("#PanelRight { padding: 10px; border-left: 1px solid #000; }");
+	ui->statusbar->setStyleSheet("* { border-top: 1px solid #000; }");
+
+	naviModel = new QStandardItemModel();
+	prefModel = new QStandardItemModel();
+	asDelegate = new AsDelegate(this);
+	asPreference = new AsPreference(this);
+
+	ui->LstNavigation->setItemDelegate(asDelegate);
+	ui->LstNavigation->setModel(naviModel);
+	ui->LstNavigation->setSpacing(1);
+
+	LoadNavigation("");
 }
 
-void AppPreferences::SelectedTheme(int theme)
-{
-	switch (theme)
-	{
-		case 1:
-			ui->BtnTheme1->setChecked(true);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 2:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(true);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 3:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(true);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 4:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(true);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 5:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(true);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 6:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(true);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 7:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(true);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 8:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(true);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 9:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(true);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 10:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(true);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 11:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(true);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 12:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(true);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 13:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(true);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 14:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(true);
-			ui->BtnTheme15->setChecked(false);
-			break;
-
-		case 15:
-			ui->BtnTheme1->setChecked(false);
-			ui->BtnTheme2->setChecked(false);
-			ui->BtnTheme3->setChecked(false);
-			ui->BtnTheme4->setChecked(false);
-			ui->BtnTheme5->setChecked(false);
-			ui->BtnTheme6->setChecked(false);
-			ui->BtnTheme7->setChecked(false);
-			ui->BtnTheme8->setChecked(false);
-			ui->BtnTheme9->setChecked(false);
-			ui->BtnTheme10->setChecked(false);
-			ui->BtnTheme11->setChecked(false);
-			ui->BtnTheme12->setChecked(false);
-			ui->BtnTheme13->setChecked(false);
-			ui->BtnTheme14->setChecked(false);
-			ui->BtnTheme15->setChecked(true);
-			break;
-	}
-}
-
+// Get the settings navigation
 void AppPreferences::LoadNavigation(QString searchstr)
 {
 	QStringList strList;
-
-	QStandardItemModel* naviModel = new QStandardItemModel();
-
-	if (navigations.size() > 0) navigations.clear();
+	if (naviModel->rowCount() > 0) naviModel->clear();
 
 	sqlite3* db;
-    char* err_msg = NULL, ** qryResult = NULL;
+	char* err_msg = NULL, ** qryResult = NULL;
 
 	QByteArray bar = AsUtils::SettingsNaviSelectSql(searchstr).toLocal8Bit();
 	char* sqlQuery = bar.data();
 
-    int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	int row, col, rc = sqlite3_open_v2(AsUtils::DbNameChar(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
 	rc = sqlite3_get_table(db, sqlQuery, &qryResult, &row, &col, &err_msg);
 
 	for (int i = 1; i < row + 1; i++)
@@ -450,307 +120,310 @@ void AppPreferences::LoadNavigation(QString searchstr)
 		naviModel->appendRow(naviItem);
 	}
 
-	AsDelegate* asDelegate = new AsDelegate(this);
-	ui->LstNavigation->setItemDelegate(asDelegate);
-	ui->LstNavigation->setModel(naviModel);
-	ui->LstNavigation->setSpacing(1);
-	ui->LstNavigation->setStyleSheet("* { background-color: #D3D3D3; }");
-
 	sqlite3_free_table(qryResult);
 	sqlite3_close(db);
 
 	ui->LstNavigation->setCurrentIndex(naviModel->index(0, 0));
+	OpenSelectedPreference(naviModel->index(0, 0));
+
 }
 
-void AppPreferences::OpenSelectedTab(const QModelIndex& index)
+// On Click event function for LstNavigation
+void AppPreferences::on_LstNavigation_clicked(const QModelIndex& index)
+{
+	OpenSelectedPreference(index);
+}
+
+// On Double Click event function for LstNavigation
+void AppPreferences::on_LstNavigation_doubleClicked(const QModelIndex& index)
+{
+	OpenSelectedPreference(index);
+}
+
+void AppPreferences::CreateScrollArea()
+{
+	if (ScrollArea != NULL) delete ScrollArea;
+
+	ScrollArea = new QScrollArea(ui->PanelRight);
+	ScrollArea->setObjectName("ScrollArea");
+	ScrollArea->setFrameShape(QFrame::NoFrame);
+	ScrollArea->setFrameShadow(QFrame::Plain);
+	ScrollArea->setWidgetResizable(true);
+	ScrollPane = new QWidget();
+	ScrollPane->setObjectName("ScrollPane");
+	ScrollPane->setGeometry(QRect(0, 0, 528, 545));
+	QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+	sizePolicy1.setHorizontalStretch(0);
+	sizePolicy1.setVerticalStretch(0);
+	sizePolicy1.setHeightForWidth(ScrollPane->sizePolicy().hasHeightForWidth());
+	ScrollPane->setSizePolicy(sizePolicy1);
+	ScrollPane->setMinimumSize(QSize(500, 0));
+	QVBoxLayout* InnerLayout = new QVBoxLayout(ScrollPane);
+	InnerLayout->setSpacing(0);
+	InnerLayout->setObjectName("InnerLayout");
+	InnerLayout->setContentsMargins(0, 0, 0, 0);
+	LstSettings = new QVBoxLayout();
+	LstSettings->setObjectName("LstSettings");
+
+	InnerLayout->addLayout(LstSettings);
+
+	ScrollArea->setWidget(ScrollPane);
+
+	ui->verticalLayout->addWidget(ScrollArea);
+}
+
+// Show the appropriate selected tab
+void AppPreferences::OpenSelectedPreference(const QModelIndex& index)
 {
 	int setTab = navigations[index.row()].toInt();
+	std::vector<QString> CmbOptions;
+
+	if (prefModel->rowCount() > 0) prefModel->clear();
+	CreateScrollArea();
+
 	switch (setTab)
 	{
-	case 1:
-		ui->TabPage1->show();
-		ui->TabPage2->hide();
-		ui->TabPage3->hide();
-		break;
+		case 1:
+			ui->LblPageTitle->setText("GENERAL OPTIONS");
 
-	case 2:
-		ui->TabPage1->hide();
-		ui->TabPage2->show();
-		ui->TabPage3->hide();
-		break;
+			CmbOptions.push_back("English");
+			CmbOptions.push_back("Swahili");
+			CmbOptions.push_back("French");
+			CmbOptions.push_back("Spanish");
+			CmbOptions.push_back("Portuguesse");
+			CmbOptions.push_back("Chichewa");
 
-	case 3:
-		ui->TabPage1->hide();
-		ui->TabPage2->hide();
-		ui->TabPage3->show();
-		break;
+			AddSelect(" Language: ", "Prefferred Language", 0, CmbOptions);
+			AddBlankWidget(); 
+			AddRadio(" Tablet Mode: ", "Table Mode is when you are using a Touch Screen Input", 0);
+			AddBlankWidget();
+			AddRadio(" Search Criteria: ", "Search all songbooks", 1);
+			AddBlankWidget();
+			AddTextbox(" Your Name: ", "Your Name/Name of your Church", "");
+			break;
+
+		case 2:
+			ui->LblPageTitle->setText("APP FONT OPTIONS");
+
+			AddFontGroup(" General App Font: ", 18, "Trebuchet MS", false);
+			AddBlankWidget();
+			AddFontGroup(" Song Preview Font: ", 22, "Trebuchet MS", false);
+			AddBlankWidget();
+			AddFontGroup("Song Presentation Font: ", 35, "Trebuchet MS", true);
+			break;
+
+		case 3:
+			ui->LblPageTitle->setText("PRESENTATION THEMES");
+		
+			break;
 	}
+
+	QVBoxLayout *vLayoutX = new QVBoxLayout();
+	QWidget *widgetX = new QWidget(ScrollPane);
+	vLayoutX->addWidget(widgetX);
+	LstSettings->addLayout(vLayoutX);
 }
 
-void AppPreferences::ChangeGeneralFont(int newfont)
+void AppPreferences::AddBlankWidget()
 {
-	PrefFontGeneral.setPointSize(newfont);
-	ui->TxtSampleText->setFont(PrefFontGeneral);
-	AsBase::SetOption("general_font_size", QString::number(newfont));
-	ui->GrpGeneralAppFont->setTitle(" App General Font " + QString::number(newfont) + " ");
+	QWidget* widgetX = new QWidget(ScrollPane);
+	QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	sizePolicy1.setHorizontalStretch(0);
+	sizePolicy1.setVerticalStretch(0);
+	sizePolicy1.setHeightForWidth(widgetX->sizePolicy().hasHeightForWidth());
+	widgetX->setSizePolicy(sizePolicy1);
+	widgetX->setMinimumSize(QSize(0, 0));
+	QHBoxLayout* Layout1 = new QHBoxLayout(widgetX);
+	//widgetX->setStyleSheet("* { padding: 5px; }");
+	LstSettings->addWidget(widgetX);
 }
 
-void AppPreferences::ChangePreviewFont(int newfont)
+void AppPreferences::AddSelect(QString title, QString description, int value, std::vector<QString> options)
 {
-	PrefFontPreview.setPointSize(newfont);
-	ui->TxtSampleText->setFont(PrefFontPreview);
-	AsBase::SetOption("preview_font_size", QString::number(newfont));
-	ui->GrpSongPreviewFont->setTitle(" Song Preview Font " + QString::number(newfont) + " ");
+	QGroupBox *GrpSettings = new QGroupBox(ScrollPane);
+	GrpSettings->setObjectName("GrpSettings");
+	QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	sizePolicy1.setHorizontalStretch(0);
+	sizePolicy1.setVerticalStretch(0);
+	sizePolicy1.setHeightForWidth(GrpSettings->sizePolicy().hasHeightForWidth());
+	GrpSettings->setSizePolicy(sizePolicy1);
+	GrpSettings->setMinimumSize(QSize(0, 0));
+	QHBoxLayout *Layout1 = new QHBoxLayout(GrpSettings);
+	QLabel *LblSettings = new QLabel(GrpSettings);
+
+	QComboBox *CmbSettings = new QComboBox(GrpSettings);
+	CmbSettings->setObjectName("CmbSettings");
+	QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+	sizePolicy2.setHorizontalStretch(0);
+	sizePolicy2.setVerticalStretch(0);
+	sizePolicy2.setHeightForWidth(CmbSettings->sizePolicy().hasHeightForWidth());
+	CmbSettings->setSizePolicy(sizePolicy2);
+	CmbSettings->setMinimumSize(QSize(100, 0));
+	CmbSettings->setStyleSheet("* { font-size: 18px; padding: 5px; margin: 5px; background: #fff; border-radius: 5px; border: 1px solid #000; }");
+
+	for (decltype(options.size()) i = 0; i < options.size(); ++i)
+		CmbSettings->addItem(options[i]);
+
+	GrpSettings->setFont(Font1);
+	LblSettings->setFont(Font2);
+	CmbSettings->setFont(Font2);
+
+	GrpSettings->setTitle(title);
+	LblSettings->setText(description);
+
+	Layout1->addWidget(LblSettings);
+	Layout1->addWidget(CmbSettings);
+	LstSettings->addWidget(GrpSettings);
 }
 
-void AppPreferences::ChangePresentFont(int newfont)
+void AppPreferences::AddRadio(QString title, QString description, int value)
 {
-	PrefFontPresent.setPointSize(newfont);
-	ui->TxtSampleText->setFont(PrefFontPresent);
-	AsBase::SetOption("present_font_size", QString::number(newfont));
-	ui->GrpSongPresentFont->setTitle(" Song Presentation Font " + QString::number(newfont) + " ");
+	QGroupBox *GrpSettings = new QGroupBox(ScrollPane);
+	GrpSettings->setObjectName("GrpSettings");
+	QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	sizePolicy1.setHorizontalStretch(0);
+	sizePolicy1.setVerticalStretch(0);
+	sizePolicy1.setHeightForWidth(GrpSettings->sizePolicy().hasHeightForWidth());
+	GrpSettings->setSizePolicy(sizePolicy1);
+	GrpSettings->setMinimumSize(QSize(0, 0));
+	QHBoxLayout *Layout1 = new QHBoxLayout(GrpSettings);
+	QLabel *LblSettings = new QLabel(GrpSettings);
+	QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
+	sizePolicy2.setHorizontalStretch(0);
+	sizePolicy2.setVerticalStretch(0);
+	sizePolicy2.setHeightForWidth(LblSettings->sizePolicy().hasHeightForWidth());
+	LblSettings->setSizePolicy(sizePolicy2);
+
+	QRadioButton *BtnSettings = new QRadioButton(GrpSettings);
+
+	GrpSettings->setFont(Font1);
+	LblSettings->setFont(Font2);
+	BtnSettings->setFont(Font2);
+
+	GrpSettings->setTitle(title);
+	LblSettings->setText(description);
+	BtnSettings->setText("ON");
+	if (value == 1) BtnSettings->setChecked(true);
+
+	Layout1->addWidget(LblSettings);
+	Layout1->addWidget(BtnSettings);
+	LstSettings->addWidget(GrpSettings);
 }
 
+void AppPreferences::AddTextbox(QString title, QString description, QString value)
+{
+	QGroupBox *GrpSettings = new QGroupBox(ScrollPane);
+	GrpSettings->setObjectName("GrpSettings");
+	QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	sizePolicy1.setHorizontalStretch(0);
+	sizePolicy1.setVerticalStretch(0);
+	sizePolicy1.setHeightForWidth(GrpSettings->sizePolicy().hasHeightForWidth());
+	GrpSettings->setSizePolicy(sizePolicy1);
+	GrpSettings->setMinimumSize(QSize(0, 0));
+	QVBoxLayout *Layout1 = new QVBoxLayout(GrpSettings);
+	QLabel *LblSettings = new QLabel(GrpSettings);
+
+	QLineEdit *TxtInput = new QLineEdit(GrpSettings);
+	TxtInput->setObjectName(QString::fromUtf8("TxtInput"));
+	QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
+	sizePolicy2.setHorizontalStretch(0);
+	sizePolicy2.setVerticalStretch(0);
+	sizePolicy2.setHeightForWidth(TxtInput->sizePolicy().hasHeightForWidth());
+	TxtInput->setSizePolicy(sizePolicy2);
+	TxtInput->setMinimumSize(QSize(400, 0));
+
+	TxtInput->setStyleSheet("* { font-size: 18px; padding: 10px; background: #eee; margin: 5px; border-radius: 5px; border: 1px solid #000; }");
+
+	GrpSettings->setFont(Font1);
+	LblSettings->setFont(Font2);
+	TxtInput->setFont(Font2);
+
+	GrpSettings->setTitle(title);
+	LblSettings->setText(description);
+	TxtInput->setText(value);
+	//if (value == 1) BtnSettings->setChecked(true);
+
+	Layout1->addWidget(LblSettings);
+	Layout1->addWidget(TxtInput);
+	LstSettings->addWidget(GrpSettings);
+}
+
+void AppPreferences::AddFontGroup(QString title, int fontsize, QString fontfamily, bool isbold)
+{
+	QGroupBox* GrpSettings = new QGroupBox(ScrollPane);
+	GrpSettings->setObjectName("GrpSettings");
+	QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	sizePolicy1.setHorizontalStretch(0);
+	sizePolicy1.setVerticalStretch(0);
+	sizePolicy1.setHeightForWidth(GrpSettings->sizePolicy().hasHeightForWidth());
+	GrpSettings->setSizePolicy(sizePolicy1);
+	GrpSettings->setMinimumSize(QSize(0, 0));
+	QHBoxLayout *Layout1 = new QHBoxLayout(GrpSettings);
+	QPushButton *BtnDown = new QPushButton(GrpSettings);
+	BtnDown->setObjectName(QString::fromUtf8("BtnDown"));
+	QIcon icon1;
+	icon1.addFile(":/images/Down_Black.png", QSize(), QIcon::Normal, QIcon::Off);
+	BtnDown->setIcon(icon1);
+
+	QSlider *SldFont = new QSlider(GrpSettings);
+	SldFont->setObjectName(QString::fromUtf8("SldFont"));
+	SldFont->setOrientation(Qt::Horizontal);
+
+	QPushButton *BtnUp = new QPushButton(GrpSettings);
+	BtnUp->setObjectName(QString::fromUtf8("BtnUp"));
+	QIcon icon2;
+	icon2.addFile(":/images/Up_Black.png", QSize(), QIcon::Normal, QIcon::Off);
+	BtnUp->setIcon(icon2);
+
+	QComboBox *CmbFont = new QComboBox(GrpSettings);
+	CmbFont->setObjectName("CmbFont");
+	QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+	sizePolicy2.setHorizontalStretch(0);
+	sizePolicy2.setVerticalStretch(0);
+	sizePolicy2.setHeightForWidth(CmbFont->sizePolicy().hasHeightForWidth());
+	CmbFont->setSizePolicy(sizePolicy2);
+	CmbFont->setMinimumSize(QSize(50, 0));
+
+	BtnDown->setStyleSheet("* { font-size: 18px; padding: 5px; margin: 5px; background: #fff; border-radius: 5px; border: 1px solid #000; }");
+	BtnUp->setStyleSheet("* { font-size: 18px; padding: 5px; margin: 5px; background: #fff; border-radius: 5px; border: 1px solid #000; }");
+	CmbFont->setStyleSheet("* { font-size: 18px; padding: 5px; margin: 5px; background: #fff; border-radius: 5px; border: 1px solid #000; }");
+
+	for (decltype(pref_fonts.size()) i = 0; i < pref_fonts.size(); ++i) 
+		CmbFont->addItem(pref_fonts[i]);
+
+	QRadioButton *BtnBold = new QRadioButton(GrpSettings);
+	BtnBold->setObjectName("BtnBold");
+	BtnBold->setText("BOLD");
+
+	GrpSettings->setFont(Font1);
+	BtnDown->setFont(Font2);
+	SldFont->setFont(Font2);
+	BtnUp->setFont(Font2);
+	CmbFont->setFont(Font2);
+	BtnBold->setFont(Font2);	
+
+	GrpSettings->setTitle(title);
+	if (isbold) BtnBold->setChecked(true);
+
+	Layout1->addWidget(BtnDown);
+	Layout1->addWidget(SldFont);
+	Layout1->addWidget(BtnUp);
+	Layout1->addWidget(CmbFont);
+	Layout1->addWidget(BtnBold);
+	LstSettings->addWidget(GrpSettings);
+}
+
+// On Text Change event function for TxtSearch
 void AppPreferences::on_TxtSearch_textChanged(const QString& searchstr)
 {
 	LoadNavigation(searchstr);
 }
 
-void AppPreferences::on_LstNavigation_clicked(const QModelIndex& index)
-{
-	OpenSelectedTab(index);
-}
 
-void AppPreferences::on_LstNavigation_doubleClicked(const QModelIndex& index)
-{
-	OpenSelectedTab(index);
-}
-
-void AppPreferences::on_BtnTabletMode_clicked()
-{
-	AsBase::SetOption("tablet_mode", AsBase::booltoInt(ui->BtnTabletMode->isChecked()));
-}
-
-void AppPreferences::on_BtnSearchCriteria_clicked()
-{
-	AsBase::SetOption("search_allbooks", AsBase::booltoInt(ui->BtnSearchCriteria->isChecked()));
-}
-
-void AppPreferences::on_CmbLanguage_currentIndexChanged(int index)
-{
-	AsBase::SetOption("language", languages[index]);
-}
-
-void AppPreferences::on_TxtYourName_textChanged(const QString& newname)
-{
-	AsBase::SetOption("app_user", newname);
-}
-
-void AppPreferences::on_BtnDownGeneralAppFont_clicked()
-{
-	if ((fontgeneral - 2) > 9)
-	{
-		fontgeneral = fontgeneral - 2;
-		ChangeGeneralFont(fontgeneral);
-	}
-}
-
-void AppPreferences::on_BtnUpGeneralAppFont_clicked()
-{
-	if ((fontgeneral + 2) < 51)
-	{
-		fontgeneral = fontgeneral + 2;
-		ChangeGeneralFont(fontgeneral);
-	}
-}
-
-void AppPreferences::on_SldGeneralAppFont_valueChanged(int value)
-{
-	ChangeGeneralFont(value);
-}
-
-void AppPreferences::on_CmbGeneralAppFont_currentIndexChanged(int index)
-{
-	QString newfont = pref_fonts[index];
-	PrefFontGeneral.setFamily(newfont);
-	ui->TxtSampleText->setFont(PrefFontGeneral);
-	AsBase::SetOption("general_font_type", newfont);
-}
-
-void AppPreferences::on_BtnGeneralAppFont_clicked()
-{
-	PrefFontGeneral.setBold(ui->BtnGeneralAppFont->isChecked());
-	ui->TxtSampleText->setFont(PrefFontGeneral);
-	AsBase::SetOption("general_font_bold", AsBase::booltoInt(ui->BtnGeneralAppFont->isChecked()));
-}
-
-void AppPreferences::on_BtnDownSongPreviewFont_clicked()
-{
-	if ((fontpreview - 2) > 9)
-	{
-		fontpreview = fontpreview - 2;
-		ChangePreviewFont(fontpreview);
-	}
-}
-
-void AppPreferences::on_BtnUpSongPreviewFont_clicked()
-{
-	if ((fontpreview + 2) < 51)
-	{
-		fontpreview = fontpreview + 2;
-		ChangePreviewFont(fontpreview);
-	}
-}
-
-void AppPreferences::on_SldSongPreviewFont_valueChanged(int value)
-{
-	ChangePreviewFont(value);
-}
-
-void AppPreferences::on_CmbSongPreviewFont_currentIndexChanged(int index)
-{
-	QString newfont = pref_fonts[index];
-	PrefFontPreview.setFamily(newfont);
-	ui->TxtSampleText->setFont(PrefFontPreview);
-	AsBase::SetOption("preview_font_type", newfont);
-}
-
-void AppPreferences::on_BtnSongPreviewFont_clicked()
-{
-	PrefFontPreview.setBold(ui->BtnSongPreviewFont->isChecked());
-	ui->TxtSampleText->setFont(PrefFontPreview);
-	AsBase::SetOption("preview_font_bold", AsBase::booltoInt(ui->BtnSongPreviewFont->isChecked()));
-}
-
-void AppPreferences::on_BtnDownSongPresentFont_clicked()
-{
-	if ((fontpresent - 2) > 9)
-	{
-		fontpresent = fontpresent - 2;
-		ChangePresentFont(fontpresent);
-	}
-}
-
-void AppPreferences::on_BtnUpSongPresentFont_clicked()
-{
-	if ((fontpresent + 2) < 99)
-	{
-		fontpresent = fontpresent + 2;
-		ChangePresentFont(fontpresent);
-	}
-}
-
-void AppPreferences::on_SldSongPresentFont_valueChanged(int value)
-{
-	ChangePresentFont(value);
-}
-
-void AppPreferences::on_CmbSongPresentFont_currentIndexChanged(int index)
-{
-	QString newfont = pref_fonts[index];
-	PrefFontPresent.setFamily(newfont);
-	ui->TxtSampleText->setFont(PrefFontPresent);
-	AsBase::SetOption("present_font_type", newfont);
-}
-
-void AppPreferences::on_BtnSongPresentFont_clicked()
-{
-	PrefFontPresent.setBold(ui->BtnSongPresentFont->isChecked());
-	ui->TxtSampleText->setFont(PrefFontPresent);
-	AsBase::SetOption("present_font_bold", AsBase::booltoInt(ui->BtnSongPresentFont->isChecked()));
-}
-
-void AppPreferences::on_BtnTheme1_clicked()
-{
-	AsBase::SetOption("app_theme", "1");
-	SelectedTheme(1);
-}
-
-void AppPreferences::on_BtnTheme2_clicked()
-{
-	AsBase::SetOption("app_theme", "2");
-	SelectedTheme(2);
-}
-
-void AppPreferences::on_BtnTheme3_clicked()
-{
-	AsBase::SetOption("app_theme", "3");
-	SelectedTheme(3);
-}
-
-void AppPreferences::on_BtnTheme4_clicked()
-{
-	AsBase::SetOption("app_theme", "4");
-	SelectedTheme(4);
-}
-
-void AppPreferences::on_BtnTheme5_clicked()
-{
-	AsBase::SetOption("app_theme", "5");
-	SelectedTheme(5);
-}
-
-void AppPreferences::on_BtnTheme6_clicked()
-{
-	AsBase::SetOption("app_theme", "6");
-	SelectedTheme(6);
-}
-
-void AppPreferences::on_BtnTheme7_clicked()
-{
-	AsBase::SetOption("app_theme", "7");
-	SelectedTheme(7);
-}
-
-void AppPreferences::on_BtnTheme8_clicked()
-{
-	AsBase::SetOption("app_theme", "8");
-	SelectedTheme(8);
-}
-
-void AppPreferences::on_BtnTheme9_clicked()
-{
-	AsBase::SetOption("app_theme", "9");
-	SelectedTheme(9);
-}
-
-void AppPreferences::on_BtnTheme10_clicked()
-{
-	AsBase::SetOption("app_theme", "10");
-	SelectedTheme(10);
-}
-
-void AppPreferences::on_BtnTheme11_clicked()
-{
-	AsBase::SetOption("app_theme", "11");
-	SelectedTheme(11);
-}
-
-void AppPreferences::on_BtnTheme12_clicked()
-{
-	AsBase::SetOption("app_theme", "12");
-	SelectedTheme(12);
-}
-
-void AppPreferences::on_BtnTheme13_clicked()
-{
-	AsBase::SetOption("app_theme", "13");
-	SelectedTheme(13);
-}
-
-void AppPreferences::on_BtnTheme14_clicked()
-{
-	AsBase::SetOption("app_theme", "14");
-	SelectedTheme(14);
-}
-
-void AppPreferences::on_BtnTheme15_clicked()
-{
-	AsBase::SetOption("app_theme", "15");
-	SelectedTheme(15);
-}
-
+// Class Destructor
 AppPreferences::~AppPreferences()
 {
-	delete ui;
+    delete ui;
 }
+
+

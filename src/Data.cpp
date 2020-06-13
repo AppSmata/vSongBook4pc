@@ -1,4 +1,4 @@
-#include "Data.h"
+#include <Data.h>
 
 #include <QBuffer>
 #include <QImageReader>
